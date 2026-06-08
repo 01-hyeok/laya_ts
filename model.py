@@ -8,8 +8,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from laya.config import LayaModelConfig
-from laya.model import FourierChannelEncoding, LayaEncoder, LayaPretrainer, QueryChannelMixer
+from .base_model import FourierChannelEncoding, LayaEncoder, LayaPretrainer, QueryChannelMixer
+from .config import LayaModelConfig
 
 
 def normalize_temporal_patchifier_mode(value: str) -> str:

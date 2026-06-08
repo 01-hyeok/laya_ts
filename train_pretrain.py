@@ -19,7 +19,7 @@ from torch.optim import AdamW
 from torch.optim.lr_scheduler import LambdaLR
 from torch.utils.tensorboard import SummaryWriter
 
-from laya.config import LayaModelConfig, TrainingConfig, normalize_variant_name
+from laya_ts.config import LayaModelConfig, TrainingConfig, normalize_variant_name
 
 if __package__ in {None, ""}:
     from laya_ts.config import PretrainConfig

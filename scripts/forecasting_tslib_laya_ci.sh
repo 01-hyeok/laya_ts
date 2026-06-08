@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-export CUDA_VISIBLE_DEVICES=2
+export CUDA_VISIBLE_DEVICES=0
 PRETRAIN_DATA="tslib"
 ARCH="laya"
 LAYA_MODE="independent"

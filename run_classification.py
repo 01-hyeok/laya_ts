@@ -18,7 +18,7 @@ import torch.nn as nn
 from sklearn.metrics import accuracy_score, f1_score
 from torch.utils.tensorboard import SummaryWriter
 
-from laya.config import LayaModelConfig
+from laya_ts.config import LayaModelConfig
 
 if __package__ in {None, ""}:
     from laya_ts.data_classification import get_classification_loaders

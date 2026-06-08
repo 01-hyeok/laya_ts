@@ -1,6 +1,6 @@
 import torch
 
-from laya.config import LayaModelConfig
+from laya_ts.config import LayaModelConfig
 from laya_ts.model import LayaTSPretrainer
 
 

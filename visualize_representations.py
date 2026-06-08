@@ -25,7 +25,7 @@ from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 from sklearn.metrics import davies_bouldin_score, silhouette_score
 
-from laya.config import LayaModelConfig
+from laya_ts.config import LayaModelConfig
 
 if __package__ in {None, ""}:
     from laya_ts.data_classification import get_classification_loaders

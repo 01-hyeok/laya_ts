@@ -18,7 +18,7 @@ import torch
 import torch.nn as nn
 from torch.utils.tensorboard import SummaryWriter
 
-from laya.config import LayaModelConfig
+from laya_ts.config import LayaModelConfig
 
 if __package__ in {None, ""}:
     from laya_ts.data_forecasting import get_forecasting_loaders
