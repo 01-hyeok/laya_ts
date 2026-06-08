@@ -2,23 +2,23 @@
 set -euo pipefail
 
 source /data/pjh_workspace/ts-env/bin/activate
-export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
+export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-1}"
 
 PRETRAIN_DATA="electricity"
 ARCH="laya"
 LAYA_MODE="${LAYA_MODE:-mixer}"
-CHANNEL_METADATA_MODE="${CHANNEL_METADATA_MODE:-text_stats_joint}"
-METADATA_FUSION_MODE="${METADATA_FUSION_MODE:-concat_kv}"
-CHANNEL_MIXER_RELATION_MODE="${CHANNEL_MIXER_RELATION_MODE:-none}"
-STATS_METADATA_DIM="${STATS_METADATA_DIM:-384}"
+CHANNEL_METADATA_MODE="${CHANNEL_METADATA_MODE:-text}"
+METADATA_FUSION_MODE="${METADATA_FUSION_MODE:-none}"
+CHANNEL_MIXER_RELATION_MODE="${CHANNEL_MIXER_RELATION_MODE:-metadata_query_gate}"
+CHANNEL_MIXER_RELATION_SCALE_INIT="${CHANNEL_MIXER_RELATION_SCALE_INIT:-1.0}"
 
-DEFAULT_CHECKPOINT_DIR="./checkpoints/${PRETRAIN_DATA}_${ARCH}_mixer_concat_text_stats_joint"
+DEFAULT_CHECKPOINT_DIR="./checkpoints/${PRETRAIN_DATA}_${ARCH}_metadata_query_gate_text"
 CHECKPOINT="${CHECKPOINT:-${DEFAULT_CHECKPOINT_DIR}/laya_ts_${PRETRAIN_DATA}_s_best.pt}"
 
 if [ ! -f "$CHECKPOINT" ]; then
   echo "⚠️ Pretrained checkpoint not found: $CHECKPOINT"
   echo "Expected default checkpoint under: $DEFAULT_CHECKPOINT_DIR"
-  echo "Please run laya_ts/scripts/pretrain_electricity_laya_mixer_concat_text_stats_joint.sh first,"
+  echo "Please run laya_ts/scripts/pretrain_electricity_laya_metadata_query_gate_text.sh first,"
   echo "or override CHECKPOINT=/path/to/laya_ts_${PRETRAIN_DATA}_s_best.pt"
   exit 1
 fi
@@ -44,7 +44,7 @@ export LAYA_TS_LOG_TEXT_METADATA_PREVIEW="${LOG_TEXT_METADATA_PREVIEW}"
 EXTRA_ARGS=(
   --metadata_fusion_mode "${METADATA_FUSION_MODE}"
   --channel_mixer_relation_mode "${CHANNEL_MIXER_RELATION_MODE}"
-  --stats_metadata_dim "${STATS_METADATA_DIM}"
+  --channel_mixer_relation_scale_init "${CHANNEL_MIXER_RELATION_SCALE_INIT}"
 )
 
 if [ "${SAVE_ATTENTION_MAPS}" = "1" ]; then
@@ -58,7 +58,7 @@ run_group() {
   local datasets=("$@")
   for dataset_name in "${datasets[@]}"; do
     local data_root="${root_prefix}/${dataset_name}"
-    local log_dir="./runs/classification_${PRETRAIN_DATA}_to_${dataset_name}_${ARCH}_mixer_concat_text_stats_joint"
+    local log_dir="./runs/classification_${PRETRAIN_DATA}_to_${dataset_name}_${ARCH}_metadata_query_gate_text"
     mkdir -p "$log_dir"
     python -u "./run_classification.py" \
       --data_root "$data_root" \
@@ -79,4 +79,3 @@ run_group() {
 
 run_group "../Dataset/Time-Series-Library_dataset/UEA" "${UEA_DATASETS[@]}"
 run_group "../Dataset/Time-Series-Library_dataset/UCR" "${UCR_DATASETS[@]}"
-

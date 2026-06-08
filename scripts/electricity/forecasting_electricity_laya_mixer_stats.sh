@@ -7,21 +7,18 @@ export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-1}"
 PRETRAIN_DATA="electricity"
 ARCH="laya"
 LAYA_MODE="${LAYA_MODE:-mixer}"
-CHANNEL_METADATA_MODE="${CHANNEL_METADATA_MODE:-text}"
-METADATA_FUSION_MODE="${METADATA_FUSION_MODE:-attention_gate}"
+CHANNEL_METADATA_MODE="${CHANNEL_METADATA_MODE:-stats}"
+METADATA_FUSION_MODE="${METADATA_FUSION_MODE:-add}"
 CHANNEL_MIXER_RELATION_MODE="${CHANNEL_MIXER_RELATION_MODE:-none}"
+STATS_METADATA_DIM="${STATS_METADATA_DIM:-384}"
 
-DESCRIPTION_RELATION_METRIC="${DESCRIPTION_RELATION_METRIC:-projected_dot}"
-DESCRIPTION_RELATION_LAMBDA_INIT="${DESCRIPTION_RELATION_LAMBDA_INIT:-0.0}"
-DESCRIPTION_RELATION_GAMMA_INIT="${DESCRIPTION_RELATION_GAMMA_INIT:-1.0}"
-
-DEFAULT_CHECKPOINT_DIR="./checkpoints/${PRETRAIN_DATA}_${ARCH}_attention_gate_text"
+DEFAULT_CHECKPOINT_DIR="./checkpoints/${PRETRAIN_DATA}_${ARCH}_mixer_stats"
 CHECKPOINT="${CHECKPOINT:-${DEFAULT_CHECKPOINT_DIR}/laya_ts_${PRETRAIN_DATA}_s_best.pt}"
 
 if [ ! -f "$CHECKPOINT" ]; then
   echo "⚠️ Pretrained checkpoint not found: $CHECKPOINT"
   echo "Expected default checkpoint under: $DEFAULT_CHECKPOINT_DIR"
-  echo "Please run laya_ts/scripts/pretrain_electricity_laya_description_relation_text.sh first,"
+  echo "Please run laya_ts/scripts/pretrain_electricity_laya_mixer_stats.sh first,"
   echo "or override CHECKPOINT=/path/to/laya_ts_${PRETRAIN_DATA}_s_best.pt"
   exit 1
 fi
@@ -33,23 +30,17 @@ BATCH_SIZE="${BATCH_SIZE:-32}"
 LR="${LR:-1e-4}"
 NUM_EPOCHS="${NUM_EPOCHS:-20}"
 SEQ_LEN="${SEQ_LEN:-512}"
-TEXT_ENCODER_NAME="${TEXT_ENCODER_NAME:-sentence-transformers/all-MiniLM-L6-v2}"
-TEXT_METADATA_CACHE_DIR="${TEXT_METADATA_CACHE_DIR:-./metadata_cache}"
-LOG_TEXT_METADATA_PREVIEW="${LOG_TEXT_METADATA_PREVIEW:-1}"
 SAVE_ATTENTION_MAPS="${SAVE_ATTENTION_MAPS:-1}"
 NUM_ATTENTION_MAP_SAMPLES="${NUM_ATTENTION_MAP_SAMPLES:-3}"
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
 cd "${PROJECT_DIR}"
-export LAYA_TS_LOG_TEXT_METADATA_PREVIEW="${LOG_TEXT_METADATA_PREVIEW}"
 
 EXTRA_ARGS=(
   --metadata_fusion_mode "${METADATA_FUSION_MODE}"
   --channel_mixer_relation_mode "${CHANNEL_MIXER_RELATION_MODE}"
-  --description_relation_metric "${DESCRIPTION_RELATION_METRIC}"
-  --description_relation_lambda_init "${DESCRIPTION_RELATION_LAMBDA_INIT}"
-  --description_relation_gamma_init "${DESCRIPTION_RELATION_GAMMA_INIT}"
+  --stats_metadata_dim "${STATS_METADATA_DIM}"
 )
 
 if [ "${SAVE_ATTENTION_MAPS}" = "1" ]; then
@@ -64,7 +55,7 @@ for DATA in "${TARGET_DATASETS[@]}"; do
     DATA_DIR="$DATA"
   fi
   DATA_PATH="../Dataset/Time-Series-Library_dataset/${DATA_DIR}/${DATA}.csv"
-  LOG_DIR="./runs/forecasting_${PRETRAIN_DATA}_to_${DATA}_${ARCH}_attention_gate_text"
+  LOG_DIR="./runs/forecasting_${PRETRAIN_DATA}_to_${DATA}_${ARCH}_mixer_stats"
   mkdir -p "$LOG_DIR"
 
   for PRED_LEN in "${PRED_LENGTHS[@]}"; do
@@ -80,8 +71,6 @@ for DATA in "${TARGET_DATASETS[@]}"; do
       --num_workers 0 \
       --channel_mixer_type "$LAYA_MODE" \
       --channel_metadata_mode "$CHANNEL_METADATA_MODE" \
-      --text_encoder_name_or_path "$TEXT_ENCODER_NAME" \
-      --text_metadata_cache_dir "$TEXT_METADATA_CACHE_DIR" \
       --log_dir "$LOG_DIR/pred_${PRED_LEN}" \
       "${EXTRA_ARGS[@]}"
   done

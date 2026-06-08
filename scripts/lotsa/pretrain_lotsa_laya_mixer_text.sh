@@ -8,6 +8,7 @@ ARCH="laya"
 VARIANT="s"
 LAYA_MODE="mixer"
 CHANNEL_METADATA_MODE="text"
+METADATA_FUSION_MODE="${METADATA_FUSION_MODE:-add}"
 LOTSA_SPLIT_MODE="${LOTSA_SPLIT_MODE:-temporal_70_10_20}"
 LOTSA_SAMPLING_MODE="${LOTSA_SAMPLING_MODE:-sliding_window}"
 LOTSA_PREPROCESSING_MODE="${LOTSA_PREPROCESSING_MODE:-standardize}"
@@ -38,21 +39,25 @@ LOG_TEXT_METADATA_PREVIEW="${LOG_TEXT_METADATA_PREVIEW:-1}"
 SAVE_DIR="./checkpoints/${DATA}_${ARCH}_${LAYA_MODE}_${CHANNEL_METADATA_MODE}"
 LOG_DIR="./runs/pretrain_${DATA}_${ARCH}_${LAYA_MODE}_${CHANNEL_METADATA_MODE}"
 
-echo "🚀 Laya-TS Pretraining: ${DATA} (${ARCH} + ${LAYA_MODE}, ${CHANNEL_METADATA_MODE})"
+echo "🚀 Laya-TS Pretraining: ${DATA} (${ARCH} + mixer_concat_text)"
 echo "📊 subsets: ${LOTSA_SUBSETS:-ALL}"
 echo "🧩 split_mode: ${LOTSA_SPLIT_MODE}"
 echo "🧩 sampling_mode: ${LOTSA_SAMPLING_MODE}"
 echo "🧩 preprocessing_mode: ${LOTSA_PREPROCESSING_MODE}"
 echo "🧩 sample_time_series: ${LOTSA_SAMPLE_TIME_SERIES}"
 echo "🧩 min_patches: ${LOTSA_MIN_PATCHES}, max_dim: ${LOTSA_MAX_DIM}"
-echo "⏱️ total_steps: ${STEPS}"
-echo "🧪 val_interval: ${VAL_INTERVAL}"
+echo "📝 metadata: mode=${CHANNEL_METADATA_MODE}, fusion=${METADATA_FUSION_MODE}, relation=${CHANNEL_MIXER_RELATION_MODE}"
 echo "📝 log_dir: ${LOG_DIR}"
 
-if [ -n "${LOG_TEXT_METADATA_PREVIEW}" ] && [ "${LOG_TEXT_METADATA_PREVIEW}" != "0" ]; then
-  export LAYA_TS_LOG_TEXT_METADATA_PREVIEW="${LOG_TEXT_METADATA_PREVIEW}"
+EXTRA_ARGS=(
+  --attention_map_tag mixer_concat_text
+  --metadata_fusion_mode "${METADATA_FUSION_MODE}"
+  --channel_mixer_relation_mode "${CHANNEL_MIXER_RELATION_MODE}"
+)
+
+if [ "${SAVE_ATTENTION_MAPS}" = "1" ]; then
+  EXTRA_ARGS+=(--save_attention_maps)
 fi
-EXTRA_ARGS=()
 
 python -u "./train_pretrain.py" \
   --dataset_type ${DATA} \

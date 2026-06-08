@@ -2,23 +2,23 @@
 set -euo pipefail
 
 source /data/pjh_workspace/ts-env/bin/activate
-export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
+export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-1}"
 
 PRETRAIN_DATA="electricity"
 ARCH="laya"
 LAYA_MODE="${LAYA_MODE:-mixer}"
-CHANNEL_METADATA_MODE="${CHANNEL_METADATA_MODE:-text_stats_avg}"
+CHANNEL_METADATA_MODE="${CHANNEL_METADATA_MODE:-text_stats_joint}"
 METADATA_FUSION_MODE="${METADATA_FUSION_MODE:-add}"
 CHANNEL_MIXER_RELATION_MODE="${CHANNEL_MIXER_RELATION_MODE:-none}"
 STATS_METADATA_DIM="${STATS_METADATA_DIM:-384}"
 
-DEFAULT_CHECKPOINT_DIR="./checkpoints/${PRETRAIN_DATA}_${ARCH}_mixer_text_stats_avg"
+DEFAULT_CHECKPOINT_DIR="./checkpoints/${PRETRAIN_DATA}_${ARCH}_mixer_text_stats_joint"
 CHECKPOINT="${CHECKPOINT:-${DEFAULT_CHECKPOINT_DIR}/laya_ts_${PRETRAIN_DATA}_s_best.pt}"
 
 if [ ! -f "$CHECKPOINT" ]; then
   echo "⚠️ Pretrained checkpoint not found: $CHECKPOINT"
   echo "Expected default checkpoint under: $DEFAULT_CHECKPOINT_DIR"
-  echo "Please run laya_ts/scripts/pretrain_electricity_laya_mixer_text_stats_avg.sh first,"
+  echo "Please run laya_ts/scripts/pretrain_electricity_laya_mixer_text_stats_joint.sh first,"
   echo "or override CHECKPOINT=/path/to/laya_ts_${PRETRAIN_DATA}_s_best.pt"
   exit 1
 fi
@@ -59,7 +59,7 @@ for DATA in "${TARGET_DATASETS[@]}"; do
     DATA_DIR="$DATA"
   fi
   DATA_PATH="../Dataset/Time-Series-Library_dataset/${DATA_DIR}/${DATA}.csv"
-  LOG_DIR="./runs/forecasting_${PRETRAIN_DATA}_to_${DATA}_${ARCH}_mixer_text_stats_avg"
+  LOG_DIR="./runs/forecasting_${PRETRAIN_DATA}_to_${DATA}_${ARCH}_mixer_text_stats_joint"
   mkdir -p "$LOG_DIR"
 
   for PRED_LEN in "${PRED_LENGTHS[@]}"; do
