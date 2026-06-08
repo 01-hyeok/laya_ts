@@ -38,9 +38,7 @@ SAVE_ATTENTION_MAPS="${SAVE_ATTENTION_MAPS:-1}"
 SAVE_DIR="${SAVE_DIR:-./checkpoints/${DATA}_${ARCH}_mixer_text_stats_joint}"
 LOG_DIR="${LOG_DIR:-./runs/pretrain_${DATA}_${ARCH}_mixer_text_stats_joint}"
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_DIR="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
-cd "${PROJECT_DIR}"
+
 export LAYA_TS_LOG_TEXT_METADATA_PREVIEW="${LOG_TEXT_METADATA_PREVIEW}"
 
 echo "🚀 Laya-TS Pretraining: ${DATA} (${ARCH} + mixer_text_stats_joint)"

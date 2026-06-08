@@ -32,9 +32,7 @@ SEQ_LEN="${SEQ_LEN:-0}"
 SAVE_ATTENTION_MAPS="${SAVE_ATTENTION_MAPS:-1}"
 NUM_ATTENTION_MAP_SAMPLES="${NUM_ATTENTION_MAP_SAMPLES:-3}"
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_DIR="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
-cd "${PROJECT_DIR}"
+
 
 EXTRA_ARGS=(
   --metadata_fusion_mode "${METADATA_FUSION_MODE}"

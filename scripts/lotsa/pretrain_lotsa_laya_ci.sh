@@ -37,9 +37,7 @@ SAVE_ATTENTION_MAPS="${SAVE_ATTENTION_MAPS:-0}"
 SAVE_DIR="${SAVE_DIR:-./checkpoints/${DATA}_${ARCH}_ci_none}"
 LOG_DIR="${LOG_DIR:-./runs/pretrain_${DATA}_${ARCH}_ci_none}"
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_DIR="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
-cd "${PROJECT_DIR}"
+
 
 echo "🚀 Laya-TS Pretraining: ${DATA} (${ARCH} + ci)"
 echo "📊 subsets: ${LOTSA_SUBSETS:-ALL}"
