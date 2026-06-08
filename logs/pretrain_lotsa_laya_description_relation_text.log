@@ -1,0 +1,170 @@
+nohup: ignoring input
+🚀 Laya-TS Pretraining: lotsa (laya + attention_gate)
+📊 subsets: beijing_air_quality,HZMETRO,residential_pv_power,residential_load_power,china_air_quality
+⏱️ total_steps: 100000
+🧪 val_interval: 2000
+🔗 description relation: metric=projected_dot, lambda_init=0.0, gamma_init=1.0
+📝 log_dir: ./runs/pretrain_lotsa_laya_attention_gate_text
+📊 Dataset Statistics:
+   - Sequence Length (T): 512
+   - Train Samples: 378730, Steps: 11837
+   - Val Samples: 53820, Steps: 1685
+   - LOTSA subset groups: ['beijing_air_quality', 'residential_pv_power', 'residential_load_power', 'china_air_quality']
+   - LOTSA channel counts: [11, 3, 3, 6]
+🔧 Encoder Hyperparameters:
+   - d_model: 128
+   - n_heads: 8
+   - n_layers: 3
+   - proj_dim: 256
+   - patch_size: 16
+   - metadata_fusion_mode: attention_gate
+   - channel_mixer_relation_mode: none
+   - description_relation_metric: projected_dot
+   - description_relation_lambda_init: 0.0
+   - description_relation_gamma_init: 1.0
+   - encoder_variant: default
+   - temporal_patchifier_mode: fixed
+   - use_channel_relation_block: False
+🧮 Parameter Counts:
+   - Total Parameters: 4,500,098
+   - Trainable Parameters: 4,500,098
+⏱️ Schedule:
+   - total_steps: 100000
+   - warmup_steps: 5000
+   - derived_epochs: 9
+   - val_interval: 2000
+[LOTSA] Falling back to synthetic channel names for subset 'residential_load_power' (channels=3); no explicit feature names were found in the record metadata.
+Text metadata preview | dataset=residential_load_power | domain=electricity | channels=3
+   - feature_0: In the electricity domain, this channel belongs to the residential load power dataset and represents the feature feature 0.
+   - feature_1: In the electricity domain, this channel belongs to the residential load power dataset and represents the feature feature 1.
+   - ... (1 more channel descriptions)
+[LOTSA] Falling back to synthetic channel names for subset 'china_air_quality' (channels=6); no explicit feature names were found in the record metadata.
+Text metadata preview | dataset=china_air_quality | domain=environment | channels=6
+   - feature_0: In the environment domain, this channel belongs to the china air quality dataset and represents the feature feature 0.
+   - feature_1: In the environment domain, this channel belongs to the china air quality dataset and represents the feature feature 1.
+   - ... (4 more channel descriptions)
+[LOTSA] Falling back to synthetic channel names for subset 'residential_pv_power' (channels=3); no explicit feature names were found in the record metadata.
+Text metadata preview | dataset=residential_pv_power | domain=electricity | channels=3
+   - feature_0: In the electricity domain, this channel belongs to the residential pv power dataset and represents the feature feature 0.
+   - feature_1: In the electricity domain, this channel belongs to the residential pv power dataset and represents the feature feature 1.
+   - ... (1 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Guanyuan_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Guanyuan 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Guanyuan 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Changping_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Changping 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Changping 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Shunyi_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Shunyi 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Shunyi 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Huairou_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Huairou 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Huairou 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Dongsi_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Dongsi 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Dongsi 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Tiantan_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Tiantan 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Tiantan 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Nongzhanguan_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Nongzhanguan 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Nongzhanguan 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Wanliu_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Wanliu 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Wanliu 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Wanshouxigong_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Wanshouxigong 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Wanshouxigong 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Gucheng_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Gucheng 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Gucheng 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Aotizhongxin_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Aotizhongxin 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Aotizhongxin 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Dingling_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Dingling 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Dingling 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+[LOTSA] Falling back to synthetic channel names for subset 'residential_pv_power' (channels=3); no explicit feature names were found in the record metadata.
+[LOTSA] Falling back to synthetic channel names for subset 'residential_load_power' (channels=3); no explicit feature names were found in the record metadata.
+[LOTSA] Falling back to synthetic channel names for subset 'china_air_quality' (channels=6); no explicit feature names were found in the record metadata.
+Validation @ step 2000/100000 | Epoch 1/9 | LR: 0.000040 | Macro Val: 1.394245 (P:0.3746, S:0.3946, Q:0.9999) | Micro Val: 1.388450 (P:0.3726, S:0.3164, Q:1.0000)
+   -> Per-dataset val loss: beijing_air_quality=1.3759 | residential_pv_power=1.3204 | residential_load_power=1.4466 | china_air_quality=1.4341
+   -> Saved improved checkpoint: macro_val_loss=1.394245 at step 2000
+Validation @ step 4000/100000 | Epoch 1/9 | LR: 0.000080 | Macro Val: 1.414713 (P:0.6461, S:0.4325, Q:0.7469) | Micro Val: 1.623497 (P:0.6561, S:0.3578, Q:0.9495)
+   -> Per-dataset val loss: beijing_air_quality=1.2021 | residential_pv_power=1.7233 | residential_load_power=1.5448 | china_air_quality=1.1886
+Validation @ step 6000/100000 | Epoch 1/9 | LR: 0.000100 | Macro Val: 2.774556 (P:2.1593, S:0.7800, Q:0.5763) | Micro Val: 1.974446 (P:1.3198, S:0.4121, Q:0.6340)
+   -> Per-dataset val loss: beijing_air_quality=4.5441 | residential_pv_power=1.8757 | residential_load_power=2.0432 | china_air_quality=2.6352
+Validation @ step 8000/100000 | Epoch 1/9 | LR: 0.000100 | Macro Val: 2.798054 (P:2.2357, S:0.6654, Q:0.5290) | Micro Val: 2.286395 (P:1.7190, S:0.4340, Q:0.5457)
+   -> Per-dataset val loss: beijing_air_quality=4.0770 | residential_pv_power=2.1780 | residential_load_power=2.3711 | china_air_quality=2.5661
+Validation @ step 10000/100000 | Epoch 1/9 | LR: 0.000099 | Macro Val: 1.387045 (P:0.8355, S:0.7243, Q:0.5153) | Micro Val: 1.091784 (P:0.5548, S:0.3360, Q:0.5202)
+   -> Per-dataset val loss: beijing_air_quality=1.8619 | residential_pv_power=0.9863 | residential_load_power=1.1744 | china_air_quality=1.5255
+   -> Saved improved checkpoint: macro_val_loss=1.387045 at step 10000
+Epoch 1/9 | Steps: 11483 | LR: 0.000099 | Train Loss: 1.109635 (P:0.3699, S:0.1071, Q:0.7343) | Repr L2μ: 5.8369 | Repr Cosμ: 0.7607 | Pred→Target Cosμ: 0.7877 | Repr NormRatio: 1.1960
+Validation @ step 12000/100000 | Epoch 2/9 | LR: 0.000099 | Macro Val: 2.263640 (P:1.7162, S:0.6942, Q:0.5128) | Micro Val: 1.760564 (P:1.2295, S:0.3132, Q:0.5154)
+   -> Per-dataset val loss: beijing_air_quality=3.3447 | residential_pv_power=1.5337 | residential_load_power=1.9453 | china_air_quality=2.2309
+Validation @ step 14000/100000 | Epoch 2/9 | LR: 0.000098 | Macro Val: 2.112712 (P:1.5690, S:0.6847, Q:0.5095) | Micro Val: 1.963504 (P:1.4306, S:0.4696, Q:0.5094)
+   -> Per-dataset val loss: beijing_air_quality=2.3421 | residential_pv_power=1.7825 | residential_load_power=2.1151 | china_air_quality=2.2112
+Validation @ step 16000/100000 | Epoch 2/9 | LR: 0.000097 | Macro Val: 1.735607 (P:1.1939, S:0.6586, Q:0.5088) | Micro Val: 1.711152 (P:1.1821, S:0.4200, Q:0.5081)
+   -> Per-dataset val loss: beijing_air_quality=1.9077 | residential_pv_power=1.5488 | residential_load_power=1.8519 | china_air_quality=1.6341
+Validation @ step 18000/100000 | Epoch 2/9 | LR: 0.000095 | Macro Val: 3.276766 (P:2.7378, S:0.6117, Q:0.5084) | Micro Val: 2.069048 (P:1.5453, S:0.3296, Q:0.5073)
+   -> Per-dataset val loss: beijing_air_quality=5.6976 | residential_pv_power=1.5729 | residential_load_power=2.4686 | china_air_quality=3.3679
+Validation @ step 20000/100000 | Epoch 2/9 | LR: 0.000094 | Macro Val: 15.824681 (P:15.2506, S:1.3209, Q:0.5080) | Micro Val: 6.893232 (P:6.3529, S:0.6749, Q:0.5066)
+   -> Per-dataset val loss: beijing_air_quality=30.7161 | residential_pv_power=5.8844 | residential_load_power=7.5208 | china_air_quality=19.1773
+Validation @ step 22000/100000 | Epoch 2/9 | LR: 0.000092 | Macro Val: 7.931846 (P:7.3701, S:1.0803, Q:0.5078) | Micro Val: 2.471929 (P:1.9477, S:0.3619, Q:0.5061)
+   -> Per-dataset val loss: beijing_air_quality=17.9384 | residential_pv_power=1.6683 | residential_load_power=3.0276 | china_air_quality=9.0931
+Epoch 2/9 | Steps: 11483 | LR: 0.000092 | Train Loss: 0.883979 (P:0.3727, S:0.0731, Q:0.5076) | Repr L2μ: 4.2095 | Repr Cosμ: 0.8538 | Pred→Target Cosμ: 0.8011 | Repr NormRatio: 1.0973
+Validation @ step 24000/100000 | Epoch 3/9 | LR: 0.000091 | Macro Val: 3.469765 (P:2.9230, S:0.7834, Q:0.5076) | Micro Val: 2.330895 (P:1.8064, S:0.3732, Q:0.5059)
+   -> Per-dataset val loss: beijing_air_quality=5.7499 | residential_pv_power=1.7284 | residential_load_power=2.8236 | china_air_quality=3.5772
+Validation @ step 26000/100000 | Epoch 3/9 | LR: 0.000089 | Macro Val: 9.967174 (P:9.4009, S:1.1766, Q:0.5074) | Micro Val: 2.283675 (P:1.7606, S:0.3512, Q:0.5055)
+   -> Per-dataset val loss: beijing_air_quality=23.9408 | residential_pv_power=1.6279 | residential_load_power=2.6552 | china_air_quality=11.6447
+Validation @ step 28000/100000 | Epoch 3/9 | LR: 0.000086 | Macro Val: 8.763781 (P:8.2087, S:0.9542, Q:0.5074) | Micro Val: 3.138981 (P:2.6172, S:0.3277, Q:0.5054)
+   -> Per-dataset val loss: beijing_air_quality=21.6527 | residential_pv_power=2.3302 | residential_load_power=3.7266 | china_air_quality=7.3456
+Validation @ step 30000/100000 | Epoch 3/9 | LR: 0.000084 | Macro Val: 3.314319 (P:2.7578, S:0.9844, Q:0.5073) | Micro Val: 1.470798 (P:0.9462, S:0.3879, Q:0.5052)
+   -> Per-dataset val loss: beijing_air_quality=6.5596 | residential_pv_power=1.1162 | residential_load_power=1.7285 | china_air_quality=3.8530
+Validation @ step 32000/100000 | Epoch 3/9 | LR: 0.000082 | Macro Val: 6.977935 (P:6.4237, S:0.9403, Q:0.5072) | Micro Val: 2.449352 (P:1.9263, S:0.3579, Q:0.5051)
+   -> Per-dataset val loss: beijing_air_quality=16.6727 | residential_pv_power=1.4848 | residential_load_power=3.1839 | china_air_quality=6.5703
+Validation @ step 34000/100000 | Epoch 3/9 | LR: 0.000079 | Macro Val: 8.178625 (P:7.6309, S:0.8121, Q:0.5071) | Micro Val: 4.038831 (P:3.5111, S:0.4550, Q:0.5050)
+   -> Per-dataset val loss: beijing_air_quality=18.3933 | residential_pv_power=3.8603 | residential_load_power=4.1215 | china_air_quality=6.3394
+Epoch 3/9 | Steps: 11483 | LR: 0.000078 | Train Loss: 0.896151 (P:0.3878, S:0.0734, Q:0.5047) | Repr L2μ: 3.5653 | Repr Cosμ: 0.8841 | Pred→Target Cosμ: 0.8251 | Repr NormRatio: 1.0963
+Validation @ step 36000/100000 | Epoch 4/9 | LR: 0.000076 | Macro Val: 2.155484 (P:1.6123, S:0.7224, Q:0.5070) | Micro Val: 1.578745 (P:1.0561, S:0.3579, Q:0.5048)
+   -> Per-dataset val loss: beijing_air_quality=3.6275 | residential_pv_power=1.3254 | residential_load_power=1.7876 | china_air_quality=1.8815
+Validation @ step 38000/100000 | Epoch 4/9 | LR: 0.000073 | Macro Val: 9.098017 (P:8.5324, S:1.1744, Q:0.5069) | Micro Val: 4.647132 (P:4.1163, S:0.5252, Q:0.5046)
+   -> Per-dataset val loss: beijing_air_quality=19.0169 | residential_pv_power=3.2434 | residential_load_power=5.7663 | china_air_quality=8.3655
+Validation @ step 40000/100000 | Epoch 4/9 | LR: 0.000070 | Macro Val: 4.983861 (P:4.4426, S:0.6903, Q:0.5067) | Micro Val: 1.691961 (P:1.1717, S:0.3208, Q:0.5042)
+   -> Per-dataset val loss: beijing_air_quality=12.0141 | residential_pv_power=1.1990 | residential_load_power=2.0465 | china_air_quality=4.6759
+Validation @ step 42000/100000 | Epoch 4/9 | LR: 0.000067 | Macro Val: 8.536627 (P:7.9847, S:0.9090, Q:0.5065) | Micro Val: 3.275598 (P:2.7525, S:0.3862, Q:0.5038)
+   -> Per-dataset val loss: beijing_air_quality=20.0853 | residential_pv_power=1.9587 | residential_load_power=4.3016 | china_air_quality=7.8010
+Validation @ step 44000/100000 | Epoch 4/9 | LR: 0.000064 | Macro Val: 5.514724 (P:4.9671, S:0.8314, Q:0.5061) | Micro Val: 2.122971 (P:1.6014, S:0.3690, Q:0.5031)
+   -> Per-dataset val loss: beijing_air_quality=12.8671 | residential_pv_power=1.5054 | residential_load_power=2.5840 | china_air_quality=5.1024
+Epoch 4/9 | Steps: 11483 | LR: 0.000061 | Train Loss: 0.864642 (P:0.3577, S:0.0696, Q:0.5035) | Repr L2μ: 2.8792 | Repr Cosμ: 0.9177 | Pred→Target Cosμ: 0.8345 | Repr NormRatio: 1.1006
+Validation @ step 46000/100000 | Epoch 5/9 | LR: 0.000061 | Macro Val: 2.736494 (P:2.2077, S:0.4620, Q:0.5057) | Micro Val: 3.145760 (P:2.6238, S:0.3902, Q:0.5025)
+   -> Per-dataset val loss: beijing_air_quality=2.9121 | residential_pv_power=2.3973 | residential_load_power=3.8118 | china_air_quality=1.8248
+Validation @ step 48000/100000 | Epoch 5/9 | LR: 0.000058 | Macro Val: 4.975506 (P:4.4285, S:0.8389, Q:0.5051) | Micro Val: 6.417274 (P:5.8856, S:0.6051, Q:0.5014)
+   -> Per-dataset val loss: beijing_air_quality=4.0091 | residential_pv_power=9.6815 | residential_load_power=3.6633 | china_air_quality=2.5481
+Validation @ step 50000/100000 | Epoch 5/9 | LR: 0.000055 | Macro Val: 3.063820 (P:2.5222, S:0.7358, Q:0.5048) | Micro Val: 1.676305 (P:1.1575, S:0.3559, Q:0.5010)
+   -> Per-dataset val loss: beijing_air_quality=5.7884 | residential_pv_power=1.3236 | residential_load_power=1.9476 | china_air_quality=3.1957
+Validation @ step 52000/100000 | Epoch 5/9 | LR: 0.000051 | Macro Val: 4.416854 (P:3.8655, S:0.9343, Q:0.5046) | Micro Val: 2.260450 (P:1.7424, S:0.3488, Q:0.5006)
+   -> Per-dataset val loss: beijing_air_quality=8.6583 | residential_pv_power=1.7166 | residential_load_power=2.6785 | china_air_quality=4.6141
+Validation @ step 54000/100000 | Epoch 5/9 | LR: 0.000048 | Macro Val: 4.015575 (P:3.4751, S:0.7215, Q:0.5044) | Micro Val: 1.736377 (P:1.2181, S:0.3582, Q:0.5004)
+   -> Per-dataset val loss: beijing_air_quality=8.4746 | residential_pv_power=1.3599 | residential_load_power=2.0071 | china_air_quality=4.2207
+Validation @ step 56000/100000 | Epoch 5/9 | LR: 0.000045 | Macro Val: 3.341778 (P:2.7994, S:0.7615, Q:0.5043) | Micro Val: 1.613258 (P:1.0945, S:0.3687, Q:0.5003)
+   -> Per-dataset val loss: beijing_air_quality=6.8707 | residential_pv_power=1.3144 | residential_load_power=1.8319 | china_air_quality=3.3502
+Epoch 5/9 | Steps: 11483 | LR: 0.000042 | Train Loss: 0.828117 (P:0.3241, S:0.0715, Q:0.5005) | Repr L2μ: 4.7794 | Repr Cosμ: 0.7600 | Pred→Target Cosμ: 0.8343 | Repr NormRatio: 1.1844
+Validation @ step 58000/100000 | Epoch 6/9 | LR: 0.000042 | Macro Val: 4.410798 (P:3.8658, S:0.8181, Q:0.5041) | Micro Val: 1.755742 (P:1.2376, S:0.3580, Q:0.5003)
+   -> Per-dataset val loss: beijing_air_quality=9.9076 | residential_pv_power=1.3438 | residential_load_power=2.0519 | china_air_quality=4.3399
+Validation @ step 60000/100000 | Epoch 6/9 | LR: 0.000038 | Macro Val: 4.779330 (P:4.2348, S:0.8112, Q:0.5040) | Micro Val: 1.923594 (P:1.4064, S:0.3425, Q:0.5001)
+   -> Per-dataset val loss: beijing_air_quality=11.1404 | residential_pv_power=1.5072 | residential_load_power=2.2247 | china_air_quality=4.2450
+Validation @ step 62000/100000 | Epoch 6/9 | LR: 0.000035 | Macro Val: 4.830701 (P:4.2824, S:0.8869, Q:0.5040) | Micro Val: 1.750620 (P:1.2340, S:0.3345, Q:0.4999)
+   -> Per-dataset val loss: beijing_air_quality=11.2483 | residential_pv_power=1.2316 | residential_load_power=2.1302 | china_air_quality=4.7128

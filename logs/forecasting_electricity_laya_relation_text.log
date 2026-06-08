@@ -1,0 +1,513 @@
+nohup: ignoring input
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 96
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_relation_text/laya_ts_electricity_s_latest.pt
+   - 70/70 keys matched.
+ℹ️ Channel Adapter: disabled
+ℹ️ Channel Relation Block: enabled
+   - relation heads: 1
+   - gate scale init: 0.01
+   - residual scale init: 0.05
+✅ Probing Head [Mixer]: [B, 4096] -> [B, 7, 96]
+Epoch 1/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.348065 | Val Loss: 0.457270
+   -> Updated best validation state: val_loss=0.457270 at epoch 1
+Epoch 2/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.268102 | Val Loss: 0.401339
+   -> Updated best validation state: val_loss=0.401339 at epoch 2
+Epoch 3/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.249697 | Val Loss: 0.400562
+   -> Updated best validation state: val_loss=0.400562 at epoch 3
+Epoch 4/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.239249 | Val Loss: 0.411480
+Epoch 5/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.232238 | Val Loss: 0.416087
+Epoch 6/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.227163 | Val Loss: 0.410939
+Epoch 7/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.222997 | Val Loss: 0.430519
+Epoch 8/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.219586 | Val Loss: 0.437798
+Epoch 9/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.217021 | Val Loss: 0.417598
+Epoch 10/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.214143 | Val Loss: 0.427052
+Epoch 11/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.212007 | Val Loss: 0.411239
+Epoch 12/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.210346 | Val Loss: 0.431951
+Epoch 13/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.208078 | Val Loss: 0.444607
+Epoch 14/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.207254 | Val Loss: 0.464614
+Epoch 15/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.205271 | Val Loss: 0.448472
+Epoch 16/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.204205 | Val Loss: 0.411929
+Epoch 17/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.202884 | Val Loss: 0.454190
+Epoch 18/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.202061 | Val Loss: 0.453852
+Epoch 19/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.200703 | Val Loss: 0.453756
+Epoch 20/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.199395 | Val Loss: 0.428753
+{'test_mse': 0.45065999031066895, 'test_mae': 0.49700191617012024}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm1_laya_relation_text/pred_96/attention_maps
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 192
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_relation_text/laya_ts_electricity_s_latest.pt
+   - 70/70 keys matched.
+ℹ️ Channel Adapter: disabled
+ℹ️ Channel Relation Block: enabled
+   - relation heads: 1
+   - gate scale init: 0.01
+   - residual scale init: 0.05
+✅ Probing Head [Mixer]: [B, 4096] -> [B, 7, 192]
+Epoch 1/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.376654 | Val Loss: 0.501899
+   -> Updated best validation state: val_loss=0.501899 at epoch 1
+Epoch 2/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.300178 | Val Loss: 0.513725
+Epoch 3/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.282130 | Val Loss: 0.487719
+   -> Updated best validation state: val_loss=0.487719 at epoch 3
+Epoch 4/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.271721 | Val Loss: 0.468594
+   -> Updated best validation state: val_loss=0.468594 at epoch 4
+Epoch 5/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.264106 | Val Loss: 0.500600
+Epoch 6/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.258767 | Val Loss: 0.511382
+Epoch 7/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.253976 | Val Loss: 0.475229
+Epoch 8/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.250938 | Val Loss: 0.502759
+Epoch 9/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.247346 | Val Loss: 0.512385
+Epoch 10/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.244755 | Val Loss: 0.512912
+Epoch 11/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.242152 | Val Loss: 0.501838
+Epoch 12/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.239912 | Val Loss: 0.504254
+Epoch 13/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.238190 | Val Loss: 0.509231
+Epoch 14/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.236251 | Val Loss: 0.506647
+Epoch 15/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.234519 | Val Loss: 0.511828
+Epoch 16/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.233038 | Val Loss: 0.499134
+Epoch 17/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.231868 | Val Loss: 0.515263
+Epoch 18/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.230452 | Val Loss: 0.530063
+Epoch 19/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.229380 | Val Loss: 0.570459
+Epoch 20/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.228169 | Val Loss: 0.542852
+{'test_mse': 0.5129350423812866, 'test_mae': 0.5349224805831909}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm1_laya_relation_text/pred_192/attention_maps
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 336
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_relation_text/laya_ts_electricity_s_latest.pt
+   - 70/70 keys matched.
+ℹ️ Channel Adapter: disabled
+ℹ️ Channel Relation Block: enabled
+   - relation heads: 1
+   - gate scale init: 0.01
+   - residual scale init: 0.05
+✅ Probing Head [Mixer]: [B, 4096] -> [B, 7, 336]
+Epoch 1/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.404695 | Val Loss: 0.604964
+   -> Updated best validation state: val_loss=0.604964 at epoch 1
+Epoch 2/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.331136 | Val Loss: 0.562936
+   -> Updated best validation state: val_loss=0.562936 at epoch 2
+Epoch 3/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.312000 | Val Loss: 0.579651
+Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.300934 | Val Loss: 0.563277
+Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.292720 | Val Loss: 0.592640
+Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.286264 | Val Loss: 0.601669
+Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.281486 | Val Loss: 0.588328
+Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.277379 | Val Loss: 0.574621
+Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.273852 | Val Loss: 0.599498
+Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.270630 | Val Loss: 0.635891
+Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.268064 | Val Loss: 0.599655
+Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.265183 | Val Loss: 0.615852
+Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.263122 | Val Loss: 0.615147
+Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.261467 | Val Loss: 0.611342
+Epoch 15/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.259412 | Val Loss: 0.614523
+Epoch 16/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.257670 | Val Loss: 0.627151
+Epoch 17/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.256407 | Val Loss: 0.697641
+Epoch 18/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.254536 | Val Loss: 0.606410
+Epoch 19/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.253201 | Val Loss: 0.629325
+Epoch 20/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.251962 | Val Loss: 0.628965
+{'test_mse': 0.6071933507919312, 'test_mae': 0.5797832608222961}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm1_laya_relation_text/pred_336/attention_maps
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 720
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_relation_text/laya_ts_electricity_s_latest.pt
+   - 70/70 keys matched.
+ℹ️ Channel Adapter: disabled
+ℹ️ Channel Relation Block: enabled
+   - relation heads: 1
+   - gate scale init: 0.01
+   - residual scale init: 0.05
+✅ Probing Head [Mixer]: [B, 4096] -> [B, 7, 720]
+Epoch 1/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.442890 | Val Loss: 0.746743
+   -> Updated best validation state: val_loss=0.746743 at epoch 1
+Epoch 2/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.369336 | Val Loss: 0.780407
+Epoch 3/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.348617 | Val Loss: 0.810769
+Epoch 4/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.335556 | Val Loss: 0.775986
+Epoch 5/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.326032 | Val Loss: 0.806064
+Epoch 6/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.318935 | Val Loss: 0.781331
+Epoch 7/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.312850 | Val Loss: 0.806240
+Epoch 8/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.307732 | Val Loss: 0.761211
+Epoch 9/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.303466 | Val Loss: 0.774911
+Epoch 10/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.300011 | Val Loss: 0.786861
+Epoch 11/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.296860 | Val Loss: 0.778127
+Epoch 12/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.293709 | Val Loss: 0.838674
+Epoch 13/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.291194 | Val Loss: 0.791443
+Epoch 14/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.288366 | Val Loss: 0.804355
+Epoch 15/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.286192 | Val Loss: 0.805872
+Epoch 16/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.284563 | Val Loss: 0.822551
+Epoch 17/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.282273 | Val Loss: 0.826702
+Epoch 18/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.280664 | Val Loss: 0.836500
+Epoch 19/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.279064 | Val Loss: 0.794621
+Epoch 20/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.277351 | Val Loss: 0.854285
+{'test_mse': 0.7638318538665771, 'test_mae': 0.6640798449516296}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm1_laya_relation_text/pred_720/attention_maps
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm2 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 96
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_relation_text/laya_ts_electricity_s_latest.pt
+   - 70/70 keys matched.
+ℹ️ Channel Adapter: disabled
+ℹ️ Channel Relation Block: enabled
+   - relation heads: 1
+   - gate scale init: 0.01
+   - residual scale init: 0.05
+✅ Probing Head [Mixer]: [B, 4096] -> [B, 7, 96]
+Epoch 1/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.294147 | Val Loss: 1.721897
+   -> Updated best validation state: val_loss=1.721897 at epoch 1
+Epoch 2/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.219114 | Val Loss: 1.845600
+Epoch 3/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.199576 | Val Loss: 1.658774
+   -> Updated best validation state: val_loss=1.658774 at epoch 3
+Epoch 4/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.187598 | Val Loss: 1.408439
+   -> Updated best validation state: val_loss=1.408439 at epoch 4
+Epoch 5/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.180454 | Val Loss: 1.587864
+Epoch 6/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.174516 | Val Loss: 1.533284
+Epoch 7/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.170428 | Val Loss: 1.469550
+Epoch 8/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.166629 | Val Loss: 1.338072
+   -> Updated best validation state: val_loss=1.338072 at epoch 8
+Epoch 9/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.163533 | Val Loss: 1.569809
+Epoch 10/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.161542 | Val Loss: 1.410017
+Epoch 11/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.159230 | Val Loss: 1.341012
+Epoch 12/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.156919 | Val Loss: 1.347463
+Epoch 13/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.155324 | Val Loss: 1.393001
+Epoch 14/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.153909 | Val Loss: 1.281630
+   -> Updated best validation state: val_loss=1.281630 at epoch 14
+Epoch 15/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.152304 | Val Loss: 1.395003
+Epoch 16/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.151051 | Val Loss: 1.308046
+Epoch 17/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.150072 | Val Loss: 1.382807
+Epoch 18/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.148967 | Val Loss: 1.323618
+Epoch 19/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.147613 | Val Loss: 1.337532
+Epoch 20/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.146565 | Val Loss: 1.296976
+{'test_mse': 0.6894003748893738, 'test_mae': 0.6052164435386658}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm2_laya_relation_text/pred_96/attention_maps
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm2 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 192
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_relation_text/laya_ts_electricity_s_latest.pt
+   - 70/70 keys matched.
+ℹ️ Channel Adapter: disabled
+ℹ️ Channel Relation Block: enabled
+   - relation heads: 1
+   - gate scale init: 0.01
+   - residual scale init: 0.05
+✅ Probing Head [Mixer]: [B, 4096] -> [B, 7, 192]
+Epoch 1/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.327633 | Val Loss: 2.200700
+   -> Updated best validation state: val_loss=2.200700 at epoch 1
+Epoch 2/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.253714 | Val Loss: 2.301000
+Epoch 3/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.233156 | Val Loss: 2.377150
+Epoch 4/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.220591 | Val Loss: 2.264382
+Epoch 5/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.211745 | Val Loss: 2.305297
+Epoch 6/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.205351 | Val Loss: 2.213526
+Epoch 7/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.200534 | Val Loss: 2.165307
+   -> Updated best validation state: val_loss=2.165307 at epoch 7
+Epoch 8/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.195797 | Val Loss: 1.945073
+   -> Updated best validation state: val_loss=1.945073 at epoch 8
+Epoch 9/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.192372 | Val Loss: 2.052148
+Epoch 10/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.189631 | Val Loss: 2.091267
+Epoch 11/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.187558 | Val Loss: 2.048314
+Epoch 12/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.185110 | Val Loss: 2.038132
+Epoch 13/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.182917 | Val Loss: 1.951412
+Epoch 14/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.181152 | Val Loss: 2.001040
+Epoch 15/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.179552 | Val Loss: 1.980891
+Epoch 16/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.178479 | Val Loss: 2.059635
+Epoch 17/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.176936 | Val Loss: 1.976863
+Epoch 18/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.175185 | Val Loss: 2.048726
+Epoch 19/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.174408 | Val Loss: 2.193175
+Epoch 20/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.173287 | Val Loss: 2.064085
+{'test_mse': 0.8628621101379395, 'test_mae': 0.672461211681366}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm2_laya_relation_text/pred_192/attention_maps
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm2 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 336
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_relation_text/laya_ts_electricity_s_latest.pt
+   - 70/70 keys matched.
+ℹ️ Channel Adapter: disabled
+ℹ️ Channel Relation Block: enabled
+   - relation heads: 1
+   - gate scale init: 0.01
+   - residual scale init: 0.05
+✅ Probing Head [Mixer]: [B, 4096] -> [B, 7, 336]
+Epoch 1/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.357587 | Val Loss: 2.883974
+   -> Updated best validation state: val_loss=2.883974 at epoch 1
+Epoch 2/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.286402 | Val Loss: 2.984623
+Epoch 3/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.265033 | Val Loss: 3.170188
+Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.251044 | Val Loss: 3.338445
+Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.241144 | Val Loss: 3.346962
+Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.233977 | Val Loss: 3.078316
+Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.228010 | Val Loss: 3.218465
+Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.223312 | Val Loss: 3.101516
+Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.219872 | Val Loss: 3.124933
+Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.215949 | Val Loss: 3.217301
+Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.212693 | Val Loss: 3.227136
+Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.210291 | Val Loss: 3.222140
+Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.208500 | Val Loss: 3.193376
+Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.205696 | Val Loss: 3.195973
+Epoch 15/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.204124 | Val Loss: 3.239606
+Epoch 16/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.202284 | Val Loss: 3.316093
+Epoch 17/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.200953 | Val Loss: 3.296077
+Epoch 18/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.199420 | Val Loss: 3.317255
+Epoch 19/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.198073 | Val Loss: 3.398344
+Epoch 20/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.196858 | Val Loss: 3.353842
+{'test_mse': 1.225069284439087, 'test_mae': 0.8417742848396301}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm2_laya_relation_text/pred_336/attention_maps
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm2 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 720
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_relation_text/laya_ts_electricity_s_latest.pt
+   - 70/70 keys matched.
+ℹ️ Channel Adapter: disabled
+ℹ️ Channel Relation Block: enabled
+   - relation heads: 1
+   - gate scale init: 0.01
+   - residual scale init: 0.05
+✅ Probing Head [Mixer]: [B, 4096] -> [B, 7, 720]
+Epoch 1/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.397899 | Val Loss: 3.192361
+   -> Updated best validation state: val_loss=3.192361 at epoch 1
+Epoch 2/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.330260 | Val Loss: 3.880989
+Epoch 3/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.308717 | Val Loss: 4.410467
+Epoch 4/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.294685 | Val Loss: 4.522928
+Epoch 5/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.284917 | Val Loss: 4.890292
+Epoch 6/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.276865 | Val Loss: 4.730366
+Epoch 7/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.270689 | Val Loss: 4.923296
+Epoch 8/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.265551 | Val Loss: 5.143639
+Epoch 9/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.260751 | Val Loss: 5.052433
+Epoch 10/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.257274 | Val Loss: 5.036390
+Epoch 11/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.253867 | Val Loss: 5.441359
+Epoch 12/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.250979 | Val Loss: 5.304967
+Epoch 13/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.248667 | Val Loss: 5.178383
+Epoch 14/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.245650 | Val Loss: 5.175368
+Epoch 15/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.243326 | Val Loss: 5.325300
+Epoch 16/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.241445 | Val Loss: 5.323429
+Epoch 17/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.239598 | Val Loss: 5.509238
+Epoch 18/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.237955 | Val Loss: 5.475558
+Epoch 19/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.236376 | Val Loss: 5.248821
+Epoch 20/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.234996 | Val Loss: 5.418687
+{'test_mse': 1.2703725099563599, 'test_mae': 0.8588849306106567}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm2_laya_relation_text/pred_720/attention_maps
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: electricity (Detected Channels: 21)
+📊 Prediction Length: 96
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_relation_text/laya_ts_electricity_s_latest.pt
+   - 70/70 keys matched.
+ℹ️ Channel Adapter: disabled
+ℹ️ Channel Relation Block: enabled
+   - relation heads: 1
+   - gate scale init: 0.01
+   - residual scale init: 0.05
+✅ Probing Head [Mixer]: [B, 4096] -> [B, 21, 96]
+Epoch 1/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.495856 | Val Loss: 0.584641
+   -> Updated best validation state: val_loss=0.584641 at epoch 1
+Epoch 2/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.398019 | Val Loss: 0.560258
+   -> Updated best validation state: val_loss=0.560258 at epoch 2
+Epoch 3/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.376408 | Val Loss: 0.555521
+   -> Updated best validation state: val_loss=0.555521 at epoch 3
+Epoch 4/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.362518 | Val Loss: 0.539894
+   -> Updated best validation state: val_loss=0.539894 at epoch 4
+Epoch 5/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.353127 | Val Loss: 0.520601
+   -> Updated best validation state: val_loss=0.520601 at epoch 5
+Epoch 6/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.345580 | Val Loss: 0.534783
+Epoch 7/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.339634 | Val Loss: 0.527618
+Epoch 8/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.334824 | Val Loss: 0.518127
+   -> Updated best validation state: val_loss=0.518127 at epoch 8
+Epoch 9/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.330613 | Val Loss: 0.520690
+Epoch 10/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.327560 | Val Loss: 0.519469
+Epoch 11/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.323542 | Val Loss: 0.515059
+   -> Updated best validation state: val_loss=0.515059 at epoch 11
+Epoch 12/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.321328 | Val Loss: 0.507099
+   -> Updated best validation state: val_loss=0.507099 at epoch 12
+Epoch 13/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.318246 | Val Loss: 0.509033
+Epoch 14/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.315928 | Val Loss: 0.512781
+Epoch 15/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.313987 | Val Loss: 0.514584
+Epoch 16/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.311518 | Val Loss: 0.506814
+   -> Updated best validation state: val_loss=0.506814 at epoch 16
+Epoch 17/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.310215 | Val Loss: 0.504574
+   -> Updated best validation state: val_loss=0.504574 at epoch 17
+Epoch 18/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.307952 | Val Loss: 0.513754
+Epoch 19/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.306719 | Val Loss: 0.504802
+Epoch 20/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.305330 | Val Loss: 0.511442
+./run_forecasting.py:198: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:211: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:231: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:243: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+{'test_mse': 0.28592586517333984, 'test_mae': 0.34765568375587463}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_relation_text/pred_96/attention_maps
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: electricity (Detected Channels: 21)
+📊 Prediction Length: 192
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_relation_text/laya_ts_electricity_s_latest.pt
+   - 70/70 keys matched.
+ℹ️ Channel Adapter: disabled
+ℹ️ Channel Relation Block: enabled
+   - relation heads: 1
+   - gate scale init: 0.01
+   - residual scale init: 0.05
+✅ Probing Head [Mixer]: [B, 4096] -> [B, 21, 192]
+Epoch 1/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.518891 | Val Loss: 0.613992
+   -> Updated best validation state: val_loss=0.613992 at epoch 1
+Epoch 2/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.427037 | Val Loss: 0.581070
+   -> Updated best validation state: val_loss=0.581070 at epoch 2
+Epoch 3/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.406635 | Val Loss: 0.579299
+   -> Updated best validation state: val_loss=0.579299 at epoch 3
+Epoch 4/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.393401 | Val Loss: 0.595813
+Epoch 5/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.384416 | Val Loss: 0.573157
+   -> Updated best validation state: val_loss=0.573157 at epoch 5
+Epoch 6/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.377264 | Val Loss: 0.575446
+Epoch 7/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.371323 | Val Loss: 0.570933
+   -> Updated best validation state: val_loss=0.570933 at epoch 7
+Epoch 8/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.366857 | Val Loss: 0.571092
+Epoch 9/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.362660 | Val Loss: 0.561624
+   -> Updated best validation state: val_loss=0.561624 at epoch 9
+Epoch 10/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.359054 | Val Loss: 0.565599
+Epoch 11/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.355679 | Val Loss: 0.572279
+Epoch 12/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.353238 | Val Loss: 0.568426
+Epoch 13/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.350497 | Val Loss: 0.561568
+   -> Updated best validation state: val_loss=0.561568 at epoch 13
+Epoch 14/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.348161 | Val Loss: 0.580508
+Epoch 15/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.345964 | Val Loss: 0.566890
+Epoch 16/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.343651 | Val Loss: 0.568162
+Epoch 17/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.342003 | Val Loss: 0.585642
+Epoch 18/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.339835 | Val Loss: 0.573041
+Epoch 19/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.338753 | Val Loss: 0.572259
+Epoch 20/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.336837 | Val Loss: 0.573632
+./run_forecasting.py:198: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:211: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:231: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:243: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+{'test_mse': 0.32875940203666687, 'test_mae': 0.38544827699661255}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_relation_text/pred_192/attention_maps
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: electricity (Detected Channels: 21)
+📊 Prediction Length: 336
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_relation_text/laya_ts_electricity_s_latest.pt
+   - 70/70 keys matched.
+ℹ️ Channel Adapter: disabled
+ℹ️ Channel Relation Block: enabled
+   - relation heads: 1
+   - gate scale init: 0.01
+   - residual scale init: 0.05
+✅ Probing Head [Mixer]: [B, 4096] -> [B, 21, 336]
+Epoch 1/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.541010 | Val Loss: 0.666627
+   -> Updated best validation state: val_loss=0.666627 at epoch 1
+Epoch 2/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.454844 | Val Loss: 0.650320
+   -> Updated best validation state: val_loss=0.650320 at epoch 2
+Epoch 3/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.435207 | Val Loss: 0.653508
+Epoch 4/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.422545 | Val Loss: 0.647372
+   -> Updated best validation state: val_loss=0.647372 at epoch 4
+Epoch 5/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.413987 | Val Loss: 0.655913
+Epoch 6/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.406432 | Val Loss: 0.637002
+   -> Updated best validation state: val_loss=0.637002 at epoch 6
+Epoch 7/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.401302 | Val Loss: 0.649333
+Epoch 8/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.395901 | Val Loss: 0.641615
+Epoch 9/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.391591 | Val Loss: 0.638447
+Epoch 10/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.388045 | Val Loss: 0.633973
+   -> Updated best validation state: val_loss=0.633973 at epoch 10
+Epoch 11/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.384979 | Val Loss: 0.638552
+Epoch 12/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.381846 | Val Loss: 0.630742
+   -> Updated best validation state: val_loss=0.630742 at epoch 12
+Epoch 13/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.378278 | Val Loss: 0.643256
+Epoch 14/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.376417 | Val Loss: 0.630153
+   -> Updated best validation state: val_loss=0.630153 at epoch 14
+Epoch 15/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.374382 | Val Loss: 0.645079
+Epoch 16/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.371801 | Val Loss: 0.645950
+Epoch 17/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.370176 | Val Loss: 0.647083
+Epoch 18/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.368372 | Val Loss: 0.638865
+Epoch 19/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.366591 | Val Loss: 0.657438
+Epoch 20/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.364863 | Val Loss: 0.652122
+./run_forecasting.py:198: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:211: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:231: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:243: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+{'test_mse': 0.3886583149433136, 'test_mae': 0.42148491740226746}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_relation_text/pred_336/attention_maps
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: electricity (Detected Channels: 21)
+📊 Prediction Length: 720
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_relation_text/laya_ts_electricity_s_latest.pt
+   - 70/70 keys matched.
+ℹ️ Channel Adapter: disabled
+ℹ️ Channel Relation Block: enabled
+   - relation heads: 1
+   - gate scale init: 0.01
+   - residual scale init: 0.05
+✅ Probing Head [Mixer]: [B, 4096] -> [B, 21, 720]
+Epoch 1/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.567328 | Val Loss: 0.733754
+   -> Updated best validation state: val_loss=0.733754 at epoch 1
+Epoch 2/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.488078 | Val Loss: 0.722296
+   -> Updated best validation state: val_loss=0.722296 at epoch 2
+Epoch 3/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.468741 | Val Loss: 0.718795
+   -> Updated best validation state: val_loss=0.718795 at epoch 3
+Epoch 4/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.456391 | Val Loss: 0.716299
+   -> Updated best validation state: val_loss=0.716299 at epoch 4
+Epoch 5/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.447447 | Val Loss: 0.741776
+Epoch 6/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.440137 | Val Loss: 0.710482
+   -> Updated best validation state: val_loss=0.710482 at epoch 6
+Epoch 7/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.434476 | Val Loss: 0.723594
+Epoch 8/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.429242 | Val Loss: 0.749521
+Epoch 9/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.424764 | Val Loss: 0.727552
+Epoch 10/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.420753 | Val Loss: 0.735547
+Epoch 11/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.417528 | Val Loss: 0.739282
+Epoch 12/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.414736 | Val Loss: 0.729708
+Epoch 13/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.412170 | Val Loss: 0.735951
+Epoch 14/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.409130 | Val Loss: 0.735375
+Epoch 15/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.406418 | Val Loss: 0.751174
+Epoch 16/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.404503 | Val Loss: 0.743508
+Epoch 17/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.402043 | Val Loss: 0.758521
+Epoch 18/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.399991 | Val Loss: 0.753467
+Epoch 19/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.398724 | Val Loss: 0.736539
+Epoch 20/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.396897 | Val Loss: 0.761547
+./run_forecasting.py:198: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:211: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:231: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:243: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+{'test_mse': 0.4435771405696869, 'test_mae': 0.46065664291381836}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_relation_text/pred_720/attention_maps

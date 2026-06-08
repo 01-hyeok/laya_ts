@@ -1,0 +1,175 @@
+nohup: ignoring input
+Text metadata preview | dataset=EthanolConcentration | domain=UEA | channels=3
+   - channel_1: In the UEA domain, this channel belongs to the EthanolConcentration dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the EthanolConcentration dataset and represents the feature channel 2.
+   - ... (1 more channel descriptions)
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: EthanolConcentration (Channels: 3)
+📊 Pretrain Info: electricity
+📊 Classes: 4 | Sequence Length: 1751
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_attention_gate_text/laya_ts_electricity_s_best.pt
+   - 74/74 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text, fusion=attention_gate, relation=none
+ℹ️  Metadata Fusion Mode: attention_gate
+ℹ️  Channel Mixer Relation Mode: none
+🔗 description relation: metric=projected_dot, lambda_init=0.0, gamma_init=1.0
+   - relation_metric: projected_dot
+   - lambda_init: 0.0
+   - gamma_init: 1.0
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 4]
+Epoch   1/50 | Train Loss: 1.3632 Acc: 0.2009 F1: 0.1688 | Val Loss: 1.4262 Acc: 0.1538 F1: 0.1396
+Validation Loss decreased (inf --> 1.426166). Saving best model...
+Epoch   2/50 | Train Loss: 1.3154 Acc: 0.2857 F1: 0.2171 | Val Loss: 1.4353 Acc: 0.1923 F1: 0.2023
+Epoch   3/50 | Train Loss: 1.3142 Acc: 0.2679 F1: 0.2421 | Val Loss: 1.3932 Acc: 0.3462 F1: 0.2082
+Validation Loss decreased (1.426166 --> 1.393228). Saving best model...
+Epoch   4/50 | Train Loss: 1.2986 Acc: 0.3036 F1: 0.2833 | Val Loss: 1.4098 Acc: 0.3077 F1: 0.2771
+Epoch   5/50 | Train Loss: 1.2925 Acc: 0.2768 F1: 0.2557 | Val Loss: 1.4014 Acc: 0.2692 F1: 0.1754
+Epoch   6/50 | Train Loss: 1.2892 Acc: 0.2768 F1: 0.2512 | Val Loss: 1.4119 Acc: 0.2692 F1: 0.2106
+Epoch   7/50 | Train Loss: 1.2910 Acc: 0.2768 F1: 0.2358 | Val Loss: 1.3926 Acc: 0.3077 F1: 0.2322
+Validation Loss decreased (1.393228 --> 1.392590). Saving best model...
+Epoch   8/50 | Train Loss: 1.2864 Acc: 0.2589 F1: 0.2497 | Val Loss: 1.3932 Acc: 0.2692 F1: 0.1856
+Epoch   9/50 | Train Loss: 1.2873 Acc: 0.2723 F1: 0.2345 | Val Loss: 1.4069 Acc: 0.2308 F1: 0.1961
+Epoch  10/50 | Train Loss: 1.2882 Acc: 0.2500 F1: 0.2418 | Val Loss: 1.4123 Acc: 0.2692 F1: 0.2266
+Epoch  11/50 | Train Loss: 1.2827 Acc: 0.2812 F1: 0.2474 | Val Loss: 1.3712 Acc: 0.3462 F1: 0.2060
+Validation Loss decreased (1.392590 --> 1.371215). Saving best model...
+Epoch  12/50 | Train Loss: 1.2840 Acc: 0.3170 F1: 0.2305 | Val Loss: 1.3652 Acc: 0.2692 F1: 0.2049
+Validation Loss decreased (1.371215 --> 1.365232). Saving best model...
+Epoch  13/50 | Train Loss: 1.2893 Acc: 0.2232 F1: 0.2302 | Val Loss: 1.4078 Acc: 0.3077 F1: 0.2623
+Epoch  14/50 | Train Loss: 1.2794 Acc: 0.3080 F1: 0.2416 | Val Loss: 1.3591 Acc: 0.3462 F1: 0.2525
+Validation Loss decreased (1.365232 --> 1.359101). Saving best model...
+Epoch  15/50 | Train Loss: 1.2840 Acc: 0.2768 F1: 0.2681 | Val Loss: 1.3992 Acc: 0.1923 F1: 0.1437
+Epoch  16/50 | Train Loss: 1.2736 Acc: 0.2902 F1: 0.2539 | Val Loss: 1.3912 Acc: 0.3077 F1: 0.2612
+Epoch  17/50 | Train Loss: 1.2764 Acc: 0.2812 F1: 0.2397 | Val Loss: 1.3663 Acc: 0.3077 F1: 0.1964
+Epoch  18/50 | Train Loss: 1.2781 Acc: 0.3080 F1: 0.2696 | Val Loss: 1.3567 Acc: 0.2308 F1: 0.1828
+Validation Loss decreased (1.359101 --> 1.356662). Saving best model...
+Epoch  19/50 | Train Loss: 1.2851 Acc: 0.3125 F1: 0.2728 | Val Loss: 1.3765 Acc: 0.3077 F1: 0.2471
+Epoch  20/50 | Train Loss: 1.2676 Acc: 0.3170 F1: 0.2646 | Val Loss: 1.3947 Acc: 0.1923 F1: 0.1778
+Epoch  21/50 | Train Loss: 1.2642 Acc: 0.2902 F1: 0.2753 | Val Loss: 1.3973 Acc: 0.2692 F1: 0.2333
+Epoch  22/50 | Train Loss: 1.2679 Acc: 0.2946 F1: 0.2884 | Val Loss: 1.3899 Acc: 0.1923 F1: 0.1364
+Epoch  23/50 | Train Loss: 1.2774 Acc: 0.3304 F1: 0.3208 | Val Loss: 1.4140 Acc: 0.2308 F1: 0.2078
+Epoch  24/50 | Train Loss: 1.2806 Acc: 0.2946 F1: 0.2947 | Val Loss: 1.3714 Acc: 0.2692 F1: 0.2269
+Epoch  25/50 | Train Loss: 1.2840 Acc: 0.3259 F1: 0.2769 | Val Loss: 1.3729 Acc: 0.1923 F1: 0.1385
+Epoch  26/50 | Train Loss: 1.2711 Acc: 0.2812 F1: 0.2532 | Val Loss: 1.3872 Acc: 0.2308 F1: 0.2308
+Epoch  27/50 | Train Loss: 1.2733 Acc: 0.3170 F1: 0.2941 | Val Loss: 1.3727 Acc: 0.2692 F1: 0.2322
+Epoch  28/50 | Train Loss: 1.2776 Acc: 0.3036 F1: 0.2688 | Val Loss: 1.3693 Acc: 0.1923 F1: 0.1337
+Epoch  29/50 | Train Loss: 1.2676 Acc: 0.3080 F1: 0.3016 | Val Loss: 1.4141 Acc: 0.2308 F1: 0.2292
+Epoch  30/50 | Train Loss: 1.2559 Acc: 0.3348 F1: 0.3291 | Val Loss: 1.3670 Acc: 0.3462 F1: 0.3245
+Epoch  31/50 | Train Loss: 1.2696 Acc: 0.2812 F1: 0.2766 | Val Loss: 1.3951 Acc: 0.1923 F1: 0.1736
+Epoch  32/50 | Train Loss: 1.2603 Acc: 0.3259 F1: 0.3041 | Val Loss: 1.3686 Acc: 0.2692 F1: 0.2589
+Epoch  33/50 | Train Loss: 1.2671 Acc: 0.3036 F1: 0.2740 | Val Loss: 1.3912 Acc: 0.1923 F1: 0.1577
+Epoch  34/50 | Train Loss: 1.2577 Acc: 0.3214 F1: 0.2995 | Val Loss: 1.3608 Acc: 0.3077 F1: 0.2549
+Epoch  35/50 | Train Loss: 1.2565 Acc: 0.3348 F1: 0.3138 | Val Loss: 1.3795 Acc: 0.3077 F1: 0.3014
+Epoch  36/50 | Train Loss: 1.2598 Acc: 0.3036 F1: 0.2845 | Val Loss: 1.3885 Acc: 0.2308 F1: 0.1822
+Epoch  37/50 | Train Loss: 1.2592 Acc: 0.3036 F1: 0.2860 | Val Loss: 1.3643 Acc: 0.2692 F1: 0.2381
+Epoch  38/50 | Train Loss: 1.2601 Acc: 0.3125 F1: 0.2921 | Val Loss: 1.3704 Acc: 0.1923 F1: 0.1604
+Epoch  39/50 | Train Loss: 1.2617 Acc: 0.3214 F1: 0.2821 | Val Loss: 1.3773 Acc: 0.2308 F1: 0.1825
+Epoch  40/50 | Train Loss: 1.2519 Acc: 0.2902 F1: 0.2695 | Val Loss: 1.3908 Acc: 0.2308 F1: 0.2419
+Epoch  41/50 | Train Loss: 1.2602 Acc: 0.3125 F1: 0.2938 | Val Loss: 1.3619 Acc: 0.3462 F1: 0.2892
+Epoch  42/50 | Train Loss: 1.2544 Acc: 0.2902 F1: 0.2432 | Val Loss: 1.3745 Acc: 0.2308 F1: 0.1875
+Epoch  43/50 | Train Loss: 1.2587 Acc: 0.2991 F1: 0.2998 | Val Loss: 1.3905 Acc: 0.2308 F1: 0.1820
+Epoch  44/50 | Train Loss: 1.2594 Acc: 0.3036 F1: 0.2923 | Val Loss: 1.3731 Acc: 0.2692 F1: 0.2643
+Epoch  45/50 | Train Loss: 1.2506 Acc: 0.3036 F1: 0.3036 | Val Loss: 1.3949 Acc: 0.3077 F1: 0.3160
+Epoch  46/50 | Train Loss: 1.2585 Acc: 0.3080 F1: 0.2762 | Val Loss: 1.3666 Acc: 0.2308 F1: 0.1767
+Epoch  47/50 | Train Loss: 1.2548 Acc: 0.3080 F1: 0.2783 | Val Loss: 1.3770 Acc: 0.2308 F1: 0.1767
+Epoch  48/50 | Train Loss: 1.2485 Acc: 0.3036 F1: 0.2934 | Val Loss: 1.3874 Acc: 0.2308 F1: 0.2268
+Epoch  49/50 | Train Loss: 1.2550 Acc: 0.3348 F1: 0.3296 | Val Loss: 1.3832 Acc: 0.2692 F1: 0.2416
+Epoch  50/50 | Train Loss: 1.2653 Acc: 0.3036 F1: 0.2596 | Val Loss: 1.3518 Acc: 0.2692 F1: 0.1882
+Validation Loss decreased (1.356662 --> 1.351771). Saving best model...
+
+Classification Test Result (EthanolConcentration)
+Accuracy : 0.311787
+F1 (macro): 0.284903
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_EthanolConcentration_laya_attention_gate_text/attention_maps
+Text metadata preview | dataset=FaceDetection | domain=UEA | channels=144
+   - channel_1: In the UEA domain, this channel belongs to the FaceDetection dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the FaceDetection dataset and represents the feature channel 2.
+   - ... (142 more channel descriptions)
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: FaceDetection (Channels: 144)
+📊 Pretrain Info: electricity
+📊 Classes: 2 | Sequence Length: 62
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_attention_gate_text/laya_ts_electricity_s_best.pt
+   - 74/74 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text, fusion=attention_gate, relation=none
+ℹ️  Metadata Fusion Mode: attention_gate
+ℹ️  Channel Mixer Relation Mode: none
+🔗 description relation: metric=projected_dot, lambda_init=0.0, gamma_init=1.0
+   - relation_metric: projected_dot
+   - lambda_init: 0.0
+   - gamma_init: 1.0
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 2]
+Epoch   1/50 | Train Loss: 0.7013 Acc: 0.4960 F1: 0.4955 | Val Loss: 0.6874 Acc: 0.5450 F1: 0.5190
+Validation Loss decreased (inf --> 0.687364). Saving best model...
+Epoch   2/50 | Train Loss: 0.6967 Acc: 0.5136 F1: 0.5136 | Val Loss: 0.6899 Acc: 0.5348 F1: 0.5239
+Epoch   3/50 | Train Loss: 0.6951 Acc: 0.5242 F1: 0.5241 | Val Loss: 0.6895 Acc: 0.5365 F1: 0.5302
+Epoch   4/50 | Train Loss: 0.6939 Acc: 0.5247 F1: 0.5240 | Val Loss: 0.6887 Acc: 0.5263 F1: 0.5065
+Epoch   5/50 | Train Loss: 0.6930 Acc: 0.5274 F1: 0.5273 | Val Loss: 0.6899 Acc: 0.5331 F1: 0.4695
+Epoch   6/50 | Train Loss: 0.6934 Acc: 0.5353 F1: 0.5348 | Val Loss: 0.6932 Acc: 0.5297 F1: 0.4137
+Epoch   7/50 | Train Loss: 0.6926 Acc: 0.5330 F1: 0.5329 | Val Loss: 0.6888 Acc: 0.5263 F1: 0.5051
+Epoch   8/50 | Train Loss: 0.6900 Acc: 0.5340 F1: 0.5340 | Val Loss: 0.6962 Acc: 0.5144 F1: 0.4720
+Epoch   9/50 | Train Loss: 0.6893 Acc: 0.5363 F1: 0.5362 | Val Loss: 0.6939 Acc: 0.5212 F1: 0.4086
+Epoch  10/50 | Train Loss: 0.6912 Acc: 0.5372 F1: 0.5371 | Val Loss: 0.6908 Acc: 0.5297 F1: 0.5275
+Epoch  11/50 | Train Loss: 0.6891 Acc: 0.5431 F1: 0.5428 | Val Loss: 0.6898 Acc: 0.5348 F1: 0.4909
+Epoch  12/50 | Train Loss: 0.6914 Acc: 0.5325 F1: 0.5323 | Val Loss: 0.6880 Acc: 0.5229 F1: 0.5082
+Epoch  13/50 | Train Loss: 0.6879 Acc: 0.5327 F1: 0.5327 | Val Loss: 0.6900 Acc: 0.5297 F1: 0.5294
+Epoch  14/50 | Train Loss: 0.6887 Acc: 0.5336 F1: 0.5336 | Val Loss: 0.6939 Acc: 0.5263 F1: 0.5021
+Epoch  15/50 | Train Loss: 0.6883 Acc: 0.5440 F1: 0.5440 | Val Loss: 0.6899 Acc: 0.5314 F1: 0.5012
+Epoch  16/50 | Train Loss: 0.6894 Acc: 0.5466 F1: 0.5465 | Val Loss: 0.6892 Acc: 0.5178 F1: 0.5150
+Epoch  17/50 | Train Loss: 0.6877 Acc: 0.5372 F1: 0.5372 | Val Loss: 0.7129 Acc: 0.5008 F1: 0.4044
+Epoch  18/50 | Train Loss: 0.6881 Acc: 0.5378 F1: 0.5376 | Val Loss: 0.7038 Acc: 0.5195 F1: 0.4650
+Epoch  19/50 | Train Loss: 0.6860 Acc: 0.5498 F1: 0.5498 | Val Loss: 0.6970 Acc: 0.5195 F1: 0.4833
+Epoch  20/50 | Train Loss: 0.6885 Acc: 0.5366 F1: 0.5364 | Val Loss: 0.6904 Acc: 0.5161 F1: 0.5158
+Epoch  21/50 | Train Loss: 0.6879 Acc: 0.5404 F1: 0.5404 | Val Loss: 0.6883 Acc: 0.5433 F1: 0.5329
+Epoch  22/50 | Train Loss: 0.6856 Acc: 0.5436 F1: 0.5436 | Val Loss: 0.6991 Acc: 0.5178 F1: 0.4746
+Epoch  23/50 | Train Loss: 0.6880 Acc: 0.5406 F1: 0.5404 | Val Loss: 0.6942 Acc: 0.5229 F1: 0.5105
+Epoch  24/50 | Train Loss: 0.6847 Acc: 0.5536 F1: 0.5536 | Val Loss: 0.6982 Acc: 0.5212 F1: 0.4894
+Epoch  25/50 | Train Loss: 0.6886 Acc: 0.5389 F1: 0.5389 | Val Loss: 0.6939 Acc: 0.5331 F1: 0.5209
+Epoch  26/50 | Train Loss: 0.6857 Acc: 0.5495 F1: 0.5495 | Val Loss: 0.6940 Acc: 0.5195 F1: 0.5118
+Epoch  27/50 | Train Loss: 0.6869 Acc: 0.5402 F1: 0.5402 | Val Loss: 0.7047 Acc: 0.4992 F1: 0.4293
+Epoch  28/50 | Train Loss: 0.6864 Acc: 0.5480 F1: 0.5473 | Val Loss: 0.6933 Acc: 0.5229 F1: 0.4260
+Epoch  29/50 | Train Loss: 0.6866 Acc: 0.5500 F1: 0.5500 | Val Loss: 0.6995 Acc: 0.5263 F1: 0.5043
+Epoch  30/50 | Train Loss: 0.6874 Acc: 0.5351 F1: 0.5348 | Val Loss: 0.6892 Acc: 0.5382 F1: 0.5075
+Epoch  31/50 | Train Loss: 0.6863 Acc: 0.5440 F1: 0.5440 | Val Loss: 0.6985 Acc: 0.5246 F1: 0.4902
+Epoch  32/50 | Train Loss: 0.6865 Acc: 0.5440 F1: 0.5438 | Val Loss: 0.6907 Acc: 0.5178 F1: 0.5178
+Epoch  33/50 | Train Loss: 0.6846 Acc: 0.5498 F1: 0.5498 | Val Loss: 0.6900 Acc: 0.5212 F1: 0.5184
+Epoch  34/50 | Train Loss: 0.6862 Acc: 0.5425 F1: 0.5425 | Val Loss: 0.6954 Acc: 0.5161 F1: 0.4914
+Epoch  35/50 | Train Loss: 0.6842 Acc: 0.5427 F1: 0.5425 | Val Loss: 0.6922 Acc: 0.5348 F1: 0.5313
+Epoch  36/50 | Train Loss: 0.6853 Acc: 0.5455 F1: 0.5454 | Val Loss: 0.6944 Acc: 0.5263 F1: 0.5123
+Epoch  37/50 | Train Loss: 0.6843 Acc: 0.5498 F1: 0.5498 | Val Loss: 0.6924 Acc: 0.5365 F1: 0.5104
+Epoch  38/50 | Train Loss: 0.6843 Acc: 0.5493 F1: 0.5493 | Val Loss: 0.6962 Acc: 0.5297 F1: 0.5064
+Epoch  39/50 | Train Loss: 0.6853 Acc: 0.5461 F1: 0.5459 | Val Loss: 0.6915 Acc: 0.5382 F1: 0.5362
+Epoch  40/50 | Train Loss: 0.6842 Acc: 0.5412 F1: 0.5410 | Val Loss: 0.6900 Acc: 0.5059 F1: 0.5050
+Epoch  41/50 | Train Loss: 0.6864 Acc: 0.5538 F1: 0.5537 | Val Loss: 0.6924 Acc: 0.5365 F1: 0.5316
+Epoch  42/50 | Train Loss: 0.6856 Acc: 0.5434 F1: 0.5434 | Val Loss: 0.6916 Acc: 0.5331 F1: 0.4896
+Epoch  43/50 | Train Loss: 0.6834 Acc: 0.5498 F1: 0.5498 | Val Loss: 0.7017 Acc: 0.5110 F1: 0.4522
+Epoch  44/50 | Train Loss: 0.6845 Acc: 0.5470 F1: 0.5470 | Val Loss: 0.6944 Acc: 0.5382 F1: 0.5242
+Epoch  45/50 | Train Loss: 0.6848 Acc: 0.5483 F1: 0.5482 | Val Loss: 0.6892 Acc: 0.5365 F1: 0.5204
+Epoch  46/50 | Train Loss: 0.6844 Acc: 0.5434 F1: 0.5434 | Val Loss: 0.6982 Acc: 0.5127 F1: 0.4836
+Epoch  47/50 | Train Loss: 0.6845 Acc: 0.5498 F1: 0.5498 | Val Loss: 0.6906 Acc: 0.5229 F1: 0.5224
+Epoch  48/50 | Train Loss: 0.6845 Acc: 0.5485 F1: 0.5484 | Val Loss: 0.6971 Acc: 0.5314 F1: 0.5135
+Epoch  49/50 | Train Loss: 0.6836 Acc: 0.5519 F1: 0.5518 | Val Loss: 0.6902 Acc: 0.5161 F1: 0.5100
+Epoch  50/50 | Train Loss: 0.6832 Acc: 0.5589 F1: 0.5589 | Val Loss: 0.6933 Acc: 0.5314 F1: 0.5287
+./run_classification.py:165: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+Traceback (most recent call last):
+  File "./run_classification.py", line 464, in <module>
+    main()
+  File "./run_classification.py", line 437, in main
+    newly_saved = _save_attention_maps(
+  File "./run_classification.py", line 170, in _save_attention_maps
+    reduced_labels = [labels[int(i)] for i in chosen.tolist()] if labels else [str(int(i)) for i in chosen.tolist()]
+  File "./run_classification.py", line 170, in <listcomp>
+    reduced_labels = [labels[int(i)] for i in chosen.tolist()] if labels else [str(int(i)) for i in chosen.tolist()]
+IndexError: list index out of range

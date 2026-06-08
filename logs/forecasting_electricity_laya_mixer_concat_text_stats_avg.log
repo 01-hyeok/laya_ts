@@ -1,0 +1,598 @@
+nohup: ignoring input
+Text metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
+   - HUFL: In the ETTm1 domain, this channel belongs to the ETTm1 dataset and represents the feature HUFL.
+   - HULL: In the ETTm1 domain, this channel belongs to the ETTm1 dataset and represents the feature HULL.
+   - ... (5 more channel descriptions)
+Stats metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
+   - HUFL: Channel statistics over the training split: mean value is 7.849, standard deviation is 6.158, minimum value is -19.357, maximum value is 24.180, median value is 8.640, and mean absolute value is 9.146.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 96
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 77/77 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=text_stats_avg, fusion=concat_kv, relation=none
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 96]
+Epoch 1/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.487772 | Val Loss: 0.453741
+   -> Updated best validation state: val_loss=0.453741 at epoch 1
+Epoch 2/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.457379 | Val Loss: 0.442272
+   -> Updated best validation state: val_loss=0.442272 at epoch 2
+Epoch 3/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.454063 | Val Loss: 0.440854
+   -> Updated best validation state: val_loss=0.440854 at epoch 3
+Epoch 4/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.452375 | Val Loss: 0.441744
+Epoch 5/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.451004 | Val Loss: 0.446325
+Epoch 6/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.449688 | Val Loss: 0.437303
+   -> Updated best validation state: val_loss=0.437303 at epoch 6
+Epoch 7/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.448538 | Val Loss: 0.431706
+   -> Updated best validation state: val_loss=0.431706 at epoch 7
+Epoch 8/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.447900 | Val Loss: 0.435556
+Epoch 9/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.447369 | Val Loss: 0.457571
+Epoch 10/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.446763 | Val Loss: 0.426831
+   -> Updated best validation state: val_loss=0.426831 at epoch 10
+Epoch 11/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.445867 | Val Loss: 0.449739
+Epoch 12/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.445969 | Val Loss: 0.435272
+Epoch 13/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.445273 | Val Loss: 0.427833
+Epoch 14/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.444771 | Val Loss: 0.431426
+Epoch 15/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.444491 | Val Loss: 0.443247
+Epoch 16/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.443975 | Val Loss: 0.439112
+Epoch 17/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.443752 | Val Loss: 0.433105
+Epoch 18/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.443796 | Val Loss: 0.436062
+Epoch 19/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.443686 | Val Loss: 0.438463
+Epoch 20/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.442958 | Val Loss: 0.423945
+   -> Updated best validation state: val_loss=0.423945 at epoch 20
+{'test_mse': 0.5538607239723206, 'test_mae': 0.5458074808120728}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm1_laya_mixer_concat_text_stats_avg/pred_96/attention_maps
+Text metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
+   - HUFL: In the ETTm1 domain, this channel belongs to the ETTm1 dataset and represents the feature HUFL.
+   - HULL: In the ETTm1 domain, this channel belongs to the ETTm1 dataset and represents the feature HULL.
+   - ... (5 more channel descriptions)
+Stats metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
+   - HUFL: Channel statistics over the training split: mean value is 7.849, standard deviation is 6.158, minimum value is -19.357, maximum value is 24.180, median value is 8.640, and mean absolute value is 9.146.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 192
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 77/77 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=text_stats_avg, fusion=concat_kv, relation=none
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 192]
+Epoch 1/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.514846 | Val Loss: 0.478895
+   -> Updated best validation state: val_loss=0.478895 at epoch 1
+Epoch 2/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.487137 | Val Loss: 0.476720
+   -> Updated best validation state: val_loss=0.476720 at epoch 2
+Epoch 3/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.484264 | Val Loss: 0.475757
+   -> Updated best validation state: val_loss=0.475757 at epoch 3
+Epoch 4/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.482627 | Val Loss: 0.469544
+   -> Updated best validation state: val_loss=0.469544 at epoch 4
+Epoch 5/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.481329 | Val Loss: 0.460316
+   -> Updated best validation state: val_loss=0.460316 at epoch 5
+Epoch 6/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.480759 | Val Loss: 0.468118
+Epoch 7/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.479648 | Val Loss: 0.495160
+Epoch 8/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.478328 | Val Loss: 0.460734
+Epoch 9/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.478036 | Val Loss: 0.461862
+Epoch 10/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.477806 | Val Loss: 0.455820
+   -> Updated best validation state: val_loss=0.455820 at epoch 10
+Epoch 11/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.477218 | Val Loss: 0.465552
+Epoch 12/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.476898 | Val Loss: 0.463865
+Epoch 13/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.475994 | Val Loss: 0.481731
+Epoch 14/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.475913 | Val Loss: 0.463506
+Epoch 15/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.475538 | Val Loss: 0.466555
+Epoch 16/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.475412 | Val Loss: 0.455828
+Epoch 17/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.474988 | Val Loss: 0.489952
+Epoch 18/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.474732 | Val Loss: 0.451330
+   -> Updated best validation state: val_loss=0.451330 at epoch 18
+Epoch 19/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.474795 | Val Loss: 0.465578
+Epoch 20/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.474648 | Val Loss: 0.471535
+{'test_mse': 0.5911445617675781, 'test_mae': 0.563284695148468}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm1_laya_mixer_concat_text_stats_avg/pred_192/attention_maps
+Text metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
+   - HUFL: In the ETTm1 domain, this channel belongs to the ETTm1 dataset and represents the feature HUFL.
+   - HULL: In the ETTm1 domain, this channel belongs to the ETTm1 dataset and represents the feature HULL.
+   - ... (5 more channel descriptions)
+Stats metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
+   - HUFL: Channel statistics over the training split: mean value is 7.849, standard deviation is 6.158, minimum value is -19.357, maximum value is 24.180, median value is 8.640, and mean absolute value is 9.146.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 336
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 77/77 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=text_stats_avg, fusion=concat_kv, relation=none
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 336]
+Epoch 1/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.552490 | Val Loss: 0.503051
+   -> Updated best validation state: val_loss=0.503051 at epoch 1
+Epoch 2/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.524244 | Val Loss: 0.499051
+   -> Updated best validation state: val_loss=0.499051 at epoch 2
+Epoch 3/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.521661 | Val Loss: 0.495447
+   -> Updated best validation state: val_loss=0.495447 at epoch 3
+Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.519326 | Val Loss: 0.499476
+Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.518049 | Val Loss: 0.493122
+   -> Updated best validation state: val_loss=0.493122 at epoch 5
+Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.517313 | Val Loss: 0.493641
+Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.516065 | Val Loss: 0.491517
+   -> Updated best validation state: val_loss=0.491517 at epoch 7
+Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.515875 | Val Loss: 0.491971
+Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.515294 | Val Loss: 0.491872
+Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.514421 | Val Loss: 0.511900
+Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.514089 | Val Loss: 0.487076
+   -> Updated best validation state: val_loss=0.487076 at epoch 11
+Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.513833 | Val Loss: 0.488459
+Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.513607 | Val Loss: 0.489262
+Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.512978 | Val Loss: 0.485841
+   -> Updated best validation state: val_loss=0.485841 at epoch 14
+Epoch 15/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.512784 | Val Loss: 0.490955
+Epoch 16/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.512224 | Val Loss: 0.494191
+Epoch 17/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.512173 | Val Loss: 0.497939
+Epoch 18/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.511673 | Val Loss: 0.485406
+   -> Updated best validation state: val_loss=0.485406 at epoch 18
+Epoch 19/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.512106 | Val Loss: 0.486994
+Epoch 20/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.511501 | Val Loss: 0.495971
+{'test_mse': 0.6275908946990967, 'test_mae': 0.5804463624954224}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm1_laya_mixer_concat_text_stats_avg/pred_336/attention_maps
+Text metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
+   - HUFL: In the ETTm1 domain, this channel belongs to the ETTm1 dataset and represents the feature HUFL.
+   - HULL: In the ETTm1 domain, this channel belongs to the ETTm1 dataset and represents the feature HULL.
+   - ... (5 more channel descriptions)
+Stats metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
+   - HUFL: Channel statistics over the training split: mean value is 7.849, standard deviation is 6.158, minimum value is -19.357, maximum value is 24.180, median value is 8.640, and mean absolute value is 9.146.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 720
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 77/77 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=text_stats_avg, fusion=concat_kv, relation=none
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 720]
+Epoch 1/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.614175 | Val Loss: 0.566651
+   -> Updated best validation state: val_loss=0.566651 at epoch 1
+Epoch 2/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.587429 | Val Loss: 0.552519
+   -> Updated best validation state: val_loss=0.552519 at epoch 2
+Epoch 3/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.584657 | Val Loss: 0.571318
+Epoch 4/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.582721 | Val Loss: 0.550797
+   -> Updated best validation state: val_loss=0.550797 at epoch 4
+Epoch 5/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.581407 | Val Loss: 0.550372
+   -> Updated best validation state: val_loss=0.550372 at epoch 5
+Epoch 6/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.581034 | Val Loss: 0.558233
+Epoch 7/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.579964 | Val Loss: 0.548368
+   -> Updated best validation state: val_loss=0.548368 at epoch 7
+Epoch 8/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.579939 | Val Loss: 0.547803
+   -> Updated best validation state: val_loss=0.547803 at epoch 8
+Epoch 9/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.579235 | Val Loss: 0.558249
+Epoch 10/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.578483 | Val Loss: 0.549634
+Epoch 11/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.577699 | Val Loss: 0.546089
+   -> Updated best validation state: val_loss=0.546089 at epoch 11
+Epoch 12/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.577371 | Val Loss: 0.555605
+Epoch 13/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.577291 | Val Loss: 0.545239
+   -> Updated best validation state: val_loss=0.545239 at epoch 13
+Epoch 14/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.577954 | Val Loss: 0.545223
+   -> Updated best validation state: val_loss=0.545223 at epoch 14
+Epoch 15/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.576623 | Val Loss: 0.550052
+Epoch 16/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.575879 | Val Loss: 0.547218
+Epoch 17/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.576500 | Val Loss: 0.548396
+Epoch 18/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.575928 | Val Loss: 0.544942
+   -> Updated best validation state: val_loss=0.544942 at epoch 18
+Epoch 19/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.576159 | Val Loss: 0.544954
+Epoch 20/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.575170 | Val Loss: 0.544284
+   -> Updated best validation state: val_loss=0.544284 at epoch 20
+{'test_mse': 0.6469438076019287, 'test_mae': 0.5928189158439636}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm1_laya_mixer_concat_text_stats_avg/pred_720/attention_maps
+Text metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
+   - HUFL: In the ETTm2 domain, this channel belongs to the ETTm2 dataset and represents the feature HUFL.
+   - HULL: In the ETTm2 domain, this channel belongs to the ETTm2 dataset and represents the feature HULL.
+   - ... (5 more channel descriptions)
+Stats metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
+   - HUFL: Channel statistics over the training split: mean value is 40.887, standard deviation is 9.982, minimum value is 0.000, maximum value is 107.893, median value is 41.549, and mean absolute value is 40.887.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm2 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 96
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 77/77 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=text_stats_avg, fusion=concat_kv, relation=none
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 96]
+Epoch 1/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.443889 | Val Loss: 1.313561
+   -> Updated best validation state: val_loss=1.313561 at epoch 1
+Epoch 2/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.415766 | Val Loss: 1.179545
+   -> Updated best validation state: val_loss=1.179545 at epoch 2
+Epoch 3/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.414672 | Val Loss: 1.226171
+Epoch 4/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.413776 | Val Loss: 1.263954
+Epoch 5/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.413864 | Val Loss: 1.086391
+   -> Updated best validation state: val_loss=1.086391 at epoch 5
+Epoch 6/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.412837 | Val Loss: 1.160214
+Epoch 7/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.412848 | Val Loss: 1.112742
+Epoch 8/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.412495 | Val Loss: 1.231674
+Epoch 9/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.413052 | Val Loss: 1.239066
+Epoch 10/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.411702 | Val Loss: 1.192759
+Epoch 11/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.412058 | Val Loss: 1.078637
+   -> Updated best validation state: val_loss=1.078637 at epoch 11
+Epoch 12/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.411308 | Val Loss: 1.230322
+Epoch 13/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.411455 | Val Loss: 1.232363
+Epoch 14/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.411144 | Val Loss: 1.257323
+Epoch 15/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.411640 | Val Loss: 1.198245
+Epoch 16/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.411472 | Val Loss: 1.135554
+Epoch 17/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.410576 | Val Loss: 1.153360
+Epoch 18/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.410943 | Val Loss: 0.996770
+   -> Updated best validation state: val_loss=0.996770 at epoch 18
+Epoch 19/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.410400 | Val Loss: 1.191452
+Epoch 20/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.410194 | Val Loss: 1.210357
+{'test_mse': 0.6716124415397644, 'test_mae': 0.6151098608970642}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm2_laya_mixer_concat_text_stats_avg/pred_96/attention_maps
+Text metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
+   - HUFL: In the ETTm2 domain, this channel belongs to the ETTm2 dataset and represents the feature HUFL.
+   - HULL: In the ETTm2 domain, this channel belongs to the ETTm2 dataset and represents the feature HULL.
+   - ... (5 more channel descriptions)
+Stats metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
+   - HUFL: Channel statistics over the training split: mean value is 40.887, standard deviation is 9.982, minimum value is 0.000, maximum value is 107.893, median value is 41.549, and mean absolute value is 40.887.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm2 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 192
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 77/77 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=text_stats_avg, fusion=concat_kv, relation=none
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 192]
+Epoch 1/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.481820 | Val Loss: 1.360710
+   -> Updated best validation state: val_loss=1.360710 at epoch 1
+Epoch 2/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.456201 | Val Loss: 1.175253
+   -> Updated best validation state: val_loss=1.175253 at epoch 2
+Epoch 3/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.455381 | Val Loss: 1.204978
+Epoch 4/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.454375 | Val Loss: 1.228576
+Epoch 5/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.454448 | Val Loss: 1.200942
+Epoch 6/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.454125 | Val Loss: 1.146408
+   -> Updated best validation state: val_loss=1.146408 at epoch 6
+Epoch 7/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.453731 | Val Loss: 1.184114
+Epoch 8/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.453106 | Val Loss: 1.289023
+Epoch 9/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.452905 | Val Loss: 1.275673
+Epoch 10/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.452627 | Val Loss: 1.274923
+Epoch 11/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.452655 | Val Loss: 1.463369
+Epoch 12/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.452395 | Val Loss: 1.027513
+   -> Updated best validation state: val_loss=1.027513 at epoch 12
+Epoch 13/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.452330 | Val Loss: 1.198478
+Epoch 14/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.452136 | Val Loss: 1.260654
+Epoch 15/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.452206 | Val Loss: 1.208156
+Epoch 16/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.452207 | Val Loss: 1.283144
+Epoch 17/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.451540 | Val Loss: 1.180539
+Epoch 18/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.451741 | Val Loss: 1.250848
+Epoch 19/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.451931 | Val Loss: 1.307081
+Epoch 20/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.451351 | Val Loss: 1.214690
+{'test_mse': 0.6860946416854858, 'test_mae': 0.6225737929344177}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm2_laya_mixer_concat_text_stats_avg/pred_192/attention_maps
+Text metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
+   - HUFL: In the ETTm2 domain, this channel belongs to the ETTm2 dataset and represents the feature HUFL.
+   - HULL: In the ETTm2 domain, this channel belongs to the ETTm2 dataset and represents the feature HULL.
+   - ... (5 more channel descriptions)
+Stats metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
+   - HUFL: Channel statistics over the training split: mean value is 40.887, standard deviation is 9.982, minimum value is 0.000, maximum value is 107.893, median value is 41.549, and mean absolute value is 40.887.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm2 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 336
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 77/77 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=text_stats_avg, fusion=concat_kv, relation=none
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 336]
+Epoch 1/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.526994 | Val Loss: 1.319071
+   -> Updated best validation state: val_loss=1.319071 at epoch 1
+Epoch 2/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.501923 | Val Loss: 1.268898
+   -> Updated best validation state: val_loss=1.268898 at epoch 2
+Epoch 3/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.500472 | Val Loss: 1.174585
+   -> Updated best validation state: val_loss=1.174585 at epoch 3
+Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.500423 | Val Loss: 1.208630
+Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.499646 | Val Loss: 1.309538
+Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.499767 | Val Loss: 1.280463
+Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.499207 | Val Loss: 1.412315
+Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.499019 | Val Loss: 1.207145
+Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.498443 | Val Loss: 1.372046
+Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.499059 | Val Loss: 1.292612
+Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.498915 | Val Loss: 1.256326
+Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.498362 | Val Loss: 1.277378
+Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.498125 | Val Loss: 1.377767
+Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.498191 | Val Loss: 1.291938
+Epoch 15/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.497692 | Val Loss: 1.308758
+Epoch 16/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.498053 | Val Loss: 1.255759
+Epoch 17/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.497465 | Val Loss: 1.476613
+Epoch 18/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.497521 | Val Loss: 1.314046
+Epoch 19/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.497500 | Val Loss: 1.250653
+Epoch 20/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.497428 | Val Loss: 1.248280
+{'test_mse': 0.7351119518280029, 'test_mae': 0.6412754654884338}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm2_laya_mixer_concat_text_stats_avg/pred_336/attention_maps
+Text metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
+   - HUFL: In the ETTm2 domain, this channel belongs to the ETTm2 dataset and represents the feature HUFL.
+   - HULL: In the ETTm2 domain, this channel belongs to the ETTm2 dataset and represents the feature HULL.
+   - ... (5 more channel descriptions)
+Stats metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
+   - HUFL: Channel statistics over the training split: mean value is 40.887, standard deviation is 9.982, minimum value is 0.000, maximum value is 107.893, median value is 41.549, and mean absolute value is 40.887.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm2 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 720
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 77/77 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=text_stats_avg, fusion=concat_kv, relation=none
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 720]
+Epoch 1/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.595955 | Val Loss: 1.509927
+   -> Updated best validation state: val_loss=1.509927 at epoch 1
+Epoch 2/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.571889 | Val Loss: 1.414057
+   -> Updated best validation state: val_loss=1.414057 at epoch 2
+Epoch 3/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.571149 | Val Loss: 1.381131
+   -> Updated best validation state: val_loss=1.381131 at epoch 3
+Epoch 4/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.570465 | Val Loss: 1.568113
+Epoch 5/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.570012 | Val Loss: 1.530736
+Epoch 6/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.569638 | Val Loss: 1.389055
+Epoch 7/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.570147 | Val Loss: 1.480449
+Epoch 8/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.569423 | Val Loss: 1.445712
+Epoch 9/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.569033 | Val Loss: 1.386130
+Epoch 10/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.568977 | Val Loss: 1.359942
+   -> Updated best validation state: val_loss=1.359942 at epoch 10
+Epoch 11/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.568482 | Val Loss: 1.518729
+Epoch 12/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.569261 | Val Loss: 1.344433
+   -> Updated best validation state: val_loss=1.344433 at epoch 12
+Epoch 13/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.568447 | Val Loss: 1.510955
+Epoch 14/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.568163 | Val Loss: 1.330828
+   -> Updated best validation state: val_loss=1.330828 at epoch 14
+Epoch 15/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.568361 | Val Loss: 1.540022
+Epoch 16/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.568429 | Val Loss: 1.482947
+Epoch 17/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.567819 | Val Loss: 1.547039
+Epoch 18/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.568163 | Val Loss: 1.539291
+Epoch 19/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.567933 | Val Loss: 1.390762
+Epoch 20/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.567967 | Val Loss: 1.655095
+{'test_mse': 0.7876368165016174, 'test_mae': 0.6700960397720337}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm2_laya_mixer_concat_text_stats_avg/pred_720/attention_maps
+Text metadata preview | dataset=weather | domain=weather | channels=21
+   - p (mbar): In the weather domain, this channel belongs to the weather dataset and represents the feature p (mbar).
+   - T (degC): In the weather domain, this channel belongs to the weather dataset and represents the feature T (degC).
+   - ... (19 more channel descriptions)
+Stats metadata preview | dataset=weather | domain=weather | channels=21
+   - p (mbar): Channel statistics over the training split: mean value is 990.642, standard deviation is 8.631, minimum value is 962.080, maximum value is 1020.070, median value is 991.090, and mean absolute value is 990.642.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: electricity (Detected Channels: 21)
+📊 Prediction Length: 96
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 77/77 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=text_stats_avg, fusion=concat_kv, relation=none
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 21, 96]
+Epoch 1/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.740897 | Val Loss: 0.647460
+   -> Updated best validation state: val_loss=0.647460 at epoch 1
+Epoch 2/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.706688 | Val Loss: 0.651918
+Epoch 3/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.704988 | Val Loss: 0.658527
+Epoch 4/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.703795 | Val Loss: 0.649274
+Epoch 5/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.702729 | Val Loss: 0.640641
+   -> Updated best validation state: val_loss=0.640641 at epoch 5
+Epoch 6/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.702126 | Val Loss: 0.645172
+Epoch 7/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.701498 | Val Loss: 0.656869
+Epoch 8/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.701117 | Val Loss: 0.657159
+Epoch 9/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.700892 | Val Loss: 0.655845
+Epoch 10/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.700440 | Val Loss: 0.654945
+Epoch 11/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.700007 | Val Loss: 0.647006
+Epoch 12/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.699730 | Val Loss: 0.642360
+Epoch 13/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.699665 | Val Loss: 0.643384
+Epoch 14/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.699245 | Val Loss: 0.648920
+Epoch 15/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.699373 | Val Loss: 0.643264
+Epoch 16/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.698860 | Val Loss: 0.647631
+Epoch 17/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.698988 | Val Loss: 0.648988
+Epoch 18/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.698639 | Val Loss: 0.647383
+Epoch 19/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.698759 | Val Loss: 0.645025
+Epoch 20/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.698702 | Val Loss: 0.641872
+./run_forecasting.py:238: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:250: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+{'test_mse': 0.4578825533390045, 'test_mae': 0.5186187028884888}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_mixer_concat_text_stats_avg/pred_96/attention_maps
+Text metadata preview | dataset=weather | domain=weather | channels=21
+   - p (mbar): In the weather domain, this channel belongs to the weather dataset and represents the feature p (mbar).
+   - T (degC): In the weather domain, this channel belongs to the weather dataset and represents the feature T (degC).
+   - ... (19 more channel descriptions)
+Stats metadata preview | dataset=weather | domain=weather | channels=21
+   - p (mbar): Channel statistics over the training split: mean value is 990.642, standard deviation is 8.631, minimum value is 962.080, maximum value is 1020.070, median value is 991.090, and mean absolute value is 990.642.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: electricity (Detected Channels: 21)
+📊 Prediction Length: 192
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 77/77 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=text_stats_avg, fusion=concat_kv, relation=none
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 21, 192]
+Epoch 1/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.764568 | Val Loss: 0.685062
+   -> Updated best validation state: val_loss=0.685062 at epoch 1
+Epoch 2/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.734381 | Val Loss: 0.685434
+Epoch 3/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.733192 | Val Loss: 0.697672
+Epoch 4/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.732025 | Val Loss: 0.692632
+Epoch 5/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.731071 | Val Loss: 0.687042
+Epoch 6/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.730533 | Val Loss: 0.686757
+Epoch 7/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.730162 | Val Loss: 0.686257
+Epoch 8/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.729776 | Val Loss: 0.684633
+   -> Updated best validation state: val_loss=0.684633 at epoch 8
+Epoch 9/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.729310 | Val Loss: 0.683934
+   -> Updated best validation state: val_loss=0.683934 at epoch 9
+Epoch 10/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.729062 | Val Loss: 0.688266
+Epoch 11/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.728960 | Val Loss: 0.689208
+Epoch 12/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.728592 | Val Loss: 0.681921
+   -> Updated best validation state: val_loss=0.681921 at epoch 12
+Epoch 13/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.728365 | Val Loss: 0.694645
+Epoch 14/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.728439 | Val Loss: 0.684887
+Epoch 15/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.728094 | Val Loss: 0.689558
+Epoch 16/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.727976 | Val Loss: 0.679353
+   -> Updated best validation state: val_loss=0.679353 at epoch 16
+Epoch 17/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.727907 | Val Loss: 0.682099
+Epoch 18/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.727854 | Val Loss: 0.693086
+Epoch 19/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.727605 | Val Loss: 0.689089
+Epoch 20/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.727763 | Val Loss: 0.690323
+./run_forecasting.py:238: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:250: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+{'test_mse': 0.48805680871009827, 'test_mae': 0.5353606343269348}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_mixer_concat_text_stats_avg/pred_192/attention_maps
+Text metadata preview | dataset=weather | domain=weather | channels=21
+   - p (mbar): In the weather domain, this channel belongs to the weather dataset and represents the feature p (mbar).
+   - T (degC): In the weather domain, this channel belongs to the weather dataset and represents the feature T (degC).
+   - ... (19 more channel descriptions)
+Stats metadata preview | dataset=weather | domain=weather | channels=21
+   - p (mbar): Channel statistics over the training split: mean value is 990.642, standard deviation is 8.631, minimum value is 962.080, maximum value is 1020.070, median value is 991.090, and mean absolute value is 990.642.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: electricity (Detected Channels: 21)
+📊 Prediction Length: 336
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 77/77 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=text_stats_avg, fusion=concat_kv, relation=none
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 21, 336]
+Epoch 1/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.793297 | Val Loss: 0.727496
+   -> Updated best validation state: val_loss=0.727496 at epoch 1
+Epoch 2/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.762374 | Val Loss: 0.731954
+Epoch 3/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.761127 | Val Loss: 0.720088
+   -> Updated best validation state: val_loss=0.720088 at epoch 3
+Epoch 4/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.760184 | Val Loss: 0.715938
+   -> Updated best validation state: val_loss=0.715938 at epoch 4
+Epoch 5/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.759541 | Val Loss: 0.726447
+Epoch 6/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.758820 | Val Loss: 0.726716
+Epoch 7/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.758407 | Val Loss: 0.727535
+Epoch 8/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.758199 | Val Loss: 0.714704
+   -> Updated best validation state: val_loss=0.714704 at epoch 8
+Epoch 9/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.757724 | Val Loss: 0.722732
+Epoch 10/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.757521 | Val Loss: 0.729116
+Epoch 11/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.757265 | Val Loss: 0.723936
+Epoch 12/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.756921 | Val Loss: 0.723507
+Epoch 13/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.756668 | Val Loss: 0.718818
+Epoch 14/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.756770 | Val Loss: 0.717515
+Epoch 15/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.756867 | Val Loss: 0.710919
+   -> Updated best validation state: val_loss=0.710919 at epoch 15
+Epoch 16/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.756434 | Val Loss: 0.723712
+Epoch 17/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.756281 | Val Loss: 0.727453
+Epoch 18/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.756375 | Val Loss: 0.724358
+Epoch 19/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.756147 | Val Loss: 0.737075
+Epoch 20/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.756164 | Val Loss: 0.717226
+./run_forecasting.py:238: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:250: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+{'test_mse': 0.5104413032531738, 'test_mae': 0.5473770499229431}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_mixer_concat_text_stats_avg/pred_336/attention_maps
+Text metadata preview | dataset=weather | domain=weather | channels=21
+   - p (mbar): In the weather domain, this channel belongs to the weather dataset and represents the feature p (mbar).
+   - T (degC): In the weather domain, this channel belongs to the weather dataset and represents the feature T (degC).
+   - ... (19 more channel descriptions)
+Stats metadata preview | dataset=weather | domain=weather | channels=21
+   - p (mbar): Channel statistics over the training split: mean value is 990.642, standard deviation is 8.631, minimum value is 962.080, maximum value is 1020.070, median value is 991.090, and mean absolute value is 990.642.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: electricity (Detected Channels: 21)
+📊 Prediction Length: 720
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 77/77 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=text_stats_avg, fusion=concat_kv, relation=none
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 21, 720]
+Epoch 1/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.824591 | Val Loss: 0.762885
+   -> Updated best validation state: val_loss=0.762885 at epoch 1
+Epoch 2/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.794075 | Val Loss: 0.762948
+Epoch 3/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.792814 | Val Loss: 0.774112
+Epoch 4/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.791880 | Val Loss: 0.775684
+Epoch 5/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.791242 | Val Loss: 0.756008
+   -> Updated best validation state: val_loss=0.756008 at epoch 5
+Epoch 6/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.790782 | Val Loss: 0.766167
+Epoch 7/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.790237 | Val Loss: 0.760088
+Epoch 8/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.789936 | Val Loss: 0.766084
+Epoch 9/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.789823 | Val Loss: 0.760318
+Epoch 10/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.789292 | Val Loss: 0.764883
+Epoch 11/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.789222 | Val Loss: 0.761456
+Epoch 12/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.789062 | Val Loss: 0.775596
+Epoch 13/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.789085 | Val Loss: 0.760754
+Epoch 14/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.788748 | Val Loss: 0.759437
+Epoch 15/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.788476 | Val Loss: 0.771521
+Epoch 16/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.788611 | Val Loss: 0.764204
+Epoch 17/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.788396 | Val Loss: 0.761127
+Epoch 18/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.788242 | Val Loss: 0.767600
+Epoch 19/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.788245 | Val Loss: 0.760435
+Epoch 20/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.788328 | Val Loss: 0.760821
+./run_forecasting.py:238: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:250: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+{'test_mse': 0.5446560382843018, 'test_mae': 0.5669744610786438}
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_mixer_concat_text_stats_avg/pred_720/attention_maps

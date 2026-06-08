@@ -1,0 +1,527 @@
+nohup: ignoring input
+🚀 Laya-TS Pretraining: lotsa (laya + relation mixer, text)
+📊 subsets: PEMS08,LOS_LOOP,SZ_TAXI,HZMETRO,beijing_air_quality,residential_pv_power
+📝 log_dir: ./runs/pretrain_lotsa_laya_relation_text
+[LOTSA] Falling back to synthetic channel names for subset 'HZMETRO' (channels=2); no explicit feature names were found in the record metadata.
+Text metadata preview | dataset=HZMETRO | domain=hzmetro | channels=2
+   - feature_0: In the hzmetro domain, this channel belongs to the HZMETRO dataset and represents the feature feature 0.
+   - feature_1: In the hzmetro domain, this channel belongs to the HZMETRO dataset and represents the feature feature 1.
+📊 Dataset Statistics:
+   - Sequence Length (T): 512
+   - Train Samples: 743681, Steps: 23244
+   - Val Samples: 103876, Steps: 3248
+🔧 Encoder Hyperparameters:
+   - d_model: 128
+   - n_heads: 8
+   - n_layers: 3
+   - proj_dim: 256
+   - patch_size: 16
+   - metadata_fusion_mode: add
+   - channel_mixer_relation_mode: none
+   - encoder_variant: default
+   - temporal_patchifier_mode: fixed
+   - use_channel_relation_block: True
+   - channel_relation_heads: 1
+   - channel_relation_gate_scale_init: 0.01
+   - channel_relation_residual_scale_init: 0.05
+🧮 Parameter Counts:
+   - Total Parameters: 4,328,322
+   - Trainable Parameters: 4,328,322
+[LOTSA] Falling back to synthetic channel names for subset 'residential_pv_power' (channels=3); no explicit feature names were found in the record metadata.
+Text metadata preview | dataset=residential_pv_power | domain=electricity | channels=3
+   - feature_0: In the electricity domain, this channel belongs to the residential pv power dataset and represents the feature feature 0.
+   - feature_1: In the electricity domain, this channel belongs to the residential pv power dataset and represents the feature feature 1.
+   - ... (1 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Guanyuan_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Guanyuan 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Guanyuan 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Changping_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Changping 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Changping 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Shunyi_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Shunyi 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Shunyi 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Huairou_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Huairou 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Huairou 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Dongsi_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Dongsi 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Dongsi 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Tiantan_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Tiantan 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Tiantan 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Nongzhanguan_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Nongzhanguan 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Nongzhanguan 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Wanliu_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Wanliu 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Wanliu 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Wanshouxigong_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Wanshouxigong 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Wanshouxigong 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Gucheng_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Gucheng 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Gucheng 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Aotizhongxin_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Aotizhongxin 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Aotizhongxin 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Dingling_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Dingling 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Dingling 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+[LOTSA] Falling back to synthetic channel names for subset 'LOS_LOOP' (channels=1); no explicit feature names were found in the record metadata.
+Text metadata preview | dataset=LOS_LOOP | domain=los_loop | channels=1
+   - target: In the los loop domain, this channel belongs to the LOS LOOP dataset and represents the feature target.
+Text metadata preview | dataset=SZ_TAXI road segment 95505 | domain=mobility | channels=1
+   - road segment 95505 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95505 dataset and represents the feature road segment 95505 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 103351 | domain=mobility | channels=1
+   - road segment 103351 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 103351 dataset and represents the feature road segment 103351 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 93851 | domain=mobility | channels=1
+   - road segment 93851 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 93851 dataset and represents the feature road segment 93851 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95503 | domain=mobility | channels=1
+   - road segment 95503 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95503 dataset and represents the feature road segment 95503 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 90224 | domain=mobility | channels=1
+   - road segment 90224 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 90224 dataset and represents the feature road segment 90224 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 101302 | domain=mobility | channels=1
+   - road segment 101302 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 101302 dataset and represents the feature road segment 101302 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 102121 | domain=mobility | channels=1
+   - road segment 102121 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 102121 dataset and represents the feature road segment 102121 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 116219 | domain=mobility | channels=1
+   - road segment 116219 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 116219 dataset and represents the feature road segment 116219 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 116098 | domain=mobility | channels=1
+   - road segment 116098 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 116098 dataset and represents the feature road segment 116098 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 116097 | domain=mobility | channels=1
+   - road segment 116097 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 116097 dataset and represents the feature road segment 116097 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 90225 | domain=mobility | channels=1
+   - road segment 90225 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 90225 dataset and represents the feature road segment 90225 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 102137 | domain=mobility | channels=1
+   - road segment 102137 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 102137 dataset and represents the feature road segment 102137 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 102120 | domain=mobility | channels=1
+   - road segment 102120 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 102120 dataset and represents the feature road segment 102120 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92858 | domain=mobility | channels=1
+   - road segment 92858 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92858 dataset and represents the feature road segment 92858 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 98669 | domain=mobility | channels=1
+   - road segment 98669 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 98669 dataset and represents the feature road segment 98669 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 116100 | domain=mobility | channels=1
+   - road segment 116100 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 116100 dataset and represents the feature road segment 116100 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 101301 | domain=mobility | channels=1
+   - road segment 101301 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 101301 dataset and represents the feature road segment 101301 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99910 | domain=mobility | channels=1
+   - road segment 99910 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99910 dataset and represents the feature road segment 99910 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 111974 | domain=mobility | channels=1
+   - road segment 111974 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 111974 dataset and represents the feature road segment 111974 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 90220 | domain=mobility | channels=1
+   - road segment 90220 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 90220 dataset and represents the feature road segment 90220 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92876 | domain=mobility | channels=1
+   - road segment 92876 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92876 dataset and represents the feature road segment 92876 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 102123 | domain=mobility | channels=1
+   - road segment 102123 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 102123 dataset and represents the feature road segment 102123 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 94162 | domain=mobility | channels=1
+   - road segment 94162 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 94162 dataset and represents the feature road segment 94162 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95975 | domain=mobility | channels=1
+   - road segment 95975 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95975 dataset and represents the feature road segment 95975 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 90221 | domain=mobility | channels=1
+   - road segment 90221 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 90221 dataset and represents the feature road segment 90221 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 94161 | domain=mobility | channels=1
+   - road segment 94161 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 94161 dataset and represents the feature road segment 94161 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95570 | domain=mobility | channels=1
+   - road segment 95570 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95570 dataset and represents the feature road segment 95570 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92695 | domain=mobility | channels=1
+   - road segment 92695 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92695 dataset and represents the feature road segment 92695 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 102138 | domain=mobility | channels=1
+   - road segment 102138 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 102138 dataset and represents the feature road segment 102138 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95073 | domain=mobility | channels=1
+   - road segment 95073 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95073 dataset and represents the feature road segment 95073 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95507 | domain=mobility | channels=1
+   - road segment 95507 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95507 dataset and represents the feature road segment 95507 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95934 | domain=mobility | channels=1
+   - road segment 95934 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95934 dataset and represents the feature road segment 95934 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 90219 | domain=mobility | channels=1
+   - road segment 90219 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 90219 dataset and represents the feature road segment 90219 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99632 | domain=mobility | channels=1
+   - road segment 99632 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99632 dataset and represents the feature road segment 99632 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95969 | domain=mobility | channels=1
+   - road segment 95969 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95969 dataset and represents the feature road segment 95969 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99882 | domain=mobility | channels=1
+   - road segment 99882 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99882 dataset and represents the feature road segment 99882 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 101305 | domain=mobility | channels=1
+   - road segment 101305 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 101305 dataset and represents the feature road segment 101305 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99904 | domain=mobility | channels=1
+   - road segment 99904 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99904 dataset and represents the feature road segment 99904 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92241 | domain=mobility | channels=1
+   - road segment 92241 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92241 dataset and represents the feature road segment 92241 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99630 | domain=mobility | channels=1
+   - road segment 99630 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99630 dataset and represents the feature road segment 99630 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 102124 | domain=mobility | channels=1
+   - road segment 102124 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 102124 dataset and represents the feature road segment 102124 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 116099 | domain=mobility | channels=1
+   - road segment 116099 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 116099 dataset and represents the feature road segment 116099 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 90217 | domain=mobility | channels=1
+   - road segment 90217 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 90217 dataset and represents the feature road segment 90217 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99906 | domain=mobility | channels=1
+   - road segment 99906 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99906 dataset and represents the feature road segment 99906 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99631 | domain=mobility | channels=1
+   - road segment 99631 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99631 dataset and represents the feature road segment 99631 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92878 | domain=mobility | channels=1
+   - road segment 92878 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92878 dataset and represents the feature road segment 92878 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 96478 | domain=mobility | channels=1
+   - road segment 96478 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 96478 dataset and represents the feature road segment 96478 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 103765 | domain=mobility | channels=1
+   - road segment 103765 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 103765 dataset and represents the feature road segment 103765 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 116221 | domain=mobility | channels=1
+   - road segment 116221 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 116221 dataset and represents the feature road segment 116221 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95504 | domain=mobility | channels=1
+   - road segment 95504 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95504 dataset and represents the feature road segment 95504 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 98666 | domain=mobility | channels=1
+   - road segment 98666 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 98666 dataset and represents the feature road segment 98666 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 112746 | domain=mobility | channels=1
+   - road segment 112746 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 112746 dataset and represents the feature road segment 112746 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92688 | domain=mobility | channels=1
+   - road segment 92688 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92688 dataset and represents the feature road segment 92688 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 111969 | domain=mobility | channels=1
+   - road segment 111969 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 111969 dataset and represents the feature road segment 111969 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 96760 | domain=mobility | channels=1
+   - road segment 96760 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 96760 dataset and represents the feature road segment 96760 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92881 | domain=mobility | channels=1
+   - road segment 92881 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92881 dataset and represents the feature road segment 92881 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 117189 | domain=mobility | channels=1
+   - road segment 117189 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 117189 dataset and represents the feature road segment 117189 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 90222 | domain=mobility | channels=1
+   - road segment 90222 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 90222 dataset and represents the feature road segment 90222 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99909 | domain=mobility | channels=1
+   - road segment 99909 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99909 dataset and represents the feature road segment 99909 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 98662 | domain=mobility | channels=1
+   - road segment 98662 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 98662 dataset and represents the feature road segment 98662 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 103763 | domain=mobility | channels=1
+   - road segment 103763 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 103763 dataset and represents the feature road segment 103763 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 112101 | domain=mobility | channels=1
+   - road segment 112101 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 112101 dataset and represents the feature road segment 112101 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 90226 | domain=mobility | channels=1
+   - road segment 90226 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 90226 dataset and represents the feature road segment 90226 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99880 | domain=mobility | channels=1
+   - road segment 99880 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99880 dataset and represents the feature road segment 99880 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 101297 | domain=mobility | channels=1
+   - road segment 101297 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 101297 dataset and represents the feature road segment 101297 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99902 | domain=mobility | channels=1
+   - road segment 99902 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99902 dataset and represents the feature road segment 99902 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99629 | domain=mobility | channels=1
+   - road segment 99629 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99629 dataset and represents the feature road segment 99629 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 111380 | domain=mobility | channels=1
+   - road segment 111380 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 111380 dataset and represents the feature road segment 111380 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99903 | domain=mobility | channels=1
+   - road segment 99903 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99903 dataset and represents the feature road segment 99903 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95072 | domain=mobility | channels=1
+   - road segment 95072 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95072 dataset and represents the feature road segment 95072 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92693 | domain=mobility | channels=1
+   - road segment 92693 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92693 dataset and represents the feature road segment 92693 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99881 | domain=mobility | channels=1
+   - road segment 99881 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99881 dataset and represents the feature road segment 99881 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 96485 | domain=mobility | channels=1
+   - road segment 96485 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 96485 dataset and represents the feature road segment 96485 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 101306 | domain=mobility | channels=1
+   - road segment 101306 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 101306 dataset and represents the feature road segment 101306 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 96486 | domain=mobility | channels=1
+   - road segment 96486 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 96486 dataset and represents the feature road segment 96486 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 112103 | domain=mobility | channels=1
+   - road segment 112103 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 112103 dataset and represents the feature road segment 112103 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92696 | domain=mobility | channels=1
+   - road segment 92696 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92696 dataset and represents the feature road segment 92696 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 98670 | domain=mobility | channels=1
+   - road segment 98670 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 98670 dataset and represents the feature road segment 98670 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95599 | domain=mobility | channels=1
+   - road segment 95599 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95599 dataset and represents the feature road segment 95599 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95968 | domain=mobility | channels=1
+   - road segment 95968 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95968 dataset and represents the feature road segment 95968 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99627 | domain=mobility | channels=1
+   - road segment 99627 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99627 dataset and represents the feature road segment 99627 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 96484 | domain=mobility | channels=1
+   - road segment 96484 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 96484 dataset and represents the feature road segment 96484 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 102129 | domain=mobility | channels=1
+   - road segment 102129 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 102129 dataset and represents the feature road segment 102129 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 101298 | domain=mobility | channels=1
+   - road segment 101298 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 101298 dataset and represents the feature road segment 101298 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92877 | domain=mobility | channels=1
+   - road segment 92877 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92877 dataset and represents the feature road segment 92877 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99628 | domain=mobility | channels=1
+   - road segment 99628 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99628 dataset and represents the feature road segment 99628 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 112138 | domain=mobility | channels=1
+   - road segment 112138 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 112138 dataset and represents the feature road segment 112138 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 112728 | domain=mobility | channels=1
+   - road segment 112728 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 112728 dataset and represents the feature road segment 112728 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 96758 | domain=mobility | channels=1
+   - road segment 96758 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 96758 dataset and represents the feature road segment 96758 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92231 | domain=mobility | channels=1
+   - road segment 92231 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92231 dataset and represents the feature road segment 92231 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99907 | domain=mobility | channels=1
+   - road segment 99907 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99907 dataset and represents the feature road segment 99907 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92883 | domain=mobility | channels=1
+   - road segment 92883 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92883 dataset and represents the feature road segment 92883 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95935 | domain=mobility | channels=1
+   - road segment 95935 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95935 dataset and represents the feature road segment 95935 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95508 | domain=mobility | channels=1
+   - road segment 95508 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95508 dataset and represents the feature road segment 95508 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 101300 | domain=mobility | channels=1
+   - road segment 101300 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 101300 dataset and represents the feature road segment 101300 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95069 | domain=mobility | channels=1
+   - road segment 95069 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95069 dataset and represents the feature road segment 95069 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92692 | domain=mobility | channels=1
+   - road segment 92692 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92692 dataset and represents the feature road segment 92692 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 94163 | domain=mobility | channels=1
+   - road segment 94163 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 94163 dataset and represents the feature road segment 94163 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 112142 | domain=mobility | channels=1
+   - road segment 112142 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 112142 dataset and represents the feature road segment 112142 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95506 | domain=mobility | channels=1
+   - road segment 95506 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95506 dataset and represents the feature road segment 95506 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 96761 | domain=mobility | channels=1
+   - road segment 96761 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 96761 dataset and represents the feature road segment 96761 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 103764 | domain=mobility | channels=1
+   - road segment 103764 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 103764 dataset and represents the feature road segment 103764 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 94164 | domain=mobility | channels=1
+   - road segment 94164 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 94164 dataset and represents the feature road segment 94164 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 98668 | domain=mobility | channels=1
+   - road segment 98668 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 98668 dataset and represents the feature road segment 98668 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 96475 | domain=mobility | channels=1
+   - road segment 96475 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 96475 dataset and represents the feature road segment 96475 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 111369 | domain=mobility | channels=1
+   - road segment 111369 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 111369 dataset and represents the feature road segment 111369 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 90218 | domain=mobility | channels=1
+   - road segment 90218 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 90218 dataset and represents the feature road segment 90218 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 104638 | domain=mobility | channels=1
+   - road segment 104638 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 104638 dataset and represents the feature road segment 104638 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 101299 | domain=mobility | channels=1
+   - road segment 101299 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 101299 dataset and represents the feature road segment 101299 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 102122 | domain=mobility | channels=1
+   - road segment 102122 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 102122 dataset and represents the feature road segment 102122 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95970 | domain=mobility | channels=1
+   - road segment 95970 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95970 dataset and represents the feature road segment 95970 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92237 | domain=mobility | channels=1
+   - road segment 92237 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92237 dataset and represents the feature road segment 92237 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 116157 | domain=mobility | channels=1
+   - road segment 116157 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 116157 dataset and represents the feature road segment 116157 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 98672 | domain=mobility | channels=1
+   - road segment 98672 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 98672 dataset and represents the feature road segment 98672 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 98671 | domain=mobility | channels=1
+   - road segment 98671 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 98671 dataset and represents the feature road segment 98671 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95070 | domain=mobility | channels=1
+   - road segment 95070 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95070 dataset and represents the feature road segment 95070 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 111973 | domain=mobility | channels=1
+   - road segment 111973 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 111973 dataset and represents the feature road segment 111973 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 93220 | domain=mobility | channels=1
+   - road segment 93220 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 93220 dataset and represents the feature road segment 93220 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95933 | domain=mobility | channels=1
+   - road segment 95933 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95933 dataset and represents the feature road segment 95933 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95571 | domain=mobility | channels=1
+   - road segment 95571 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95571 dataset and represents the feature road segment 95571 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 102134 | domain=mobility | channels=1
+   - road segment 102134 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 102134 dataset and represents the feature road segment 102134 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92856 | domain=mobility | channels=1
+   - road segment 92856 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92856 dataset and represents the feature road segment 92856 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 116220 | domain=mobility | channels=1
+   - road segment 116220 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 116220 dataset and represents the feature road segment 116220 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 111370 | domain=mobility | channels=1
+   - road segment 111370 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 111370 dataset and represents the feature road segment 111370 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92690 | domain=mobility | channels=1
+   - road segment 92690 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92690 dataset and represents the feature road segment 92690 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95501 | domain=mobility | channels=1
+   - road segment 95501 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95501 dataset and represents the feature road segment 95501 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 102128 | domain=mobility | channels=1
+   - road segment 102128 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 102128 dataset and represents the feature road segment 102128 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95915 | domain=mobility | channels=1
+   - road segment 95915 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95915 dataset and represents the feature road segment 95915 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 101303 | domain=mobility | channels=1
+   - road segment 101303 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 101303 dataset and represents the feature road segment 101303 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92900 | domain=mobility | channels=1
+   - road segment 92900 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92900 dataset and represents the feature road segment 92900 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92691 | domain=mobility | channels=1
+   - road segment 92691 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92691 dataset and represents the feature road segment 92691 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95071 | domain=mobility | channels=1
+   - road segment 95071 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95071 dataset and represents the feature road segment 95071 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 112727 | domain=mobility | channels=1
+   - road segment 112727 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 112727 dataset and represents the feature road segment 112727 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 93852 | domain=mobility | channels=1
+   - road segment 93852 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 93852 dataset and represents the feature road segment 93852 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92899 | domain=mobility | channels=1
+   - road segment 92899 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92899 dataset and represents the feature road segment 92899 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95598 | domain=mobility | channels=1
+   - road segment 95598 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95598 dataset and represents the feature road segment 95598 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 94159 | domain=mobility | channels=1
+   - road segment 94159 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 94159 dataset and represents the feature road segment 94159 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 97349 | domain=mobility | channels=1
+   - road segment 97349 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 97349 dataset and represents the feature road segment 97349 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95502 | domain=mobility | channels=1
+   - road segment 95502 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95502 dataset and represents the feature road segment 95502 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 90223 | domain=mobility | channels=1
+   - road segment 90223 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 90223 dataset and represents the feature road segment 90223 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99953 | domain=mobility | channels=1
+   - road segment 99953 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99953 dataset and represents the feature road segment 99953 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 112139 | domain=mobility | channels=1
+   - road segment 112139 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 112139 dataset and represents the feature road segment 112139 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 112671 | domain=mobility | channels=1
+   - road segment 112671 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 112671 dataset and represents the feature road segment 112671 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95068 | domain=mobility | channels=1
+   - road segment 95068 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95068 dataset and represents the feature road segment 95068 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 101304 | domain=mobility | channels=1
+   - road segment 101304 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 101304 dataset and represents the feature road segment 101304 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92697 | domain=mobility | channels=1
+   - road segment 92697 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92697 dataset and represents the feature road segment 92697 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92694 | domain=mobility | channels=1
+   - road segment 92694 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92694 dataset and represents the feature road segment 92694 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95936 | domain=mobility | channels=1
+   - road segment 95936 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95936 dataset and represents the feature road segment 95936 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 95075 | domain=mobility | channels=1
+   - road segment 95075 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 95075 dataset and represents the feature road segment 95075 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 101307 | domain=mobility | channels=1
+   - road segment 101307 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 101307 dataset and represents the feature road segment 101307 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 112140 | domain=mobility | channels=1
+   - road segment 112140 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 112140 dataset and represents the feature road segment 112140 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 92689 | domain=mobility | channels=1
+   - road segment 92689 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 92689 dataset and represents the feature road segment 92689 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 112141 | domain=mobility | channels=1
+   - road segment 112141 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 112141 dataset and represents the feature road segment 112141 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 94160 | domain=mobility | channels=1
+   - road segment 94160 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 94160 dataset and represents the feature road segment 94160 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 99905 | domain=mobility | channels=1
+   - road segment 99905 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 99905 dataset and represents the feature road segment 99905 taxi speed.
+Text metadata preview | dataset=SZ_TAXI road segment 112102 | domain=mobility | channels=1
+   - road segment 112102 taxi speed: In the mobility domain, this channel belongs to the SZ TAXI road segment 112102 dataset and represents the feature road segment 112102 taxi speed.
+[LOTSA] Falling back to synthetic channel names for subset 'PEMS08' (channels=3); no explicit feature names were found in the record metadata.
+Text metadata preview | dataset=PEMS08 | domain=pems08 | channels=3
+   - feature_0: In the pems08 domain, this channel belongs to the PEMS08 dataset and represents the feature feature 0.
+   - feature_1: In the pems08 domain, this channel belongs to the PEMS08 dataset and represents the feature feature 1.
+   - ... (1 more channel descriptions)
+[LOTSA] Falling back to synthetic channel names for subset 'PEMS08' (channels=3); no explicit feature names were found in the record metadata.
+[LOTSA] Falling back to synthetic channel names for subset 'LOS_LOOP' (channels=1); no explicit feature names were found in the record metadata.
+[LOTSA] Falling back to synthetic channel names for subset 'residential_pv_power' (channels=3); no explicit feature names were found in the record metadata.
+Epoch 1/100 | Steps: 22804 | LR: 0.000010 | Train Loss: 1.300430 (P:0.4935, S:0.1625, Q:0.7988) | Val Loss: 3.067166 (P:2.5079, S:1.1599, Q:0.5013) | Repr L2μ: 3.8967 Val L2μ: 3.0109 | Repr Cosμ: 0.8896 Val Cosμ: 0.9311 | Pred→Target Cosμ: 0.8179 Val Cosμ: 0.7186 | Repr NormRatio: 1.0712 Val NormRatio: 1.0578
+   -> Saved improved checkpoint: val_loss=3.067166 at epoch 1
+Epoch 2/100 | Steps: 22804 | LR: 0.000020 | Train Loss: 0.666096 (P:0.1953, S:0.0749, Q:0.4670) | Val Loss: 2.565191 (P:2.1301, S:0.6055, Q:0.4049) | Repr L2μ: 4.2759 Val L2μ: 2.7716 | Repr Cosμ: 0.8735 Val Cosμ: 0.9455 | Pred→Target Cosμ: 0.8663 Val Cosμ: 0.1978 | Repr NormRatio: 1.0959 Val NormRatio: 1.0619
+   -> Saved improved checkpoint: val_loss=2.565191 at epoch 2
+Epoch 3/100 | Steps: 22804 | LR: 0.000029 | Train Loss: 0.565985 (P:0.1542, S:0.0486, Q:0.4094) | Val Loss: 1.365568 (P:0.9176, S:0.8753, Q:0.4043) | Repr L2μ: 3.3334 Val L2μ: 1.8339 | Repr Cosμ: 0.9250 Val Cosμ: 0.9750 | Pred→Target Cosμ: 0.8550 Val Cosμ: 0.4799 | Repr NormRatio: 1.0857 Val NormRatio: 1.0470
+   -> Saved improved checkpoint: val_loss=1.365568 at epoch 3
+Epoch 4/100 | Steps: 22804 | LR: 0.000039 | Train Loss: 0.556715 (P:0.1721, S:0.0453, Q:0.3823) | Val Loss: 1.358781 (P:0.9885, S:0.5869, Q:0.3409) | Repr L2μ: 2.9847 Val L2μ: 2.2699 | Repr Cosμ: 0.9351 Val Cosμ: 0.9619 | Pred→Target Cosμ: 0.8593 Val Cosμ: 0.6854 | Repr NormRatio: 1.0811 Val NormRatio: 1.0715
+   -> Saved improved checkpoint: val_loss=1.358781 at epoch 4
+Epoch 5/100 | Steps: 22804 | LR: 0.000049 | Train Loss: 0.536797 (P:0.1880, S:0.0484, Q:0.3463) | Val Loss: 1.175504 (P:0.7954, S:0.7836, Q:0.3409) | Repr L2μ: 3.1847 Val L2μ: 2.7345 | Repr Cosμ: 0.9218 Val Cosμ: 0.9432 | Pred→Target Cosμ: 0.8742 Val Cosμ: 0.8788 | Repr NormRatio: 1.0864 Val NormRatio: 1.0688
+   -> Saved improved checkpoint: val_loss=1.175504 at epoch 5
+Epoch 6/100 | Steps: 22804 | LR: 0.000059 | Train Loss: 0.570553 (P:0.2279, S:0.0565, Q:0.3398) | Val Loss: 1.221752 (P:0.8693, S:0.5538, Q:0.3248) | Repr L2μ: 3.3509 Val L2μ: 1.5953 | Repr Cosμ: 0.8975 Val Cosμ: 0.9787 | Pred→Target Cosμ: 0.8842 Val Cosμ: 0.6679 | Repr NormRatio: 1.0767 Val NormRatio: 1.0282
+Epoch 7/100 | Steps: 22804 | LR: 0.000069 | Train Loss: 0.596758 (P:0.2634, S:0.0572, Q:0.3305) | Val Loss: 2.021371 (P:1.6782, S:0.3622, Q:0.3250) | Repr L2μ: 2.8422 Val L2μ: 1.4377 | Repr Cosμ: 0.9169 Val Cosμ: 0.9804 | Pred→Target Cosμ: 0.8835 Val Cosμ: 0.6716 | Repr NormRatio: 1.0821 Val NormRatio: 1.0391
+Epoch 8/100 | Steps: 22804 | LR: 0.000078 | Train Loss: 0.604510 (P:0.2708, S:0.0586, Q:0.3308) | Val Loss: 7.653937 (P:7.3026, S:0.5299, Q:0.3249) | Repr L2μ: 2.7037 Val L2μ: 2.8080 | Repr Cosμ: 0.9123 Val Cosμ: 0.9137 | Pred→Target Cosμ: 0.8855 Val Cosμ: 0.7785 | Repr NormRatio: 1.0742 Val NormRatio: 1.0407
+Epoch 9/100 | Steps: 22804 | LR: 0.000088 | Train Loss: 0.603488 (P:0.2696, S:0.0651, Q:0.3307) | Val Loss: 5.003481 (P:4.6609, S:0.3542, Q:0.3249) | Repr L2μ: 2.5151 Val L2μ: 1.1959 | Repr Cosμ: 0.9141 Val Cosμ: 0.9797 | Pred→Target Cosμ: 0.8920 Val Cosμ: 0.7060 | Repr NormRatio: 1.0577 Val NormRatio: 1.0317
+Epoch 10/100 | Steps: 22804 | LR: 0.000098 | Train Loss: 0.612202 (P:0.2786, S:0.0589, Q:0.3306) | Val Loss: 2.654790 (P:2.3140, S:0.3170, Q:0.3249) | Repr L2μ: 2.1661 Val L2μ: 1.1698 | Repr Cosμ: 0.9270 Val Cosμ: 0.9776 | Pred→Target Cosμ: 0.8940 Val Cosμ: 0.8436 | Repr NormRatio: 1.0611 Val NormRatio: 1.0251
+Epoch 11/100 | Steps: 22804 | LR: 0.000100 | Train Loss: 0.615369 (P:0.2818, S:0.0566, Q:0.3307) | Val Loss: 1.688099 (P:1.3397, S:0.4699, Q:0.3249) | Repr L2μ: 1.8017 Val L2μ: 2.0744 | Repr Cosμ: 0.9394 Val Cosμ: 0.9037 | Pred→Target Cosμ: 0.8900 Val Cosμ: 0.8431 | Repr NormRatio: 1.0617 Val NormRatio: 1.0378
+Epoch 12/100 | Steps: 22804 | LR: 0.000100 | Train Loss: 0.617152 (P:0.2838, S:0.0536, Q:0.3306) | Val Loss: 4.307548 (P:3.9672, S:0.3077, Q:0.3249) | Repr L2μ: 1.6074 Val L2μ: 0.9162 | Repr Cosμ: 0.9439 Val Cosμ: 0.9812 | Pred→Target Cosμ: 0.8814 Val Cosμ: 0.7149 | Repr NormRatio: 1.0651 Val NormRatio: 1.0278
+Epoch 13/100 | Steps: 22804 | LR: 0.000100 | Train Loss: 0.604100 (P:0.2709, S:0.0511, Q:0.3306) | Val Loss: 1.455457 (P:1.1051, S:0.5108, Q:0.3249) | Repr L2μ: 1.3050 Val L2μ: 0.7162 | Repr Cosμ: 0.9570 Val Cosμ: 0.9872 | Pred→Target Cosμ: 0.8834 Val Cosμ: 0.6947 | Repr NormRatio: 1.0596 Val NormRatio: 1.0209
+Epoch 14/100 | Steps: 22804 | LR: 0.000100 | Train Loss: 0.595180 (P:0.2620, S:0.0501, Q:0.3306) | Val Loss: 1.019720 (P:0.6691, S:0.5142, Q:0.3249) | Repr L2μ: 1.0965 Val L2μ: 0.5897 | Repr Cosμ: 0.9647 Val Cosμ: 0.9891 | Pred→Target Cosμ: 0.8794 Val Cosμ: 0.6950 | Repr NormRatio: 1.0545 Val NormRatio: 1.0245
+   -> Saved improved checkpoint: val_loss=1.019720 at epoch 14
+Epoch 15/100 | Steps: 22804 | LR: 0.000099 | Train Loss: 0.581816 (P:0.2488, S:0.0482, Q:0.3306) | Val Loss: 1.891119 (P:1.5443, S:0.4359, Q:0.3250) | Repr L2μ: 0.9103 Val L2μ: 0.6430 | Repr Cosμ: 0.9721 Val Cosμ: 0.9863 | Pred→Target Cosμ: 0.8794 Val Cosμ: 0.7174 | Repr NormRatio: 1.0595 Val NormRatio: 1.0327
+Epoch 16/100 | Steps: 22804 | LR: 0.000099 | Train Loss: 0.574615 (P:0.2416, S:0.0468, Q:0.3306) | Val Loss: 0.718905 (P:0.3652, S:0.5765, Q:0.3249) | Repr L2μ: 0.7895 Val L2μ: 0.4589 | Repr Cosμ: 0.9763 Val Cosμ: 0.9914 | Pred→Target Cosμ: 0.8761 Val Cosμ: 0.8421 | Repr NormRatio: 1.0669 Val NormRatio: 1.0230
+   -> Saved improved checkpoint: val_loss=0.718905 at epoch 16
+Epoch 17/100 | Steps: 22804 | LR: 0.000099 | Train Loss: 0.556674 (P:0.2238, S:0.0453, Q:0.3306) | Val Loss: 2.457799 (P:2.1130, S:0.3986, Q:0.3249) | Repr L2μ: 0.6630 Val L2μ: 0.3221 | Repr Cosμ: 0.9817 Val Cosμ: 0.9956 | Pred→Target Cosμ: 0.8751 Val Cosμ: 0.6217 | Repr NormRatio: 1.0697 Val NormRatio: 1.0167
+Epoch 18/100 | Steps: 22804 | LR: 0.000098 | Train Loss: 0.540517 (P:0.2076, S:0.0451, Q:0.3306) | Val Loss: 2.209217 (P:1.8687, S:0.3130, Q:0.3249) | Repr L2μ: 0.6029 Val L2μ: 0.5848 | Repr Cosμ: 0.9836 Val Cosμ: 0.9839 | Pred→Target Cosμ: 0.8744 Val Cosμ: 0.8201 | Repr NormRatio: 1.0697 Val NormRatio: 1.0491
+Epoch 19/100 | Steps: 22804 | LR: 0.000098 | Train Loss: 0.536084 (P:0.2033, S:0.0439, Q:0.3306) | Val Loss: 1.534824 (P:1.1869, S:0.4614, Q:0.3249) | Repr L2μ: 0.5273 Val L2μ: 0.2865 | Repr Cosμ: 0.9865 Val Cosμ: 0.9960 | Pred→Target Cosμ: 0.8718 Val Cosμ: 0.6967 | Repr NormRatio: 1.0734 Val NormRatio: 1.0222
+Epoch 20/100 | Steps: 22804 | LR: 0.000097 | Train Loss: 0.521442 (P:0.1886, S:0.0434, Q:0.3306) | Val Loss: 0.791358 (P:0.4412, S:0.5064, Q:0.3249) | Repr L2μ: 0.4694 Val L2μ: 0.2981 | Repr Cosμ: 0.9891 Val Cosμ: 0.9959 | Pred→Target Cosμ: 0.8740 Val Cosμ: 0.8237 | Repr NormRatio: 1.0670 Val NormRatio: 1.0211
+Epoch 21/100 | Steps: 22804 | LR: 0.000097 | Train Loss: 0.510290 (P:0.1775, S:0.0441, Q:0.3306) | Val Loss: 1.359339 (P:1.0154, S:0.3822, Q:0.3249) | Repr L2μ: 0.4514 Val L2μ: 0.4887 | Repr Cosμ: 0.9899 Val Cosμ: 0.9882 | Pred→Target Cosμ: 0.8757 Val Cosμ: 0.7440 | Repr NormRatio: 1.0620 Val NormRatio: 1.0386
+Epoch 22/100 | Steps: 22804 | LR: 0.000096 | Train Loss: 0.505288 (P:0.1725, S:0.0438, Q:0.3306) | Val Loss: 1.382573 (P:1.0396, S:0.3625, Q:0.3249) | Repr L2μ: 0.4228 Val L2μ: 0.3525 | Repr Cosμ: 0.9916 Val Cosμ: 0.9943 | Pred→Target Cosμ: 0.8749 Val Cosμ: 0.5291 | Repr NormRatio: 1.0651 Val NormRatio: 1.0334
+Epoch 23/100 | Steps: 22804 | LR: 0.000095 | Train Loss: 0.501644 (P:0.1688, S:0.0439, Q:0.3306) | Val Loss: 1.318410 (P:0.9742, S:0.3864, Q:0.3249) | Repr L2μ: 0.3972 Val L2μ: 0.2558 | Repr Cosμ: 0.9930 Val Cosμ: 0.9973 | Pred→Target Cosμ: 0.8754 Val Cosμ: 0.6877 | Repr NormRatio: 1.0629 Val NormRatio: 1.0290
+Epoch 24/100 | Steps: 22804 | LR: 0.000095 | Train Loss: 0.492141 (P:0.1594, S:0.0433, Q:0.3306) | Val Loss: 1.645934 (P:1.3023, S:0.3746, Q:0.3249) | Repr L2μ: 0.3715 Val L2μ: 0.2937 | Repr Cosμ: 0.9943 Val Cosμ: 0.9966 | Pred→Target Cosμ: 0.8743 Val Cosμ: 0.7633 | Repr NormRatio: 1.0565 Val NormRatio: 1.0275
+Epoch 25/100 | Steps: 22804 | LR: 0.000094 | Train Loss: 0.492061 (P:0.1593, S:0.0429, Q:0.3306) | Val Loss: 1.482924 (P:1.1388, S:0.3853, Q:0.3249) | Repr L2μ: 0.3391 Val L2μ: 0.2532 | Repr Cosμ: 0.9956 Val Cosμ: 0.9977 | Pred→Target Cosμ: 0.8733 Val Cosμ: 0.7023 | Repr NormRatio: 1.0489 Val NormRatio: 1.0242
+Epoch 26/100 | Steps: 22804 | LR: 0.000093 | Train Loss: 0.489619 (P:0.1568, S:0.0431, Q:0.3306) | Val Loss: 3.198593 (P:2.8579, S:0.3163, Q:0.3249) | Repr L2μ: 0.3250 Val L2μ: 0.3786 | Repr Cosμ: 0.9963 Val Cosμ: 0.9949 | Pred→Target Cosμ: 0.8715 Val Cosμ: 0.8332 | Repr NormRatio: 1.0450 Val NormRatio: 1.0343
+Epoch 27/100 | Steps: 22804 | LR: 0.000092 | Train Loss: 0.482650 (P:0.1499, S:0.0429, Q:0.3306) | Val Loss: 2.719574 (P:2.3791, S:0.3123, Q:0.3249) | Repr L2μ: 0.3086 Val L2μ: 0.3018 | Repr Cosμ: 0.9969 Val Cosμ: 0.9971 | Pred→Target Cosμ: 0.8724 Val Cosμ: 0.8230 | Repr NormRatio: 1.0428 Val NormRatio: 1.0262
+Epoch 28/100 | Steps: 22804 | LR: 0.000091 | Train Loss: 0.483146 (P:0.1504, S:0.0429, Q:0.3306) | Val Loss: 0.955978 (P:0.6109, S:0.4039, Q:0.3249) | Repr L2μ: 0.2890 Val L2μ: 0.1603 | Repr Cosμ: 0.9974 Val Cosμ: 0.9993 | Pred→Target Cosμ: 0.8710 Val Cosμ: 0.7416 | Repr NormRatio: 1.0369 Val NormRatio: 1.0138
+Epoch 29/100 | Steps: 22804 | LR: 0.000090 | Train Loss: 0.478664 (P:0.1459, S:0.0431, Q:0.3306) | Val Loss: 1.318459 (P:0.9761, S:0.3494, Q:0.3249) | Repr L2μ: 0.2801 Val L2μ: 0.1431 | Repr Cosμ: 0.9978 Val Cosμ: 0.9994 | Pred→Target Cosμ: 0.8710 Val Cosμ: 0.7831 | Repr NormRatio: 1.0361 Val NormRatio: 1.0141
+Epoch 30/100 | Steps: 22804 | LR: 0.000089 | Train Loss: 0.471265 (P:0.1385, S:0.0424, Q:0.3306) | Val Loss: 0.935394 (P:0.5908, S:0.3948, Q:0.3249) | Repr L2μ: 0.2729 Val L2μ: 0.1471 | Repr Cosμ: 0.9981 Val Cosμ: 0.9995 | Pred→Target Cosμ: 0.8712 Val Cosμ: 0.7531 | Repr NormRatio: 1.0329 Val NormRatio: 1.0118
+Epoch 31/100 | Steps: 22804 | LR: 0.000088 | Train Loss: 0.465885 (P:0.1332, S:0.0423, Q:0.3306) | Val Loss: 1.918836 (P:1.5788, S:0.3039, Q:0.3249) | Repr L2μ: 0.2703 Val L2μ: 0.2189 | Repr Cosμ: 0.9982 Val Cosμ: 0.9988 | Pred→Target Cosμ: 0.8715 Val Cosμ: 0.8210 | Repr NormRatio: 1.0300 Val NormRatio: 1.0135
+Epoch 32/100 | Steps: 22804 | LR: 0.000087 | Train Loss: 0.465080 (P:0.1323, S:0.0424, Q:0.3306) | Val Loss: 0.653200 (P:0.3055, S:0.4560, Q:0.3249) | Repr L2μ: 0.2721 Val L2μ: 0.2663 | Repr Cosμ: 0.9982 Val Cosμ: 0.9984 | Pred→Target Cosμ: 0.8703 Val Cosμ: 0.8007 | Repr NormRatio: 1.0285 Val NormRatio: 1.0163
+   -> Saved improved checkpoint: val_loss=0.653200 at epoch 32
+Epoch 33/100 | Steps: 22804 | LR: 0.000086 | Train Loss: 0.459013 (P:0.1263, S:0.0419, Q:0.3306) | Val Loss: 1.123610 (P:0.7789, S:0.3969, Q:0.3249) | Repr L2μ: 0.2562 Val L2μ: 0.1724 | Repr Cosμ: 0.9985 Val Cosμ: 0.9993 | Pred→Target Cosμ: 0.8721 Val Cosμ: 0.6077 | Repr NormRatio: 1.0261 Val NormRatio: 1.0133
+Epoch 34/100 | Steps: 22804 | LR: 0.000084 | Train Loss: 0.455483 (P:0.1228, S:0.0412, Q:0.3306) | Val Loss: 1.315135 (P:0.9743, S:0.3193, Q:0.3249) | Repr L2μ: 0.2342 Val L2μ: 0.1417 | Repr Cosμ: 0.9988 Val Cosμ: 0.9995 | Pred→Target Cosμ: 0.8710 Val Cosμ: 0.8425 | Repr NormRatio: 1.0236 Val NormRatio: 1.0106
+'(ReadTimeoutError("HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: 920ac6f9-6faf-418b-ab14-1d95a664af45)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/main/README.md
+Retrying in 1s [Retry 1/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/main/README.md (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3e7a04ff70>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: 64e9e1fb-710d-4285-acf1-85a38ccede20)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/main/README.md
+Retrying in 2s [Retry 2/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/main/README.md (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3e774ddfa0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: ebb86875-ec1f-41fc-8ce4-1d9f65d1596d)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/main/README.md
+Retrying in 4s [Retry 3/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/main/README.md (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3e61d68af0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: f07891bf-c35c-41b6-984f-5698ea29ea5f)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/main/README.md
+Retrying in 8s [Retry 4/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/main/README.md (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3e774dd700>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: 58b4574f-c8b6-4d0c-99b4-706ed0c50c76)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/main/README.md
+Retrying in 8s [Retry 5/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/main/README.md (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f40340fd130>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: 20252156-3a73-4c50-b32b-cb1a6417974c)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/main/README.md
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/lotsa_data.py (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3fce8ef5b0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: fb8cb45a-929e-40a9-b675-b85aff737cf1)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/lotsa_data.py
+Retrying in 1s [Retry 1/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/lotsa_data.py (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3fe62273d0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: 5894269e-80ce-4900-8af1-0daa6f6180bc)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/lotsa_data.py
+Retrying in 2s [Retry 2/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/lotsa_data.py (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f403419c1f0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: 6d89cc56-173d-4871-ba37-85f6c6bb9670)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/lotsa_data.py
+Retrying in 4s [Retry 3/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/lotsa_data.py (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3fce8ef4f0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: 4de3292f-e10d-4faa-ba11-2c1d0f12dde0)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/lotsa_data.py
+Retrying in 8s [Retry 4/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/lotsa_data.py (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f403419c1f0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: a2fd1eba-6fed-4dc6-adc3-b309d35e3cf8)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/lotsa_data.py
+Retrying in 8s [Retry 5/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/lotsa_data.py (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3e5ad88a30>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: 5c199839-dbf6-4a85-96b9-c11b479d2eca)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/lotsa_data.py
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/.huggingface.yaml (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3e7aff5730>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: b2fa3d7d-9a83-4cbe-8006-db61e23a4d31)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/.huggingface.yaml
+Retrying in 1s [Retry 1/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/.huggingface.yaml (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3eba02c850>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: e5fcf69e-8d1c-4799-8c60-5c358e6bb0dd)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/.huggingface.yaml
+Retrying in 2s [Retry 2/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/.huggingface.yaml (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3e97bcba90>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: 72a5e052-a519-448e-a785-60c6a156a468)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/.huggingface.yaml
+Retrying in 4s [Retry 3/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/.huggingface.yaml (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3e97bcba90>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"), '(Request ID: 274b6ab1-f3de-4cf4-98e1-cde41e0d9a81)')' thrown while requesting HEAD https://huggingface.co/datasets/Salesforce/lotsa_data/resolve/8191fd29eb5cf906ec55effca44d8059888b615d/.huggingface.yaml
+Retrying in 8s [Retry 4/5].
+Epoch 35/100 | Steps: 22804 | LR: 0.000083 | Train Loss: 0.451788 (P:0.1191, S:0.0420, Q:0.3306) | Val Loss: 2.932451 (P:2.5908, S:0.3366, Q:0.3249) | Repr L2μ: 0.2483 Val L2μ: 0.2076 | Repr Cosμ: 0.9987 Val Cosμ: 0.9991 | Pred→Target Cosμ: 0.8746 Val Cosμ: 0.8418 | Repr NormRatio: 1.0223 Val NormRatio: 1.0143
+Epoch 36/100 | Steps: 22804 | LR: 0.000082 | Train Loss: 0.448497 (P:0.1158, S:0.0407, Q:0.3306) | Val Loss: 2.177196 (P:1.8364, S:0.3191, Q:0.3249) | Repr L2μ: 0.2384 Val L2μ: 0.1450 | Repr Cosμ: 0.9988 Val Cosμ: 0.9996 | Pred→Target Cosμ: 0.8723 Val Cosμ: 0.6487 | Repr NormRatio: 1.0200 Val NormRatio: 1.0086
+Epoch 37/100 | Steps: 22804 | LR: 0.000081 | Train Loss: 0.444110 (P:0.1115, S:0.0405, Q:0.3306) | Val Loss: 2.474054 (P:2.1330, S:0.3235, Q:0.3249) | Repr L2μ: 0.2362 Val L2μ: 0.1473 | Repr Cosμ: 0.9989 Val Cosμ: 0.9996 | Pred→Target Cosμ: 0.8746 Val Cosμ: 0.7228 | Repr NormRatio: 1.0193 Val NormRatio: 1.0083
+Epoch 38/100 | Steps: 22804 | LR: 0.000079 | Train Loss: 0.441699 (P:0.1091, S:0.0405, Q:0.3306) | Val Loss: 1.982293 (P:1.6413, S:0.3223, Q:0.3249) | Repr L2μ: 0.2317 Val L2μ: 0.1542 | Repr Cosμ: 0.9990 Val Cosμ: 0.9995 | Pred→Target Cosμ: 0.8769 Val Cosμ: 0.8287 | Repr NormRatio: 1.0193 Val NormRatio: 1.0117
+Epoch 39/100 | Steps: 22804 | LR: 0.000078 | Train Loss: 0.436698 (P:0.1041, S:0.0392, Q:0.3306) | Val Loss: 0.499488 (P:0.1526, S:0.4411, Q:0.3249) | Repr L2μ: 0.2230 Val L2μ: 0.1746 | Repr Cosμ: 0.9991 Val Cosμ: 0.9995 | Pred→Target Cosμ: 0.8763 Val Cosμ: 0.8187 | Repr NormRatio: 1.0174 Val NormRatio: 1.0089
+   -> Saved improved checkpoint: val_loss=0.499488 at epoch 39
+Epoch 40/100 | Steps: 22804 | LR: 0.000076 | Train Loss: 0.431855 (P:0.0993, S:0.0389, Q:0.3306) | Val Loss: 2.116842 (P:1.7755, S:0.3306, Q:0.3249) | Repr L2μ: 0.2171 Val L2μ: 0.1386 | Repr Cosμ: 0.9992 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8755 Val Cosμ: 0.6920 | Repr NormRatio: 1.0164 Val NormRatio: 1.0078
+Epoch 41/100 | Steps: 22804 | LR: 0.000075 | Train Loss: 0.428492 (P:0.0960, S:0.0383, Q:0.3306) | Val Loss: 0.946024 (P:0.6009, S:0.4062, Q:0.3249) | Repr L2μ: 0.2221 Val L2μ: 0.1591 | Repr Cosμ: 0.9992 Val Cosμ: 0.9996 | Pred→Target Cosμ: 0.8778 Val Cosμ: 0.6510 | Repr NormRatio: 1.0173 Val NormRatio: 1.0096
+Epoch 42/100 | Steps: 22804 | LR: 0.000073 | Train Loss: 0.423560 (P:0.0910, S:0.0381, Q:0.3306) | Val Loss: 1.975554 (P:1.6344, S:0.3255, Q:0.3249) | Repr L2μ: 0.2161 Val L2μ: 0.1869 | Repr Cosμ: 0.9992 Val Cosμ: 0.9994 | Pred→Target Cosμ: 0.8783 Val Cosμ: 0.8097 | Repr NormRatio: 1.0162 Val NormRatio: 1.0111
+Epoch 43/100 | Steps: 22804 | LR: 0.000072 | Train Loss: 0.419631 (P:0.0871, S:0.0378, Q:0.3306) | Val Loss: 2.126461 (P:1.7847, S:0.3378, Q:0.3249) | Repr L2μ: 0.2120 Val L2μ: 0.1391 | Repr Cosμ: 0.9993 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8762 Val Cosμ: 0.8051 | Repr NormRatio: 1.0150 Val NormRatio: 1.0061
+Epoch 44/100 | Steps: 22804 | LR: 0.000070 | Train Loss: 0.416249 (P:0.0838, S:0.0376, Q:0.3306) | Val Loss: 1.018585 (P:0.6752, S:0.3714, Q:0.3249) | Repr L2μ: 0.2135 Val L2μ: 0.1652 | Repr Cosμ: 0.9993 Val Cosμ: 0.9996 | Pred→Target Cosμ: 0.8786 Val Cosμ: 0.7145 | Repr NormRatio: 1.0153 Val NormRatio: 1.0099
+Epoch 45/100 | Steps: 22804 | LR: 0.000069 | Train Loss: 0.415792 (P:0.0833, S:0.0372, Q:0.3306) | Val Loss: 3.528123 (P:3.1883, S:0.2977, Q:0.3249) | Repr L2μ: 0.2147 Val L2μ: 0.1591 | Repr Cosμ: 0.9993 Val Cosμ: 0.9996 | Pred→Target Cosμ: 0.8779 Val Cosμ: 0.7876 | Repr NormRatio: 1.0144 Val NormRatio: 1.0089
+Epoch 46/100 | Steps: 22804 | LR: 0.000067 | Train Loss: 0.411213 (P:0.0788, S:0.0369, Q:0.3306) | Val Loss: 0.813628 (P:0.4687, S:0.4015, Q:0.3249) | Repr L2μ: 0.2084 Val L2μ: 0.1505 | Repr Cosμ: 0.9994 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8769 Val Cosμ: 0.8154 | Repr NormRatio: 1.0143 Val NormRatio: 1.0073
+Epoch 47/100 | Steps: 22804 | LR: 0.000066 | Train Loss: 0.406899 (P:0.0745, S:0.0365, Q:0.3306) | Val Loss: 0.988055 (P:0.6425, S:0.4132, Q:0.3249) | Repr L2μ: 0.2086 Val L2μ: 0.1638 | Repr Cosμ: 0.9994 Val Cosμ: 0.9996 | Pred→Target Cosμ: 0.8787 Val Cosμ: 0.7558 | Repr NormRatio: 1.0133 Val NormRatio: 1.0079
+Epoch 48/100 | Steps: 22804 | LR: 0.000064 | Train Loss: 0.404737 (P:0.0723, S:0.0363, Q:0.3306) | Val Loss: 1.931925 (P:1.5901, S:0.3395, Q:0.3249) | Repr L2μ: 0.2162 Val L2μ: 0.1444 | Repr Cosμ: 0.9994 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8776 Val Cosμ: 0.7719 | Repr NormRatio: 1.0124 Val NormRatio: 1.0067
+Epoch 49/100 | Steps: 22804 | LR: 0.000062 | Train Loss: 0.400804 (P:0.0684, S:0.0359, Q:0.3306) | Val Loss: 0.769875 (P:0.4250, S:0.4004, Q:0.3249) | Repr L2μ: 0.2132 Val L2μ: 0.1479 | Repr Cosμ: 0.9994 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8791 Val Cosμ: 0.7561 | Repr NormRatio: 1.0121 Val NormRatio: 1.0058
+Epoch 50/100 | Steps: 22804 | LR: 0.000061 | Train Loss: 0.399490 (P:0.0671, S:0.0359, Q:0.3306) | Val Loss: 0.698519 (P:0.3542, S:0.3882, Q:0.3249) | Repr L2μ: 0.2149 Val L2μ: 0.1493 | Repr Cosμ: 0.9994 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8805 Val Cosμ: 0.7012 | Repr NormRatio: 1.0121 Val NormRatio: 1.0071
+Epoch 51/100 | Steps: 22804 | LR: 0.000059 | Train Loss: 0.395950 (P:0.0636, S:0.0356, Q:0.3306) | Val Loss: 0.677089 (P:0.3331, S:0.3818, Q:0.3249) | Repr L2μ: 0.2110 Val L2μ: 0.1546 | Repr Cosμ: 0.9995 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8812 Val Cosμ: 0.7963 | Repr NormRatio: 1.0113 Val NormRatio: 1.0065
+Epoch 52/100 | Steps: 22804 | LR: 0.000057 | Train Loss: 0.393511 (P:0.0611, S:0.0354, Q:0.3306) | Val Loss: 0.504326 (P:0.1587, S:0.4159, Q:0.3249) | Repr L2μ: 0.2121 Val L2μ: 0.1332 | Repr Cosμ: 0.9995 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8818 Val Cosμ: 0.8252 | Repr NormRatio: 1.0112 Val NormRatio: 1.0060
+Epoch 53/100 | Steps: 22804 | LR: 0.000056 | Train Loss: 0.390554 (P:0.0582, S:0.0348, Q:0.3306) | Val Loss: 0.478195 (P:0.1313, S:0.4409, Q:0.3249) | Repr L2μ: 0.2122 Val L2μ: 0.1559 | Repr Cosμ: 0.9995 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8843 Val Cosμ: 0.8076 | Repr NormRatio: 1.0110 Val NormRatio: 1.0065
+   -> Saved improved checkpoint: val_loss=0.478195 at epoch 53
+Epoch 54/100 | Steps: 22804 | LR: 0.000054 | Train Loss: 0.389070 (P:0.0567, S:0.0348, Q:0.3306) | Val Loss: 1.223862 (P:0.8818, S:0.3436, Q:0.3249) | Repr L2μ: 0.2138 Val L2μ: 0.1627 | Repr Cosμ: 0.9995 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8832 Val Cosμ: 0.8442 | Repr NormRatio: 1.0111 Val NormRatio: 1.0079
+Epoch 55/100 | Steps: 22804 | LR: 0.000052 | Train Loss: 0.386109 (P:0.0538, S:0.0346, Q:0.3306) | Val Loss: 1.223351 (P:0.8812, S:0.3461, Q:0.3249) | Repr L2μ: 0.2116 Val L2μ: 0.1403 | Repr Cosμ: 0.9995 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8828 Val Cosμ: 0.7720 | Repr NormRatio: 1.0108 Val NormRatio: 1.0048
+Epoch 56/100 | Steps: 22804 | LR: 0.000051 | Train Loss: 0.385306 (P:0.0530, S:0.0346, Q:0.3306) | Val Loss: 0.706548 (P:0.3633, S:0.3671, Q:0.3249) | Repr L2μ: 0.2111 Val L2μ: 0.1635 | Repr Cosμ: 0.9996 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8842 Val Cosμ: 0.8508 | Repr NormRatio: 1.0106 Val NormRatio: 1.0074
+Epoch 57/100 | Steps: 22804 | LR: 0.000049 | Train Loss: 0.382918 (P:0.0506, S:0.0341, Q:0.3306) | Val Loss: 0.618339 (P:0.2734, S:0.4015, Q:0.3249) | Repr L2μ: 0.2164 Val L2μ: 0.1575 | Repr Cosμ: 0.9995 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8856 Val Cosμ: 0.7280 | Repr NormRatio: 1.0116 Val NormRatio: 1.0079
+Epoch 58/100 | Steps: 22804 | LR: 0.000047 | Train Loss: 0.380582 (P:0.0483, S:0.0341, Q:0.3306) | Val Loss: 1.025740 (P:0.6837, S:0.3444, Q:0.3249) | Repr L2μ: 0.2111 Val L2μ: 0.1429 | Repr Cosμ: 0.9996 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8846 Val Cosμ: 0.7573 | Repr NormRatio: 1.0109 Val NormRatio: 1.0065
+Epoch 59/100 | Steps: 22804 | LR: 0.000046 | Train Loss: 0.378448 (P:0.0461, S:0.0340, Q:0.3306) | Val Loss: 0.463762 (P:0.1185, S:0.4087, Q:0.3249) | Repr L2μ: 0.2149 Val L2μ: 0.1428 | Repr Cosμ: 0.9996 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8854 Val Cosμ: 0.8291 | Repr NormRatio: 1.0112 Val NormRatio: 1.0062
+   -> Saved improved checkpoint: val_loss=0.463762 at epoch 59
+Epoch 60/100 | Steps: 22804 | LR: 0.000044 | Train Loss: 0.377895 (P:0.0456, S:0.0338, Q:0.3306) | Val Loss: 1.101867 (P:0.7611, S:0.3176, Q:0.3249) | Repr L2μ: 0.2123 Val L2μ: 0.1586 | Repr Cosμ: 0.9996 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8857 Val Cosμ: 0.7877 | Repr NormRatio: 1.0111 Val NormRatio: 1.0056
+Epoch 61/100 | Steps: 22804 | LR: 0.000042 | Train Loss: 0.377324 (P:0.0450, S:0.0334, Q:0.3306) | Val Loss: 0.903907 (P:0.5619, S:0.3429, Q:0.3249) | Repr L2μ: 0.2147 Val L2μ: 0.1701 | Repr Cosμ: 0.9996 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8860 Val Cosμ: 0.7959 | Repr NormRatio: 1.0108 Val NormRatio: 1.0069
+Epoch 62/100 | Steps: 22804 | LR: 0.000041 | Train Loss: 0.373028 (P:0.0407, S:0.0332, Q:0.3306) | Val Loss: 0.577655 (P:0.2333, S:0.3889, Q:0.3249) | Repr L2μ: 0.2158 Val L2μ: 0.1529 | Repr Cosμ: 0.9996 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8866 Val Cosμ: 0.8011 | Repr NormRatio: 1.0114 Val NormRatio: 1.0064
+Epoch 63/100 | Steps: 22804 | LR: 0.000039 | Train Loss: 0.371245 (P:0.0390, S:0.0330, Q:0.3306) | Val Loss: 0.450157 (P:0.1050, S:0.4050, Q:0.3249) | Repr L2μ: 0.2163 Val L2μ: 0.1604 | Repr Cosμ: 0.9996 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8875 Val Cosμ: 0.8235 | Repr NormRatio: 1.0115 Val NormRatio: 1.0065
+   -> Saved improved checkpoint: val_loss=0.450157 at epoch 63
+Epoch 64/100 | Steps: 22804 | LR: 0.000037 | Train Loss: 0.370219 (P:0.0380, S:0.0326, Q:0.3306) | Val Loss: 0.800022 (P:0.4577, S:0.3500, Q:0.3249) | Repr L2μ: 0.2152 Val L2μ: 0.1829 | Repr Cosμ: 0.9996 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8876 Val Cosμ: 0.8053 | Repr NormRatio: 1.0114 Val NormRatio: 1.0087
+Epoch 65/100 | Steps: 22804 | LR: 0.000036 | Train Loss: 0.368405 (P:0.0362, S:0.0327, Q:0.3306) | Val Loss: 1.093284 (P:0.7524, S:0.3211, Q:0.3249) | Repr L2μ: 0.2129 Val L2μ: 0.1562 | Repr Cosμ: 0.9996 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8858 Val Cosμ: 0.7833 | Repr NormRatio: 1.0109 Val NormRatio: 1.0063
+Epoch 66/100 | Steps: 22804 | LR: 0.000034 | Train Loss: 0.366532 (P:0.0343, S:0.0325, Q:0.3306) | Val Loss: 0.938960 (P:0.5980, S:0.3217, Q:0.3249) | Repr L2μ: 0.2106 Val L2μ: 0.1521 | Repr Cosμ: 0.9996 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8866 Val Cosμ: 0.8099 | Repr NormRatio: 1.0106 Val NormRatio: 1.0057
+Epoch 67/100 | Steps: 22804 | LR: 0.000032 | Train Loss: 0.365673 (P:0.0334, S:0.0323, Q:0.3306) | Val Loss: 0.685495 (P:0.3420, S:0.3728, Q:0.3249) | Repr L2μ: 0.2111 Val L2μ: 0.1733 | Repr Cosμ: 0.9996 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8857 Val Cosμ: 0.8656 | Repr NormRatio: 1.0108 Val NormRatio: 1.0081
+Epoch 68/100 | Steps: 22804 | LR: 0.000031 | Train Loss: 0.365952 (P:0.0337, S:0.0322, Q:0.3306) | Val Loss: 0.619220 (P:0.2745, S:0.3963, Q:0.3249) | Repr L2μ: 0.2151 Val L2μ: 0.1644 | Repr Cosμ: 0.9996 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8857 Val Cosμ: 0.7796 | Repr NormRatio: 1.0105 Val NormRatio: 1.0082
+Epoch 69/100 | Steps: 22804 | LR: 0.000029 | Train Loss: 0.362922 (P:0.0307, S:0.0320, Q:0.3306) | Val Loss: 0.888904 (P:0.5482, S:0.3166, Q:0.3249) | Repr L2μ: 0.2097 Val L2μ: 0.1680 | Repr Cosμ: 0.9997 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8881 Val Cosμ: 0.7987 | Repr NormRatio: 1.0107 Val NormRatio: 1.0074
+Epoch 70/100 | Steps: 22804 | LR: 0.000028 | Train Loss: 0.362872 (P:0.0307, S:0.0318, Q:0.3306) | Val Loss: 0.552793 (P:0.2081, S:0.3974, Q:0.3249) | Repr L2μ: 0.2134 Val L2μ: 0.1537 | Repr Cosμ: 0.9996 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8872 Val Cosμ: 0.7620 | Repr NormRatio: 1.0104 Val NormRatio: 1.0097
+Epoch 71/100 | Steps: 22804 | LR: 0.000026 | Train Loss: 0.361953 (P:0.0297, S:0.0318, Q:0.3306) | Val Loss: 0.642241 (P:0.2968, S:0.4120, Q:0.3249) | Repr L2μ: 0.2143 Val L2μ: 0.1621 | Repr Cosμ: 0.9996 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8856 Val Cosμ: 0.7846 | Repr NormRatio: 1.0103 Val NormRatio: 1.0098
+Epoch 72/100 | Steps: 22804 | LR: 0.000025 | Train Loss: 0.361845 (P:0.0296, S:0.0318, Q:0.3306) | Val Loss: 0.944325 (P:0.6039, S:0.3114, Q:0.3249) | Repr L2μ: 0.2188 Val L2μ: 0.1764 | Repr Cosμ: 0.9996 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8832 Val Cosμ: 0.8015 | Repr NormRatio: 1.0102 Val NormRatio: 1.0095
+Epoch 73/100 | Steps: 22804 | LR: 0.000023 | Train Loss: 0.361792 (P:0.0296, S:0.0317, Q:0.3306) | Val Loss: 0.691289 (P:0.3487, S:0.3545, Q:0.3249) | Repr L2μ: 0.2214 Val L2μ: 0.1781 | Repr Cosμ: 0.9996 Val Cosμ: 0.9998 | Pred→Target Cosμ: 0.8832 Val Cosμ: 0.8558 | Repr NormRatio: 1.0099 Val NormRatio: 1.0089
+Epoch 74/100 | Steps: 22804 | LR: 0.000022 | Train Loss: 0.361201 (P:0.0290, S:0.0315, Q:0.3306) | Val Loss: 0.588278 (P:0.2450, S:0.3692, Q:0.3249) | Repr L2μ: 0.2235 Val L2μ: 0.1866 | Repr Cosμ: 0.9996 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8828 Val Cosμ: 0.7747 | Repr NormRatio: 1.0084 Val NormRatio: 1.0056
+Epoch 75/100 | Steps: 22804 | LR: 0.000021 | Train Loss: 0.359840 (P:0.0276, S:0.0315, Q:0.3306) | Val Loss: 1.345902 (P:1.0056, S:0.3089, Q:0.3249) | Repr L2μ: 0.2242 Val L2μ: 0.1943 | Repr Cosμ: 0.9996 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8828 Val Cosμ: 0.8029 | Repr NormRatio: 1.0089 Val NormRatio: 1.0092
+Epoch 76/100 | Steps: 22804 | LR: 0.000019 | Train Loss: 0.358768 (P:0.0266, S:0.0313, Q:0.3306) | Val Loss: 0.535936 (P:0.1925, S:0.3714, Q:0.3249) | Repr L2μ: 0.2265 Val L2μ: 0.1943 | Repr Cosμ: 0.9996 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8829 Val Cosμ: 0.8039 | Repr NormRatio: 1.0084 Val NormRatio: 1.0066
+Epoch 77/100 | Steps: 22804 | LR: 0.000018 | Train Loss: 0.356924 (P:0.0247, S:0.0312, Q:0.3306) | Val Loss: 0.644008 (P:0.3010, S:0.3623, Q:0.3249) | Repr L2μ: 0.2228 Val L2μ: 0.1947 | Repr Cosμ: 0.9996 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8847 Val Cosμ: 0.8468 | Repr NormRatio: 1.0088 Val NormRatio: 1.0096
+Epoch 78/100 | Steps: 22804 | LR: 0.000017 | Train Loss: 0.355677 (P:0.0235, S:0.0311, Q:0.3306) | Val Loss: 0.419176 (P:0.0740, S:0.4069, Q:0.3249) | Repr L2μ: 0.2259 Val L2μ: 0.1994 | Repr Cosμ: 0.9996 Val Cosμ: 0.9997 | Pred→Target Cosμ: 0.8837 Val Cosμ: 0.8482 | Repr NormRatio: 1.0094 Val NormRatio: 1.0114
+   -> Saved improved checkpoint: val_loss=0.419176 at epoch 78
+Terminated

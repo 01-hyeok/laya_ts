@@ -1,0 +1,430 @@
+nohup: ignoring input
+🚀 Laya-TS Pretraining: lotsa (laya + mixer_concat_text)
+📊 subsets: beijing_air_quality,HZMETRO,residential_pv_power,residential_load_power,china_air_quality
+🧩 split_mode: official
+🧩 sampling_mode: official
+🧩 preprocessing_mode: official
+🧩 sample_time_series: proportional
+🧩 min_patches: 2, max_dim: 128
+📝 metadata: mode=text, fusion=concat_kv, relation=none
+📝 log_dir: ./runs/pretrain_lotsa_laya_mixer_concat_text
+[LOTSA] Skipping subset 'beijing_air_quality' during counting: LOTSA official split mode requested for subset 'beijing_air_quality', but no held-out split is available for mode='val'. Available splits: ['train']. Use --lotsa_split_mode temporal_70_10_20 to opt back into the legacy within-series split.
+Using the latest cached version of the dataset since Salesforce/lotsa_data couldn't be found on the Hugging Face Hub
+Found the latest cached dataset configuration 'beijing_air_quality' at /root/.cache/huggingface/datasets/Salesforce___lotsa_data/beijing_air_quality/0.0.0/8191fd29eb5cf906ec55effca44d8059888b615d (last modified on Tue May  5 14:29:29 2026).
+[LOTSA] Skipping subset 'HZMETRO' during counting: LOTSA official split mode requested for subset 'HZMETRO', but no held-out split is available for mode='val'. Available splits: ['train']. Use --lotsa_split_mode temporal_70_10_20 to opt back into the legacy within-series split.
+[LOTSA] Skipping subset 'residential_pv_power' during counting: LOTSA official split mode requested for subset 'residential_pv_power', but no held-out split is available for mode='val'. Available splits: ['train']. Use --lotsa_split_mode temporal_70_10_20 to opt back into the legacy within-series split.
+[LOTSA] Skipping subset 'residential_load_power' during counting: LOTSA official split mode requested for subset 'residential_load_power', but no held-out split is available for mode='val'. Available splits: ['train']. Use --lotsa_split_mode temporal_70_10_20 to opt back into the legacy within-series split.
+[LOTSA] Skipping subset 'china_air_quality' during counting: LOTSA official split mode requested for subset 'china_air_quality', but no held-out split is available for mode='val'. Available splits: ['train']. Use --lotsa_split_mode temporal_70_10_20 to opt back into the legacy within-series split.
+📊 Dataset Statistics:
+   - Sequence Length (T): 512
+   - Train Samples: 1033, Steps: 35
+   - Val Samples: 0, Steps: 0
+   - LOTSA subset groups: ['beijing_air_quality', 'HZMETRO', 'residential_pv_power', 'residential_load_power', 'china_air_quality']
+   - LOTSA channel counts: [11, 2, 3, 3, 6]
+   - LOTSA split mode: official
+   - LOTSA sampling mode: official
+   - LOTSA preprocessing mode: official
+   - LOTSA sample_time_series: proportional
+   - LOTSA min_patches: 2
+   - LOTSA max_dim: 128
+🔧 Encoder Hyperparameters:
+   - d_model: 128
+   - n_heads: 8
+   - n_layers: 3
+   - proj_dim: 256
+   - patch_size: 16
+   - metadata_fusion_mode: concat_kv
+   - channel_mixer_relation_mode: none
+   - encoder_variant: default
+   - temporal_patchifier_mode: fixed
+   - use_channel_relation_block: False
+🧮 Parameter Counts:
+   - Total Parameters: 4,327,232
+   - Trainable Parameters: 4,327,232
+⏱️ Schedule:
+   - total_steps: 100000
+   - warmup_steps: 5000
+   - derived_epochs: 2858
+   - val_interval: 5000
+[LOTSA] Falling back to synthetic channel names for subset 'HZMETRO' (channels=2); no explicit feature names were found in the record metadata.
+Text metadata preview | dataset=HZMETRO | domain=hzmetro | channels=2
+   - feature_0: In the hzmetro domain, this channel belongs to the HZMETRO dataset and represents the feature feature 0.
+   - feature_1: In the hzmetro domain, this channel belongs to the HZMETRO dataset and represents the feature feature 1.
+[LOTSA] Falling back to synthetic channel names for subset 'china_air_quality' (channels=6); no explicit feature names were found in the record metadata.
+Text metadata preview | dataset=china_air_quality | domain=environment | channels=6
+   - feature_0: In the environment domain, this channel belongs to the china air quality dataset and represents the feature feature 0.
+   - feature_1: In the environment domain, this channel belongs to the china air quality dataset and represents the feature feature 1.
+   - ... (4 more channel descriptions)
+[LOTSA] Falling back to synthetic channel names for subset 'residential_load_power' (channels=3); no explicit feature names were found in the record metadata.
+Text metadata preview | dataset=residential_load_power | domain=electricity | channels=3
+   - feature_0: In the electricity domain, this channel belongs to the residential load power dataset and represents the feature feature 0.
+   - feature_1: In the electricity domain, this channel belongs to the residential load power dataset and represents the feature feature 1.
+   - ... (1 more channel descriptions)
+[LOTSA] Falling back to synthetic channel names for subset 'residential_pv_power' (channels=3); no explicit feature names were found in the record metadata.
+Text metadata preview | dataset=residential_pv_power | domain=electricity | channels=3
+   - feature_0: In the electricity domain, this channel belongs to the residential pv power dataset and represents the feature feature 0.
+   - feature_1: In the electricity domain, this channel belongs to the residential pv power dataset and represents the feature feature 1.
+   - ... (1 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Huairou_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Huairou 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Huairou 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Nongzhanguan_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Nongzhanguan 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Nongzhanguan 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Gucheng_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Gucheng 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Gucheng 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Dingling_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Dingling 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Dingling 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Aotizhongxin_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Aotizhongxin 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Aotizhongxin 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Dongsi_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Dongsi 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Dongsi 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+Text metadata preview | dataset=beijing_air_quality station PRSA_Data_Wanshouxigong_20130301-20170228 | domain=environment | channels=11
+   - PM2.5: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Wanshouxigong 20130301-20170228 dataset and represents the feature PM2.5.
+   - PM10: In the environment domain, this channel belongs to the beijing air quality station PRSA Data Wanshouxigong 20130301-20170228 dataset and represents the feature PM10.
+   - ... (9 more channel descriptions)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a01f0> was reported to be 1(when accessing len(dataloader)), but 2 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a01f0> was reported to be 1(when accessing len(dataloader)), but 3 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 4 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a01f0> was reported to be 1(when accessing len(dataloader)), but 4 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a01f0> was reported to be 1(when accessing len(dataloader)), but 5 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 5 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 6 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a01f0> was reported to be 1(when accessing len(dataloader)), but 6 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a01f0> was reported to be 1(when accessing len(dataloader)), but 7 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 7 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 8 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a01f0> was reported to be 1(when accessing len(dataloader)), but 8 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 9 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 9 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a01f0> was reported to be 1(when accessing len(dataloader)), but 9 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 10 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 10 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a01f0> was reported to be 1(when accessing len(dataloader)), but 10 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 10 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a01f0> was reported to be 1(when accessing len(dataloader)), but 11 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 11 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 11 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 11 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 12 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 12 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 12 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a01f0> was reported to be 1(when accessing len(dataloader)), but 12 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 13 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 13 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 13 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 14 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 14 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 14 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 15 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 15 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 15 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 15 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 16 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 16 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 16 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 16 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 17 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 17 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 17 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 17 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 18 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 18 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 18 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 18 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 19 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 19 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 19 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 19 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 20 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 20 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 20 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 20 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 21 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 21 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 21 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 21 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 22 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 22 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 22 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 22 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 23 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 23 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 23 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 23 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 24 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 24 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 24 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 24 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 25 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 25 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 25 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 25 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 26 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 26 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 26 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 26 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 27 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 27 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 27 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 27 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 28 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 28 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 28 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 28 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 29 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 29 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 29 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 29 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 30 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 30 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff30d7550a0> was reported to be 3(when accessing len(dataloader)), but 30 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 30 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff31541c6a0> was reported to be 9(when accessing len(dataloader)), but 31 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff307717eb0> was reported to be 14(when accessing len(dataloader)), but 31 samples have been fetched. 
+  warnings.warn(warn_msg)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/utils/data/dataloader.py:641: UserWarning: Length of IterableDataset <laya_ts.data_pretrain.LOTSABatchStreamingPretrainDataset object at 0x7ff3154a0160> was reported to be 8(when accessing len(dataloader)), but 31 samples have been fetched. 
+  warnings.warn(warn_msg)
+Epoch 1/2858 | Steps: 135 | LR: 0.000003 | Train Loss: 2.093295 (P:1.0781, S:0.3048, Q:1.0000) | Repr L2μ: 3.1756 | Repr Cosμ: 0.9255 | Pred→Target Cosμ: 0.1004 | Repr NormRatio: 1.0328
+   -> Saved latest checkpoint without validation at step 135
+Epoch 2/2858 | Steps: 135 | LR: 0.000005 | Train Loss: 1.890538 (P:0.8754, S:0.3038, Q:1.0000) | Repr L2μ: 3.1573 | Repr Cosμ: 0.9259 | Pred→Target Cosμ: 0.3940 | Repr NormRatio: 1.0325
+   -> Saved latest checkpoint without validation at step 270
+Epoch 3/2858 | Steps: 135 | LR: 0.000008 | Train Loss: 1.802449 (P:0.7874, S:0.3013, Q:1.0000) | Repr L2μ: 3.1536 | Repr Cosμ: 0.9258 | Pred→Target Cosμ: 0.5229 | Repr NormRatio: 1.0324
+   -> Saved latest checkpoint without validation at step 405
+Epoch 4/2858 | Steps: 135 | LR: 0.000011 | Train Loss: 1.769829 (P:0.7549, S:0.2988, Q:1.0000) | Repr L2μ: 3.1243 | Repr Cosμ: 0.9265 | Pred→Target Cosμ: 0.5675 | Repr NormRatio: 1.0316
+   -> Saved latest checkpoint without validation at step 540
+Epoch 5/2858 | Steps: 135 | LR: 0.000014 | Train Loss: 1.751718 (P:0.7370, S:0.2949, Q:1.0000) | Repr L2μ: 3.1183 | Repr Cosμ: 0.9260 | Pred→Target Cosμ: 0.5927 | Repr NormRatio: 1.0309
+   -> Saved latest checkpoint without validation at step 675
+Epoch 6/2858 | Steps: 135 | LR: 0.000016 | Train Loss: 1.738308 (P:0.7239, S:0.2890, Q:1.0000) | Repr L2μ: 3.1045 | Repr Cosμ: 0.9258 | Pred→Target Cosμ: 0.6068 | Repr NormRatio: 1.0299
+   -> Saved latest checkpoint without validation at step 810
+Epoch 7/2858 | Steps: 135 | LR: 0.000019 | Train Loss: 1.727795 (P:0.7135, S:0.2862, Q:1.0000) | Repr L2μ: 3.1259 | Repr Cosμ: 0.9248 | Pred→Target Cosμ: 0.6133 | Repr NormRatio: 1.0286
+   -> Saved latest checkpoint without validation at step 945
+Epoch 8/2858 | Steps: 135 | LR: 0.000022 | Train Loss: 1.713663 (P:0.6998, S:0.2785, Q:1.0000) | Repr L2μ: 3.1751 | Repr Cosμ: 0.9226 | Pred→Target Cosμ: 0.6215 | Repr NormRatio: 1.0285
+   -> Saved latest checkpoint without validation at step 1080
+Epoch 9/2858 | Steps: 135 | LR: 0.000024 | Train Loss: 1.709030 (P:0.6954, S:0.2732, Q:1.0000) | Repr L2μ: 3.0545 | Repr Cosμ: 0.9284 | Pred→Target Cosμ: 0.6162 | Repr NormRatio: 1.0268
+   -> Saved latest checkpoint without validation at step 1215
+Epoch 10/2858 | Steps: 135 | LR: 0.000027 | Train Loss: 1.691361 (P:0.6782, S:0.2648, Q:0.9999) | Repr L2μ: 3.0525 | Repr Cosμ: 0.9276 | Pred→Target Cosμ: 0.6212 | Repr NormRatio: 1.0259
+   -> Saved latest checkpoint without validation at step 1350
+Epoch 11/2858 | Steps: 135 | LR: 0.000030 | Train Loss: 1.688260 (P:0.6755, S:0.2566, Q:0.9999) | Repr L2μ: 2.9384 | Repr Cosμ: 0.9323 | Pred→Target Cosμ: 0.6114 | Repr NormRatio: 1.0253
+   -> Saved latest checkpoint without validation at step 1485
+Epoch 12/2858 | Steps: 135 | LR: 0.000032 | Train Loss: 1.677480 (P:0.6652, S:0.2484, Q:0.9999) | Repr L2μ: 2.9099 | Repr Cosμ: 0.9332 | Pred→Target Cosμ: 0.6103 | Repr NormRatio: 1.0253
+   -> Saved latest checkpoint without validation at step 1620
+Epoch 13/2858 | Steps: 135 | LR: 0.000035 | Train Loss: 1.656433 (P:0.6446, S:0.2395, Q:0.9999) | Repr L2μ: 3.1121 | Repr Cosμ: 0.9238 | Pred→Target Cosμ: 0.6201 | Repr NormRatio: 1.0260
+   -> Saved latest checkpoint without validation at step 1755
+Epoch 14/2858 | Steps: 135 | LR: 0.000038 | Train Loss: 1.638788 (P:0.6274, S:0.2325, Q:0.9998) | Repr L2μ: 3.2178 | Repr Cosμ: 0.9183 | Pred→Target Cosμ: 0.6232 | Repr NormRatio: 1.0262
+   -> Saved latest checkpoint without validation at step 1890
+Epoch 15/2858 | Steps: 135 | LR: 0.000041 | Train Loss: 1.609580 (P:0.5987, S:0.2267, Q:0.9996) | Repr L2μ: 3.2543 | Repr Cosμ: 0.9163 | Pred→Target Cosμ: 0.6398 | Repr NormRatio: 1.0257
+   -> Saved latest checkpoint without validation at step 2025
+Epoch 16/2858 | Steps: 135 | LR: 0.000043 | Train Loss: 1.604501 (P:0.5943, S:0.2225, Q:0.9991) | Repr L2μ: 3.2449 | Repr Cosμ: 0.9147 | Pred→Target Cosμ: 0.6314 | Repr NormRatio: 1.0267
+   -> Saved latest checkpoint without validation at step 2160
+Epoch 17/2858 | Steps: 135 | LR: 0.000046 | Train Loss: 1.592522 (P:0.5844, S:0.2185, Q:0.9972) | Repr L2μ: 3.2986 | Repr Cosμ: 0.9106 | Pred→Target Cosμ: 0.6274 | Repr NormRatio: 1.0258
+   -> Saved latest checkpoint without validation at step 2295
+Epoch 18/2858 | Steps: 135 | LR: 0.000049 | Train Loss: 1.560425 (P:0.5598, S:0.2158, Q:0.9898) | Repr L2μ: 3.3695 | Repr Cosμ: 0.9065 | Pred→Target Cosμ: 0.6433 | Repr NormRatio: 1.0257
+   -> Saved latest checkpoint without validation at step 2430
+Epoch 19/2858 | Steps: 135 | LR: 0.000051 | Train Loss: 1.499384 (P:0.5283, S:0.2093, Q:0.9606) | Repr L2μ: 3.5974 | Repr Cosμ: 0.8943 | Pred→Target Cosμ: 0.6568 | Repr NormRatio: 1.0253
+   -> Saved latest checkpoint without validation at step 2565
+Epoch 20/2858 | Steps: 135 | LR: 0.000054 | Train Loss: 1.422213 (P:0.5203, S:0.2083, Q:0.8915) | Repr L2μ: 3.8148 | Repr Cosμ: 0.8831 | Pred→Target Cosμ: 0.6531 | Repr NormRatio: 1.0252
+   -> Saved latest checkpoint without validation at step 2700
+Epoch 21/2858 | Steps: 135 | LR: 0.000057 | Train Loss: 1.342061 (P:0.5207, S:0.2058, Q:0.8110) | Repr L2μ: 4.0118 | Repr Cosμ: 0.8691 | Pred→Target Cosμ: 0.6429 | Repr NormRatio: 1.0268
+   -> Saved latest checkpoint without validation at step 2835
+Epoch 22/2858 | Steps: 135 | LR: 0.000059 | Train Loss: 1.257421 (P:0.4944, S:0.2023, Q:0.7530) | Repr L2μ: 4.1591 | Repr Cosμ: 0.8585 | Pred→Target Cosμ: 0.6601 | Repr NormRatio: 1.0271
+   -> Saved latest checkpoint without validation at step 2970
+Epoch 23/2858 | Steps: 135 | LR: 0.000062 | Train Loss: 1.196129 (P:0.4777, S:0.1972, Q:0.7086) | Repr L2μ: 3.9849 | Repr Cosμ: 0.8700 | Pred→Target Cosμ: 0.6727 | Repr NormRatio: 1.0255
+   -> Saved latest checkpoint without validation at step 3105
+Epoch 24/2858 | Steps: 135 | LR: 0.000065 | Train Loss: 1.113432 (P:0.4792, S:0.1961, Q:0.6244) | Repr L2μ: 3.6457 | Repr Cosμ: 0.8877 | Pred→Target Cosμ: 0.6634 | Repr NormRatio: 1.0251
+   -> Saved latest checkpoint without validation at step 3240
+Epoch 25/2858 | Steps: 135 | LR: 0.000068 | Train Loss: 1.038389 (P:0.4714, S:0.1960, Q:0.5572) | Repr L2μ: 3.8701 | Repr Cosμ: 0.8726 | Pred→Target Cosμ: 0.6570 | Repr NormRatio: 1.0250
+   -> Saved latest checkpoint without validation at step 3375
+Epoch 26/2858 | Steps: 135 | LR: 0.000070 | Train Loss: 0.980035 (P:0.4278, S:0.1918, Q:0.5427) | Repr L2μ: 3.9886 | Repr Cosμ: 0.8717 | Pred→Target Cosμ: 0.6969 | Repr NormRatio: 1.0223
+   -> Saved latest checkpoint without validation at step 3510
+Epoch 27/2858 | Steps: 135 | LR: 0.000073 | Train Loss: 0.962572 (P:0.4152, S:0.1900, Q:0.5379) | Repr L2μ: 4.2753 | Repr Cosμ: 0.8534 | Pred→Target Cosμ: 0.6989 | Repr NormRatio: 1.0229
+   -> Saved latest checkpoint without validation at step 3645
+Epoch 28/2858 | Steps: 135 | LR: 0.000076 | Train Loss: 0.931669 (P:0.3907, S:0.1859, Q:0.5317) | Repr L2μ: 4.1299 | Repr Cosμ: 0.8669 | Pred→Target Cosμ: 0.7060 | Repr NormRatio: 1.0212
+   -> Saved latest checkpoint without validation at step 3780
+Epoch 29/2858 | Steps: 135 | LR: 0.000078 | Train Loss: 0.908414 (P:0.3720, S:0.1853, Q:0.5272) | Repr L2μ: 4.7016 | Repr Cosμ: 0.8283 | Pred→Target Cosμ: 0.7166 | Repr NormRatio: 1.0291
+   -> Saved latest checkpoint without validation at step 3915
+Epoch 30/2858 | Steps: 135 | LR: 0.000081 | Train Loss: 0.896909 (P:0.3634, S:0.1860, Q:0.5242) | Repr L2μ: 5.1180 | Repr Cosμ: 0.8003 | Pred→Target Cosμ: 0.7159 | Repr NormRatio: 1.0345
+   -> Saved latest checkpoint without validation at step 4050
+Epoch 31/2858 | Steps: 135 | LR: 0.000084 | Train Loss: 0.871279 (P:0.3411, S:0.1828, Q:0.5210) | Repr L2μ: 5.1167 | Repr Cosμ: 0.7987 | Pred→Target Cosμ: 0.7299 | Repr NormRatio: 1.0315
+   -> Saved latest checkpoint without validation at step 4185
+Epoch 32/2858 | Steps: 135 | LR: 0.000086 | Train Loss: 0.871045 (P:0.3430, S:0.1852, Q:0.5188) | Repr L2μ: 5.3337 | Repr Cosμ: 0.7782 | Pred→Target Cosμ: 0.7049 | Repr NormRatio: 1.0360
+   -> Saved latest checkpoint without validation at step 4320
+Epoch 33/2858 | Steps: 135 | LR: 0.000089 | Train Loss: 0.873785 (P:0.3482, S:0.1854, Q:0.5163) | Repr L2μ: 5.4724 | Repr Cosμ: 0.7648 | Pred→Target Cosμ: 0.6861 | Repr NormRatio: 1.0373
+   -> Saved latest checkpoint without validation at step 4455
+Epoch 34/2858 | Steps: 135 | LR: 0.000092 | Train Loss: 0.850055 (P:0.3268, S:0.1870, Q:0.5139) | Repr L2μ: 5.8310 | Repr Cosμ: 0.7296 | Pred→Target Cosμ: 0.6953 | Repr NormRatio: 1.0445
+   -> Saved latest checkpoint without validation at step 4590
+Epoch 35/2858 | Steps: 135 | LR: 0.000095 | Train Loss: 0.822005 (P:0.3019, S:0.1793, Q:0.5112) | Repr L2μ: 5.5846 | Repr Cosμ: 0.7553 | Pred→Target Cosμ: 0.7116 | Repr NormRatio: 1.0391
+   -> Saved latest checkpoint without validation at step 4725
+Epoch 36/2858 | Steps: 135 | LR: 0.000097 | Train Loss: 0.824845 (P:0.3067, S:0.1813, Q:0.5091) | Repr L2μ: 6.1838 | Repr Cosμ: 0.6928 | Pred→Target Cosμ: 0.6880 | Repr NormRatio: 1.0441
+   -> Saved latest checkpoint without validation at step 4860
+Epoch 37/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.792494 (P:0.2769, S:0.1755, Q:0.5068) | Repr L2μ: 5.8949 | Repr Cosμ: 0.7249 | Pred→Target Cosμ: 0.7193 | Repr NormRatio: 1.0358
+   -> Saved latest checkpoint without validation at step 4995
+Epoch 38/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.793035 (P:0.2783, S:0.1786, Q:0.5058) | Repr L2μ: 5.2240 | Repr Cosμ: 0.7808 | Pred→Target Cosμ: 0.7080 | Repr NormRatio: 1.0304
+   -> Saved latest checkpoint without validation at step 5130
+Epoch 39/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.782831 (P:0.2698, S:0.1747, Q:0.5043) | Repr L2μ: 5.4708 | Repr Cosμ: 0.7723 | Pred→Target Cosμ: 0.7078 | Repr NormRatio: 1.0280
+   -> Saved latest checkpoint without validation at step 5265
+Epoch 40/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.770923 (P:0.2610, S:0.1719, Q:0.5013) | Repr L2μ: 5.8762 | Repr Cosμ: 0.7312 | Pred→Target Cosμ: 0.7136 | Repr NormRatio: 1.0294
+   -> Saved latest checkpoint without validation at step 5400
+Epoch 41/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.762859 (P:0.2552, S:0.1761, Q:0.4989) | Repr L2μ: 5.9216 | Repr Cosμ: 0.7327 | Pred→Target Cosμ: 0.7126 | Repr NormRatio: 1.0298
+   -> Saved latest checkpoint without validation at step 5535
+Epoch 42/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.759100 (P:0.2515, S:0.1757, Q:0.4989) | Repr L2μ: 6.4581 | Repr Cosμ: 0.6785 | Pred→Target Cosμ: 0.7103 | Repr NormRatio: 1.0401
+   -> Saved latest checkpoint without validation at step 5670
+Epoch 43/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.753477 (P:0.2462, S:0.1748, Q:0.4985) | Repr L2μ: 6.5106 | Repr Cosμ: 0.6682 | Pred→Target Cosμ: 0.7182 | Repr NormRatio: 1.0438
+   -> Saved latest checkpoint without validation at step 5805
+Epoch 44/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.759714 (P:0.2545, S:0.1799, Q:0.4962) | Repr L2μ: 6.4748 | Repr Cosμ: 0.6674 | Pred→Target Cosμ: 0.6891 | Repr NormRatio: 1.0583
+   -> Saved latest checkpoint without validation at step 5940
+Epoch 45/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.752067 (P:0.2486, S:0.1756, Q:0.4947) | Repr L2μ: 6.1837 | Repr Cosμ: 0.6859 | Pred→Target Cosμ: 0.6815 | Repr NormRatio: 1.0665
+   -> Saved latest checkpoint without validation at step 6075
+Epoch 46/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.740812 (P:0.2392, S:0.1759, Q:0.4928) | Repr L2μ: 5.7819 | Repr Cosμ: 0.7340 | Pred→Target Cosμ: 0.6892 | Repr NormRatio: 1.0490
+   -> Saved latest checkpoint without validation at step 6210
+Epoch 47/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.735744 (P:0.2356, S:0.1764, Q:0.4914) | Repr L2μ: 5.4807 | Repr Cosμ: 0.7641 | Pred→Target Cosμ: 0.6997 | Repr NormRatio: 1.0386
+   -> Saved latest checkpoint without validation at step 6345
+Epoch 48/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.726262 (P:0.2287, S:0.1733, Q:0.4889) | Repr L2μ: 5.2043 | Repr Cosμ: 0.7883 | Pred→Target Cosμ: 0.7016 | Repr NormRatio: 1.0311
+   -> Saved latest checkpoint without validation at step 6480
+Epoch 49/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.715202 (P:0.2201, S:0.1717, Q:0.4865) | Repr L2μ: 5.6229 | Repr Cosμ: 0.7502 | Pred→Target Cosμ: 0.7067 | Repr NormRatio: 1.0328
+   -> Saved latest checkpoint without validation at step 6615
+Epoch 50/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.701819 (P:0.2092, S:0.1687, Q:0.4842) | Repr L2μ: 5.5574 | Repr Cosμ: 0.7572 | Pred→Target Cosμ: 0.7166 | Repr NormRatio: 1.0296
+   -> Saved latest checkpoint without validation at step 6750
+Epoch 51/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.699492 (P:0.2091, S:0.1696, Q:0.4819) | Repr L2μ: 5.2558 | Repr Cosμ: 0.7832 | Pred→Target Cosμ: 0.7105 | Repr NormRatio: 1.0257
+   -> Saved latest checkpoint without validation at step 6885
+Epoch 52/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.693696 (P:0.2056, S:0.1691, Q:0.4797) | Repr L2μ: 4.9378 | Repr Cosμ: 0.8126 | Pred→Target Cosμ: 0.7046 | Repr NormRatio: 1.0239
+   -> Saved latest checkpoint without validation at step 7020
+Epoch 53/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.682903 (P:0.1971, S:0.1633, Q:0.4776) | Repr L2μ: 5.3609 | Repr Cosμ: 0.7763 | Pred→Target Cosμ: 0.7224 | Repr NormRatio: 1.0259
+   -> Saved latest checkpoint without validation at step 7155
+Epoch 54/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.682400 (P:0.1983, S:0.1655, Q:0.4758) | Repr L2μ: 5.0160 | Repr Cosμ: 0.8061 | Pred→Target Cosμ: 0.7125 | Repr NormRatio: 1.0226
+   -> Saved latest checkpoint without validation at step 7290
+Epoch 55/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.679046 (P:0.1968, S:0.1624, Q:0.4741) | Repr L2μ: 5.1499 | Repr Cosμ: 0.7937 | Pred→Target Cosμ: 0.7129 | Repr NormRatio: 1.0229
+   -> Saved latest checkpoint without validation at step 7425
+Epoch 56/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.673672 (P:0.1939, S:0.1643, Q:0.4716) | Repr L2μ: 5.3617 | Repr Cosμ: 0.7728 | Pred→Target Cosμ: 0.7163 | Repr NormRatio: 1.0230
+   -> Saved latest checkpoint without validation at step 7560
+Epoch 57/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.674516 (P:0.1986, S:0.1637, Q:0.4678) | Repr L2μ: 5.0918 | Repr Cosμ: 0.7942 | Pred→Target Cosμ: 0.7061 | Repr NormRatio: 1.0208
+   -> Saved latest checkpoint without validation at step 7695
+Epoch 58/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.668350 (P:0.1963, S:0.1610, Q:0.4640) | Repr L2μ: 5.0259 | Repr Cosμ: 0.7989 | Pred→Target Cosμ: 0.7026 | Repr NormRatio: 1.0200
+   -> Saved latest checkpoint without validation at step 7830
+Epoch 59/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.660966 (P:0.1909, S:0.1612, Q:0.4620) | Repr L2μ: 5.1683 | Repr Cosμ: 0.7845 | Pred→Target Cosμ: 0.7159 | Repr NormRatio: 1.0207
+   -> Saved latest checkpoint without validation at step 7965
+Epoch 60/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.658931 (P:0.1902, S:0.1614, Q:0.4606) | Repr L2μ: 5.3547 | Repr Cosμ: 0.7656 | Pred→Target Cosμ: 0.7067 | Repr NormRatio: 1.0224
+   -> Saved latest checkpoint without validation at step 8100
+Epoch 61/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.660088 (P:0.1922, S:0.1617, Q:0.4598) | Repr L2μ: 5.1246 | Repr Cosμ: 0.7904 | Pred→Target Cosμ: 0.7016 | Repr NormRatio: 1.0232
+   -> Saved latest checkpoint without validation at step 8235
+Epoch 62/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.656519 (P:0.1894, S:0.1590, Q:0.4592) | Repr L2μ: 5.1200 | Repr Cosμ: 0.7907 | Pred→Target Cosμ: 0.7028 | Repr NormRatio: 1.0229
+   -> Saved latest checkpoint without validation at step 8370
+Epoch 63/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.657637 (P:0.1913, S:0.1596, Q:0.4584) | Repr L2μ: 4.9672 | Repr Cosμ: 0.8027 | Pred→Target Cosμ: 0.7021 | Repr NormRatio: 1.0225
+   -> Saved latest checkpoint without validation at step 8505
+Epoch 64/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.650309 (P:0.1848, S:0.1573, Q:0.4577) | Repr L2μ: 4.8910 | Repr Cosμ: 0.8101 | Pred→Target Cosμ: 0.7082 | Repr NormRatio: 1.0212
+   -> Saved latest checkpoint without validation at step 8640
+Epoch 65/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.651885 (P:0.1865, S:0.1614, Q:0.4573) | Repr L2μ: 4.8751 | Repr Cosμ: 0.8075 | Pred→Target Cosμ: 0.7031 | Repr NormRatio: 1.0203
+   -> Saved latest checkpoint without validation at step 8775
+Epoch 66/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.651236 (P:0.1866, S:0.1603, Q:0.4567) | Repr L2μ: 5.0908 | Repr Cosμ: 0.7891 | Pred→Target Cosμ: 0.7057 | Repr NormRatio: 1.0218
+   -> Saved latest checkpoint without validation at step 8910
+Epoch 67/2858 | Steps: 135 | LR: 0.000100 | Train Loss: 0.652991 (P:0.1891, S:0.1600, Q:0.4559) | Repr L2μ: 4.9633 | Repr Cosμ: 0.7983 | Pred→Target Cosμ: 0.6986 | Repr NormRatio: 1.0249
+   -> Saved latest checkpoint without validation at step 9045
+Terminated

@@ -1,0 +1,1322 @@
+nohup: ignoring input
+Text metadata preview | dataset=EthanolConcentration | domain=UEA | channels=3
+   - channel_1: In the UEA domain, this channel belongs to the EthanolConcentration dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the EthanolConcentration dataset and represents the feature channel 2.
+   - ... (1 more channel descriptions)
+Stats metadata preview | dataset=EthanolConcentration | domain=UEA | channels=3
+   - channel_1: Channel statistics over the training split: mean value is 9857.234, standard deviation is 10630.394, minimum value is -111.450, maximum value is 64384.000, median value is 4746.000, and mean absolute value is 9857.249.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: EthanolConcentration (Channels: 3)
+📊 Pretrain Info: electricity
+📊 Classes: 4 | Sequence Length: 1751
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 71/71 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text_stats_avg, fusion=add, relation=none
+ℹ️  Metadata Fusion Mode: add
+ℹ️  Channel Mixer Relation Mode: none
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 4]
+Epoch   1/50 | Train Loss: 1.4193 Acc: 0.2054 F1: 0.1526 | Val Loss: 1.4290 Acc: 0.1154 F1: 0.0517
+Validation Loss decreased (inf --> 1.428986). Saving best model...
+Epoch   2/50 | Train Loss: 1.3410 Acc: 0.2500 F1: 0.1922 | Val Loss: 1.3969 Acc: 0.1923 F1: 0.0806
+Validation Loss decreased (1.428986 --> 1.396921). Saving best model...
+Epoch   3/50 | Train Loss: 1.3276 Acc: 0.2634 F1: 0.1687 | Val Loss: 1.4557 Acc: 0.1154 F1: 0.0517
+Epoch   4/50 | Train Loss: 1.3255 Acc: 0.2634 F1: 0.1256 | Val Loss: 1.3933 Acc: 0.1923 F1: 0.0833
+Validation Loss decreased (1.396921 --> 1.393342). Saving best model...
+Epoch   5/50 | Train Loss: 1.3255 Acc: 0.2366 F1: 0.1871 | Val Loss: 1.3985 Acc: 0.2308 F1: 0.1399
+Epoch   6/50 | Train Loss: 1.3255 Acc: 0.2812 F1: 0.2187 | Val Loss: 1.4123 Acc: 0.1154 F1: 0.0517
+Epoch   7/50 | Train Loss: 1.3242 Acc: 0.2366 F1: 0.1412 | Val Loss: 1.3859 Acc: 0.3462 F1: 0.1286
+Validation Loss decreased (1.393342 --> 1.385912). Saving best model...
+Epoch   8/50 | Train Loss: 1.3271 Acc: 0.2277 F1: 0.1632 | Val Loss: 1.4192 Acc: 0.1154 F1: 0.0517
+Epoch   9/50 | Train Loss: 1.3222 Acc: 0.2411 F1: 0.1305 | Val Loss: 1.4396 Acc: 0.1154 F1: 0.0517
+Epoch  10/50 | Train Loss: 1.3281 Acc: 0.2634 F1: 0.1587 | Val Loss: 1.4460 Acc: 0.1923 F1: 0.0862
+Epoch  11/50 | Train Loss: 1.3197 Acc: 0.2812 F1: 0.1854 | Val Loss: 1.4179 Acc: 0.1154 F1: 0.0517
+Epoch  12/50 | Train Loss: 1.3303 Acc: 0.2723 F1: 0.1070 | Val Loss: 1.4066 Acc: 0.1154 F1: 0.0517
+Epoch  13/50 | Train Loss: 1.3257 Acc: 0.2545 F1: 0.1549 | Val Loss: 1.4063 Acc: 0.1923 F1: 0.0806
+Epoch  14/50 | Train Loss: 1.3220 Acc: 0.2634 F1: 0.1948 | Val Loss: 1.4181 Acc: 0.1154 F1: 0.0517
+Epoch  15/50 | Train Loss: 1.3403 Acc: 0.2723 F1: 0.2050 | Val Loss: 1.3697 Acc: 0.3462 F1: 0.2042
+Validation Loss decreased (1.385912 --> 1.369745). Saving best model...
+Epoch  16/50 | Train Loss: 1.3236 Acc: 0.2545 F1: 0.1821 | Val Loss: 1.4531 Acc: 0.1154 F1: 0.0889
+Epoch  17/50 | Train Loss: 1.3246 Acc: 0.2277 F1: 0.1752 | Val Loss: 1.3768 Acc: 0.3462 F1: 0.2045
+Epoch  18/50 | Train Loss: 1.3218 Acc: 0.2679 F1: 0.2007 | Val Loss: 1.4028 Acc: 0.1154 F1: 0.0517
+Epoch  19/50 | Train Loss: 1.3207 Acc: 0.2366 F1: 0.2028 | Val Loss: 1.3985 Acc: 0.1923 F1: 0.0806
+Epoch  20/50 | Train Loss: 1.3209 Acc: 0.2634 F1: 0.1719 | Val Loss: 1.4465 Acc: 0.1154 F1: 0.0517
+Epoch  21/50 | Train Loss: 1.3172 Acc: 0.2857 F1: 0.1426 | Val Loss: 1.3816 Acc: 0.3846 F1: 0.3339
+Epoch  22/50 | Train Loss: 1.3210 Acc: 0.2946 F1: 0.1938 | Val Loss: 1.3736 Acc: 0.3462 F1: 0.1989
+Epoch  23/50 | Train Loss: 1.3278 Acc: 0.2768 F1: 0.2154 | Val Loss: 1.4297 Acc: 0.1538 F1: 0.0714
+Epoch  24/50 | Train Loss: 1.3144 Acc: 0.2812 F1: 0.2013 | Val Loss: 1.3677 Acc: 0.3846 F1: 0.2983
+Validation Loss decreased (1.369745 --> 1.367722). Saving best model...
+Epoch  25/50 | Train Loss: 1.3223 Acc: 0.2679 F1: 0.1701 | Val Loss: 1.4105 Acc: 0.2308 F1: 0.1667
+Epoch  26/50 | Train Loss: 1.3212 Acc: 0.2232 F1: 0.1871 | Val Loss: 1.3943 Acc: 0.1923 F1: 0.1734
+Epoch  27/50 | Train Loss: 1.3164 Acc: 0.2455 F1: 0.1395 | Val Loss: 1.4087 Acc: 0.1154 F1: 0.0517
+Epoch  28/50 | Train Loss: 1.3151 Acc: 0.2545 F1: 0.1496 | Val Loss: 1.4029 Acc: 0.2692 F1: 0.1771
+Epoch  29/50 | Train Loss: 1.3159 Acc: 0.2589 F1: 0.1728 | Val Loss: 1.3932 Acc: 0.2308 F1: 0.1886
+Epoch  30/50 | Train Loss: 1.3218 Acc: 0.2634 F1: 0.1916 | Val Loss: 1.3894 Acc: 0.3462 F1: 0.2760
+Epoch  31/50 | Train Loss: 1.3204 Acc: 0.2857 F1: 0.2376 | Val Loss: 1.4146 Acc: 0.1923 F1: 0.1214
+Epoch  32/50 | Train Loss: 1.3252 Acc: 0.2589 F1: 0.2017 | Val Loss: 1.3932 Acc: 0.3077 F1: 0.2303
+Epoch  33/50 | Train Loss: 1.3257 Acc: 0.2589 F1: 0.1259 | Val Loss: 1.4326 Acc: 0.1154 F1: 0.0517
+Epoch  34/50 | Train Loss: 1.3257 Acc: 0.2723 F1: 0.2201 | Val Loss: 1.3421 Acc: 0.3462 F1: 0.2045
+Validation Loss decreased (1.367722 --> 1.342140). Saving best model...
+Epoch  35/50 | Train Loss: 1.3199 Acc: 0.2991 F1: 0.2996 | Val Loss: 1.4395 Acc: 0.1538 F1: 0.1080
+Epoch  36/50 | Train Loss: 1.3242 Acc: 0.2500 F1: 0.1871 | Val Loss: 1.3800 Acc: 0.3077 F1: 0.2322
+Epoch  37/50 | Train Loss: 1.3162 Acc: 0.2545 F1: 0.1963 | Val Loss: 1.4291 Acc: 0.1923 F1: 0.0862
+Epoch  38/50 | Train Loss: 1.3209 Acc: 0.2188 F1: 0.1648 | Val Loss: 1.4019 Acc: 0.2692 F1: 0.1754
+Epoch  39/50 | Train Loss: 1.3190 Acc: 0.2634 F1: 0.2440 | Val Loss: 1.3923 Acc: 0.2308 F1: 0.1465
+Epoch  40/50 | Train Loss: 1.3138 Acc: 0.2545 F1: 0.2044 | Val Loss: 1.3896 Acc: 0.3077 F1: 0.2303
+Epoch  41/50 | Train Loss: 1.3156 Acc: 0.2634 F1: 0.1957 | Val Loss: 1.4090 Acc: 0.2692 F1: 0.1833
+Epoch  42/50 | Train Loss: 1.3170 Acc: 0.2812 F1: 0.2356 | Val Loss: 1.3715 Acc: 0.3462 F1: 0.2042
+Epoch  43/50 | Train Loss: 1.3133 Acc: 0.2768 F1: 0.2333 | Val Loss: 1.4185 Acc: 0.2308 F1: 0.1333
+Epoch  44/50 | Train Loss: 1.3155 Acc: 0.2946 F1: 0.1934 | Val Loss: 1.4181 Acc: 0.1538 F1: 0.1080
+Epoch  45/50 | Train Loss: 1.3152 Acc: 0.2634 F1: 0.2252 | Val Loss: 1.3876 Acc: 0.3077 F1: 0.2420
+Epoch  46/50 | Train Loss: 1.3169 Acc: 0.2991 F1: 0.2353 | Val Loss: 1.3926 Acc: 0.3846 F1: 0.3760
+Epoch  47/50 | Train Loss: 1.3156 Acc: 0.2634 F1: 0.2233 | Val Loss: 1.3859 Acc: 0.2692 F1: 0.1703
+Epoch  48/50 | Train Loss: 1.3280 Acc: 0.2768 F1: 0.2141 | Val Loss: 1.3598 Acc: 0.3462 F1: 0.1875
+Epoch  49/50 | Train Loss: 1.3186 Acc: 0.2500 F1: 0.2341 | Val Loss: 1.4479 Acc: 0.2308 F1: 0.2159
+Epoch  50/50 | Train Loss: 1.3233 Acc: 0.2545 F1: 0.2292 | Val Loss: 1.4107 Acc: 0.2308 F1: 0.1399
+
+Classification Test Result (EthanolConcentration)
+Accuracy : 0.269962
+F1 (macro): 0.180309
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_EthanolConcentration_laya_mixer_text_stats_avg/attention_maps
+Text metadata preview | dataset=FaceDetection | domain=UEA | channels=144
+   - channel_1: In the UEA domain, this channel belongs to the FaceDetection dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the FaceDetection dataset and represents the feature channel 2.
+   - ... (142 more channel descriptions)
+Stats metadata preview | dataset=FaceDetection | domain=UEA | channels=144
+   - channel_1: Channel statistics over the training split: mean value is 0.001, standard deviation is 0.968, minimum value is -12.542, maximum value is 17.217, median value is -0.001, and mean absolute value is 0.736.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: FaceDetection (Channels: 144)
+📊 Pretrain Info: electricity
+📊 Classes: 2 | Sequence Length: 62
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 71/71 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text_stats_avg, fusion=add, relation=none
+ℹ️  Metadata Fusion Mode: add
+ℹ️  Channel Mixer Relation Mode: none
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 2]
+Epoch   1/50 | Train Loss: 0.7008 Acc: 0.5036 F1: 0.5036 | Val Loss: 0.6983 Acc: 0.4805 F1: 0.3245
+Validation Loss decreased (inf --> 0.698251). Saving best model...
+Epoch   2/50 | Train Loss: 0.6990 Acc: 0.4981 F1: 0.4965 | Val Loss: 0.6971 Acc: 0.4805 F1: 0.3245
+Validation Loss decreased (0.698251 --> 0.697140). Saving best model...
+Epoch   3/50 | Train Loss: 0.6991 Acc: 0.4858 F1: 0.4857 | Val Loss: 0.6924 Acc: 0.5178 F1: 0.3564
+Validation Loss decreased (0.697140 --> 0.692424). Saving best model...
+Epoch   4/50 | Train Loss: 0.6953 Acc: 0.4998 F1: 0.4984 | Val Loss: 0.7017 Acc: 0.5178 F1: 0.3443
+Epoch   5/50 | Train Loss: 0.6987 Acc: 0.4951 F1: 0.4951 | Val Loss: 0.6920 Acc: 0.5178 F1: 0.3504
+Validation Loss decreased (0.692424 --> 0.691995). Saving best model...
+Epoch   6/50 | Train Loss: 0.6955 Acc: 0.5072 F1: 0.5065 | Val Loss: 0.6918 Acc: 0.5263 F1: 0.4687
+Validation Loss decreased (0.691995 --> 0.691809). Saving best model...
+Epoch   7/50 | Train Loss: 0.6970 Acc: 0.4985 F1: 0.4969 | Val Loss: 0.6946 Acc: 0.4839 F1: 0.3427
+Epoch   8/50 | Train Loss: 0.6970 Acc: 0.5077 F1: 0.5064 | Val Loss: 0.6916 Acc: 0.5263 F1: 0.5187
+Validation Loss decreased (0.691809 --> 0.691625). Saving best model...
+Epoch   9/50 | Train Loss: 0.6948 Acc: 0.5049 F1: 0.5027 | Val Loss: 0.6987 Acc: 0.4805 F1: 0.3245
+Epoch  10/50 | Train Loss: 0.6970 Acc: 0.5142 F1: 0.5139 | Val Loss: 0.7094 Acc: 0.4805 F1: 0.3245
+Epoch  11/50 | Train Loss: 0.6964 Acc: 0.5121 F1: 0.5121 | Val Loss: 0.7042 Acc: 0.4805 F1: 0.3245
+Epoch  12/50 | Train Loss: 0.6962 Acc: 0.5059 F1: 0.5059 | Val Loss: 0.6907 Acc: 0.5246 F1: 0.3871
+Validation Loss decreased (0.691625 --> 0.690658). Saving best model...
+Epoch  13/50 | Train Loss: 0.6959 Acc: 0.5015 F1: 0.5011 | Val Loss: 0.6907 Acc: 0.5280 F1: 0.3756
+Epoch  14/50 | Train Loss: 0.6944 Acc: 0.5142 F1: 0.5141 | Val Loss: 0.6980 Acc: 0.5178 F1: 0.3443
+Epoch  15/50 | Train Loss: 0.6951 Acc: 0.5162 F1: 0.5162 | Val Loss: 0.6906 Acc: 0.5433 F1: 0.5410
+Validation Loss decreased (0.690658 --> 0.690572). Saving best model...
+Epoch  16/50 | Train Loss: 0.6941 Acc: 0.5121 F1: 0.5094 | Val Loss: 0.6930 Acc: 0.5008 F1: 0.4025
+Epoch  17/50 | Train Loss: 0.6947 Acc: 0.5128 F1: 0.5128 | Val Loss: 0.7014 Acc: 0.4805 F1: 0.3245
+Epoch  18/50 | Train Loss: 0.6944 Acc: 0.5028 F1: 0.5028 | Val Loss: 0.7269 Acc: 0.4822 F1: 0.3282
+Epoch  19/50 | Train Loss: 0.6964 Acc: 0.5125 F1: 0.5107 | Val Loss: 0.7044 Acc: 0.4805 F1: 0.3245
+Epoch  20/50 | Train Loss: 0.6949 Acc: 0.5077 F1: 0.5071 | Val Loss: 0.6904 Acc: 0.5280 F1: 0.5280
+Validation Loss decreased (0.690572 --> 0.690428). Saving best model...
+Epoch  21/50 | Train Loss: 0.6939 Acc: 0.5025 F1: 0.5020 | Val Loss: 0.6947 Acc: 0.4890 F1: 0.3530
+Epoch  22/50 | Train Loss: 0.6927 Acc: 0.5153 F1: 0.5124 | Val Loss: 0.6945 Acc: 0.4941 F1: 0.3632
+Epoch  23/50 | Train Loss: 0.6955 Acc: 0.5042 F1: 0.5040 | Val Loss: 0.6921 Acc: 0.5212 F1: 0.4523
+Epoch  24/50 | Train Loss: 0.6948 Acc: 0.5051 F1: 0.5042 | Val Loss: 0.6924 Acc: 0.4992 F1: 0.4072
+Epoch  25/50 | Train Loss: 0.6932 Acc: 0.5227 F1: 0.5214 | Val Loss: 0.7036 Acc: 0.5178 F1: 0.3443
+Epoch  26/50 | Train Loss: 0.6929 Acc: 0.5187 F1: 0.5184 | Val Loss: 0.6891 Acc: 0.5365 F1: 0.4386
+Validation Loss decreased (0.690428 --> 0.689064). Saving best model...
+Epoch  27/50 | Train Loss: 0.6933 Acc: 0.5144 F1: 0.5143 | Val Loss: 0.6907 Acc: 0.5195 F1: 0.3630
+Epoch  28/50 | Train Loss: 0.6944 Acc: 0.5140 F1: 0.5138 | Val Loss: 0.6910 Acc: 0.5365 F1: 0.5150
+Epoch  29/50 | Train Loss: 0.6926 Acc: 0.5244 F1: 0.5244 | Val Loss: 0.6907 Acc: 0.5229 F1: 0.5115
+Epoch  30/50 | Train Loss: 0.6931 Acc: 0.5223 F1: 0.5219 | Val Loss: 0.7182 Acc: 0.4805 F1: 0.3245
+Epoch  31/50 | Train Loss: 0.6933 Acc: 0.5128 F1: 0.5128 | Val Loss: 0.7009 Acc: 0.4822 F1: 0.3282
+Epoch  32/50 | Train Loss: 0.6927 Acc: 0.5087 F1: 0.5067 | Val Loss: 0.6964 Acc: 0.4839 F1: 0.3400
+Epoch  33/50 | Train Loss: 0.6929 Acc: 0.5111 F1: 0.5089 | Val Loss: 0.6909 Acc: 0.5467 F1: 0.5170
+Epoch  34/50 | Train Loss: 0.6927 Acc: 0.5038 F1: 0.5038 | Val Loss: 0.6956 Acc: 0.4839 F1: 0.3427
+Epoch  35/50 | Train Loss: 0.6928 Acc: 0.5104 F1: 0.5101 | Val Loss: 0.6934 Acc: 0.4975 F1: 0.3881
+Epoch  36/50 | Train Loss: 0.6925 Acc: 0.5100 F1: 0.5099 | Val Loss: 0.6908 Acc: 0.5416 F1: 0.5103
+Epoch  37/50 | Train Loss: 0.6935 Acc: 0.5070 F1: 0.5060 | Val Loss: 0.6903 Acc: 0.5280 F1: 0.5149
+Epoch  38/50 | Train Loss: 0.6919 Acc: 0.5138 F1: 0.5108 | Val Loss: 0.6885 Acc: 0.5365 F1: 0.4876
+Validation Loss decreased (0.689064 --> 0.688475). Saving best model...
+Epoch  39/50 | Train Loss: 0.6930 Acc: 0.5119 F1: 0.5119 | Val Loss: 0.6898 Acc: 0.5331 F1: 0.5260
+Epoch  40/50 | Train Loss: 0.6916 Acc: 0.5185 F1: 0.5184 | Val Loss: 0.6882 Acc: 0.5382 F1: 0.4924
+Validation Loss decreased (0.688475 --> 0.688237). Saving best model...
+Epoch  41/50 | Train Loss: 0.6925 Acc: 0.5108 F1: 0.5108 | Val Loss: 0.6930 Acc: 0.4975 F1: 0.3881
+Epoch  42/50 | Train Loss: 0.6922 Acc: 0.5153 F1: 0.5146 | Val Loss: 0.6887 Acc: 0.5280 F1: 0.4082
+Epoch  43/50 | Train Loss: 0.6924 Acc: 0.5132 F1: 0.5132 | Val Loss: 0.6913 Acc: 0.5280 F1: 0.4823
+Epoch  44/50 | Train Loss: 0.6915 Acc: 0.5149 F1: 0.5147 | Val Loss: 0.6920 Acc: 0.5093 F1: 0.4298
+Epoch  45/50 | Train Loss: 0.6920 Acc: 0.5136 F1: 0.5124 | Val Loss: 0.6889 Acc: 0.5297 F1: 0.4115
+Epoch  46/50 | Train Loss: 0.6930 Acc: 0.5125 F1: 0.5124 | Val Loss: 0.6899 Acc: 0.5450 F1: 0.5301
+Epoch  47/50 | Train Loss: 0.6912 Acc: 0.5244 F1: 0.5243 | Val Loss: 0.6942 Acc: 0.4975 F1: 0.3815
+Epoch  48/50 | Train Loss: 0.6915 Acc: 0.5206 F1: 0.5205 | Val Loss: 0.6893 Acc: 0.5501 F1: 0.5493
+Epoch  49/50 | Train Loss: 0.6914 Acc: 0.5240 F1: 0.5238 | Val Loss: 0.6967 Acc: 0.4839 F1: 0.3427
+Epoch  50/50 | Train Loss: 0.6917 Acc: 0.5147 F1: 0.5146 | Val Loss: 0.6890 Acc: 0.5467 F1: 0.5455
+
+Classification Test Result (FaceDetection)
+Accuracy : 0.513621
+F1 (macro): 0.473927
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_FaceDetection_laya_mixer_text_stats_avg/attention_maps
+Text metadata preview | dataset=Handwriting | domain=UEA | channels=3
+   - channel_1: In the UEA domain, this channel belongs to the Handwriting dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the Handwriting dataset and represents the feature channel 2.
+   - ... (1 more channel descriptions)
+Stats metadata preview | dataset=Handwriting | domain=UEA | channels=3
+   - channel_1: Channel statistics over the training split: mean value is 0.000, standard deviation is 0.997, minimum value is -5.802, maximum value is 9.106, median value is 0.004, and mean absolute value is 0.538.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: Handwriting (Channels: 3)
+📊 Pretrain Info: electricity
+📊 Classes: 26 | Sequence Length: 152
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 71/71 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text_stats_avg, fusion=add, relation=none
+ℹ️  Metadata Fusion Mode: add
+ℹ️  Channel Mixer Relation Mode: none
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 26]
+Epoch   1/50 | Train Loss: 3.2440 Acc: 0.0391 F1: 0.0071 | Val Loss: 3.1421 Acc: 0.0667 F1: 0.0104
+Validation Loss decreased (inf --> 3.142053). Saving best model...
+Epoch   2/50 | Train Loss: 3.0807 Acc: 0.0547 F1: 0.0046 | Val Loss: 3.2423 Acc: 0.0667 F1: 0.0104
+Epoch   3/50 | Train Loss: 3.0254 Acc: 0.0781 F1: 0.0056 | Val Loss: 3.3289 Acc: 0.0667 F1: 0.0104
+Epoch   4/50 | Train Loss: 3.0246 Acc: 0.0703 F1: 0.0051 | Val Loss: 3.3690 Acc: 0.0667 F1: 0.0104
+Epoch   5/50 | Train Loss: 3.0287 Acc: 0.1016 F1: 0.0140 | Val Loss: 3.3768 Acc: 0.0667 F1: 0.0140
+Epoch   6/50 | Train Loss: 3.0053 Acc: 0.0938 F1: 0.0134 | Val Loss: 3.3623 Acc: 0.0667 F1: 0.0104
+Epoch   7/50 | Train Loss: 3.0076 Acc: 0.0781 F1: 0.0098 | Val Loss: 3.3843 Acc: 0.0667 F1: 0.0140
+Epoch   8/50 | Train Loss: 2.9975 Acc: 0.1016 F1: 0.0155 | Val Loss: 3.4083 Acc: 0.0000 F1: 0.0000
+Epoch   9/50 | Train Loss: 3.0095 Acc: 0.0938 F1: 0.0181 | Val Loss: 3.3853 Acc: 0.1333 F1: 0.0394
+Epoch  10/50 | Train Loss: 3.0072 Acc: 0.1094 F1: 0.0152 | Val Loss: 3.3725 Acc: 0.1333 F1: 0.0394
+Epoch  11/50 | Train Loss: 2.9949 Acc: 0.0859 F1: 0.0114 | Val Loss: 3.3886 Acc: 0.1333 F1: 0.0410
+Epoch  12/50 | Train Loss: 3.0004 Acc: 0.0781 F1: 0.0139 | Val Loss: 3.3923 Acc: 0.0667 F1: 0.0104
+Epoch  13/50 | Train Loss: 3.0005 Acc: 0.1172 F1: 0.0161 | Val Loss: 3.3722 Acc: 0.0667 F1: 0.0256
+Epoch  14/50 | Train Loss: 2.9777 Acc: 0.1172 F1: 0.0201 | Val Loss: 3.4045 Acc: 0.0667 F1: 0.0220
+Epoch  15/50 | Train Loss: 2.9944 Acc: 0.1250 F1: 0.0212 | Val Loss: 3.3751 Acc: 0.0667 F1: 0.0104
+Epoch  16/50 | Train Loss: 2.9933 Acc: 0.0781 F1: 0.0057 | Val Loss: 3.3465 Acc: 0.0667 F1: 0.0104
+Epoch  17/50 | Train Loss: 2.9762 Acc: 0.0781 F1: 0.0056 | Val Loss: 3.3431 Acc: 0.0667 F1: 0.0104
+Epoch  18/50 | Train Loss: 2.9860 Acc: 0.0781 F1: 0.0057 | Val Loss: 3.3390 Acc: 0.0667 F1: 0.0104
+Epoch  19/50 | Train Loss: 3.0042 Acc: 0.0859 F1: 0.0134 | Val Loss: 3.3637 Acc: 0.0667 F1: 0.0110
+Epoch  20/50 | Train Loss: 2.9905 Acc: 0.1016 F1: 0.0145 | Val Loss: 3.4024 Acc: 0.0667 F1: 0.0171
+Epoch  21/50 | Train Loss: 2.9904 Acc: 0.1094 F1: 0.0148 | Val Loss: 3.3654 Acc: 0.0667 F1: 0.0118
+Epoch  22/50 | Train Loss: 2.9890 Acc: 0.1016 F1: 0.0138 | Val Loss: 3.3371 Acc: 0.0667 F1: 0.0128
+Epoch  23/50 | Train Loss: 2.9773 Acc: 0.1250 F1: 0.0245 | Val Loss: 3.3289 Acc: 0.1333 F1: 0.0479
+Epoch  24/50 | Train Loss: 2.9790 Acc: 0.1172 F1: 0.0226 | Val Loss: 3.3527 Acc: 0.0667 F1: 0.0118
+Epoch  25/50 | Train Loss: 2.9767 Acc: 0.0938 F1: 0.0185 | Val Loss: 3.3392 Acc: 0.1333 F1: 0.0545
+Epoch  26/50 | Train Loss: 2.9620 Acc: 0.1016 F1: 0.0140 | Val Loss: 3.3413 Acc: 0.0667 F1: 0.0104
+Epoch  27/50 | Train Loss: 2.9797 Acc: 0.1172 F1: 0.0252 | Val Loss: 3.3755 Acc: 0.1333 F1: 0.0427
+Epoch  28/50 | Train Loss: 2.9786 Acc: 0.0938 F1: 0.0180 | Val Loss: 3.3661 Acc: 0.0667 F1: 0.0103
+Epoch  29/50 | Train Loss: 2.9766 Acc: 0.0781 F1: 0.0120 | Val Loss: 3.3454 Acc: 0.0667 F1: 0.0104
+Epoch  30/50 | Train Loss: 2.9727 Acc: 0.1016 F1: 0.0149 | Val Loss: 3.3627 Acc: 0.0667 F1: 0.0128
+Epoch  31/50 | Train Loss: 2.9595 Acc: 0.1172 F1: 0.0154 | Val Loss: 3.3481 Acc: 0.0667 F1: 0.0171
+Epoch  32/50 | Train Loss: 2.9559 Acc: 0.1094 F1: 0.0148 | Val Loss: 3.3438 Acc: 0.0667 F1: 0.0110
+Epoch  33/50 | Train Loss: 2.9726 Acc: 0.0938 F1: 0.0142 | Val Loss: 3.3567 Acc: 0.0667 F1: 0.0118
+Epoch  34/50 | Train Loss: 2.9634 Acc: 0.1016 F1: 0.0189 | Val Loss: 3.3417 Acc: 0.0667 F1: 0.0119
+Epoch  35/50 | Train Loss: 2.9575 Acc: 0.1562 F1: 0.0412 | Val Loss: 3.3552 Acc: 0.1333 F1: 0.0857
+Epoch  36/50 | Train Loss: 2.9627 Acc: 0.1250 F1: 0.0301 | Val Loss: 3.3480 Acc: 0.0667 F1: 0.0179
+Epoch  37/50 | Train Loss: 2.9568 Acc: 0.1328 F1: 0.0258 | Val Loss: 3.3403 Acc: 0.1333 F1: 0.0923
+Epoch  38/50 | Train Loss: 2.9559 Acc: 0.1328 F1: 0.0280 | Val Loss: 3.3392 Acc: 0.0667 F1: 0.0104
+Epoch  39/50 | Train Loss: 2.9442 Acc: 0.1016 F1: 0.0182 | Val Loss: 3.3515 Acc: 0.0667 F1: 0.0104
+Epoch  40/50 | Train Loss: 2.9292 Acc: 0.0938 F1: 0.0170 | Val Loss: 3.3344 Acc: 0.0667 F1: 0.0119
+Epoch  41/50 | Train Loss: 2.9477 Acc: 0.1172 F1: 0.0235 | Val Loss: 3.3436 Acc: 0.0667 F1: 0.0143
+Epoch  42/50 | Train Loss: 2.9539 Acc: 0.1016 F1: 0.0175 | Val Loss: 3.3470 Acc: 0.0667 F1: 0.0171
+Epoch  43/50 | Train Loss: 2.9427 Acc: 0.1094 F1: 0.0291 | Val Loss: 3.3483 Acc: 0.0667 F1: 0.0476
+Epoch  44/50 | Train Loss: 2.9358 Acc: 0.1328 F1: 0.0349 | Val Loss: 3.3499 Acc: 0.1333 F1: 0.0604
+Epoch  45/50 | Train Loss: 2.9455 Acc: 0.1172 F1: 0.0240 | Val Loss: 3.3411 Acc: 0.1333 F1: 0.0940
+Epoch  46/50 | Train Loss: 2.9442 Acc: 0.1172 F1: 0.0216 | Val Loss: 3.3365 Acc: 0.0667 F1: 0.0104
+Epoch  47/50 | Train Loss: 2.9571 Acc: 0.1094 F1: 0.0154 | Val Loss: 3.3601 Acc: 0.0667 F1: 0.0110
+Epoch  48/50 | Train Loss: 2.9339 Acc: 0.1250 F1: 0.0247 | Val Loss: 3.3466 Acc: 0.0667 F1: 0.0119
+Epoch  49/50 | Train Loss: 2.9281 Acc: 0.1172 F1: 0.0263 | Val Loss: 3.3267 Acc: 0.0667 F1: 0.0140
+Epoch  50/50 | Train Loss: 2.9251 Acc: 0.1250 F1: 0.0320 | Val Loss: 3.3196 Acc: 0.0667 F1: 0.0159
+
+Classification Test Result (Handwriting)
+Accuracy : 0.050588
+F1 (macro): 0.003704
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_Handwriting_laya_mixer_text_stats_avg/attention_maps
+Text metadata preview | dataset=Heartbeat | domain=UEA | channels=61
+   - channel_1: In the UEA domain, this channel belongs to the Heartbeat dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the Heartbeat dataset and represents the feature channel 2.
+   - ... (59 more channel descriptions)
+Stats metadata preview | dataset=Heartbeat | domain=UEA | channels=61
+   - channel_1: Channel statistics over the training split: mean value is 0.006, standard deviation is 0.019, minimum value is 0.000, maximum value is 0.889, median value is 0.003, and mean absolute value is 0.006.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: Heartbeat (Channels: 61)
+📊 Pretrain Info: electricity
+📊 Classes: 2 | Sequence Length: 405
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 71/71 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text_stats_avg, fusion=add, relation=none
+ℹ️  Metadata Fusion Mode: add
+ℹ️  Channel Mixer Relation Mode: none
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 2]
+Epoch   1/50 | Train Loss: 0.7153 Acc: 0.5000 F1: 0.4829 | Val Loss: 0.6172 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (inf --> 0.617226). Saving best model...
+Epoch   2/50 | Train Loss: 0.5914 Acc: 0.7330 F1: 0.4230 | Val Loss: 0.6834 Acc: 0.7000 F1: 0.4118
+Epoch   3/50 | Train Loss: 0.5953 Acc: 0.7159 F1: 0.4172 | Val Loss: 0.6132 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.617226 --> 0.613187). Saving best model...
+Epoch   4/50 | Train Loss: 0.5788 Acc: 0.7159 F1: 0.4172 | Val Loss: 0.6166 Acc: 0.7000 F1: 0.4118
+Epoch   5/50 | Train Loss: 0.5696 Acc: 0.7159 F1: 0.4172 | Val Loss: 0.6114 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.613187 --> 0.611433). Saving best model...
+Epoch   6/50 | Train Loss: 0.5714 Acc: 0.7159 F1: 0.4172 | Val Loss: 0.6099 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.611433 --> 0.609904). Saving best model...
+Epoch   7/50 | Train Loss: 0.5626 Acc: 0.7273 F1: 0.4211 | Val Loss: 0.6129 Acc: 0.7000 F1: 0.4118
+Epoch   8/50 | Train Loss: 0.5743 Acc: 0.7159 F1: 0.4172 | Val Loss: 0.6074 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.609904 --> 0.607446). Saving best model...
+Epoch   9/50 | Train Loss: 0.5587 Acc: 0.7273 F1: 0.4211 | Val Loss: 0.6106 Acc: 0.7000 F1: 0.4118
+Epoch  10/50 | Train Loss: 0.5659 Acc: 0.7216 F1: 0.4191 | Val Loss: 0.6050 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.607446 --> 0.604952). Saving best model...
+Epoch  11/50 | Train Loss: 0.5647 Acc: 0.7216 F1: 0.4191 | Val Loss: 0.6105 Acc: 0.7000 F1: 0.4118
+Epoch  12/50 | Train Loss: 0.5677 Acc: 0.7159 F1: 0.4172 | Val Loss: 0.6027 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.604952 --> 0.602710). Saving best model...
+Epoch  13/50 | Train Loss: 0.5670 Acc: 0.7159 F1: 0.4172 | Val Loss: 0.6015 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.602710 --> 0.601487). Saving best model...
+Epoch  14/50 | Train Loss: 0.5635 Acc: 0.7216 F1: 0.4191 | Val Loss: 0.6059 Acc: 0.7000 F1: 0.4118
+Epoch  15/50 | Train Loss: 0.5498 Acc: 0.7330 F1: 0.4230 | Val Loss: 0.6029 Acc: 0.7000 F1: 0.4118
+Epoch  16/50 | Train Loss: 0.5723 Acc: 0.7159 F1: 0.4172 | Val Loss: 0.6007 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.601487 --> 0.600716). Saving best model...
+Epoch  17/50 | Train Loss: 0.5691 Acc: 0.7102 F1: 0.4153 | Val Loss: 0.5977 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.600716 --> 0.597701). Saving best model...
+Epoch  18/50 | Train Loss: 0.5679 Acc: 0.7102 F1: 0.4153 | Val Loss: 0.5978 Acc: 0.7000 F1: 0.4118
+Epoch  19/50 | Train Loss: 0.5699 Acc: 0.7102 F1: 0.4153 | Val Loss: 0.5954 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.597701 --> 0.595382). Saving best model...
+Epoch  20/50 | Train Loss: 0.5613 Acc: 0.7159 F1: 0.4172 | Val Loss: 0.5947 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.595382 --> 0.594724). Saving best model...
+Epoch  21/50 | Train Loss: 0.5488 Acc: 0.7330 F1: 0.4230 | Val Loss: 0.5941 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.594724 --> 0.594120). Saving best model...
+Epoch  22/50 | Train Loss: 0.5396 Acc: 0.7386 F1: 0.4248 | Val Loss: 0.5979 Acc: 0.7000 F1: 0.4118
+Epoch  23/50 | Train Loss: 0.5569 Acc: 0.7216 F1: 0.4191 | Val Loss: 0.5924 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.594120 --> 0.592446). Saving best model...
+Epoch  24/50 | Train Loss: 0.5634 Acc: 0.7102 F1: 0.4153 | Val Loss: 0.5906 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.592446 --> 0.590616). Saving best model...
+Epoch  25/50 | Train Loss: 0.5558 Acc: 0.7216 F1: 0.4191 | Val Loss: 0.5895 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.590616 --> 0.589543). Saving best model...
+Epoch  26/50 | Train Loss: 0.5507 Acc: 0.7273 F1: 0.4211 | Val Loss: 0.5942 Acc: 0.7000 F1: 0.4118
+Epoch  27/50 | Train Loss: 0.5589 Acc: 0.7216 F1: 0.4191 | Val Loss: 0.5873 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.589543 --> 0.587306). Saving best model...
+Epoch  28/50 | Train Loss: 0.5451 Acc: 0.7330 F1: 0.4230 | Val Loss: 0.5890 Acc: 0.7000 F1: 0.4118
+Epoch  29/50 | Train Loss: 0.5694 Acc: 0.7102 F1: 0.4153 | Val Loss: 0.5857 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.587306 --> 0.585702). Saving best model...
+Epoch  30/50 | Train Loss: 0.5550 Acc: 0.7216 F1: 0.4191 | Val Loss: 0.5933 Acc: 0.7000 F1: 0.4118
+Epoch  31/50 | Train Loss: 0.5462 Acc: 0.7273 F1: 0.4211 | Val Loss: 0.5834 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.585702 --> 0.583413). Saving best model...
+Epoch  32/50 | Train Loss: 0.5446 Acc: 0.7330 F1: 0.4230 | Val Loss: 0.5826 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.583413 --> 0.582586). Saving best model...
+Epoch  33/50 | Train Loss: 0.5443 Acc: 0.7273 F1: 0.4211 | Val Loss: 0.5870 Acc: 0.7000 F1: 0.4118
+Epoch  34/50 | Train Loss: 0.5420 Acc: 0.7330 F1: 0.4230 | Val Loss: 0.5806 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.582586 --> 0.580587). Saving best model...
+Epoch  35/50 | Train Loss: 0.5668 Acc: 0.7159 F1: 0.4172 | Val Loss: 0.5851 Acc: 0.7000 F1: 0.4118
+Epoch  36/50 | Train Loss: 0.5472 Acc: 0.7273 F1: 0.4211 | Val Loss: 0.5808 Acc: 0.7000 F1: 0.4118
+Epoch  37/50 | Train Loss: 0.5482 Acc: 0.7216 F1: 0.4191 | Val Loss: 0.5800 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.580587 --> 0.579967). Saving best model...
+Epoch  38/50 | Train Loss: 0.5426 Acc: 0.7273 F1: 0.4211 | Val Loss: 0.5777 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.579967 --> 0.577658). Saving best model...
+Epoch  39/50 | Train Loss: 0.5370 Acc: 0.7386 F1: 0.4248 | Val Loss: 0.5823 Acc: 0.7000 F1: 0.4118
+Epoch  40/50 | Train Loss: 0.5444 Acc: 0.7216 F1: 0.4191 | Val Loss: 0.5746 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.577658 --> 0.574559). Saving best model...
+Epoch  41/50 | Train Loss: 0.5464 Acc: 0.7216 F1: 0.4191 | Val Loss: 0.5737 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.574559 --> 0.573727). Saving best model...
+Epoch  42/50 | Train Loss: 0.5596 Acc: 0.7102 F1: 0.4153 | Val Loss: 0.5726 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.573727 --> 0.572556). Saving best model...
+Epoch  43/50 | Train Loss: 0.5397 Acc: 0.7273 F1: 0.4211 | Val Loss: 0.5717 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.572556 --> 0.571656). Saving best model...
+Epoch  44/50 | Train Loss: 0.5470 Acc: 0.7216 F1: 0.4191 | Val Loss: 0.5722 Acc: 0.7000 F1: 0.4118
+Epoch  45/50 | Train Loss: 0.5311 Acc: 0.7330 F1: 0.4230 | Val Loss: 0.5704 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.571656 --> 0.570448). Saving best model...
+Epoch  46/50 | Train Loss: 0.5435 Acc: 0.7216 F1: 0.4191 | Val Loss: 0.5690 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.570448 --> 0.568953). Saving best model...
+Epoch  47/50 | Train Loss: 0.5369 Acc: 0.7273 F1: 0.4211 | Val Loss: 0.5700 Acc: 0.7000 F1: 0.4118
+Epoch  48/50 | Train Loss: 0.5477 Acc: 0.7159 F1: 0.4172 | Val Loss: 0.5672 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.568953 --> 0.567208). Saving best model...
+Epoch  49/50 | Train Loss: 0.5440 Acc: 0.7216 F1: 0.4191 | Val Loss: 0.5667 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.567208 --> 0.566732). Saving best model...
+Epoch  50/50 | Train Loss: 0.5528 Acc: 0.7102 F1: 0.4153 | Val Loss: 0.5650 Acc: 0.7000 F1: 0.4118
+Validation Loss decreased (0.566732 --> 0.565048). Saving best model...
+
+Classification Test Result (Heartbeat)
+Accuracy : 0.721951
+F1 (macro): 0.419263
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_Heartbeat_laya_mixer_text_stats_avg/attention_maps
+Text metadata preview | dataset=JapaneseVowels | domain=UEA | channels=12
+   - channel_1: In the UEA domain, this channel belongs to the JapaneseVowels dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the JapaneseVowels dataset and represents the feature channel 2.
+   - ... (10 more channel descriptions)
+Stats metadata preview | dataset=JapaneseVowels | domain=UEA | channels=12
+   - channel_1: Channel statistics over the training split: mean value is 0.532, standard deviation is 0.572, minimum value is -0.784, maximum value is 2.203, median value is 0.371, and mean absolute value is 0.539.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: JapaneseVowels (Channels: 12)
+📊 Pretrain Info: electricity
+📊 Classes: 9 | Sequence Length: 26
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 71/71 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text_stats_avg, fusion=add, relation=none
+ℹ️  Metadata Fusion Mode: add
+ℹ️  Channel Mixer Relation Mode: none
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 9]
+Epoch   1/50 | Train Loss: 2.2814 Acc: 0.1083 F1: 0.0386 | Val Loss: 2.2432 Acc: 0.0370 F1: 0.0093
+Validation Loss decreased (inf --> 2.243170). Saving best model...
+Epoch   2/50 | Train Loss: 2.1844 Acc: 0.0833 F1: 0.0520 | Val Loss: 2.1945 Acc: 0.0741 F1: 0.0171
+Validation Loss decreased (2.243170 --> 2.194494). Saving best model...
+Epoch   3/50 | Train Loss: 2.1684 Acc: 0.1417 F1: 0.0734 | Val Loss: 2.2168 Acc: 0.1481 F1: 0.0535
+Epoch   4/50 | Train Loss: 2.1598 Acc: 0.0917 F1: 0.0804 | Val Loss: 2.1924 Acc: 0.1852 F1: 0.1130
+Validation Loss decreased (2.194494 --> 2.192410). Saving best model...
+Epoch   5/50 | Train Loss: 2.1490 Acc: 0.1375 F1: 0.0893 | Val Loss: 2.1881 Acc: 0.1111 F1: 0.0833
+Validation Loss decreased (2.192410 --> 2.188115). Saving best model...
+Epoch   6/50 | Train Loss: 2.1375 Acc: 0.1083 F1: 0.0675 | Val Loss: 2.1703 Acc: 0.0741 F1: 0.0202
+Validation Loss decreased (2.188115 --> 2.170302). Saving best model...
+Epoch   7/50 | Train Loss: 2.1230 Acc: 0.1875 F1: 0.1167 | Val Loss: 2.1772 Acc: 0.1111 F1: 0.0765
+Epoch   8/50 | Train Loss: 2.1165 Acc: 0.1833 F1: 0.1154 | Val Loss: 2.1396 Acc: 0.2222 F1: 0.1367
+Validation Loss decreased (2.170302 --> 2.139577). Saving best model...
+Epoch   9/50 | Train Loss: 2.1061 Acc: 0.2250 F1: 0.1633 | Val Loss: 2.1916 Acc: 0.1111 F1: 0.0432
+Epoch  10/50 | Train Loss: 2.0893 Acc: 0.2250 F1: 0.1606 | Val Loss: 2.1334 Acc: 0.3333 F1: 0.2000
+Validation Loss decreased (2.139577 --> 2.133383). Saving best model...
+Epoch  11/50 | Train Loss: 2.0850 Acc: 0.2750 F1: 0.2373 | Val Loss: 2.1282 Acc: 0.1481 F1: 0.0525
+Validation Loss decreased (2.133383 --> 2.128208). Saving best model...
+Epoch  12/50 | Train Loss: 2.0704 Acc: 0.2917 F1: 0.2409 | Val Loss: 2.1256 Acc: 0.1111 F1: 0.0432
+Validation Loss decreased (2.128208 --> 2.125595). Saving best model...
+Epoch  13/50 | Train Loss: 2.0698 Acc: 0.2292 F1: 0.2161 | Val Loss: 2.1348 Acc: 0.2963 F1: 0.2697
+Epoch  14/50 | Train Loss: 2.0480 Acc: 0.3250 F1: 0.2633 | Val Loss: 2.0905 Acc: 0.2963 F1: 0.1742
+Validation Loss decreased (2.125595 --> 2.090485). Saving best model...
+Epoch  15/50 | Train Loss: 2.0416 Acc: 0.3208 F1: 0.2625 | Val Loss: 2.0992 Acc: 0.3704 F1: 0.2926
+Epoch  16/50 | Train Loss: 2.0297 Acc: 0.2917 F1: 0.2813 | Val Loss: 2.1357 Acc: 0.2593 F1: 0.2138
+Epoch  17/50 | Train Loss: 2.0145 Acc: 0.3417 F1: 0.2727 | Val Loss: 2.1013 Acc: 0.2593 F1: 0.2083
+Epoch  18/50 | Train Loss: 2.0174 Acc: 0.3792 F1: 0.3055 | Val Loss: 2.0692 Acc: 0.4815 F1: 0.4182
+Validation Loss decreased (2.090485 --> 2.069157). Saving best model...
+Epoch  19/50 | Train Loss: 2.0110 Acc: 0.4125 F1: 0.3622 | Val Loss: 2.1298 Acc: 0.2963 F1: 0.2772
+Epoch  20/50 | Train Loss: 1.9894 Acc: 0.4000 F1: 0.3714 | Val Loss: 2.0453 Acc: 0.4444 F1: 0.3467
+Validation Loss decreased (2.069157 --> 2.045253). Saving best model...
+Epoch  21/50 | Train Loss: 1.9796 Acc: 0.4292 F1: 0.4071 | Val Loss: 2.0397 Acc: 0.4074 F1: 0.3263
+Validation Loss decreased (2.045253 --> 2.039657). Saving best model...
+Epoch  22/50 | Train Loss: 1.9676 Acc: 0.4458 F1: 0.3970 | Val Loss: 2.0597 Acc: 0.2222 F1: 0.2075
+Epoch  23/50 | Train Loss: 1.9643 Acc: 0.4667 F1: 0.4243 | Val Loss: 2.0201 Acc: 0.5185 F1: 0.4612
+Validation Loss decreased (2.039657 --> 2.020061). Saving best model...
+Epoch  24/50 | Train Loss: 1.9463 Acc: 0.4792 F1: 0.4853 | Val Loss: 2.0582 Acc: 0.2222 F1: 0.1988
+Epoch  25/50 | Train Loss: 1.9452 Acc: 0.4292 F1: 0.4036 | Val Loss: 2.0387 Acc: 0.2222 F1: 0.2015
+Epoch  26/50 | Train Loss: 1.9418 Acc: 0.5042 F1: 0.4690 | Val Loss: 2.0092 Acc: 0.4444 F1: 0.4055
+Validation Loss decreased (2.020061 --> 2.009213). Saving best model...
+Epoch  27/50 | Train Loss: 1.9202 Acc: 0.4708 F1: 0.4993 | Val Loss: 2.0078 Acc: 0.4074 F1: 0.3790
+Validation Loss decreased (2.009213 --> 2.007771). Saving best model...
+Epoch  28/50 | Train Loss: 1.9132 Acc: 0.4750 F1: 0.4573 | Val Loss: 1.9891 Acc: 0.4074 F1: 0.3739
+Validation Loss decreased (2.007771 --> 1.989111). Saving best model...
+Epoch  29/50 | Train Loss: 1.8964 Acc: 0.5375 F1: 0.5074 | Val Loss: 2.0099 Acc: 0.3333 F1: 0.3250
+Epoch  30/50 | Train Loss: 1.8892 Acc: 0.5000 F1: 0.4630 | Val Loss: 2.0041 Acc: 0.3333 F1: 0.2826
+Epoch  31/50 | Train Loss: 1.8805 Acc: 0.5042 F1: 0.4781 | Val Loss: 1.9745 Acc: 0.4444 F1: 0.4106
+Validation Loss decreased (1.989111 --> 1.974509). Saving best model...
+Epoch  32/50 | Train Loss: 1.8807 Acc: 0.5000 F1: 0.4717 | Val Loss: 2.0148 Acc: 0.2963 F1: 0.3017
+Epoch  33/50 | Train Loss: 1.8626 Acc: 0.5500 F1: 0.5308 | Val Loss: 1.9467 Acc: 0.4444 F1: 0.3633
+Validation Loss decreased (1.974509 --> 1.946716). Saving best model...
+Epoch  34/50 | Train Loss: 1.8587 Acc: 0.5125 F1: 0.5175 | Val Loss: 1.9886 Acc: 0.2963 F1: 0.3004
+Epoch  35/50 | Train Loss: 1.8422 Acc: 0.4917 F1: 0.4597 | Val Loss: 1.9518 Acc: 0.3704 F1: 0.3914
+Epoch  36/50 | Train Loss: 1.8346 Acc: 0.5667 F1: 0.5483 | Val Loss: 1.9280 Acc: 0.4815 F1: 0.3980
+Validation Loss decreased (1.946716 --> 1.927968). Saving best model...
+Epoch  37/50 | Train Loss: 1.8252 Acc: 0.5125 F1: 0.4689 | Val Loss: 1.9648 Acc: 0.3704 F1: 0.4006
+Epoch  38/50 | Train Loss: 1.8139 Acc: 0.5542 F1: 0.5391 | Val Loss: 1.9445 Acc: 0.4074 F1: 0.4416
+Epoch  39/50 | Train Loss: 1.8113 Acc: 0.5333 F1: 0.5288 | Val Loss: 1.9347 Acc: 0.4444 F1: 0.4175
+Epoch  40/50 | Train Loss: 1.7901 Acc: 0.5500 F1: 0.5259 | Val Loss: 1.9400 Acc: 0.3333 F1: 0.3791
+Epoch  41/50 | Train Loss: 1.7879 Acc: 0.5208 F1: 0.4816 | Val Loss: 1.9388 Acc: 0.3704 F1: 0.4052
+Epoch  42/50 | Train Loss: 1.7807 Acc: 0.5542 F1: 0.5229 | Val Loss: 1.8921 Acc: 0.4444 F1: 0.3884
+Validation Loss decreased (1.927968 --> 1.892091). Saving best model...
+Epoch  43/50 | Train Loss: 1.7759 Acc: 0.5250 F1: 0.4888 | Val Loss: 1.9090 Acc: 0.4815 F1: 0.4720
+Epoch  44/50 | Train Loss: 1.7536 Acc: 0.5458 F1: 0.5247 | Val Loss: 1.9178 Acc: 0.4444 F1: 0.4608
+Epoch  45/50 | Train Loss: 1.7504 Acc: 0.5208 F1: 0.4875 | Val Loss: 1.8927 Acc: 0.4444 F1: 0.3958
+Epoch  46/50 | Train Loss: 1.7396 Acc: 0.5500 F1: 0.5182 | Val Loss: 1.8702 Acc: 0.4074 F1: 0.3536
+Validation Loss decreased (1.892091 --> 1.870223). Saving best model...
+Epoch  47/50 | Train Loss: 1.7454 Acc: 0.5167 F1: 0.5255 | Val Loss: 1.8687 Acc: 0.4815 F1: 0.4691
+Validation Loss decreased (1.870223 --> 1.868658). Saving best model...
+Epoch  48/50 | Train Loss: 1.7131 Acc: 0.6125 F1: 0.5937 | Val Loss: 1.8737 Acc: 0.4074 F1: 0.3731
+Epoch  49/50 | Train Loss: 1.7206 Acc: 0.5708 F1: 0.5315 | Val Loss: 1.8789 Acc: 0.4074 F1: 0.4444
+Epoch  50/50 | Train Loss: 1.7168 Acc: 0.5542 F1: 0.5379 | Val Loss: 1.8571 Acc: 0.4444 F1: 0.3914
+Validation Loss decreased (1.868658 --> 1.857137). Saving best model...
+
+Classification Test Result (JapaneseVowels)
+Accuracy : 0.381081
+F1 (macro): 0.342074
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_JapaneseVowels_laya_mixer_text_stats_avg/attention_maps
+Text metadata preview | dataset=PEMS-SF | domain=UEA | channels=963
+   - channel_1: In the UEA domain, this channel belongs to the PEMS-SF dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the PEMS-SF dataset and represents the feature channel 2.
+   - ... (961 more channel descriptions)
+Stats metadata preview | dataset=PEMS-SF | domain=UEA | channels=963
+   - channel_1: Channel statistics over the training split: mean value is 0.049, standard deviation is 0.031, minimum value is 0.003, maximum value is 0.444, median value is 0.053, and mean absolute value is 0.049.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: PEMS-SF (Channels: 963)
+📊 Pretrain Info: electricity
+📊 Classes: 7 | Sequence Length: 144
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 71/71 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text_stats_avg, fusion=add, relation=none
+ℹ️  Metadata Fusion Mode: add
+ℹ️  Channel Mixer Relation Mode: none
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 7]
+Epoch   1/50 | Train Loss: 1.9812 Acc: 0.1208 F1: 0.0734 | Val Loss: 2.0088 Acc: 0.1923 F1: 0.0529
+Validation Loss decreased (inf --> 2.008801). Saving best model...
+Epoch   2/50 | Train Loss: 1.9386 Acc: 0.1875 F1: 0.0850 | Val Loss: 2.0486 Acc: 0.0000 F1: 0.0000
+Epoch   3/50 | Train Loss: 1.9321 Acc: 0.1667 F1: 0.0865 | Val Loss: 1.9812 Acc: 0.0000 F1: 0.0000
+Validation Loss decreased (2.008801 --> 1.981205). Saving best model...
+Epoch   4/50 | Train Loss: 1.9161 Acc: 0.2125 F1: 0.1218 | Val Loss: 1.9999 Acc: 0.0769 F1: 0.0635
+Epoch   5/50 | Train Loss: 1.9125 Acc: 0.2208 F1: 0.1324 | Val Loss: 1.9466 Acc: 0.1923 F1: 0.0680
+Validation Loss decreased (1.981205 --> 1.946636). Saving best model...
+Epoch   6/50 | Train Loss: 1.9014 Acc: 0.3042 F1: 0.1842 | Val Loss: 1.9691 Acc: 0.1538 F1: 0.0873
+Epoch   7/50 | Train Loss: 1.8977 Acc: 0.2375 F1: 0.1502 | Val Loss: 1.9835 Acc: 0.0000 F1: 0.0000
+Epoch   8/50 | Train Loss: 1.8903 Acc: 0.3000 F1: 0.1835 | Val Loss: 1.9276 Acc: 0.1538 F1: 0.0980
+Validation Loss decreased (1.946636 --> 1.927595). Saving best model...
+Epoch   9/50 | Train Loss: 1.8901 Acc: 0.3208 F1: 0.1953 | Val Loss: 1.9593 Acc: 0.1154 F1: 0.0722
+Epoch  10/50 | Train Loss: 1.8744 Acc: 0.2958 F1: 0.1729 | Val Loss: 1.9332 Acc: 0.1154 F1: 0.0714
+Epoch  11/50 | Train Loss: 1.8773 Acc: 0.3208 F1: 0.2216 | Val Loss: 1.9280 Acc: 0.1538 F1: 0.1286
+Epoch  12/50 | Train Loss: 1.8676 Acc: 0.3083 F1: 0.1883 | Val Loss: 1.9665 Acc: 0.0769 F1: 0.0889
+Epoch  13/50 | Train Loss: 1.8670 Acc: 0.3208 F1: 0.2001 | Val Loss: 1.9185 Acc: 0.1538 F1: 0.1184
+Validation Loss decreased (1.927595 --> 1.918505). Saving best model...
+Epoch  14/50 | Train Loss: 1.8533 Acc: 0.3375 F1: 0.2060 | Val Loss: 1.9137 Acc: 0.1538 F1: 0.1460
+Validation Loss decreased (1.918505 --> 1.913677). Saving best model...
+Epoch  15/50 | Train Loss: 1.8623 Acc: 0.2500 F1: 0.1550 | Val Loss: 1.8904 Acc: 0.1923 F1: 0.1435
+Validation Loss decreased (1.913677 --> 1.890413). Saving best model...
+Epoch  16/50 | Train Loss: 1.8556 Acc: 0.3083 F1: 0.1916 | Val Loss: 1.9354 Acc: 0.0769 F1: 0.0571
+Epoch  17/50 | Train Loss: 1.8519 Acc: 0.2458 F1: 0.1547 | Val Loss: 1.8871 Acc: 0.1538 F1: 0.1368
+Validation Loss decreased (1.890413 --> 1.887136). Saving best model...
+Epoch  18/50 | Train Loss: 1.8551 Acc: 0.2375 F1: 0.1483 | Val Loss: 1.9207 Acc: 0.1923 F1: 0.1454
+Epoch  19/50 | Train Loss: 1.8348 Acc: 0.3208 F1: 0.1980 | Val Loss: 1.8864 Acc: 0.1538 F1: 0.1310
+Validation Loss decreased (1.887136 --> 1.886424). Saving best model...
+Epoch  20/50 | Train Loss: 1.8370 Acc: 0.3125 F1: 0.1973 | Val Loss: 1.8643 Acc: 0.1923 F1: 0.1545
+Validation Loss decreased (1.886424 --> 1.864345). Saving best model...
+Epoch  21/50 | Train Loss: 1.8213 Acc: 0.3208 F1: 0.1889 | Val Loss: 1.9202 Acc: 0.1154 F1: 0.1206
+Epoch  22/50 | Train Loss: 1.8171 Acc: 0.3500 F1: 0.2267 | Val Loss: 1.8797 Acc: 0.1538 F1: 0.1286
+Epoch  23/50 | Train Loss: 1.8139 Acc: 0.3333 F1: 0.1911 | Val Loss: 1.8846 Acc: 0.1154 F1: 0.1091
+Epoch  24/50 | Train Loss: 1.8091 Acc: 0.3250 F1: 0.2265 | Val Loss: 1.8697 Acc: 0.1923 F1: 0.1730
+Epoch  25/50 | Train Loss: 1.8043 Acc: 0.3208 F1: 0.2182 | Val Loss: 1.8827 Acc: 0.1154 F1: 0.1091
+Epoch  26/50 | Train Loss: 1.8124 Acc: 0.3167 F1: 0.2003 | Val Loss: 1.8575 Acc: 0.1538 F1: 0.1329
+Validation Loss decreased (1.864345 --> 1.857469). Saving best model...
+Epoch  27/50 | Train Loss: 1.7940 Acc: 0.3167 F1: 0.2028 | Val Loss: 1.8706 Acc: 0.1538 F1: 0.1259
+Epoch  28/50 | Train Loss: 1.7965 Acc: 0.3250 F1: 0.1959 | Val Loss: 1.8826 Acc: 0.1154 F1: 0.1143
+Epoch  29/50 | Train Loss: 1.7991 Acc: 0.3167 F1: 0.2309 | Val Loss: 1.8349 Acc: 0.2308 F1: 0.2043
+Validation Loss decreased (1.857469 --> 1.834920). Saving best model...
+Epoch  30/50 | Train Loss: 1.7849 Acc: 0.3417 F1: 0.2504 | Val Loss: 1.8526 Acc: 0.1154 F1: 0.1091
+Epoch  31/50 | Train Loss: 1.7773 Acc: 0.3250 F1: 0.2111 | Val Loss: 1.8816 Acc: 0.1154 F1: 0.1143
+Epoch  32/50 | Train Loss: 1.7856 Acc: 0.3125 F1: 0.1809 | Val Loss: 1.8187 Acc: 0.1923 F1: 0.1505
+Validation Loss decreased (1.834920 --> 1.818665). Saving best model...
+Epoch  33/50 | Train Loss: 1.7704 Acc: 0.3083 F1: 0.2016 | Val Loss: 1.8584 Acc: 0.1154 F1: 0.1091
+Epoch  34/50 | Train Loss: 1.7642 Acc: 0.3167 F1: 0.2014 | Val Loss: 1.8361 Acc: 0.1538 F1: 0.1351
+Epoch  35/50 | Train Loss: 1.7693 Acc: 0.3292 F1: 0.2407 | Val Loss: 1.8101 Acc: 0.1538 F1: 0.1281
+Validation Loss decreased (1.818665 --> 1.810063). Saving best model...
+Epoch  36/50 | Train Loss: 1.7696 Acc: 0.3208 F1: 0.2144 | Val Loss: 1.8712 Acc: 0.1154 F1: 0.1091
+Epoch  37/50 | Train Loss: 1.7535 Acc: 0.3292 F1: 0.2135 | Val Loss: 1.8339 Acc: 0.1154 F1: 0.1091
+Epoch  38/50 | Train Loss: 1.7458 Acc: 0.3375 F1: 0.2179 | Val Loss: 1.8271 Acc: 0.1154 F1: 0.1091
+Epoch  39/50 | Train Loss: 1.7501 Acc: 0.3042 F1: 0.2030 | Val Loss: 1.8273 Acc: 0.1154 F1: 0.1091
+Epoch  40/50 | Train Loss: 1.7495 Acc: 0.3292 F1: 0.2156 | Val Loss: 1.8198 Acc: 0.1538 F1: 0.1351
+Epoch  41/50 | Train Loss: 1.7401 Acc: 0.3375 F1: 0.2469 | Val Loss: 1.7900 Acc: 0.3077 F1: 0.1792
+Validation Loss decreased (1.810063 --> 1.790018). Saving best model...
+Epoch  42/50 | Train Loss: 1.7308 Acc: 0.3500 F1: 0.2469 | Val Loss: 1.8374 Acc: 0.1154 F1: 0.1091
+Epoch  43/50 | Train Loss: 1.7305 Acc: 0.3417 F1: 0.2176 | Val Loss: 1.7973 Acc: 0.1538 F1: 0.1234
+Epoch  44/50 | Train Loss: 1.7303 Acc: 0.3292 F1: 0.2268 | Val Loss: 1.8070 Acc: 0.1923 F1: 0.1737
+Epoch  45/50 | Train Loss: 1.7274 Acc: 0.3375 F1: 0.2308 | Val Loss: 1.8167 Acc: 0.1154 F1: 0.1091
+Epoch  46/50 | Train Loss: 1.7221 Acc: 0.3250 F1: 0.2039 | Val Loss: 1.8247 Acc: 0.1154 F1: 0.1091
+Epoch  47/50 | Train Loss: 1.7201 Acc: 0.3417 F1: 0.2477 | Val Loss: 1.8103 Acc: 0.1538 F1: 0.1403
+Epoch  48/50 | Train Loss: 1.7201 Acc: 0.3458 F1: 0.2384 | Val Loss: 1.7931 Acc: 0.1154 F1: 0.1091
+Epoch  49/50 | Train Loss: 1.7036 Acc: 0.3542 F1: 0.2502 | Val Loss: 1.7933 Acc: 0.1538 F1: 0.1329
+Epoch  50/50 | Train Loss: 1.7130 Acc: 0.3292 F1: 0.2213 | Val Loss: 1.8226 Acc: 0.1154 F1: 0.1143
+
+Classification Test Result (PEMS-SF)
+Accuracy : 0.242775
+F1 (macro): 0.186092
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_PEMS-SF_laya_mixer_text_stats_avg/attention_maps
+Text metadata preview | dataset=SelfRegulationSCP1 | domain=UEA | channels=6
+   - channel_1: In the UEA domain, this channel belongs to the SelfRegulationSCP1 dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the SelfRegulationSCP1 dataset and represents the feature channel 2.
+   - ... (4 more channel descriptions)
+Stats metadata preview | dataset=SelfRegulationSCP1 | domain=UEA | channels=6
+   - channel_1: Channel statistics over the training split: mean value is 26.773, standard deviation is 23.157, minimum value is -55.470, maximum value is 125.840, median value is 24.880, and mean absolute value is 28.804.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: SelfRegulationSCP1 (Channels: 6)
+📊 Pretrain Info: electricity
+📊 Classes: 2 | Sequence Length: 896
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 71/71 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text_stats_avg, fusion=add, relation=none
+ℹ️  Metadata Fusion Mode: add
+ℹ️  Channel Mixer Relation Mode: none
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 2]
+Epoch   1/50 | Train Loss: 0.7126 Acc: 0.4958 F1: 0.4822 | Val Loss: 0.6841 Acc: 0.5385 F1: 0.3500
+Validation Loss decreased (inf --> 0.684148). Saving best model...
+Epoch   2/50 | Train Loss: 0.6912 Acc: 0.5042 F1: 0.5027 | Val Loss: 0.6774 Acc: 0.5000 F1: 0.3910
+Validation Loss decreased (0.684148 --> 0.677447). Saving best model...
+Epoch   3/50 | Train Loss: 0.6715 Acc: 0.6000 F1: 0.5733 | Val Loss: 0.6470 Acc: 0.8077 F1: 0.7927
+Validation Loss decreased (0.677447 --> 0.646972). Saving best model...
+Epoch   4/50 | Train Loss: 0.6670 Acc: 0.5792 F1: 0.5738 | Val Loss: 0.6337 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.646972 --> 0.633732). Saving best model...
+Epoch   5/50 | Train Loss: 0.6541 Acc: 0.6833 F1: 0.6768 | Val Loss: 0.6214 Acc: 0.8077 F1: 0.8074
+Validation Loss decreased (0.633732 --> 0.621427). Saving best model...
+Epoch   6/50 | Train Loss: 0.6542 Acc: 0.5625 F1: 0.5363 | Val Loss: 0.6121 Acc: 0.7308 F1: 0.7271
+Validation Loss decreased (0.621427 --> 0.612145). Saving best model...
+Epoch   7/50 | Train Loss: 0.6385 Acc: 0.6792 F1: 0.6737 | Val Loss: 0.5918 Acc: 0.8846 F1: 0.8844
+Validation Loss decreased (0.612145 --> 0.591761). Saving best model...
+Epoch   8/50 | Train Loss: 0.6356 Acc: 0.6708 F1: 0.6706 | Val Loss: 0.5841 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.591761 --> 0.584110). Saving best model...
+Epoch   9/50 | Train Loss: 0.6291 Acc: 0.6750 F1: 0.6746 | Val Loss: 0.5761 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.584110 --> 0.576117). Saving best model...
+Epoch  10/50 | Train Loss: 0.6296 Acc: 0.6333 F1: 0.6249 | Val Loss: 0.5667 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.576117 --> 0.566748). Saving best model...
+Epoch  11/50 | Train Loss: 0.6299 Acc: 0.6625 F1: 0.6560 | Val Loss: 0.5661 Acc: 0.7692 F1: 0.7679
+Validation Loss decreased (0.566748 --> 0.566051). Saving best model...
+Epoch  12/50 | Train Loss: 0.6202 Acc: 0.6417 F1: 0.6396 | Val Loss: 0.5537 Acc: 0.8077 F1: 0.8074
+Validation Loss decreased (0.566051 --> 0.553723). Saving best model...
+Epoch  13/50 | Train Loss: 0.6201 Acc: 0.6417 F1: 0.6404 | Val Loss: 0.5482 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.553723 --> 0.548239). Saving best model...
+Epoch  14/50 | Train Loss: 0.6221 Acc: 0.6833 F1: 0.6783 | Val Loss: 0.5442 Acc: 0.8077 F1: 0.8074
+Validation Loss decreased (0.548239 --> 0.544205). Saving best model...
+Epoch  15/50 | Train Loss: 0.6176 Acc: 0.6333 F1: 0.6275 | Val Loss: 0.5398 Acc: 0.8077 F1: 0.8074
+Validation Loss decreased (0.544205 --> 0.539810). Saving best model...
+Epoch  16/50 | Train Loss: 0.6112 Acc: 0.6833 F1: 0.6828 | Val Loss: 0.5399 Acc: 0.7692 F1: 0.7679
+Epoch  17/50 | Train Loss: 0.6095 Acc: 0.6583 F1: 0.6559 | Val Loss: 0.5347 Acc: 0.8077 F1: 0.8074
+Validation Loss decreased (0.539810 --> 0.534715). Saving best model...
+Epoch  18/50 | Train Loss: 0.6097 Acc: 0.6708 F1: 0.6699 | Val Loss: 0.5283 Acc: 0.8077 F1: 0.8074
+Validation Loss decreased (0.534715 --> 0.528270). Saving best model...
+Epoch  19/50 | Train Loss: 0.6091 Acc: 0.6708 F1: 0.6701 | Val Loss: 0.5302 Acc: 0.8077 F1: 0.8074
+Epoch  20/50 | Train Loss: 0.6059 Acc: 0.6917 F1: 0.6915 | Val Loss: 0.5171 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.528270 --> 0.517103). Saving best model...
+Epoch  21/50 | Train Loss: 0.6127 Acc: 0.6625 F1: 0.6624 | Val Loss: 0.5219 Acc: 0.8077 F1: 0.8074
+Epoch  22/50 | Train Loss: 0.6091 Acc: 0.6958 F1: 0.6939 | Val Loss: 0.5136 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.517103 --> 0.513574). Saving best model...
+Epoch  23/50 | Train Loss: 0.6041 Acc: 0.6375 F1: 0.6341 | Val Loss: 0.5173 Acc: 0.8077 F1: 0.8074
+Epoch  24/50 | Train Loss: 0.6081 Acc: 0.6750 F1: 0.6750 | Val Loss: 0.5045 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.513574 --> 0.504508). Saving best model...
+Epoch  25/50 | Train Loss: 0.6020 Acc: 0.6583 F1: 0.6581 | Val Loss: 0.5221 Acc: 0.7308 F1: 0.7271
+Epoch  26/50 | Train Loss: 0.6105 Acc: 0.6792 F1: 0.6779 | Val Loss: 0.5040 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.504508 --> 0.504039). Saving best model...
+Epoch  27/50 | Train Loss: 0.6009 Acc: 0.6542 F1: 0.6528 | Val Loss: 0.5184 Acc: 0.7692 F1: 0.7679
+Epoch  28/50 | Train Loss: 0.5985 Acc: 0.6708 F1: 0.6708 | Val Loss: 0.5024 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.504039 --> 0.502447). Saving best model...
+Epoch  29/50 | Train Loss: 0.5980 Acc: 0.6792 F1: 0.6791 | Val Loss: 0.5103 Acc: 0.8077 F1: 0.8074
+Epoch  30/50 | Train Loss: 0.5970 Acc: 0.6583 F1: 0.6575 | Val Loss: 0.4963 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.502447 --> 0.496331). Saving best model...
+Epoch  31/50 | Train Loss: 0.6009 Acc: 0.6875 F1: 0.6846 | Val Loss: 0.4999 Acc: 0.8077 F1: 0.8074
+Epoch  32/50 | Train Loss: 0.6015 Acc: 0.6583 F1: 0.6568 | Val Loss: 0.4948 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.496331 --> 0.494808). Saving best model...
+Epoch  33/50 | Train Loss: 0.5949 Acc: 0.6792 F1: 0.6789 | Val Loss: 0.4973 Acc: 0.8077 F1: 0.8074
+Epoch  34/50 | Train Loss: 0.5956 Acc: 0.6583 F1: 0.6580 | Val Loss: 0.4902 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.494808 --> 0.490195). Saving best model...
+Epoch  35/50 | Train Loss: 0.6026 Acc: 0.6833 F1: 0.6823 | Val Loss: 0.4842 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.490195 --> 0.484169). Saving best model...
+Epoch  36/50 | Train Loss: 0.5950 Acc: 0.6833 F1: 0.6831 | Val Loss: 0.5004 Acc: 0.8077 F1: 0.8074
+Epoch  37/50 | Train Loss: 0.5984 Acc: 0.6542 F1: 0.6515 | Val Loss: 0.5020 Acc: 0.8077 F1: 0.8074
+Epoch  38/50 | Train Loss: 0.5898 Acc: 0.7042 F1: 0.7014 | Val Loss: 0.4837 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.484169 --> 0.483696). Saving best model...
+Epoch  39/50 | Train Loss: 0.6020 Acc: 0.6667 F1: 0.6661 | Val Loss: 0.4793 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.483696 --> 0.479300). Saving best model...
+Epoch  40/50 | Train Loss: 0.5982 Acc: 0.6958 F1: 0.6925 | Val Loss: 0.4916 Acc: 0.8077 F1: 0.8074
+Epoch  41/50 | Train Loss: 0.5994 Acc: 0.6417 F1: 0.6386 | Val Loss: 0.4837 Acc: 0.8462 F1: 0.8462
+Epoch  42/50 | Train Loss: 0.5972 Acc: 0.7125 F1: 0.7076 | Val Loss: 0.4838 Acc: 0.8462 F1: 0.8462
+Epoch  43/50 | Train Loss: 0.5945 Acc: 0.6625 F1: 0.6618 | Val Loss: 0.4961 Acc: 0.8077 F1: 0.8074
+Epoch  44/50 | Train Loss: 0.5900 Acc: 0.6833 F1: 0.6833 | Val Loss: 0.4778 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.479300 --> 0.477772). Saving best model...
+Epoch  45/50 | Train Loss: 0.5920 Acc: 0.7042 F1: 0.7030 | Val Loss: 0.4813 Acc: 0.8462 F1: 0.8462
+Epoch  46/50 | Train Loss: 0.5904 Acc: 0.6833 F1: 0.6833 | Val Loss: 0.4905 Acc: 0.8077 F1: 0.8074
+Epoch  47/50 | Train Loss: 0.5973 Acc: 0.6708 F1: 0.6699 | Val Loss: 0.4921 Acc: 0.8077 F1: 0.8074
+Epoch  48/50 | Train Loss: 0.5911 Acc: 0.6708 F1: 0.6704 | Val Loss: 0.4713 Acc: 0.8462 F1: 0.8462
+Validation Loss decreased (0.477772 --> 0.471257). Saving best model...
+Epoch  49/50 | Train Loss: 0.5891 Acc: 0.6917 F1: 0.6874 | Val Loss: 0.4979 Acc: 0.7692 F1: 0.7679
+Epoch  50/50 | Train Loss: 0.5978 Acc: 0.6542 F1: 0.6531 | Val Loss: 0.4751 Acc: 0.8462 F1: 0.8462
+
+Classification Test Result (SelfRegulationSCP1)
+Accuracy : 0.744027
+F1 (macro): 0.731203
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_SelfRegulationSCP1_laya_mixer_text_stats_avg/attention_maps
+Text metadata preview | dataset=SelfRegulationSCP2 | domain=UEA | channels=7
+   - channel_1: In the UEA domain, this channel belongs to the SelfRegulationSCP2 dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the SelfRegulationSCP2 dataset and represents the feature channel 2.
+   - ... (5 more channel descriptions)
+Stats metadata preview | dataset=SelfRegulationSCP2 | domain=UEA | channels=7
+   - channel_1: Channel statistics over the training split: mean value is 16.727, standard deviation is 13.436, minimum value is -45.720, maximum value is 91.690, median value is 16.810, and mean absolute value is 18.238.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: SelfRegulationSCP2 (Channels: 7)
+📊 Pretrain Info: electricity
+📊 Classes: 2 | Sequence Length: 1152
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 71/71 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text_stats_avg, fusion=add, relation=none
+ℹ️  Metadata Fusion Mode: add
+ℹ️  Channel Mixer Relation Mode: none
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 2]
+Epoch   1/50 | Train Loss: 0.7186 Acc: 0.5000 F1: 0.4994 | Val Loss: 0.7465 Acc: 0.4000 F1: 0.2857
+Validation Loss decreased (inf --> 0.746546). Saving best model...
+Epoch   2/50 | Train Loss: 0.6873 Acc: 0.5057 F1: 0.4382 | Val Loss: 0.6845 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (0.746546 --> 0.684467). Saving best model...
+Epoch   3/50 | Train Loss: 0.6838 Acc: 0.4489 F1: 0.4375 | Val Loss: 0.7081 Acc: 0.4000 F1: 0.2857
+Epoch   4/50 | Train Loss: 0.6815 Acc: 0.4830 F1: 0.4070 | Val Loss: 0.6851 Acc: 0.6000 F1: 0.3750
+Epoch   5/50 | Train Loss: 0.6820 Acc: 0.4545 F1: 0.4334 | Val Loss: 0.6953 Acc: 0.4500 F1: 0.3732
+Epoch   6/50 | Train Loss: 0.6816 Acc: 0.4545 F1: 0.3931 | Val Loss: 0.6874 Acc: 0.6000 F1: 0.3750
+Epoch   7/50 | Train Loss: 0.6800 Acc: 0.4432 F1: 0.4326 | Val Loss: 0.7069 Acc: 0.4000 F1: 0.2857
+Epoch   8/50 | Train Loss: 0.6815 Acc: 0.5114 F1: 0.3383 | Val Loss: 0.7008 Acc: 0.4000 F1: 0.2857
+Epoch   9/50 | Train Loss: 0.6819 Acc: 0.4773 F1: 0.4656 | Val Loss: 0.6978 Acc: 0.4000 F1: 0.2857
+Epoch  10/50 | Train Loss: 0.6857 Acc: 0.5114 F1: 0.3581 | Val Loss: 0.7155 Acc: 0.4000 F1: 0.2857
+Epoch  11/50 | Train Loss: 0.6923 Acc: 0.5057 F1: 0.4802 | Val Loss: 0.6822 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (0.684467 --> 0.682178). Saving best model...
+Epoch  12/50 | Train Loss: 0.6817 Acc: 0.5000 F1: 0.4870 | Val Loss: 0.7279 Acc: 0.4000 F1: 0.2857
+Epoch  13/50 | Train Loss: 0.6869 Acc: 0.4659 F1: 0.4589 | Val Loss: 0.6834 Acc: 0.6000 F1: 0.3750
+Epoch  14/50 | Train Loss: 0.6786 Acc: 0.4773 F1: 0.4544 | Val Loss: 0.7172 Acc: 0.4000 F1: 0.2857
+Epoch  15/50 | Train Loss: 0.6837 Acc: 0.5057 F1: 0.3358 | Val Loss: 0.7004 Acc: 0.4000 F1: 0.2857
+Epoch  16/50 | Train Loss: 0.6917 Acc: 0.5000 F1: 0.4391 | Val Loss: 0.6831 Acc: 0.6000 F1: 0.3750
+Epoch  17/50 | Train Loss: 0.6861 Acc: 0.5000 F1: 0.4633 | Val Loss: 0.7373 Acc: 0.4000 F1: 0.2857
+Epoch  18/50 | Train Loss: 0.6789 Acc: 0.5170 F1: 0.5071 | Val Loss: 0.6880 Acc: 0.6000 F1: 0.3750
+Epoch  19/50 | Train Loss: 0.6810 Acc: 0.4659 F1: 0.4653 | Val Loss: 0.7117 Acc: 0.4000 F1: 0.2857
+Epoch  20/50 | Train Loss: 0.6802 Acc: 0.5057 F1: 0.5053 | Val Loss: 0.6966 Acc: 0.5000 F1: 0.4792
+Epoch  21/50 | Train Loss: 0.6787 Acc: 0.5227 F1: 0.4446 | Val Loss: 0.7175 Acc: 0.4000 F1: 0.2857
+Epoch  22/50 | Train Loss: 0.6780 Acc: 0.5284 F1: 0.5066 | Val Loss: 0.6905 Acc: 0.5500 F1: 0.3548
+Epoch  23/50 | Train Loss: 0.6772 Acc: 0.5000 F1: 0.4633 | Val Loss: 0.6998 Acc: 0.5000 F1: 0.4505
+Epoch  24/50 | Train Loss: 0.6764 Acc: 0.5227 F1: 0.3433 | Val Loss: 0.7080 Acc: 0.4000 F1: 0.2857
+Epoch  25/50 | Train Loss: 0.6818 Acc: 0.5114 F1: 0.3383 | Val Loss: 0.6977 Acc: 0.5500 F1: 0.5396
+Epoch  26/50 | Train Loss: 0.6801 Acc: 0.5057 F1: 0.4743 | Val Loss: 0.6960 Acc: 0.5500 F1: 0.4872
+Epoch  27/50 | Train Loss: 0.6828 Acc: 0.4659 F1: 0.4148 | Val Loss: 0.7110 Acc: 0.4000 F1: 0.2857
+Epoch  28/50 | Train Loss: 0.6908 Acc: 0.4375 F1: 0.3902 | Val Loss: 0.6925 Acc: 0.4500 F1: 0.3103
+Epoch  29/50 | Train Loss: 0.6795 Acc: 0.5398 F1: 0.4721 | Val Loss: 0.7356 Acc: 0.4000 F1: 0.2857
+Epoch  30/50 | Train Loss: 0.6899 Acc: 0.4375 F1: 0.4322 | Val Loss: 0.6855 Acc: 0.6000 F1: 0.3750
+Epoch  31/50 | Train Loss: 0.6769 Acc: 0.5000 F1: 0.4238 | Val Loss: 0.7105 Acc: 0.4000 F1: 0.2857
+Epoch  32/50 | Train Loss: 0.6826 Acc: 0.5114 F1: 0.3383 | Val Loss: 0.7152 Acc: 0.4000 F1: 0.2857
+Epoch  33/50 | Train Loss: 0.6785 Acc: 0.5227 F1: 0.3433 | Val Loss: 0.7137 Acc: 0.4000 F1: 0.2857
+Epoch  34/50 | Train Loss: 0.6729 Acc: 0.5170 F1: 0.4972 | Val Loss: 0.6945 Acc: 0.4500 F1: 0.3103
+Epoch  35/50 | Train Loss: 0.6794 Acc: 0.5057 F1: 0.4219 | Val Loss: 0.6970 Acc: 0.5500 F1: 0.4872
+Epoch  36/50 | Train Loss: 0.6741 Acc: 0.5341 F1: 0.5060 | Val Loss: 0.7126 Acc: 0.4000 F1: 0.2857
+Epoch  37/50 | Train Loss: 0.6821 Acc: 0.5114 F1: 0.3759 | Val Loss: 0.7030 Acc: 0.4000 F1: 0.3407
+Epoch  38/50 | Train Loss: 0.6744 Acc: 0.5398 F1: 0.4671 | Val Loss: 0.7069 Acc: 0.4000 F1: 0.2857
+Epoch  39/50 | Train Loss: 0.6782 Acc: 0.5227 F1: 0.5212 | Val Loss: 0.7015 Acc: 0.5500 F1: 0.5396
+Epoch  40/50 | Train Loss: 0.6768 Acc: 0.5000 F1: 0.4806 | Val Loss: 0.7110 Acc: 0.4000 F1: 0.2857
+Epoch  41/50 | Train Loss: 0.6807 Acc: 0.5057 F1: 0.3887 | Val Loss: 0.6956 Acc: 0.4500 F1: 0.3103
+Epoch  42/50 | Train Loss: 0.6777 Acc: 0.5398 F1: 0.4900 | Val Loss: 0.7003 Acc: 0.5000 F1: 0.4792
+Epoch  43/50 | Train Loss: 0.6770 Acc: 0.4886 F1: 0.3714 | Val Loss: 0.7040 Acc: 0.4000 F1: 0.2857
+Epoch  44/50 | Train Loss: 0.6843 Acc: 0.4716 F1: 0.4413 | Val Loss: 0.6930 Acc: 0.4500 F1: 0.3103
+Epoch  45/50 | Train Loss: 0.6902 Acc: 0.5227 F1: 0.4646 | Val Loss: 0.7500 Acc: 0.4000 F1: 0.2857
+Epoch  46/50 | Train Loss: 0.6908 Acc: 0.4659 F1: 0.4642 | Val Loss: 0.6802 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (0.682178 --> 0.680205). Saving best model...
+Epoch  47/50 | Train Loss: 0.6785 Acc: 0.5341 F1: 0.5253 | Val Loss: 0.7277 Acc: 0.4000 F1: 0.2857
+Epoch  48/50 | Train Loss: 0.6803 Acc: 0.5227 F1: 0.3433 | Val Loss: 0.7113 Acc: 0.4000 F1: 0.2857
+Epoch  49/50 | Train Loss: 0.6751 Acc: 0.5511 F1: 0.5433 | Val Loss: 0.6918 Acc: 0.5000 F1: 0.3333
+Epoch  50/50 | Train Loss: 0.6765 Acc: 0.5170 F1: 0.5170 | Val Loss: 0.7141 Acc: 0.4000 F1: 0.2857
+
+Classification Test Result (SelfRegulationSCP2)
+Accuracy : 0.500000
+F1 (macro): 0.342959
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_SelfRegulationSCP2_laya_mixer_text_stats_avg/attention_maps
+Text metadata preview | dataset=SpokenArabicDigits | domain=UEA | channels=13
+   - channel_1: In the UEA domain, this channel belongs to the SpokenArabicDigits dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the SpokenArabicDigits dataset and represents the feature channel 2.
+   - ... (11 more channel descriptions)
+Stats metadata preview | dataset=SpokenArabicDigits | domain=UEA | channels=13
+   - channel_1: Channel statistics over the training split: mean value is 0.846, standard deviation is 2.054, minimum value is -10.435, maximum value is 9.060, median value is 0.000, and mean absolute value is 1.245.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: SpokenArabicDigits (Channels: 13)
+📊 Pretrain Info: electricity
+📊 Classes: 10 | Sequence Length: 93
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 71/71 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text_stats_avg, fusion=add, relation=none
+ℹ️  Metadata Fusion Mode: add
+ℹ️  Channel Mixer Relation Mode: none
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 10]
+Epoch   1/50 | Train Loss: 2.2776 Acc: 0.1466 F1: 0.1445 | Val Loss: 2.2235 Acc: 0.2261 F1: 0.1474
+Validation Loss decreased (inf --> 2.223456). Saving best model...
+Epoch   2/50 | Train Loss: 2.1733 Acc: 0.2353 F1: 0.2125 | Val Loss: 2.1343 Acc: 0.2671 F1: 0.2131
+Validation Loss decreased (2.223456 --> 2.134324). Saving best model...
+Epoch   3/50 | Train Loss: 2.0829 Acc: 0.3046 F1: 0.2802 | Val Loss: 2.0797 Acc: 0.2898 F1: 0.2334
+Validation Loss decreased (2.134324 --> 2.079738). Saving best model...
+Epoch   4/50 | Train Loss: 2.0007 Acc: 0.3304 F1: 0.3049 | Val Loss: 1.9844 Acc: 0.3505 F1: 0.2953
+Validation Loss decreased (2.079738 --> 1.984359). Saving best model...
+Epoch   5/50 | Train Loss: 1.9279 Acc: 0.3612 F1: 0.3338 | Val Loss: 1.9298 Acc: 0.3490 F1: 0.3148
+Validation Loss decreased (1.984359 --> 1.929751). Saving best model...
+Epoch   6/50 | Train Loss: 1.8636 Acc: 0.3871 F1: 0.3676 | Val Loss: 1.8862 Acc: 0.3612 F1: 0.3175
+Validation Loss decreased (1.929751 --> 1.886170). Saving best model...
+Epoch   7/50 | Train Loss: 1.8122 Acc: 0.4031 F1: 0.3821 | Val Loss: 1.8305 Acc: 0.3703 F1: 0.3280
+Validation Loss decreased (1.886170 --> 1.830453). Saving best model...
+Epoch   8/50 | Train Loss: 1.7708 Acc: 0.4105 F1: 0.3863 | Val Loss: 1.8128 Acc: 0.4021 F1: 0.3652
+Validation Loss decreased (1.830453 --> 1.812752). Saving best model...
+Epoch   9/50 | Train Loss: 1.7273 Acc: 0.4282 F1: 0.4057 | Val Loss: 1.7524 Acc: 0.4234 F1: 0.4046
+Validation Loss decreased (1.812752 --> 1.752401). Saving best model...
+Epoch  10/50 | Train Loss: 1.6900 Acc: 0.4506 F1: 0.4305 | Val Loss: 1.7248 Acc: 0.4112 F1: 0.3823
+Validation Loss decreased (1.752401 --> 1.724754). Saving best model...
+Epoch  11/50 | Train Loss: 1.6583 Acc: 0.4530 F1: 0.4317 | Val Loss: 1.6975 Acc: 0.4219 F1: 0.3962
+Validation Loss decreased (1.724754 --> 1.697473). Saving best model...
+Epoch  12/50 | Train Loss: 1.6343 Acc: 0.4629 F1: 0.4450 | Val Loss: 1.6668 Acc: 0.4476 F1: 0.4268
+Validation Loss decreased (1.697473 --> 1.666833). Saving best model...
+Epoch  13/50 | Train Loss: 1.6086 Acc: 0.4751 F1: 0.4540 | Val Loss: 1.6399 Acc: 0.4613 F1: 0.4445
+Validation Loss decreased (1.666833 --> 1.639915). Saving best model...
+Epoch  14/50 | Train Loss: 1.5775 Acc: 0.4815 F1: 0.4649 | Val Loss: 1.6199 Acc: 0.4492 F1: 0.4311
+Validation Loss decreased (1.639915 --> 1.619867). Saving best model...
+Epoch  15/50 | Train Loss: 1.5581 Acc: 0.4877 F1: 0.4678 | Val Loss: 1.6170 Acc: 0.4522 F1: 0.4383
+Validation Loss decreased (1.619867 --> 1.617020). Saving best model...
+Epoch  16/50 | Train Loss: 1.5386 Acc: 0.4997 F1: 0.4808 | Val Loss: 1.5861 Acc: 0.4750 F1: 0.4612
+Validation Loss decreased (1.617020 --> 1.586053). Saving best model...
+Epoch  17/50 | Train Loss: 1.5194 Acc: 0.5022 F1: 0.4848 | Val Loss: 1.5553 Acc: 0.4734 F1: 0.4573
+Validation Loss decreased (1.586053 --> 1.555314). Saving best model...
+Epoch  18/50 | Train Loss: 1.5012 Acc: 0.5076 F1: 0.4911 | Val Loss: 1.5454 Acc: 0.4734 F1: 0.4564
+Validation Loss decreased (1.555314 --> 1.545382). Saving best model...
+Epoch  19/50 | Train Loss: 1.4848 Acc: 0.5098 F1: 0.4926 | Val Loss: 1.5264 Acc: 0.4901 F1: 0.4921
+Validation Loss decreased (1.545382 --> 1.526382). Saving best model...
+Epoch  20/50 | Train Loss: 1.4704 Acc: 0.5150 F1: 0.5001 | Val Loss: 1.5097 Acc: 0.4856 F1: 0.4761
+Validation Loss decreased (1.526382 --> 1.509708). Saving best model...
+Epoch  21/50 | Train Loss: 1.4565 Acc: 0.5165 F1: 0.5012 | Val Loss: 1.4988 Acc: 0.4841 F1: 0.4828
+Validation Loss decreased (1.509708 --> 1.498812). Saving best model...
+Epoch  22/50 | Train Loss: 1.4419 Acc: 0.5211 F1: 0.5067 | Val Loss: 1.5087 Acc: 0.4825 F1: 0.4775
+Epoch  23/50 | Train Loss: 1.4297 Acc: 0.5219 F1: 0.5055 | Val Loss: 1.4766 Acc: 0.4932 F1: 0.4753
+Validation Loss decreased (1.498812 --> 1.476569). Saving best model...
+Epoch  24/50 | Train Loss: 1.4139 Acc: 0.5337 F1: 0.5184 | Val Loss: 1.4762 Acc: 0.4977 F1: 0.4890
+Validation Loss decreased (1.476569 --> 1.476232). Saving best model...
+Epoch  25/50 | Train Loss: 1.4061 Acc: 0.5367 F1: 0.5211 | Val Loss: 1.4695 Acc: 0.5114 F1: 0.5039
+Validation Loss decreased (1.476232 --> 1.469458). Saving best model...
+Epoch  26/50 | Train Loss: 1.3950 Acc: 0.5354 F1: 0.5204 | Val Loss: 1.4486 Acc: 0.5175 F1: 0.5121
+Validation Loss decreased (1.469458 --> 1.448636). Saving best model...
+Epoch  27/50 | Train Loss: 1.3833 Acc: 0.5430 F1: 0.5296 | Val Loss: 1.4405 Acc: 0.5114 F1: 0.5049
+Validation Loss decreased (1.448636 --> 1.440521). Saving best model...
+Epoch  28/50 | Train Loss: 1.3697 Acc: 0.5463 F1: 0.5328 | Val Loss: 1.4262 Acc: 0.5083 F1: 0.4977
+Validation Loss decreased (1.440521 --> 1.426159). Saving best model...
+Epoch  29/50 | Train Loss: 1.3610 Acc: 0.5478 F1: 0.5346 | Val Loss: 1.4079 Acc: 0.5053 F1: 0.4892
+Validation Loss decreased (1.426159 --> 1.407935). Saving best model...
+Epoch  30/50 | Train Loss: 1.3542 Acc: 0.5514 F1: 0.5389 | Val Loss: 1.4180 Acc: 0.5068 F1: 0.4985
+Epoch  31/50 | Train Loss: 1.3455 Acc: 0.5558 F1: 0.5437 | Val Loss: 1.4128 Acc: 0.5068 F1: 0.4849
+Epoch  32/50 | Train Loss: 1.3344 Acc: 0.5558 F1: 0.5441 | Val Loss: 1.3975 Acc: 0.5068 F1: 0.4924
+Validation Loss decreased (1.407935 --> 1.397453). Saving best model...
+Epoch  33/50 | Train Loss: 1.3293 Acc: 0.5536 F1: 0.5411 | Val Loss: 1.3767 Acc: 0.5326 F1: 0.5282
+Validation Loss decreased (1.397453 --> 1.376660). Saving best model...
+Epoch  34/50 | Train Loss: 1.3190 Acc: 0.5704 F1: 0.5589 | Val Loss: 1.3806 Acc: 0.5341 F1: 0.5292
+Epoch  35/50 | Train Loss: 1.3138 Acc: 0.5714 F1: 0.5606 | Val Loss: 1.3600 Acc: 0.5524 F1: 0.5489
+Validation Loss decreased (1.376660 --> 1.359992). Saving best model...
+Epoch  36/50 | Train Loss: 1.3035 Acc: 0.5672 F1: 0.5572 | Val Loss: 1.3758 Acc: 0.5357 F1: 0.5318
+Epoch  37/50 | Train Loss: 1.2973 Acc: 0.5721 F1: 0.5619 | Val Loss: 1.3518 Acc: 0.5402 F1: 0.5351
+Validation Loss decreased (1.359992 --> 1.351806). Saving best model...
+Epoch  38/50 | Train Loss: 1.2851 Acc: 0.5746 F1: 0.5647 | Val Loss: 1.3861 Acc: 0.5099 F1: 0.4813
+Epoch  39/50 | Train Loss: 1.2801 Acc: 0.5788 F1: 0.5683 | Val Loss: 1.3592 Acc: 0.5250 F1: 0.5238
+Epoch  40/50 | Train Loss: 1.2736 Acc: 0.5799 F1: 0.5701 | Val Loss: 1.3462 Acc: 0.5387 F1: 0.5228
+Validation Loss decreased (1.351806 --> 1.346227). Saving best model...
+Epoch  41/50 | Train Loss: 1.2671 Acc: 0.5861 F1: 0.5766 | Val Loss: 1.3372 Acc: 0.5630 F1: 0.5603
+Validation Loss decreased (1.346227 --> 1.337157). Saving best model...
+Epoch  42/50 | Train Loss: 1.2605 Acc: 0.5804 F1: 0.5700 | Val Loss: 1.3347 Acc: 0.5387 F1: 0.5342
+Validation Loss decreased (1.337157 --> 1.334738). Saving best model...
+Epoch  43/50 | Train Loss: 1.2557 Acc: 0.5871 F1: 0.5787 | Val Loss: 1.3160 Acc: 0.5493 F1: 0.5509
+Validation Loss decreased (1.334738 --> 1.315954). Saving best model...
+Epoch  44/50 | Train Loss: 1.2485 Acc: 0.5874 F1: 0.5782 | Val Loss: 1.3165 Acc: 0.5478 F1: 0.5368
+Epoch  45/50 | Train Loss: 1.2439 Acc: 0.5910 F1: 0.5825 | Val Loss: 1.3117 Acc: 0.5645 F1: 0.5564
+Validation Loss decreased (1.315954 --> 1.311731). Saving best model...
+Epoch  46/50 | Train Loss: 1.2387 Acc: 0.5950 F1: 0.5866 | Val Loss: 1.3163 Acc: 0.5554 F1: 0.5423
+Epoch  47/50 | Train Loss: 1.2325 Acc: 0.6021 F1: 0.5939 | Val Loss: 1.2863 Acc: 0.5690 F1: 0.5704
+Validation Loss decreased (1.311731 --> 1.286284). Saving best model...
+Epoch  48/50 | Train Loss: 1.2278 Acc: 0.5943 F1: 0.5871 | Val Loss: 1.2902 Acc: 0.5599 F1: 0.5550
+Epoch  49/50 | Train Loss: 1.2217 Acc: 0.5955 F1: 0.5873 | Val Loss: 1.2810 Acc: 0.5630 F1: 0.5612
+Validation Loss decreased (1.286284 --> 1.280962). Saving best model...
+Epoch  50/50 | Train Loss: 1.2180 Acc: 0.5959 F1: 0.5874 | Val Loss: 1.2891 Acc: 0.5569 F1: 0.5501
+
+Classification Test Result (SpokenArabicDigits)
+Accuracy : 0.427012
+F1 (macro): 0.419975
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_SpokenArabicDigits_laya_mixer_text_stats_avg/attention_maps
+Text metadata preview | dataset=UWaveGestureLibrary | domain=UEA | channels=3
+   - channel_1: In the UEA domain, this channel belongs to the UWaveGestureLibrary dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the UWaveGestureLibrary dataset and represents the feature channel 2.
+   - ... (1 more channel descriptions)
+Stats metadata preview | dataset=UWaveGestureLibrary | domain=UEA | channels=3
+   - channel_1: Channel statistics over the training split: mean value is -0.000, standard deviation is 0.998, minimum value is -3.287, maximum value is 3.153, median value is 0.006, and mean absolute value is 0.833.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: UWaveGestureLibrary (Channels: 3)
+📊 Pretrain Info: electricity
+📊 Classes: 8 | Sequence Length: 315
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 71/71 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text_stats_avg, fusion=add, relation=none
+ℹ️  Metadata Fusion Mode: add
+ℹ️  Channel Mixer Relation Mode: none
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 8]
+Epoch   1/50 | Train Loss: 1.9438 Acc: 0.1146 F1: 0.0406 | Val Loss: 2.2764 Acc: 0.1667 F1: 0.0408
+Validation Loss decreased (inf --> 2.276431). Saving best model...
+Epoch   2/50 | Train Loss: 1.8778 Acc: 0.1146 F1: 0.0462 | Val Loss: 2.1730 Acc: 0.0833 F1: 0.0220
+Validation Loss decreased (2.276431 --> 2.173037). Saving best model...
+Epoch   3/50 | Train Loss: 1.8643 Acc: 0.0729 F1: 0.0256 | Val Loss: 2.1280 Acc: 0.1667 F1: 0.0440
+Validation Loss decreased (2.173037 --> 2.127982). Saving best model...
+Epoch   4/50 | Train Loss: 1.8574 Acc: 0.1250 F1: 0.0724 | Val Loss: 2.1189 Acc: 0.0833 F1: 0.0500
+Validation Loss decreased (2.127982 --> 2.118911). Saving best model...
+Epoch   5/50 | Train Loss: 1.8511 Acc: 0.1354 F1: 0.0304 | Val Loss: 2.1417 Acc: 0.0000 F1: 0.0000
+Epoch   6/50 | Train Loss: 1.8468 Acc: 0.1458 F1: 0.0324 | Val Loss: 2.1522 Acc: 0.0000 F1: 0.0000
+Epoch   7/50 | Train Loss: 1.8466 Acc: 0.1562 F1: 0.0338 | Val Loss: 2.1849 Acc: 0.0000 F1: 0.0000
+Epoch   8/50 | Train Loss: 1.8437 Acc: 0.1562 F1: 0.0341 | Val Loss: 2.1946 Acc: 0.0000 F1: 0.0000
+Epoch   9/50 | Train Loss: 1.8436 Acc: 0.1562 F1: 0.0347 | Val Loss: 2.1506 Acc: 0.0833 F1: 0.0833
+Epoch  10/50 | Train Loss: 1.8428 Acc: 0.1667 F1: 0.0660 | Val Loss: 2.1487 Acc: 0.0000 F1: 0.0000
+Epoch  11/50 | Train Loss: 1.8419 Acc: 0.1458 F1: 0.0318 | Val Loss: 2.1238 Acc: 0.0000 F1: 0.0000
+Epoch  12/50 | Train Loss: 1.8355 Acc: 0.1354 F1: 0.0301 | Val Loss: 2.1211 Acc: 0.0000 F1: 0.0000
+Epoch  13/50 | Train Loss: 1.8447 Acc: 0.1250 F1: 0.0386 | Val Loss: 2.1180 Acc: 0.0833 F1: 0.0220
+Validation Loss decreased (2.118911 --> 2.118005). Saving best model...
+Epoch  14/50 | Train Loss: 1.8383 Acc: 0.1354 F1: 0.0298 | Val Loss: 2.1409 Acc: 0.0833 F1: 0.0220
+Epoch  15/50 | Train Loss: 1.8336 Acc: 0.1354 F1: 0.0298 | Val Loss: 2.1515 Acc: 0.1667 F1: 0.1083
+Epoch  16/50 | Train Loss: 1.8379 Acc: 0.1875 F1: 0.1217 | Val Loss: 2.1224 Acc: 0.0833 F1: 0.0208
+Epoch  17/50 | Train Loss: 1.8352 Acc: 0.1562 F1: 0.0587 | Val Loss: 2.1410 Acc: 0.0833 F1: 0.0208
+Epoch  18/50 | Train Loss: 1.8438 Acc: 0.1562 F1: 0.0757 | Val Loss: 2.1560 Acc: 0.0833 F1: 0.0208
+Epoch  19/50 | Train Loss: 1.8386 Acc: 0.2396 F1: 0.1339 | Val Loss: 2.1180 Acc: 0.1667 F1: 0.1146
+Validation Loss decreased (2.118005 --> 2.117997). Saving best model...
+Epoch  20/50 | Train Loss: 1.8372 Acc: 0.2396 F1: 0.1569 | Val Loss: 2.1120 Acc: 0.1667 F1: 0.1146
+Validation Loss decreased (2.117997 --> 2.112000). Saving best model...
+Epoch  21/50 | Train Loss: 1.8336 Acc: 0.2083 F1: 0.1011 | Val Loss: 2.1293 Acc: 0.0833 F1: 0.0317
+Epoch  22/50 | Train Loss: 1.8341 Acc: 0.1875 F1: 0.0792 | Val Loss: 2.1146 Acc: 0.0833 F1: 0.0220
+Epoch  23/50 | Train Loss: 1.8288 Acc: 0.1771 F1: 0.0929 | Val Loss: 2.1297 Acc: 0.0833 F1: 0.0833
+Epoch  24/50 | Train Loss: 1.8203 Acc: 0.1771 F1: 0.0599 | Val Loss: 2.1406 Acc: 0.0000 F1: 0.0000
+Epoch  25/50 | Train Loss: 1.8358 Acc: 0.1354 F1: 0.0298 | Val Loss: 2.1466 Acc: 0.0000 F1: 0.0000
+Epoch  26/50 | Train Loss: 1.8240 Acc: 0.1979 F1: 0.0909 | Val Loss: 2.1455 Acc: 0.0000 F1: 0.0000
+Epoch  27/50 | Train Loss: 1.8340 Acc: 0.1875 F1: 0.0913 | Val Loss: 2.1499 Acc: 0.0833 F1: 0.1250
+Epoch  28/50 | Train Loss: 1.8230 Acc: 0.2396 F1: 0.1375 | Val Loss: 2.1261 Acc: 0.0833 F1: 0.0417
+Epoch  29/50 | Train Loss: 1.8205 Acc: 0.2292 F1: 0.1493 | Val Loss: 2.1029 Acc: 0.0833 F1: 0.0227
+Validation Loss decreased (2.112000 --> 2.102865). Saving best model...
+Epoch  30/50 | Train Loss: 1.8159 Acc: 0.2396 F1: 0.1814 | Val Loss: 2.1059 Acc: 0.2500 F1: 0.2333
+Epoch  31/50 | Train Loss: 1.8202 Acc: 0.2708 F1: 0.2190 | Val Loss: 2.1335 Acc: 0.0000 F1: 0.0000
+Epoch  32/50 | Train Loss: 1.8185 Acc: 0.3125 F1: 0.2378 | Val Loss: 2.1275 Acc: 0.1667 F1: 0.0714
+Epoch  33/50 | Train Loss: 1.8201 Acc: 0.1875 F1: 0.0971 | Val Loss: 2.1305 Acc: 0.0833 F1: 0.1250
+Epoch  34/50 | Train Loss: 1.8197 Acc: 0.2396 F1: 0.1088 | Val Loss: 2.1382 Acc: 0.0833 F1: 0.0250
+Epoch  35/50 | Train Loss: 1.8184 Acc: 0.2500 F1: 0.1226 | Val Loss: 2.1193 Acc: 0.0833 F1: 0.0278
+Epoch  36/50 | Train Loss: 1.8143 Acc: 0.2604 F1: 0.1252 | Val Loss: 2.1076 Acc: 0.0833 F1: 0.0500
+Epoch  37/50 | Train Loss: 1.8074 Acc: 0.2604 F1: 0.1418 | Val Loss: 2.1238 Acc: 0.0833 F1: 0.0625
+Epoch  38/50 | Train Loss: 1.8114 Acc: 0.2396 F1: 0.1303 | Val Loss: 2.1294 Acc: 0.0833 F1: 0.1250
+Epoch  39/50 | Train Loss: 1.8157 Acc: 0.1979 F1: 0.1251 | Val Loss: 2.1403 Acc: 0.0000 F1: 0.0000
+Epoch  40/50 | Train Loss: 1.8208 Acc: 0.1771 F1: 0.1079 | Val Loss: 2.1056 Acc: 0.1667 F1: 0.0833
+Epoch  41/50 | Train Loss: 1.8084 Acc: 0.3542 F1: 0.2724 | Val Loss: 2.0763 Acc: 0.1667 F1: 0.0813
+Validation Loss decreased (2.102865 --> 2.076346). Saving best model...
+Epoch  42/50 | Train Loss: 1.8033 Acc: 0.2812 F1: 0.1960 | Val Loss: 2.0875 Acc: 0.0833 F1: 0.0500
+Epoch  43/50 | Train Loss: 1.8046 Acc: 0.3229 F1: 0.2314 | Val Loss: 2.1270 Acc: 0.1667 F1: 0.2083
+Epoch  44/50 | Train Loss: 1.8106 Acc: 0.2083 F1: 0.1352 | Val Loss: 2.1366 Acc: 0.2500 F1: 0.2024
+Epoch  45/50 | Train Loss: 1.7973 Acc: 0.3021 F1: 0.1745 | Val Loss: 2.1275 Acc: 0.1667 F1: 0.0857
+Epoch  46/50 | Train Loss: 1.7993 Acc: 0.2812 F1: 0.1911 | Val Loss: 2.1396 Acc: 0.1667 F1: 0.1083
+Epoch  47/50 | Train Loss: 1.8010 Acc: 0.3021 F1: 0.2282 | Val Loss: 2.1822 Acc: 0.1667 F1: 0.1111
+Epoch  48/50 | Train Loss: 1.7871 Acc: 0.3438 F1: 0.2496 | Val Loss: 2.1685 Acc: 0.0833 F1: 0.0833
+Epoch  49/50 | Train Loss: 1.7982 Acc: 0.2604 F1: 0.1504 | Val Loss: 2.1812 Acc: 0.0000 F1: 0.0000
+Epoch  50/50 | Train Loss: 1.8111 Acc: 0.2083 F1: 0.1273 | Val Loss: 2.1161 Acc: 0.1667 F1: 0.1607
+
+Classification Test Result (UWaveGestureLibrary)
+Accuracy : 0.203125
+F1 (macro): 0.126508
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_UWaveGestureLibrary_laya_mixer_text_stats_avg/attention_maps
+Text metadata preview | dataset=ECG200 | domain=UCR | channels=1
+   - channel_1: In the UCR domain, this channel belongs to the ECG200 dataset and represents the feature channel 1.
+Stats metadata preview | dataset=ECG200 | domain=UCR | channels=1
+   - channel_1: Channel statistics over the training split: mean value is 0.000, standard deviation is 0.995, minimum value is -2.617, maximum value is 4.199, median value is 0.225, and mean absolute value is 0.781.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ECG200 (Channels: 1)
+📊 Pretrain Info: electricity
+📊 Classes: 2 | Sequence Length: 96
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 71/71 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text_stats_avg, fusion=add, relation=none
+ℹ️  Metadata Fusion Mode: add
+ℹ️  Channel Mixer Relation Mode: none
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 2]
+Epoch   1/50 | Train Loss: 0.5338 Acc: 0.7125 F1: 0.4161 | Val Loss: 0.6789 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (inf --> 0.678896). Saving best model...
+Epoch   2/50 | Train Loss: 0.5282 Acc: 0.7000 F1: 0.4118 | Val Loss: 0.6832 Acc: 0.6000 F1: 0.3750
+Epoch   3/50 | Train Loss: 0.5317 Acc: 0.6875 F1: 0.4074 | Val Loss: 0.6832 Acc: 0.6000 F1: 0.3750
+Epoch   4/50 | Train Loss: 0.5481 Acc: 0.6625 F1: 0.3985 | Val Loss: 0.6686 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (0.678896 --> 0.668579). Saving best model...
+Epoch   5/50 | Train Loss: 0.5325 Acc: 0.6875 F1: 0.4074 | Val Loss: 0.6521 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (0.668579 --> 0.652081). Saving best model...
+Epoch   6/50 | Train Loss: 0.5249 Acc: 0.6875 F1: 0.4074 | Val Loss: 0.6582 Acc: 0.6000 F1: 0.3750
+Epoch   7/50 | Train Loss: 0.5002 Acc: 0.7125 F1: 0.4161 | Val Loss: 0.6731 Acc: 0.6000 F1: 0.3750
+Epoch   8/50 | Train Loss: 0.5124 Acc: 0.6875 F1: 0.4074 | Val Loss: 0.6764 Acc: 0.6000 F1: 0.3750
+Epoch   9/50 | Train Loss: 0.5000 Acc: 0.7000 F1: 0.4118 | Val Loss: 0.6719 Acc: 0.6000 F1: 0.3750
+Epoch  10/50 | Train Loss: 0.5025 Acc: 0.7000 F1: 0.4118 | Val Loss: 0.6495 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (0.652081 --> 0.649466). Saving best model...
+Epoch  11/50 | Train Loss: 0.4814 Acc: 0.7250 F1: 0.4203 | Val Loss: 0.6579 Acc: 0.6000 F1: 0.3750
+Epoch  12/50 | Train Loss: 0.4896 Acc: 0.7125 F1: 0.4161 | Val Loss: 0.6722 Acc: 0.6000 F1: 0.3750
+Epoch  13/50 | Train Loss: 0.4670 Acc: 0.7250 F1: 0.4203 | Val Loss: 0.6645 Acc: 0.6000 F1: 0.3750
+Epoch  14/50 | Train Loss: 0.4918 Acc: 0.6875 F1: 0.4074 | Val Loss: 0.6556 Acc: 0.6000 F1: 0.3750
+Epoch  15/50 | Train Loss: 0.4922 Acc: 0.7000 F1: 0.4489 | Val Loss: 0.6363 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (0.649466 --> 0.636333). Saving best model...
+Epoch  16/50 | Train Loss: 0.4864 Acc: 0.7125 F1: 0.4876 | Val Loss: 0.6314 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (0.636333 --> 0.631416). Saving best model...
+Epoch  17/50 | Train Loss: 0.4818 Acc: 0.7250 F1: 0.4948 | Val Loss: 0.6497 Acc: 0.6000 F1: 0.3750
+Epoch  18/50 | Train Loss: 0.4574 Acc: 0.7375 F1: 0.4668 | Val Loss: 0.6569 Acc: 0.6000 F1: 0.3750
+Epoch  19/50 | Train Loss: 0.4672 Acc: 0.7125 F1: 0.4548 | Val Loss: 0.6474 Acc: 0.6000 F1: 0.3750
+Epoch  20/50 | Train Loss: 0.4635 Acc: 0.7125 F1: 0.4161 | Val Loss: 0.6437 Acc: 0.6000 F1: 0.3750
+Epoch  21/50 | Train Loss: 0.4828 Acc: 0.7125 F1: 0.5399 | Val Loss: 0.6251 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (0.631416 --> 0.625059). Saving best model...
+Epoch  22/50 | Train Loss: 0.4724 Acc: 0.7000 F1: 0.4805 | Val Loss: 0.6398 Acc: 0.6000 F1: 0.3750
+Epoch  23/50 | Train Loss: 0.4703 Acc: 0.7125 F1: 0.5157 | Val Loss: 0.6216 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (0.625059 --> 0.621593). Saving best model...
+Epoch  24/50 | Train Loss: 0.4480 Acc: 0.7625 F1: 0.6373 | Val Loss: 0.6211 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (0.621593 --> 0.621068). Saving best model...
+Epoch  25/50 | Train Loss: 0.4611 Acc: 0.7250 F1: 0.5487 | Val Loss: 0.6313 Acc: 0.6000 F1: 0.3750
+Epoch  26/50 | Train Loss: 0.4607 Acc: 0.7125 F1: 0.5157 | Val Loss: 0.6395 Acc: 0.6000 F1: 0.3750
+Epoch  27/50 | Train Loss: 0.4531 Acc: 0.7125 F1: 0.4876 | Val Loss: 0.6335 Acc: 0.6000 F1: 0.3750
+Epoch  28/50 | Train Loss: 0.4475 Acc: 0.7500 F1: 0.6094 | Val Loss: 0.6184 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (0.621068 --> 0.618369). Saving best model...
+Epoch  29/50 | Train Loss: 0.4554 Acc: 0.7375 F1: 0.6160 | Val Loss: 0.6109 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (0.618369 --> 0.610870). Saving best model...
+Epoch  30/50 | Train Loss: 0.4322 Acc: 0.7750 F1: 0.6639 | Val Loss: 0.6206 Acc: 0.6000 F1: 0.3750
+Epoch  31/50 | Train Loss: 0.4602 Acc: 0.7125 F1: 0.5794 | Val Loss: 0.6399 Acc: 0.6000 F1: 0.3750
+Epoch  32/50 | Train Loss: 0.4371 Acc: 0.7250 F1: 0.5487 | Val Loss: 0.6317 Acc: 0.6000 F1: 0.3750
+Epoch  33/50 | Train Loss: 0.4391 Acc: 0.7375 F1: 0.5991 | Val Loss: 0.6235 Acc: 0.6000 F1: 0.3750
+Epoch  34/50 | Train Loss: 0.4245 Acc: 0.7625 F1: 0.6199 | Val Loss: 0.6209 Acc: 0.6000 F1: 0.3750
+Epoch  35/50 | Train Loss: 0.4425 Acc: 0.7375 F1: 0.5799 | Val Loss: 0.6085 Acc: 0.6000 F1: 0.3750
+Validation Loss decreased (0.610870 --> 0.608481). Saving best model...
+Epoch  36/50 | Train Loss: 0.4203 Acc: 0.7750 F1: 0.6484 | Val Loss: 0.6276 Acc: 0.6000 F1: 0.3750
+Epoch  37/50 | Train Loss: 0.4154 Acc: 0.7625 F1: 0.6199 | Val Loss: 0.6298 Acc: 0.6000 F1: 0.3750
+Epoch  38/50 | Train Loss: 0.4326 Acc: 0.7500 F1: 0.6265 | Val Loss: 0.6125 Acc: 0.6000 F1: 0.3750
+Epoch  39/50 | Train Loss: 0.4368 Acc: 0.7375 F1: 0.6160 | Val Loss: 0.6110 Acc: 0.6000 F1: 0.3750
+Epoch  40/50 | Train Loss: 0.4128 Acc: 0.7750 F1: 0.6639 | Val Loss: 0.6154 Acc: 0.6000 F1: 0.3750
+Epoch  41/50 | Train Loss: 0.4102 Acc: 0.7625 F1: 0.5999 | Val Loss: 0.6165 Acc: 0.6000 F1: 0.3750
+Epoch  42/50 | Train Loss: 0.3993 Acc: 0.7875 F1: 0.6420 | Val Loss: 0.6579 Acc: 0.6000 F1: 0.3750
+Epoch  43/50 | Train Loss: 0.4457 Acc: 0.7125 F1: 0.5794 | Val Loss: 0.6244 Acc: 0.6000 F1: 0.3750
+Epoch  44/50 | Train Loss: 0.4314 Acc: 0.7500 F1: 0.6416 | Val Loss: 0.5910 Acc: 0.7000 F1: 0.6000
+Validation Loss decreased (0.608481 --> 0.591033). Saving best model...
+Epoch  45/50 | Train Loss: 0.4345 Acc: 0.7375 F1: 0.5991 | Val Loss: 0.6012 Acc: 0.7000 F1: 0.6000
+Epoch  46/50 | Train Loss: 0.4271 Acc: 0.7500 F1: 0.6416 | Val Loss: 0.6099 Acc: 0.6000 F1: 0.3750
+Epoch  47/50 | Train Loss: 0.4245 Acc: 0.7375 F1: 0.6160 | Val Loss: 0.6053 Acc: 0.6000 F1: 0.3750
+Epoch  48/50 | Train Loss: 0.4116 Acc: 0.7500 F1: 0.6094 | Val Loss: 0.6081 Acc: 0.6000 F1: 0.3750
+Epoch  49/50 | Train Loss: 0.4039 Acc: 0.7625 F1: 0.6373 | Val Loss: 0.6186 Acc: 0.6000 F1: 0.3750
+Epoch  50/50 | Train Loss: 0.4145 Acc: 0.7500 F1: 0.6416 | Val Loss: 0.6096 Acc: 0.6000 F1: 0.3750
+
+Classification Test Result (ECG200)
+Accuracy : 0.670000
+F1 (macro): 0.553994
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_ECG200_laya_mixer_text_stats_avg/attention_maps
+Text metadata preview | dataset=ECG5000 | domain=UCR | channels=1
+   - channel_1: In the UCR domain, this channel belongs to the ECG5000 dataset and represents the feature channel 1.
+Stats metadata preview | dataset=ECG5000 | domain=UCR | channels=1
+   - channel_1: Channel statistics over the training split: mean value is -0.000, standard deviation is 0.996, minimum value is -5.798, maximum value is 4.058, median value is 0.186, and mean absolute value is 0.666.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ECG5000 (Channels: 1)
+📊 Pretrain Info: electricity
+📊 Classes: 5 | Sequence Length: 140
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 71/71 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text_stats_avg, fusion=add, relation=none
+ℹ️  Metadata Fusion Mode: add
+ℹ️  Channel Mixer Relation Mode: none
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 5]
+Epoch   1/50 | Train Loss: 1.2007 Acc: 0.4375 F1: 0.1824 | Val Loss: 0.8158 Acc: 0.6400 F1: 0.2602
+Validation Loss decreased (inf --> 0.815844). Saving best model...
+Epoch   2/50 | Train Loss: 0.9092 Acc: 0.5781 F1: 0.1465 | Val Loss: 0.8026 Acc: 0.6400 F1: 0.2602
+Validation Loss decreased (0.815844 --> 0.802611). Saving best model...
+Epoch   3/50 | Train Loss: 0.8925 Acc: 0.5826 F1: 0.1541 | Val Loss: 0.8165 Acc: 0.8400 F1: 0.5630
+Epoch   4/50 | Train Loss: 0.8732 Acc: 0.6094 F1: 0.1898 | Val Loss: 0.7663 Acc: 0.6400 F1: 0.2602
+Validation Loss decreased (0.802611 --> 0.766285). Saving best model...
+Epoch   5/50 | Train Loss: 0.8598 Acc: 0.5781 F1: 0.1465 | Val Loss: 0.7527 Acc: 0.6400 F1: 0.2602
+Validation Loss decreased (0.766285 --> 0.752699). Saving best model...
+Epoch   6/50 | Train Loss: 0.8440 Acc: 0.5781 F1: 0.1465 | Val Loss: 0.7401 Acc: 0.6400 F1: 0.2602
+Validation Loss decreased (0.752699 --> 0.740117). Saving best model...
+Epoch   7/50 | Train Loss: 0.8367 Acc: 0.5759 F1: 0.1462 | Val Loss: 0.7290 Acc: 0.7000 F1: 0.3753
+Validation Loss decreased (0.740117 --> 0.728995). Saving best model...
+Epoch   8/50 | Train Loss: 0.8354 Acc: 0.6518 F1: 0.2241 | Val Loss: 0.7407 Acc: 0.8800 F1: 0.5905
+Epoch   9/50 | Train Loss: 0.8168 Acc: 0.7098 F1: 0.2697 | Val Loss: 0.7011 Acc: 0.7400 F1: 0.4322
+Validation Loss decreased (0.728995 --> 0.701095). Saving best model...
+Epoch  10/50 | Train Loss: 0.7915 Acc: 0.6362 F1: 0.2102 | Val Loss: 0.6903 Acc: 0.6400 F1: 0.2602
+Validation Loss decreased (0.701095 --> 0.690253). Saving best model...
+Epoch  11/50 | Train Loss: 0.7813 Acc: 0.6897 F1: 0.2559 | Val Loss: 0.6731 Acc: 0.7200 F1: 0.4040
+Validation Loss decreased (0.690253 --> 0.673055). Saving best model...
+Epoch  12/50 | Train Loss: 0.7682 Acc: 0.7433 F1: 0.2897 | Val Loss: 0.6718 Acc: 0.8000 F1: 0.5133
+Validation Loss decreased (0.673055 --> 0.671760). Saving best model...
+Epoch  13/50 | Train Loss: 0.7563 Acc: 0.7143 F1: 0.2715 | Val Loss: 0.6559 Acc: 0.8200 F1: 0.5271
+Validation Loss decreased (0.671760 --> 0.655902). Saving best model...
+Epoch  14/50 | Train Loss: 0.7370 Acc: 0.6964 F1: 0.2616 | Val Loss: 0.7052 Acc: 0.8200 F1: 0.5540
+Epoch  15/50 | Train Loss: 0.7418 Acc: 0.8080 F1: 0.3260 | Val Loss: 0.6436 Acc: 0.8800 F1: 0.5926
+Validation Loss decreased (0.655902 --> 0.643590). Saving best model...
+Epoch  16/50 | Train Loss: 0.7180 Acc: 0.7589 F1: 0.3005 | Val Loss: 0.6437 Acc: 0.9000 F1: 0.6066
+Epoch  17/50 | Train Loss: 0.7162 Acc: 0.8281 F1: 0.3358 | Val Loss: 0.6268 Acc: 0.9000 F1: 0.6081
+Validation Loss decreased (0.643590 --> 0.626840). Saving best model...
+Epoch  18/50 | Train Loss: 0.6925 Acc: 0.8616 F1: 0.3522 | Val Loss: 0.6025 Acc: 0.9000 F1: 0.6048
+Validation Loss decreased (0.626840 --> 0.602512). Saving best model...
+Epoch  19/50 | Train Loss: 0.6837 Acc: 0.8192 F1: 0.3319 | Val Loss: 0.6215 Acc: 0.9000 F1: 0.6081
+Epoch  20/50 | Train Loss: 0.6880 Acc: 0.8013 F1: 0.3247 | Val Loss: 0.6371 Acc: 0.8200 F1: 0.5540
+Epoch  21/50 | Train Loss: 0.6715 Acc: 0.8192 F1: 0.3324 | Val Loss: 0.5979 Acc: 0.9000 F1: 0.6081
+Validation Loss decreased (0.602512 --> 0.597860). Saving best model...
+Epoch  22/50 | Train Loss: 0.6486 Acc: 0.8661 F1: 0.3537 | Val Loss: 0.5743 Acc: 0.9000 F1: 0.6081
+Validation Loss decreased (0.597860 --> 0.574326). Saving best model...
+Epoch  23/50 | Train Loss: 0.6445 Acc: 0.8705 F1: 0.3564 | Val Loss: 0.5756 Acc: 0.9000 F1: 0.6081
+Epoch  24/50 | Train Loss: 0.6357 Acc: 0.8594 F1: 0.3514 | Val Loss: 0.5584 Acc: 0.9000 F1: 0.6066
+Validation Loss decreased (0.574326 --> 0.558448). Saving best model...
+Epoch  25/50 | Train Loss: 0.6252 Acc: 0.8750 F1: 0.3585 | Val Loss: 0.5454 Acc: 0.9000 F1: 0.6066
+Validation Loss decreased (0.558448 --> 0.545449). Saving best model...
+Epoch  26/50 | Train Loss: 0.6181 Acc: 0.8728 F1: 0.3575 | Val Loss: 0.5348 Acc: 0.9000 F1: 0.6048
+Validation Loss decreased (0.545449 --> 0.534793). Saving best model...
+Epoch  27/50 | Train Loss: 0.6141 Acc: 0.8638 F1: 0.3531 | Val Loss: 0.5326 Acc: 0.9200 F1: 0.6210
+Validation Loss decreased (0.534793 --> 0.532625). Saving best model...
+Epoch  28/50 | Train Loss: 0.6013 Acc: 0.8728 F1: 0.3577 | Val Loss: 0.5336 Acc: 0.9200 F1: 0.6222
+Epoch  29/50 | Train Loss: 0.5884 Acc: 0.8862 F1: 0.3631 | Val Loss: 0.5429 Acc: 0.9000 F1: 0.6081
+Epoch  30/50 | Train Loss: 0.5963 Acc: 0.8571 F1: 0.3509 | Val Loss: 0.5592 Acc: 0.8600 F1: 0.5807
+Epoch  31/50 | Train Loss: 0.5804 Acc: 0.8772 F1: 0.3595 | Val Loss: 0.5007 Acc: 0.9000 F1: 0.6066
+Validation Loss decreased (0.532625 --> 0.500700). Saving best model...
+Epoch  32/50 | Train Loss: 0.5748 Acc: 0.8795 F1: 0.3605 | Val Loss: 0.5046 Acc: 0.9200 F1: 0.6222
+Epoch  33/50 | Train Loss: 0.5642 Acc: 0.8862 F1: 0.3636 | Val Loss: 0.4988 Acc: 0.9200 F1: 0.6222
+Validation Loss decreased (0.500700 --> 0.498803). Saving best model...
+Epoch  34/50 | Train Loss: 0.5626 Acc: 0.8839 F1: 0.3626 | Val Loss: 0.4907 Acc: 0.9200 F1: 0.6222
+Validation Loss decreased (0.498803 --> 0.490674). Saving best model...
+Epoch  35/50 | Train Loss: 0.5556 Acc: 0.8839 F1: 0.3626 | Val Loss: 0.4840 Acc: 0.9200 F1: 0.6222
+Validation Loss decreased (0.490674 --> 0.483971). Saving best model...
+Epoch  36/50 | Train Loss: 0.5430 Acc: 0.8772 F1: 0.3594 | Val Loss: 0.5217 Acc: 0.8600 F1: 0.5807
+Epoch  37/50 | Train Loss: 0.5413 Acc: 0.8795 F1: 0.3604 | Val Loss: 0.4909 Acc: 0.9000 F1: 0.6081
+Epoch  38/50 | Train Loss: 0.5327 Acc: 0.8839 F1: 0.3624 | Val Loss: 0.4669 Acc: 0.9200 F1: 0.6222
+Validation Loss decreased (0.483971 --> 0.466916). Saving best model...
+Epoch  39/50 | Train Loss: 0.5246 Acc: 0.8839 F1: 0.3626 | Val Loss: 0.4732 Acc: 0.9200 F1: 0.6222
+Epoch  40/50 | Train Loss: 0.5240 Acc: 0.8862 F1: 0.3637 | Val Loss: 0.4708 Acc: 0.9200 F1: 0.6222
+Epoch  41/50 | Train Loss: 0.5178 Acc: 0.8906 F1: 0.3659 | Val Loss: 0.4573 Acc: 0.9200 F1: 0.6222
+Validation Loss decreased (0.466916 --> 0.457345). Saving best model...
+Epoch  42/50 | Train Loss: 0.5135 Acc: 0.8884 F1: 0.3644 | Val Loss: 0.4488 Acc: 0.9200 F1: 0.6222
+Validation Loss decreased (0.457345 --> 0.448780). Saving best model...
+Epoch  43/50 | Train Loss: 0.5076 Acc: 0.8906 F1: 0.3658 | Val Loss: 0.4539 Acc: 0.9200 F1: 0.6222
+Epoch  44/50 | Train Loss: 0.5039 Acc: 0.8951 F1: 0.3676 | Val Loss: 0.4530 Acc: 0.9200 F1: 0.6222
+Epoch  45/50 | Train Loss: 0.4975 Acc: 0.8906 F1: 0.3654 | Val Loss: 0.4542 Acc: 0.9000 F1: 0.6081
+Epoch  46/50 | Train Loss: 0.4928 Acc: 0.8906 F1: 0.3656 | Val Loss: 0.4393 Acc: 0.9200 F1: 0.6222
+Validation Loss decreased (0.448780 --> 0.439279). Saving best model...
+Epoch  47/50 | Train Loss: 0.4914 Acc: 0.8951 F1: 0.3677 | Val Loss: 0.4312 Acc: 0.9200 F1: 0.6222
+Validation Loss decreased (0.439279 --> 0.431226). Saving best model...
+Epoch  48/50 | Train Loss: 0.4920 Acc: 0.8884 F1: 0.3644 | Val Loss: 0.4324 Acc: 0.9200 F1: 0.6222
+Epoch  49/50 | Train Loss: 0.4882 Acc: 0.8906 F1: 0.3655 | Val Loss: 0.4210 Acc: 0.9000 F1: 0.6066
+Validation Loss decreased (0.431226 --> 0.421035). Saving best model...
+Epoch  50/50 | Train Loss: 0.4791 Acc: 0.8973 F1: 0.3687 | Val Loss: 0.4202 Acc: 0.9200 F1: 0.6222
+Validation Loss decreased (0.421035 --> 0.420242). Saving best model...
+
+Classification Test Result (ECG5000)
+Accuracy : 0.891556
+F1 (macro): 0.365808
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_ECG5000_laya_mixer_text_stats_avg/attention_maps
+Text metadata preview | dataset=FordA | domain=UCR | channels=1
+   - channel_1: In the UCR domain, this channel belongs to the FordA dataset and represents the feature channel 1.
+Stats metadata preview | dataset=FordA | domain=UCR | channels=1
+   - channel_1: Channel statistics over the training split: mean value is -0.000, standard deviation is 0.999, minimum value is -4.618, maximum value is 5.059, median value is -0.001, and mean absolute value is 0.800.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: FordA (Channels: 1)
+📊 Pretrain Info: electricity
+📊 Classes: 2 | Sequence Length: 500
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 71/71 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text_stats_avg, fusion=add, relation=none
+ℹ️  Metadata Fusion Mode: add
+ℹ️  Channel Mixer Relation Mode: none
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 2]
+Epoch   1/50 | Train Loss: 0.6984 Acc: 0.5006 F1: 0.4802 | Val Loss: 0.6930 Acc: 0.5111 F1: 0.3382
+Validation Loss decreased (inf --> 0.693000). Saving best model...
+Epoch   2/50 | Train Loss: 0.6994 Acc: 0.5130 F1: 0.5073 | Val Loss: 0.6969 Acc: 0.4889 F1: 0.3284
+Epoch   3/50 | Train Loss: 0.6954 Acc: 0.5087 F1: 0.4960 | Val Loss: 0.7092 Acc: 0.4889 F1: 0.3284
+Epoch   4/50 | Train Loss: 0.6947 Acc: 0.5183 F1: 0.4957 | Val Loss: 0.6919 Acc: 0.4889 F1: 0.4067
+Validation Loss decreased (0.693000 --> 0.691947). Saving best model...
+Epoch   5/50 | Train Loss: 0.6939 Acc: 0.5111 F1: 0.5041 | Val Loss: 0.6906 Acc: 0.5333 F1: 0.4321
+Validation Loss decreased (0.691947 --> 0.690585). Saving best model...
+Epoch   6/50 | Train Loss: 0.6944 Acc: 0.5179 F1: 0.5122 | Val Loss: 0.6941 Acc: 0.4917 F1: 0.3344
+Epoch   7/50 | Train Loss: 0.6921 Acc: 0.5170 F1: 0.5115 | Val Loss: 0.6915 Acc: 0.4917 F1: 0.4026
+Epoch   8/50 | Train Loss: 0.6915 Acc: 0.5213 F1: 0.5123 | Val Loss: 0.7044 Acc: 0.5111 F1: 0.3382
+Epoch   9/50 | Train Loss: 0.6975 Acc: 0.5077 F1: 0.5061 | Val Loss: 0.6892 Acc: 0.5528 F1: 0.4662
+Validation Loss decreased (0.690585 --> 0.689244). Saving best model...
+Epoch  10/50 | Train Loss: 0.6901 Acc: 0.5201 F1: 0.5154 | Val Loss: 0.6888 Acc: 0.5639 F1: 0.5019
+Validation Loss decreased (0.689244 --> 0.688777). Saving best model...
+Epoch  11/50 | Train Loss: 0.6891 Acc: 0.5288 F1: 0.5207 | Val Loss: 0.6944 Acc: 0.5167 F1: 0.3507
+Epoch  12/50 | Train Loss: 0.6898 Acc: 0.5235 F1: 0.5203 | Val Loss: 0.6987 Acc: 0.5139 F1: 0.3445
+Epoch  13/50 | Train Loss: 0.6902 Acc: 0.5263 F1: 0.5206 | Val Loss: 0.7025 Acc: 0.5111 F1: 0.3382
+Epoch  14/50 | Train Loss: 0.6876 Acc: 0.5331 F1: 0.5296 | Val Loss: 0.6895 Acc: 0.5222 F1: 0.3892
+Epoch  15/50 | Train Loss: 0.6877 Acc: 0.5303 F1: 0.5232 | Val Loss: 0.6923 Acc: 0.5000 F1: 0.3983
+Epoch  16/50 | Train Loss: 0.6858 Acc: 0.5449 F1: 0.5350 | Val Loss: 0.6868 Acc: 0.5583 F1: 0.5576
+Validation Loss decreased (0.688777 --> 0.686830). Saving best model...
+Epoch  17/50 | Train Loss: 0.6857 Acc: 0.5504 F1: 0.5442 | Val Loss: 0.6897 Acc: 0.5028 F1: 0.4346
+Epoch  18/50 | Train Loss: 0.6870 Acc: 0.5476 F1: 0.5449 | Val Loss: 0.6870 Acc: 0.5333 F1: 0.5249
+Epoch  19/50 | Train Loss: 0.6855 Acc: 0.5430 F1: 0.5396 | Val Loss: 0.6914 Acc: 0.4944 F1: 0.4074
+Epoch  20/50 | Train Loss: 0.6842 Acc: 0.5489 F1: 0.5430 | Val Loss: 0.6880 Acc: 0.5222 F1: 0.4840
+Epoch  21/50 | Train Loss: 0.6871 Acc: 0.5356 F1: 0.5321 | Val Loss: 0.6856 Acc: 0.5750 F1: 0.5432
+Validation Loss decreased (0.686830 --> 0.685596). Saving best model...
+Epoch  22/50 | Train Loss: 0.6833 Acc: 0.5594 F1: 0.5545 | Val Loss: 0.6868 Acc: 0.5500 F1: 0.4614
+Epoch  23/50 | Train Loss: 0.6832 Acc: 0.5532 F1: 0.5506 | Val Loss: 0.6982 Acc: 0.5000 F1: 0.3730
+Epoch  24/50 | Train Loss: 0.6879 Acc: 0.5350 F1: 0.5300 | Val Loss: 0.6865 Acc: 0.5361 F1: 0.5126
+Epoch  25/50 | Train Loss: 0.6799 Acc: 0.5600 F1: 0.5588 | Val Loss: 0.6961 Acc: 0.5139 F1: 0.3494
+Epoch  26/50 | Train Loss: 0.6824 Acc: 0.5575 F1: 0.5549 | Val Loss: 0.7055 Acc: 0.5167 F1: 0.3507
+Epoch  27/50 | Train Loss: 0.6795 Acc: 0.5659 F1: 0.5626 | Val Loss: 0.6933 Acc: 0.5083 F1: 0.4100
+Epoch  28/50 | Train Loss: 0.6823 Acc: 0.5498 F1: 0.5477 | Val Loss: 0.6999 Acc: 0.5028 F1: 0.3746
+Epoch  29/50 | Train Loss: 0.6839 Acc: 0.5476 F1: 0.5444 | Val Loss: 0.6835 Acc: 0.5639 F1: 0.5627
+Validation Loss decreased (0.685596 --> 0.683454). Saving best model...
+Epoch  30/50 | Train Loss: 0.6822 Acc: 0.5610 F1: 0.5583 | Val Loss: 0.6871 Acc: 0.5306 F1: 0.4203
+Epoch  31/50 | Train Loss: 0.6798 Acc: 0.5569 F1: 0.5504 | Val Loss: 0.6829 Acc: 0.5722 F1: 0.5645
+Validation Loss decreased (0.683454 --> 0.682899). Saving best model...
+Epoch  32/50 | Train Loss: 0.6787 Acc: 0.5696 F1: 0.5633 | Val Loss: 0.6929 Acc: 0.5083 F1: 0.4100
+Epoch  33/50 | Train Loss: 0.6816 Acc: 0.5498 F1: 0.5482 | Val Loss: 0.6855 Acc: 0.5472 F1: 0.4536
+Epoch  34/50 | Train Loss: 0.6781 Acc: 0.5637 F1: 0.5605 | Val Loss: 0.6946 Acc: 0.5111 F1: 0.4050
+Epoch  35/50 | Train Loss: 0.6800 Acc: 0.5668 F1: 0.5626 | Val Loss: 0.6883 Acc: 0.5000 F1: 0.4276
+Epoch  36/50 | Train Loss: 0.6816 Acc: 0.5495 F1: 0.5472 | Val Loss: 0.6817 Acc: 0.5806 F1: 0.5664
+Validation Loss decreased (0.682899 --> 0.681650). Saving best model...
+Epoch  37/50 | Train Loss: 0.6813 Acc: 0.5569 F1: 0.5533 | Val Loss: 0.6850 Acc: 0.5500 F1: 0.4555
+Epoch  38/50 | Train Loss: 0.6788 Acc: 0.5597 F1: 0.5534 | Val Loss: 0.6881 Acc: 0.5000 F1: 0.4276
+Epoch  39/50 | Train Loss: 0.6769 Acc: 0.5678 F1: 0.5635 | Val Loss: 0.6868 Acc: 0.5139 F1: 0.4520
+Epoch  40/50 | Train Loss: 0.6752 Acc: 0.5709 F1: 0.5652 | Val Loss: 0.6979 Acc: 0.5111 F1: 0.3945
+Epoch  41/50 | Train Loss: 0.6784 Acc: 0.5640 F1: 0.5619 | Val Loss: 0.6816 Acc: 0.5389 F1: 0.5325
+Validation Loss decreased (0.681650 --> 0.681558). Saving best model...
+Epoch  42/50 | Train Loss: 0.6767 Acc: 0.5681 F1: 0.5669 | Val Loss: 0.6975 Acc: 0.5139 F1: 0.3494
+Epoch  43/50 | Train Loss: 0.6763 Acc: 0.5687 F1: 0.5666 | Val Loss: 0.7040 Acc: 0.5167 F1: 0.3507
+Epoch  44/50 | Train Loss: 0.6779 Acc: 0.5687 F1: 0.5648 | Val Loss: 0.6867 Acc: 0.5306 F1: 0.4132
+Epoch  45/50 | Train Loss: 0.6746 Acc: 0.5668 F1: 0.5647 | Val Loss: 0.6793 Acc: 0.5806 F1: 0.5713
+Validation Loss decreased (0.681558 --> 0.679283). Saving best model...
+Epoch  46/50 | Train Loss: 0.6745 Acc: 0.5721 F1: 0.5684 | Val Loss: 0.6790 Acc: 0.5889 F1: 0.5771
+Validation Loss decreased (0.679283 --> 0.679038). Saving best model...
+Epoch  47/50 | Train Loss: 0.6762 Acc: 0.5597 F1: 0.5532 | Val Loss: 0.6809 Acc: 0.5639 F1: 0.5452
+Epoch  48/50 | Train Loss: 0.6734 Acc: 0.5832 F1: 0.5806 | Val Loss: 0.6792 Acc: 0.5778 F1: 0.5440
+Epoch  49/50 | Train Loss: 0.6755 Acc: 0.5767 F1: 0.5741 | Val Loss: 0.6854 Acc: 0.5306 F1: 0.4132
+Epoch  50/50 | Train Loss: 0.6720 Acc: 0.5721 F1: 0.5687 | Val Loss: 0.6819 Acc: 0.5639 F1: 0.4794
+
+Classification Test Result (FordA)
+Accuracy : 0.596970
+F1 (macro): 0.579098
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_FordA_laya_mixer_text_stats_avg/attention_maps
+Text metadata preview | dataset=FordB | domain=UCR | channels=1
+   - channel_1: In the UCR domain, this channel belongs to the FordB dataset and represents the feature channel 1.
+Stats metadata preview | dataset=FordB | domain=UCR | channels=1
+   - channel_1: Channel statistics over the training split: mean value is -0.000, standard deviation is 0.999, minimum value is -5.539, maximum value is 5.090, median value is 0.002, and mean absolute value is 0.791.
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: FordB (Channels: 1)
+📊 Pretrain Info: electricity
+📊 Classes: 2 | Sequence Length: 500
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_text_stats_avg/laya_ts_electricity_s_best.pt
+   - 71/71 keys matched.
+✅ Encoder is FROZEN (Linear Probing mode).
+📝 metadata: mode=text_stats_avg, fusion=add, relation=none
+ℹ️  Metadata Fusion Mode: add
+ℹ️  Channel Mixer Relation Mode: none
+ℹ️  Encoder Variant: default
+ℹ️  Channel Adapter: disabled for Laya downstream (mixer)
+ℹ️  Channel Relation Block: disabled
+✅ ClassificationHead: [B, 128] → [B, 2]
+Epoch   1/50 | Train Loss: 0.6978 Acc: 0.5046 F1: 0.5036 | Val Loss: 0.6977 Acc: 0.5096 F1: 0.3376
+Validation Loss decreased (inf --> 0.697680). Saving best model...
+Epoch   2/50 | Train Loss: 0.6922 Acc: 0.5077 F1: 0.5028 | Val Loss: 0.6899 Acc: 0.5124 F1: 0.3487
+Validation Loss decreased (0.697680 --> 0.689939). Saving best model...
+Epoch   3/50 | Train Loss: 0.6940 Acc: 0.5077 F1: 0.5068 | Val Loss: 0.7015 Acc: 0.5096 F1: 0.3376
+Epoch   4/50 | Train Loss: 0.6918 Acc: 0.5239 F1: 0.5182 | Val Loss: 0.6917 Acc: 0.4876 F1: 0.3325
+Epoch   5/50 | Train Loss: 0.6910 Acc: 0.5279 F1: 0.5228 | Val Loss: 0.6913 Acc: 0.4931 F1: 0.3441
+Epoch   6/50 | Train Loss: 0.6904 Acc: 0.5279 F1: 0.5235 | Val Loss: 0.6853 Acc: 0.6143 F1: 0.6072
+Validation Loss decreased (0.689939 --> 0.685349). Saving best model...
+Epoch   7/50 | Train Loss: 0.6884 Acc: 0.5383 F1: 0.5359 | Val Loss: 0.6868 Acc: 0.5262 F1: 0.3784
+Epoch   8/50 | Train Loss: 0.6881 Acc: 0.5365 F1: 0.5325 | Val Loss: 0.6833 Acc: 0.5840 F1: 0.5513
+Validation Loss decreased (0.685349 --> 0.683322). Saving best model...
+Epoch   9/50 | Train Loss: 0.6836 Acc: 0.5567 F1: 0.5483 | Val Loss: 0.6864 Acc: 0.5262 F1: 0.3784
+Epoch  10/50 | Train Loss: 0.6837 Acc: 0.5450 F1: 0.5426 | Val Loss: 0.6874 Acc: 0.5014 F1: 0.3987
+Epoch  11/50 | Train Loss: 0.6815 Acc: 0.5506 F1: 0.5464 | Val Loss: 0.6947 Acc: 0.4876 F1: 0.3458
+Epoch  12/50 | Train Loss: 0.6854 Acc: 0.5371 F1: 0.5367 | Val Loss: 0.6822 Acc: 0.5317 F1: 0.4988
+Validation Loss decreased (0.683322 --> 0.682206). Saving best model...
+Epoch  13/50 | Train Loss: 0.6811 Acc: 0.5653 F1: 0.5620 | Val Loss: 0.6967 Acc: 0.5179 F1: 0.3560
+Epoch  14/50 | Train Loss: 0.6823 Acc: 0.5407 F1: 0.5369 | Val Loss: 0.6787 Acc: 0.6088 F1: 0.6075
+Validation Loss decreased (0.682206 --> 0.678696). Saving best model...
+Epoch  15/50 | Train Loss: 0.6793 Acc: 0.5751 F1: 0.5712 | Val Loss: 0.6776 Acc: 0.6198 F1: 0.6190
+Validation Loss decreased (0.678696 --> 0.677650). Saving best model...
+Epoch  16/50 | Train Loss: 0.6787 Acc: 0.5674 F1: 0.5609 | Val Loss: 0.6782 Acc: 0.5813 F1: 0.5461
+Epoch  17/50 | Train Loss: 0.6759 Acc: 0.5812 F1: 0.5783 | Val Loss: 0.6769 Acc: 0.6006 F1: 0.5985
+Validation Loss decreased (0.677650 --> 0.676889). Saving best model...
+Epoch  18/50 | Train Loss: 0.6784 Acc: 0.5613 F1: 0.5576 | Val Loss: 0.6868 Acc: 0.5427 F1: 0.4123
+Epoch  19/50 | Train Loss: 0.6761 Acc: 0.5741 F1: 0.5708 | Val Loss: 0.6755 Acc: 0.6088 F1: 0.5950
+Validation Loss decreased (0.676889 --> 0.675520). Saving best model...
+Epoch  20/50 | Train Loss: 0.6761 Acc: 0.5665 F1: 0.5645 | Val Loss: 0.6769 Acc: 0.5785 F1: 0.5658
+Epoch  21/50 | Train Loss: 0.6732 Acc: 0.5754 F1: 0.5725 | Val Loss: 0.6784 Acc: 0.5675 F1: 0.5039
+Epoch  22/50 | Train Loss: 0.6727 Acc: 0.5846 F1: 0.5823 | Val Loss: 0.6747 Acc: 0.5950 F1: 0.5710
+Validation Loss decreased (0.675520 --> 0.674669). Saving best model...
+Epoch  23/50 | Train Loss: 0.6745 Acc: 0.5717 F1: 0.5671 | Val Loss: 0.6737 Acc: 0.6006 F1: 0.5974
+Validation Loss decreased (0.674669 --> 0.673666). Saving best model...
+Epoch  24/50 | Train Loss: 0.6730 Acc: 0.5744 F1: 0.5724 | Val Loss: 0.6813 Acc: 0.5262 F1: 0.4733
+Epoch  25/50 | Train Loss: 0.6681 Acc: 0.5938 F1: 0.5901 | Val Loss: 0.6740 Acc: 0.5895 F1: 0.5802
+Epoch  26/50 | Train Loss: 0.6709 Acc: 0.5760 F1: 0.5742 | Val Loss: 0.6739 Acc: 0.5868 F1: 0.5756
+Epoch  27/50 | Train Loss: 0.6702 Acc: 0.5787 F1: 0.5758 | Val Loss: 0.6746 Acc: 0.5895 F1: 0.5480
+Epoch  28/50 | Train Loss: 0.6704 Acc: 0.5729 F1: 0.5721 | Val Loss: 0.6846 Acc: 0.5510 F1: 0.4393
+Epoch  29/50 | Train Loss: 0.6704 Acc: 0.5754 F1: 0.5723 | Val Loss: 0.6808 Acc: 0.5620 F1: 0.4747
+Epoch  30/50 | Train Loss: 0.6709 Acc: 0.5852 F1: 0.5823 | Val Loss: 0.6731 Acc: 0.5923 F1: 0.5551
+Validation Loss decreased (0.673666 --> 0.673112). Saving best model...
+Epoch  31/50 | Train Loss: 0.6700 Acc: 0.5775 F1: 0.5765 | Val Loss: 0.6762 Acc: 0.5510 F1: 0.5187
+Epoch  32/50 | Train Loss: 0.6695 Acc: 0.5821 F1: 0.5789 | Val Loss: 0.6689 Acc: 0.6171 F1: 0.6077
+Validation Loss decreased (0.673112 --> 0.668902). Saving best model...
+Epoch  33/50 | Train Loss: 0.6663 Acc: 0.5904 F1: 0.5880 | Val Loss: 0.6708 Acc: 0.5923 F1: 0.5812
+Epoch  34/50 | Train Loss: 0.6671 Acc: 0.5858 F1: 0.5837 | Val Loss: 0.6710 Acc: 0.5868 F1: 0.5731
+Epoch  35/50 | Train Loss: 0.6647 Acc: 0.5934 F1: 0.5917 | Val Loss: 0.6671 Acc: 0.6391 F1: 0.6337
+Validation Loss decreased (0.668902 --> 0.667114). Saving best model...
+Epoch  36/50 | Train Loss: 0.6656 Acc: 0.5901 F1: 0.5865 | Val Loss: 0.6823 Acc: 0.5179 F1: 0.4495
+Epoch  37/50 | Train Loss: 0.6638 Acc: 0.5947 F1: 0.5928 | Val Loss: 0.6831 Acc: 0.5179 F1: 0.4444
+Epoch  38/50 | Train Loss: 0.6626 Acc: 0.5879 F1: 0.5869 | Val Loss: 0.6739 Acc: 0.5537 F1: 0.5224
+Epoch  39/50 | Train Loss: 0.6617 Acc: 0.5990 F1: 0.5965 | Val Loss: 0.6650 Acc: 0.6309 F1: 0.6305
+Validation Loss decreased (0.667114 --> 0.665050). Saving best model...
+Epoch  40/50 | Train Loss: 0.6632 Acc: 0.5938 F1: 0.5913 | Val Loss: 0.6646 Acc: 0.6336 F1: 0.6332
+Validation Loss decreased (0.665050 --> 0.664582). Saving best model...
+Epoch  41/50 | Train Loss: 0.6633 Acc: 0.5934 F1: 0.5917 | Val Loss: 0.6750 Acc: 0.5675 F1: 0.4944
+Epoch  42/50 | Train Loss: 0.6630 Acc: 0.5956 F1: 0.5929 | Val Loss: 0.6652 Acc: 0.6143 F1: 0.6093
+Epoch  43/50 | Train Loss: 0.6626 Acc: 0.6112 F1: 0.6100 | Val Loss: 0.6633 Acc: 0.6253 F1: 0.6253
+Validation Loss decreased (0.664582 --> 0.663330). Saving best model...
+Epoch  44/50 | Train Loss: 0.6605 Acc: 0.6078 F1: 0.6065 | Val Loss: 0.6626 Acc: 0.6281 F1: 0.6281
+Validation Loss decreased (0.663330 --> 0.662640). Saving best model...
+Epoch  45/50 | Train Loss: 0.6621 Acc: 0.5934 F1: 0.5914 | Val Loss: 0.6650 Acc: 0.5978 F1: 0.5733
+Epoch  46/50 | Train Loss: 0.6621 Acc: 0.6045 F1: 0.6029 | Val Loss: 0.6614 Acc: 0.6391 F1: 0.6387
+Validation Loss decreased (0.662640 --> 0.661363). Saving best model...
+Epoch  47/50 | Train Loss: 0.6585 Acc: 0.6057 F1: 0.6026 | Val Loss: 0.6642 Acc: 0.6006 F1: 0.5901
+Epoch  48/50 | Train Loss: 0.6599 Acc: 0.6054 F1: 0.6040 | Val Loss: 0.6605 Acc: 0.6556 F1: 0.6526
+Validation Loss decreased (0.661363 --> 0.660495). Saving best model...
+Epoch  49/50 | Train Loss: 0.6596 Acc: 0.6045 F1: 0.6025 | Val Loss: 0.6600 Acc: 0.6474 F1: 0.6464
+Validation Loss decreased (0.660495 --> 0.660012). Saving best model...
+Epoch  50/50 | Train Loss: 0.6612 Acc: 0.5944 F1: 0.5934 | Val Loss: 0.6618 Acc: 0.6171 F1: 0.6014
+
+Classification Test Result (FordB)
+Accuracy : 0.509877
+F1 (macro): 0.509331
+Saved attention maps for 3 sample(s) under ./runs/classification_electricity_to_FordB_laya_mixer_text_stats_avg/attention_maps
