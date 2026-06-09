@@ -58,6 +58,8 @@ _AUSTRALIAN_ELECTRICITY_STATES = [
     "South Australia",
 ]
 
+_LOTSA_DEBUG_ENABLED = os.environ.get("LAYA_TS_DEBUG_LOTSA", "0").strip().lower() in {"1", "true", "yes", "on"}
+
 
 class CSVTimeSeriesPretrainDataset(Dataset):
     def __init__(self, csv_path: str, seq_len: int = 512, stride: int = 128, mode: str = "train", dataset_name: str = "csv", channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False) -> None:
@@ -220,6 +222,10 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
             raise ValueError(f"lotsa_min_patches must be positive, got {lotsa_min_patches}")
         if self.lotsa_max_dim <= 0:
             raise ValueError(f"lotsa_max_dim must be positive, got {lotsa_max_dim}")
+
+    def _debug(self, message: str) -> None:
+        if _LOTSA_DEBUG_ENABLED:
+            print(f"[LOTSA-DEBUG] {message}")
 
     def __len__(self):
         _, total_batches = self._count_windows_and_batches()
@@ -945,18 +951,31 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         subset_name: str,
         record: dict,
     ) -> int:
+        window_count, _ = self._diagnose_sliding_windows_for_record(subset_name, record)
+        return window_count
+
+    def _diagnose_sliding_windows_for_record(
+        self,
+        subset_name: str,
+        record: dict,
+    ) -> tuple[int, str]:
         series_ct = self._infer_series_array(record)
         num_channels, total_len = series_ct.shape
         if total_len < self.seq_len:
-            return 0
+            return 0, "series_too_short"
 
         split, train_reference = self._select_series_split(series_ct)
         if split.shape[1] < self.seq_len:
-            return 0
+            return 0, "split_too_short"
 
-        split, observed_mask = self._preprocess_split(split, train_reference)
+        try:
+            split, observed_mask = self._preprocess_split(split, train_reference)
+        except Exception as exc:
+            return 0, f"preprocess_error:{type(exc).__name__}"
         if not np.isfinite(split).all() or not observed_mask.any():
-            return 0
+            if not np.isfinite(split).all():
+                return 0, "non_finite_split"
+            return 0, "empty_observed_mask"
 
         channel_names = self._channel_names(subset_name, record, num_channels)
         channel_text_embeddings, channel_stats_embeddings = self._channel_metadata(
@@ -966,15 +985,17 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
             train_reference,
         )
         if channel_text_embeddings is not None and not torch.isfinite(channel_text_embeddings).all():
-            return 0
+            return 0, "non_finite_text_metadata"
         if channel_stats_embeddings is not None and not torch.isfinite(channel_stats_embeddings).all():
-            return 0
+            return 0, "non_finite_stats_metadata"
 
         valid_windows = 0
         for start in range(0, split.shape[1] - self.seq_len + 1, self.stride):
             if observed_mask[:, start:start + self.seq_len].any():
                 valid_windows += 1
-        return valid_windows
+        if valid_windows <= 0:
+            return 0, "no_valid_windows"
+        return valid_windows, "ok"
 
     @staticmethod
     def _collate_homogeneous_batch(items: list[dict]):
@@ -1033,6 +1054,8 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         if self.lotsa_sampling_mode == "official":
             subset_names, epoch_iteration_index, sampling_iteration_index = self._planned_official_iteration_state()
             for subset_offset, subset_name in enumerate(subset_names):
+                subset_exception_count = 0
+                first_exception: str | None = None
                 try:
                     dataset = self._load_subset_dataset(subset_name)
                     selected_indices = self._sample_record_indices_for_subset(
@@ -1070,15 +1093,25 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
                             continue
                         subset_batch_counts[(series_ct.shape[0], crop.shape[1])] += 1
                         subset_windows += 1
-                    except Exception:
+                    except Exception as exc:
+                        subset_exception_count += 1
+                        if first_exception is None:
+                            first_exception = f"{type(exc).__name__}: {exc}"
                         continue
 
+                subset_batches = sum(
+                    math.ceil(count / self.batch_size) for count in subset_batch_counts.values()
+                ) if subset_windows > 0 else 0
+                self._debug(
+                    "count subset="
+                    f"{subset_name} mode={self.mode} sampling=official selected_records={len(selected_indices)} "
+                    f"windows={subset_windows} batches={subset_batches} exceptions={subset_exception_count}"
+                    + (f" first_exception={first_exception}" if first_exception else "")
+                )
                 if subset_windows <= 0:
                     continue
                 total_windows += subset_windows
-                total_batches += sum(
-                    math.ceil(count / self.batch_size) for count in subset_batch_counts.values()
-                )
+                total_batches += subset_batches
                 if remaining is not None:
                     remaining -= subset_windows
                     if remaining <= 0:
@@ -1090,10 +1123,14 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
 
         for subset_name in self._resolve_subset_names():
             subset_windows = 0
+            subset_reason_counts: dict[str, int] = defaultdict(int)
+            subset_exception_count = 0
+            first_exception: str | None = None
             try:
                 for record in self._iter_subset(subset_name):
                     try:
-                        window_count = self._count_valid_sliding_windows_for_record(subset_name, record)
+                        window_count, reason = self._diagnose_sliding_windows_for_record(subset_name, record)
+                        subset_reason_counts[reason] += 1
                         if window_count <= 0:
                             continue
                         if remaining is not None:
@@ -1106,13 +1143,26 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
                             remaining -= window_count
                             if remaining <= 0:
                                 break
-                    except Exception:
+                    except Exception as exc:
+                        subset_exception_count += 1
+                        if first_exception is None:
+                            first_exception = f"{type(exc).__name__}: {exc}"
                         continue
             except Exception as exc:
                 self._warn_skipped_subset(subset_name, "counting", exc)
                 continue
+            subset_batches = math.ceil(subset_windows / self.batch_size) if subset_windows > 0 else 0
+            reason_summary = ", ".join(
+                f"{reason}={count}" for reason, count in sorted(subset_reason_counts.items())
+            ) or "none"
+            self._debug(
+                "count subset="
+                f"{subset_name} mode={self.mode} sampling=sliding_window windows={subset_windows} "
+                f"batches={subset_batches} reasons=[{reason_summary}] exceptions={subset_exception_count}"
+                + (f" first_exception={first_exception}" if first_exception else "")
+            )
             if subset_windows > 0:
-                total_batches += math.ceil(subset_windows / self.batch_size)
+                total_batches += subset_batches
             if remaining is not None and remaining <= 0:
                 break
 
@@ -1770,6 +1820,8 @@ def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: 
     loader_groups = []
     for subset_name, subset_budget in zip(subset_names, budgets):
         if subset_budget is not None and subset_budget <= 0:
+            if _LOTSA_DEBUG_ENABLED:
+                print(f"[LOTSA-DEBUG] skip group subset={subset_name} reason=non_positive_budget budget={subset_budget}")
             continue
         train_ds = LOTSABatchStreamingPretrainDataset(
             dataset_name="Salesforce/lotsa_data",
@@ -1820,7 +1872,19 @@ def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: 
         except ValueError:
             val_ds = None
             val_length = 0
-        if len(train_ds) == 0:
+        train_length = len(train_ds)
+        if _LOTSA_DEBUG_ENABLED:
+            print(
+                "[LOTSA-DEBUG] group subset="
+                f"{subset_name} budget={subset_budget} train_batches={train_length} "
+                f"train_samples={train_ds.num_samples} val_batches={val_length} "
+                f"val_samples={0 if val_ds is None else val_ds.num_samples} "
+                f"split_mode={lotsa_split_mode} sampling_mode={lotsa_sampling_mode} "
+                f"preprocessing_mode={lotsa_preprocessing_mode} seq_len={seq_len} stride={stride}"
+            )
+        if train_length == 0:
+            if _LOTSA_DEBUG_ENABLED:
+                print(f"[LOTSA-DEBUG] drop group subset={subset_name} reason=empty_train_dataset")
             continue
         train_loader = DataLoader(train_ds, batch_size=None, num_workers=num_workers)
         val_loader = None if val_ds is None or val_length == 0 else DataLoader(val_ds, batch_size=None, num_workers=num_workers)

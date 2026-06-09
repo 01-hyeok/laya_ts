@@ -39,6 +39,7 @@ MIN_LR="${MIN_LR:-1e-6}"
 TEXT_ENCODER_NAME="${TEXT_ENCODER_NAME:-sentence-transformers/all-MiniLM-L6-v2}"
 TEXT_METADATA_CACHE_DIR="${TEXT_METADATA_CACHE_DIR:-./metadata_cache}"
 LOG_TEXT_METADATA_PREVIEW="${LOG_TEXT_METADATA_PREVIEW:-1}"
+DEBUG_LOTSA="${DEBUG_LOTSA:-1}"
 SAVE_ATTENTION_MAPS="${SAVE_ATTENTION_MAPS:-1}"
 SAVE_DIR="${SAVE_DIR:-./checkpoints/${DATA}_${ARCH}_attention_suppress_gate_text}"
 LOG_DIR="${LOG_DIR:-./runs/pretrain_${DATA}_${ARCH}_attention_suppress_gate_text}"
@@ -52,6 +53,7 @@ echo "🧩 sampling_mode: ${LOTSA_SAMPLING_MODE}"
 echo "🧩 preprocessing_mode: ${LOTSA_PREPROCESSING_MODE}"
 echo "🧩 sample_time_series: ${LOTSA_SAMPLE_TIME_SERIES}"
 echo "🧩 min_patches: ${LOTSA_MIN_PATCHES}, max_dim: ${LOTSA_MAX_DIM}"
+echo "🧩 debug_lotsa: ${DEBUG_LOTSA}"
 echo "⏱️ total_steps: ${STEPS}"
 echo "🧪 val_interval: ${VAL_INTERVAL}"
 echo "🔗 suppression relation: metric=${DESCRIPTION_RELATION_METRIC}, lambda_init=${DESCRIPTION_RELATION_LAMBDA_INIT}, gamma_init=${DESCRIPTION_RELATION_GAMMA_INIT}"
@@ -60,6 +62,7 @@ echo "📝 log_dir: ${LOG_DIR}"
 if [ -n "${LOG_TEXT_METADATA_PREVIEW}" ] && [ "${LOG_TEXT_METADATA_PREVIEW}" != "0" ]; then
   export LAYA_TS_LOG_TEXT_METADATA_PREVIEW="${LOG_TEXT_METADATA_PREVIEW}"
 fi
+export LAYA_TS_DEBUG_LOTSA="${DEBUG_LOTSA}"
 
 EXTRA_ARGS=(
   --attention_map_tag attention_suppress_gate_text

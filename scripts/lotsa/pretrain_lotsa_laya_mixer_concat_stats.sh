@@ -35,6 +35,7 @@ WEIGHT_DECAY="${WEIGHT_DECAY:-5e-2}"
 MIN_LR="${MIN_LR:-1e-6}"
 
 LOG_TEXT_METADATA_PREVIEW="${LOG_TEXT_METADATA_PREVIEW:-1}"
+DEBUG_LOTSA="${DEBUG_LOTSA:-1}"
 SAVE_ATTENTION_MAPS="${SAVE_ATTENTION_MAPS:-1}"
 
 SAVE_DIR="${SAVE_DIR:-./checkpoints/${DATA}_${ARCH}_mixer_concat_stats}"
@@ -42,6 +43,7 @@ LOG_DIR="${LOG_DIR:-./runs/pretrain_${DATA}_${ARCH}_mixer_concat_stats}"
 
 
 export LAYA_TS_LOG_TEXT_METADATA_PREVIEW="${LOG_TEXT_METADATA_PREVIEW}"
+export LAYA_TS_DEBUG_LOTSA="${DEBUG_LOTSA}"
 
 echo "🚀 Laya-TS Pretraining: ${DATA} (${ARCH} + mixer_concat_stats)"
 echo "📊 subsets: ${LOTSA_SUBSETS:-ALL}"
@@ -50,6 +52,7 @@ echo "🧩 sampling_mode: ${LOTSA_SAMPLING_MODE}"
 echo "🧩 preprocessing_mode: ${LOTSA_PREPROCESSING_MODE}"
 echo "🧩 sample_time_series: ${LOTSA_SAMPLE_TIME_SERIES}"
 echo "🧩 min_patches: ${LOTSA_MIN_PATCHES}, max_dim: ${LOTSA_MAX_DIM}"
+echo "🧩 debug_lotsa: ${DEBUG_LOTSA}"
 echo "📝 metadata: mode=${CHANNEL_METADATA_MODE}, fusion=${METADATA_FUSION_MODE}, relation=${CHANNEL_MIXER_RELATION_MODE}, stats_dim=${STATS_METADATA_DIM}"
 echo "📝 log_dir: ${LOG_DIR}"
 

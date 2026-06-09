@@ -2,3 +2,5 @@ __pycache__/
 checkpoints/
 metadata_cache/
 runs/
+runs_temp/
+runs_temp2/
