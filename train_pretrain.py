@@ -781,8 +781,19 @@ def main(argv=None):
     print(f"   - Sequence Length (T): {args.seq_len}")
     print(f"   - Train Samples: {train_sample_count}, Steps: {steps_per_epoch}")
     print(f"   - Val Samples: {val_sample_count}, Steps: {val_steps}")
-    if loader_group_kind in {"tsld", "tslib"}:
+    if loader_group_kind == "tsld":
         print(f"   - Multivariate channel groups: {shared_channel_counts}")
+        print(f"🗂️ {loader_group_kind} Train File Sampling Summary:")
+        for group in loader_groups:
+            print(f"   Group {group['group_name']} (file-aware batches)")
+            _print_series_summaries("", group["train_loader"].dataset.series_summaries)
+        print(f"🗂️ {loader_group_kind} Val File Sampling Summary:")
+        for group in loader_groups:
+            print(f"   Group {group['group_name']}")
+            _print_series_summaries("", group["val_loader"].dataset.series_summaries)
+    elif loader_group_kind == "tslib":
+        print(f"   - Multivariate dataset groups: {[group['group_name'] for group in loader_groups]}")
+        print(f"   - Dataset channel counts: {shared_channel_counts}")
         print(f"🗂️ {loader_group_kind} Train File Sampling Summary:")
         for group in loader_groups:
             print(f"   Group {group['group_name']} (file-aware batches)")

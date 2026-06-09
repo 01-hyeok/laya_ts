@@ -107,7 +107,7 @@ def infer_tslib_context(root_path: str, file_path: str) -> Tuple[str, str]:
     rel_path = os.path.relpath(file_path, root_path)
     parts = [part for part in os.path.dirname(rel_path).split(os.sep) if part not in {"", "."}]
     domain = parts[0] if parts else "tslib"
-    dataset_name = parts[-1] if parts else os.path.splitext(os.path.basename(file_path))[0]
+    dataset_name = os.path.splitext(os.path.basename(file_path))[0]
     return domain, dataset_name
 
 
@@ -267,23 +267,30 @@ def build_text_channel_metadata(
 
 
 def _compute_channel_stats_records(raw: np.ndarray) -> list[dict[str, float]]:
-    channel_mean = raw.mean(axis=0)
-    channel_std = raw.std(axis=0)
-    channel_min = raw.min(axis=0)
-    channel_max = raw.max(axis=0)
-    channel_median = np.median(raw, axis=0)
-    channel_mean_abs = np.mean(np.abs(raw), axis=0)
+    finite_raw = np.where(np.isfinite(raw), raw, np.nan)
+    channel_mean = np.nanmean(finite_raw, axis=0)
+    channel_std = np.nanstd(finite_raw, axis=0)
+    channel_min = np.nanmin(finite_raw, axis=0)
+    channel_max = np.nanmax(finite_raw, axis=0)
+    channel_median = np.nanmedian(finite_raw, axis=0)
+    channel_mean_abs = np.nanmean(np.abs(finite_raw), axis=0)
 
     stats_records = []
     for idx in range(raw.shape[1]):
+        mean_value = float(channel_mean[idx]) if np.isfinite(channel_mean[idx]) else 0.0
+        std_value = float(channel_std[idx]) if np.isfinite(channel_std[idx]) else 0.0
+        min_value = float(channel_min[idx]) if np.isfinite(channel_min[idx]) else 0.0
+        max_value = float(channel_max[idx]) if np.isfinite(channel_max[idx]) else 0.0
+        median_value = float(channel_median[idx]) if np.isfinite(channel_median[idx]) else 0.0
+        mean_abs_value = float(channel_mean_abs[idx]) if np.isfinite(channel_mean_abs[idx]) else 0.0
         stats_records.append(
             {
-                "mean": float(channel_mean[idx]),
-                "std": float(channel_std[idx]),
-                "min": float(channel_min[idx]),
-                "max": float(channel_max[idx]),
-                "median": float(channel_median[idx]),
-                "mean_abs": float(channel_mean_abs[idx]),
+                "mean": mean_value,
+                "std": std_value,
+                "min": min_value,
+                "max": max_value,
+                "median": median_value,
+                "mean_abs": mean_abs_value,
             }
         )
     return stats_records

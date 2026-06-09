@@ -916,6 +916,29 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         selected.sort()
         return selected.astype(np.int64, copy=False)
 
+    def _count_valid_sliding_windows_for_series(self, series_ct: np.ndarray) -> int:
+        _, total_len = series_ct.shape
+        if total_len < self.seq_len:
+            return 0
+
+        split, train_reference = self._select_series_split(series_ct)
+        if split.shape[1] < self.seq_len:
+            return 0
+
+        try:
+            split, observed_mask = self._preprocess_split(split, train_reference)
+        except Exception:
+            return 0
+
+        if not np.isfinite(split).all() or not observed_mask.any():
+            return 0
+
+        valid_windows = 0
+        for start in range(0, split.shape[1] - self.seq_len + 1, self.stride):
+            if observed_mask[:, start:start + self.seq_len].any():
+                valid_windows += 1
+        return valid_windows
+
     @staticmethod
     def _collate_homogeneous_batch(items: list[dict]):
         batch_size = len(items)
@@ -1034,8 +1057,7 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
                 for record in self._iter_subset(subset_name):
                     try:
                         series_ct = self._infer_series_array(record)
-                        _, total_len = series_ct.shape
-                        window_count = self._split_window_count(total_len)
+                        window_count = self._count_valid_sliding_windows_for_series(series_ct)
                         if window_count <= 0:
                             continue
                         if remaining is not None:
@@ -1143,7 +1165,7 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
                         if split.shape[1] < self.seq_len:
                             continue
                         split, observed_mask = self._preprocess_split(split, train_reference)
-                        if not observed_mask.any():
+                        if not np.isfinite(split).all() or not observed_mask.any():
                             continue
                         channel_names = self._channel_names(subset_name, record, num_channels)
                         positions = synthetic_channel_positions(num_channels)
@@ -1153,6 +1175,10 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
                             channel_names,
                             train_reference,
                         )
+                        if channel_text_embeddings is not None and not torch.isfinite(channel_text_embeddings).all():
+                            continue
+                        if channel_stats_embeddings is not None and not torch.isfinite(channel_stats_embeddings).all():
+                            continue
                         for start in range(0, split.shape[1] - self.seq_len + 1, self.stride):
                             if remaining is not None and remaining <= 0:
                                 break
@@ -1350,13 +1376,15 @@ class TSLDTimeSeriesPretrainDataset(Dataset):
 
 
 class TSLibTimeSeriesPretrainDataset(Dataset):
-    def __init__(self, root_path: str, seq_len: int = 512, stride: int = 512, mode: str = "train", max_files: int | None = None, tslib_mode: str = "univariate", channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, selected_channel_count: int | None = None) -> None:
+    def __init__(self, root_path: str, seq_len: int = 512, stride: int = 512, mode: str = "train", max_files: int | None = None, tslib_mode: str = "univariate", channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, selected_channel_count: int | None = None, csv_files: list[str] | None = None, dataset_name_override: str | None = None, domain_name_override: str | None = None) -> None:
         self.seq_len = seq_len
         self.stride = stride
         self.mode = mode
         self.tslib_mode = validate_tslib_mode(tslib_mode)
         self.channel_metadata_mode = str(channel_metadata_mode).strip().lower()
         self.selected_channel_count = selected_channel_count
+        self.dataset_name_override = dataset_name_override
+        self.domain_name_override = domain_name_override
         self.sample_indices = []
         self.time_series_list = []
         self.channel_names_list = []
@@ -1364,7 +1392,9 @@ class TSLibTimeSeriesPretrainDataset(Dataset):
         self.channel_text_embeddings_list = []
         self.channel_stats_embeddings_list = []
         self.series_summaries = []
-        csv_files = list_tslib_files(root_path, max_files=max_files)
+        csv_files = list_tslib_files(root_path, max_files=max_files) if csv_files is None else sorted(csv_files)
+        if max_files and csv_files is not None:
+            csv_files = csv_files[:max_files]
         multivariate_candidates = []
         channel_count_histogram: dict[int, int] = {}
         for file_path in csv_files:
@@ -1437,6 +1467,10 @@ class TSLibTimeSeriesPretrainDataset(Dataset):
         metadata_embeddings = None
         stats_embeddings = None
         domain_name, dataset_name = infer_tslib_context(root_path, file_path)
+        if self.domain_name_override:
+            domain_name = self.domain_name_override
+        if self.dataset_name_override:
+            dataset_name = self.dataset_name_override
         if self.channel_metadata_mode in {"text", "text_stats_avg"}:
             metadata_embeddings = build_text_channel_metadata(
                 channel_names=cols,
@@ -1478,6 +1512,8 @@ class TSLibTimeSeriesPretrainDataset(Dataset):
                 "series_idx": series_idx,
                 "file_name": os.path.basename(file_path),
                 "file_path": file_path,
+                "dataset_name": dataset_name,
+                "domain_name": domain_name,
                 "split_shape": tuple(split_data.shape),
                 "num_channels": int(split_data.shape[1]),
                 "num_timesteps": int(split_data.shape[0]),
@@ -1787,20 +1823,20 @@ def get_tsld_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: i
 
 
 def get_tslib_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, num_workers: int = 4, max_files: int | None = None, channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False):
-    probe_train_ds = TSLibTimeSeriesPretrainDataset(path, seq_len, stride, "train", max_files, tslib_mode="multivariate", channel_metadata_mode=channel_metadata_mode, text_encoder_name_or_path=text_encoder_name_or_path, text_metadata_cache_dir=text_metadata_cache_dir, text_encoder_local_files_only=text_encoder_local_files_only)
-    probe_val_ds = TSLibTimeSeriesPretrainDataset(path, seq_len, stride, "val", max_files, tslib_mode="multivariate", channel_metadata_mode=channel_metadata_mode, text_encoder_name_or_path=text_encoder_name_or_path, text_metadata_cache_dir=text_metadata_cache_dir, text_encoder_local_files_only=text_encoder_local_files_only)
-    shared_channel_counts = sorted(set(probe_train_ds.observed_channel_counts) & set(probe_val_ds.observed_channel_counts))
+    csv_files = list_tslib_files(path, max_files=max_files)
     loader_groups = []
-    for channel_count in shared_channel_counts:
-        train_ds = TSLibTimeSeriesPretrainDataset(path, seq_len, stride, "train", max_files, tslib_mode="multivariate", channel_metadata_mode=channel_metadata_mode, text_encoder_name_or_path=text_encoder_name_or_path, text_metadata_cache_dir=text_metadata_cache_dir, text_encoder_local_files_only=text_encoder_local_files_only, selected_channel_count=channel_count)
-        val_ds = TSLibTimeSeriesPretrainDataset(path, seq_len, stride, "val", max_files, tslib_mode="multivariate", channel_metadata_mode=channel_metadata_mode, text_encoder_name_or_path=text_encoder_name_or_path, text_metadata_cache_dir=text_metadata_cache_dir, text_encoder_local_files_only=text_encoder_local_files_only, selected_channel_count=channel_count)
+    for file_path in csv_files:
+        domain_name, dataset_name = infer_tslib_context(path, file_path)
+        train_ds = TSLibTimeSeriesPretrainDataset(path, seq_len, stride, "train", None, tslib_mode="multivariate", channel_metadata_mode=channel_metadata_mode, text_encoder_name_or_path=text_encoder_name_or_path, text_metadata_cache_dir=text_metadata_cache_dir, text_encoder_local_files_only=text_encoder_local_files_only, csv_files=[file_path], dataset_name_override=dataset_name, domain_name_override=domain_name)
+        val_ds = TSLibTimeSeriesPretrainDataset(path, seq_len, stride, "val", None, tslib_mode="multivariate", channel_metadata_mode=channel_metadata_mode, text_encoder_name_or_path=text_encoder_name_or_path, text_metadata_cache_dir=text_metadata_cache_dir, text_encoder_local_files_only=text_encoder_local_files_only, csv_files=[file_path], dataset_name_override=dataset_name, domain_name_override=domain_name)
         if len(train_ds) == 0 or len(val_ds) == 0:
             continue
+        channel_count = train_ds.num_channels
         train_loader = _build_tslib_loader(train_ds, batch_size=batch_size, shuffle=True, drop_last=len(train_ds) > batch_size, num_workers=num_workers)
         val_loader = _build_tslib_loader(val_ds, batch_size=batch_size, shuffle=False, drop_last=False, num_workers=num_workers)
         loader_groups.append(
             {
-                "group_name": f"C={channel_count}",
+                "group_name": dataset_name,
                 "channel_count": channel_count,
                 "train_loader": train_loader,
                 "val_loader": val_loader,
