@@ -69,10 +69,10 @@ class CSVTimeSeriesPretrainDataset(Dataset):
         val_len = int(total_len * 0.1)
         test_len = int(total_len * 0.2)
         train_len = total_len - val_len - test_len
-        train_values_raw = df.values[:train_len].astype(np.float32, copy=False)
         scaler = StandardScaler()
         scaler.fit(df.values[:train_len])
         df_norm = scaler.transform(df.values)
+        train_values_norm = df_norm[:train_len].astype(np.float32, copy=False)
         if mode == "train":
             split = df_norm[:train_len]
         elif mode == "val":
@@ -96,7 +96,7 @@ class CSVTimeSeriesPretrainDataset(Dataset):
             )
         elif self.channel_metadata_mode == "text_stats_joint":
             self.channel_text_embeddings = build_joint_text_stats_channel_metadata(
-                train_values_raw,
+                train_values_norm,
                 channel_names=self.feature_names,
                 domain=domain_name,
                 dataset_name=resolved_dataset_name,
@@ -106,7 +106,7 @@ class CSVTimeSeriesPretrainDataset(Dataset):
             )
         if self.channel_metadata_mode in {"stats", "text_stats_avg"}:
             self.channel_stats_embeddings = build_statistical_channel_metadata(
-                train_values_raw,
+                train_values_norm,
                 channel_names=self.feature_names,
                 domain=domain_name,
                 dataset_name=resolved_dataset_name,
@@ -630,7 +630,8 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
     ) -> tuple[torch.Tensor | None, torch.Tensor | None]:
         dataset_name = self._metadata_dataset_name(subset_name, record)
         domain_name = self._infer_lotsa_domain(subset_name)
-        train_reference_tc = np.asarray(train_reference_ct, dtype=np.float32).T
+        metadata_reference_ct, _ = self._preprocess_split(train_reference_ct, train_reference_ct)
+        train_reference_tc = np.asarray(metadata_reference_ct, dtype=np.float32).T
 
         text_metadata = None
         stats_metadata = None
@@ -939,6 +940,42 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
                 valid_windows += 1
         return valid_windows
 
+    def _count_valid_sliding_windows_for_record(
+        self,
+        subset_name: str,
+        record: dict,
+    ) -> int:
+        series_ct = self._infer_series_array(record)
+        num_channels, total_len = series_ct.shape
+        if total_len < self.seq_len:
+            return 0
+
+        split, train_reference = self._select_series_split(series_ct)
+        if split.shape[1] < self.seq_len:
+            return 0
+
+        split, observed_mask = self._preprocess_split(split, train_reference)
+        if not np.isfinite(split).all() or not observed_mask.any():
+            return 0
+
+        channel_names = self._channel_names(subset_name, record, num_channels)
+        channel_text_embeddings, channel_stats_embeddings = self._channel_metadata(
+            subset_name,
+            record,
+            channel_names,
+            train_reference,
+        )
+        if channel_text_embeddings is not None and not torch.isfinite(channel_text_embeddings).all():
+            return 0
+        if channel_stats_embeddings is not None and not torch.isfinite(channel_stats_embeddings).all():
+            return 0
+
+        valid_windows = 0
+        for start in range(0, split.shape[1] - self.seq_len + 1, self.stride):
+            if observed_mask[:, start:start + self.seq_len].any():
+                valid_windows += 1
+        return valid_windows
+
     @staticmethod
     def _collate_homogeneous_batch(items: list[dict]):
         batch_size = len(items)
@@ -1056,8 +1093,7 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
             try:
                 for record in self._iter_subset(subset_name):
                     try:
-                        series_ct = self._infer_series_array(record)
-                        window_count = self._count_valid_sliding_windows_for_series(series_ct)
+                        window_count = self._count_valid_sliding_windows_for_record(subset_name, record)
                         if window_count <= 0:
                             continue
                         if remaining is not None:

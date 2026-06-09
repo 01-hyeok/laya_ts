@@ -93,11 +93,11 @@ class TSClassificationDataset(Dataset):
         X_raw, y_raw, feature_names = self._load(data_root, mode, val_ratio)
         self.channel_metadata_mode = str(channel_metadata_mode).strip().lower()
         N, C, T = X_raw.shape
-        train_split_flat = X_raw.transpose(0, 2, 1).reshape(-1, C)
         X_flat = X_raw.transpose(0, 2, 1).reshape(-1, C)
         if scaler is None:
             scaler = StandardScaler(); scaler.fit(X_flat)
         X_flat_norm = scaler.transform(X_flat)
+        train_split_flat_norm = X_flat_norm.astype(np.float32, copy=False)
         X_norm = X_flat_norm.reshape(N, T, C).transpose(0, 2, 1)
         if le is None:
             le = LabelEncoder(); le.fit(y_raw)
@@ -135,7 +135,7 @@ class TSClassificationDataset(Dataset):
                 self.channel_text_embeddings = channel_text_embeddings
             else:
                 self.channel_text_embeddings = build_joint_text_stats_channel_metadata(
-                    train_split_flat,
+                    train_split_flat_norm,
                     channel_names=self.feature_names,
                     domain=domain_name,
                     dataset_name=dataset_name,
@@ -148,7 +148,7 @@ class TSClassificationDataset(Dataset):
                 self.channel_stats_embeddings = channel_stats_embeddings
             else:
                 self.channel_stats_embeddings = build_statistical_channel_metadata(
-                    train_split_flat,
+                    train_split_flat_norm,
                     channel_names=self.feature_names,
                     domain=domain_name,
                     dataset_name=dataset_name,

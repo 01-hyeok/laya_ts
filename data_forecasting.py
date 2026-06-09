@@ -29,10 +29,10 @@ class CSVForecastDataset(Dataset):
         total_len = len(df)
         train_len = int(total_len * train_ratio)
         val_len = int(total_len * val_ratio)
-        train_values_raw = df.values[:train_len].astype("float32", copy=False)
         scaler = StandardScaler()
         scaler.fit(df.values[:train_len])
         df_norm = scaler.transform(df.values)
+        train_values_norm = df_norm[:train_len].astype("float32", copy=False)
         if mode == "train":
             start_idx, end_idx = 0, train_len
         elif mode == "val":
@@ -57,7 +57,7 @@ class CSVForecastDataset(Dataset):
             )
         elif self.channel_metadata_mode == "text_stats_joint":
             self.channel_text_embeddings = build_joint_text_stats_channel_metadata(
-                train_values_raw,
+                train_values_norm,
                 channel_names=self.feature_names,
                 domain=domain_name,
                 dataset_name=resolved_dataset_name,
@@ -67,7 +67,7 @@ class CSVForecastDataset(Dataset):
             )
         if self.channel_metadata_mode in {"stats", "text_stats_avg"}:
             self.channel_stats_embeddings = build_statistical_channel_metadata(
-                train_values_raw,
+                train_values_norm,
                 channel_names=self.feature_names,
                 domain=domain_name,
                 dataset_name=resolved_dataset_name,
