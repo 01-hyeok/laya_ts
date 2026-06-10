@@ -298,7 +298,7 @@ class QueryChannelMixer(nn.Module):
         tokens: torch.Tensor,
         channel_metadata: Optional[torch.Tensor] = None,
         channel_mask: Optional[torch.Tensor] = None,
-    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, Dict[str, torch.Tensor]]:
         if tokens.dim() != 4:
             raise ValueError(
                 f"Expected [B, C, N, D], got {tuple(tokens.shape)}"
@@ -372,13 +372,22 @@ class QueryChannelMixer(nn.Module):
             values,
         )  # [B, N, H, Q, Hd]
 
+        latent_tokens = mixed.permute(0, 3, 1, 2, 4).reshape(
+            batch,
+            self.num_queries,
+            patches,
+            self.mixer_dim,
+        )
+
         mixed = mixed.permute(0, 1, 3, 2, 4).reshape(
             batch,
             patches,
             self.num_queries * self.mixer_dim,
         )
 
-        return self.out_proj(mixed), self._specialization_loss(attn), attn
+        return self.out_proj(mixed), self._specialization_loss(attn), attn, {
+            "latent_tokens": latent_tokens,
+        }
 
 
 class ChannelRelationBlock(nn.Module):

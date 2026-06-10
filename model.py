@@ -477,8 +477,15 @@ class MetadataAwareQueryChannelMixer(QueryChannelMixer):
         effective_scale = torch.tanh(self.relation_scale).to(device=tokens.device, dtype=tokens.dtype)
         score_delta = None
         metadata_norm_mean = None
+        metadata_norm_std = None
+        metadata_norm_min = None
+        metadata_norm_max = None
         if channel_metadata is not None:
-            metadata_norm_mean = channel_metadata.detach().norm(dim=-1).mean()
+            metadata_norms = channel_metadata.detach().norm(dim=-1)
+            metadata_norm_mean = metadata_norms.mean()
+            metadata_norm_std = metadata_norms.std(unbiased=False)
+            metadata_norm_min = metadata_norms.min()
+            metadata_norm_max = metadata_norms.max()
             relation_keys = self.metadata_key_proj(channel_metadata).reshape(
                 batch,
                 channels,
@@ -506,18 +513,23 @@ class MetadataAwareQueryChannelMixer(QueryChannelMixer):
 
         attn = torch.softmax(scores, dim=-1)
         mixed = torch.einsum("bnhqc,bnhcd->bnhqd", attn, values)
+        latent_tokens = mixed.permute(0, 3, 1, 2, 4).reshape(batch, self.num_queries, patches, self.mixer_dim)
         mixed = mixed.permute(0, 1, 3, 2, 4).reshape(batch, patches, self.num_queries * self.mixer_dim)
         aux = {
             "token_scores": token_scores,
             "relation_scores": relation_scores,
             "relation_scale": effective_scale.detach(),
             "relation_gate": relation_gate,
+            "latent_tokens": latent_tokens,
             "signal_score_mean_abs": token_scores.detach().abs().mean(),
             "score_delta_mean_abs": None if score_delta is None else score_delta.detach().abs().mean(),
             "relation_scores_mean_abs": None if relation_scores is None else relation_scores.detach().abs().mean(),
             "relation_gate_mean": None if relation_gate is None else relation_gate.detach().mean(),
             "relation_gate_sparsity": None if relation_gate is None else (relation_gate.detach().abs() <= 1e-6).float().mean(),
             "metadata_norm_mean": metadata_norm_mean,
+            "metadata_norm_std": metadata_norm_std,
+            "metadata_norm_min": metadata_norm_min,
+            "metadata_norm_max": metadata_norm_max,
         }
         return self.out_proj(mixed), self._specialization_loss(attn), attn, aux
 
@@ -573,12 +585,21 @@ class ConcatProjectedMetadataQueryChannelMixer(QueryChannelMixer):
             channel_mask = channel_mask.to(device=tokens.device, dtype=torch.bool)
 
         patch_tokens = tokens.permute(0, 2, 1, 3)  # [B, N, C, D]
+        metadata_norm_mean = None
+        metadata_norm_std = None
+        metadata_norm_min = None
+        metadata_norm_max = None
         if channel_metadata is not None:
             if channel_metadata.shape != (batch, channels, self.metadata_dim):
                 raise ValueError(
                     f"Expected channel_metadata [B, C, Dm] = {(batch, channels, self.metadata_dim)}, "
                     f"got {tuple(channel_metadata.shape)}"
                 )
+            metadata_norms = channel_metadata.detach().norm(dim=-1)
+            metadata_norm_mean = metadata_norms.mean()
+            metadata_norm_std = metadata_norms.std(unbiased=False)
+            metadata_norm_min = metadata_norms.min()
+            metadata_norm_max = metadata_norms.max()
             metadata_patch = channel_metadata.unsqueeze(1).expand(batch, patches, channels, self.metadata_dim)
             kv_input = self.kv_input_norm(torch.cat([patch_tokens, metadata_patch], dim=-1))
             keys_raw = self.concat_key_proj(kv_input)
@@ -606,8 +627,15 @@ class ConcatProjectedMetadataQueryChannelMixer(QueryChannelMixer):
 
         attn = torch.softmax(scores, dim=-1)
         mixed = torch.einsum("bnhqc,bnhcd->bnhqd", attn, values)
+        latent_tokens = mixed.permute(0, 3, 1, 2, 4).reshape(batch, self.num_queries, patches, self.mixer_dim)
         mixed = mixed.permute(0, 1, 3, 2, 4).reshape(batch, patches, self.num_queries * self.mixer_dim)
-        return self.out_proj(mixed), self._specialization_loss(attn), attn, {}
+        return self.out_proj(mixed), self._specialization_loss(attn), attn, {
+            "latent_tokens": latent_tokens,
+            "metadata_norm_mean": metadata_norm_mean,
+            "metadata_norm_std": metadata_norm_std,
+            "metadata_norm_min": metadata_norm_min,
+            "metadata_norm_max": metadata_norm_max,
+        }
 
 
 class DescriptionAwareQueryChannelMixer(MetadataAwareQueryChannelMixer):
@@ -814,6 +842,9 @@ class DescriptionAwareInterChannelGate(nn.Module):
             "relation_gate_mean": None if relation_gate is None else relation_gate.detach().mean(),
             "relation_gate_sparsity": None if relation_gate is None else (relation_gate.detach().abs() <= 1e-6).float().mean(),
             "metadata_norm_mean": metadata.detach().norm(dim=-1).mean(),
+            "metadata_norm_std": metadata.detach().norm(dim=-1).std(unbiased=False),
+            "metadata_norm_min": metadata.detach().norm(dim=-1).min(),
+            "metadata_norm_max": metadata.detach().norm(dim=-1).max(),
         }
         return refined_tokens, attn, aux
 
@@ -1470,6 +1501,9 @@ class LayaTSEncoder(LayaEncoder):
             "channel_mixer_relation_gate_mean": None,
             "channel_mixer_relation_gate_sparsity": None,
             "channel_mixer_metadata_norm_mean": None,
+            "channel_mixer_metadata_norm_std": None,
+            "channel_mixer_metadata_norm_min": None,
+            "channel_mixer_metadata_norm_max": None,
             "channel_mixer_latent_tokens": None,
             "channel_mixer_refined_tokens": None,
             "channel_mixer_refiner_attention": None,
@@ -1507,6 +1541,9 @@ class LayaTSEncoder(LayaEncoder):
                 "channel_mixer_relation_gate_mean": mixer_aux.get("relation_gate_mean"),
                 "channel_mixer_relation_gate_sparsity": mixer_aux.get("relation_gate_sparsity"),
                 "channel_mixer_metadata_norm_mean": mixer_aux.get("metadata_norm_mean"),
+                "channel_mixer_metadata_norm_std": mixer_aux.get("metadata_norm_std"),
+                "channel_mixer_metadata_norm_min": mixer_aux.get("metadata_norm_min"),
+                "channel_mixer_metadata_norm_max": mixer_aux.get("metadata_norm_max"),
                 "channel_mixer_latent_tokens": mixer_aux.get("latent_tokens"),
                 "channel_mixer_refined_tokens": mixer_aux.get("refined_tokens"),
                 "channel_mixer_refiner_attention": mixer_aux.get("refiner_attention"),
@@ -1674,12 +1711,83 @@ class LayaTSClassifier(nn.Module):
         return logits
 
 
+class RevIN(nn.Module):
+    def __init__(
+        self,
+        num_channels: int,
+        *,
+        eps: float = 1e-5,
+        affine: bool = True,
+        subtract_last: bool = False,
+    ) -> None:
+        super().__init__()
+        self.num_channels = int(num_channels)
+        self.eps = float(eps)
+        self.affine = bool(affine)
+        self.subtract_last = bool(subtract_last)
+        if self.affine:
+            self.weight = nn.Parameter(torch.ones(1, self.num_channels, 1))
+            self.bias = nn.Parameter(torch.zeros(1, self.num_channels, 1))
+        else:
+            self.register_parameter("weight", None)
+            self.register_parameter("bias", None)
+
+    def _compute_stats(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        if x.dim() != 3:
+            raise ValueError(f"RevIN expects [B, C, T] input, got shape {tuple(x.shape)}")
+        if x.shape[1] != self.num_channels:
+            raise ValueError(
+                f"RevIN was initialized for {self.num_channels} channels, but got {x.shape[1]} channels."
+            )
+        if self.subtract_last:
+            center = x[:, :, -1:].detach()
+        else:
+            center = x.mean(dim=-1, keepdim=True).detach()
+        scale = torch.sqrt(x.var(dim=-1, keepdim=True, unbiased=False) + self.eps).detach()
+        return center, scale
+
+    def normalize(self, x: torch.Tensor) -> tuple[torch.Tensor, tuple[torch.Tensor, torch.Tensor]]:
+        center, scale = self._compute_stats(x)
+        normalized = (x - center) / scale
+        if self.affine:
+            normalized = normalized * self.weight + self.bias
+        return normalized, (center, scale)
+
+    def denormalize(self, x: torch.Tensor, stats: tuple[torch.Tensor, torch.Tensor]) -> torch.Tensor:
+        center, scale = stats
+        if x.dim() != 3:
+            raise ValueError(f"RevIN expects [B, C, T] input for denormalize, got shape {tuple(x.shape)}")
+        if x.shape[1] != center.shape[1]:
+            raise ValueError(
+                f"RevIN denormalize channel mismatch: prediction has {x.shape[1]} channels, stats have {center.shape[1]}."
+            )
+        restored = x
+        if self.affine:
+            restored = (restored - self.bias) / self.weight.clamp_min(self.eps)
+        return restored * scale + center
+
+
 class LayaTSForecaster(nn.Module):
-    def __init__(self, config: Optional[LayaModelConfig] = None, pred_len: int = 96, out_channels: int = 1, num_patches: Optional[int] = None) -> None:
+    def __init__(
+        self,
+        config: Optional[LayaModelConfig] = None,
+        pred_len: int = 96,
+        out_channels: int = 1,
+        num_patches: Optional[int] = None,
+        *,
+        use_revin: bool = False,
+        revin_affine: bool = True,
+        revin_subtract_last: bool = False,
+        revin_eps: float = 1e-5,
+    ) -> None:
         super().__init__()
         self.encoder = LayaTSEncoder(config)
         self.pred_len = pred_len
         self.out_channels = out_channels
+        self.use_revin = bool(use_revin)
+        self.revin_affine = bool(revin_affine)
+        self.revin_subtract_last = bool(revin_subtract_last)
+        self.revin_eps = float(revin_eps)
         default_time = int(round(self.encoder.config.input_seconds * self.encoder.config.sample_rate))
         self.num_patches = num_patches if num_patches is not None else self.encoder.infer_num_patches(default_time)
         # Keep a channel-wise forecasting probe for both CI and mixer paths, but
@@ -1689,6 +1797,16 @@ class LayaTSForecaster(nn.Module):
         else:
             self.probe_token_dim = self.encoder.config.channel_mixer_dim
         self.head = nn.Linear(self.num_patches * self.probe_token_dim, pred_len)
+        self.revin = (
+            RevIN(
+                out_channels,
+                eps=self.revin_eps,
+                affine=self.revin_affine,
+                subtract_last=self.revin_subtract_last,
+            )
+            if self.use_revin
+            else None
+        )
 
     def _resolve_channelwise_probe_tokens(self, features: dict[str, torch.Tensor]) -> torch.Tensor:
         if self.encoder.channel_mixer_type == "independent":
@@ -1712,7 +1830,11 @@ class LayaTSForecaster(nn.Module):
         return channel_tokens
 
     def forward(self, x: torch.Tensor, channel_positions: Optional[torch.Tensor], channel_mask: Optional[torch.Tensor] = None, channel_text_embeddings: Optional[torch.Tensor] = None, channel_stats_embeddings: Optional[torch.Tensor] = None, return_features: bool = False):
-        features = self.encoder.forward_features(x, channel_positions=channel_positions, channel_mask=channel_mask, channel_text_embeddings=channel_text_embeddings, channel_stats_embeddings=channel_stats_embeddings)
+        revin_stats = None
+        encoder_input = x
+        if self.revin is not None:
+            encoder_input, revin_stats = self.revin.normalize(x)
+        features = self.encoder.forward_features(encoder_input, channel_positions=channel_positions, channel_mask=channel_mask, channel_text_embeddings=channel_text_embeddings, channel_stats_embeddings=channel_stats_embeddings)
         tokens = self._resolve_channelwise_probe_tokens(features)
         batch, channels, patches, dim = tokens.shape
         if patches != self.num_patches:
@@ -1721,6 +1843,10 @@ class LayaTSForecaster(nn.Module):
                 f"but encoder produced {patches}. Check seq_len and patch_size alignment."
             )
         out = self.head(tokens.reshape(batch * channels, patches * dim)).reshape(batch, channels, self.pred_len)
+        if self.revin is not None:
+            if revin_stats is None:
+                raise RuntimeError("RevIN stats were not populated before denormalization.")
+            out = self.revin.denormalize(out, revin_stats)
         if return_features:
             return out, features
         return out

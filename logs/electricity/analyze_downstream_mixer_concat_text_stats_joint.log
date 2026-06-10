@@ -1,0 +1,16 @@
+[INFO] Using forecasting-checkpoint-compatible flow
+[OK] Loaded forecasting checkpoint from: /data/pjh_workspace/laya_ts/checkpoints/forecasting_ettm1_96/electricity_laya_mixer_concat_text_stats_joint_best.pt
+[OK] Loaded pretrained checkpoint from forecasting payload: /data/pjh_workspace/laya_ts/checkpoints/electricity_laya_mixer_concat_text_stats_joint/laya_ts_electricity_s_best.pt
+[OK] Detected representation_type: mixer
+[OK] Built dataloaders: data=ETTm1, pred_len=96
+[OK] Loaded forecasting model state directly from forecasting checkpoint
+[OK] Unit type: query
+[OK] Ablation target: channel_affinity
+[OK] Skipping linear probe training; using saved forecasting checkpoint as baseline
+[OK] Baseline test MSE/MAE: mse=0.607654, mae=0.561266
+[INFO] baseline val metadata usage: {'metadata_norm_mean': 5.232706546783447}
+[INFO] test metadata usage: {'metadata_norm_mean': 5.232706546783447}
+[OK] Unit ablation completed
+[OK] Saved unit_ablation_results.csv
+[OK] Saved unit_ablation_delta_mse.png
+[OK] Saved outputs to: /data/pjh_workspace/laya_ts/analysis/linear_probe_ablation/mixer_concat_text_stats_joint_ETTm1_96

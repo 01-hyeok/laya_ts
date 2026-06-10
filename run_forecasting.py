@@ -82,6 +82,17 @@ def _infer_pretrain_dataset(checkpoint_path: str) -> str:
     return "unknown"
 
 
+def _build_best_forecasting_checkpoint_path(dataset_type: str, pred_len: int, checkpoint_path: str) -> str:
+    checkpoint_parent = Path(checkpoint_path).resolve().parent.name
+    if checkpoint_parent.startswith("checkpoints"):
+        checkpoint_parent = Path(checkpoint_path).resolve().stem
+    checkpoint_parent = checkpoint_parent.strip() or "forecasting_model"
+    dataset_name = str(dataset_type).strip().lower()
+    checkpoint_dir = Path("./checkpoints") / f"forecasting_{dataset_name}_{pred_len}"
+    checkpoint_dir.mkdir(parents=True, exist_ok=True)
+    return str(checkpoint_dir / f"{checkpoint_parent}_best.pt")
+
+
 def _inverse_scale_batch(values: np.ndarray, scaler) -> np.ndarray:
     batch, channels, steps = values.shape
     flat = values.transpose(0, 2, 1).reshape(-1, channels)
@@ -341,9 +352,15 @@ def main(argv=None):
     p.add_argument("--plot_channels", type=str, default=None, help="Comma-separated channel indices to visualize at test time")
     p.add_argument("--save_attention_maps", action="store_true")
     p.add_argument("--num_attention_map_samples", type=int, default=3)
+    _add_bool_optional_arg(p, "--use_revin", default=True)
+    _add_bool_optional_arg(p, "--revin_affine", default=True)
+    _add_bool_optional_arg(p, "--revin_subtract_last", default=False)
+    p.add_argument("--revin_eps", type=float, default=1e-5)
     args = p.parse_args(argv)
     if args.stats_metadata_dim is not None and args.stats_metadata_dim <= 0:
         raise ValueError(f"--stats_metadata_dim must be positive, got {args.stats_metadata_dim}")
+    if args.revin_eps <= 0:
+        raise ValueError(f"--revin_eps must be positive, got {args.revin_eps}")
     set_seed(args.seed)
     checkpoint_cfg = load_model_config_from_checkpoint(args.checkpoint)
     channel_metadata_mode = args.channel_metadata_mode or checkpoint_cfg.channel_metadata_mode
@@ -431,7 +448,16 @@ def main(argv=None):
         }
     )
     num_patches = infer_temporal_patchifier_num_patches(model_cfg, first_batch["series"].shape[-1])
-    model = LayaTSForecaster(model_cfg, pred_len=args.pred_len, out_channels=out_channels, num_patches=num_patches).to(args.device)
+    model = LayaTSForecaster(
+        model_cfg,
+        pred_len=args.pred_len,
+        out_channels=out_channels,
+        num_patches=num_patches,
+        use_revin=args.use_revin,
+        revin_affine=args.revin_affine,
+        revin_subtract_last=args.revin_subtract_last,
+        revin_eps=args.revin_eps,
+    ).to(args.device)
     load_report = load_encoder_from_checkpoint_report(model, args.checkpoint)
     skipped_encoder_keys = list(load_report["skipped_keys"])
     skipped_onehot_projector = any(key.startswith("channel_id_projector.") for key in skipped_encoder_keys)
@@ -465,6 +491,10 @@ def main(argv=None):
         f"📝 metadata: mode={channel_metadata_mode}, "
         f"fusion={model_cfg.metadata_fusion_mode}, relation={model_cfg.channel_mixer_relation_mode}"
     )
+    print(
+        f"ℹ️ RevIN: {'enabled' if args.use_revin else 'disabled'} | "
+        f"affine={args.revin_affine} | subtract_last={args.revin_subtract_last} | eps={args.revin_eps}"
+    )
     print(f"ℹ️ Metadata Fusion Mode: {model_cfg.metadata_fusion_mode}")
     print(f"ℹ️ Channel Mixer Relation Mode: {model_cfg.channel_mixer_relation_mode}")
     if model_cfg.metadata_fusion_mode in {"attention_gate", "attention_suppress_gate"}:
@@ -497,6 +527,7 @@ def main(argv=None):
     os.makedirs(args.log_dir, exist_ok=True)
     writer = SummaryWriter(args.log_dir)
     best_state = None; best_val = float("inf")
+    best_checkpoint_path = _build_best_forecasting_checkpoint_path(args.dataset_type, args.pred_len, args.checkpoint)
     steps_per_epoch = len(train_loader)
     try:
         for epoch in range(1, args.epochs + 1):
@@ -580,6 +611,35 @@ def main(argv=None):
             )
             if val_loss <= best_val:
                 best_val = val_loss; best_state = {k:v.detach().cpu() for k,v in model.state_dict().items()}
+                torch.save(
+                    {
+                        "epoch": epoch,
+                        "model_state_dict": best_state,
+                        "model_config": model_cfg.__dict__,
+                        "dataset_type": args.dataset_type,
+                        "data_path": args.data_path,
+                        "seq_len": args.seq_len,
+                        "pred_len": args.pred_len,
+                        "batch_size": args.batch_size,
+                        "lr": args.lr,
+                        "weight_decay": args.weight_decay,
+                        "checkpoint": args.checkpoint,
+                        "channel_metadata_mode": channel_metadata_mode,
+                        "metadata_fusion_mode": metadata_fusion_mode,
+                        "channel_mixer_type": channel_mixer_type,
+                        "channel_mixer_relation_mode": channel_mixer_relation_mode,
+                        "channel_mixer_relation_scale_init": channel_mixer_relation_scale_init,
+                        "text_encoder_name_or_path": args.text_encoder_name_or_path,
+                        "text_metadata_cache_dir": args.text_metadata_cache_dir,
+                        "text_encoder_local_files_only": args.text_encoder_local_files_only,
+                        "use_revin": args.use_revin,
+                        "revin_affine": args.revin_affine,
+                        "revin_subtract_last": args.revin_subtract_last,
+                        "revin_eps": args.revin_eps,
+                        "best_val_mse": val_loss,
+                    },
+                    best_checkpoint_path,
+                )
                 print(f"   -> Updated best validation state: val_loss={val_loss:.6f} at epoch {epoch}")
         if best_state is not None:
             model.load_state_dict(best_state)
@@ -627,6 +687,7 @@ def main(argv=None):
         context_series = np.concatenate(contexts, axis=0)
         y_true = np.concatenate(ys, axis=0); y_pred = np.concatenate(preds, axis=0)
         print({"test_mse": _mse(y_true, y_pred), "test_mae": _mae(y_true, y_pred)})
+        print(f"Saved best forecasting checkpoint under {best_checkpoint_path}")
         if args.save_test_plots:
             restored_context = _inverse_scale_batch(context_series, scaler)
             restored_true = _inverse_scale_batch(y_true, scaler)

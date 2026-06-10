@@ -116,6 +116,10 @@ def _format_metadata_usage(metadata_usage: dict[str, float]) -> str:
         parts.append(f"Gate0%:{100.0 * metadata_usage['relation_gate_sparsity']:.1f}")
     if "metadata_norm_mean" in metadata_usage:
         parts.append(f"MetaNormμ:{metadata_usage['metadata_norm_mean']:.4f}")
+    if "metadata_norm_std" in metadata_usage:
+        parts.append(f"MetaNormσ:{metadata_usage['metadata_norm_std']:.4f}")
+    if "metadata_norm_ratio" in metadata_usage:
+        parts.append(f"MetaNormMax/Min:{metadata_usage['metadata_norm_ratio']:.2f}")
     return "Meta: " + ", ".join(parts)
 
 
@@ -127,7 +131,27 @@ def _infer_loader_channel_count(loader) -> int:
     return int(probe_batch["series"].shape[1])
 
 
-def _iter_interleaved_loader_groups(loader_groups, *, epoch: int, seed: int):
+def _iter_interleaved_loader_groups(loader_groups, *, epoch: int, seed: int, target_steps: int | None = None, subset_sampling: str = "exhaustive"):
+    if subset_sampling == "uniform" and target_steps is not None and target_steps > 0:
+        rng = random.Random(seed + epoch)
+        states = [
+            {
+                "group_name": group["group_name"],
+                "loader": group["train_loader"],
+                "iterator": iter(group["train_loader"]),
+            }
+            for group in loader_groups
+        ]
+        for _ in range(target_steps):
+            state = states[rng.randrange(len(states))]
+            try:
+                batch = next(state["iterator"])
+            except StopIteration:
+                state["iterator"] = iter(state["loader"])
+                batch = next(state["iterator"])
+            yield state["group_name"], batch
+        return
+
     active = [
         {
             "group_name": group["group_name"],
@@ -320,8 +344,36 @@ def _representation_stats(repr_tensor: torch.Tensor) -> dict[str, float]:
 
     repr_cpu = repr_tensor.detach().float().cpu()
     norms = repr_cpu.norm(dim=-1)
-    feature_var = repr_cpu.var(dim=0, unbiased=False).mean()
+    feature_var_per_dim = repr_cpu.var(dim=0, unbiased=False)
+    feature_var = feature_var_per_dim.mean()
+    feature_var_min = feature_var_per_dim.min() if feature_var_per_dim.numel() > 0 else repr_cpu.new_tensor(0.0)
+    feature_var_max = feature_var_per_dim.max() if feature_var_per_dim.numel() > 0 else repr_cpu.new_tensor(0.0)
+    low_variance_eps = 1e-8
+    dead_dim_count = int((feature_var_per_dim <= low_variance_eps).sum().item()) if feature_var_per_dim.numel() > 0 else 0
+    dead_dim_fraction = float(dead_dim_count / max(1, feature_var_per_dim.numel()))
     norm_ratio = float(norms.max() / norms.clamp_min(1e-12).min())
+
+    centered = repr_cpu - repr_cpu.mean(dim=0, keepdim=True)
+    max_rank = min(centered.shape[0], centered.shape[1])
+    if max_rank > 0:
+        singular_values = torch.linalg.svdvals(centered)
+        singular_sum = singular_values.sum()
+        if singular_values.numel() > 0 and float(singular_sum) > 0.0:
+            singular_probs = singular_values / singular_sum
+            singular_entropy = -torch.sum(singular_probs * singular_probs.clamp_min(1e-12).log())
+            effective_rank = float(torch.exp(singular_entropy))
+            stable_rank = float((singular_values.square().sum() / singular_values.max().square().clamp_min(1e-12)))
+            singular_top1_fraction = float(singular_values[0] / singular_sum)
+        else:
+            effective_rank = 0.0
+            stable_rank = 0.0
+            singular_top1_fraction = 0.0
+        effective_rank_ratio = float(effective_rank / max_rank)
+    else:
+        effective_rank = 0.0
+        effective_rank_ratio = 0.0
+        stable_rank = 0.0
+        singular_top1_fraction = 0.0
 
     if repr_cpu.shape[0] > 1:
         pairwise_l2 = torch.pdist(repr_cpu, p=2)
@@ -349,6 +401,15 @@ def _representation_stats(repr_tensor: torch.Tensor) -> dict[str, float]:
         "norm_std": float(norms.std(unbiased=False)),
         "norm_ratio": norm_ratio,
         "feature_var_mean": float(feature_var),
+        "feature_var_min": float(feature_var_min),
+        "feature_var_max": float(feature_var_max),
+        "feature_var_ratio": float(feature_var_max / feature_var_min.clamp_min(low_variance_eps)),
+        "dead_dim_count": float(dead_dim_count),
+        "dead_dim_fraction": dead_dim_fraction,
+        "effective_rank": effective_rank,
+        "effective_rank_ratio": effective_rank_ratio,
+        "stable_rank": stable_rank,
+        "singular_top1_fraction": singular_top1_fraction,
         "pairwise_l2_mean": pairwise_l2_mean,
         "pairwise_l2_std": pairwise_l2_std,
         "pairwise_cosine_similarity_mean": pairwise_cos_sim_mean,
@@ -404,6 +465,15 @@ def _evaluate_validation(
         "norm_std": 0.0,
         "norm_ratio": 0.0,
         "feature_var_mean": 0.0,
+        "feature_var_min": 0.0,
+        "feature_var_max": 0.0,
+        "feature_var_ratio": 0.0,
+        "dead_dim_count": 0.0,
+        "dead_dim_fraction": 0.0,
+        "effective_rank": 0.0,
+        "effective_rank_ratio": 0.0,
+        "stable_rank": 0.0,
+        "singular_top1_fraction": 0.0,
         "pairwise_l2_mean": 0.0,
         "pairwise_l2_std": 0.0,
         "pairwise_cosine_similarity_mean": 0.0,
@@ -584,11 +654,13 @@ def main(argv=None):
     p.add_argument("--text_metadata_cache_dir", type=str, default="./metadata_cache")
     p.add_argument("--text_encoder_local_files_only", action="store_true")
     p.add_argument("--lotsa_split_mode", type=str, default="temporal_70_10_20", choices=["official", "temporal_70_10_20"])
-    p.add_argument("--lotsa_sampling_mode", type=str, default="sliding_window", choices=["official", "sliding_window"])
+    p.add_argument("--lotsa_sampling_mode", type=str, default="hierarchical", choices=["official", "sliding_window", "hierarchical"])
     p.add_argument("--lotsa_preprocessing_mode", type=str, default="standardize", choices=["official", "standardize"])
-    p.add_argument("--lotsa_sample_time_series", type=str, default="proportional", choices=["none", "uniform", "proportional"])
+    p.add_argument("--lotsa_sample_time_series", type=str, default="uniform", choices=["none", "uniform", "proportional"])
+    p.add_argument("--lotsa_subset_sampling", type=str, default="uniform", choices=["exhaustive", "uniform"])
     p.add_argument("--lotsa_min_patches", type=int, default=2)
     p.add_argument("--lotsa_max_dim", type=int, default=128)
+    p.add_argument("--lotsa_windows_per_series", type=int, default=32)
     p.add_argument("--text_metadata_dim", type=int, default=384)
     p.add_argument("--stats_metadata_dim", type=int, default=LayaModelConfig().stats_metadata_dim)
     p.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu")
@@ -657,6 +729,8 @@ def main(argv=None):
         raise ValueError(f"--lotsa_min_patches must be positive, got {args.lotsa_min_patches}")
     if args.lotsa_max_dim <= 0:
         raise ValueError(f"--lotsa_max_dim must be positive, got {args.lotsa_max_dim}")
+    if args.lotsa_windows_per_series <= 0:
+        raise ValueError(f"--lotsa_windows_per_series must be positive, got {args.lotsa_windows_per_series}")
 
     charm_kernel_sizes = _parse_int_list(args.charm_kernel_sizes)
     charm_stride = args.charm_stride or args.patch_size
@@ -694,7 +768,7 @@ def main(argv=None):
         shared_channel_counts = [group["channel_count"] for group in loader_groups]
         channel_count = max(shared_channel_counts)
     elif args.dataset_type == "lotsa":
-        loader_groups = get_lotsa_pretrain_loader_groups(args.data_path, batch_size=train_cfg.batch_size, seq_len=args.seq_len, stride=args.stride, patch_size=args.patch_size, num_workers=args.num_workers, max_files=args.max_files, channel_metadata_mode=args.channel_metadata_mode, text_encoder_name_or_path=args.text_encoder_name_or_path, text_metadata_cache_dir=args.text_metadata_cache_dir, text_encoder_local_files_only=args.text_encoder_local_files_only, lotsa_split_mode=args.lotsa_split_mode, lotsa_sampling_mode=args.lotsa_sampling_mode, lotsa_preprocessing_mode=args.lotsa_preprocessing_mode, lotsa_sample_time_series=args.lotsa_sample_time_series, lotsa_min_patches=args.lotsa_min_patches, lotsa_max_dim=args.lotsa_max_dim)
+        loader_groups = get_lotsa_pretrain_loader_groups(args.data_path, batch_size=train_cfg.batch_size, seq_len=args.seq_len, stride=args.stride, patch_size=args.patch_size, num_workers=args.num_workers, max_files=args.max_files, channel_metadata_mode=args.channel_metadata_mode, text_encoder_name_or_path=args.text_encoder_name_or_path, text_metadata_cache_dir=args.text_metadata_cache_dir, text_encoder_local_files_only=args.text_encoder_local_files_only, lotsa_split_mode=args.lotsa_split_mode, lotsa_sampling_mode=args.lotsa_sampling_mode, lotsa_preprocessing_mode=args.lotsa_preprocessing_mode, lotsa_sample_time_series=args.lotsa_sample_time_series, lotsa_subset_sampling=args.lotsa_subset_sampling, lotsa_min_patches=args.lotsa_min_patches, lotsa_max_dim=args.lotsa_max_dim, lotsa_windows_per_series=args.lotsa_windows_per_series)
         if not loader_groups:
             raise ValueError("No LOTSA loader groups were created; check the subset list and preprocessing configuration.")
         loader_group_kind = "lotsa"
@@ -707,7 +781,7 @@ def main(argv=None):
         shared_channel_counts = [group["channel_count"] for group in loader_groups]
         channel_count = max(shared_channel_counts)
     else:
-        train_loader, val_loader = get_pretrain_loaders(args.dataset_type, args.data_path, batch_size=train_cfg.batch_size, seq_len=args.seq_len, stride=args.stride, patch_size=args.patch_size, num_workers=args.num_workers, max_files=args.max_files, tsld_mode=args.tsld_mode, tslib_mode=args.tslib_mode, channel_metadata_mode=args.channel_metadata_mode, text_encoder_name_or_path=args.text_encoder_name_or_path, text_metadata_cache_dir=args.text_metadata_cache_dir, text_encoder_local_files_only=args.text_encoder_local_files_only, lotsa_split_mode=args.lotsa_split_mode, lotsa_sampling_mode=args.lotsa_sampling_mode, lotsa_preprocessing_mode=args.lotsa_preprocessing_mode, lotsa_sample_time_series=args.lotsa_sample_time_series, lotsa_min_patches=args.lotsa_min_patches, lotsa_max_dim=args.lotsa_max_dim)
+        train_loader, val_loader = get_pretrain_loaders(args.dataset_type, args.data_path, batch_size=train_cfg.batch_size, seq_len=args.seq_len, stride=args.stride, patch_size=args.patch_size, num_workers=args.num_workers, max_files=args.max_files, tsld_mode=args.tsld_mode, tslib_mode=args.tslib_mode, channel_metadata_mode=args.channel_metadata_mode, text_encoder_name_or_path=args.text_encoder_name_or_path, text_metadata_cache_dir=args.text_metadata_cache_dir, text_encoder_local_files_only=args.text_encoder_local_files_only, lotsa_split_mode=args.lotsa_split_mode, lotsa_sampling_mode=args.lotsa_sampling_mode, lotsa_preprocessing_mode=args.lotsa_preprocessing_mode, lotsa_sample_time_series=args.lotsa_sample_time_series, lotsa_subset_sampling=args.lotsa_subset_sampling, lotsa_min_patches=args.lotsa_min_patches, lotsa_max_dim=args.lotsa_max_dim, lotsa_windows_per_series=args.lotsa_windows_per_series)
         steps_per_epoch = len(train_loader)
         if steps_per_epoch == 0:
             raise ValueError("train_loader is empty; check the dataset path and preprocessing configuration.")
@@ -809,8 +883,11 @@ def main(argv=None):
         print(f"   - LOTSA sampling mode: {args.lotsa_sampling_mode}")
         print(f"   - LOTSA preprocessing mode: {args.lotsa_preprocessing_mode}")
         print(f"   - LOTSA sample_time_series: {args.lotsa_sample_time_series}")
+        print(f"   - LOTSA subset_sampling: {args.lotsa_subset_sampling}")
         print(f"   - LOTSA min_patches: {args.lotsa_min_patches}")
         print(f"   - LOTSA max_dim: {args.lotsa_max_dim}")
+        print(f"   - LOTSA windows_per_series: {args.lotsa_windows_per_series}")
+        print("   - LOTSA sampler note: custom JEPA sampler over LOTSA, not an official LOTSA dataset protocol")
     elif args.dataset_type == "tsld":
         _print_series_summaries("🗂️ tsld Train File Sampling Summary:", train_loader.dataset.series_summaries)
         _print_series_summaries("🗂️ tsld Val File Sampling Summary:", val_loader.dataset.series_summaries)
@@ -891,7 +968,13 @@ def main(argv=None):
             epoch_steps = 0
             total_train_samples = 0
             if loader_group_kind == "lotsa":
-                batch_stream = _iter_interleaved_loader_groups(loader_groups, epoch=epoch, seed=args.seed)
+                batch_stream = _iter_interleaved_loader_groups(
+                    loader_groups,
+                    epoch=epoch,
+                    seed=args.seed,
+                    target_steps=steps_per_epoch,
+                    subset_sampling=args.lotsa_subset_sampling,
+                )
             else:
                 iter_loaders = [(None, train_loader)] if loader_groups is None else [(group["group_name"], group["train_loader"]) for group in loader_groups]
                 if loader_groups is not None:
@@ -1161,20 +1244,6 @@ def main(argv=None):
             for key, value in avg_val_metadata_usage.items():
                 writer.add_scalar(f"epoch/val_meta_{key}", value, epoch)
             writer.add_scalars("compare/loss", {"train": avg_loss, "val": avg_val_loss}, epoch)
-            writer.add_scalars("compare/pred_loss", {"train": avg_pred_loss, "val": avg_val_pred_loss}, epoch)
-            writer.add_scalars("compare/sigreg_loss", {"train": avg_sigreg_loss, "val": avg_val_sigreg_loss}, epoch)
-            writer.add_scalars("compare/query_loss", {"train": avg_query_loss, "val": avg_val_query_loss}, epoch)
-            for key in avg_repr_stats.keys():
-                writer.add_scalars(f"compare_repr/{key}", {"train": avg_repr_stats[key], "val": avg_val_repr_stats[key]}, epoch)
-            for key in avg_align_stats.keys():
-                writer.add_scalars(f"compare_align/{key}", {"train": avg_align_stats[key], "val": avg_val_align_stats[key]}, epoch)
-            for key, value in avg_metadata_usage.items():
-                if key in avg_val_metadata_usage:
-                    writer.add_scalars(
-                        f"compare_meta/{key}",
-                        {"train": value, "val": avg_val_metadata_usage[key]},
-                        epoch,
-                    )
             current_lr = optimizer.param_groups[0]["lr"]
             is_best = avg_val_loss < best_val_loss
             if is_best:

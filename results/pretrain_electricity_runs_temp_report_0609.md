@@ -618,3 +618,214 @@ best checkpoint 기준으론 쓸 만할 수 있지만, 최종 상태는 불안�
 - `pretrain_electricity_laya_metadata_query_gate_text_stats_joint`
 
 즉 이번 실험에서는 **loss와 representation quality, 그리고 attention evidence를 반드시 함께 봐야 한다**는 점이 가장 중요하다.
+
+---
+
+## 8. 추가로 꼭 보강하면 좋은 분석 항목
+
+이번 보고서는 현재 `runs_temp`에 남아 있는 scalar log와 최종 attention snapshot만을 이용해 작성되었다. 따라서 아래 항목들을 추가하면 보고서의 설득력이 더 강해진다.
+
+### 8.1 Best checkpoint 기준 attention 재저장
+
+현재 attention map은 각 run의 **최종 epoch 기준**으로 저장되어 있다. 하지만 실제로 가장 좋은 상태는 `best_val_loss`가 갱신된 시점의 checkpoint일 수 있다.
+
+따라서 가장 먼저 보강해야 하는 항목은 다음과 같다.
+
+- 각 run의 `*_best.pt` checkpoint를 다시 로드한다.
+- 동일한 validation batch에 대해 attention map을 다시 저장한다.
+- 현재 `epoch_100_val` attention과 비교한다.
+
+이 분석은 특히 아래 모델들에 중요하다.
+
+- `pretrain_electricity_laya_mixer_concat_stats`
+- 기타 final epoch와 best epoch 사이 차이가 큰 모델
+
+주의할 점은, 현재 workspace에서는 `runs_temp`에 대응되는 best checkpoint 파일이 보이지 않았다. 즉 이 항목은 **코드상 구현 가능하지만, 실제 재실행을 위해서는 checkpoint 원본이 필요하다.**
+
+---
+
+### 8.2 Collapse 지표 보강: Effective Rank / Dead Dimension
+
+현재 보고서는 collapse 여부를 주로 아래 두 지표로 판단했다.
+
+- `val_repr_pairwise_cosine_similarity_mean`
+- `val_repr_feature_var_mean`
+
+이 두 지표만으로도 collapse 경향은 충분히 볼 수 있지만, 보고서 품질을 더 높이려면 다음 지표를 추가하는 것이 좋다.
+
+#### Effective Rank
+
+기본 아이디어는 representation matrix를 중심화한 뒤 SVD를 수행하고,
+정규화된 singular value 분포의 entropy를 통해 유효 차원을 계산하는 것이다.
+
+의미:
+
+- 값이 높을수록 representation이 여러 축을 고르게 사용함
+- 값이 낮을수록 소수 차원으로 붕괴되었을 가능성이 큼
+
+#### Dead Dimension
+
+representation 차원별 분산을 직접 보고,
+거의 0에 가까운 차원의 개수를 세는 방식이다.
+
+의미:
+
+- dead dim 수가 많을수록 표현 공간이 비효율적임
+- `var_min`, `var_ratio(max/min)` 같은 값도 같이 보면 좋음
+
+이 지표는 특히 아래 모델들에 중요하다.
+
+- `mixer_concat_text`
+- `mixer_text`
+- `mixer_text_stats_avg`
+
+즉 현재 보고서에서 “collapse 의심”으로 적어둔 부분을 **정량적으로 더 강하게 뒷받침**할 수 있다.
+
+---
+
+### 8.3 Text metadata scale / norm 분석
+
+현재 코드에서는 `metadata_norm_mean`이 이미 로깅되고 있다. 하지만 지금 보고서에는 이 값을 깊게 분석하지 않았다.
+
+추가로 보면 좋은 내용은 다음과 같다.
+
+- metadata norm의 train/val 차이
+- metadata norm 분포의 폭
+- text-only / stats-only / joint 모델 간 norm 규모 비교
+- metadata score delta와 norm의 상관 관계
+
+이 분석은 특히 metadata-aware 모델에 중요하다.
+
+- `metadata_query_gate_*`
+- `description_suppression_*`
+- `text_stats_joint`, `text_stats_avg`
+
+이 항목을 추가하면,
+단순히 “metadata가 있다”가 아니라,
+**metadata가 실제로 어떤 scale로 attention이나 relation을 바꾸는지**까지 더 설득력 있게 설명할 수 있다.
+
+---
+
+## 9. 추가 시각화 제안 (Figure 계획)
+
+아래 Figure들은 현재 보고서를 한 단계 더 끌어올리는 데 매우 유용하다.
+
+### Figure 1. Pre-mixer channel UMAP
+
+- point = channel representation
+- color = channel variance / ACF / relation cluster
+
+목적:
+
+- mixer 이전 단계에서 channel-level representation이 이미 구조를 갖는지 확인
+- 특정 속성(variance, autocorrelation strength, relation cluster)에 따라 채널들이 자연스럽게 분리되는지 확인
+
+현재 상태:
+
+- `channel_tokens`, `channel_repr`는 코드에서 추출 가능
+- 하지만 UMAP 추출/시각화 코드는 아직 없음
+- PCA / t-SNE 기반 기존 시각화 코드를 확장하면 구현 가능
+
+---
+
+### Figure 2. Post-mixer query UMAP
+
+- point = query representation
+- color = query id
+
+목적:
+
+- query들이 서로 구분되는 역할을 학습했는지 확인
+- query collapse 여부를 시각적으로 보여줌
+
+현재 상태:
+
+- `mixed_tokens_pre_encoder`, `channel_affinity` 등 query 쪽 표현을 뽑을 수 있는 hook는 이미 있음
+- 하지만 query-level embedding을 따로 모아서 시각화하는 스크립트는 아직 없음
+
+이 Figure는 특히 query specialization을 설명할 때 중요하다.
+
+---
+
+### Figure 3. Post-mixer query UMAP with property color
+
+- point = query representation
+- color = attention-weighted top-k channel variance 또는 ACF strength
+
+목적:
+
+- query가 단순히 분리되는지만 보는 것이 아니라,
+- 실제로 어떤 채널 특성을 담당하고 있는지 시각적으로 보여줌
+
+예를 들어:
+
+- 어떤 query는 고분산 채널을 주로 보고,
+- 어떤 query는 높은 ACF 채널을 주로 보는 패턴이 있다면,
+  이것은 “query specialization”의 강한 증거가 된다.
+
+현재 상태:
+
+- attention-weighted property 계산은 새 코드가 필요함
+- 하지만 필요한 입력(`channel_affinity`, channel-level stats)은 이미 확보 가능함
+
+---
+
+### Figure 4. Query contribution in stage2
+
+- x = query id
+- y = 해당 query를 제거했을 때 probing 성능이 얼마나 떨어지는지
+
+목적:
+
+- “어떤 query가 실제 downstream 성능에 기여하는가”를 정량적으로 보여줌
+- 단순 attention 시각화보다 훨씬 강한 causal evidence를 제공
+
+현재 상태:
+
+- 이 항목은 새 구현이 가장 많이 필요함
+- query 제거 / masking 후 frozen encoder probing을 반복 실행해야 함
+- 즉 단순 시각화가 아니라 **ablation 기반 평가 루프**를 새로 만들어야 함
+
+하지만 보고서 관점에서는 가장 임팩트가 큰 Figure가 될 수 있다.
+
+---
+
+## 10. 우선순위 제안
+
+현실적으로는 아래 순서로 추가하는 것이 가장 효율적이다.
+
+### 1순위
+- Best checkpoint 기준 attention 재저장
+- Effective rank / dead dim 추가
+
+이 두 개만 추가해도 현재 보고서의 핵심 주장(“loss가 낮아도 collapse될 수 있다”)이 훨씬 강해진다.
+
+### 2순위
+- Text metadata scale / norm 분석
+- Figure 2 (post-mixer query UMAP)
+
+이 단계부터는 “metadata가 실제로 query 역할을 바꿨는가”를 더 설득력 있게 보여줄 수 있다.
+
+### 3순위
+- Figure 1 (pre-mixer channel UMAP)
+- Figure 3 (property-colored query UMAP)
+- Figure 4 (query removal contribution)
+
+이 단계는 가장 연구 논문스러운 그림을 만들어준다. 특히 Figure 4는 downstream probing까지 연결되기 때문에, 최종 보고서의 핵심 그림이 될 가능성이 높다.
+
+---
+
+## 11. 현재 시점의 요약
+
+지금 보고서만으로도 “어떤 모델이 collapse 의심인지, 어떤 모델이 더 건강한 representation을 가졌는지”는 상당 부분 설명 가능하다.
+
+하지만 아래가 추가되면 훨씬 더 강한 보고서가 된다.
+
+1. **best checkpoint 기준 attention map**
+2. **effective rank / dead dimension**
+3. **text metadata scale / norm 분석**
+4. **query / channel 수준 UMAP 시각화**
+5. **query 제거 기반 contribution plot**
+
+즉 현재 보고서는 충분히 유용한 1차 보고서이고,
+위 항목들이 추가되면 **논문용에 가까운 2차 보고서**가 된다.

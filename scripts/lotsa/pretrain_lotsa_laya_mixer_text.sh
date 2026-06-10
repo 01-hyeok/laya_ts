@@ -11,11 +11,13 @@ CHANNEL_METADATA_MODE="text"
 METADATA_FUSION_MODE="${METADATA_FUSION_MODE:-add}"
 CHANNEL_MIXER_RELATION_MODE="${CHANNEL_MIXER_RELATION_MODE:-none}"
 LOTSA_SPLIT_MODE="${LOTSA_SPLIT_MODE:-temporal_70_10_20}"
-LOTSA_SAMPLING_MODE="${LOTSA_SAMPLING_MODE:-sliding_window}"
+LOTSA_SAMPLING_MODE="${LOTSA_SAMPLING_MODE:-hierarchical}"
 LOTSA_PREPROCESSING_MODE="${LOTSA_PREPROCESSING_MODE:-standardize}"
-LOTSA_SAMPLE_TIME_SERIES="${LOTSA_SAMPLE_TIME_SERIES:-proportional}"
+LOTSA_SAMPLE_TIME_SERIES="${LOTSA_SAMPLE_TIME_SERIES:-uniform}"
+LOTSA_SUBSET_SAMPLING="${LOTSA_SUBSET_SAMPLING:-uniform}"
 LOTSA_MIN_PATCHES="${LOTSA_MIN_PATCHES:-2}"
 LOTSA_MAX_DIM="${LOTSA_MAX_DIM:-128}"
+LOTSA_WINDOWS_PER_SERIES="${LOTSA_WINDOWS_PER_SERIES:-32}"
 
 # Default LOTSA subsets for our current experiments. Override LOTSA_SUBSETS
 # to try other domains or an explicit subset list.
@@ -51,7 +53,9 @@ echo "🧩 split_mode: ${LOTSA_SPLIT_MODE}"
 echo "🧩 sampling_mode: ${LOTSA_SAMPLING_MODE}"
 echo "🧩 preprocessing_mode: ${LOTSA_PREPROCESSING_MODE}"
 echo "🧩 sample_time_series: ${LOTSA_SAMPLE_TIME_SERIES}"
+echo "🧩 subset_sampling: ${LOTSA_SUBSET_SAMPLING}"
 echo "🧩 min_patches: ${LOTSA_MIN_PATCHES}, max_dim: ${LOTSA_MAX_DIM}"
+echo "🧩 windows_per_series: ${LOTSA_WINDOWS_PER_SERIES}"
 echo "🧩 debug_lotsa: ${DEBUG_LOTSA}"
 echo "📝 metadata: mode=${CHANNEL_METADATA_MODE}, fusion=${METADATA_FUSION_MODE}, relation=${CHANNEL_MIXER_RELATION_MODE}"
 echo "📝 log_dir: ${LOG_DIR}"
@@ -89,8 +93,10 @@ python -u "./train_pretrain.py" \
   --lotsa_sampling_mode ${LOTSA_SAMPLING_MODE} \
   --lotsa_preprocessing_mode ${LOTSA_PREPROCESSING_MODE} \
   --lotsa_sample_time_series ${LOTSA_SAMPLE_TIME_SERIES} \
+  --lotsa_subset_sampling ${LOTSA_SUBSET_SAMPLING} \
   --lotsa_min_patches ${LOTSA_MIN_PATCHES} \
   --lotsa_max_dim ${LOTSA_MAX_DIM} \
+  --lotsa_windows_per_series ${LOTSA_WINDOWS_PER_SERIES} \
   --channel_mixer_type ${LAYA_MODE} \
   --text_encoder_name_or_path ${TEXT_ENCODER_NAME} \
   --text_metadata_cache_dir ${TEXT_METADATA_CACHE_DIR} \

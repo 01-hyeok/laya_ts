@@ -1,0 +1,16 @@
+[INFO] Using forecasting-checkpoint-compatible flow
+[OK] Loaded forecasting checkpoint from: /data/pjh_workspace/laya_ts/checkpoints/forecasting_ettm1_96/electricity_laya_metadata_query_gate_text_stats_avg_best.pt
+[OK] Loaded pretrained checkpoint from forecasting payload: /data/pjh_workspace/laya_ts/checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
+[OK] Detected representation_type: mixer
+[OK] Built dataloaders: data=ETTm1, pred_len=96
+[OK] Loaded forecasting model state directly from forecasting checkpoint
+[OK] Unit type: query
+[OK] Ablation target: channel_affinity
+[OK] Skipping linear probe training; using saved forecasting checkpoint as baseline
+[OK] Baseline test MSE/MAE: mse=0.482087, mae=0.503795
+[INFO] baseline val metadata usage: {'relation_scale_mean': 0.9450312256813049, 'signal_score_mean_abs': 10.84702205657959, 'score_delta_mean_abs': 9.038898468017578, 'relation_scores_mean_abs': 3.082975149154663, 'relation_gate_mean': -0.39097896218299866, 'relation_gate_sparsity': 0.0, 'metadata_norm_mean': 7.093376636505127, 'score_delta_ratio': 0.8333069132587189}
+[INFO] test metadata usage: {'relation_scale_mean': 0.9450312256813049, 'signal_score_mean_abs': 13.224152565002441, 'score_delta_mean_abs': 11.106627464294434, 'relation_scores_mean_abs': 3.082975149154663, 'relation_gate_mean': -0.39097896218299866, 'relation_gate_sparsity': 0.0, 'metadata_norm_mean': 7.093376636505127, 'score_delta_ratio': 0.8398744199071014}
+[OK] Unit ablation completed
+[OK] Saved unit_ablation_results.csv
+[OK] Saved unit_ablation_delta_mse.png
+[OK] Saved outputs to: /data/pjh_workspace/laya_ts/analysis/linear_probe_ablation/metadata_query_gate_text_stats_avg_ETTm1_96

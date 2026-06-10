@@ -153,8 +153,10 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         lotsa_sampling_mode: str = "sliding_window",
         lotsa_preprocessing_mode: str = "standardize",
         lotsa_sample_time_series: str = "proportional",
+        lotsa_subset_sampling: str = "uniform",
         lotsa_min_patches: int = 2,
         lotsa_max_dim: int = 128,
+        lotsa_windows_per_series: int = 32,
         max_samples: int | None = None,
         skip_samples: int = 0,
         shuffle_buffer_size: int = 128,
@@ -172,8 +174,10 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         self.lotsa_sampling_mode = str(lotsa_sampling_mode).strip().lower()
         self.lotsa_preprocessing_mode = str(lotsa_preprocessing_mode).strip().lower()
         self.lotsa_sample_time_series = str(lotsa_sample_time_series).strip().lower()
+        self.lotsa_subset_sampling = str(lotsa_subset_sampling).strip().lower()
         self.lotsa_min_patches = int(lotsa_min_patches)
         self.lotsa_max_dim = int(lotsa_max_dim)
+        self.lotsa_windows_per_series = int(lotsa_windows_per_series)
         self.text_encoder_name_or_path = text_encoder_name_or_path
         self.text_metadata_cache_dir = text_metadata_cache_dir
         self.text_encoder_local_files_only = text_encoder_local_files_only
@@ -203,10 +207,10 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
             raise ValueError(
                 f"patch_size must be <= seq_len for LOTSA patch crop, got patch_size={patch_size}, seq_len={seq_len}"
             )
-        if self.lotsa_sampling_mode not in {"official", "sliding_window"}:
+        if self.lotsa_sampling_mode not in {"official", "sliding_window", "hierarchical"}:
             raise ValueError(
                 f"Unsupported LOTSA sampling mode: {lotsa_sampling_mode}. "
-                "Expected one of: official, sliding_window."
+                "Expected one of: official, sliding_window, hierarchical."
             )
         if self.lotsa_preprocessing_mode not in {"official", "standardize"}:
             raise ValueError(
@@ -222,6 +226,13 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
             raise ValueError(f"lotsa_min_patches must be positive, got {lotsa_min_patches}")
         if self.lotsa_max_dim <= 0:
             raise ValueError(f"lotsa_max_dim must be positive, got {lotsa_max_dim}")
+        if self.lotsa_subset_sampling not in {"exhaustive", "uniform"}:
+            raise ValueError(
+                f"Unsupported LOTSA subset sampling mode: {lotsa_subset_sampling}. "
+                "Expected one of: exhaustive, uniform."
+            )
+        if self.lotsa_windows_per_series <= 0:
+            raise ValueError(f"lotsa_windows_per_series must be positive, got {lotsa_windows_per_series}")
 
     def _debug(self, message: str) -> None:
         if _LOTSA_DEBUG_ENABLED:
@@ -940,11 +951,8 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         if not np.isfinite(split).all() or not observed_mask.any():
             return 0
 
-        valid_windows = 0
-        for start in range(0, split.shape[1] - self.seq_len + 1, self.stride):
-            if observed_mask[:, start:start + self.seq_len].any():
-                valid_windows += 1
-        return valid_windows
+        valid_starts = self._valid_window_starts(observed_mask, split.shape[1])
+        return self._effective_window_count_from_starts(valid_starts)
 
     def _count_valid_sliding_windows_for_record(
         self,
@@ -990,12 +998,41 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
             return 0, "non_finite_stats_metadata"
 
         valid_windows = 0
-        for start in range(0, split.shape[1] - self.seq_len + 1, self.stride):
-            if observed_mask[:, start:start + self.seq_len].any():
-                valid_windows += 1
+        valid_starts = self._valid_window_starts(observed_mask, split.shape[1])
+        valid_windows = self._effective_window_count_from_starts(valid_starts)
         if valid_windows <= 0:
             return 0, "no_valid_windows"
         return valid_windows, "ok"
+
+    def _valid_window_starts(self, observed_mask: np.ndarray, split_len: int) -> list[int]:
+        valid_starts: list[int] = []
+        for start in range(0, split_len - self.seq_len + 1, self.stride):
+            if observed_mask[:, start:start + self.seq_len].any():
+                valid_starts.append(start)
+        return valid_starts
+
+    def _effective_window_count_from_starts(self, valid_starts: list[int]) -> int:
+        if self.lotsa_sampling_mode == "hierarchical":
+            return min(len(valid_starts), self.lotsa_windows_per_series)
+        return len(valid_starts)
+
+    def _select_window_starts_for_record(
+        self,
+        valid_starts: list[int],
+        *,
+        rng: np.random.Generator | None,
+    ) -> list[int]:
+        if self.lotsa_sampling_mode != "hierarchical":
+            return valid_starts
+        target = min(len(valid_starts), self.lotsa_windows_per_series)
+        if target <= 0:
+            return []
+        if self.mode != "train":
+            return valid_starts[:target]
+        assert rng is not None
+        selected = rng.choice(len(valid_starts), size=target, replace=False)
+        selected.sort()
+        return [valid_starts[int(index)] for index in selected.tolist()]
 
     @staticmethod
     def _collate_homogeneous_batch(items: list[dict]):
@@ -1157,7 +1194,7 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
             ) or "none"
             self._debug(
                 "count subset="
-                f"{subset_name} mode={self.mode} sampling=sliding_window windows={subset_windows} "
+                f"{subset_name} mode={self.mode} sampling={self.lotsa_sampling_mode} windows={subset_windows} "
                 f"batches={subset_batches} reasons=[{reason_summary}] exceptions={subset_exception_count}"
                 + (f" first_exception={first_exception}" if first_exception else "")
             )
@@ -1238,10 +1275,10 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
                     return
             return
 
-        for subset_name in self._iter_subset_names_for_epoch():
+        for subset_offset, subset_name in enumerate(self._iter_subset_names_for_epoch()):
             batch_bucket = []
             try:
-                for record in self._iter_subset(subset_name):
+                for record_offset, record in enumerate(self._iter_subset(subset_name)):
                     try:
                         series_ct = self._infer_series_array(record)  # [C, T]
                         num_channels, total_len = series_ct.shape
@@ -1265,12 +1302,22 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
                             continue
                         if channel_stats_embeddings is not None and not torch.isfinite(channel_stats_embeddings).all():
                             continue
-                        for start in range(0, split.shape[1] - self.seq_len + 1, self.stride):
+                        valid_starts = self._valid_window_starts(observed_mask, split.shape[1])
+                        if not valid_starts:
+                            continue
+                        rng = None
+                        if self.lotsa_sampling_mode == "hierarchical":
+                            rng = np.random.default_rng(
+                                self.random_seed
+                                + self._subset_iteration_index
+                                + subset_offset * 100_003
+                                + record_offset
+                            )
+                        selected_starts = self._select_window_starts_for_record(valid_starts, rng=rng)
+                        for start in selected_starts:
                             if remaining is not None and remaining <= 0:
                                 break
                             window_observed = observed_mask[:, start:start + self.seq_len]
-                            if not window_observed.any():
-                                continue
                             batch_bucket.append(
                                 {
                                     "series": torch.from_numpy(split[:, start:start + self.seq_len]),
@@ -1697,8 +1744,17 @@ def _split_lotsa_sample_budget(max_samples: int | None, subset_count: int) -> li
     return budgets
 
 
-def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, tsld_mode: str = "univariate", tslib_mode: str = "univariate", channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_split_mode: str = "temporal_70_10_20", lotsa_sampling_mode: str = "sliding_window", lotsa_preprocessing_mode: str = "standardize", lotsa_sample_time_series: str = "proportional", lotsa_min_patches: int = 2, lotsa_max_dim: int = 128):
+def _resolve_lotsa_num_workers(requested_num_workers: int) -> int:
+    # Our LOTSA loader is an IterableDataset over HF streaming/local datasets.
+    # Using DataLoader workers here can duplicate or over-fetch iterator items,
+    # which breaks the contract between __len__ and actual yielded batches.
+    # Keep LOTSA single-process so batch counting and iteration stay identical.
+    return 0
+
+
+def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, tsld_mode: str = "univariate", tslib_mode: str = "univariate", channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_split_mode: str = "temporal_70_10_20", lotsa_sampling_mode: str = "hierarchical", lotsa_preprocessing_mode: str = "standardize", lotsa_sample_time_series: str = "uniform", lotsa_subset_sampling: str = "uniform", lotsa_min_patches: int = 2, lotsa_max_dim: int = 128, lotsa_windows_per_series: int = 32):
     if dataset_type == "lotsa":
+        effective_num_workers = _resolve_lotsa_num_workers(num_workers)
         subset_names = _parse_lotsa_subset_names(path)
         train_ds = LOTSABatchStreamingPretrainDataset(
             dataset_name="Salesforce/lotsa_data",
@@ -1716,8 +1772,10 @@ def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, se
             lotsa_sampling_mode=lotsa_sampling_mode,
             lotsa_preprocessing_mode=lotsa_preprocessing_mode,
             lotsa_sample_time_series=lotsa_sample_time_series,
+            lotsa_subset_sampling=lotsa_subset_sampling,
             lotsa_min_patches=lotsa_min_patches,
             lotsa_max_dim=lotsa_max_dim,
+            lotsa_windows_per_series=lotsa_windows_per_series,
             max_samples=max_files,
             skip_samples=0,
             shuffle_buffer_size=512,
@@ -1739,8 +1797,10 @@ def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, se
                 lotsa_sampling_mode=lotsa_sampling_mode,
                 lotsa_preprocessing_mode=lotsa_preprocessing_mode,
                 lotsa_sample_time_series="none",
+                lotsa_subset_sampling=lotsa_subset_sampling,
                 lotsa_min_patches=lotsa_min_patches,
                 lotsa_max_dim=lotsa_max_dim,
+                lotsa_windows_per_series=lotsa_windows_per_series,
                 max_samples=max_files,
                 skip_samples=0,
                 shuffle_buffer_size=1,
@@ -1749,8 +1809,8 @@ def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, se
         except ValueError:
             val_ds = None
             val_length = 0
-        train_loader = DataLoader(train_ds, batch_size=None, num_workers=num_workers)
-        val_loader = None if val_ds is None or val_length == 0 else DataLoader(val_ds, batch_size=None, num_workers=num_workers)
+        train_loader = DataLoader(train_ds, batch_size=None, num_workers=effective_num_workers)
+        val_loader = None if val_ds is None or val_length == 0 else DataLoader(val_ds, batch_size=None, num_workers=effective_num_workers)
         return train_loader, val_loader
 
     if dataset_type == "tsld":
@@ -1789,7 +1849,8 @@ def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, se
     return train_loader, val_loader
 
 
-def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_split_mode: str = "temporal_70_10_20", lotsa_sampling_mode: str = "sliding_window", lotsa_preprocessing_mode: str = "standardize", lotsa_sample_time_series: str = "proportional", lotsa_min_patches: int = 2, lotsa_max_dim: int = 128):
+def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_split_mode: str = "temporal_70_10_20", lotsa_sampling_mode: str = "hierarchical", lotsa_preprocessing_mode: str = "standardize", lotsa_sample_time_series: str = "uniform", lotsa_subset_sampling: str = "uniform", lotsa_min_patches: int = 2, lotsa_max_dim: int = 128, lotsa_windows_per_series: int = 32):
+    effective_num_workers = _resolve_lotsa_num_workers(num_workers)
     subset_names = _parse_lotsa_subset_names(path)
     if subset_names is None:
         probe_ds = LOTSABatchStreamingPretrainDataset(
@@ -1808,8 +1869,10 @@ def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: 
             lotsa_sampling_mode=lotsa_sampling_mode,
             lotsa_preprocessing_mode=lotsa_preprocessing_mode,
             lotsa_sample_time_series=lotsa_sample_time_series,
+            lotsa_subset_sampling=lotsa_subset_sampling,
             lotsa_min_patches=lotsa_min_patches,
             lotsa_max_dim=lotsa_max_dim,
+            lotsa_windows_per_series=lotsa_windows_per_series,
             max_samples=None,
             skip_samples=0,
             shuffle_buffer_size=512,
@@ -1839,8 +1902,10 @@ def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: 
             lotsa_sampling_mode=lotsa_sampling_mode,
             lotsa_preprocessing_mode=lotsa_preprocessing_mode,
             lotsa_sample_time_series=lotsa_sample_time_series,
+            lotsa_subset_sampling=lotsa_subset_sampling,
             lotsa_min_patches=lotsa_min_patches,
             lotsa_max_dim=lotsa_max_dim,
+            lotsa_windows_per_series=lotsa_windows_per_series,
             max_samples=subset_budget,
             skip_samples=0,
             shuffle_buffer_size=512,
@@ -1862,8 +1927,10 @@ def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: 
                 lotsa_sampling_mode=lotsa_sampling_mode,
                 lotsa_preprocessing_mode=lotsa_preprocessing_mode,
                 lotsa_sample_time_series="none",
+                lotsa_subset_sampling=lotsa_subset_sampling,
                 lotsa_min_patches=lotsa_min_patches,
                 lotsa_max_dim=lotsa_max_dim,
+                lotsa_windows_per_series=lotsa_windows_per_series,
                 max_samples=subset_budget,
                 skip_samples=0,
                 shuffle_buffer_size=1,
@@ -1880,14 +1947,15 @@ def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: 
                 f"train_samples={train_ds.num_samples} val_batches={val_length} "
                 f"val_samples={0 if val_ds is None else val_ds.num_samples} "
                 f"split_mode={lotsa_split_mode} sampling_mode={lotsa_sampling_mode} "
-                f"preprocessing_mode={lotsa_preprocessing_mode} seq_len={seq_len} stride={stride}"
+                f"preprocessing_mode={lotsa_preprocessing_mode} subset_sampling={lotsa_subset_sampling} "
+                f"windows_per_series={lotsa_windows_per_series} seq_len={seq_len} stride={stride}"
             )
         if train_length == 0:
             if _LOTSA_DEBUG_ENABLED:
                 print(f"[LOTSA-DEBUG] drop group subset={subset_name} reason=empty_train_dataset")
             continue
-        train_loader = DataLoader(train_ds, batch_size=None, num_workers=num_workers)
-        val_loader = None if val_ds is None or val_length == 0 else DataLoader(val_ds, batch_size=None, num_workers=num_workers)
+        train_loader = DataLoader(train_ds, batch_size=None, num_workers=effective_num_workers)
+        val_loader = None if val_ds is None or val_length == 0 else DataLoader(val_ds, batch_size=None, num_workers=effective_num_workers)
         loader_groups.append(
             {
                 "group_name": subset_name,

@@ -290,6 +290,7 @@ def main(argv=None):
     p.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu")
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--log_dir", type=str, default="laya_ts/runs/classification")
+    _add_bool_optional_arg(p, "--use_tensorboard", default=False)
     p.add_argument("--save_attention_maps", action="store_true")
     p.add_argument("--num_attention_map_samples", type=int, default=3)
     args = p.parse_args(argv)
@@ -440,8 +441,9 @@ def main(argv=None):
     print(f"✅ ClassificationHead: [B, {head_input}] → [B, {num_classes}]")
     optimizer = torch.optim.AdamW(finetune_params, lr=args.lr, weight_decay=args.weight_decay)
     criterion = nn.CrossEntropyLoss()
-    os.makedirs(args.log_dir, exist_ok=True)
-    writer = SummaryWriter(args.log_dir)
+    if args.use_tensorboard or args.save_attention_maps:
+        os.makedirs(args.log_dir, exist_ok=True)
+    writer = SummaryWriter(args.log_dir) if args.use_tensorboard else None
     best_state = None; best_val_loss = float("inf")
     try:
         for epoch in range(1, args.epochs + 1):
@@ -481,11 +483,12 @@ def main(argv=None):
             train_loss /= max(1, len(train_loader.dataset))
             train_y_true = np.concatenate(train_ys); train_y_pred = np.concatenate(train_preds)
             train_acc = accuracy_score(train_y_true, train_y_pred); train_f1 = f1_score(train_y_true, train_y_pred, average="macro")
-            writer.add_scalar("train/loss", train_loss, epoch)
-            writer.add_scalar("train/accuracy", train_acc, epoch)
-            writer.add_scalar("train/f1_macro", train_f1, epoch)
-            for key, value in train_metadata_usage.items():
-                writer.add_scalar(f"train_meta/{key}", value, epoch)
+            if writer is not None:
+                writer.add_scalar("train/loss", train_loss, epoch)
+                writer.add_scalar("train/accuracy", train_acc, epoch)
+                writer.add_scalar("train/f1_macro", train_f1, epoch)
+                for key, value in train_metadata_usage.items():
+                    writer.add_scalar(f"train_meta/{key}", value, epoch)
             model.eval(); preds=[]; ys=[]; val_losses=[]
             val_metadata_usage = {}
             with torch.no_grad():
@@ -521,10 +524,11 @@ def main(argv=None):
             y_true = np.concatenate(ys); y_pred = np.concatenate(preds)
             val_loss = float(np.sum(val_losses) / max(1, len(val_loader.dataset)))
             val_acc = accuracy_score(y_true, y_pred); val_f1 = f1_score(y_true, y_pred, average="macro")
-            writer.add_scalar("val/loss", val_loss, epoch)
-            writer.add_scalar("val/accuracy", val_acc, epoch); writer.add_scalar("val/f1_macro", val_f1, epoch)
-            for key, value in val_metadata_usage.items():
-                writer.add_scalar(f"val_meta/{key}", value, epoch)
+            if writer is not None:
+                writer.add_scalar("val/loss", val_loss, epoch)
+                writer.add_scalar("val/accuracy", val_acc, epoch); writer.add_scalar("val/f1_macro", val_f1, epoch)
+                for key, value in val_metadata_usage.items():
+                    writer.add_scalar(f"val_meta/{key}", value, epoch)
             print(
                 f"Epoch {epoch:>3}/{args.epochs} | "
                 f"Train Loss: {train_loss:.4f} Acc: {train_acc:.4f} F1: {train_f1:.4f} | "
@@ -592,7 +596,8 @@ def main(argv=None):
         if args.save_attention_maps:
             print(f"Saved attention maps for {attention_saved} sample(s) under {os.path.join(args.log_dir, 'attention_maps')}")
     finally:
-        writer.close()
+        if writer is not None:
+            writer.close()
 
 
 if __name__ == "__main__":

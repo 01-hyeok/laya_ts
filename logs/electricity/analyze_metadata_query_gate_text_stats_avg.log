@@ -1,0 +1,17 @@
+🔎 Mixer structure analysis
+   - checkpoint: ./checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
+   - data: Electricity
+   - split: val
+   - num_batches: 32
+   - output_dir: ./analysis/mixer_structure/electricity_metadata_query_gate_text_stats_avg
+[INFO] Checkpoint path: ./checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
+[OK] Loaded checkpoint: /data/pjh_workspace/laya_ts/checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
+[OK] Built validation loader: data=Electricity, split=val
+[OK] Detected mixer module: MetadataAwareQueryChannelMixer
+[OK] Captured pre-mixer tokens: (321, 32)
+[OK] Captured mixer attention: (16, 321)
+[OK] Captured post-mixer tokens: (16, 32)
+[OK] Saved post-mixer query cosine histogram
+[OK] Saved mixer_structure_overview.png
+[OK] Saved summary.json
+[OK] Saved report: mixer_structure_report.txt

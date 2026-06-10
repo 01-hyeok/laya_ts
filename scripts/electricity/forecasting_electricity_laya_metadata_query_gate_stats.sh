@@ -56,11 +56,12 @@ for DATA in "${TARGET_DATASETS[@]}"; do
   else
     DATA_DIR="$DATA"
   fi
+  DATA_LOWER="$(printf '%s' "$DATA" | tr '[:upper:]' '[:lower:]')"
   DATA_PATH="../Dataset/Time-Series-Library_dataset/${DATA_DIR}/${DATA}.csv"
-  LOG_DIR="./runs/forecasting_${PRETRAIN_DATA}_to_${DATA}_${ARCH}_metadata_query_gate_stats"
-  mkdir -p "$LOG_DIR"
 
   for PRED_LEN in "${PRED_LENGTHS[@]}"; do
+    LOG_DIR="./runs/forecasting_${DATA_LOWER}_${PRED_LEN}"
+    mkdir -p "$LOG_DIR"
     python -u "./run_forecasting.py" \
       --data_path "$DATA_PATH" \
       --dataset_type "$DATA" \
@@ -73,7 +74,7 @@ for DATA in "${TARGET_DATASETS[@]}"; do
       --num_workers 0 \
       --channel_mixer_type "$LAYA_MODE" \
       --channel_metadata_mode "$CHANNEL_METADATA_MODE" \
-      --log_dir "$LOG_DIR/pred_${PRED_LEN}" \
+      --log_dir "$LOG_DIR" \
       "${EXTRA_ARGS[@]}"
   done
 done

@@ -1,0 +1,52 @@
+{
+  "forecasting_checkpoint_path": "/data/pjh_workspace/laya_ts/checkpoints/forecasting_ettm1_96/electricity_laya_mixer_concat_text_best.pt",
+  "pretrain_run_dir": null,
+  "pretrain_checkpoint_path": "/data/pjh_workspace/laya_ts/checkpoints/electricity_laya_mixer_concat_text/laya_ts_electricity_s_best.pt",
+  "data": "ETTm1",
+  "pred_len": 96,
+  "representation_type": "mixer",
+  "unit_type": "query",
+  "ablation_target": "channel_affinity",
+  "best_linear_checkpoint": null,
+  "best_val_mse": 0.3678351041557607,
+  "val_mse": 0.3678351041557607,
+  "test_mse": 0.45245688592726857,
+  "most_important_unit_by_ablation": 6,
+  "max_delta_mse": 0.024544835778912588,
+  "mean_delta_mse": 0.016483641019861037,
+  "max_delta_mse_ratio_pct": 5.424789972775023,
+  "mean_delta_mse_ratio_pct": 3.643140712971875,
+  "topk_group_ablation": {
+    "top1": {
+      "unit_ids": [
+        6
+      ],
+      "delta_mse": 0.024544835778912588,
+      "delta_mse_ratio_pct": 5.424789972775023,
+      "random_mean_delta_mse": 0.016333229018173134,
+      "random_mean_delta_mse_ratio_pct": 3.6098973241836494
+    },
+    "top2": {
+      "unit_ids": [
+        6,
+        7
+      ],
+      "delta_mse": 0.04658191294923392,
+      "delta_mse_ratio_pct": 10.295326338943564,
+      "random_mean_delta_mse": 0.0341342942655844,
+      "random_mean_delta_mse_ratio_pct": 7.544209255569029
+    },
+    "top4": {
+      "unit_ids": [
+        6,
+        7,
+        1,
+        11
+      ],
+      "delta_mse": 0.12082537041663027,
+      "delta_mse_ratio_pct": 26.704283695232053,
+      "random_mean_delta_mse": 0.09722570482400567,
+      "random_mean_delta_mse_ratio_pct": 21.48839101536726
+    }
+  }
+}

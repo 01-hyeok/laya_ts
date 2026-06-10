@@ -1,0 +1,18 @@
+forecasting_checkpoint_path: /data/pjh_workspace/laya_ts/checkpoints/forecasting_ettm1_96/electricity_laya_mixer_text_stats_joint_best.pt
+pretrain_run_dir: None
+pretrain_checkpoint_path: /data/pjh_workspace/laya_ts/checkpoints/electricity_laya_mixer_text_stats_joint/laya_ts_electricity_s_best.pt
+data: ETTm1
+pred_len: 96
+representation_type: mixer
+unit_type: query
+ablation_target: channel_affinity
+best_val_mse: 0.3677332853472536
+test_mse: 0.46364169889592133
+
+Most important query by ablation: 8
+Max delta MSE: 0.03985287094226331
+Mean delta MSE: 0.010262078223814527
+Max delta MSE ratio (%): 8.595618348644157
+Mean delta MSE ratio (%): 2.2133639507084473
+
+이 결과는 run_forecasting.py와 같은 channel-wise forecasting head 기준으로 해석해야 한다. 따라서 delta MSE는 latent 자체의 직접 readout 중요도가 아니라, 최종 forecasting 경로 안에서 그 unit이 얼마나 기여하는지를 뜻한다.
