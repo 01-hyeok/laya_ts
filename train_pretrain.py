@@ -621,6 +621,8 @@ def main(argv=None):
     p.add_argument("--n_heads", type=int, default=LayaModelConfig().num_heads)
     p.add_argument("--n_layers", type=int, default=LayaModelConfig().depth)
     p.add_argument("--proj_dim", type=int, default=LayaModelConfig().proj_dim)
+    p.add_argument("--predictor_depth", type=int, default=LayaModelConfig().predictor_depth)
+    p.add_argument("--predictor_heads", type=int, default=LayaModelConfig().predictor_heads)
     p.add_argument("--onehot_channel_vocab_size", type=int, default=PretrainConfig().onehot_channel_vocab_size)
     p.add_argument("--steps", type=int, default=None)
     p.add_argument("--val_interval", type=int, default=None)
@@ -687,6 +689,10 @@ def main(argv=None):
         raise ValueError(f"--n_layers must be positive, got {args.n_layers}")
     if args.proj_dim <= 0:
         raise ValueError(f"--proj_dim must be positive, got {args.proj_dim}")
+    if args.predictor_depth <= 0:
+        raise ValueError(f"--predictor_depth must be positive, got {args.predictor_depth}")
+    if args.predictor_heads <= 0:
+        raise ValueError(f"--predictor_heads must be positive, got {args.predictor_heads}")
     if args.channel_mixer_relation_scale_init < 0:
         raise ValueError(
             f"--channel_mixer_relation_scale_init must be non-negative, got {args.channel_mixer_relation_scale_init}"
@@ -818,6 +824,8 @@ def main(argv=None):
         depth=args.n_layers,
         num_heads=args.n_heads,
         proj_dim=args.proj_dim,
+        predictor_depth=args.predictor_depth,
+        predictor_heads=args.predictor_heads,
         channel_metadata_mode=args.channel_metadata_mode,
         metadata_fusion_mode=args.metadata_fusion_mode,
         channel_mixer_type=args.channel_mixer_type,
@@ -899,6 +907,8 @@ def main(argv=None):
     print(f"   - n_heads: {model_cfg.num_heads}")
     print(f"   - n_layers: {model_cfg.depth}")
     print(f"   - proj_dim: {model_cfg.proj_dim}")
+    print(f"   - predictor_depth: {model_cfg.predictor_depth}")
+    print(f"   - predictor_heads: {model_cfg.predictor_heads}")
     print(f"   - patch_size: {model_cfg.patch_size}")
     print(f"   - metadata_fusion_mode: {model_cfg.metadata_fusion_mode}")
     print(f"   - channel_mixer_relation_mode: {model_cfg.channel_mixer_relation_mode}")

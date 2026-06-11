@@ -80,7 +80,7 @@ class LayaModelConfig:
     sigreg_quadrature_points: int = 17
     sigreg_cf_t_max: float = 3.0
     sigreg_cf_bandwidth: float = 1.0
-    channel_mixer_heads: int = 1
+    channel_mixer_heads: int = 2
     use_channel_relation_block: bool = False
     channel_relation_heads: int = 1
     channel_relation_gate_scale_init: float = 0.01

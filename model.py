@@ -513,8 +513,13 @@ class MetadataAwareQueryChannelMixer(QueryChannelMixer):
 
         attn = torch.softmax(scores, dim=-1)
         mixed = torch.einsum("bnhqc,bnhcd->bnhqd", attn, values)
-        latent_tokens = mixed.permute(0, 3, 1, 2, 4).reshape(batch, self.num_queries, patches, self.mixer_dim)
-        mixed = mixed.permute(0, 1, 3, 2, 4).reshape(batch, patches, self.num_queries * self.mixer_dim)
+        query_tokens = self._refine_query_tokens(
+            mixed,
+            batch=batch,
+            patches=patches,
+        )
+        latent_tokens = query_tokens.permute(0, 2, 1, 3)
+        mixed = query_tokens.reshape(batch, patches, self.num_queries * self.mixer_dim)
         aux = {
             "token_scores": token_scores,
             "relation_scores": relation_scores,
@@ -627,8 +632,13 @@ class ConcatProjectedMetadataQueryChannelMixer(QueryChannelMixer):
 
         attn = torch.softmax(scores, dim=-1)
         mixed = torch.einsum("bnhqc,bnhcd->bnhqd", attn, values)
-        latent_tokens = mixed.permute(0, 3, 1, 2, 4).reshape(batch, self.num_queries, patches, self.mixer_dim)
-        mixed = mixed.permute(0, 1, 3, 2, 4).reshape(batch, patches, self.num_queries * self.mixer_dim)
+        query_tokens = self._refine_query_tokens(
+            mixed,
+            batch=batch,
+            patches=patches,
+        )
+        latent_tokens = query_tokens.permute(0, 2, 1, 3)
+        mixed = query_tokens.reshape(batch, patches, self.num_queries * self.mixer_dim)
         return self.out_proj(mixed), self._specialization_loss(attn), attn, {
             "latent_tokens": latent_tokens,
             "metadata_norm_mean": metadata_norm_mean,

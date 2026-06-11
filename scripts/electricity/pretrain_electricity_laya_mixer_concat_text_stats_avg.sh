@@ -16,7 +16,7 @@ CHANNEL_MIXER_RELATION_MODE="${CHANNEL_MIXER_RELATION_MODE:-none}"
 STATS_METADATA_DIM="${STATS_METADATA_DIM:-384}"
 
 SEQ_LEN="${SEQ_LEN:-512}"
-D_MODEL="${D_MODEL:-128}"
+D_MODEL="${D_MODEL:-256}"
 PATCH_SIZE="${PATCH_SIZE:-16}"
 STRIDE="${STRIDE:-1}"
 BATCH_SIZE="${BATCH_SIZE:-32}"
@@ -24,7 +24,9 @@ EPOCHS="${EPOCHS:-100}"
 WARMUP_EPOCHS="${WARMUP_EPOCHS:-10}"
 N_HEADS="${N_HEADS:-8}"
 N_LAYERS="${N_LAYERS:-3}"
-PROJ_DIM="${PROJ_DIM:-256}"
+PROJ_DIM="${PROJ_DIM:-128}"
+PREDICTOR_DEPTH="${PREDICTOR_DEPTH:-2}"
+PREDICTOR_HEADS="${PREDICTOR_HEADS:-4}"
 NUM_WORKERS="${NUM_WORKERS:-4}"
 LR="${LR:-1e-4}"
 WEIGHT_DECAY="${WEIGHT_DECAY:-5e-2}"
@@ -70,6 +72,8 @@ python -u "./train_pretrain.py" \
   --n_heads "${N_HEADS}" \
   --n_layers "${N_LAYERS}" \
   --proj_dim "${PROJ_DIM}" \
+  --predictor_depth "${PREDICTOR_DEPTH}" \
+  --predictor_heads "${PREDICTOR_HEADS}" \
   --num_workers "${NUM_WORKERS}" \
   --lr "${LR}" \
   --weight_decay "${WEIGHT_DECAY}" \
@@ -82,4 +86,3 @@ python -u "./train_pretrain.py" \
   --save_dir "${SAVE_DIR}" \
   --log_dir "${LOG_DIR}" \
   "${EXTRA_ARGS[@]}"
-

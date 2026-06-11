@@ -254,10 +254,52 @@ class QueryChannelMixer(nn.Module):
 
         self.key_proj = nn.Linear(mixer_dim, mixer_dim)
         self.value_proj = nn.Linear(mixer_dim, mixer_dim)
+        self.query_ffn_norm = nn.LayerNorm(mixer_dim)
+        self.query_ffn = nn.Sequential(
+            nn.Linear(mixer_dim, mixer_dim * 4),
+            nn.GELU(),
+            nn.Dropout(0.0),
+            nn.Linear(mixer_dim * 4, mixer_dim),
+        )
+        self.query_self_attn = nn.TransformerEncoder(
+            nn.TransformerEncoderLayer(
+                d_model=mixer_dim,
+                nhead=num_heads,
+                dim_feedforward=mixer_dim * 4,
+                dropout=0.0,
+                activation="gelu",
+                batch_first=True,
+                norm_first=True,
+            ),
+            num_layers=3,
+        )
 
         self.out_proj = nn.Linear(
             num_queries * mixer_dim,
             encoder_dim,
+        )
+
+    def _refine_query_tokens(
+        self,
+        mixed: torch.Tensor,
+        *,
+        batch: int,
+        patches: int,
+    ) -> torch.Tensor:
+        query_tokens = mixed.permute(0, 1, 3, 2, 4).reshape(
+            batch * patches,
+            self.num_queries,
+            self.mixer_dim,
+        )
+        # LUNA-style channel unification refines query latents with an FFN
+        # residual block before a shallow query-side transformer stack.
+        query_tokens = query_tokens + self.query_ffn(self.query_ffn_norm(query_tokens))
+        query_tokens = self.query_self_attn(query_tokens)
+        return query_tokens.reshape(
+            batch,
+            patches,
+            self.num_queries,
+            self.mixer_dim,
         )
 
     def _specialization_loss(self, attn: torch.Tensor) -> torch.Tensor:
@@ -372,14 +414,14 @@ class QueryChannelMixer(nn.Module):
             values,
         )  # [B, N, H, Q, Hd]
 
-        latent_tokens = mixed.permute(0, 3, 1, 2, 4).reshape(
-            batch,
-            self.num_queries,
-            patches,
-            self.mixer_dim,
+        query_tokens = self._refine_query_tokens(
+            mixed,
+            batch=batch,
+            patches=patches,
         )
+        latent_tokens = query_tokens.permute(0, 2, 1, 3)
 
-        mixed = mixed.permute(0, 1, 3, 2, 4).reshape(
+        mixed = query_tokens.reshape(
             batch,
             patches,
             self.num_queries * self.mixer_dim,
