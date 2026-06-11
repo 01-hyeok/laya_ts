@@ -3,6 +3,7 @@ from __future__ import annotations
 import math
 import os
 import random
+import hashlib
 from collections import defaultdict
 from pathlib import Path
 import json
@@ -59,6 +60,7 @@ _AUSTRALIAN_ELECTRICITY_STATES = [
 ]
 
 _LOTSA_DEBUG_ENABLED = os.environ.get("LAYA_TS_DEBUG_LOTSA", "0").strip().lower() in {"1", "true", "yes", "on"}
+_LOTSA_SUBSET_PROBABILITY_CAP = 0.001
 
 
 class CSVTimeSeriesPretrainDataset(Dataset):
@@ -155,7 +157,7 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         lotsa_sample_time_series: str = "proportional",
         lotsa_subset_sampling: str = "uniform",
         lotsa_min_patches: int = 2,
-        lotsa_max_dim: int = 128,
+        lotsa_max_channel: int | None = None,
         lotsa_windows_per_series: int = 32,
         max_samples: int | None = None,
         skip_samples: int = 0,
@@ -176,7 +178,7 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         self.lotsa_sample_time_series = str(lotsa_sample_time_series).strip().lower()
         self.lotsa_subset_sampling = str(lotsa_subset_sampling).strip().lower()
         self.lotsa_min_patches = int(lotsa_min_patches)
-        self.lotsa_max_dim = int(lotsa_max_dim)
+        self.lotsa_max_channel = None if lotsa_max_channel is None else int(lotsa_max_channel)
         self.lotsa_windows_per_series = int(lotsa_windows_per_series)
         self.text_encoder_name_or_path = text_encoder_name_or_path
         self.text_metadata_cache_dir = text_metadata_cache_dir
@@ -195,6 +197,7 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         self._available_split_cache: dict[str, tuple[str, ...]] = {}
         self._subset_dataset_cache: dict[str, object] = {}
         self._subset_index_cache: dict[str, tuple[np.ndarray, np.ndarray]] = {}
+        self._subset_weight_cache: dict[tuple[str, ...], dict[str, float]] = {}
 
         if self.lotsa_split_mode not in {"official", "temporal_70_10_20"}:
             raise ValueError(
@@ -224,12 +227,12 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
             )
         if self.lotsa_min_patches <= 0:
             raise ValueError(f"lotsa_min_patches must be positive, got {lotsa_min_patches}")
-        if self.lotsa_max_dim <= 0:
-            raise ValueError(f"lotsa_max_dim must be positive, got {lotsa_max_dim}")
-        if self.lotsa_subset_sampling not in {"exhaustive", "uniform"}:
+        if self.lotsa_max_channel is not None and self.lotsa_max_channel <= 0:
+            raise ValueError(f"lotsa_max_channel must be positive when provided, got {lotsa_max_channel}")
+        if self.lotsa_subset_sampling not in {"exhaustive", "uniform", "official"}:
             raise ValueError(
                 f"Unsupported LOTSA subset sampling mode: {lotsa_subset_sampling}. "
-                "Expected one of: exhaustive, uniform."
+                "Expected one of: exhaustive, uniform, official."
             )
         if self.lotsa_windows_per_series <= 0:
             raise ValueError(f"lotsa_windows_per_series must be positive, got {lotsa_windows_per_series}")
@@ -261,7 +264,7 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
                     dataset = self._load_subset_dataset(subset_name)
                     record = dataset[int(valid_indices[0])]
                     series_ct = self._infer_series_array(record)
-                    self._channel_count_cache = int(min(series_ct.shape[0], self.lotsa_max_dim))
+                    self._channel_count_cache = self._resolved_max_channel(int(series_ct.shape[0]))
                     return self._channel_count_cache
                 except Exception as exc:
                     self._warn_skipped_subset(subset_name, "channel-count", exc)
@@ -824,9 +827,9 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         return max(1, self.seq_len // self.patch_size)
 
     def _valid_patch_crop_capacity(self, total_len: int) -> int:
-        max_time_patches = self._official_max_time_patches()
-        total_patches = total_len // self.patch_size
-        return min(max_time_patches, total_patches)
+        if total_len < self.seq_len:
+            return 0
+        return self._official_max_time_patches()
 
     def _subset_valid_indices_and_lengths(self, subset_name: str) -> tuple[np.ndarray, np.ndarray]:
         cached = self._subset_index_cache.get(subset_name)
@@ -859,6 +862,84 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         if remaining is None:
             return available_count
         return max(0, min(available_count, remaining))
+
+    def _resolved_max_channel(self, num_channels: int) -> int:
+        if self.lotsa_max_channel is None:
+            return int(num_channels)
+        return int(min(num_channels, self.lotsa_max_channel))
+
+    def _record_identity(self, subset_name: str, record: dict, fallback: str) -> str:
+        for key in (
+            "item_id",
+            "sensor_id",
+            "station_id",
+            "station_name",
+            "road_segment_id",
+            "link_id",
+            "state",
+            "state_name",
+        ):
+            value = self._record_scalar_string(record, key)
+            if value is not None:
+                return f"{subset_name}:{key}:{value}"
+        static_index = self._record_static_index(record)
+        if static_index is not None:
+            return f"{subset_name}:static_index:{static_index}"
+        return f"{subset_name}:fallback:{fallback}"
+
+    def _fixed_channel_subset_seed(self, subset_name: str, record: dict, record_key: str, num_channels: int) -> int:
+        identity = self._record_identity(subset_name, record, record_key)
+        target_channels = self._resolved_max_channel(num_channels)
+        digest = hashlib.sha256(f"{identity}|C={num_channels}|K={target_channels}".encode("utf-8")).digest()
+        return int.from_bytes(digest[:8], byteorder="little", signed=False)
+
+    def _subset_sampling_weights(self, subset_names: list[str] | None = None) -> dict[str, float]:
+        resolved_subset_names = tuple(subset_names or self._resolve_subset_names())
+        cached = self._subset_weight_cache.get(resolved_subset_names)
+        if cached is not None:
+            return cached
+
+        if not resolved_subset_names:
+            return {}
+
+        observation_counts: dict[str, float] = {}
+        total_observations = 0.0
+        for subset_name in resolved_subset_names:
+            try:
+                _, lengths = self._subset_valid_indices_and_lengths(subset_name)
+                observation_count = float(lengths.sum())
+            except Exception as exc:
+                self._warn_skipped_subset(subset_name, "subset-weight", exc)
+                observation_count = 0.0
+            observation_counts[subset_name] = observation_count
+            total_observations += observation_count
+
+        if total_observations <= 0.0:
+            uniform_weight = 1.0 / float(len(resolved_subset_names))
+            weights = {subset_name: uniform_weight for subset_name in resolved_subset_names}
+            self._subset_weight_cache[resolved_subset_names] = weights
+            return weights
+
+        capped_weights: dict[str, float] = {}
+        capped_total = 0.0
+        for subset_name in resolved_subset_names:
+            base_probability = observation_counts[subset_name] / total_observations
+            capped_weight = min(base_probability, _LOTSA_SUBSET_PROBABILITY_CAP)
+            capped_weights[subset_name] = capped_weight
+            capped_total += capped_weight
+
+        if capped_total <= 0.0:
+            uniform_weight = 1.0 / float(len(resolved_subset_names))
+            weights = {subset_name: uniform_weight for subset_name in resolved_subset_names}
+            self._subset_weight_cache[resolved_subset_names] = weights
+            return weights
+
+        weights = {
+            subset_name: capped_weights[subset_name] / capped_total
+            for subset_name in resolved_subset_names
+        }
+        self._subset_weight_cache[resolved_subset_names] = weights
+        return weights
 
     def _series_sampling_probabilities(self, lengths: np.ndarray) -> np.ndarray | None:
         if self.lotsa_sample_time_series in {"none", "uniform"}:
@@ -900,15 +981,13 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
 
     def _official_crop_bounds(self, total_len: int, *, rng: np.random.Generator) -> tuple[int, int] | None:
         max_time_patches = self._official_max_time_patches()
-        offset = int(rng.integers(total_len % self.patch_size + 1))
-        total_patches = (total_len - offset) // self.patch_size
-        max_patches = min(max_time_patches, total_patches)
-        if max_patches < self.lotsa_min_patches:
+        if max_time_patches < self.lotsa_min_patches:
             return None
-        num_patches = int(rng.integers(self.lotsa_min_patches, max_patches + 1))
-        first_patch = int(rng.integers(total_patches - num_patches + 1))
-        start = offset + first_patch * self.patch_size
-        stop = start + num_patches * self.patch_size
+        if total_len < self.seq_len:
+            return None
+        max_start = total_len - self.seq_len
+        start = 0 if max_start <= 0 else int(rng.integers(max_start + 1))
+        stop = start + self.seq_len
         return start, stop
 
     def _preprocess_split(
@@ -924,13 +1003,17 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         self,
         num_channels: int,
         *,
-        rng: np.random.Generator,
+        subset_name: str,
+        record: dict,
+        record_key: str,
     ) -> np.ndarray:
-        if num_channels <= self.lotsa_max_dim:
+        target_channels = self._resolved_max_channel(num_channels)
+        if num_channels <= target_channels:
             return np.arange(num_channels, dtype=np.int64)
-        if self.mode != "train":
-            return np.arange(self.lotsa_max_dim, dtype=np.int64)
-        selected = rng.choice(num_channels, size=self.lotsa_max_dim, replace=False)
+        rng = np.random.default_rng(
+            self._fixed_channel_subset_seed(subset_name, record, record_key, num_channels)
+        )
+        selected = rng.choice(num_channels, size=target_channels, replace=False)
         selected.sort()
         return selected.astype(np.int64, copy=False)
 
@@ -1115,7 +1198,12 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
                         rng = np.random.default_rng(
                             self.random_seed + epoch_iteration_index + subset_offset * 100_003 + sample_offset
                         )
-                        dim_indices = self._sample_dimension_indices(full_num_channels, rng=rng)
+                        dim_indices = self._sample_dimension_indices(
+                            full_num_channels,
+                            subset_name=subset_name,
+                            record=record,
+                            record_key=f"index:{int(record_index)}",
+                        )
                         series_ct = full_series_ct[dim_indices]
                         split, train_reference = self._select_series_split(series_ct)
                         if split.shape[1] <= 0:
@@ -1226,7 +1314,12 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
                         full_series_ct = self._infer_series_array(record)
                         full_num_channels, _ = full_series_ct.shape
                         rng = np.random.default_rng(epoch_seed + subset_offset * 100_003 + sample_offset)
-                        dim_indices = self._sample_dimension_indices(full_num_channels, rng=rng)
+                        dim_indices = self._sample_dimension_indices(
+                            full_num_channels,
+                            subset_name=subset_name,
+                            record=record,
+                            record_key=f"index:{int(record_index)}",
+                        )
                         series_ct = full_series_ct[dim_indices]
                         split, train_reference = self._select_series_split(series_ct)
                         num_channels = series_ct.shape[0]
@@ -1752,7 +1845,7 @@ def _resolve_lotsa_num_workers(requested_num_workers: int) -> int:
     return 0
 
 
-def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, tsld_mode: str = "univariate", tslib_mode: str = "univariate", channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_split_mode: str = "temporal_70_10_20", lotsa_sampling_mode: str = "hierarchical", lotsa_preprocessing_mode: str = "standardize", lotsa_sample_time_series: str = "uniform", lotsa_subset_sampling: str = "uniform", lotsa_min_patches: int = 2, lotsa_max_dim: int = 128, lotsa_windows_per_series: int = 32):
+def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, tsld_mode: str = "univariate", tslib_mode: str = "univariate", channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_split_mode: str = "official", lotsa_sampling_mode: str = "official", lotsa_preprocessing_mode: str = "official", lotsa_sample_time_series: str = "proportional", lotsa_subset_sampling: str = "official", lotsa_min_patches: int = 2, lotsa_max_channel: int | None = None, lotsa_windows_per_series: int = 32):
     if dataset_type == "lotsa":
         effective_num_workers = _resolve_lotsa_num_workers(num_workers)
         subset_names = _parse_lotsa_subset_names(path)
@@ -1774,7 +1867,7 @@ def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, se
             lotsa_sample_time_series=lotsa_sample_time_series,
             lotsa_subset_sampling=lotsa_subset_sampling,
             lotsa_min_patches=lotsa_min_patches,
-            lotsa_max_dim=lotsa_max_dim,
+            lotsa_max_channel=lotsa_max_channel,
             lotsa_windows_per_series=lotsa_windows_per_series,
             max_samples=max_files,
             skip_samples=0,
@@ -1799,7 +1892,7 @@ def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, se
                 lotsa_sample_time_series="none",
                 lotsa_subset_sampling=lotsa_subset_sampling,
                 lotsa_min_patches=lotsa_min_patches,
-                lotsa_max_dim=lotsa_max_dim,
+                lotsa_max_channel=lotsa_max_channel,
                 lotsa_windows_per_series=lotsa_windows_per_series,
                 max_samples=max_files,
                 skip_samples=0,
@@ -1849,7 +1942,7 @@ def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, se
     return train_loader, val_loader
 
 
-def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_split_mode: str = "temporal_70_10_20", lotsa_sampling_mode: str = "hierarchical", lotsa_preprocessing_mode: str = "standardize", lotsa_sample_time_series: str = "uniform", lotsa_subset_sampling: str = "uniform", lotsa_min_patches: int = 2, lotsa_max_dim: int = 128, lotsa_windows_per_series: int = 32):
+def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_split_mode: str = "official", lotsa_sampling_mode: str = "official", lotsa_preprocessing_mode: str = "official", lotsa_sample_time_series: str = "proportional", lotsa_subset_sampling: str = "official", lotsa_min_patches: int = 2, lotsa_max_channel: int | None = None, lotsa_windows_per_series: int = 32):
     effective_num_workers = _resolve_lotsa_num_workers(num_workers)
     subset_names = _parse_lotsa_subset_names(path)
     if subset_names is None:
@@ -1871,15 +1964,45 @@ def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: 
             lotsa_sample_time_series=lotsa_sample_time_series,
             lotsa_subset_sampling=lotsa_subset_sampling,
             lotsa_min_patches=lotsa_min_patches,
-            lotsa_max_dim=lotsa_max_dim,
+            lotsa_max_channel=lotsa_max_channel,
             lotsa_windows_per_series=lotsa_windows_per_series,
             max_samples=None,
             skip_samples=0,
             shuffle_buffer_size=512,
         )
         subset_names = probe_ds._resolve_subset_names()
+    else:
+        probe_ds = LOTSABatchStreamingPretrainDataset(
+            dataset_name="Salesforce/lotsa_data",
+            subset_names=subset_names,
+            batch_size=batch_size,
+            seq_len=seq_len,
+            stride=stride,
+            patch_size=patch_size,
+            mode="train",
+            channel_metadata_mode=channel_metadata_mode,
+            text_encoder_name_or_path=text_encoder_name_or_path,
+            text_metadata_cache_dir=text_metadata_cache_dir,
+            text_encoder_local_files_only=text_encoder_local_files_only,
+            lotsa_split_mode=lotsa_split_mode,
+            lotsa_sampling_mode=lotsa_sampling_mode,
+            lotsa_preprocessing_mode=lotsa_preprocessing_mode,
+            lotsa_sample_time_series=lotsa_sample_time_series,
+            lotsa_subset_sampling=lotsa_subset_sampling,
+            lotsa_min_patches=lotsa_min_patches,
+            lotsa_max_channel=lotsa_max_channel,
+            lotsa_windows_per_series=lotsa_windows_per_series,
+            max_samples=None,
+            skip_samples=0,
+            shuffle_buffer_size=512,
+        )
 
     budgets = _split_lotsa_sample_budget(max_files, len(subset_names))
+    subset_weights = (
+        probe_ds._subset_sampling_weights(subset_names)
+        if lotsa_subset_sampling == "official"
+        else {subset_name: 1.0 / max(1, len(subset_names)) for subset_name in subset_names}
+    )
     loader_groups = []
     for subset_name, subset_budget in zip(subset_names, budgets):
         if subset_budget is not None and subset_budget <= 0:
@@ -1904,7 +2027,7 @@ def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: 
             lotsa_sample_time_series=lotsa_sample_time_series,
             lotsa_subset_sampling=lotsa_subset_sampling,
             lotsa_min_patches=lotsa_min_patches,
-            lotsa_max_dim=lotsa_max_dim,
+            lotsa_max_channel=lotsa_max_channel,
             lotsa_windows_per_series=lotsa_windows_per_series,
             max_samples=subset_budget,
             skip_samples=0,
@@ -1929,7 +2052,7 @@ def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: 
                 lotsa_sample_time_series="none",
                 lotsa_subset_sampling=lotsa_subset_sampling,
                 lotsa_min_patches=lotsa_min_patches,
-                lotsa_max_dim=lotsa_max_dim,
+                lotsa_max_channel=lotsa_max_channel,
                 lotsa_windows_per_series=lotsa_windows_per_series,
                 max_samples=subset_budget,
                 skip_samples=0,
@@ -1948,7 +2071,9 @@ def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: 
                 f"val_samples={0 if val_ds is None else val_ds.num_samples} "
                 f"split_mode={lotsa_split_mode} sampling_mode={lotsa_sampling_mode} "
                 f"preprocessing_mode={lotsa_preprocessing_mode} subset_sampling={lotsa_subset_sampling} "
-                f"windows_per_series={lotsa_windows_per_series} seq_len={seq_len} stride={stride}"
+                f"subset_weight={subset_weights.get(subset_name, 0.0):.6f} "
+                f"max_channel={lotsa_max_channel} windows_per_series={lotsa_windows_per_series} "
+                f"seq_len={seq_len} stride={stride}"
             )
         if train_length == 0:
             if _LOTSA_DEBUG_ENABLED:
@@ -1960,6 +2085,7 @@ def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: 
             {
                 "group_name": subset_name,
                 "channel_count": train_ds.num_channels,
+                "subset_weight": float(subset_weights.get(subset_name, 0.0)),
                 "train_loader": train_loader,
                 "val_loader": val_loader,
             }

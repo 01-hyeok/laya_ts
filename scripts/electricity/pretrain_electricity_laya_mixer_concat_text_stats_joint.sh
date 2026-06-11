@@ -2,7 +2,7 @@
 set -euo pipefail
 
 source /data/pjh_workspace/ts-env/bin/activate
-export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-1}"
+export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 
 DATA="electricity"
 DATA_PATH="${DATA_PATH:-../Dataset/long_term_forecast/electricity/electricity.csv}"

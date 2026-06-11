@@ -132,18 +132,40 @@ def _infer_loader_channel_count(loader) -> int:
 
 
 def _iter_interleaved_loader_groups(loader_groups, *, epoch: int, seed: int, target_steps: int | None = None, subset_sampling: str = "exhaustive"):
-    if subset_sampling == "uniform" and target_steps is not None and target_steps > 0:
+    if subset_sampling in {"uniform", "official"} and target_steps is not None and target_steps > 0:
         rng = random.Random(seed + epoch)
         states = [
             {
                 "group_name": group["group_name"],
+                "subset_weight": float(group.get("subset_weight", 0.0)),
                 "loader": group["train_loader"],
                 "iterator": iter(group["train_loader"]),
             }
             for group in loader_groups
         ]
+        if subset_sampling == "official":
+            weights = [max(0.0, state["subset_weight"]) for state in states]
+            weight_total = sum(weights)
+            if weight_total > 0.0:
+                cumulative_weights: list[float] | None = []
+                running_total = 0.0
+                for weight in weights:
+                    running_total += weight
+                    cumulative_weights.append(running_total)
+            else:
+                cumulative_weights = None
+        else:
+            cumulative_weights = None
         for _ in range(target_steps):
-            state = states[rng.randrange(len(states))]
+            if cumulative_weights is None:
+                state = states[rng.randrange(len(states))]
+            else:
+                draw = rng.random() * cumulative_weights[-1]
+                state = states[0]
+                for index, threshold in enumerate(cumulative_weights):
+                    if draw <= threshold:
+                        state = states[index]
+                        break
             try:
                 batch = next(state["iterator"])
             except StopIteration:
@@ -419,6 +441,30 @@ def _representation_stats(repr_tensor: torch.Tensor) -> dict[str, float]:
     }
 
 
+def _empty_representation_stats() -> dict[str, float]:
+    return {
+        "norm_mean": 0.0,
+        "norm_std": 0.0,
+        "norm_ratio": 0.0,
+        "feature_var_mean": 0.0,
+        "feature_var_min": 0.0,
+        "feature_var_max": 0.0,
+        "feature_var_ratio": 0.0,
+        "dead_dim_count": 0.0,
+        "dead_dim_fraction": 0.0,
+        "effective_rank": 0.0,
+        "effective_rank_ratio": 0.0,
+        "stable_rank": 0.0,
+        "singular_top1_fraction": 0.0,
+        "pairwise_l2_mean": 0.0,
+        "pairwise_l2_std": 0.0,
+        "pairwise_cosine_similarity_mean": 0.0,
+        "pairwise_cosine_similarity_std": 0.0,
+        "pairwise_cosine_distance_mean": 0.0,
+        "pairwise_cosine_distance_std": 0.0,
+    }
+
+
 def _prediction_alignment_stats(pred_tokens: torch.Tensor, target_tokens: torch.Tensor, patch_mask: torch.Tensor) -> dict[str, float]:
     pred_masked = pred_tokens[patch_mask]
     target_masked = target_tokens[patch_mask]
@@ -444,6 +490,17 @@ def _prediction_alignment_stats(pred_tokens: torch.Tensor, target_tokens: torch.
     }
 
 
+def _empty_prediction_alignment_stats() -> dict[str, float]:
+    return {
+        "cosine_similarity_mean": 0.0,
+        "cosine_similarity_std": 0.0,
+        "cosine_distance_mean": 0.0,
+        "cosine_distance_std": 0.0,
+        "l2_mean": 0.0,
+        "l2_std": 0.0,
+    }
+
+
 def _evaluate_validation(
     *,
     model: torch.nn.Module,
@@ -460,35 +517,8 @@ def _evaluate_validation(
     val_sigreg_loss = 0.0
     val_query_loss = 0.0
     attention_batch = None
-    val_repr_stats = {
-        "norm_mean": 0.0,
-        "norm_std": 0.0,
-        "norm_ratio": 0.0,
-        "feature_var_mean": 0.0,
-        "feature_var_min": 0.0,
-        "feature_var_max": 0.0,
-        "feature_var_ratio": 0.0,
-        "dead_dim_count": 0.0,
-        "dead_dim_fraction": 0.0,
-        "effective_rank": 0.0,
-        "effective_rank_ratio": 0.0,
-        "stable_rank": 0.0,
-        "singular_top1_fraction": 0.0,
-        "pairwise_l2_mean": 0.0,
-        "pairwise_l2_std": 0.0,
-        "pairwise_cosine_similarity_mean": 0.0,
-        "pairwise_cosine_similarity_std": 0.0,
-        "pairwise_cosine_distance_mean": 0.0,
-        "pairwise_cosine_distance_std": 0.0,
-    }
-    val_align_stats = {
-        "cosine_similarity_mean": 0.0,
-        "cosine_similarity_std": 0.0,
-        "cosine_distance_mean": 0.0,
-        "cosine_distance_std": 0.0,
-        "l2_mean": 0.0,
-        "l2_std": 0.0,
-    }
+    val_repr_stats = _empty_representation_stats()
+    val_align_stats = _empty_prediction_alignment_stats()
     val_metadata_usage: dict[str, float] = {}
     per_dataset_metrics = []
 
@@ -655,13 +685,13 @@ def main(argv=None):
     p.add_argument("--text_encoder_name_or_path", type=str, default="sentence-transformers/all-MiniLM-L6-v2")
     p.add_argument("--text_metadata_cache_dir", type=str, default="./metadata_cache")
     p.add_argument("--text_encoder_local_files_only", action="store_true")
-    p.add_argument("--lotsa_split_mode", type=str, default="temporal_70_10_20", choices=["official", "temporal_70_10_20"])
-    p.add_argument("--lotsa_sampling_mode", type=str, default="hierarchical", choices=["official", "sliding_window", "hierarchical"])
-    p.add_argument("--lotsa_preprocessing_mode", type=str, default="standardize", choices=["official", "standardize"])
-    p.add_argument("--lotsa_sample_time_series", type=str, default="uniform", choices=["none", "uniform", "proportional"])
-    p.add_argument("--lotsa_subset_sampling", type=str, default="uniform", choices=["exhaustive", "uniform"])
+    p.add_argument("--lotsa_split_mode", type=str, default="official", choices=["official", "temporal_70_10_20"])
+    p.add_argument("--lotsa_sampling_mode", type=str, default="official", choices=["official", "sliding_window", "hierarchical"])
+    p.add_argument("--lotsa_preprocessing_mode", type=str, default="official", choices=["official", "standardize"])
+    p.add_argument("--lotsa_sample_time_series", type=str, default="proportional", choices=["none", "uniform", "proportional"])
+    p.add_argument("--lotsa_subset_sampling", type=str, default="official", choices=["exhaustive", "uniform", "official"])
     p.add_argument("--lotsa_min_patches", type=int, default=2)
-    p.add_argument("--lotsa_max_dim", type=int, default=128)
+    p.add_argument("--lotsa_max_channel", "--lotsa_max_dim", dest="lotsa_max_channel", type=int, default=None)
     p.add_argument("--lotsa_windows_per_series", type=int, default=32)
     p.add_argument("--text_metadata_dim", type=int, default=384)
     p.add_argument("--stats_metadata_dim", type=int, default=LayaModelConfig().stats_metadata_dim)
@@ -733,8 +763,8 @@ def main(argv=None):
         raise ValueError(f"--stats_metadata_dim must be positive, got {args.stats_metadata_dim}")
     if args.lotsa_min_patches <= 0:
         raise ValueError(f"--lotsa_min_patches must be positive, got {args.lotsa_min_patches}")
-    if args.lotsa_max_dim <= 0:
-        raise ValueError(f"--lotsa_max_dim must be positive, got {args.lotsa_max_dim}")
+    if args.lotsa_max_channel is not None and args.lotsa_max_channel <= 0:
+        raise ValueError(f"--lotsa_max_channel must be positive, got {args.lotsa_max_channel}")
     if args.lotsa_windows_per_series <= 0:
         raise ValueError(f"--lotsa_windows_per_series must be positive, got {args.lotsa_windows_per_series}")
 
@@ -774,7 +804,7 @@ def main(argv=None):
         shared_channel_counts = [group["channel_count"] for group in loader_groups]
         channel_count = max(shared_channel_counts)
     elif args.dataset_type == "lotsa":
-        loader_groups = get_lotsa_pretrain_loader_groups(args.data_path, batch_size=train_cfg.batch_size, seq_len=args.seq_len, stride=args.stride, patch_size=args.patch_size, num_workers=args.num_workers, max_files=args.max_files, channel_metadata_mode=args.channel_metadata_mode, text_encoder_name_or_path=args.text_encoder_name_or_path, text_metadata_cache_dir=args.text_metadata_cache_dir, text_encoder_local_files_only=args.text_encoder_local_files_only, lotsa_split_mode=args.lotsa_split_mode, lotsa_sampling_mode=args.lotsa_sampling_mode, lotsa_preprocessing_mode=args.lotsa_preprocessing_mode, lotsa_sample_time_series=args.lotsa_sample_time_series, lotsa_subset_sampling=args.lotsa_subset_sampling, lotsa_min_patches=args.lotsa_min_patches, lotsa_max_dim=args.lotsa_max_dim, lotsa_windows_per_series=args.lotsa_windows_per_series)
+        loader_groups = get_lotsa_pretrain_loader_groups(args.data_path, batch_size=train_cfg.batch_size, seq_len=args.seq_len, stride=args.stride, patch_size=args.patch_size, num_workers=args.num_workers, max_files=args.max_files, channel_metadata_mode=args.channel_metadata_mode, text_encoder_name_or_path=args.text_encoder_name_or_path, text_metadata_cache_dir=args.text_metadata_cache_dir, text_encoder_local_files_only=args.text_encoder_local_files_only, lotsa_split_mode=args.lotsa_split_mode, lotsa_sampling_mode=args.lotsa_sampling_mode, lotsa_preprocessing_mode=args.lotsa_preprocessing_mode, lotsa_sample_time_series=args.lotsa_sample_time_series, lotsa_subset_sampling=args.lotsa_subset_sampling, lotsa_min_patches=args.lotsa_min_patches, lotsa_max_channel=args.lotsa_max_channel, lotsa_windows_per_series=args.lotsa_windows_per_series)
         if not loader_groups:
             raise ValueError("No LOTSA loader groups were created; check the subset list and preprocessing configuration.")
         loader_group_kind = "lotsa"
@@ -787,7 +817,7 @@ def main(argv=None):
         shared_channel_counts = [group["channel_count"] for group in loader_groups]
         channel_count = max(shared_channel_counts)
     else:
-        train_loader, val_loader = get_pretrain_loaders(args.dataset_type, args.data_path, batch_size=train_cfg.batch_size, seq_len=args.seq_len, stride=args.stride, patch_size=args.patch_size, num_workers=args.num_workers, max_files=args.max_files, tsld_mode=args.tsld_mode, tslib_mode=args.tslib_mode, channel_metadata_mode=args.channel_metadata_mode, text_encoder_name_or_path=args.text_encoder_name_or_path, text_metadata_cache_dir=args.text_metadata_cache_dir, text_encoder_local_files_only=args.text_encoder_local_files_only, lotsa_split_mode=args.lotsa_split_mode, lotsa_sampling_mode=args.lotsa_sampling_mode, lotsa_preprocessing_mode=args.lotsa_preprocessing_mode, lotsa_sample_time_series=args.lotsa_sample_time_series, lotsa_subset_sampling=args.lotsa_subset_sampling, lotsa_min_patches=args.lotsa_min_patches, lotsa_max_dim=args.lotsa_max_dim, lotsa_windows_per_series=args.lotsa_windows_per_series)
+        train_loader, val_loader = get_pretrain_loaders(args.dataset_type, args.data_path, batch_size=train_cfg.batch_size, seq_len=args.seq_len, stride=args.stride, patch_size=args.patch_size, num_workers=args.num_workers, max_files=args.max_files, tsld_mode=args.tsld_mode, tslib_mode=args.tslib_mode, channel_metadata_mode=args.channel_metadata_mode, text_encoder_name_or_path=args.text_encoder_name_or_path, text_metadata_cache_dir=args.text_metadata_cache_dir, text_encoder_local_files_only=args.text_encoder_local_files_only, lotsa_split_mode=args.lotsa_split_mode, lotsa_sampling_mode=args.lotsa_sampling_mode, lotsa_preprocessing_mode=args.lotsa_preprocessing_mode, lotsa_sample_time_series=args.lotsa_sample_time_series, lotsa_subset_sampling=args.lotsa_subset_sampling, lotsa_min_patches=args.lotsa_min_patches, lotsa_max_channel=args.lotsa_max_channel, lotsa_windows_per_series=args.lotsa_windows_per_series)
         steps_per_epoch = len(train_loader)
         if steps_per_epoch == 0:
             raise ValueError("train_loader is empty; check the dataset path and preprocessing configuration.")
@@ -893,9 +923,18 @@ def main(argv=None):
         print(f"   - LOTSA sample_time_series: {args.lotsa_sample_time_series}")
         print(f"   - LOTSA subset_sampling: {args.lotsa_subset_sampling}")
         print(f"   - LOTSA min_patches: {args.lotsa_min_patches}")
-        print(f"   - LOTSA max_dim: {args.lotsa_max_dim}")
+        print(f"   - LOTSA max_channel: {'none' if args.lotsa_max_channel is None else args.lotsa_max_channel}")
         print(f"   - LOTSA windows_per_series: {args.lotsa_windows_per_series}")
-        print("   - LOTSA sampler note: custom JEPA sampler over LOTSA, not an official LOTSA dataset protocol")
+        if (
+            args.lotsa_split_mode == "official"
+            and args.lotsa_sampling_mode == "official"
+            and args.lotsa_preprocessing_mode == "official"
+            and args.lotsa_sample_time_series == "proportional"
+            and args.lotsa_subset_sampling == "official"
+        ):
+            print("   - LOTSA sampler note: official-like LOTSA data protocol with the LAYA objective")
+        else:
+            print("   - LOTSA sampler note: custom JEPA sampler over LOTSA, not an official LOTSA dataset protocol")
     elif args.dataset_type == "tsld":
         _print_series_summaries("🗂️ tsld Train File Sampling Summary:", train_loader.dataset.series_summaries)
         _print_series_summaries("🗂️ tsld Val File Sampling Summary:", val_loader.dataset.series_summaries)
@@ -946,6 +985,7 @@ def main(argv=None):
         global_step = 0
         best_val_loss = float("inf")
         best_epoch = 0
+        best_global_step = 0
         last_validation_metrics = None
         for epoch in range(1, total_epochs + 1):
             model.train()
@@ -953,26 +993,8 @@ def main(argv=None):
             epoch_pred_loss = 0.0
             epoch_sigreg_loss = 0.0
             epoch_query_loss = 0.0
-            epoch_repr_stats = {
-                "norm_mean": 0.0,
-                "norm_std": 0.0,
-                "norm_ratio": 0.0,
-                "feature_var_mean": 0.0,
-                "pairwise_l2_mean": 0.0,
-                "pairwise_l2_std": 0.0,
-                "pairwise_cosine_similarity_mean": 0.0,
-                "pairwise_cosine_similarity_std": 0.0,
-                "pairwise_cosine_distance_mean": 0.0,
-                "pairwise_cosine_distance_std": 0.0,
-            }
-            epoch_align_stats = {
-                "cosine_similarity_mean": 0.0,
-                "cosine_similarity_std": 0.0,
-                "cosine_distance_mean": 0.0,
-                "cosine_distance_std": 0.0,
-                "l2_mean": 0.0,
-                "l2_std": 0.0,
-            }
+            epoch_repr_stats = _empty_representation_stats()
+            epoch_align_stats = _empty_prediction_alignment_stats()
             epoch_metadata_usage: dict[str, float] = {}
 
             epoch_steps = 0
@@ -1091,6 +1113,7 @@ def main(argv=None):
                     if is_best:
                         best_val_loss = val_metrics["macro_loss"]
                         best_epoch = epoch
+                        best_global_step = global_step
                     writer.add_scalar("val_step/best_macro_loss", best_val_loss, global_step)
                     per_dataset_summary = " | ".join(
                         f"{metric['group_name']}={metric['loss']:.4f}"
@@ -1109,44 +1132,46 @@ def main(argv=None):
                     if per_dataset_summary:
                         print(f"   -> Per-dataset val loss: {per_dataset_summary}")
 
+                    checkpoint = {
+                        "model_state_dict": model.state_dict(),
+                        "model_config": model.encoder.get_config(),
+                        "epoch": epoch,
+                        "epochs": total_epochs,
+                        "schedule_mode": "steps",
+                        "warmup_epochs": args.warmup_epochs,
+                        "warmup_ratio": 0.05,
+                        "global_step": global_step,
+                        "steps_per_epoch": steps_per_epoch,
+                        "actual_steps_per_epoch": epoch_steps,
+                        "warmup_steps": warmup_steps,
+                        "total_steps": total_steps,
+                        "val_interval": val_interval,
+                        "best_epoch": best_epoch,
+                        "best_global_step": best_global_step,
+                        "best_val_loss": best_val_loss,
+                        "val_macro_loss": val_metrics["macro_loss"],
+                        "val_macro_pred_loss": val_metrics["macro_pred_loss"],
+                        "val_macro_sigreg_loss": val_metrics["macro_sigreg_loss"],
+                        "val_macro_query_loss": val_metrics["macro_query_loss"],
+                        "val_micro_loss": val_metrics["micro_loss"],
+                        "val_micro_pred_loss": val_metrics["micro_pred_loss"],
+                        "val_micro_sigreg_loss": val_metrics["micro_sigreg_loss"],
+                        "val_micro_query_loss": val_metrics["micro_query_loss"],
+                        "val_losses_by_dataset": {
+                            metric["group_name"]: metric["loss"]
+                            for metric in val_metrics["per_dataset_metrics"]
+                        },
+                    }
+                    ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_epoch_{epoch}_step_{global_step}.pt")
+                    best_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_best.pt")
+                    last_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_last.pt")
+                    torch.save(checkpoint, ckpt_path)
+                    torch.save(checkpoint, last_ckpt_path)
                     if is_best:
-                        checkpoint = {
-                            "model_state_dict": model.state_dict(),
-                            "model_config": model.encoder.get_config(),
-                            "epoch": epoch,
-                            "epochs": total_epochs,
-                            "schedule_mode": "steps",
-                            "warmup_epochs": args.warmup_epochs,
-                            "warmup_ratio": 0.05,
-                            "global_step": global_step,
-                            "steps_per_epoch": steps_per_epoch,
-                            "actual_steps_per_epoch": epoch_steps,
-                            "warmup_steps": warmup_steps,
-                            "total_steps": total_steps,
-                            "val_interval": val_interval,
-                            "best_epoch": best_epoch,
-                            "best_global_step": global_step,
-                            "best_val_loss": best_val_loss,
-                            "val_macro_loss": val_metrics["macro_loss"],
-                            "val_macro_pred_loss": val_metrics["macro_pred_loss"],
-                            "val_macro_sigreg_loss": val_metrics["macro_sigreg_loss"],
-                            "val_macro_query_loss": val_metrics["macro_query_loss"],
-                            "val_micro_loss": val_metrics["micro_loss"],
-                            "val_micro_pred_loss": val_metrics["micro_pred_loss"],
-                            "val_micro_sigreg_loss": val_metrics["micro_sigreg_loss"],
-                            "val_micro_query_loss": val_metrics["micro_query_loss"],
-                            "val_losses_by_dataset": {
-                                metric["group_name"]: metric["loss"]
-                                for metric in val_metrics["per_dataset_metrics"]
-                            },
-                        }
-                        ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_epoch_{epoch}_step_{global_step}.pt")
-                        best_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_best.pt")
-                        latest_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_latest.pt")
-                        torch.save(checkpoint, ckpt_path)
                         torch.save(checkpoint, best_ckpt_path)
-                        torch.save(checkpoint, latest_ckpt_path)
                         print(f"   -> Saved improved checkpoint: macro_val_loss={val_metrics['macro_loss']:.6f} at step {global_step}")
+                    else:
+                        print(f"   -> Saved last checkpoint at step {global_step}")
 
                     if args.save_attention_maps and val_metrics["attention_batch"] is not None:
                         features, channel_names = val_metrics["attention_batch"]
@@ -1212,9 +1237,9 @@ def main(argv=None):
                         "best_val_loss": None,
                         "val_available": False,
                     }
-                    latest_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_latest.pt")
-                    torch.save(checkpoint, latest_ckpt_path)
-                    print(f"   -> Saved latest checkpoint without validation at step {global_step}")
+                    last_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_last.pt")
+                    torch.save(checkpoint, last_ckpt_path)
+                    print(f"   -> Saved last checkpoint without validation at step {global_step}")
                 if global_step >= total_steps:
                     break
                 continue
@@ -1274,35 +1299,37 @@ def main(argv=None):
                 f"Val {_format_metadata_usage(avg_val_metadata_usage)}"
             )
 
+            checkpoint = {
+                "model_state_dict": model.state_dict(),
+                "model_config": model.encoder.get_config(),
+                "epoch": epoch,
+                "epochs": total_epochs,
+                "schedule_mode": "steps" if args.dataset_type == "lotsa" else "epochs",
+                "warmup_epochs": args.warmup_epochs,
+                "warmup_ratio": 0.05 if args.dataset_type == "lotsa" else None,
+                "global_step": global_step,
+                "steps_per_epoch": steps_per_epoch,
+                "actual_steps_per_epoch": epoch_steps,
+                "warmup_steps": warmup_steps,
+                "total_steps": total_steps,
+                "val_interval": val_interval,
+                "best_epoch": best_epoch,
+                "best_val_loss": best_val_loss,
+                "val_loss": avg_val_loss,
+                "val_pred_loss": avg_val_pred_loss,
+                "val_sigreg_loss": avg_val_sigreg_loss,
+                "val_query_loss": avg_val_query_loss,
+            }
+            ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_epoch_{epoch}.pt")
+            best_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_best.pt")
+            last_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_last.pt")
+            torch.save(checkpoint, ckpt_path)
+            torch.save(checkpoint, last_ckpt_path)
             if is_best:
-                checkpoint = {
-                    "model_state_dict": model.state_dict(),
-                    "model_config": model.encoder.get_config(),
-                    "epoch": epoch,
-                    "epochs": total_epochs,
-                    "schedule_mode": "steps" if args.dataset_type == "lotsa" else "epochs",
-                    "warmup_epochs": args.warmup_epochs,
-                    "warmup_ratio": 0.05 if args.dataset_type == "lotsa" else None,
-                    "global_step": global_step,
-                    "steps_per_epoch": steps_per_epoch,
-                    "actual_steps_per_epoch": epoch_steps,
-                    "warmup_steps": warmup_steps,
-                    "total_steps": total_steps,
-                    "val_interval": val_interval,
-                    "best_epoch": best_epoch,
-                    "best_val_loss": best_val_loss,
-                    "val_loss": avg_val_loss,
-                    "val_pred_loss": avg_val_pred_loss,
-                    "val_sigreg_loss": avg_val_sigreg_loss,
-                    "val_query_loss": avg_val_query_loss,
-                }
-                ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_epoch_{epoch}.pt")
-                best_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_best.pt")
-                latest_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_latest.pt")
-                torch.save(checkpoint, ckpt_path)
                 torch.save(checkpoint, best_ckpt_path)
-                torch.save(checkpoint, latest_ckpt_path)
                 print(f"   -> Saved improved checkpoint: val_loss={avg_val_loss:.6f} at epoch {epoch}")
+            else:
+                print(f"   -> Saved last checkpoint at epoch {epoch}")
 
             if args.save_attention_maps and attention_batch is not None:
                 features, channel_names = attention_batch

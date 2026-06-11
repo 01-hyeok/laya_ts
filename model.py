@@ -1786,7 +1786,7 @@ class LayaTSForecaster(nn.Module):
         num_patches: Optional[int] = None,
         *,
         use_revin: bool = False,
-        revin_affine: bool = True,
+        revin_affine: bool = False,
         revin_subtract_last: bool = False,
         revin_eps: float = 1e-5,
     ) -> None:

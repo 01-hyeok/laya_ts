@@ -353,7 +353,7 @@ def main(argv=None):
     p.add_argument("--save_attention_maps", action="store_true")
     p.add_argument("--num_attention_map_samples", type=int, default=3)
     _add_bool_optional_arg(p, "--use_revin", default=True)
-    _add_bool_optional_arg(p, "--revin_affine", default=True)
+    _add_bool_optional_arg(p, "--revin_affine", default=False)
     _add_bool_optional_arg(p, "--revin_subtract_last", default=False)
     p.add_argument("--revin_eps", type=float, default=1e-5)
     args = p.parse_args(argv)

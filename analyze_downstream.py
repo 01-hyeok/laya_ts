@@ -209,7 +209,7 @@ class ForecastingAblationProbe(LayaTSForecaster):
         representation_type: str,
         num_patches: int,
         use_revin: bool = False,
-        revin_affine: bool = True,
+        revin_affine: bool = False,
         revin_subtract_last: bool = False,
         revin_eps: float = 1e-5,
     ) -> None:
@@ -634,7 +634,7 @@ def main(argv=None):
     parser.add_argument("--text_encoder_local_files_only", action="store_true")
     parser.add_argument("--stats_metadata_dim", type=int, default=None)
     _add_bool_optional_arg(parser, "--use_revin", default=True)
-    _add_bool_optional_arg(parser, "--revin_affine", default=True)
+    _add_bool_optional_arg(parser, "--revin_affine", default=False)
     _add_bool_optional_arg(parser, "--revin_subtract_last", default=False)
     parser.add_argument("--revin_eps", type=float, default=1e-5)
     args = parser.parse_args(argv)
@@ -684,7 +684,7 @@ def main(argv=None):
             forecasting_payload.get("text_encoder_local_files_only", args.text_encoder_local_files_only)
         )
         effective_use_revin = bool(forecasting_payload.get("use_revin", False))
-        effective_revin_affine = bool(forecasting_payload.get("revin_affine", True))
+        effective_revin_affine = bool(forecasting_payload.get("revin_affine", False))
         effective_revin_subtract_last = bool(forecasting_payload.get("revin_subtract_last", False))
         effective_revin_eps = float(forecasting_payload.get("revin_eps", 1e-5))
         channel_metadata_mode = checkpoint_cfg.channel_metadata_mode
