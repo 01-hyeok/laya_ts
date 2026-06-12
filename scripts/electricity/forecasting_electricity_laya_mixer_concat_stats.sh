@@ -2,7 +2,7 @@
 set -euo pipefail
 
 source /data/pjh_workspace/ts-env/bin/activate
-export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-1}"
+export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 
 PRETRAIN_DATA="electricity"
 ARCH="laya"
@@ -73,4 +73,3 @@ for DATA in "${TARGET_DATASETS[@]}"; do
       "${EXTRA_ARGS[@]}"
   done
 done
-

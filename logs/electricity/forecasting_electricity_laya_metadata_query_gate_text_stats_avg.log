@@ -5,6 +5,8 @@ Text metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
    - ... (5 more channel descriptions)
 Stats metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
    - HUFL: Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -4.418, maximum value is 2.652, median value is 0.128, and mean absolute value is 0.698.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 ==================================================
 🚀 Architecture: LAYA
 📊 Target Dataset: ETTm1 (Channels: 7)
@@ -12,42 +14,45 @@ Stats metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
 📊 Prediction Length: 96
 ==================================================
 ✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
-   - 74/74 keys matched.
+   - 116/116 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=text_stats_avg, fusion=none, relation=metadata_query_gate
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: metadata_query_gate
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
 ✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 96]
-Epoch 1/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.505123 | Val Loss: 0.448196 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.9252, Delta|S|μ:10.8562, Delta/Signal:83.99%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.448196 at epoch 1
-Epoch 2/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.407575 | Val Loss: 0.418586 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.3724, Delta|S|μ:10.3924, Delta/Signal:84.00%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.418586 at epoch 2
-Epoch 3/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.401496 | Val Loss: 0.432677 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2776, Delta|S|μ:10.2809, Delta/Signal:83.74%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 4/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.399866 | Val Loss: 0.440052 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.5842, Delta|S|μ:10.5673, Delta/Signal:83.97%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 5/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.395939 | Val Loss: 0.409514 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.7849, Delta|S|μ:10.7357, Delta/Signal:83.97%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.409514 at epoch 5
-Epoch 6/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.394880 | Val Loss: 0.389422 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1104, Delta|S|μ:10.1258, Delta/Signal:83.61%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.389422 at epoch 6
-Epoch 7/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.392790 | Val Loss: 0.388727 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.9579, Delta|S|μ:10.0317, Delta/Signal:83.89%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.388727 at epoch 7
-Epoch 8/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.391102 | Val Loss: 0.426824 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.7445, Delta|S|μ:9.8556, Delta/Signal:83.92%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 9/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.390761 | Val Loss: 0.410246 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2194, Delta|S|μ:10.2406, Delta/Signal:83.81%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 10/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.389407 | Val Loss: 0.409281 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2069, Delta|S|μ:10.2701, Delta/Signal:84.13%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 11/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.389356 | Val Loss: 0.389908 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.7078, Delta|S|μ:9.8141, Delta/Signal:83.83%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 12/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.389465 | Val Loss: 0.401685 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1403, Delta|S|μ:10.1791, Delta/Signal:83.85%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 13/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.389278 | Val Loss: 0.484504 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.8455, Delta|S|μ:10.7702, Delta/Signal:83.84%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 14/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.386988 | Val Loss: 0.494026 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.8246, Delta|S|μ:10.7437, Delta/Signal:83.77%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 15/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.387812 | Val Loss: 0.388065 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.8139, Delta|S|μ:10.7374, Delta/Signal:83.79%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.388065 at epoch 15
-Epoch 16/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.387093 | Val Loss: 0.437397 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2448, Delta|S|μ:10.2832, Delta/Signal:83.98%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 17/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.386862 | Val Loss: 0.415819 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.1470, Delta|S|μ:11.0144, Delta/Signal:83.78%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 18/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.385854 | Val Loss: 0.376897 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.9819, Delta|S|μ:10.0700, Delta/Signal:84.04%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.376897 at epoch 18
-Epoch 19/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.385713 | Val Loss: 0.407487 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.3652, Delta|S|μ:10.3763, Delta/Signal:83.92%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 20/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.386818 | Val Loss: 0.395389 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.6313, Delta|S|μ:10.5891, Delta/Signal:83.83%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-{'test_mse': 0.48184019327163696, 'test_mae': 0.5037946105003357}
+Epoch 1/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.284676 | Val Loss: 0.281999 | Train Meta: Scaleμ:0.9749, Signal|S|μ:9.0112, Delta|S|μ:8.4380, Delta/Signal:93.64%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.281999 at epoch 1
+Epoch 2/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.261274 | Val Loss: 0.276714 | Train Meta: Scaleμ:0.9749, Signal|S|μ:9.0712, Delta|S|μ:8.4936, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.276714 at epoch 2
+Epoch 3/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.258553 | Val Loss: 0.278114 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9338, Delta|S|μ:8.3632, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 4/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.257434 | Val Loss: 0.274313 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8852, Delta|S|μ:8.3187, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.274313 at epoch 4
+Epoch 5/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.256613 | Val Loss: 0.273216 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9214, Delta|S|μ:8.3514, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.273216 at epoch 5
+Epoch 6/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.255982 | Val Loss: 0.274012 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9850, Delta|S|μ:8.4098, Delta/Signal:93.60%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 7/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.255501 | Val Loss: 0.271919 | Train Meta: Scaleμ:0.9749, Signal|S|μ:9.0283, Delta|S|μ:8.4526, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.271919 at epoch 7
+Epoch 8/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.255369 | Val Loss: 0.270857 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9000, Delta|S|μ:8.3311, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.270857 at epoch 8
+Epoch 9/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.254950 | Val Loss: 0.274087 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9775, Delta|S|μ:8.4039, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 10/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.254853 | Val Loss: 0.274359 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8845, Delta|S|μ:8.3177, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 11/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.254790 | Val Loss: 0.269455 | Train Meta: Scaleμ:0.9749, Signal|S|μ:9.0594, Delta|S|μ:8.4820, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.269455 at epoch 11
+Epoch 12/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.254502 | Val Loss: 0.271311 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8486, Delta|S|μ:8.2832, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 13/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.254064 | Val Loss: 0.269084 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8446, Delta|S|μ:8.2803, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.269084 at epoch 13
+Epoch 14/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.254085 | Val Loss: 0.271564 | Train Meta: Scaleμ:0.9749, Signal|S|μ:9.1004, Delta|S|μ:8.5213, Delta/Signal:93.64%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 15/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.254073 | Val Loss: 0.267307 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9239, Delta|S|μ:8.3538, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.267307 at epoch 15
+Epoch 16/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.253912 | Val Loss: 0.273674 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8682, Delta|S|μ:8.3039, Delta/Signal:93.64%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 17/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.253861 | Val Loss: 0.272625 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8512, Delta|S|μ:8.2866, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 18/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.253794 | Val Loss: 0.268747 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9546, Delta|S|μ:8.3831, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 19/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.253718 | Val Loss: 0.275106 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9594, Delta|S|μ:8.3876, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 20/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.253665 | Val Loss: 0.274977 | Train Meta: Scaleμ:0.9749, Signal|S|μ:9.0380, Delta|S|μ:8.4625, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+{'test_mse': 0.3369726836681366, 'test_mae': 0.38631078600883484}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_96/electricity_laya_metadata_query_gate_text_stats_avg_best.pt
 Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm1_laya_metadata_query_gate_text_stats_avg/pred_96/attention_maps
 Text metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
@@ -56,6 +61,8 @@ Text metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
    - ... (5 more channel descriptions)
 Stats metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
    - HUFL: Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -4.418, maximum value is 2.652, median value is 0.128, and mean absolute value is 0.698.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 ==================================================
 🚀 Architecture: LAYA
 📊 Target Dataset: ETTm1 (Channels: 7)
@@ -63,41 +70,42 @@ Stats metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
 📊 Prediction Length: 192
 ==================================================
 ✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
-   - 74/74 keys matched.
+   - 116/116 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=text_stats_avg, fusion=none, relation=metadata_query_gate
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: metadata_query_gate
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
 ✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 192]
-Epoch 1/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.538815 | Val Loss: 0.506432 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0545, Delta|S|μ:10.1174, Delta/Signal:83.93%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.506432 at epoch 1
-Epoch 2/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.443186 | Val Loss: 0.461091 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.7456, Delta|S|μ:9.8673, Delta/Signal:84.01%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.461091 at epoch 2
-Epoch 3/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.441125 | Val Loss: 0.481715 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.6937, Delta|S|μ:10.6617, Delta/Signal:83.99%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 4/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.436266 | Val Loss: 0.427029 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.4048, Delta|S|μ:9.5510, Delta/Signal:83.75%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.427029 at epoch 4
-Epoch 5/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.433914 | Val Loss: 0.474004 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.5723, Delta|S|μ:10.5592, Delta/Signal:83.99%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 6/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.433105 | Val Loss: 0.513914 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.0957, Delta|S|μ:9.2735, Delta/Signal:83.58%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 7/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.431373 | Val Loss: 0.424089 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1286, Delta|S|μ:10.1505, Delta/Signal:83.69%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.424089 at epoch 7
-Epoch 8/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.428807 | Val Loss: 0.514189 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1626, Delta|S|μ:10.1980, Delta/Signal:83.85%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 9/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.429427 | Val Loss: 0.416346 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.8961, Delta|S|μ:9.9871, Delta/Signal:83.95%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.416346 at epoch 9
-Epoch 10/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.427873 | Val Loss: 0.429908 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.5492, Delta|S|μ:9.6793, Delta/Signal:83.81%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 11/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.426107 | Val Loss: 0.443480 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.8987, Delta|S|μ:10.8184, Delta/Signal:83.87%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 12/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.426795 | Val Loss: 0.418391 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.5029, Delta|S|μ:10.5046, Delta/Signal:84.02%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 13/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.426767 | Val Loss: 0.409102 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.7925, Delta|S|μ:9.9218, Delta/Signal:84.14%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.409102 at epoch 13
-Epoch 14/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.425579 | Val Loss: 0.434727 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4608, Delta|S|μ:10.4324, Delta/Signal:83.72%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 15/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.425917 | Val Loss: 0.424281 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0751, Delta|S|μ:10.1208, Delta/Signal:83.82%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 16/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.424928 | Val Loss: 0.519200 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4006, Delta|S|μ:10.4121, Delta/Signal:83.96%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 17/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.425860 | Val Loss: 0.459323 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.8808, Delta|S|μ:9.1264, Delta/Signal:83.88%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 18/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.424717 | Val Loss: 0.435871 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.9347, Delta|S|μ:10.0004, Delta/Signal:83.79%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 19/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.424750 | Val Loss: 0.419871 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.8654, Delta|S|μ:9.9664, Delta/Signal:84.00%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 20/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.424770 | Val Loss: 0.424166 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.2273, Delta|S|μ:11.1124, Delta/Signal:84.01%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-{'test_mse': 0.5303444266319275, 'test_mae': 0.5283542275428772}
+Epoch 1/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.328538 | Val Loss: 0.319479 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9423, Delta|S|μ:8.3722, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.319479 at epoch 1
+Epoch 2/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.308351 | Val Loss: 0.314564 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9059, Delta|S|μ:8.3360, Delta/Signal:93.60%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.314564 at epoch 2
+Epoch 3/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.305958 | Val Loss: 0.316991 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9248, Delta|S|μ:8.3560, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 4/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.304917 | Val Loss: 0.311541 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9865, Delta|S|μ:8.4134, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.311541 at epoch 4
+Epoch 5/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.304495 | Val Loss: 0.311437 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8637, Delta|S|μ:8.2994, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.311437 at epoch 5
+Epoch 6/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.303896 | Val Loss: 0.310057 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9329, Delta|S|μ:8.3620, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.310057 at epoch 6
+Epoch 7/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.303434 | Val Loss: 0.312515 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9440, Delta|S|μ:8.3729, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 8/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.303322 | Val Loss: 0.307865 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9670, Delta|S|μ:8.3960, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.307865 at epoch 8
+Epoch 9/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.302934 | Val Loss: 0.310274 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8781, Delta|S|μ:8.3103, Delta/Signal:93.60%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 10/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.302691 | Val Loss: 0.308783 | Train Meta: Scaleμ:0.9749, Signal|S|μ:9.0506, Delta|S|μ:8.4739, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 11/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.302589 | Val Loss: 0.309216 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9013, Delta|S|μ:8.3341, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 12/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.302323 | Val Loss: 0.313232 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9268, Delta|S|μ:8.3574, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 13/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.302301 | Val Loss: 0.311715 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9414, Delta|S|μ:8.3720, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 14/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.302267 | Val Loss: 0.308930 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9201, Delta|S|μ:8.3510, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 15/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.302268 | Val Loss: 0.310952 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9678, Delta|S|μ:8.3972, Delta/Signal:93.64%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 16/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.302081 | Val Loss: 0.310776 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8886, Delta|S|μ:8.3205, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 17/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.301934 | Val Loss: 0.311590 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8784, Delta|S|μ:8.3114, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 18/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.301731 | Val Loss: 0.309935 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8857, Delta|S|μ:8.3203, Delta/Signal:93.64%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 19/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.301677 | Val Loss: 0.308617 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8041, Delta|S|μ:8.2416, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 20/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.301717 | Val Loss: 0.308962 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8831, Delta|S|μ:8.3170, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+{'test_mse': 0.39025694131851196, 'test_mae': 0.41885772347450256}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_192/electricity_laya_metadata_query_gate_text_stats_avg_best.pt
 Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm1_laya_metadata_query_gate_text_stats_avg/pred_192/attention_maps
 Text metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
@@ -106,6 +114,8 @@ Text metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
    - ... (5 more channel descriptions)
 Stats metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
    - HUFL: Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -4.418, maximum value is 2.652, median value is 0.128, and mean absolute value is 0.698.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 ==================================================
 🚀 Architecture: LAYA
 📊 Target Dataset: ETTm1 (Channels: 7)
@@ -113,42 +123,43 @@ Stats metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
 📊 Prediction Length: 336
 ==================================================
 ✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
-   - 74/74 keys matched.
+   - 116/116 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=text_stats_avg, fusion=none, relation=metadata_query_gate
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: metadata_query_gate
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
 ✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 336]
-Epoch 1/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.582230 | Val Loss: 0.494910 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.7662, Delta|S|μ:10.6983, Delta/Signal:83.80%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.494910 at epoch 1
-Epoch 2/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.486246 | Val Loss: 0.477914 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.9701, Delta|S|μ:10.0354, Delta/Signal:83.84%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.477914 at epoch 2
-Epoch 3/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.481701 | Val Loss: 0.463300 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.7439, Delta|S|μ:9.8300, Delta/Signal:83.70%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.463300 at epoch 3
-Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.478926 | Val Loss: 0.463689 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0746, Delta|S|μ:10.1390, Delta/Signal:83.97%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.477415 | Val Loss: 0.490561 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.9540, Delta|S|μ:10.8784, Delta/Signal:83.98%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.473459 | Val Loss: 0.454970 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.6936, Delta|S|μ:10.6422, Delta/Signal:83.84%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.454970 at epoch 6
-Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.474376 | Val Loss: 0.455627 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.3683, Delta|S|μ:10.3787, Delta/Signal:83.91%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.473499 | Val Loss: 0.454553 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.5198, Delta|S|μ:9.6582, Delta/Signal:83.84%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.454553 at epoch 8
-Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.470142 | Val Loss: 0.449933 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.3648, Delta|S|μ:10.3881, Delta/Signal:84.01%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.449933 at epoch 9
-Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.469654 | Val Loss: 0.475324 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.9683, Delta|S|μ:10.8883, Delta/Signal:83.96%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.471145 | Val Loss: 0.453680 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.6335, Delta|S|μ:10.6285, Delta/Signal:84.13%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.470788 | Val Loss: 0.450842 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.5065, Delta|S|μ:10.4713, Delta/Signal:83.73%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.468494 | Val Loss: 0.495911 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.9990, Delta|S|μ:10.0783, Delta/Signal:83.99%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.467549 | Val Loss: 0.453486 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.4053, Delta|S|μ:9.5637, Delta/Signal:83.85%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 15/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.468925 | Val Loss: 0.453540 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.3593, Delta|S|μ:10.3750, Delta/Signal:83.95%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 16/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.467626 | Val Loss: 0.453293 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.8689, Delta|S|μ:9.9449, Delta/Signal:83.79%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 17/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.468230 | Val Loss: 0.450006 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.5956, Delta|S|μ:10.5517, Delta/Signal:83.77%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 18/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.467005 | Val Loss: 0.456296 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.5954, Delta|S|μ:10.5633, Delta/Signal:83.87%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 19/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.466621 | Val Loss: 0.471230 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4537, Delta|S|μ:10.4247, Delta/Signal:83.71%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 20/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.466601 | Val Loss: 0.447912 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.7709, Delta|S|μ:9.8548, Delta/Signal:83.72%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.447912 at epoch 20
-{'test_mse': 0.5748164057731628, 'test_mae': 0.55051189661026}
+Epoch 1/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.381648 | Val Loss: 0.362679 | Train Meta: Scaleμ:0.9749, Signal|S|μ:9.0935, Delta|S|μ:8.5126, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.362679 at epoch 1
+Epoch 2/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.362156 | Val Loss: 0.356329 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8653, Delta|S|μ:8.3001, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.356329 at epoch 2
+Epoch 3/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.360200 | Val Loss: 0.355271 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9417, Delta|S|μ:8.3682, Delta/Signal:93.59%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.355271 at epoch 3
+Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.359127 | Val Loss: 0.356114 | Train Meta: Scaleμ:0.9749, Signal|S|μ:9.0250, Delta|S|μ:8.4489, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.358458 | Val Loss: 0.353761 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8800, Delta|S|μ:8.3126, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.353761 at epoch 5
+Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.358090 | Val Loss: 0.353574 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8484, Delta|S|μ:8.2843, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.353574 at epoch 6
+Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.357712 | Val Loss: 0.355895 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9790, Delta|S|μ:8.4060, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.357540 | Val Loss: 0.351137 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9357, Delta|S|μ:8.3665, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.351137 at epoch 8
+Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.357252 | Val Loss: 0.352025 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8711, Delta|S|μ:8.3057, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.356960 | Val Loss: 0.351901 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8948, Delta|S|μ:8.3287, Delta/Signal:93.64%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.356848 | Val Loss: 0.352102 | Train Meta: Scaleμ:0.9749, Signal|S|μ:9.0539, Delta|S|μ:8.4754, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.356501 | Val Loss: 0.352722 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9598, Delta|S|μ:8.3867, Delta/Signal:93.60%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.356691 | Val Loss: 0.352297 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.7746, Delta|S|μ:8.2144, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.356381 | Val Loss: 0.350974 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9700, Delta|S|μ:8.3985, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.350974 at epoch 14
+Epoch 15/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.356277 | Val Loss: 0.354540 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8948, Delta|S|μ:8.3271, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 16/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.356246 | Val Loss: 0.353240 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9358, Delta|S|μ:8.3652, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 17/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.356247 | Val Loss: 0.354865 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8701, Delta|S|μ:8.3046, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 18/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.355974 | Val Loss: 0.355573 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8132, Delta|S|μ:8.2516, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 19/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.355793 | Val Loss: 0.351055 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9113, Delta|S|μ:8.3431, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 20/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.355949 | Val Loss: 0.352359 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8627, Delta|S|μ:8.2989, Delta/Signal:93.64%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+{'test_mse': 0.43811920285224915, 'test_mae': 0.44867628812789917}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_336/electricity_laya_metadata_query_gate_text_stats_avg_best.pt
 Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm1_laya_metadata_query_gate_text_stats_avg/pred_336/attention_maps
 Text metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
@@ -157,6 +168,8 @@ Text metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
    - ... (5 more channel descriptions)
 Stats metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
    - HUFL: Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -4.418, maximum value is 2.652, median value is 0.128, and mean absolute value is 0.698.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 ==================================================
 🚀 Architecture: LAYA
 📊 Target Dataset: ETTm1 (Channels: 7)
@@ -164,43 +177,40 @@ Stats metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
 📊 Prediction Length: 720
 ==================================================
 ✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
-   - 74/74 keys matched.
+   - 116/116 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=text_stats_avg, fusion=none, relation=metadata_query_gate
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: metadata_query_gate
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
 ✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 720]
-Epoch 1/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.664317 | Val Loss: 0.591813 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4972, Delta|S|μ:10.4802, Delta/Signal:83.86%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.591813 at epoch 1
-Epoch 2/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.557456 | Val Loss: 0.532112 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.5855, Delta|S|μ:9.7178, Delta/Signal:83.88%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.532112 at epoch 2
-Epoch 3/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.553289 | Val Loss: 0.531279 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.3491, Delta|S|μ:10.3553, Delta/Signal:83.85%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.531279 at epoch 3
-Epoch 4/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.549943 | Val Loss: 0.520156 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.3871, Delta|S|μ:10.3906, Delta/Signal:83.88%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.520156 at epoch 4
-Epoch 5/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.549673 | Val Loss: 0.519542 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.9743, Delta|S|μ:10.0811, Delta/Signal:84.19%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.519542 at epoch 5
-Epoch 6/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.547243 | Val Loss: 0.537423 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4057, Delta|S|μ:10.4267, Delta/Signal:84.05%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 7/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.546297 | Val Loss: 0.514509 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.5562, Delta|S|μ:10.5327, Delta/Signal:83.88%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.514509 at epoch 7
-Epoch 8/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.544506 | Val Loss: 0.573336 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1794, Delta|S|μ:10.2493, Delta/Signal:84.15%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 9/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.543173 | Val Loss: 0.525813 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.8079, Delta|S|μ:9.8995, Delta/Signal:83.84%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 10/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.543896 | Val Loss: 0.530603 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4709, Delta|S|μ:10.4347, Delta/Signal:83.67%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 11/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.541955 | Val Loss: 0.527905 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.7311, Delta|S|μ:10.6780, Delta/Signal:83.87%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 12/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.542046 | Val Loss: 0.530719 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.0689, Delta|S|μ:10.9542, Delta/Signal:83.82%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 13/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.541138 | Val Loss: 0.534179 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0949, Delta|S|μ:10.1498, Delta/Signal:83.92%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 14/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.542484 | Val Loss: 0.515415 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0234, Delta|S|μ:10.0541, Delta/Signal:83.62%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 15/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.540968 | Val Loss: 0.517476 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.1096, Delta|S|μ:10.9970, Delta/Signal:83.89%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 16/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.539591 | Val Loss: 0.513053 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1018, Delta|S|μ:10.1632, Delta/Signal:83.98%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.513053 at epoch 16
-Epoch 17/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.540928 | Val Loss: 0.513216 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.8058, Delta|S|μ:9.9090, Delta/Signal:83.93%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 18/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.540029 | Val Loss: 0.516487 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.9971, Delta|S|μ:9.1953, Delta/Signal:83.62%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 19/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.539579 | Val Loss: 0.557781 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0950, Delta|S|μ:10.1266, Delta/Signal:83.73%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-Epoch 20/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.539615 | Val Loss: 0.510431 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.8747, Delta|S|μ:9.9491, Delta/Signal:83.78%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934 | Val Meta: Scaleμ:0.9450, Signal|S|μ:10.8470, Delta|S|μ:9.0389, Delta/Signal:83.33%, Gateμ:-0.3910, Gate0%:0.0, MetaNormμ:7.0934
-   -> Updated best validation state: val_loss=0.510431 at epoch 20
-{'test_mse': 0.5956873893737793, 'test_mae': 0.5621959567070007}
+Epoch 1/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.476351 | Val Loss: 0.437988 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9624, Delta|S|μ:8.3910, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.437988 at epoch 1
+Epoch 2/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.457528 | Val Loss: 0.438083 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8911, Delta|S|μ:8.3248, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 3/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.455797 | Val Loss: 0.436115 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9353, Delta|S|μ:8.3661, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.436115 at epoch 3
+Epoch 4/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.454742 | Val Loss: 0.429831 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9823, Delta|S|μ:8.4097, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.429831 at epoch 4
+Epoch 5/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.454132 | Val Loss: 0.432955 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9849, Delta|S|μ:8.4119, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 6/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.453795 | Val Loss: 0.433311 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8918, Delta|S|μ:8.3247, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 7/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.453311 | Val Loss: 0.433524 | Train Meta: Scaleμ:0.9749, Signal|S|μ:9.0315, Delta|S|μ:8.4563, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 8/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.453140 | Val Loss: 0.433124 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9665, Delta|S|μ:8.3951, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 9/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.452831 | Val Loss: 0.431780 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.7757, Delta|S|μ:8.2148, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 10/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.452630 | Val Loss: 0.430654 | Train Meta: Scaleμ:0.9749, Signal|S|μ:9.0476, Delta|S|μ:8.4711, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 11/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.452489 | Val Loss: 0.430900 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.6785, Delta|S|μ:8.1253, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 12/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.452318 | Val Loss: 0.430474 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9227, Delta|S|μ:8.3526, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 13/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.452193 | Val Loss: 0.431607 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9373, Delta|S|μ:8.3659, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 14/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.452088 | Val Loss: 0.433497 | Train Meta: Scaleμ:0.9749, Signal|S|μ:9.0309, Delta|S|μ:8.4544, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 15/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.451847 | Val Loss: 0.433483 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8803, Delta|S|μ:8.3135, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 16/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.451828 | Val Loss: 0.427728 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9453, Delta|S|μ:8.3760, Delta/Signal:93.64%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+   -> Updated best validation state: val_loss=0.427728 at epoch 16
+Epoch 17/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.451800 | Val Loss: 0.430418 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8953, Delta|S|μ:8.3289, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 18/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.451723 | Val Loss: 0.428359 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.7314, Delta|S|μ:8.1746, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 19/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.451615 | Val Loss: 0.430762 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.8394, Delta|S|μ:8.2758, Delta/Signal:93.62%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+Epoch 20/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.451407 | Val Loss: 0.429102 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.9690, Delta|S|μ:8.3977, Delta/Signal:93.63%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.7355, Delta|S|μ:8.1774, Delta/Signal:93.61%, Gateμ:-0.1861, Gate0%:0.0, MetaNormμ:7.1817
+{'test_mse': 0.4974609315395355, 'test_mae': 0.489915132522583}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_720/electricity_laya_metadata_query_gate_text_stats_avg_best.pt
 Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm1_laya_metadata_query_gate_text_stats_avg/pred_720/attention_maps
 Text metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
@@ -209,6 +219,8 @@ Text metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
    - ... (5 more channel descriptions)
 Stats metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
    - HUFL: Channel statistics over the training split: mean value is 0.000, standard deviation is 1.000, minimum value is -4.096, maximum value is 6.712, median value is 0.066, and mean absolute value is 0.721.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 ==================================================
 🚀 Architecture: LAYA
 📊 Target Dataset: ETTm2 (Channels: 7)
@@ -216,42 +228,43 @@ Stats metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
 📊 Prediction Length: 96
 ==================================================
 ✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
-   - 74/74 keys matched.
+   - 116/116 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=text_stats_avg, fusion=none, relation=metadata_query_gate
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: metadata_query_gate
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
 ✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 96]
-Epoch 1/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.523847 | Val Loss: 0.926650 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.9017, Delta|S|μ:10.4323, Delta/Signal:80.86%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.926650 at epoch 1
-Epoch 2/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.411578 | Val Loss: 0.931827 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.3803, Delta|S|μ:10.8338, Delta/Signal:80.97%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 3/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.407744 | Val Loss: 0.876711 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.5483, Delta|S|μ:8.5434, Delta/Signal:80.99%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.876711 at epoch 3
-Epoch 4/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.405943 | Val Loss: 0.829535 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.1405, Delta|S|μ:10.6332, Delta/Signal:80.92%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.829535 at epoch 4
-Epoch 5/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.405969 | Val Loss: 0.862662 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.5040, Delta|S|μ:10.1370, Delta/Signal:81.07%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 6/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.403296 | Val Loss: 0.834191 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.1886, Delta|S|μ:9.0546, Delta/Signal:80.93%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 7/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.403425 | Val Loss: 0.993031 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.4466, Delta|S|μ:10.9040, Delta/Signal:81.09%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 8/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.402078 | Val Loss: 1.050370 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.9185, Delta|S|μ:8.8473, Delta/Signal:81.03%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 9/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.400774 | Val Loss: 0.847117 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.7491, Delta|S|μ:10.3425, Delta/Signal:81.12%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 10/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.398455 | Val Loss: 0.965480 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0129, Delta|S|μ:9.7789, Delta/Signal:81.40%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 11/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.399149 | Val Loss: 0.831069 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.6097, Delta|S|μ:9.4294, Delta/Signal:81.22%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 12/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.397606 | Val Loss: 0.859225 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.4231, Delta|S|μ:8.4620, Delta/Signal:81.18%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 13/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.397690 | Val Loss: 0.835263 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.6599, Delta|S|μ:9.4244, Delta/Signal:80.83%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 14/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.397567 | Val Loss: 0.870762 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.0232, Delta|S|μ:8.9316, Delta/Signal:81.03%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 15/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.398341 | Val Loss: 0.906172 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2343, Delta|S|μ:9.9120, Delta/Signal:81.02%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 16/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.395511 | Val Loss: 0.821769 | Train Meta: Scaleμ:0.9450, Signal|S|μ:14.5598, Delta|S|μ:11.8346, Delta/Signal:81.28%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.821769 at epoch 16
-Epoch 17/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.396223 | Val Loss: 0.814070 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.9920, Delta|S|μ:8.9154, Delta/Signal:81.11%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.814070 at epoch 17
-Epoch 18/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.397024 | Val Loss: 0.792063 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.8736, Delta|S|μ:11.2452, Delta/Signal:81.05%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.792063 at epoch 18
-Epoch 19/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.396664 | Val Loss: 0.891234 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.1674, Delta|S|μ:9.0457, Delta/Signal:81.00%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 20/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.396149 | Val Loss: 0.768202 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.5932, Delta|S|μ:10.1707, Delta/Signal:80.76%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.768202 at epoch 20
-{'test_mse': 0.5594581961631775, 'test_mae': 0.5567350387573242}
+Epoch 1/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.246747 | Val Loss: 0.156952 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1257, Delta|S|μ:7.6146, Delta/Signal:93.71%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.156952 at epoch 1
+Epoch 2/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.228123 | Val Loss: 0.155882 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1136, Delta|S|μ:7.6023, Delta/Signal:93.70%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.155882 at epoch 2
+Epoch 3/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.225951 | Val Loss: 0.154299 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1055, Delta|S|μ:7.5970, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.154299 at epoch 3
+Epoch 4/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.224659 | Val Loss: 0.153281 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.0242, Delta|S|μ:7.5191, Delta/Signal:93.71%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.153281 at epoch 4
+Epoch 5/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.222791 | Val Loss: 0.158243 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1893, Delta|S|μ:7.6751, Delta/Signal:93.72%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 6/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.222954 | Val Loss: 0.152726 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2362, Delta|S|μ:7.7200, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.152726 at epoch 6
+Epoch 7/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.222149 | Val Loss: 0.152542 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2856, Delta|S|μ:7.7662, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.152542 at epoch 7
+Epoch 8/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.221679 | Val Loss: 0.151351 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2925, Delta|S|μ:7.7716, Delta/Signal:93.72%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.151351 at epoch 8
+Epoch 9/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.221510 | Val Loss: 0.156825 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2167, Delta|S|μ:7.7024, Delta/Signal:93.74%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 10/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.221351 | Val Loss: 0.153862 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.4004, Delta|S|μ:7.8741, Delta/Signal:93.74%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 11/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.220965 | Val Loss: 0.153490 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1901, Delta|S|μ:7.6746, Delta/Signal:93.71%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 12/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.220667 | Val Loss: 0.154483 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.4432, Delta|S|μ:7.9148, Delta/Signal:93.74%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 13/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.220775 | Val Loss: 0.153154 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1874, Delta|S|μ:7.6742, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 14/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.220345 | Val Loss: 0.153977 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.3401, Delta|S|μ:7.8178, Delta/Signal:93.74%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 15/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.221089 | Val Loss: 0.153005 | Train Meta: Scaleμ:0.9749, Signal|S|μ:7.9228, Delta|S|μ:7.4242, Delta/Signal:93.71%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 16/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.219883 | Val Loss: 0.154857 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.4399, Delta|S|μ:7.9121, Delta/Signal:93.75%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 17/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.219849 | Val Loss: 0.153503 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2235, Delta|S|μ:7.7082, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 18/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.219969 | Val Loss: 0.153010 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2480, Delta|S|μ:7.7310, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 19/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.219560 | Val Loss: 0.154533 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.0570, Delta|S|μ:7.5487, Delta/Signal:93.69%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 20/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.220043 | Val Loss: 0.152228 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.3148, Delta|S|μ:7.7955, Delta/Signal:93.76%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+{'test_mse': 0.15146273374557495, 'test_mae': 0.25838497281074524}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm2_96/electricity_laya_metadata_query_gate_text_stats_avg_best.pt
 Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm2_laya_metadata_query_gate_text_stats_avg/pred_96/attention_maps
 Text metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
@@ -260,6 +273,8 @@ Text metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
    - ... (5 more channel descriptions)
 Stats metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
    - HUFL: Channel statistics over the training split: mean value is 0.000, standard deviation is 1.000, minimum value is -4.096, maximum value is 6.712, median value is 0.066, and mean absolute value is 0.721.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 ==================================================
 🚀 Architecture: LAYA
 📊 Target Dataset: ETTm2 (Channels: 7)
@@ -267,42 +282,42 @@ Stats metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
 📊 Prediction Length: 192
 ==================================================
 ✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
-   - 74/74 keys matched.
+   - 116/116 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=text_stats_avg, fusion=none, relation=metadata_query_gate
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: metadata_query_gate
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
 ✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 192]
-Epoch 1/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.556084 | Val Loss: 0.978178 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.7697, Delta|S|μ:8.7252, Delta/Signal:81.02%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.978178 at epoch 1
-Epoch 2/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.461209 | Val Loss: 0.974751 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.2299, Delta|S|μ:9.1211, Delta/Signal:81.22%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.974751 at epoch 2
-Epoch 3/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.460208 | Val Loss: 0.935405 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.6604, Delta|S|μ:11.0147, Delta/Signal:80.63%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.935405 at epoch 3
-Epoch 4/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.457799 | Val Loss: 1.074667 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.5295, Delta|S|μ:9.3809, Delta/Signal:81.36%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 5/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.454960 | Val Loss: 1.049304 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.6956, Delta|S|μ:9.4722, Delta/Signal:80.99%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 6/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.454873 | Val Loss: 0.856603 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1573, Delta|S|μ:9.8555, Delta/Signal:81.07%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.856603 at epoch 6
-Epoch 7/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.451973 | Val Loss: 1.044470 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.3196, Delta|S|μ:9.1810, Delta/Signal:81.11%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 8/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.450881 | Val Loss: 0.884130 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.4053, Delta|S|μ:9.2456, Delta/Signal:81.06%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 9/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.450784 | Val Loss: 0.861281 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.9284, Delta|S|μ:8.8828, Delta/Signal:81.28%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 10/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.451442 | Val Loss: 0.856563 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2999, Delta|S|μ:9.9811, Delta/Signal:81.15%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.856563 at epoch 10
-Epoch 11/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.449927 | Val Loss: 0.844529 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2396, Delta|S|μ:9.9104, Delta/Signal:80.97%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.844529 at epoch 11
-Epoch 12/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.450830 | Val Loss: 1.050153 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.8139, Delta|S|μ:10.4155, Delta/Signal:81.28%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 13/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.448155 | Val Loss: 0.922185 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.7135, Delta|S|μ:11.1644, Delta/Signal:81.41%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 14/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.448622 | Val Loss: 0.869496 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.8990, Delta|S|μ:8.8163, Delta/Signal:80.89%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 15/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.447431 | Val Loss: 0.831526 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.8082, Delta|S|μ:8.7384, Delta/Signal:80.85%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.831526 at epoch 15
-Epoch 16/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.448742 | Val Loss: 0.848611 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0369, Delta|S|μ:9.7551, Delta/Signal:81.04%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 17/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.448145 | Val Loss: 1.134264 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4042, Delta|S|μ:10.0581, Delta/Signal:81.09%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 18/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.447071 | Val Loss: 0.887129 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.6707, Delta|S|μ:11.0909, Delta/Signal:81.13%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 19/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.446636 | Val Loss: 0.877466 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.7702, Delta|S|μ:8.7627, Delta/Signal:81.36%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 20/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.447612 | Val Loss: 0.912671 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.1384, Delta|S|μ:8.2144, Delta/Signal:81.02%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-{'test_mse': 0.5885013937950134, 'test_mae': 0.567798912525177}
+Epoch 1/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.321629 | Val Loss: 0.206762 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.3560, Delta|S|μ:7.8329, Delta/Signal:93.74%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.206762 at epoch 1
+Epoch 2/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.305724 | Val Loss: 0.205332 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2497, Delta|S|μ:7.7315, Delta/Signal:93.72%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.205332 at epoch 2
+Epoch 3/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.303474 | Val Loss: 0.201913 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2712, Delta|S|μ:7.7526, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.201913 at epoch 3
+Epoch 4/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.302246 | Val Loss: 0.200415 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.3937, Delta|S|μ:7.8689, Delta/Signal:93.75%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.200415 at epoch 4
+Epoch 5/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.300904 | Val Loss: 0.203274 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.3205, Delta|S|μ:7.7991, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 6/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.299473 | Val Loss: 0.200326 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1014, Delta|S|μ:7.5926, Delta/Signal:93.72%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.200326 at epoch 6
+Epoch 7/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.300205 | Val Loss: 0.202331 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.0859, Delta|S|μ:7.5782, Delta/Signal:93.72%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 8/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.299330 | Val Loss: 0.201106 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2111, Delta|S|μ:7.6957, Delta/Signal:93.72%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 9/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.298693 | Val Loss: 0.199279 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.0975, Delta|S|μ:7.5892, Delta/Signal:93.72%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.199279 at epoch 9
+Epoch 10/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.299078 | Val Loss: 0.200828 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.3933, Delta|S|μ:7.8680, Delta/Signal:93.74%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 11/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.298219 | Val Loss: 0.199390 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.0774, Delta|S|μ:7.5692, Delta/Signal:93.71%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 12/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.298062 | Val Loss: 0.201864 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2368, Delta|S|μ:7.7190, Delta/Signal:93.71%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 13/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.298603 | Val Loss: 0.199749 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.4222, Delta|S|μ:7.8952, Delta/Signal:93.74%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 14/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.297349 | Val Loss: 0.201669 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.4126, Delta|S|μ:7.8859, Delta/Signal:93.74%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 15/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.297713 | Val Loss: 0.199803 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.3335, Delta|S|μ:7.8111, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 16/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.297801 | Val Loss: 0.207201 | Train Meta: Scaleμ:0.9749, Signal|S|μ:7.9615, Delta|S|μ:7.4589, Delta/Signal:93.69%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 17/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.297485 | Val Loss: 0.201729 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2404, Delta|S|μ:7.7226, Delta/Signal:93.72%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 18/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.297573 | Val Loss: 0.203792 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1212, Delta|S|μ:7.6097, Delta/Signal:93.70%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 19/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.297127 | Val Loss: 0.202391 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.3076, Delta|S|μ:7.7870, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 20/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.296894 | Val Loss: 0.202722 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1156, Delta|S|μ:7.6039, Delta/Signal:93.70%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+{'test_mse': 0.18723206222057343, 'test_mae': 0.287087619304657}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm2_192/electricity_laya_metadata_query_gate_text_stats_avg_best.pt
 Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm2_laya_metadata_query_gate_text_stats_avg/pred_192/attention_maps
 Text metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
@@ -311,6 +326,8 @@ Text metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
    - ... (5 more channel descriptions)
 Stats metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
    - HUFL: Channel statistics over the training split: mean value is 0.000, standard deviation is 1.000, minimum value is -4.096, maximum value is 6.712, median value is 0.066, and mean absolute value is 0.721.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 ==================================================
 🚀 Architecture: LAYA
 📊 Target Dataset: ETTm2 (Channels: 7)
@@ -318,40 +335,43 @@ Stats metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
 📊 Prediction Length: 336
 ==================================================
 ✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
-   - 74/74 keys matched.
+   - 116/116 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=text_stats_avg, fusion=none, relation=metadata_query_gate
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: metadata_query_gate
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
 ✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 336]
-Epoch 1/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.628648 | Val Loss: 0.986867 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.4085, Delta|S|μ:9.2565, Delta/Signal:81.14%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.986867 at epoch 1
-Epoch 2/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.516478 | Val Loss: 0.970775 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.5652, Delta|S|μ:9.3909, Delta/Signal:81.20%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.970775 at epoch 2
-Epoch 3/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.514777 | Val Loss: 0.986053 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.6013, Delta|S|μ:9.4153, Delta/Signal:81.16%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.511899 | Val Loss: 1.172798 | Train Meta: Scaleμ:0.9450, Signal|S|μ:15.1146, Delta|S|μ:12.2619, Delta/Signal:81.13%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.512113 | Val Loss: 0.973060 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.6610, Delta|S|μ:10.2832, Delta/Signal:81.22%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.510619 | Val Loss: 1.182180 | Train Meta: Scaleμ:0.9450, Signal|S|μ:9.7310, Delta|S|μ:7.8751, Delta/Signal:80.93%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.508521 | Val Loss: 0.949668 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.9056, Delta|S|μ:11.2684, Delta/Signal:81.03%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.949668 at epoch 7
-Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.508284 | Val Loss: 1.119300 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2187, Delta|S|μ:9.9183, Delta/Signal:81.17%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.507978 | Val Loss: 0.924271 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.6952, Delta|S|μ:9.4923, Delta/Signal:81.16%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.924271 at epoch 9
-Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.506080 | Val Loss: 0.844724 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.0602, Delta|S|μ:8.9854, Delta/Signal:81.24%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.844724 at epoch 10
-Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.506618 | Val Loss: 0.885013 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4975, Delta|S|μ:10.1407, Delta/Signal:81.14%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.505478 | Val Loss: 0.967627 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.1375, Delta|S|μ:8.2036, Delta/Signal:80.92%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.506227 | Val Loss: 1.050206 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.0086, Delta|S|μ:8.9268, Delta/Signal:81.09%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.505925 | Val Loss: 0.851150 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4523, Delta|S|μ:10.1174, Delta/Signal:81.25%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 15/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.503676 | Val Loss: 0.872067 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.5716, Delta|S|μ:10.1993, Delta/Signal:81.13%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 16/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.505192 | Val Loss: 0.906397 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.8277, Delta|S|μ:11.2192, Delta/Signal:81.14%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 17/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.503738 | Val Loss: 0.912294 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.9294, Delta|S|μ:8.8348, Delta/Signal:80.84%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 18/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.503717 | Val Loss: 1.077521 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.7521, Delta|S|μ:11.0894, Delta/Signal:80.64%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 19/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.504491 | Val Loss: 1.031098 | Train Meta: Scaleμ:0.9450, Signal|S|μ:9.7230, Delta|S|μ:7.8599, Delta/Signal:80.84%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 20/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.504539 | Val Loss: 1.049649 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.5914, Delta|S|μ:8.5706, Delta/Signal:80.92%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-{'test_mse': 0.6231241822242737, 'test_mae': 0.5878222584724426}
+Epoch 1/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.403388 | Val Loss: 0.254716 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2267, Delta|S|μ:7.7098, Delta/Signal:93.72%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.254716 at epoch 1
+Epoch 2/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.388125 | Val Loss: 0.249282 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.5184, Delta|S|μ:7.9859, Delta/Signal:93.75%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.249282 at epoch 2
+Epoch 3/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.385641 | Val Loss: 0.252963 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.0788, Delta|S|μ:7.5689, Delta/Signal:93.69%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.384613 | Val Loss: 0.247255 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2333, Delta|S|μ:7.7170, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.247255 at epoch 4
+Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.383984 | Val Loss: 0.245933 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1204, Delta|S|μ:7.6099, Delta/Signal:93.71%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.245933 at epoch 5
+Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.382889 | Val Loss: 0.247548 | Train Meta: Scaleμ:0.9749, Signal|S|μ:7.9187, Delta|S|μ:7.4187, Delta/Signal:93.69%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.382958 | Val Loss: 0.250371 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2946, Delta|S|μ:7.7747, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.382374 | Val Loss: 0.246824 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1386, Delta|S|μ:7.6268, Delta/Signal:93.71%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.381716 | Val Loss: 0.245861 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1612, Delta|S|μ:7.6493, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.245861 at epoch 9
+Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.381321 | Val Loss: 0.246149 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2279, Delta|S|μ:7.7110, Delta/Signal:93.72%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.379756 | Val Loss: 0.247999 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2146, Delta|S|μ:7.6986, Delta/Signal:93.72%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.380596 | Val Loss: 0.246326 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2471, Delta|S|μ:7.7300, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.379518 | Val Loss: 0.246173 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2078, Delta|S|μ:7.6935, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.379942 | Val Loss: 0.247788 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.3353, Delta|S|μ:7.8139, Delta/Signal:93.74%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 15/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.379731 | Val Loss: 0.247590 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.3296, Delta|S|μ:7.8074, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 16/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.379885 | Val Loss: 0.248914 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2143, Delta|S|μ:7.6990, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 17/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.379124 | Val Loss: 0.245796 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2992, Delta|S|μ:7.7788, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.245796 at epoch 17
+Epoch 18/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.379102 | Val Loss: 0.246866 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1192, Delta|S|μ:7.6092, Delta/Signal:93.72%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 19/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.379554 | Val Loss: 0.243896 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.3186, Delta|S|μ:7.7977, Delta/Signal:93.74%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.243896 at epoch 19
+Epoch 20/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.378782 | Val Loss: 0.247153 | Train Meta: Scaleμ:0.9749, Signal|S|μ:7.9929, Delta|S|μ:7.4881, Delta/Signal:93.68%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+{'test_mse': 0.21928225457668304, 'test_mae': 0.30931439995765686}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm2_336/electricity_laya_metadata_query_gate_text_stats_avg_best.pt
 Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm2_laya_metadata_query_gate_text_stats_avg/pred_336/attention_maps
 Text metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
@@ -360,6 +380,8 @@ Text metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
    - ... (5 more channel descriptions)
 Stats metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
    - HUFL: Channel statistics over the training split: mean value is 0.000, standard deviation is 1.000, minimum value is -4.096, maximum value is 6.712, median value is 0.066, and mean absolute value is 0.721.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
 ==================================================
 🚀 Architecture: LAYA
 📊 Target Dataset: ETTm2 (Channels: 7)
@@ -367,261 +389,21 @@ Stats metadata preview | dataset=ETTm2 | domain=ETTm2 | channels=7
 📊 Prediction Length: 720
 ==================================================
 ✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
-   - 74/74 keys matched.
+   - 116/116 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=text_stats_avg, fusion=none, relation=metadata_query_gate
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: metadata_query_gate
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
 ✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 720]
-Epoch 1/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.710473 | Val Loss: 1.207339 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.8985, Delta|S|μ:8.8373, Delta/Signal:81.09%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=1.207339 at epoch 1
-Epoch 2/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.594783 | Val Loss: 1.103623 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.6976, Delta|S|μ:9.4926, Delta/Signal:81.15%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=1.103623 at epoch 2
-Epoch 3/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.595128 | Val Loss: 0.932154 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.7639, Delta|S|μ:10.3401, Delta/Signal:81.01%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.932154 at epoch 3
-Epoch 4/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.592482 | Val Loss: 1.123521 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.0369, Delta|S|μ:10.5724, Delta/Signal:81.10%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 5/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.590357 | Val Loss: 0.984496 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.6712, Delta|S|μ:11.0980, Delta/Signal:81.18%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 6/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.592190 | Val Loss: 1.362661 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0832, Delta|S|μ:9.8234, Delta/Signal:81.30%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 7/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.588986 | Val Loss: 0.955494 | Train Meta: Scaleμ:0.9450, Signal|S|μ:9.6269, Delta|S|μ:7.8115, Delta/Signal:81.14%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 8/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.588087 | Val Loss: 1.025963 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1550, Delta|S|μ:9.8530, Delta/Signal:81.06%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 9/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.588677 | Val Loss: 0.920199 | Train Meta: Scaleμ:0.9450, Signal|S|μ:8.9334, Delta|S|μ:7.2425, Delta/Signal:81.07%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-   -> Updated best validation state: val_loss=0.920199 at epoch 9
-Epoch 10/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.587712 | Val Loss: 1.039049 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.3741, Delta|S|μ:9.2168, Delta/Signal:81.03%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 11/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.585758 | Val Loss: 1.045097 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.2242, Delta|S|μ:10.7219, Delta/Signal:81.08%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 12/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.584881 | Val Loss: 1.151684 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.3219, Delta|S|μ:9.9726, Delta/Signal:80.93%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 13/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.584337 | Val Loss: 0.954323 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.9578, Delta|S|μ:9.7026, Delta/Signal:81.14%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 14/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.585848 | Val Loss: 1.113795 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.9257, Delta|S|μ:8.8653, Delta/Signal:81.14%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 15/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.585125 | Val Loss: 1.148603 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.7388, Delta|S|μ:8.7144, Delta/Signal:81.15%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 16/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.585425 | Val Loss: 1.221553 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.5580, Delta|S|μ:10.2071, Delta/Signal:81.28%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 17/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.582961 | Val Loss: 1.007184 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.2025, Delta|S|μ:10.7111, Delta/Signal:81.13%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 18/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.585442 | Val Loss: 1.007469 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.0467, Delta|S|μ:8.9679, Delta/Signal:81.18%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 19/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.583209 | Val Loss: 1.254360 | Train Meta: Scaleμ:0.9450, Signal|S|μ:10.7943, Delta|S|μ:8.7107, Delta/Signal:80.70%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-Epoch 20/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.583500 | Val Loss: 1.151798 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4534, Delta|S|μ:10.0985, Delta/Signal:81.09%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924 | Val Meta: Scaleμ:0.9450, Signal|S|μ:6.2538, Delta|S|μ:5.0933, Delta/Signal:81.44%, Gateμ:-0.3788, Gate0%:0.0, MetaNormμ:7.7924
-{'test_mse': 0.7015207409858704, 'test_mae': 0.6288285255432129}
-Saved best forecasting checkpoint under checkpoints/forecasting_ettm2_720/electricity_laya_metadata_query_gate_text_stats_avg_best.pt
-Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm2_laya_metadata_query_gate_text_stats_avg/pred_720/attention_maps
-Text metadata preview | dataset=weather | domain=weather | channels=21
-   - p (mbar): In the weather domain, this channel belongs to the weather dataset and represents the feature p (mbar).
-   - T (degC): In the weather domain, this channel belongs to the weather dataset and represents the feature T (degC).
-   - ... (19 more channel descriptions)
-Stats metadata preview | dataset=weather | domain=weather | channels=21
-   - p (mbar): Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -3.309, maximum value is 3.410, median value is 0.052, and mean absolute value is 0.768.
-==================================================
-🚀 Architecture: LAYA
-📊 Target Dataset: weather (Channels: 21)
-📊 Pretrain Info: electricity (Detected Channels: 21)
-📊 Prediction Length: 96
-==================================================
-✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
-   - 74/74 keys matched.
-ℹ️ Channel Adapter: disabled
-📝 metadata: mode=text_stats_avg, fusion=none, relation=metadata_query_gate
-ℹ️ Metadata Fusion Mode: none
-ℹ️ Channel Mixer Relation Mode: metadata_query_gate
-ℹ️ Encoder Variant: default
-ℹ️ Channel Relation Block: disabled
-✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 21, 96]
-Epoch 1/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 1.015606 | Val Loss: 0.988018 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4735, Delta|S|μ:10.1295, Delta/Signal:81.21%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.988018 at epoch 1
-Epoch 2/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.759039 | Val Loss: 0.856748 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0668, Delta|S|μ:9.7938, Delta/Signal:81.16%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.856748 at epoch 2
-Epoch 3/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.735036 | Val Loss: 0.811996 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1494, Delta|S|μ:9.8565, Delta/Signal:81.13%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.811996 at epoch 3
-Epoch 4/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.722907 | Val Loss: 0.786502 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.8318, Delta|S|μ:10.4071, Delta/Signal:81.10%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.786502 at epoch 4
-Epoch 5/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.716402 | Val Loss: 0.822800 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.6692, Delta|S|μ:10.2818, Delta/Signal:81.16%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 6/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.711600 | Val Loss: 0.789645 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.9911, Delta|S|μ:10.5506, Delta/Signal:81.21%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 7/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.709205 | Val Loss: 0.767995 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.2211, Delta|S|μ:10.7349, Delta/Signal:81.19%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.767995 at epoch 7
-Epoch 8/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.706722 | Val Loss: 0.765507 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.7601, Delta|S|μ:10.3567, Delta/Signal:81.16%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.765507 at epoch 8
-Epoch 9/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.704530 | Val Loss: 0.779655 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.6612, Delta|S|μ:10.2804, Delta/Signal:81.20%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 10/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.703322 | Val Loss: 0.783671 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.5191, Delta|S|μ:9.3374, Delta/Signal:81.06%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 11/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.702460 | Val Loss: 0.753009 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.7715, Delta|S|μ:9.5480, Delta/Signal:81.11%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.753009 at epoch 11
-Epoch 12/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.702010 | Val Loss: 0.761948 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0741, Delta|S|μ:9.7908, Delta/Signal:81.09%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 13/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.701169 | Val Loss: 0.771576 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.7150, Delta|S|μ:9.5082, Delta/Signal:81.16%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 14/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.700353 | Val Loss: 0.765012 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2779, Delta|S|μ:9.9697, Delta/Signal:81.20%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 15/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.700551 | Val Loss: 0.805906 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0389, Delta|S|μ:9.7650, Delta/Signal:81.11%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 16/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.699750 | Val Loss: 0.758324 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2295, Delta|S|μ:9.9228, Delta/Signal:81.14%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 17/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.698711 | Val Loss: 0.764810 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1213, Delta|S|μ:9.8393, Delta/Signal:81.17%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 18/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.699311 | Val Loss: 0.772890 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4747, Delta|S|μ:10.1196, Delta/Signal:81.12%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 19/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.698500 | Val Loss: 0.755121 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.9003, Delta|S|μ:9.6533, Delta/Signal:81.12%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 20/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.698631 | Val Loss: 0.794338 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2510, Delta|S|μ:9.9361, Delta/Signal:81.10%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-./run_forecasting.py:284: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
-  plt.tight_layout()
-./run_forecasting.py:296: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
-  plt.tight_layout()
-{'test_mse': 0.4760603904724121, 'test_mae': 0.5339885950088501}
-Saved best forecasting checkpoint under checkpoints/forecasting_weather_96/electricity_laya_metadata_query_gate_text_stats_avg_best.pt
-Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_metadata_query_gate_text_stats_avg/pred_96/attention_maps
-Text metadata preview | dataset=weather | domain=weather | channels=21
-   - p (mbar): In the weather domain, this channel belongs to the weather dataset and represents the feature p (mbar).
-   - T (degC): In the weather domain, this channel belongs to the weather dataset and represents the feature T (degC).
-   - ... (19 more channel descriptions)
-Stats metadata preview | dataset=weather | domain=weather | channels=21
-   - p (mbar): Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -3.309, maximum value is 3.410, median value is 0.052, and mean absolute value is 0.768.
-==================================================
-🚀 Architecture: LAYA
-📊 Target Dataset: weather (Channels: 21)
-📊 Pretrain Info: electricity (Detected Channels: 21)
-📊 Prediction Length: 192
-==================================================
-✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
-   - 74/74 keys matched.
-ℹ️ Channel Adapter: disabled
-📝 metadata: mode=text_stats_avg, fusion=none, relation=metadata_query_gate
-ℹ️ Metadata Fusion Mode: none
-ℹ️ Channel Mixer Relation Mode: metadata_query_gate
-ℹ️ Encoder Variant: default
-ℹ️ Channel Relation Block: disabled
-✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 21, 192]
-Epoch 1/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 1.046909 | Val Loss: 1.030011 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.7514, Delta|S|μ:9.5368, Delta/Signal:81.15%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=1.030011 at epoch 1
-Epoch 2/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.790708 | Val Loss: 0.883813 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.0015, Delta|S|μ:10.5481, Delta/Signal:81.13%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.883813 at epoch 2
-Epoch 3/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.766824 | Val Loss: 0.842009 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4561, Delta|S|μ:10.1061, Delta/Signal:81.13%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.842009 at epoch 3
-Epoch 4/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.754639 | Val Loss: 0.861119 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.8026, Delta|S|μ:9.5799, Delta/Signal:81.17%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 5/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.747523 | Val Loss: 0.804734 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1268, Delta|S|μ:9.8465, Delta/Signal:81.20%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.804734 at epoch 5
-Epoch 6/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.743381 | Val Loss: 0.800033 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1411, Delta|S|μ:9.8490, Delta/Signal:81.12%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.800033 at epoch 6
-Epoch 7/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.740108 | Val Loss: 0.817791 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.9015, Delta|S|μ:10.4714, Delta/Signal:81.16%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 8/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.737656 | Val Loss: 0.839865 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.8888, Delta|S|μ:9.6426, Delta/Signal:81.11%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 9/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.736492 | Val Loss: 0.798016 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0065, Delta|S|μ:9.7450, Delta/Signal:81.16%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.798016 at epoch 9
-Epoch 10/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.734914 | Val Loss: 0.839178 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2918, Delta|S|μ:9.9722, Delta/Signal:81.13%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 11/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.733928 | Val Loss: 0.770486 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.9946, Delta|S|μ:9.7250, Delta/Signal:81.08%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.770486 at epoch 11
-Epoch 12/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.733282 | Val Loss: 0.798245 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0176, Delta|S|μ:9.7480, Delta/Signal:81.11%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 13/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.732549 | Val Loss: 0.825476 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4234, Delta|S|μ:10.0889, Delta/Signal:81.21%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 14/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.731685 | Val Loss: 0.792676 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2008, Delta|S|μ:9.8967, Delta/Signal:81.12%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 15/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.731544 | Val Loss: 0.811010 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2370, Delta|S|μ:9.9290, Delta/Signal:81.14%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 16/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.731467 | Val Loss: 0.784009 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.7051, Delta|S|μ:9.4959, Delta/Signal:81.13%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 17/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.730523 | Val Loss: 0.808315 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2965, Delta|S|μ:9.9810, Delta/Signal:81.17%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 18/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.729983 | Val Loss: 0.797888 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0238, Delta|S|μ:9.7597, Delta/Signal:81.17%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 19/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.729819 | Val Loss: 0.795319 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.3893, Delta|S|μ:10.8757, Delta/Signal:81.23%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 20/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.730188 | Val Loss: 0.824013 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.5013, Delta|S|μ:10.1400, Delta/Signal:81.11%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-./run_forecasting.py:284: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
-  plt.tight_layout()
-./run_forecasting.py:296: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
-  plt.tight_layout()
-{'test_mse': 0.5247092247009277, 'test_mae': 0.5684565305709839}
-Saved best forecasting checkpoint under checkpoints/forecasting_weather_192/electricity_laya_metadata_query_gate_text_stats_avg_best.pt
-Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_metadata_query_gate_text_stats_avg/pred_192/attention_maps
-Text metadata preview | dataset=weather | domain=weather | channels=21
-   - p (mbar): In the weather domain, this channel belongs to the weather dataset and represents the feature p (mbar).
-   - T (degC): In the weather domain, this channel belongs to the weather dataset and represents the feature T (degC).
-   - ... (19 more channel descriptions)
-Stats metadata preview | dataset=weather | domain=weather | channels=21
-   - p (mbar): Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -3.309, maximum value is 3.410, median value is 0.052, and mean absolute value is 0.768.
-==================================================
-🚀 Architecture: LAYA
-📊 Target Dataset: weather (Channels: 21)
-📊 Pretrain Info: electricity (Detected Channels: 21)
-📊 Prediction Length: 336
-==================================================
-✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
-   - 74/74 keys matched.
-ℹ️ Channel Adapter: disabled
-📝 metadata: mode=text_stats_avg, fusion=none, relation=metadata_query_gate
-ℹ️ Metadata Fusion Mode: none
-ℹ️ Channel Mixer Relation Mode: metadata_query_gate
-ℹ️ Encoder Variant: default
-ℹ️ Channel Relation Block: disabled
-✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 21, 336]
-Epoch 1/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 1.093345 | Val Loss: 1.079349 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1830, Delta|S|μ:9.8969, Delta/Signal:81.24%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=1.079349 at epoch 1
-Epoch 2/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.821587 | Val Loss: 0.920296 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0785, Delta|S|μ:9.8013, Delta/Signal:81.15%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.920296 at epoch 2
-Epoch 3/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.797536 | Val Loss: 0.875831 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.6511, Delta|S|μ:9.4528, Delta/Signal:81.13%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.875831 at epoch 3
-Epoch 4/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.785248 | Val Loss: 0.832785 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.8403, Delta|S|μ:10.4307, Delta/Signal:81.23%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.832785 at epoch 4
-Epoch 5/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.778064 | Val Loss: 0.856748 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4922, Delta|S|μ:10.1398, Delta/Signal:81.17%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 6/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.773406 | Val Loss: 0.831807 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.9008, Delta|S|μ:10.4788, Delta/Signal:81.23%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.831807 at epoch 6
-Epoch 7/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.770940 | Val Loss: 0.845164 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.3586, Delta|S|μ:10.0259, Delta/Signal:81.13%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 8/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.768233 | Val Loss: 0.817200 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.6261, Delta|S|μ:10.2492, Delta/Signal:81.17%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.817200 at epoch 8
-Epoch 9/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.766851 | Val Loss: 0.833061 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.4626, Delta|S|μ:9.3053, Delta/Signal:81.18%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 10/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.765273 | Val Loss: 0.826914 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.5585, Delta|S|μ:10.1863, Delta/Signal:81.11%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 11/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.763989 | Val Loss: 0.825669 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2976, Delta|S|μ:9.9866, Delta/Signal:81.21%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 12/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.763530 | Val Loss: 0.822501 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4952, Delta|S|μ:10.1436, Delta/Signal:81.18%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 13/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.762655 | Val Loss: 0.814439 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.2462, Delta|S|μ:10.7551, Delta/Signal:81.19%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.814439 at epoch 13
-Epoch 14/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.761955 | Val Loss: 0.820150 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.3185, Delta|S|μ:9.9943, Delta/Signal:81.13%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 15/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.761382 | Val Loss: 0.835434 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.9080, Delta|S|μ:9.6624, Delta/Signal:81.14%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 16/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.760703 | Val Loss: 0.832777 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.5503, Delta|S|μ:9.3738, Delta/Signal:81.16%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 17/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.761433 | Val Loss: 0.807539 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1992, Delta|S|μ:9.9032, Delta/Signal:81.18%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.807539 at epoch 17
-Epoch 18/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.760742 | Val Loss: 0.815982 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4229, Delta|S|μ:10.0867, Delta/Signal:81.19%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 19/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.760053 | Val Loss: 0.851066 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2320, Delta|S|μ:9.9301, Delta/Signal:81.18%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 20/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.759845 | Val Loss: 0.810876 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4671, Delta|S|μ:10.1231, Delta/Signal:81.20%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-./run_forecasting.py:284: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
-  plt.tight_layout()
-./run_forecasting.py:296: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
-  plt.tight_layout()
-{'test_mse': 0.5369632244110107, 'test_mae': 0.5686159729957581}
-Saved best forecasting checkpoint under checkpoints/forecasting_weather_336/electricity_laya_metadata_query_gate_text_stats_avg_best.pt
-Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_metadata_query_gate_text_stats_avg/pred_336/attention_maps
-Text metadata preview | dataset=weather | domain=weather | channels=21
-   - p (mbar): In the weather domain, this channel belongs to the weather dataset and represents the feature p (mbar).
-   - T (degC): In the weather domain, this channel belongs to the weather dataset and represents the feature T (degC).
-   - ... (19 more channel descriptions)
-Stats metadata preview | dataset=weather | domain=weather | channels=21
-   - p (mbar): Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -3.309, maximum value is 3.410, median value is 0.052, and mean absolute value is 0.768.
-==================================================
-🚀 Architecture: LAYA
-📊 Target Dataset: weather (Channels: 21)
-📊 Pretrain Info: electricity (Detected Channels: 21)
-📊 Prediction Length: 720
-==================================================
-✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_metadata_query_gate_text_stats_avg/laya_ts_electricity_s_best.pt
-   - 74/74 keys matched.
-ℹ️ Channel Adapter: disabled
-📝 metadata: mode=text_stats_avg, fusion=none, relation=metadata_query_gate
-ℹ️ Metadata Fusion Mode: none
-ℹ️ Channel Mixer Relation Mode: metadata_query_gate
-ℹ️ Encoder Variant: default
-ℹ️ Channel Relation Block: disabled
-✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 21, 720]
-Epoch 1/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 1.139004 | Val Loss: 1.091820 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0901, Delta|S|μ:9.8084, Delta/Signal:81.13%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=1.091820 at epoch 1
-Epoch 2/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.856030 | Val Loss: 0.918299 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.9055, Delta|S|μ:9.6687, Delta/Signal:81.21%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.918299 at epoch 2
-Epoch 3/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.831511 | Val Loss: 0.878590 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.1264, Delta|S|μ:10.6526, Delta/Signal:81.15%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.878590 at epoch 3
-Epoch 4/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.820160 | Val Loss: 0.881802 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.5194, Delta|S|μ:10.1646, Delta/Signal:81.19%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 5/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.812271 | Val Loss: 0.866282 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.2153, Delta|S|μ:9.0977, Delta/Signal:81.12%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.866282 at epoch 5
-Epoch 6/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.808282 | Val Loss: 0.859795 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.0130, Delta|S|μ:10.5681, Delta/Signal:81.21%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.859795 at epoch 6
-Epoch 7/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.804472 | Val Loss: 0.872434 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.7778, Delta|S|μ:10.3746, Delta/Signal:81.19%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 8/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.801855 | Val Loss: 0.854554 | Train Meta: Scaleμ:0.9450, Signal|S|μ:11.9953, Delta|S|μ:9.7271, Delta/Signal:81.09%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.854554 at epoch 8
-Epoch 9/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.800509 | Val Loss: 0.884371 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.0046, Delta|S|μ:9.7404, Delta/Signal:81.14%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 10/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.798993 | Val Loss: 0.833386 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.2868, Delta|S|μ:9.9813, Delta/Signal:81.24%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.833386 at epoch 10
-Epoch 11/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.797738 | Val Loss: 0.820424 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4295, Delta|S|μ:10.0806, Delta/Signal:81.10%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.820424 at epoch 11
-Epoch 12/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.797928 | Val Loss: 0.852480 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.7087, Delta|S|μ:10.3235, Delta/Signal:81.23%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 13/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.796281 | Val Loss: 0.815838 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.0421, Delta|S|μ:10.5910, Delta/Signal:81.21%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-   -> Updated best validation state: val_loss=0.815838 at epoch 13
-Epoch 14/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.796369 | Val Loss: 0.857403 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.8749, Delta|S|μ:10.4567, Delta/Signal:81.22%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 15/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.795801 | Val Loss: 0.833554 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4909, Delta|S|μ:10.1327, Delta/Signal:81.12%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 16/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.794741 | Val Loss: 0.824096 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.1942, Delta|S|μ:9.8957, Delta/Signal:81.15%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 17/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.794596 | Val Loss: 0.846689 | Train Meta: Scaleμ:0.9450, Signal|S|μ:13.8688, Delta|S|μ:11.2623, Delta/Signal:81.21%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 18/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.794269 | Val Loss: 0.850345 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4629, Delta|S|μ:10.1153, Delta/Signal:81.16%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 19/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.794300 | Val Loss: 0.872277 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.4746, Delta|S|μ:10.1110, Delta/Signal:81.05%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-Epoch 20/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.793952 | Val Loss: 0.828910 | Train Meta: Scaleμ:0.9450, Signal|S|μ:12.7723, Delta|S|μ:10.3765, Delta/Signal:81.24%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775 | Val Meta: Scaleμ:0.9450, Signal|S|μ:11.3647, Delta|S|μ:9.2472, Delta/Signal:81.37%, Gateμ:-0.5456, Gate0%:0.0, MetaNormμ:7.0775
-./run_forecasting.py:284: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
-  plt.tight_layout()
-./run_forecasting.py:296: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
-  plt.tight_layout()
-{'test_mse': 0.5821430087089539, 'test_mae': 0.595774233341217}
-Saved best forecasting checkpoint under checkpoints/forecasting_weather_720/electricity_laya_metadata_query_gate_text_stats_avg_best.pt
-Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_metadata_query_gate_text_stats_avg/pred_720/attention_maps
+Epoch 1/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.515133 | Val Loss: 0.321875 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1660, Delta|S|μ:7.6524, Delta/Signal:93.71%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.321875 at epoch 1
+Epoch 2/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.500975 | Val Loss: 0.322013 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.2236, Delta|S|μ:7.7084, Delta/Signal:93.74%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 3/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.498442 | Val Loss: 0.318471 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.1906, Delta|S|μ:7.6764, Delta/Signal:93.72%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.318471 at epoch 3
+Epoch 4/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.497423 | Val Loss: 0.318657 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.0955, Delta|S|μ:7.5876, Delta/Signal:93.73%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 5/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.496236 | Val Loss: 0.318497 | Train Meta: Scaleμ:0.9749, Signal|S|μ:8.4208, Delta|S|μ:7.8935, Delta/Signal:93.74%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+Epoch 6/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.495436 | Val Loss: 0.315956 | Train Meta: Scaleμ:0.9749, Signal|S|μ:7.9698, Delta|S|μ:7.4680, Delta/Signal:93.70%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424 | Val Meta: Scaleμ:0.9749, Signal|S|μ:8.5803, Delta|S|μ:8.0482, Delta/Signal:93.80%, Gateμ:-0.2151, Gate0%:0.0, MetaNormμ:7.4424
+   -> Updated best validation state: val_loss=0.315956 at epoch 6

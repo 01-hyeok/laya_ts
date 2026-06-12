@@ -10,7 +10,7 @@ LAYA_MODE="${LAYA_MODE:-mixer}"
 CHANNEL_METADATA_MODE="${CHANNEL_METADATA_MODE:-text}"
 METADATA_FUSION_MODE="${METADATA_FUSION_MODE:-concat_kv}"
 CHANNEL_MIXER_RELATION_MODE="${CHANNEL_MIXER_RELATION_MODE:-none}"
-LOTSA_SPLIT_MODE="${LOTSA_SPLIT_MODE:-official}"
+LOTSA_SPLIT_MODE="${LOTSA_SPLIT_MODE:-temporal_70_10_20}"
 LOTSA_SAMPLING_MODE="${LOTSA_SAMPLING_MODE:-official}"
 LOTSA_PREPROCESSING_MODE="${LOTSA_PREPROCESSING_MODE:-official}"
 LOTSA_SAMPLE_TIME_SERIES="${LOTSA_SAMPLE_TIME_SERIES:-proportional}"
@@ -18,6 +18,7 @@ LOTSA_SUBSET_SAMPLING="${LOTSA_SUBSET_SAMPLING:-official}"
 LOTSA_MIN_PATCHES="${LOTSA_MIN_PATCHES:-2}"
 LOTSA_MAX_CHANNEL="${LOTSA_MAX_CHANNEL:-}"
 LOTSA_WINDOWS_PER_SERIES="${LOTSA_WINDOWS_PER_SERIES:-32}"
+LOTSA_DATASET_PATH="${LOTSA_DATASET_PATH:-../Dataset/LOTSA}"
 
 LOTSA_SUBSETS="${LOTSA_SUBSETS:-beijing_air_quality,HZMETRO,residential_pv_power,residential_load_power,china_air_quality}"
 SEQ_LEN="${SEQ_LEN:-512}"
@@ -104,6 +105,7 @@ python -u "./train_pretrain.py" \
   --lotsa_subset_sampling "${LOTSA_SUBSET_SAMPLING}" \
   --lotsa_min_patches "${LOTSA_MIN_PATCHES}" \
   --lotsa_windows_per_series "${LOTSA_WINDOWS_PER_SERIES}" \
+  --lotsa_dataset_path "${LOTSA_DATASET_PATH}" \
   --channel_mixer_type "${LAYA_MODE}" \
   --text_encoder_name_or_path "${TEXT_ENCODER_NAME}" \
   --text_metadata_cache_dir "${TEXT_METADATA_CACHE_DIR}" \

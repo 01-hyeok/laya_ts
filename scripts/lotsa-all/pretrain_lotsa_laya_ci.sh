@@ -9,7 +9,7 @@ ARCH="laya"
 VARIANT="${VARIANT:-s}"
 LAYA_MODE="${LAYA_MODE:-independent}"
 CHANNEL_METADATA_MODE="${CHANNEL_METADATA_MODE:-none}"
-LOTSA_SPLIT_MODE="${LOTSA_SPLIT_MODE:-official}"
+LOTSA_SPLIT_MODE="${LOTSA_SPLIT_MODE:-temporal_70_10_20}"
 LOTSA_SAMPLING_MODE="${LOTSA_SAMPLING_MODE:-official}"
 LOTSA_PREPROCESSING_MODE="${LOTSA_PREPROCESSING_MODE:-official}"
 LOTSA_SAMPLE_TIME_SERIES="${LOTSA_SAMPLE_TIME_SERIES:-proportional}"
@@ -17,6 +17,7 @@ LOTSA_SUBSET_SAMPLING="${LOTSA_SUBSET_SAMPLING:-official}"
 LOTSA_MIN_PATCHES="${LOTSA_MIN_PATCHES:-2}"
 LOTSA_MAX_CHANNEL="${LOTSA_MAX_CHANNEL:-}"
 LOTSA_WINDOWS_PER_SERIES="${LOTSA_WINDOWS_PER_SERIES:-32}"
+LOTSA_DATASET_PATH="${LOTSA_DATASET_PATH:-../Dataset/LOTSA}"
 METADATA_FUSION_MODE="${METADATA_FUSION_MODE:-none}"
 
 # Use the full LOTSA collection by default. Override LOTSA_SUBSETS
@@ -100,6 +101,7 @@ python -u "./train_pretrain.py" \
   --lotsa_subset_sampling "${LOTSA_SUBSET_SAMPLING}" \
   --lotsa_min_patches "${LOTSA_MIN_PATCHES}" \
   --lotsa_windows_per_series "${LOTSA_WINDOWS_PER_SERIES}" \
+  --lotsa_dataset_path "${LOTSA_DATASET_PATH}" \
   --channel_mixer_type "${LAYA_MODE}" \
   --save_dir "${SAVE_DIR}" \
   --log_dir "${LOG_DIR}" \

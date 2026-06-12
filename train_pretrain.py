@@ -685,6 +685,7 @@ def main(argv=None):
     p.add_argument("--text_encoder_name_or_path", type=str, default="sentence-transformers/all-MiniLM-L6-v2")
     p.add_argument("--text_metadata_cache_dir", type=str, default="./metadata_cache")
     p.add_argument("--text_encoder_local_files_only", action="store_true")
+    p.add_argument("--lotsa_dataset_path", type=str, default="Salesforce/lotsa_data")
     p.add_argument("--lotsa_split_mode", type=str, default="official", choices=["official", "temporal_70_10_20"])
     p.add_argument("--lotsa_sampling_mode", type=str, default="official", choices=["official", "sliding_window", "hierarchical"])
     p.add_argument("--lotsa_preprocessing_mode", type=str, default="official", choices=["official", "standardize"])
@@ -804,7 +805,7 @@ def main(argv=None):
         shared_channel_counts = [group["channel_count"] for group in loader_groups]
         channel_count = max(shared_channel_counts)
     elif args.dataset_type == "lotsa":
-        loader_groups = get_lotsa_pretrain_loader_groups(args.data_path, batch_size=train_cfg.batch_size, seq_len=args.seq_len, stride=args.stride, patch_size=args.patch_size, num_workers=args.num_workers, max_files=args.max_files, channel_metadata_mode=args.channel_metadata_mode, text_encoder_name_or_path=args.text_encoder_name_or_path, text_metadata_cache_dir=args.text_metadata_cache_dir, text_encoder_local_files_only=args.text_encoder_local_files_only, lotsa_split_mode=args.lotsa_split_mode, lotsa_sampling_mode=args.lotsa_sampling_mode, lotsa_preprocessing_mode=args.lotsa_preprocessing_mode, lotsa_sample_time_series=args.lotsa_sample_time_series, lotsa_subset_sampling=args.lotsa_subset_sampling, lotsa_min_patches=args.lotsa_min_patches, lotsa_max_channel=args.lotsa_max_channel, lotsa_windows_per_series=args.lotsa_windows_per_series)
+        loader_groups = get_lotsa_pretrain_loader_groups(args.data_path, batch_size=train_cfg.batch_size, seq_len=args.seq_len, stride=args.stride, patch_size=args.patch_size, num_workers=args.num_workers, max_files=args.max_files, channel_metadata_mode=args.channel_metadata_mode, text_encoder_name_or_path=args.text_encoder_name_or_path, text_metadata_cache_dir=args.text_metadata_cache_dir, text_encoder_local_files_only=args.text_encoder_local_files_only, lotsa_dataset_path=args.lotsa_dataset_path, lotsa_split_mode=args.lotsa_split_mode, lotsa_sampling_mode=args.lotsa_sampling_mode, lotsa_preprocessing_mode=args.lotsa_preprocessing_mode, lotsa_sample_time_series=args.lotsa_sample_time_series, lotsa_subset_sampling=args.lotsa_subset_sampling, lotsa_min_patches=args.lotsa_min_patches, lotsa_max_channel=args.lotsa_max_channel, lotsa_windows_per_series=args.lotsa_windows_per_series)
         if not loader_groups:
             raise ValueError("No LOTSA loader groups were created; check the subset list and preprocessing configuration.")
         loader_group_kind = "lotsa"
@@ -817,7 +818,7 @@ def main(argv=None):
         shared_channel_counts = [group["channel_count"] for group in loader_groups]
         channel_count = max(shared_channel_counts)
     else:
-        train_loader, val_loader = get_pretrain_loaders(args.dataset_type, args.data_path, batch_size=train_cfg.batch_size, seq_len=args.seq_len, stride=args.stride, patch_size=args.patch_size, num_workers=args.num_workers, max_files=args.max_files, tsld_mode=args.tsld_mode, tslib_mode=args.tslib_mode, channel_metadata_mode=args.channel_metadata_mode, text_encoder_name_or_path=args.text_encoder_name_or_path, text_metadata_cache_dir=args.text_metadata_cache_dir, text_encoder_local_files_only=args.text_encoder_local_files_only, lotsa_split_mode=args.lotsa_split_mode, lotsa_sampling_mode=args.lotsa_sampling_mode, lotsa_preprocessing_mode=args.lotsa_preprocessing_mode, lotsa_sample_time_series=args.lotsa_sample_time_series, lotsa_subset_sampling=args.lotsa_subset_sampling, lotsa_min_patches=args.lotsa_min_patches, lotsa_max_channel=args.lotsa_max_channel, lotsa_windows_per_series=args.lotsa_windows_per_series)
+        train_loader, val_loader = get_pretrain_loaders(args.dataset_type, args.data_path, batch_size=train_cfg.batch_size, seq_len=args.seq_len, stride=args.stride, patch_size=args.patch_size, num_workers=args.num_workers, max_files=args.max_files, tsld_mode=args.tsld_mode, tslib_mode=args.tslib_mode, channel_metadata_mode=args.channel_metadata_mode, text_encoder_name_or_path=args.text_encoder_name_or_path, text_metadata_cache_dir=args.text_metadata_cache_dir, text_encoder_local_files_only=args.text_encoder_local_files_only, lotsa_dataset_path=args.lotsa_dataset_path, lotsa_split_mode=args.lotsa_split_mode, lotsa_sampling_mode=args.lotsa_sampling_mode, lotsa_preprocessing_mode=args.lotsa_preprocessing_mode, lotsa_sample_time_series=args.lotsa_sample_time_series, lotsa_subset_sampling=args.lotsa_subset_sampling, lotsa_min_patches=args.lotsa_min_patches, lotsa_max_channel=args.lotsa_max_channel, lotsa_windows_per_series=args.lotsa_windows_per_series)
         steps_per_epoch = len(train_loader)
         if steps_per_epoch == 0:
             raise ValueError("train_loader is empty; check the dataset path and preprocessing configuration.")

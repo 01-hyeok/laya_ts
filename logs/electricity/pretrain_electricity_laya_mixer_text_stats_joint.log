@@ -34,17 +34,25 @@ Joint metadata preview | dataset=electricity | domain=electricity | channels=321
 Epoch 1/100 | Steps: 559 | LR: 0.000010 | Train Loss: 1.832279 (P:0.8214, S:0.2184, Q:1.0000) | Val Loss: 2.199243 (P:1.1752, S:0.4816, Q:0.9999) | Repr L2μ: 2.1989 Val L2μ: 1.1160 | Repr Cosμ: 0.9869 Val Cosμ: 0.9969 | Pred→Target Cosμ: 0.4202 Val Cosμ: 0.3015 | Repr NormRatio: 1.0449 Val NormRatio: 1.0330 | Train Meta: n/a | Val Meta: n/a
    -> Saved improved checkpoint: val_loss=2.199243 at epoch 1
 Epoch 2/100 | Steps: 559 | LR: 0.000020 | Train Loss: 1.661218 (P:0.6558, S:0.1142, Q:0.9997) | Val Loss: 2.653161 (P:1.6302, S:0.4782, Q:0.9991) | Repr L2μ: 2.0513 Val L2μ: 1.0579 | Repr Cosμ: 0.9887 Val Cosμ: 0.9972 | Pred→Target Cosμ: 0.6254 Val Cosμ: 0.1840 | Repr NormRatio: 1.0436 Val NormRatio: 1.0369 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 2
 Epoch 3/100 | Steps: 559 | LR: 0.000030 | Train Loss: 1.442278 (P:0.4521, S:0.0825, Q:0.9861) | Val Loss: 2.425613 (P:1.4594, S:0.4586, Q:0.9433) | Repr L2μ: 2.0544 Val L2μ: 1.3138 | Repr Cosμ: 0.9888 Val Cosμ: 0.9956 | Pred→Target Cosμ: 0.8837 Val Cosμ: 0.2114 | Repr NormRatio: 1.0488 Val NormRatio: 1.0448 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 3
 Epoch 4/100 | Steps: 559 | LR: 0.000040 | Train Loss: 1.089034 (P:0.4135, S:0.0686, Q:0.6721) | Val Loss: 1.592037 (P:1.1001, S:0.4696, Q:0.4684) | Repr L2μ: 3.2559 Val L2μ: 1.8755 | Repr Cosμ: 0.9699 Val Cosμ: 0.9901 | Pred→Target Cosμ: 0.8939 Val Cosμ: 0.3854 | Repr NormRatio: 1.0743 Val NormRatio: 1.0494 | Train Meta: n/a | Val Meta: n/a
    -> Saved improved checkpoint: val_loss=1.592037 at epoch 4
 Epoch 5/100 | Steps: 559 | LR: 0.000050 | Train Loss: 0.797989 (P:0.3546, S:0.0617, Q:0.4403) | Val Loss: 1.214679 (P:0.7922, S:0.4636, Q:0.3993) | Repr L2μ: 4.4214 Val L2μ: 3.1335 | Repr Cosμ: 0.9468 Val Cosμ: 0.9705 | Pred→Target Cosμ: 0.8754 Val Cosμ: 0.5759 | Repr NormRatio: 1.0869 Val NormRatio: 1.0832 | Train Meta: n/a | Val Meta: n/a
    -> Saved improved checkpoint: val_loss=1.214679 at epoch 5
 Epoch 6/100 | Steps: 559 | LR: 0.000060 | Train Loss: 0.636820 (P:0.2770, S:0.0562, Q:0.3570) | Val Loss: 1.668125 (P:1.3088, S:0.6679, Q:0.3260) | Repr L2μ: 4.8529 Val L2μ: 3.0614 | Repr Cosμ: 0.9381 Val Cosμ: 0.9734 | Pred→Target Cosμ: 0.8798 Val Cosμ: 0.2957 | Repr NormRatio: 1.0802 Val NormRatio: 1.0288 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 6
 Epoch 7/100 | Steps: 559 | LR: 0.000070 | Train Loss: 0.527878 (P:0.2089, S:0.0519, Q:0.3164) | Val Loss: 1.747897 (P:1.4046, S:0.6998, Q:0.3083) | Repr L2μ: 4.9323 Val L2μ: 2.0042 | Repr Cosμ: 0.9394 Val Cosμ: 0.9899 | Pred→Target Cosμ: 0.8914 Val Cosμ: 0.4439 | Repr NormRatio: 1.0696 Val NormRatio: 1.0111 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 7
 Epoch 8/100 | Steps: 559 | LR: 0.000080 | Train Loss: 0.468089 (P:0.1607, S:0.0466, Q:0.3051) | Val Loss: 1.519352 (P:1.1924, S:0.6102, Q:0.2964) | Repr L2μ: 5.0254 Val L2μ: 2.4201 | Repr Cosμ: 0.9409 Val Cosμ: 0.9851 | Pred→Target Cosμ: 0.9087 Val Cosμ: 0.5761 | Repr NormRatio: 1.0573 Val NormRatio: 1.0119 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 8
 Epoch 9/100 | Steps: 559 | LR: 0.000090 | Train Loss: 0.415227 (P:0.1282, S:0.0441, Q:0.2848) | Val Loss: 1.621222 (P:1.3122, S:0.7013, Q:0.2739) | Repr L2μ: 4.9958 Val L2μ: 2.3600 | Repr Cosμ: 0.9419 Val Cosμ: 0.9854 | Pred→Target Cosμ: 0.9214 Val Cosμ: 0.4161 | Repr NormRatio: 1.0502 Val NormRatio: 1.0248 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 9
 Epoch 10/100 | Steps: 559 | LR: 0.000100 | Train Loss: 0.396952 (P:0.1215, S:0.0426, Q:0.2734) | Val Loss: 1.438993 (P:1.1369, S:0.7642, Q:0.2639) | Repr L2μ: 5.9059 Val L2μ: 2.2288 | Repr Cosμ: 0.9167 Val Cosμ: 0.9875 | Pred→Target Cosμ: 0.9229 Val Cosμ: 0.5532 | Repr NormRatio: 1.0603 Val NormRatio: 1.0078 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 10
 Epoch 11/100 | Steps: 559 | LR: 0.000100 | Train Loss: 0.385196 (P:0.1180, S:0.0414, Q:0.2651) | Val Loss: 1.377826 (P:1.0995, S:0.4673, Q:0.2550) | Repr L2μ: 5.9506 Val L2μ: 3.2214 | Repr Cosμ: 0.9159 Val Cosμ: 0.9742 | Pred→Target Cosμ: 0.9290 Val Cosμ: 0.6626 | Repr NormRatio: 1.0493 Val NormRatio: 1.0067 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 11
 Epoch 12/100 | Steps: 559 | LR: 0.000100 | Train Loss: 0.378503 (P:0.1170, S:0.0408, Q:0.2595) | Val Loss: 1.074439 (P:0.7902, S:0.6312, Q:0.2527) | Repr L2μ: 6.4890 Val L2μ: 3.5084 | Repr Cosμ: 0.8996 Val Cosμ: 0.9681 | Pred→Target Cosμ: 0.9339 Val Cosμ: 0.6299 | Repr NormRatio: 1.0478 Val NormRatio: 1.0121 | Train Meta: n/a | Val Meta: n/a
    -> Saved improved checkpoint: val_loss=1.074439 at epoch 12
 Epoch 13/100 | Steps: 559 | LR: 0.000100 | Train Loss: 0.358389 (P:0.1033, S:0.0392, Q:0.2531) | Val Loss: 1.017945 (P:0.7376, S:0.6891, Q:0.2459) | Repr L2μ: 7.4931 Val L2μ: 3.2831 | Repr Cosμ: 0.8666 Val Cosμ: 0.9731 | Pred→Target Cosμ: 0.9438 Val Cosμ: 0.5873 | Repr NormRatio: 1.0468 Val NormRatio: 1.0116 | Train Meta: n/a | Val Meta: n/a
@@ -52,52 +60,175 @@ Epoch 13/100 | Steps: 559 | LR: 0.000100 | Train Loss: 0.358389 (P:0.1033, S:0.0
 Epoch 14/100 | Steps: 559 | LR: 0.000100 | Train Loss: 0.357881 (P:0.1122, S:0.0449, Q:0.2435) | Val Loss: 0.810155 (P:0.5476, S:0.6142, Q:0.2318) | Repr L2μ: 7.9235 Val L2μ: 3.2872 | Repr Cosμ: 0.8474 Val Cosμ: 0.9725 | Pred→Target Cosμ: 0.9492 Val Cosμ: 0.7644 | Repr NormRatio: 1.0567 Val NormRatio: 1.0075 | Train Meta: n/a | Val Meta: n/a
    -> Saved improved checkpoint: val_loss=0.810155 at epoch 14
 Epoch 15/100 | Steps: 559 | LR: 0.000099 | Train Loss: 0.326516 (P:0.1076, S:0.0447, Q:0.2166) | Val Loss: 1.029687 (P:0.8116, S:0.4206, Q:0.1971) | Repr L2μ: 7.7819 Val L2μ: 4.6031 | Repr Cosμ: 0.8514 Val Cosμ: 0.9455 | Pred→Target Cosμ: 0.9584 Val Cosμ: 0.8531 | Repr NormRatio: 1.0652 Val NormRatio: 1.0132 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 15
 Epoch 16/100 | Steps: 559 | LR: 0.000099 | Train Loss: 0.286725 (P:0.1062, S:0.0517, Q:0.1780) | Val Loss: 1.025545 (P:0.8522, S:0.4898, Q:0.1489) | Repr L2μ: 7.9608 Val L2μ: 3.7484 | Repr Cosμ: 0.8437 Val Cosμ: 0.9641 | Pred→Target Cosμ: 0.9586 Val Cosμ: 0.7769 | Repr NormRatio: 1.0532 Val NormRatio: 1.0106 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 16
 Epoch 17/100 | Steps: 559 | LR: 0.000099 | Train Loss: 0.230614 (P:0.0722, S:0.0429, Q:0.1563) | Val Loss: 0.988821 (P:0.8246, S:0.5049, Q:0.1390) | Repr L2μ: 7.5335 Val L2μ: 5.0484 | Repr Cosμ: 0.8649 Val Cosμ: 0.9353 | Pred→Target Cosμ: 0.9701 Val Cosμ: 0.6169 | Repr NormRatio: 1.0443 Val NormRatio: 1.0118 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 17
 Epoch 18/100 | Steps: 559 | LR: 0.000098 | Train Loss: 0.218762 (P:0.0803, S:0.0456, Q:0.1362) | Val Loss: 0.929586 (P:0.7965, S:0.5574, Q:0.1052) | Repr L2μ: 7.5738 Val L2μ: 3.7218 | Repr Cosμ: 0.8619 Val Cosμ: 0.9640 | Pred→Target Cosμ: 0.9678 Val Cosμ: 0.6433 | Repr NormRatio: 1.0392 Val NormRatio: 1.0059 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 18
 Epoch 19/100 | Steps: 559 | LR: 0.000098 | Train Loss: 0.159767 (P:0.0627, S:0.0385, Q:0.0951) | Val Loss: 0.675199 (P:0.5711, S:0.4046, Q:0.0838) | Repr L2μ: 7.6567 Val L2μ: 4.5321 | Repr Cosμ: 0.8603 Val Cosμ: 0.9455 | Pred→Target Cosμ: 0.9724 Val Cosμ: 0.7603 | Repr NormRatio: 1.0392 Val NormRatio: 1.0080 | Train Meta: n/a | Val Meta: n/a
    -> Saved improved checkpoint: val_loss=0.675199 at epoch 19
 Epoch 20/100 | Steps: 559 | LR: 0.000097 | Train Loss: 0.152220 (P:0.0720, S:0.0445, Q:0.0780) | Val Loss: 0.713377 (P:0.6090, S:0.5145, Q:0.0786) | Repr L2μ: 8.6338 Val L2μ: 4.8030 | Repr Cosμ: 0.8157 Val Cosμ: 0.9372 | Pred→Target Cosμ: 0.9703 Val Cosμ: 0.7578 | Repr NormRatio: 1.0453 Val NormRatio: 1.0091 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 20
 Epoch 21/100 | Steps: 559 | LR: 0.000096 | Train Loss: 0.155697 (P:0.0849, S:0.0504, Q:0.0683) | Val Loss: 0.480217 (P:0.3855, S:0.4302, Q:0.0732) | Repr L2μ: 7.6462 Val L2μ: 2.8974 | Repr Cosμ: 0.8496 Val Cosμ: 0.9765 | Pred→Target Cosμ: 0.9680 Val Cosμ: 0.8120 | Repr NormRatio: 1.0533 Val NormRatio: 1.0070 | Train Meta: n/a | Val Meta: n/a
    -> Saved improved checkpoint: val_loss=0.480217 at epoch 21
 Epoch 22/100 | Steps: 559 | LR: 0.000096 | Train Loss: 0.126727 (P:0.0637, S:0.0424, Q:0.0609) | Val Loss: 0.462704 (P:0.3662, S:0.5463, Q:0.0692) | Repr L2μ: 8.1090 Val L2μ: 3.1319 | Repr Cosμ: 0.8329 Val Cosμ: 0.9725 | Pred→Target Cosμ: 0.9743 Val Cosμ: 0.8790 | Repr NormRatio: 1.0729 Val NormRatio: 1.0103 | Train Meta: n/a | Val Meta: n/a
    -> Saved improved checkpoint: val_loss=0.462704 at epoch 22
 Epoch 23/100 | Steps: 559 | LR: 0.000095 | Train Loss: 0.119067 (P:0.0618, S:0.0397, Q:0.0553) | Val Loss: 0.603168 (P:0.5030, S:0.6349, Q:0.0684) | Repr L2μ: 8.7693 Val L2μ: 4.7353 | Repr Cosμ: 0.8043 Val Cosμ: 0.9331 | Pred→Target Cosμ: 0.9730 Val Cosμ: 0.8045 | Repr NormRatio: 1.0817 Val NormRatio: 1.0159 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 23
 Epoch 24/100 | Steps: 559 | LR: 0.000094 | Train Loss: 0.123120 (P:0.0702, S:0.0393, Q:0.0509) | Val Loss: 0.603879 (P:0.5081, S:0.6047, Q:0.0656) | Repr L2μ: 8.9104 Val L2μ: 2.8812 | Repr Cosμ: 0.7970 Val Cosμ: 0.9763 | Pred→Target Cosμ: 0.9677 Val Cosμ: 0.8760 | Repr NormRatio: 1.1005 Val NormRatio: 1.0132 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 24
 Epoch 25/100 | Steps: 559 | LR: 0.000093 | Train Loss: 0.125054 (P:0.0759, S:0.0415, Q:0.0471) | Val Loss: 0.647505 (P:0.5558, S:0.6389, Q:0.0598) | Repr L2μ: 8.8512 Val L2μ: 2.6798 | Repr Cosμ: 0.7978 Val Cosμ: 0.9801 | Pred→Target Cosμ: 0.9655 Val Cosμ: 0.7573 | Repr NormRatio: 1.1081 Val NormRatio: 1.0302 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 25
 Epoch 26/100 | Steps: 559 | LR: 0.000092 | Train Loss: 0.125608 (P:0.0794, S:0.0398, Q:0.0442) | Val Loss: 0.536560 (P:0.4549, S:0.5625, Q:0.0535) | Repr L2μ: 8.9491 Val L2μ: 3.5891 | Repr Cosμ: 0.7885 Val Cosμ: 0.9621 | Pred→Target Cosμ: 0.9624 Val Cosμ: 0.7819 | Repr NormRatio: 1.1113 Val NormRatio: 1.0323 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 26
 Epoch 27/100 | Steps: 559 | LR: 0.000092 | Train Loss: 0.117602 (P:0.0746, S:0.0393, Q:0.0411) | Val Loss: 0.525908 (P:0.4453, S:0.5864, Q:0.0513) | Repr L2μ: 9.2788 Val L2μ: 3.2671 | Repr Cosμ: 0.7679 Val Cosμ: 0.9685 | Pred→Target Cosμ: 0.9648 Val Cosμ: 0.8100 | Repr NormRatio: 1.1129 Val NormRatio: 1.0187 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 27
 Epoch 28/100 | Steps: 559 | LR: 0.000091 | Train Loss: 0.111211 (P:0.0711, S:0.0401, Q:0.0381) | Val Loss: 0.424948 (P:0.3478, S:0.6430, Q:0.0450) | Repr L2μ: 9.6365 Val L2μ: 3.2867 | Repr Cosμ: 0.7475 Val Cosμ: 0.9673 | Pred→Target Cosμ: 0.9669 Val Cosμ: 0.8924 | Repr NormRatio: 1.1216 Val NormRatio: 1.0264 | Train Meta: n/a | Val Meta: n/a
    -> Saved improved checkpoint: val_loss=0.424948 at epoch 28
 Epoch 29/100 | Steps: 559 | LR: 0.000090 | Train Loss: 0.107550 (P:0.0697, S:0.0404, Q:0.0358) | Val Loss: 0.443051 (P:0.3678, S:0.6318, Q:0.0436) | Repr L2μ: 9.9021 Val L2μ: 3.2919 | Repr Cosμ: 0.7306 Val Cosμ: 0.9672 | Pred→Target Cosμ: 0.9671 Val Cosμ: 0.8813 | Repr NormRatio: 1.1481 Val NormRatio: 1.0267 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 29
 Epoch 30/100 | Steps: 559 | LR: 0.000088 | Train Loss: 0.096222 (P:0.0611, S:0.0380, Q:0.0332) | Val Loss: 0.368796 (P:0.2912, S:0.7696, Q:0.0391) | Repr L2μ: 10.0266 Val L2μ: 3.6444 | Repr Cosμ: 0.7292 Val Cosμ: 0.9590 | Pred→Target Cosμ: 0.9714 Val Cosμ: 0.9270 | Repr NormRatio: 1.1424 Val NormRatio: 1.0162 | Train Meta: n/a | Val Meta: n/a
    -> Saved improved checkpoint: val_loss=0.368796 at epoch 30
 Epoch 31/100 | Steps: 559 | LR: 0.000087 | Train Loss: 0.098316 (P:0.0666, S:0.0372, Q:0.0299) | Val Loss: 0.535846 (P:0.4733, S:0.5386, Q:0.0356) | Repr L2μ: 9.6112 Val L2μ: 3.1788 | Repr Cosμ: 0.7527 Val Cosμ: 0.9685 | Pred→Target Cosμ: 0.9694 Val Cosμ: 0.8095 | Repr NormRatio: 1.1205 Val NormRatio: 1.0240 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 31
 Epoch 32/100 | Steps: 559 | LR: 0.000086 | Train Loss: 0.096990 (P:0.0683, S:0.0356, Q:0.0269) | Val Loss: 0.587385 (P:0.5195, S:0.7209, Q:0.0319) | Repr L2μ: 8.8244 Val L2μ: 3.0362 | Repr Cosμ: 0.7867 Val Cosμ: 0.9713 | Pred→Target Cosμ: 0.9682 Val Cosμ: 0.8299 | Repr NormRatio: 1.1209 Val NormRatio: 1.0318 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 32
 Epoch 33/100 | Steps: 559 | LR: 0.000085 | Train Loss: 0.092014 (P:0.0660, S:0.0339, Q:0.0243) | Val Loss: 0.641442 (P:0.5705, S:0.8328, Q:0.0293) | Repr L2μ: 8.0234 Val L2μ: 2.6104 | Repr Cosμ: 0.8183 Val Cosμ: 0.9784 | Pred→Target Cosμ: 0.9699 Val Cosμ: 0.7663 | Repr NormRatio: 1.1461 Val NormRatio: 1.0420 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 33
 Epoch 34/100 | Steps: 559 | LR: 0.000084 | Train Loss: 0.090885 (P:0.0673, S:0.0332, Q:0.0219) | Val Loss: 0.688142 (P:0.6182, S:0.8285, Q:0.0285) | Repr L2μ: 7.9058 Val L2μ: 2.2339 | Repr Cosμ: 0.8199 Val Cosμ: 0.9845 | Pred→Target Cosμ: 0.9708 Val Cosμ: 0.7715 | Repr NormRatio: 1.1820 Val NormRatio: 1.0329 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 34
 Epoch 35/100 | Steps: 559 | LR: 0.000082 | Train Loss: 0.082322 (P:0.0611, S:0.0323, Q:0.0196) | Val Loss: 0.724599 (P:0.6576, S:0.8341, Q:0.0253) | Repr L2μ: 7.9563 Val L2μ: 2.0637 | Repr Cosμ: 0.8146 Val Cosμ: 0.9867 | Pred→Target Cosμ: 0.9737 Val Cosμ: 0.7407 | Repr NormRatio: 1.2008 Val NormRatio: 1.0386 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 35
 Epoch 36/100 | Steps: 559 | LR: 0.000081 | Train Loss: 0.076013 (P:0.0566, S:0.0320, Q:0.0178) | Val Loss: 0.788870 (P:0.7211, S:0.8667, Q:0.0244) | Repr L2μ: 7.8198 Val L2μ: 1.9775 | Repr Cosμ: 0.8190 Val Cosμ: 0.9879 | Pred→Target Cosμ: 0.9756 Val Cosμ: 0.7058 | Repr NormRatio: 1.2007 Val NormRatio: 1.0367 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 36
 Epoch 37/100 | Steps: 559 | LR: 0.000080 | Train Loss: 0.069370 (P:0.0518, S:0.0313, Q:0.0160) | Val Loss: 0.940492 (P:0.8696, S:0.9587, Q:0.0230) | Repr L2μ: 7.9220 Val L2μ: 2.0341 | Repr Cosμ: 0.8077 Val Cosμ: 0.9866 | Pred→Target Cosμ: 0.9769 Val Cosμ: 0.6336 | Repr NormRatio: 1.2177 Val NormRatio: 1.0470 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 37
 Epoch 38/100 | Steps: 559 | LR: 0.000078 | Train Loss: 0.067547 (P:0.0515, S:0.0314, Q:0.0145) | Val Loss: 0.725871 (P:0.6607, S:0.8874, Q:0.0208) | Repr L2μ: 8.0335 Val L2μ: 2.5177 | Repr Cosμ: 0.7978 Val Cosμ: 0.9786 | Pred→Target Cosμ: 0.9771 Val Cosμ: 0.7157 | Repr NormRatio: 1.2219 Val NormRatio: 1.0473 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 38
 Epoch 39/100 | Steps: 559 | LR: 0.000077 | Train Loss: 0.065434 (P:0.0505, S:0.0341, Q:0.0132) | Val Loss: 0.689313 (P:0.6272, S:0.8740, Q:0.0184) | Repr L2μ: 7.9331 Val L2μ: 2.2953 | Repr Cosμ: 0.8024 Val Cosμ: 0.9826 | Pred→Target Cosμ: 0.9775 Val Cosμ: 0.7146 | Repr NormRatio: 1.2181 Val NormRatio: 1.0455 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 39
 Epoch 40/100 | Steps: 559 | LR: 0.000075 | Train Loss: 0.060319 (P:0.0469, S:0.0303, Q:0.0119) | Val Loss: 0.880335 (P:0.8128, S:1.0239, Q:0.0164) | Repr L2μ: 8.0891 Val L2μ: 2.0183 | Repr Cosμ: 0.7914 Val Cosμ: 0.9868 | Pred→Target Cosμ: 0.9786 Val Cosμ: 0.6222 | Repr NormRatio: 1.2313 Val NormRatio: 1.0404 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 40
 Epoch 41/100 | Steps: 559 | LR: 0.000074 | Train Loss: 0.062193 (P:0.0497, S:0.0314, Q:0.0109) | Val Loss: 0.576824 (P:0.5241, S:0.7578, Q:0.0149) | Repr L2μ: 7.9815 Val L2μ: 1.9873 | Repr Cosμ: 0.7985 Val Cosμ: 0.9876 | Pred→Target Cosμ: 0.9774 Val Cosμ: 0.7956 | Repr NormRatio: 1.2286 Val NormRatio: 1.0437 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 41
 Epoch 42/100 | Steps: 559 | LR: 0.000072 | Train Loss: 0.057073 (P:0.0458, S:0.0292, Q:0.0098) | Val Loss: 0.684345 (P:0.6300, S:0.8321, Q:0.0128) | Repr L2μ: 8.0811 Val L2μ: 2.1028 | Repr Cosμ: 0.7896 Val Cosμ: 0.9857 | Pred→Target Cosμ: 0.9787 Val Cosμ: 0.7378 | Repr NormRatio: 1.2452 Val NormRatio: 1.0518 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 42
 Epoch 43/100 | Steps: 559 | LR: 0.000071 | Train Loss: 0.059193 (P:0.0486, S:0.0314, Q:0.0090) | Val Loss: 0.579045 (P:0.5319, S:0.7142, Q:0.0115) | Repr L2μ: 8.1312 Val L2μ: 1.8510 | Repr Cosμ: 0.7900 Val Cosμ: 0.9892 | Pred→Target Cosμ: 0.9780 Val Cosμ: 0.7850 | Repr NormRatio: 1.2073 Val NormRatio: 1.0299 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 43
 Epoch 44/100 | Steps: 559 | LR: 0.000069 | Train Loss: 0.053792 (P:0.0442, S:0.0302, Q:0.0080) | Val Loss: 0.657603 (P:0.6040, S:0.8707, Q:0.0100) | Repr L2μ: 8.0192 Val L2μ: 1.9944 | Repr Cosμ: 0.7963 Val Cosμ: 0.9872 | Pred→Target Cosμ: 0.9796 Val Cosμ: 0.7139 | Repr NormRatio: 1.1929 Val NormRatio: 1.0340 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 44
 Epoch 45/100 | Steps: 559 | LR: 0.000067 | Train Loss: 0.053356 (P:0.0446, S:0.0302, Q:0.0072) | Val Loss: 0.539389 (P:0.4953, S:0.7007, Q:0.0090) | Repr L2μ: 8.0924 Val L2μ: 1.9797 | Repr Cosμ: 0.7907 Val Cosμ: 0.9870 | Pred→Target Cosμ: 0.9796 Val Cosμ: 0.7812 | Repr NormRatio: 1.1818 Val NormRatio: 1.0327 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 45
 Epoch 46/100 | Steps: 559 | LR: 0.000066 | Train Loss: 0.052020 (P:0.0441, S:0.0303, Q:0.0065) | Val Loss: 0.746899 (P:0.6990, S:0.7988, Q:0.0079) | Repr L2μ: 7.9565 Val L2μ: 1.7613 | Repr Cosμ: 0.7979 Val Cosμ: 0.9898 | Pred→Target Cosμ: 0.9798 Val Cosμ: 0.7081 | Repr NormRatio: 1.1744 Val NormRatio: 1.0325 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 46
 Epoch 47/100 | Steps: 559 | LR: 0.000064 | Train Loss: 0.046415 (P:0.0393, S:0.0287, Q:0.0056) | Val Loss: 0.621175 (P:0.5811, S:0.6644, Q:0.0068) | Repr L2μ: 8.0031 Val L2μ: 1.8650 | Repr Cosμ: 0.7939 Val Cosμ: 0.9885 | Pred→Target Cosμ: 0.9819 Val Cosμ: 0.7687 | Repr NormRatio: 1.1758 Val NormRatio: 1.0335 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 47
 Epoch 48/100 | Steps: 559 | LR: 0.000062 | Train Loss: 0.044705 (P:0.0382, S:0.0289, Q:0.0051) | Val Loss: 0.621786 (P:0.5783, S:0.7456, Q:0.0062) | Repr L2μ: 8.0841 Val L2μ: 1.8919 | Repr Cosμ: 0.7893 Val Cosμ: 0.9880 | Pred→Target Cosμ: 0.9825 Val Cosμ: 0.7537 | Repr NormRatio: 1.1633 Val NormRatio: 1.0338 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 48
 Epoch 49/100 | Steps: 559 | LR: 0.000061 | Train Loss: 0.044210 (P:0.0381, S:0.0293, Q:0.0046) | Val Loss: 0.608277 (P:0.5677, S:0.6971, Q:0.0057) | Repr L2μ: 8.0851 Val L2μ: 2.0833 | Repr Cosμ: 0.7842 Val Cosμ: 0.9850 | Pred→Target Cosμ: 0.9823 Val Cosμ: 0.7649 | Repr NormRatio: 1.1762 Val NormRatio: 1.0517 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 49
 Epoch 50/100 | Steps: 559 | LR: 0.000059 | Train Loss: 0.040746 (P:0.0352, S:0.0290, Q:0.0041) | Val Loss: 0.669627 (P:0.6251, S:0.7852, Q:0.0053) | Repr L2μ: 8.0205 Val L2μ: 1.8965 | Repr Cosμ: 0.7859 Val Cosμ: 0.9876 | Pred→Target Cosμ: 0.9833 Val Cosμ: 0.7155 | Repr NormRatio: 1.1843 Val NormRatio: 1.0430 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 50
 Epoch 51/100 | Steps: 559 | LR: 0.000057 | Train Loss: 0.042068 (P:0.0368, S:0.0295, Q:0.0037) | Val Loss: 0.591050 (P:0.5512, S:0.7065, Q:0.0045) | Repr L2μ: 8.1632 Val L2μ: 2.2618 | Repr Cosμ: 0.7728 Val Cosμ: 0.9814 | Pred→Target Cosμ: 0.9824 Val Cosμ: 0.7710 | Repr NormRatio: 1.1893 Val NormRatio: 1.0465 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 51
 Epoch 52/100 | Steps: 559 | LR: 0.000056 | Train Loss: 0.038660 (P:0.0339, S:0.0285, Q:0.0034) | Val Loss: 0.648420 (P:0.6063, S:0.7565, Q:0.0043) | Repr L2μ: 8.4258 Val L2μ: 2.0571 | Repr Cosμ: 0.7567 Val Cosμ: 0.9849 | Pred→Target Cosμ: 0.9837 Val Cosμ: 0.7283 | Repr NormRatio: 1.1978 Val NormRatio: 1.0512 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 52
 Epoch 53/100 | Steps: 559 | LR: 0.000054 | Train Loss: 0.039249 (P:0.0347, S:0.0284, Q:0.0031) | Val Loss: 0.488437 (P:0.4571, S:0.5471, Q:0.0040) | Repr L2μ: 8.2042 Val L2μ: 1.8847 | Repr Cosμ: 0.7696 Val Cosμ: 0.9876 | Pred→Target Cosμ: 0.9832 Val Cosμ: 0.8528 | Repr NormRatio: 1.2075 Val NormRatio: 1.0489 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 53
 Epoch 54/100 | Steps: 559 | LR: 0.000052 | Train Loss: 0.038365 (P:0.0341, S:0.0287, Q:0.0028) | Val Loss: 0.580650 (P:0.5472, S:0.5944, Q:0.0037) | Repr L2μ: 8.3433 Val L2μ: 2.3540 | Repr Cosμ: 0.7608 Val Cosμ: 0.9797 | Pred→Target Cosμ: 0.9833 Val Cosμ: 0.8065 | Repr NormRatio: 1.1974 Val NormRatio: 1.0714 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 54
 Epoch 55/100 | Steps: 559 | LR: 0.000051 | Train Loss: 0.039416 (P:0.0353, S:0.0293, Q:0.0027) | Val Loss: 0.445411 (P:0.4099, S:0.6390, Q:0.0035) | Repr L2μ: 8.5478 Val L2μ: 2.2752 | Repr Cosμ: 0.7502 Val Cosμ: 0.9824 | Pred→Target Cosμ: 0.9828 Val Cosμ: 0.8388 | Repr NormRatio: 1.1944 Val NormRatio: 1.0694 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 55
 Epoch 56/100 | Steps: 559 | LR: 0.000049 | Train Loss: 0.038752 (P:0.0348, S:0.0303, Q:0.0024) | Val Loss: 0.584328 (P:0.5448, S:0.7281, Q:0.0031) | Repr L2μ: 8.4907 Val L2μ: 2.2431 | Repr Cosμ: 0.7540 Val Cosμ: 0.9824 | Pred→Target Cosμ: 0.9830 Val Cosμ: 0.7928 | Repr NormRatio: 1.2122 Val NormRatio: 1.0844 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 56
 Epoch 57/100 | Steps: 559 | LR: 0.000047 | Train Loss: 0.038980 (P:0.0352, S:0.0292, Q:0.0023) | Val Loss: 0.655034 (P:0.6172, S:0.6960, Q:0.0030) | Repr L2μ: 8.5291 Val L2μ: 2.5095 | Repr Cosμ: 0.7516 Val Cosμ: 0.9765 | Pred→Target Cosμ: 0.9825 Val Cosμ: 0.7471 | Repr NormRatio: 1.1900 Val NormRatio: 1.0921 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 57
 Epoch 58/100 | Steps: 559 | LR: 0.000045 | Train Loss: 0.038698 (P:0.0350, S:0.0294, Q:0.0022) | Val Loss: 0.729438 (P:0.6878, S:0.7751, Q:0.0029) | Repr L2μ: 8.6693 Val L2μ: 2.6020 | Repr Cosμ: 0.7460 Val Cosμ: 0.9751 | Pred→Target Cosμ: 0.9829 Val Cosμ: 0.6896 | Repr NormRatio: 1.2009 Val NormRatio: 1.0869 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 58
 Epoch 59/100 | Steps: 559 | LR: 0.000044 | Train Loss: 0.034122 (P:0.0307, S:0.0291, Q:0.0020) | Val Loss: 0.767773 (P:0.7271, S:0.7528, Q:0.0030) | Repr L2μ: 8.7833 Val L2μ: 2.9727 | Repr Cosμ: 0.7386 Val Cosμ: 0.9663 | Pred→Target Cosμ: 0.9847 Val Cosμ: 0.6511 | Repr NormRatio: 1.2082 Val NormRatio: 1.0953 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 59
+Epoch 60/100 | Steps: 559 | LR: 0.000042 | Train Loss: 0.036522 (P:0.0332, S:0.0287, Q:0.0018) | Val Loss: 0.635098 (P:0.6024, S:0.6032, Q:0.0025) | Repr L2μ: 8.8099 Val L2μ: 3.1037 | Repr Cosμ: 0.7368 Val Cosμ: 0.9622 | Pred→Target Cosμ: 0.9833 Val Cosμ: 0.7601 | Repr NormRatio: 1.1899 Val NormRatio: 1.0979 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 60
+Epoch 61/100 | Steps: 559 | LR: 0.000040 | Train Loss: 0.057067 (P:0.0537, S:0.0295, Q:0.0019) | Val Loss: 0.602443 (P:0.5632, S:0.7385, Q:0.0024) | Repr L2μ: 8.1452 Val L2μ: 2.0329 | Repr Cosμ: 0.7727 Val Cosμ: 0.9844 | Pred→Target Cosμ: 0.9727 Val Cosμ: 0.7762 | Repr NormRatio: 1.1730 Val NormRatio: 1.0734 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 61
+Epoch 62/100 | Steps: 559 | LR: 0.000039 | Train Loss: 0.061271 (P:0.0581, S:0.0297, Q:0.0017) | Val Loss: 0.760882 (P:0.7139, S:0.8952, Q:0.0022) | Repr L2μ: 6.9884 Val L2μ: 1.9500 | Repr Cosμ: 0.8279 Val Cosμ: 0.9851 | Pred→Target Cosμ: 0.9717 Val Cosμ: 0.6915 | Repr NormRatio: 1.1133 Val NormRatio: 1.0627 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 62
+Epoch 63/100 | Steps: 559 | LR: 0.000037 | Train Loss: 0.049673 (P:0.0467, S:0.0286, Q:0.0015) | Val Loss: 0.724148 (P:0.6793, S:0.8518, Q:0.0023) | Repr L2μ: 7.2239 Val L2μ: 2.0154 | Repr Cosμ: 0.8172 Val Cosμ: 0.9842 | Pred→Target Cosμ: 0.9778 Val Cosμ: 0.7152 | Repr NormRatio: 1.1001 Val NormRatio: 1.0595 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 63
+Epoch 64/100 | Steps: 559 | LR: 0.000035 | Train Loss: 0.043975 (P:0.0411, S:0.0280, Q:0.0015) | Val Loss: 0.715407 (P:0.6719, S:0.8275, Q:0.0022) | Repr L2μ: 7.5039 Val L2μ: 2.1364 | Repr Cosμ: 0.8046 Val Cosμ: 0.9823 | Pred→Target Cosμ: 0.9803 Val Cosμ: 0.7207 | Repr NormRatio: 1.0942 Val NormRatio: 1.0522 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 64
+Epoch 65/100 | Steps: 559 | LR: 0.000034 | Train Loss: 0.040634 (P:0.0378, S:0.0278, Q:0.0014) | Val Loss: 0.633312 (P:0.5928, S:0.7701, Q:0.0020) | Repr L2μ: 7.6844 Val L2μ: 2.1722 | Repr Cosμ: 0.7976 Val Cosμ: 0.9815 | Pred→Target Cosμ: 0.9817 Val Cosμ: 0.7574 | Repr NormRatio: 1.0919 Val NormRatio: 1.0500 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 65
+Epoch 66/100 | Steps: 559 | LR: 0.000032 | Train Loss: 0.038449 (P:0.0357, S:0.0278, Q:0.0013) | Val Loss: 0.682759 (P:0.6439, S:0.7344, Q:0.0021) | Repr L2μ: 7.7902 Val L2μ: 2.3981 | Repr Cosμ: 0.7935 Val Cosμ: 0.9778 | Pred→Target Cosμ: 0.9826 Val Cosμ: 0.7442 | Repr NormRatio: 1.0947 Val NormRatio: 1.0564 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 66
+Epoch 67/100 | Steps: 559 | LR: 0.000030 | Train Loss: 0.036641 (P:0.0340, S:0.0278, Q:0.0013) | Val Loss: 0.586149 (P:0.5532, S:0.6215, Q:0.0019) | Repr L2μ: 8.0213 Val L2μ: 2.8949 | Repr Cosμ: 0.7844 Val Cosμ: 0.9678 | Pred→Target Cosμ: 0.9835 Val Cosμ: 0.8000 | Repr NormRatio: 1.0964 Val NormRatio: 1.0553 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 67
+Epoch 68/100 | Steps: 559 | LR: 0.000029 | Train Loss: 0.035019 (P:0.0324, S:0.0278, Q:0.0012) | Val Loss: 0.621410 (P:0.5890, S:0.6106, Q:0.0019) | Repr L2μ: 8.1132 Val L2μ: 3.1483 | Repr Cosμ: 0.7798 Val Cosμ: 0.9607 | Pred→Target Cosμ: 0.9840 Val Cosμ: 0.7886 | Repr NormRatio: 1.1025 Val NormRatio: 1.0591 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 68
+Epoch 69/100 | Steps: 559 | LR: 0.000027 | Train Loss: 0.034237 (P:0.0317, S:0.0278, Q:0.0012) | Val Loss: 0.632327 (P:0.6008, S:0.5965, Q:0.0017) | Repr L2μ: 8.1386 Val L2μ: 3.3952 | Repr Cosμ: 0.7786 Val Cosμ: 0.9542 | Pred→Target Cosμ: 0.9842 Val Cosμ: 0.7809 | Repr NormRatio: 1.1042 Val NormRatio: 1.0566 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 69
+Epoch 70/100 | Steps: 559 | LR: 0.000026 | Train Loss: 0.033785 (P:0.0312, S:0.0280, Q:0.0012) | Val Loss: 0.562082 (P:0.5318, S:0.5707, Q:0.0018) | Repr L2μ: 8.2628 Val L2μ: 2.9392 | Repr Cosμ: 0.7717 Val Cosμ: 0.9663 | Pred→Target Cosμ: 0.9843 Val Cosμ: 0.8343 | Repr NormRatio: 1.1064 Val NormRatio: 1.0570 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 70
+Epoch 71/100 | Steps: 559 | LR: 0.000024 | Train Loss: 0.033014 (P:0.0305, S:0.0281, Q:0.0011) | Val Loss: 0.559363 (P:0.5298, S:0.5571, Q:0.0017) | Repr L2μ: 8.2254 Val L2μ: 2.9739 | Repr Cosμ: 0.7748 Val Cosμ: 0.9654 | Pred→Target Cosμ: 0.9846 Val Cosμ: 0.8511 | Repr NormRatio: 1.1051 Val NormRatio: 1.0516 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 71
+Epoch 72/100 | Steps: 559 | LR: 0.000023 | Train Loss: 0.032214 (P:0.0297, S:0.0280, Q:0.0011) | Val Loss: 0.539255 (P:0.5101, S:0.5500, Q:0.0016) | Repr L2μ: 8.2548 Val L2μ: 3.0009 | Repr Cosμ: 0.7746 Val Cosμ: 0.9645 | Pred→Target Cosμ: 0.9849 Val Cosμ: 0.8580 | Repr NormRatio: 1.0987 Val NormRatio: 1.0511 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 72
+Epoch 73/100 | Steps: 559 | LR: 0.000021 | Train Loss: 0.031440 (P:0.0290, S:0.0279, Q:0.0010) | Val Loss: 0.588384 (P:0.5571, S:0.5953, Q:0.0016) | Repr L2μ: 8.3560 Val L2μ: 3.0071 | Repr Cosμ: 0.7680 Val Cosμ: 0.9644 | Pred→Target Cosμ: 0.9852 Val Cosμ: 0.8326 | Repr NormRatio: 1.0990 Val NormRatio: 1.0562 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 73
+Epoch 74/100 | Steps: 559 | LR: 0.000020 | Train Loss: 0.031155 (P:0.0287, S:0.0281, Q:0.0010) | Val Loss: 0.636785 (P:0.6027, S:0.6514, Q:0.0015) | Repr L2μ: 8.5440 Val L2μ: 3.1447 | Repr Cosμ: 0.7593 Val Cosμ: 0.9597 | Pred→Target Cosμ: 0.9853 Val Cosμ: 0.7986 | Repr NormRatio: 1.0977 Val NormRatio: 1.0548 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 74
+Epoch 75/100 | Steps: 559 | LR: 0.000019 | Train Loss: 0.030274 (P:0.0279, S:0.0277, Q:0.0010) | Val Loss: 0.697799 (P:0.6621, S:0.6827, Q:0.0015) | Repr L2μ: 8.6014 Val L2μ: 3.0706 | Repr Cosμ: 0.7565 Val Cosμ: 0.9641 | Pred→Target Cosμ: 0.9857 Val Cosμ: 0.7868 | Repr NormRatio: 1.0920 Val NormRatio: 1.0449 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 75
+Epoch 76/100 | Steps: 559 | LR: 0.000017 | Train Loss: 0.029292 (P:0.0269, S:0.0278, Q:0.0010) | Val Loss: 0.647372 (P:0.6127, S:0.6639, Q:0.0015) | Repr L2μ: 8.6821 Val L2μ: 3.1587 | Repr Cosμ: 0.7517 Val Cosμ: 0.9613 | Pred→Target Cosμ: 0.9861 Val Cosμ: 0.8079 | Repr NormRatio: 1.0922 Val NormRatio: 1.0461 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 76
+Epoch 77/100 | Steps: 559 | LR: 0.000016 | Train Loss: 0.028432 (P:0.0261, S:0.0278, Q:0.0009) | Val Loss: 0.699134 (P:0.6612, S:0.7292, Q:0.0014) | Repr L2μ: 8.8192 Val L2μ: 3.2587 | Repr Cosμ: 0.7449 Val Cosμ: 0.9581 | Pred→Target Cosμ: 0.9865 Val Cosμ: 0.7712 | Repr NormRatio: 1.0916 Val NormRatio: 1.0482 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 77
+Epoch 78/100 | Steps: 559 | LR: 0.000015 | Train Loss: 0.028323 (P:0.0260, S:0.0278, Q:0.0009) | Val Loss: 0.614305 (P:0.5830, S:0.5968, Q:0.0015) | Repr L2μ: 8.9191 Val L2μ: 3.4247 | Repr Cosμ: 0.7390 Val Cosμ: 0.9547 | Pred→Target Cosμ: 0.9866 Val Cosμ: 0.8278 | Repr NormRatio: 1.0927 Val NormRatio: 1.0483 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 78
+Epoch 79/100 | Steps: 559 | LR: 0.000014 | Train Loss: 0.027693 (P:0.0254, S:0.0277, Q:0.0009) | Val Loss: 0.643245 (P:0.6097, S:0.6432, Q:0.0014) | Repr L2μ: 8.9696 Val L2μ: 3.2691 | Repr Cosμ: 0.7368 Val Cosμ: 0.9587 | Pred→Target Cosμ: 0.9868 Val Cosμ: 0.8173 | Repr NormRatio: 1.0900 Val NormRatio: 1.0457 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 79
+Epoch 80/100 | Steps: 559 | LR: 0.000013 | Train Loss: 0.027866 (P:0.0256, S:0.0279, Q:0.0009) | Val Loss: 0.734466 (P:0.6961, S:0.7381, Q:0.0015) | Repr L2μ: 8.9126 Val L2μ: 3.1221 | Repr Cosμ: 0.7399 Val Cosμ: 0.9613 | Pred→Target Cosμ: 0.9867 Val Cosμ: 0.7681 | Repr NormRatio: 1.0886 Val NormRatio: 1.0501 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 80
+Epoch 81/100 | Steps: 559 | LR: 0.000011 | Train Loss: 0.028808 (P:0.0265, S:0.0280, Q:0.0009) | Val Loss: 0.652959 (P:0.6172, S:0.6881, Q:0.0014) | Repr L2μ: 8.7468 Val L2μ: 3.0276 | Repr Cosμ: 0.7502 Val Cosμ: 0.9643 | Pred→Target Cosμ: 0.9861 Val Cosμ: 0.8209 | Repr NormRatio: 1.0877 Val NormRatio: 1.0473 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 81
+Epoch 82/100 | Steps: 559 | LR: 0.000010 | Train Loss: 0.027588 (P:0.0253, S:0.0281, Q:0.0009) | Val Loss: 0.813645 (P:0.7731, S:0.7847, Q:0.0013) | Repr L2μ: 8.7865 Val L2μ: 3.0552 | Repr Cosμ: 0.7472 Val Cosμ: 0.9647 | Pred→Target Cosμ: 0.9866 Val Cosμ: 0.7296 | Repr NormRatio: 1.0864 Val NormRatio: 1.0430 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 82
+Epoch 83/100 | Steps: 559 | LR: 0.000009 | Train Loss: 0.035269 (P:0.0329, S:0.0286, Q:0.0009) | Val Loss: 0.786909 (P:0.7470, S:0.7683, Q:0.0015) | Repr L2μ: 8.7645 Val L2μ: 2.9322 | Repr Cosμ: 0.7490 Val Cosμ: 0.9681 | Pred→Target Cosμ: 0.9826 Val Cosμ: 0.7460 | Repr NormRatio: 1.0776 Val NormRatio: 1.0483 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 83
+Epoch 84/100 | Steps: 559 | LR: 0.000009 | Train Loss: 0.027390 (P:0.0251, S:0.0285, Q:0.0009) | Val Loss: 0.728952 (P:0.6910, S:0.7324, Q:0.0014) | Repr L2μ: 9.0462 Val L2μ: 2.9526 | Repr Cosμ: 0.7375 Val Cosμ: 0.9669 | Pred→Target Cosμ: 0.9875 Val Cosμ: 0.7863 | Repr NormRatio: 1.0742 Val NormRatio: 1.0435 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 84
+Epoch 85/100 | Steps: 559 | LR: 0.000008 | Train Loss: 0.025261 (P:0.0230, S:0.0279, Q:0.0008) | Val Loss: 0.751468 (P:0.7133, S:0.7374, Q:0.0013) | Repr L2μ: 9.0617 Val L2μ: 2.9595 | Repr Cosμ: 0.7331 Val Cosμ: 0.9663 | Pred→Target Cosμ: 0.9881 Val Cosμ: 0.7831 | Repr NormRatio: 1.0774 Val NormRatio: 1.0421 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 85
+Epoch 86/100 | Steps: 559 | LR: 0.000007 | Train Loss: 0.024927 (P:0.0227, S:0.0276, Q:0.0008) | Val Loss: 0.750671 (P:0.7121, S:0.7460, Q:0.0013) | Repr L2μ: 9.0470 Val L2μ: 2.9755 | Repr Cosμ: 0.7340 Val Cosμ: 0.9660 | Pred→Target Cosμ: 0.9882 Val Cosμ: 0.7718 | Repr NormRatio: 1.0782 Val NormRatio: 1.0427 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 86
+Epoch 87/100 | Steps: 559 | LR: 0.000006 | Train Loss: 0.024940 (P:0.0227, S:0.0276, Q:0.0008) | Val Loss: 0.818526 (P:0.7807, S:0.7303, Q:0.0013) | Repr L2μ: 9.0958 Val L2μ: 3.1374 | Repr Cosμ: 0.7315 Val Cosμ: 0.9628 | Pred→Target Cosμ: 0.9882 Val Cosμ: 0.7716 | Repr NormRatio: 1.0796 Val NormRatio: 1.0455 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 87
+Epoch 88/100 | Steps: 559 | LR: 0.000005 | Train Loss: 0.024684 (P:0.0225, S:0.0276, Q:0.0008) | Val Loss: 0.852905 (P:0.8130, S:0.7726, Q:0.0013) | Repr L2μ: 9.0929 Val L2μ: 3.1438 | Repr Cosμ: 0.7315 Val Cosμ: 0.9622 | Pred→Target Cosμ: 0.9883 Val Cosμ: 0.7363 | Repr NormRatio: 1.0790 Val NormRatio: 1.0409 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 88
+Epoch 89/100 | Steps: 559 | LR: 0.000005 | Train Loss: 0.024614 (P:0.0224, S:0.0275, Q:0.0008) | Val Loss: 0.806102 (P:0.7691, S:0.7148, Q:0.0012) | Repr L2μ: 9.1128 Val L2μ: 3.1658 | Repr Cosμ: 0.7311 Val Cosμ: 0.9620 | Pred→Target Cosμ: 0.9884 Val Cosμ: 0.7647 | Repr NormRatio: 1.0770 Val NormRatio: 1.0419 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 89
+Epoch 90/100 | Steps: 559 | LR: 0.000004 | Train Loss: 0.024281 (P:0.0221, S:0.0276, Q:0.0008) | Val Loss: 0.801763 (P:0.7669, S:0.6733, Q:0.0012) | Repr L2μ: 9.1929 Val L2μ: 3.1909 | Repr Cosμ: 0.7262 Val Cosμ: 0.9620 | Pred→Target Cosμ: 0.9886 Val Cosμ: 0.7743 | Repr NormRatio: 1.0756 Val NormRatio: 1.0428 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 90
+Epoch 91/100 | Steps: 559 | LR: 0.000003 | Train Loss: 0.024142 (P:0.0220, S:0.0275, Q:0.0008) | Val Loss: 0.798771 (P:0.7640, S:0.6718, Q:0.0012) | Repr L2μ: 9.2137 Val L2μ: 3.2018 | Repr Cosμ: 0.7248 Val Cosμ: 0.9612 | Pred→Target Cosμ: 0.9886 Val Cosμ: 0.7691 | Repr NormRatio: 1.0753 Val NormRatio: 1.0426 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 91
+Epoch 92/100 | Steps: 559 | LR: 0.000003 | Train Loss: 0.023941 (P:0.0218, S:0.0275, Q:0.0008) | Val Loss: 0.826335 (P:0.7889, S:0.7250, Q:0.0012) | Repr L2μ: 9.2324 Val L2μ: 3.2271 | Repr Cosμ: 0.7239 Val Cosμ: 0.9611 | Pred→Target Cosμ: 0.9887 Val Cosμ: 0.7443 | Repr NormRatio: 1.0747 Val NormRatio: 1.0402 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 92
+Epoch 93/100 | Steps: 559 | LR: 0.000002 | Train Loss: 0.023801 (P:0.0216, S:0.0276, Q:0.0008) | Val Loss: 0.817390 (P:0.7812, S:0.7002, Q:0.0012) | Repr L2μ: 9.2712 Val L2μ: 3.2803 | Repr Cosμ: 0.7215 Val Cosμ: 0.9594 | Pred→Target Cosμ: 0.9888 Val Cosμ: 0.7530 | Repr NormRatio: 1.0751 Val NormRatio: 1.0419 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 93
+Epoch 94/100 | Steps: 559 | LR: 0.000002 | Train Loss: 0.023650 (P:0.0215, S:0.0274, Q:0.0008) | Val Loss: 0.822674 (P:0.7871, S:0.6864, Q:0.0012) | Repr L2μ: 9.2718 Val L2μ: 3.3151 | Repr Cosμ: 0.7215 Val Cosμ: 0.9588 | Pred→Target Cosμ: 0.9889 Val Cosμ: 0.7651 | Repr NormRatio: 1.0753 Val NormRatio: 1.0439 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 94
+Epoch 95/100 | Steps: 559 | LR: 0.000002 | Train Loss: 0.023719 (P:0.0216, S:0.0274, Q:0.0008) | Val Loss: 0.802853 (P:0.7681, S:0.6717, Q:0.0012) | Repr L2μ: 9.2968 Val L2μ: 3.3053 | Repr Cosμ: 0.7199 Val Cosμ: 0.9590 | Pred→Target Cosμ: 0.9889 Val Cosμ: 0.7769 | Repr NormRatio: 1.0762 Val NormRatio: 1.0428 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 95
+Epoch 96/100 | Steps: 559 | LR: 0.000001 | Train Loss: 0.023548 (P:0.0214, S:0.0274, Q:0.0008) | Val Loss: 0.796199 (P:0.7610, S:0.6798, Q:0.0012) | Repr L2μ: 9.3025 Val L2μ: 3.3286 | Repr Cosμ: 0.7196 Val Cosμ: 0.9585 | Pred→Target Cosμ: 0.9889 Val Cosμ: 0.7730 | Repr NormRatio: 1.0758 Val NormRatio: 1.0428 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 96
+Epoch 97/100 | Steps: 559 | LR: 0.000001 | Train Loss: 0.023474 (P:0.0213, S:0.0274, Q:0.0008) | Val Loss: 0.796000 (P:0.7605, S:0.6861, Q:0.0012) | Repr L2μ: 9.2964 Val L2μ: 3.3149 | Repr Cosμ: 0.7199 Val Cosμ: 0.9590 | Pred→Target Cosμ: 0.9889 Val Cosμ: 0.7729 | Repr NormRatio: 1.0759 Val NormRatio: 1.0420 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 97
+Epoch 98/100 | Steps: 559 | LR: 0.000001 | Train Loss: 0.023319 (P:0.0212, S:0.0275, Q:0.0008) | Val Loss: 0.808496 (P:0.7730, S:0.6857, Q:0.0012) | Repr L2μ: 9.2992 Val L2μ: 3.3408 | Repr Cosμ: 0.7201 Val Cosμ: 0.9582 | Pred→Target Cosμ: 0.9890 Val Cosμ: 0.7617 | Repr NormRatio: 1.0752 Val NormRatio: 1.0428 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 98
+Epoch 99/100 | Steps: 559 | LR: 0.000001 | Train Loss: 0.023215 (P:0.0211, S:0.0274, Q:0.0008) | Val Loss: 0.788388 (P:0.7537, S:0.6691, Q:0.0012) | Repr L2μ: 9.3060 Val L2μ: 3.3046 | Repr Cosμ: 0.7196 Val Cosμ: 0.9591 | Pred→Target Cosμ: 0.9891 Val Cosμ: 0.7790 | Repr NormRatio: 1.0765 Val NormRatio: 1.0415 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 99
+Epoch 100/100 | Steps: 559 | LR: 0.000001 | Train Loss: 0.023276 (P:0.0211, S:0.0274, Q:0.0008) | Val Loss: 0.794979 (P:0.7593, S:0.6903, Q:0.0012) | Repr L2μ: 9.3183 Val L2μ: 3.3073 | Repr Cosμ: 0.7185 Val Cosμ: 0.9591 | Pred→Target Cosμ: 0.9890 Val Cosμ: 0.7696 | Repr NormRatio: 1.0766 Val NormRatio: 1.0415 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 100
+Saved attention maps for 100 epoch snapshot(s) under ./runs/pretrain_electricity_laya_mixer_text_stats_joint/attention_maps

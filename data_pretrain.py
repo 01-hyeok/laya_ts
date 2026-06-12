@@ -1845,12 +1845,12 @@ def _resolve_lotsa_num_workers(requested_num_workers: int) -> int:
     return 0
 
 
-def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, tsld_mode: str = "univariate", tslib_mode: str = "univariate", channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_split_mode: str = "official", lotsa_sampling_mode: str = "official", lotsa_preprocessing_mode: str = "official", lotsa_sample_time_series: str = "proportional", lotsa_subset_sampling: str = "official", lotsa_min_patches: int = 2, lotsa_max_channel: int | None = None, lotsa_windows_per_series: int = 32):
+def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, tsld_mode: str = "univariate", tslib_mode: str = "univariate", channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_dataset_path: str = "Salesforce/lotsa_data", lotsa_split_mode: str = "official", lotsa_sampling_mode: str = "official", lotsa_preprocessing_mode: str = "official", lotsa_sample_time_series: str = "proportional", lotsa_subset_sampling: str = "official", lotsa_min_patches: int = 2, lotsa_max_channel: int | None = None, lotsa_windows_per_series: int = 32):
     if dataset_type == "lotsa":
         effective_num_workers = _resolve_lotsa_num_workers(num_workers)
         subset_names = _parse_lotsa_subset_names(path)
         train_ds = LOTSABatchStreamingPretrainDataset(
-            dataset_name="Salesforce/lotsa_data",
+            dataset_name=lotsa_dataset_path,
             subset_names=subset_names,
             batch_size=batch_size,
             seq_len=seq_len,
@@ -1875,7 +1875,7 @@ def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, se
         )
         try:
             val_ds = LOTSABatchStreamingPretrainDataset(
-                dataset_name="Salesforce/lotsa_data",
+                dataset_name=lotsa_dataset_path,
                 subset_names=subset_names,
                 batch_size=batch_size,
                 seq_len=seq_len,
@@ -1942,12 +1942,12 @@ def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, se
     return train_loader, val_loader
 
 
-def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_split_mode: str = "official", lotsa_sampling_mode: str = "official", lotsa_preprocessing_mode: str = "official", lotsa_sample_time_series: str = "proportional", lotsa_subset_sampling: str = "official", lotsa_min_patches: int = 2, lotsa_max_channel: int | None = None, lotsa_windows_per_series: int = 32):
+def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_dataset_path: str = "Salesforce/lotsa_data", lotsa_split_mode: str = "official", lotsa_sampling_mode: str = "official", lotsa_preprocessing_mode: str = "official", lotsa_sample_time_series: str = "proportional", lotsa_subset_sampling: str = "official", lotsa_min_patches: int = 2, lotsa_max_channel: int | None = None, lotsa_windows_per_series: int = 32):
     effective_num_workers = _resolve_lotsa_num_workers(num_workers)
     subset_names = _parse_lotsa_subset_names(path)
     if subset_names is None:
         probe_ds = LOTSABatchStreamingPretrainDataset(
-            dataset_name="Salesforce/lotsa_data",
+            dataset_name=lotsa_dataset_path,
             subset_names=None,
             batch_size=batch_size,
             seq_len=seq_len,
@@ -1973,7 +1973,7 @@ def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: 
         subset_names = probe_ds._resolve_subset_names()
     else:
         probe_ds = LOTSABatchStreamingPretrainDataset(
-            dataset_name="Salesforce/lotsa_data",
+            dataset_name=lotsa_dataset_path,
             subset_names=subset_names,
             batch_size=batch_size,
             seq_len=seq_len,
@@ -2010,7 +2010,7 @@ def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: 
                 print(f"[LOTSA-DEBUG] skip group subset={subset_name} reason=non_positive_budget budget={subset_budget}")
             continue
         train_ds = LOTSABatchStreamingPretrainDataset(
-            dataset_name="Salesforce/lotsa_data",
+            dataset_name=lotsa_dataset_path,
             subset_names=[subset_name],
             batch_size=batch_size,
             seq_len=seq_len,
@@ -2035,7 +2035,7 @@ def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: 
         )
         try:
             val_ds = LOTSABatchStreamingPretrainDataset(
-                dataset_name="Salesforce/lotsa_data",
+            dataset_name=lotsa_dataset_path,
                 subset_names=[subset_name],
                 batch_size=batch_size,
                 seq_len=seq_len,

@@ -2,7 +2,7 @@
 set -euo pipefail
 
 source /data/pjh_workspace/ts-env/bin/activate
-export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-1}"
+export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 
 PRETRAIN_DATA="electricity"
 ARCH="laya"
@@ -77,4 +77,3 @@ run_group() {
 
 run_group "../Dataset/Time-Series-Library_dataset/UEA" "${UEA_DATASETS[@]}"
 run_group "../Dataset/Time-Series-Library_dataset/UCR" "${UCR_DATASETS[@]}"
-
