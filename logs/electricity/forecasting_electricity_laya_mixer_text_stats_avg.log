@@ -365,3 +365,9 @@ Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.394098 | Val Loss: 0.260
 Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.391769 | Val Loss: 0.261063 | Train Meta: n/a | Val Meta: n/a
 Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.390542 | Val Loss: 0.261598 | Train Meta: n/a | Val Meta: n/a
 Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.389744 | Val Loss: 0.261214 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.389014 | Val Loss: 0.261868 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.387921 | Val Loss: 0.260700 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.387380 | Val Loss: 0.261395 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.386431 | Val Loss: 0.262419 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.386309 | Val Loss: 0.263159 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.385997 | Val Loss: 0.261080 | Train Meta: n/a | Val Meta: n/a

@@ -336,3 +336,10 @@ Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.388774 | Val Loss: 0.251
 Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.387503 | Val Loss: 0.253628 | Train Meta: MetaNormμ:6.0746 | Val Meta: MetaNormμ:6.0746
 Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.386412 | Val Loss: 0.255139 | Train Meta: MetaNormμ:6.0746 | Val Meta: MetaNormμ:6.0746
 Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.385819 | Val Loss: 0.252983 | Train Meta: MetaNormμ:6.0746 | Val Meta: MetaNormμ:6.0746
+Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.385305 | Val Loss: 0.254753 | Train Meta: MetaNormμ:6.0746 | Val Meta: MetaNormμ:6.0746
+Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.384835 | Val Loss: 0.254185 | Train Meta: MetaNormμ:6.0746 | Val Meta: MetaNormμ:6.0746
+Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.384548 | Val Loss: 0.254221 | Train Meta: MetaNormμ:6.0746 | Val Meta: MetaNormμ:6.0746
+Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.384243 | Val Loss: 0.254483 | Train Meta: MetaNormμ:6.0746 | Val Meta: MetaNormμ:6.0746
+Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.384062 | Val Loss: 0.254426 | Train Meta: MetaNormμ:6.0746 | Val Meta: MetaNormμ:6.0746
+Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.383971 | Val Loss: 0.252682 | Train Meta: MetaNormμ:6.0746 | Val Meta: MetaNormμ:6.0746
+Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.383700 | Val Loss: 0.254313 | Train Meta: MetaNormμ:6.0746 | Val Meta: MetaNormμ:6.0746

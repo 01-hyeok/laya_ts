@@ -360,3 +360,11 @@ Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.425718 | Val Loss: 0.288
 Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.424595 | Val Loss: 0.289350 | Train Meta: MetaNormμ:2.7986 | Val Meta: MetaNormμ:2.7986
 Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.423843 | Val Loss: 0.289007 | Train Meta: MetaNormμ:2.7986 | Val Meta: MetaNormμ:2.7986
 Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.423343 | Val Loss: 0.289202 | Train Meta: MetaNormμ:2.7986 | Val Meta: MetaNormμ:2.7986
+Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.422989 | Val Loss: 0.289239 | Train Meta: MetaNormμ:2.7986 | Val Meta: MetaNormμ:2.7986
+Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.422756 | Val Loss: 0.289377 | Train Meta: MetaNormμ:2.7986 | Val Meta: MetaNormμ:2.7986
+Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.422510 | Val Loss: 0.288943 | Train Meta: MetaNormμ:2.7986 | Val Meta: MetaNormμ:2.7986
+   -> Updated best validation state: val_loss=0.288943 at epoch 10
+Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.422089 | Val Loss: 0.289131 | Train Meta: MetaNormμ:2.7986 | Val Meta: MetaNormμ:2.7986
+Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.422221 | Val Loss: 0.289619 | Train Meta: MetaNormμ:2.7986 | Val Meta: MetaNormμ:2.7986
+Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.422120 | Val Loss: 0.289432 | Train Meta: MetaNormμ:2.7986 | Val Meta: MetaNormμ:2.7986
+Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.421926 | Val Loss: 0.289939 | Train Meta: MetaNormμ:2.7986 | Val Meta: MetaNormμ:2.7986

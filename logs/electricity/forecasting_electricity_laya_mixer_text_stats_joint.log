@@ -334,3 +334,9 @@ Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.400755 | Val Loss: 0.263
    -> Updated best validation state: val_loss=0.263895 at epoch 6
 Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.399462 | Val Loss: 0.265950 | Train Meta: n/a | Val Meta: n/a
 Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.398656 | Val Loss: 0.265793 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.397815 | Val Loss: 0.271022 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.396606 | Val Loss: 0.264840 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.396347 | Val Loss: 0.265608 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.395421 | Val Loss: 0.268019 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.395942 | Val Loss: 0.268520 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.395330 | Val Loss: 0.267779 | Train Meta: n/a | Val Meta: n/a
