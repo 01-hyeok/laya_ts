@@ -187,6 +187,7 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         self.skip_samples = skip_samples
         self.shuffle_buffer_size = shuffle_buffer_size
         self.random_seed = random_seed
+        self._resolved_local_dataset_path = self._resolve_local_lotsa_repo_path(dataset_name)
         self._text_metadata_cache: dict[tuple[str, tuple[str, ...]], torch.Tensor | None] = {}
         self._count_cache: tuple[int, int] | None = None
         self._count_cache_token: tuple[object, ...] | None = None
@@ -297,6 +298,7 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
             return self.subset_names
         local_repo = self._local_lotsa_repo_path()
         if local_repo is not None:
+            self._debug(f"using local LOTSA repo path={local_repo}")
             subset_names = self._list_local_subset_names(local_repo)
             if not subset_names:
                 raise ValueError(f"No LOTSA subset directories with arrow files found under local path {local_repo}")
@@ -314,11 +316,51 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         self.subset_names = list(subset_names)
         return self.subset_names
 
-    def _local_lotsa_repo_path(self) -> Path | None:
-        dataset_path = Path(str(self.dataset_name)).expanduser()
-        if dataset_path.is_dir():
-            return dataset_path
+    @staticmethod
+    def _looks_like_local_dataset_path(raw_value: str) -> bool:
+        raw_value = str(raw_value).strip()
+        if not raw_value:
+            return False
+        if raw_value.startswith(("~", ".", "/")):
+            return True
+        return os.sep in raw_value or (os.altsep is not None and os.altsep in raw_value)
+
+    @classmethod
+    def _resolve_local_lotsa_repo_path(cls, dataset_name: str) -> Path | None:
+        raw_value = str(dataset_name).strip()
+        if not raw_value:
+            return None
+
+        candidates: list[Path] = []
+        raw_path = Path(raw_value).expanduser()
+        if raw_path.is_absolute():
+            candidates.append(raw_path)
+        else:
+            candidates.append((Path.cwd() / raw_path).resolve())
+            candidates.append((Path(__file__).resolve().parent / raw_path).resolve())
+
+        seen: set[Path] = set()
+        unique_candidates: list[Path] = []
+        for candidate in candidates:
+            if candidate in seen:
+                continue
+            seen.add(candidate)
+            unique_candidates.append(candidate)
+
+        for candidate in unique_candidates:
+            if candidate.is_dir():
+                return candidate
+
+        if cls._looks_like_local_dataset_path(raw_value):
+            joined = ", ".join(str(candidate) for candidate in unique_candidates)
+            raise FileNotFoundError(
+                f"LOTSA local dataset path was requested but no directory was found. "
+                f"Provided='{raw_value}', checked=[{joined}]"
+            )
         return None
+
+    def _local_lotsa_repo_path(self) -> Path | None:
+        return self._resolved_local_dataset_path
 
     @staticmethod
     def _is_local_subset_dir(path: Path) -> bool:
