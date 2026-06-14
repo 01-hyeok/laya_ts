@@ -81,13 +81,6 @@ if [ -n "${LOTSA_MAX_CHANNEL}" ]; then
   EXTRA_ARGS+=(--lotsa_max_channel "${LOTSA_MAX_CHANNEL}")
 fi
 
-echo "[DEBUG-SCRIPT] pwd=$(pwd)"
-echo "[DEBUG-SCRIPT] script=$0"
-echo "[DEBUG-SCRIPT] LOTSA_DATASET_PATH=${LOTSA_DATASET_PATH}"
-echo "[DEBUG-SCRIPT] LOTSA_SUBSETS=${LOTSA_SUBSETS:-ALL}"
-echo "[DEBUG-SCRIPT] CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-unset}"
-echo "[DEBUG-SCRIPT] launching train_pretrain.py with --lotsa_dataset_path ${LOTSA_DATASET_PATH}"
-
 python -u "./train_pretrain.py" \
   --dataset_type "${DATA}" \
   --data_path "${LOTSA_SUBSETS}" \
