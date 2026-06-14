@@ -295,6 +295,13 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
     def _resolve_subset_names(self) -> list[str]:
         if self.subset_names:
             return self.subset_names
+        local_repo = self._local_lotsa_repo_path()
+        if local_repo is not None:
+            subset_names = self._list_local_subset_names(local_repo)
+            if not subset_names:
+                raise ValueError(f"No LOTSA subset directories with arrow files found under local path {local_repo}")
+            self.subset_names = subset_names
+            return self.subset_names
         try:
             from datasets import get_dataset_config_names  # type: ignore
         except Exception as exc:
@@ -306,6 +313,32 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
             raise ValueError(f"No LOTSA subset/config names found for dataset {self.dataset_name}")
         self.subset_names = list(subset_names)
         return self.subset_names
+
+    def _local_lotsa_repo_path(self) -> Path | None:
+        dataset_path = Path(str(self.dataset_name)).expanduser()
+        if dataset_path.is_dir():
+            return dataset_path
+        return None
+
+    @staticmethod
+    def _is_local_subset_dir(path: Path) -> bool:
+        if not path.is_dir() or path.name.startswith("."):
+            return False
+        return any(path.glob("*.arrow"))
+
+    def _list_local_subset_names(self, repo_path: Path) -> list[str]:
+        return [child.name for child in sorted(repo_path.iterdir()) if self._is_local_subset_dir(child)]
+
+    def _local_subset_dir(self, subset_name: str) -> Path:
+        repo_path = self._local_lotsa_repo_path()
+        if repo_path is None:
+            raise ValueError("LOTSA local subset directory requested, but dataset_name is not a local directory.")
+        subset_dir = repo_path / subset_name
+        if not self._is_local_subset_dir(subset_dir):
+            raise FileNotFoundError(
+                f"LOTSA local subset '{subset_name}' was not found under {repo_path} or does not contain arrow files."
+            )
+        return subset_dir
 
     @staticmethod
     def _infer_series_array(record: dict) -> np.ndarray:
@@ -697,6 +730,24 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         if cached is not None:
             return cached
 
+        local_repo = self._local_lotsa_repo_path()
+        if local_repo is not None:
+            subset_dir = self._local_subset_dir(subset_name)
+            info_path = subset_dir / "dataset_info.json"
+            if info_path.exists():
+                try:
+                    payload = json.loads(info_path.read_text())
+                except Exception:
+                    payload = {}
+                splits = payload.get("splits")
+                if isinstance(splits, dict) and splits:
+                    resolved = tuple(str(name).strip() for name in splits.keys() if str(name).strip())
+                    self._available_split_cache[subset_name] = resolved
+                    return resolved
+            resolved = ("train",)
+            self._available_split_cache[subset_name] = resolved
+            return resolved
+
         local_names: list[str] = []
         dataset_cache_root = Path.home() / ".cache" / "huggingface" / "datasets"
         dataset_cache_name = self.dataset_name.replace("/", "___")
@@ -795,7 +846,42 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
             sampling_iteration_index = epoch_iteration_index + 1
         return subset_names, epoch_iteration_index, sampling_iteration_index
 
+    def _load_local_subset_dataset(self, subset_name: str):
+        cached = self._subset_dataset_cache.get(subset_name)
+        if cached is not None:
+            return cached
+        try:
+            from datasets import Dataset, concatenate_datasets  # type: ignore
+        except Exception as exc:
+            raise ImportError(
+                "datasets is required for LOTSA local arrow loading. Install huggingface-datasets."
+            ) from exc
+
+        subset_dir = self._local_subset_dir(subset_name)
+        arrow_files = sorted(subset_dir.glob("*.arrow"))
+        if not arrow_files:
+            raise FileNotFoundError(f"No arrow files found for local LOTSA subset '{subset_name}' in {subset_dir}")
+
+        datasets_list = [Dataset.from_file(str(arrow_path)) for arrow_path in arrow_files]
+        dataset = datasets_list[0] if len(datasets_list) == 1 else concatenate_datasets(datasets_list)
+        self._subset_dataset_cache[subset_name] = dataset
+        return dataset
+
+    def _iter_local_subset(self, subset_name: str):
+        dataset = self._load_local_subset_dataset(subset_name)
+        indices = list(range(len(dataset)))
+        if self.mode == "train" and self.shuffle_buffer_size > 1 and len(indices) > 1:
+            rng = random.Random(self.random_seed + self._subset_iteration_index)
+            rng.shuffle(indices)
+        if self.skip_samples > 0:
+            indices = indices[self.skip_samples:]
+        for index in indices:
+            yield dataset[int(index)]
+
     def _iter_subset(self, subset_name: str):
+        if self._local_lotsa_repo_path() is not None:
+            yield from self._iter_local_subset(subset_name)
+            return
         try:
             from datasets import load_dataset  # type: ignore
         except Exception as exc:
@@ -810,6 +896,8 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         yield from dataset
 
     def _load_subset_dataset(self, subset_name: str):
+        if self._local_lotsa_repo_path() is not None:
+            return self._load_local_subset_dataset(subset_name)
         cached = self._subset_dataset_cache.get(subset_name)
         if cached is not None:
             return cached
