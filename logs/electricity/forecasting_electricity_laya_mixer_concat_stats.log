@@ -345,3 +345,277 @@ Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.417583 | Val Loss: 0.26
 Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.417007 | Val Loss: 0.266656 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
 Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.417162 | Val Loss: 0.266020 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
 Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.416334 | Val Loss: 0.264797 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 15/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.416383 | Val Loss: 0.266109 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 16/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.415960 | Val Loss: 0.265055 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 17/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.415761 | Val Loss: 0.269348 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 18/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.415883 | Val Loss: 0.266679 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 19/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.415100 | Val Loss: 0.270147 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 20/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.414699 | Val Loss: 0.264907 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+{'test_mse': 0.23964793980121613, 'test_mae': 0.3262843191623688}
+Saved best forecasting checkpoint under checkpoints/forecasting_ettm2_336/electricity_laya_mixer_concat_stats_best.pt
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm2_laya_mixer_concat_stats/pred_336/attention_maps
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm2 (Channels: 7)
+📊 Pretrain Info: electricity (Detected Channels: 7)
+📊 Prediction Length: 720
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_stats/laya_ts_electricity_s_best.pt
+   - 107/107 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=stats, fusion=concat_kv, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 7, 720]
+Epoch 1/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.531500 | Val Loss: 0.338755 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+   -> Updated best validation state: val_loss=0.338755 at epoch 1
+Epoch 2/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.524508 | Val Loss: 0.333630 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+   -> Updated best validation state: val_loss=0.333630 at epoch 2
+Epoch 3/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.523660 | Val Loss: 0.336833 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 4/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.523120 | Val Loss: 0.332158 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+   -> Updated best validation state: val_loss=0.332158 at epoch 4
+Epoch 5/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.522793 | Val Loss: 0.334501 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 6/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.521932 | Val Loss: 0.332051 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+   -> Updated best validation state: val_loss=0.332051 at epoch 6
+Epoch 7/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.520863 | Val Loss: 0.331041 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+   -> Updated best validation state: val_loss=0.331041 at epoch 7
+Epoch 8/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.520637 | Val Loss: 0.332533 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 9/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.520087 | Val Loss: 0.331720 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 10/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.519398 | Val Loss: 0.332260 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 11/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.519106 | Val Loss: 0.337300 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 12/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.518835 | Val Loss: 0.333185 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 13/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.518293 | Val Loss: 0.331117 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 14/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.517943 | Val Loss: 0.332556 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 15/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.517897 | Val Loss: 0.332143 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 16/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.517508 | Val Loss: 0.330471 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+   -> Updated best validation state: val_loss=0.330471 at epoch 16
+Epoch 17/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.517567 | Val Loss: 0.333771 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 18/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.516908 | Val Loss: 0.331872 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+Epoch 19/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.516609 | Val Loss: 0.330308 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+   -> Updated best validation state: val_loss=0.330308 at epoch 19
+Epoch 20/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.517412 | Val Loss: 0.332902 | Train Meta: MetaNormμ:3.1259 | Val Meta: MetaNormμ:3.1259
+{'test_mse': 0.2908851206302643, 'test_mae': 0.358775794506073}
+Saved best forecasting checkpoint under checkpoints/forecasting_ettm2_720/electricity_laya_mixer_concat_stats_best.pt
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_ETTm2_laya_mixer_concat_stats/pred_720/attention_maps
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: electricity (Detected Channels: 21)
+📊 Prediction Length: 96
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_stats/laya_ts_electricity_s_best.pt
+   - 107/107 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=stats, fusion=concat_kv, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 21, 96]
+Epoch 1/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.529216 | Val Loss: 0.617099 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.617099 at epoch 1
+Epoch 2/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.513065 | Val Loss: 0.612080 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.612080 at epoch 2
+Epoch 3/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.509275 | Val Loss: 0.608905 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.608905 at epoch 3
+Epoch 4/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.506557 | Val Loss: 0.606030 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.606030 at epoch 4
+Epoch 5/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.504231 | Val Loss: 0.605928 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.605928 at epoch 5
+Epoch 6/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.502155 | Val Loss: 0.604363 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.604363 at epoch 6
+Epoch 7/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.500507 | Val Loss: 0.600618 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.600618 at epoch 7
+Epoch 8/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.498872 | Val Loss: 0.601548 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 9/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.497790 | Val Loss: 0.596989 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.596989 at epoch 9
+Epoch 10/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.496663 | Val Loss: 0.602392 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 11/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.495775 | Val Loss: 0.599623 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 12/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.494844 | Val Loss: 0.597631 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 13/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.494137 | Val Loss: 0.599439 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 14/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.493570 | Val Loss: 0.596982 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.596982 at epoch 14
+Epoch 15/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.493165 | Val Loss: 0.596368 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.596368 at epoch 15
+Epoch 16/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.492474 | Val Loss: 0.595285 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.595285 at epoch 16
+Epoch 17/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.492223 | Val Loss: 0.599704 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 18/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.491933 | Val Loss: 0.593592 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.593592 at epoch 18
+Epoch 19/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.491424 | Val Loss: 0.595390 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 20/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.491162 | Val Loss: 0.595808 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+./run_forecasting.py:284: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:296: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+{'test_mse': 0.2751235365867615, 'test_mae': 0.327831506729126}
+Saved best forecasting checkpoint under checkpoints/forecasting_weather_96/electricity_laya_mixer_concat_stats_best.pt
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_mixer_concat_stats/pred_96/attention_maps
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: electricity (Detected Channels: 21)
+📊 Prediction Length: 192
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_stats/laya_ts_electricity_s_best.pt
+   - 107/107 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=stats, fusion=concat_kv, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 21, 192]
+Epoch 1/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.566394 | Val Loss: 0.671882 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.671882 at epoch 1
+Epoch 2/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.550841 | Val Loss: 0.670069 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.670069 at epoch 2
+Epoch 3/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.547805 | Val Loss: 0.665499 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.665499 at epoch 3
+Epoch 4/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.544914 | Val Loss: 0.668317 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 5/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.542756 | Val Loss: 0.663470 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.663470 at epoch 5
+Epoch 6/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.540840 | Val Loss: 0.660709 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.660709 at epoch 6
+Epoch 7/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.539189 | Val Loss: 0.659858 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.659858 at epoch 7
+Epoch 8/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.538091 | Val Loss: 0.658182 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.658182 at epoch 8
+Epoch 9/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.536913 | Val Loss: 0.658556 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 10/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.536015 | Val Loss: 0.655983 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.655983 at epoch 10
+Epoch 11/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.535174 | Val Loss: 0.658080 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 12/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.534344 | Val Loss: 0.656330 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 13/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.533770 | Val Loss: 0.654561 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.654561 at epoch 13
+Epoch 14/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.533182 | Val Loss: 0.654846 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 15/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.532502 | Val Loss: 0.652200 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.652200 at epoch 15
+Epoch 16/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.532246 | Val Loss: 0.652901 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 17/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.531792 | Val Loss: 0.653995 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 18/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.531535 | Val Loss: 0.653947 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 19/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.531206 | Val Loss: 0.658902 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 20/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.530967 | Val Loss: 0.653082 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+./run_forecasting.py:284: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:296: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+{'test_mse': 0.31665855646133423, 'test_mae': 0.35580193996429443}
+Saved best forecasting checkpoint under checkpoints/forecasting_weather_192/electricity_laya_mixer_concat_stats_best.pt
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_mixer_concat_stats/pred_192/attention_maps
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: electricity (Detected Channels: 21)
+📊 Prediction Length: 336
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_stats/laya_ts_electricity_s_best.pt
+   - 107/107 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=stats, fusion=concat_kv, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 21, 336]
+Epoch 1/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.606905 | Val Loss: 0.731642 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.731642 at epoch 1
+Epoch 2/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.591214 | Val Loss: 0.724130 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.724130 at epoch 2
+Epoch 3/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.588234 | Val Loss: 0.725196 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 4/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.585838 | Val Loss: 0.724062 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.724062 at epoch 4
+Epoch 5/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.583704 | Val Loss: 0.720940 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.720940 at epoch 5
+Epoch 6/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.582021 | Val Loss: 0.716929 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.716929 at epoch 6
+Epoch 7/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.580641 | Val Loss: 0.716652 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.716652 at epoch 7
+Epoch 8/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.579484 | Val Loss: 0.715156 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.715156 at epoch 8
+Epoch 9/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.578256 | Val Loss: 0.714991 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.714991 at epoch 9
+Epoch 10/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.577280 | Val Loss: 0.715424 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 11/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.576604 | Val Loss: 0.720699 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 12/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.575911 | Val Loss: 0.710568 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.710568 at epoch 12
+Epoch 13/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.575298 | Val Loss: 0.712174 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 14/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.574734 | Val Loss: 0.716699 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 15/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.574226 | Val Loss: 0.713669 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 16/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.573850 | Val Loss: 0.714764 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 17/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.573532 | Val Loss: 0.712322 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 18/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.573132 | Val Loss: 0.711358 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 19/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.572813 | Val Loss: 0.711097 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 20/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.572507 | Val Loss: 0.711246 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+./run_forecasting.py:284: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:296: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+{'test_mse': 0.3603839874267578, 'test_mae': 0.38271668553352356}
+Saved best forecasting checkpoint under checkpoints/forecasting_weather_336/electricity_laya_mixer_concat_stats_best.pt
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_mixer_concat_stats/pred_336/attention_maps
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: electricity (Detected Channels: 21)
+📊 Prediction Length: 720
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/electricity_laya_mixer_concat_stats/laya_ts_electricity_s_best.pt
+   - 107/107 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=stats, fusion=concat_kv, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
+ℹ️ Metadata Fusion Mode: concat_kv
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [Mixer, channel-wise]: [B*C, 1024] -> [B, 21, 720]
+Epoch 1/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.659773 | Val Loss: 0.804539 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.804539 at epoch 1
+Epoch 2/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.645366 | Val Loss: 0.804920 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 3/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.642544 | Val Loss: 0.805598 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 4/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.640372 | Val Loss: 0.794053 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.794053 at epoch 4
+Epoch 5/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.638364 | Val Loss: 0.800600 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 6/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.636805 | Val Loss: 0.792004 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.792004 at epoch 6
+Epoch 7/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.635546 | Val Loss: 0.793721 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 8/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.634271 | Val Loss: 0.791483 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.791483 at epoch 8
+Epoch 9/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.633171 | Val Loss: 0.793873 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 10/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.632469 | Val Loss: 0.791766 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 11/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.631703 | Val Loss: 0.791800 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 12/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.631015 | Val Loss: 0.791276 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.791276 at epoch 12
+Epoch 13/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.630457 | Val Loss: 0.792541 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 14/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.629957 | Val Loss: 0.787302 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+   -> Updated best validation state: val_loss=0.787302 at epoch 14
+Epoch 15/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.629324 | Val Loss: 0.789370 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 16/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.629066 | Val Loss: 0.789102 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 17/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.628656 | Val Loss: 0.788622 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 18/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.628404 | Val Loss: 0.789475 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 19/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.628118 | Val Loss: 0.791010 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+Epoch 20/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.627843 | Val Loss: 0.788946 | Train Meta: MetaNormμ:2.2005 | Val Meta: MetaNormμ:2.2005
+./run_forecasting.py:284: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+./run_forecasting.py:296: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+  plt.tight_layout()
+{'test_mse': 0.4271978437900543, 'test_mae': 0.4250875413417816}
+Saved best forecasting checkpoint under checkpoints/forecasting_weather_720/electricity_laya_mixer_concat_stats_best.pt
+Saved attention maps for 3 sample(s) under ./runs/forecasting_electricity_to_weather_laya_mixer_concat_stats/pred_720/attention_maps

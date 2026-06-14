@@ -9,44 +9,39 @@ nohup: ignoring input
    - 40/40 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: none
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
-✅ Probing Head [CI, channel-wise]: [B*C, 4096] -> [B, 7, 96]
-Epoch 1/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.298619 | Val Loss: 0.279864 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.279864 at epoch 1
-Epoch 2/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.253351 | Val Loss: 0.274860 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.274860 at epoch 2
-Epoch 3/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.245440 | Val Loss: 0.272843 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.272843 at epoch 3
-Epoch 4/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.240837 | Val Loss: 0.271827 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.271827 at epoch 4
-Epoch 5/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.237516 | Val Loss: 0.270094 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.270094 at epoch 5
-Epoch 6/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.235073 | Val Loss: 0.269165 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.269165 at epoch 6
-Epoch 7/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.233953 | Val Loss: 0.271920 | Train Meta: n/a | Val Meta: n/a
-Epoch 8/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.231908 | Val Loss: 0.269020 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.269020 at epoch 8
-Epoch 9/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.230732 | Val Loss: 0.267738 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.267738 at epoch 9
-Epoch 10/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.229522 | Val Loss: 0.269008 | Train Meta: n/a | Val Meta: n/a
-Epoch 11/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.228702 | Val Loss: 0.267537 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.267537 at epoch 11
-Epoch 12/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.227774 | Val Loss: 0.270709 | Train Meta: n/a | Val Meta: n/a
-Epoch 13/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.227087 | Val Loss: 0.268004 | Train Meta: n/a | Val Meta: n/a
-Epoch 14/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.226043 | Val Loss: 0.267354 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.267354 at epoch 14
-Epoch 15/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.225565 | Val Loss: 0.264863 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.264863 at epoch 15
-Epoch 16/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.224897 | Val Loss: 0.267304 | Train Meta: n/a | Val Meta: n/a
-Epoch 17/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.224621 | Val Loss: 0.265616 | Train Meta: n/a | Val Meta: n/a
-Epoch 18/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.223680 | Val Loss: 0.266774 | Train Meta: n/a | Val Meta: n/a
-Epoch 19/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.223429 | Val Loss: 0.264156 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.264156 at epoch 19
-Epoch 20/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.222845 | Val Loss: 0.266882 | Train Meta: n/a | Val Meta: n/a
-{'test_mse': 0.3254091143608093, 'test_mae': 0.38561031222343445}
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 7, 96]
+Epoch 1/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.259274 | Val Loss: 0.273284 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.273284 at epoch 1
+Epoch 2/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.243192 | Val Loss: 0.271328 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.271328 at epoch 2
+Epoch 3/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.238902 | Val Loss: 0.269686 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.269686 at epoch 3
+Epoch 4/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.236390 | Val Loss: 0.270239 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.234120 | Val Loss: 0.278753 | Train Meta: n/a | Val Meta: n/a
+Epoch 6/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.232140 | Val Loss: 0.265952 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.265952 at epoch 6
+Epoch 7/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.230861 | Val Loss: 0.276363 | Train Meta: n/a | Val Meta: n/a
+Epoch 8/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.229948 | Val Loss: 0.271615 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.228482 | Val Loss: 0.271850 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.227371 | Val Loss: 0.272773 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.226830 | Val Loss: 0.271147 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.226539 | Val Loss: 0.264130 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.264130 at epoch 12
+Epoch 13/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.225236 | Val Loss: 0.280111 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.224633 | Val Loss: 0.279307 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.223869 | Val Loss: 0.270819 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.223082 | Val Loss: 0.266833 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.222890 | Val Loss: 0.262559 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.262559 at epoch 17
+Epoch 18/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.222754 | Val Loss: 0.287869 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.221893 | Val Loss: 0.270123 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.221706 | Val Loss: 0.263687 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.32809725403785706, 'test_mae': 0.38633209466934204}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_96/electricity_laya_ci_none_best.pt
 ==================================================
 🚀 Architecture: LAYA
@@ -58,40 +53,37 @@ Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_96/electri
    - 40/40 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: none
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
-✅ Probing Head [CI, channel-wise]: [B*C, 4096] -> [B, 7, 192]
-Epoch 1/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.337186 | Val Loss: 0.313179 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.313179 at epoch 1
-Epoch 2/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.297917 | Val Loss: 0.310737 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.310737 at epoch 2
-Epoch 3/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.289963 | Val Loss: 0.310951 | Train Meta: n/a | Val Meta: n/a
-Epoch 4/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.285656 | Val Loss: 0.308795 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.308795 at epoch 4
-Epoch 5/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.282729 | Val Loss: 0.306364 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.306364 at epoch 5
-Epoch 6/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.280540 | Val Loss: 0.306182 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.306182 at epoch 6
-Epoch 7/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.278599 | Val Loss: 0.304561 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.304561 at epoch 7
-Epoch 8/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.276923 | Val Loss: 0.306821 | Train Meta: n/a | Val Meta: n/a
-Epoch 9/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.275448 | Val Loss: 0.309977 | Train Meta: n/a | Val Meta: n/a
-Epoch 10/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.274788 | Val Loss: 0.309334 | Train Meta: n/a | Val Meta: n/a
-Epoch 11/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.273244 | Val Loss: 0.307651 | Train Meta: n/a | Val Meta: n/a
-Epoch 12/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.272570 | Val Loss: 0.307884 | Train Meta: n/a | Val Meta: n/a
-Epoch 13/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.272077 | Val Loss: 0.306269 | Train Meta: n/a | Val Meta: n/a
-Epoch 14/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.270696 | Val Loss: 0.309736 | Train Meta: n/a | Val Meta: n/a
-Epoch 15/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.270333 | Val Loss: 0.303558 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.303558 at epoch 15
-Epoch 16/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.269613 | Val Loss: 0.308941 | Train Meta: n/a | Val Meta: n/a
-Epoch 17/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.268638 | Val Loss: 0.302843 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.302843 at epoch 17
-Epoch 18/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.268463 | Val Loss: 0.305843 | Train Meta: n/a | Val Meta: n/a
-Epoch 19/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.267728 | Val Loss: 0.306894 | Train Meta: n/a | Val Meta: n/a
-Epoch 20/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.267196 | Val Loss: 0.309721 | Train Meta: n/a | Val Meta: n/a
-{'test_mse': 0.37656739354133606, 'test_mae': 0.41676294803619385}
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 7, 192]
+Epoch 1/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.308894 | Val Loss: 0.317532 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.317532 at epoch 1
+Epoch 2/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.293486 | Val Loss: 0.321548 | Train Meta: n/a | Val Meta: n/a
+Epoch 3/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.289074 | Val Loss: 0.311934 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.311934 at epoch 3
+Epoch 4/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.285976 | Val Loss: 0.319948 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.283899 | Val Loss: 0.321185 | Train Meta: n/a | Val Meta: n/a
+Epoch 6/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.281792 | Val Loss: 0.314280 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.280481 | Val Loss: 0.319748 | Train Meta: n/a | Val Meta: n/a
+Epoch 8/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.279220 | Val Loss: 0.309664 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.309664 at epoch 8
+Epoch 9/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.278514 | Val Loss: 0.307785 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.307785 at epoch 9
+Epoch 10/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.276685 | Val Loss: 0.314592 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.276149 | Val Loss: 0.319388 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.275163 | Val Loss: 0.318605 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.274207 | Val Loss: 0.315683 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.274281 | Val Loss: 0.315044 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.273277 | Val Loss: 0.313184 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.272545 | Val Loss: 0.314813 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.271892 | Val Loss: 0.321491 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.271619 | Val Loss: 0.314888 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.270530 | Val Loss: 0.324044 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.270676 | Val Loss: 0.313441 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.3785880506038666, 'test_mae': 0.4180344343185425}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_192/electricity_laya_ci_none_best.pt
 ==================================================
 🚀 Architecture: LAYA
@@ -103,36 +95,40 @@ Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_192/electr
    - 40/40 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: none
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
-✅ Probing Head [CI, channel-wise]: [B*C, 4096] -> [B, 7, 336]
-Epoch 1/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.379423 | Val Loss: 0.347263 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.347263 at epoch 1
-Epoch 2/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.343387 | Val Loss: 0.347455 | Train Meta: n/a | Val Meta: n/a
-Epoch 3/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.336594 | Val Loss: 0.347566 | Train Meta: n/a | Val Meta: n/a
-Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.331941 | Val Loss: 0.347194 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.347194 at epoch 4
-Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.329345 | Val Loss: 0.345428 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.345428 at epoch 5
-Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.326975 | Val Loss: 0.343228 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.343228 at epoch 6
-Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.325161 | Val Loss: 0.345340 | Train Meta: n/a | Val Meta: n/a
-Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.323445 | Val Loss: 0.348763 | Train Meta: n/a | Val Meta: n/a
-Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.322205 | Val Loss: 0.346836 | Train Meta: n/a | Val Meta: n/a
-Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.320649 | Val Loss: 0.344957 | Train Meta: n/a | Val Meta: n/a
-Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.319905 | Val Loss: 0.343332 | Train Meta: n/a | Val Meta: n/a
-Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.318842 | Val Loss: 0.349462 | Train Meta: n/a | Val Meta: n/a
-Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.317764 | Val Loss: 0.346891 | Train Meta: n/a | Val Meta: n/a
-Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.316625 | Val Loss: 0.344117 | Train Meta: n/a | Val Meta: n/a
-Epoch 15/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.316090 | Val Loss: 0.343540 | Train Meta: n/a | Val Meta: n/a
-Epoch 16/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.315667 | Val Loss: 0.350132 | Train Meta: n/a | Val Meta: n/a
-Epoch 17/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.314810 | Val Loss: 0.343348 | Train Meta: n/a | Val Meta: n/a
-Epoch 18/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.314497 | Val Loss: 0.349453 | Train Meta: n/a | Val Meta: n/a
-Epoch 19/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.313637 | Val Loss: 0.344750 | Train Meta: n/a | Val Meta: n/a
-Epoch 20/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.313397 | Val Loss: 0.351249 | Train Meta: n/a | Val Meta: n/a
-{'test_mse': 0.42527565360069275, 'test_mae': 0.44748881459236145}
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 7, 336]
+Epoch 1/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.363065 | Val Loss: 0.364093 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.364093 at epoch 1
+Epoch 2/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.348132 | Val Loss: 0.362567 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.362567 at epoch 2
+Epoch 3/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.343630 | Val Loss: 0.359146 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.359146 at epoch 3
+Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.340215 | Val Loss: 0.369436 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.337777 | Val Loss: 0.363512 | Train Meta: n/a | Val Meta: n/a
+Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.335867 | Val Loss: 0.368272 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.333886 | Val Loss: 0.358488 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.358488 at epoch 7
+Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.332834 | Val Loss: 0.357967 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.357967 at epoch 8
+Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.331099 | Val Loss: 0.356663 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.356663 at epoch 9
+Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.330597 | Val Loss: 0.360321 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.329523 | Val Loss: 0.361871 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.328303 | Val Loss: 0.362862 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.327090 | Val Loss: 0.360537 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.327171 | Val Loss: 0.355759 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.355759 at epoch 14
+Epoch 15/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.325834 | Val Loss: 0.368141 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.325285 | Val Loss: 0.369938 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.324527 | Val Loss: 0.363974 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.324313 | Val Loss: 0.369673 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.323523 | Val Loss: 0.358448 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.323359 | Val Loss: 0.363021 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.43742579221725464, 'test_mae': 0.45643705129623413}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_336/electricity_laya_ci_none_best.pt
 ==================================================
 🚀 Architecture: LAYA
@@ -144,38 +140,36 @@ Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_336/electr
    - 40/40 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: none
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
-✅ Probing Head [CI, channel-wise]: [B*C, 4096] -> [B, 7, 720]
-Epoch 1/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.448798 | Val Loss: 0.419232 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.419232 at epoch 1
-Epoch 2/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.416267 | Val Loss: 0.419971 | Train Meta: n/a | Val Meta: n/a
-Epoch 3/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.409578 | Val Loss: 0.410920 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.410920 at epoch 3
-Epoch 4/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.405484 | Val Loss: 0.409882 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.409882 at epoch 4
-Epoch 5/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.402465 | Val Loss: 0.409681 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.409681 at epoch 5
-Epoch 6/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.399560 | Val Loss: 0.414309 | Train Meta: n/a | Val Meta: n/a
-Epoch 7/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.397834 | Val Loss: 0.414137 | Train Meta: n/a | Val Meta: n/a
-Epoch 8/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.396274 | Val Loss: 0.412763 | Train Meta: n/a | Val Meta: n/a
-Epoch 9/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.395090 | Val Loss: 0.406999 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.406999 at epoch 9
-Epoch 10/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.393433 | Val Loss: 0.420178 | Train Meta: n/a | Val Meta: n/a
-Epoch 11/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.392380 | Val Loss: 0.404320 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.404320 at epoch 11
-Epoch 12/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.391544 | Val Loss: 0.409761 | Train Meta: n/a | Val Meta: n/a
-Epoch 13/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.390512 | Val Loss: 0.409335 | Train Meta: n/a | Val Meta: n/a
-Epoch 14/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.389537 | Val Loss: 0.414362 | Train Meta: n/a | Val Meta: n/a
-Epoch 15/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.388581 | Val Loss: 0.411606 | Train Meta: n/a | Val Meta: n/a
-Epoch 16/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.387901 | Val Loss: 0.406389 | Train Meta: n/a | Val Meta: n/a
-Epoch 17/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.387005 | Val Loss: 0.424118 | Train Meta: n/a | Val Meta: n/a
-Epoch 18/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.386776 | Val Loss: 0.408284 | Train Meta: n/a | Val Meta: n/a
-Epoch 19/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.385946 | Val Loss: 0.409738 | Train Meta: n/a | Val Meta: n/a
-Epoch 20/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.385150 | Val Loss: 0.410999 | Train Meta: n/a | Val Meta: n/a
-{'test_mse': 0.4766889214515686, 'test_mae': 0.4856874346733093}
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 7, 720]
+Epoch 1/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.458062 | Val Loss: 0.434789 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.434789 at epoch 1
+Epoch 2/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.441793 | Val Loss: 0.432442 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.432442 at epoch 2
+Epoch 3/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.437152 | Val Loss: 0.431550 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.431550 at epoch 3
+Epoch 4/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.432405 | Val Loss: 0.436076 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.429862 | Val Loss: 0.452642 | Train Meta: n/a | Val Meta: n/a
+Epoch 6/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.428075 | Val Loss: 0.435696 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.425952 | Val Loss: 0.436361 | Train Meta: n/a | Val Meta: n/a
+Epoch 8/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.423837 | Val Loss: 0.443168 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.422571 | Val Loss: 0.434132 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.421117 | Val Loss: 0.437197 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.420223 | Val Loss: 0.444927 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.418893 | Val Loss: 0.432682 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.417720 | Val Loss: 0.441126 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.416924 | Val Loss: 0.456872 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.415722 | Val Loss: 0.446967 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.415550 | Val Loss: 0.461448 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.414511 | Val Loss: 0.442019 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.413584 | Val Loss: 0.453337 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.413370 | Val Loss: 0.450530 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.412659 | Val Loss: 0.436019 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.49755778908729553, 'test_mae': 0.49427518248558044}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_720/electricity_laya_ci_none_best.pt
 ==================================================
 🚀 Architecture: LAYA
@@ -187,40 +181,35 @@ Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_720/electr
    - 40/40 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: none
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
-✅ Probing Head [CI, channel-wise]: [B*C, 4096] -> [B, 7, 96]
-Epoch 1/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.277481 | Val Loss: 0.204544 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.204544 at epoch 1
-Epoch 2/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.222183 | Val Loss: 0.190571 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.190571 at epoch 2
-Epoch 3/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.210481 | Val Loss: 0.181845 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.181845 at epoch 3
-Epoch 4/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.204005 | Val Loss: 0.193500 | Train Meta: n/a | Val Meta: n/a
-Epoch 5/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.199897 | Val Loss: 0.181581 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.181581 at epoch 5
-Epoch 6/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.196268 | Val Loss: 0.172606 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.172606 at epoch 6
-Epoch 7/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.193906 | Val Loss: 0.216892 | Train Meta: n/a | Val Meta: n/a
-Epoch 8/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.191845 | Val Loss: 0.175125 | Train Meta: n/a | Val Meta: n/a
-Epoch 9/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.190245 | Val Loss: 0.193755 | Train Meta: n/a | Val Meta: n/a
-Epoch 10/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.188276 | Val Loss: 0.185490 | Train Meta: n/a | Val Meta: n/a
-Epoch 11/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.186827 | Val Loss: 0.191768 | Train Meta: n/a | Val Meta: n/a
-Epoch 12/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.185579 | Val Loss: 0.188732 | Train Meta: n/a | Val Meta: n/a
-Epoch 13/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.184776 | Val Loss: 0.168165 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.168165 at epoch 13
-Epoch 14/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.183468 | Val Loss: 0.172361 | Train Meta: n/a | Val Meta: n/a
-Epoch 15/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.182866 | Val Loss: 0.200357 | Train Meta: n/a | Val Meta: n/a
-Epoch 16/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.182265 | Val Loss: 0.167784 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.167784 at epoch 16
-Epoch 17/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.182046 | Val Loss: 0.179874 | Train Meta: n/a | Val Meta: n/a
-Epoch 18/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.180467 | Val Loss: 0.164393 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.164393 at epoch 18
-Epoch 19/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.180275 | Val Loss: 0.196102 | Train Meta: n/a | Val Meta: n/a
-Epoch 20/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.179918 | Val Loss: 0.185449 | Train Meta: n/a | Val Meta: n/a
-{'test_mse': 0.1571197509765625, 'test_mae': 0.26463133096694946}
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 7, 96]
+Epoch 1/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.221690 | Val Loss: 0.165665 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.165665 at epoch 1
+Epoch 2/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.201683 | Val Loss: 0.159807 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.159807 at epoch 2
+Epoch 3/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.193774 | Val Loss: 0.172450 | Train Meta: n/a | Val Meta: n/a
+Epoch 4/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.191189 | Val Loss: 0.162624 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.187747 | Val Loss: 0.166673 | Train Meta: n/a | Val Meta: n/a
+Epoch 6/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.185334 | Val Loss: 0.162207 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.182635 | Val Loss: 0.162533 | Train Meta: n/a | Val Meta: n/a
+Epoch 8/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.182998 | Val Loss: 0.176235 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.180519 | Val Loss: 0.163901 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.179318 | Val Loss: 0.167478 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.177727 | Val Loss: 0.168827 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.177766 | Val Loss: 0.161595 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.176366 | Val Loss: 0.171590 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.175071 | Val Loss: 0.171435 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.175551 | Val Loss: 0.165431 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.174711 | Val Loss: 0.175567 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.173410 | Val Loss: 0.165999 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.172417 | Val Loss: 0.172966 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.172486 | Val Loss: 0.167275 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.171922 | Val Loss: 0.165887 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.15321573615074158, 'test_mae': 0.2609406113624573}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm2_96/electricity_laya_ci_none_best.pt
 ==================================================
 🚀 Architecture: LAYA
@@ -232,38 +221,34 @@ Saved best forecasting checkpoint under checkpoints/forecasting_ettm2_96/electri
    - 40/40 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: none
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
-✅ Probing Head [CI, channel-wise]: [B*C, 4096] -> [B, 7, 192]
-Epoch 1/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.336488 | Val Loss: 0.315010 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.315010 at epoch 1
-Epoch 2/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.286401 | Val Loss: 0.247814 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.247814 at epoch 2
-Epoch 3/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.274910 | Val Loss: 0.276126 | Train Meta: n/a | Val Meta: n/a
-Epoch 4/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.268145 | Val Loss: 0.268650 | Train Meta: n/a | Val Meta: n/a
-Epoch 5/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.263812 | Val Loss: 0.241422 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.241422 at epoch 5
-Epoch 6/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.259788 | Val Loss: 0.262233 | Train Meta: n/a | Val Meta: n/a
-Epoch 7/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.257043 | Val Loss: 0.253675 | Train Meta: n/a | Val Meta: n/a
-Epoch 8/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.254169 | Val Loss: 0.241258 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.241258 at epoch 8
-Epoch 9/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.252033 | Val Loss: 0.247862 | Train Meta: n/a | Val Meta: n/a
-Epoch 10/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.250842 | Val Loss: 0.258813 | Train Meta: n/a | Val Meta: n/a
-Epoch 11/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.248969 | Val Loss: 0.246791 | Train Meta: n/a | Val Meta: n/a
-Epoch 12/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.246794 | Val Loss: 0.246482 | Train Meta: n/a | Val Meta: n/a
-Epoch 13/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.246129 | Val Loss: 0.242877 | Train Meta: n/a | Val Meta: n/a
-Epoch 14/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.244743 | Val Loss: 0.237642 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.237642 at epoch 14
-Epoch 15/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.243960 | Val Loss: 0.243820 | Train Meta: n/a | Val Meta: n/a
-Epoch 16/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.242998 | Val Loss: 0.260225 | Train Meta: n/a | Val Meta: n/a
-Epoch 17/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.241795 | Val Loss: 0.254429 | Train Meta: n/a | Val Meta: n/a
-Epoch 18/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.241399 | Val Loss: 0.249199 | Train Meta: n/a | Val Meta: n/a
-Epoch 19/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.240360 | Val Loss: 0.244106 | Train Meta: n/a | Val Meta: n/a
-Epoch 20/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.239038 | Val Loss: 0.237157 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.237157 at epoch 20
-{'test_mse': 0.19622087478637695, 'test_mae': 0.2954265773296356}
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 7, 192]
+Epoch 1/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.291927 | Val Loss: 0.212252 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.212252 at epoch 1
+Epoch 2/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.266000 | Val Loss: 0.216750 | Train Meta: n/a | Val Meta: n/a
+Epoch 3/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.257746 | Val Loss: 0.214691 | Train Meta: n/a | Val Meta: n/a
+Epoch 4/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.252511 | Val Loss: 0.224716 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.248255 | Val Loss: 0.220213 | Train Meta: n/a | Val Meta: n/a
+Epoch 6/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.244159 | Val Loss: 0.226394 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.242566 | Val Loss: 0.242560 | Train Meta: n/a | Val Meta: n/a
+Epoch 8/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.240218 | Val Loss: 0.222570 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.238241 | Val Loss: 0.223414 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.237592 | Val Loss: 0.219133 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.235547 | Val Loss: 0.226747 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.234022 | Val Loss: 0.227321 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.233045 | Val Loss: 0.228769 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.231509 | Val Loss: 0.232983 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.231084 | Val Loss: 0.229611 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.229733 | Val Loss: 0.222767 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.228620 | Val Loss: 0.222298 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.228810 | Val Loss: 0.226992 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.227528 | Val Loss: 0.226317 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.227701 | Val Loss: 0.228842 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.18723995983600616, 'test_mae': 0.28509658575057983}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm2_192/electricity_laya_ci_none_best.pt
 ==================================================
 🚀 Architecture: LAYA
@@ -275,36 +260,36 @@ Saved best forecasting checkpoint under checkpoints/forecasting_ettm2_192/electr
    - 40/40 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: none
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
-✅ Probing Head [CI, channel-wise]: [B*C, 4096] -> [B, 7, 336]
-Epoch 1/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.394914 | Val Loss: 0.387662 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.387662 at epoch 1
-Epoch 2/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.350922 | Val Loss: 0.340214 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.340214 at epoch 2
-Epoch 3/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.339741 | Val Loss: 0.331518 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.331518 at epoch 3
-Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.332913 | Val Loss: 0.419545 | Train Meta: n/a | Val Meta: n/a
-Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.327552 | Val Loss: 0.395175 | Train Meta: n/a | Val Meta: n/a
-Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.324059 | Val Loss: 0.393865 | Train Meta: n/a | Val Meta: n/a
-Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.320895 | Val Loss: 0.290942 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.290942 at epoch 7
-Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.318439 | Val Loss: 0.345811 | Train Meta: n/a | Val Meta: n/a
-Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.316485 | Val Loss: 0.331082 | Train Meta: n/a | Val Meta: n/a
-Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.313320 | Val Loss: 0.327846 | Train Meta: n/a | Val Meta: n/a
-Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.312055 | Val Loss: 0.316096 | Train Meta: n/a | Val Meta: n/a
-Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.310620 | Val Loss: 0.330665 | Train Meta: n/a | Val Meta: n/a
-Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.308641 | Val Loss: 0.356015 | Train Meta: n/a | Val Meta: n/a
-Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.307743 | Val Loss: 0.315170 | Train Meta: n/a | Val Meta: n/a
-Epoch 15/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.306810 | Val Loss: 0.424802 | Train Meta: n/a | Val Meta: n/a
-Epoch 16/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.305749 | Val Loss: 0.377313 | Train Meta: n/a | Val Meta: n/a
-Epoch 17/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.304164 | Val Loss: 0.324475 | Train Meta: n/a | Val Meta: n/a
-Epoch 18/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.303459 | Val Loss: 0.363920 | Train Meta: n/a | Val Meta: n/a
-Epoch 19/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.303244 | Val Loss: 0.361572 | Train Meta: n/a | Val Meta: n/a
-Epoch 20/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.301825 | Val Loss: 0.318108 | Train Meta: n/a | Val Meta: n/a
-{'test_mse': 0.23018644750118256, 'test_mae': 0.32305487990379333}
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 7, 336]
+Epoch 1/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.367661 | Val Loss: 0.268200 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.268200 at epoch 1
+Epoch 2/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.339516 | Val Loss: 0.267379 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.267379 at epoch 2
+Epoch 3/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.326638 | Val Loss: 0.273348 | Train Meta: n/a | Val Meta: n/a
+Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.319492 | Val Loss: 0.277122 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.314449 | Val Loss: 0.266990 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.266990 at epoch 5
+Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.310264 | Val Loss: 0.277549 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.306519 | Val Loss: 0.275068 | Train Meta: n/a | Val Meta: n/a
+Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.304215 | Val Loss: 0.269000 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.301276 | Val Loss: 0.280137 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.299897 | Val Loss: 0.285110 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.297741 | Val Loss: 0.285523 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.296283 | Val Loss: 0.277927 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.295219 | Val Loss: 0.274873 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.293007 | Val Loss: 0.276025 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.292404 | Val Loss: 0.270698 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.290251 | Val Loss: 0.283394 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.290592 | Val Loss: 0.281952 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.289617 | Val Loss: 0.277682 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.287895 | Val Loss: 0.281777 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.287779 | Val Loss: 0.274162 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.22732415795326233, 'test_mae': 0.3158625364303589}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm2_336/electricity_laya_ci_none_best.pt
 ==================================================
 🚀 Architecture: LAYA
@@ -316,36 +301,35 @@ Saved best forecasting checkpoint under checkpoints/forecasting_ettm2_336/electr
    - 40/40 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: none
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
-✅ Probing Head [CI, channel-wise]: [B*C, 4096] -> [B, 7, 720]
-Epoch 1/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.471614 | Val Loss: 0.546948 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.546948 at epoch 1
-Epoch 2/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.432685 | Val Loss: 0.464381 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.464381 at epoch 2
-Epoch 3/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.420424 | Val Loss: 0.493591 | Train Meta: n/a | Val Meta: n/a
-Epoch 4/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.412536 | Val Loss: 0.441449 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.441449 at epoch 4
-Epoch 5/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.408229 | Val Loss: 0.469583 | Train Meta: n/a | Val Meta: n/a
-Epoch 6/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.403750 | Val Loss: 0.456882 | Train Meta: n/a | Val Meta: n/a
-Epoch 7/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.401154 | Val Loss: 0.404391 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.404391 at epoch 7
-Epoch 8/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.397932 | Val Loss: 0.486058 | Train Meta: n/a | Val Meta: n/a
-Epoch 9/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.395394 | Val Loss: 0.429691 | Train Meta: n/a | Val Meta: n/a
-Epoch 10/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.393562 | Val Loss: 0.464306 | Train Meta: n/a | Val Meta: n/a
-Epoch 11/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.392006 | Val Loss: 0.431612 | Train Meta: n/a | Val Meta: n/a
-Epoch 12/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.390501 | Val Loss: 0.426997 | Train Meta: n/a | Val Meta: n/a
-Epoch 13/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.388035 | Val Loss: 0.431584 | Train Meta: n/a | Val Meta: n/a
-Epoch 14/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.386365 | Val Loss: 0.451141 | Train Meta: n/a | Val Meta: n/a
-Epoch 15/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.385599 | Val Loss: 0.418437 | Train Meta: n/a | Val Meta: n/a
-Epoch 16/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.384195 | Val Loss: 0.432567 | Train Meta: n/a | Val Meta: n/a
-Epoch 17/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.383501 | Val Loss: 0.492332 | Train Meta: n/a | Val Meta: n/a
-Epoch 18/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.381882 | Val Loss: 0.473141 | Train Meta: n/a | Val Meta: n/a
-Epoch 19/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.381488 | Val Loss: 0.457857 | Train Meta: n/a | Val Meta: n/a
-Epoch 20/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.380378 | Val Loss: 0.413967 | Train Meta: n/a | Val Meta: n/a
-{'test_mse': 0.2887597382068634, 'test_mae': 0.3727535605430603}
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 7, 720]
+Epoch 1/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.476926 | Val Loss: 0.336142 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.336142 at epoch 1
+Epoch 2/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.442887 | Val Loss: 0.347733 | Train Meta: n/a | Val Meta: n/a
+Epoch 3/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.430637 | Val Loss: 0.330701 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.330701 at epoch 3
+Epoch 4/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.421365 | Val Loss: 0.346559 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.416198 | Val Loss: 0.341754 | Train Meta: n/a | Val Meta: n/a
+Epoch 6/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.410815 | Val Loss: 0.348679 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.406843 | Val Loss: 0.337040 | Train Meta: n/a | Val Meta: n/a
+Epoch 8/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.403923 | Val Loss: 0.341328 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.400298 | Val Loss: 0.349182 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.398592 | Val Loss: 0.348293 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.396582 | Val Loss: 0.344102 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.394788 | Val Loss: 0.344614 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.392228 | Val Loss: 0.354626 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.391145 | Val Loss: 0.357586 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.389225 | Val Loss: 0.347994 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.388269 | Val Loss: 0.349757 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.387458 | Val Loss: 0.357126 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.385310 | Val Loss: 0.349928 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.384302 | Val Loss: 0.347118 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.383612 | Val Loss: 0.350366 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.2936229705810547, 'test_mae': 0.3648732900619507}
 Saved best forecasting checkpoint under checkpoints/forecasting_ettm2_720/electricity_laya_ci_none_best.pt
 ==================================================
 🚀 Architecture: LAYA
@@ -357,39 +341,39 @@ Saved best forecasting checkpoint under checkpoints/forecasting_ettm2_720/electr
    - 40/40 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: none
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
-✅ Probing Head [CI, channel-wise]: [B*C, 4096] -> [B, 21, 96]
-Epoch 1/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.394658 | Val Loss: 0.452198 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.452198 at epoch 1
-Epoch 2/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.353782 | Val Loss: 0.439910 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.439910 at epoch 2
-Epoch 3/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.347346 | Val Loss: 0.437379 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.437379 at epoch 3
-Epoch 4/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.343712 | Val Loss: 0.442141 | Train Meta: n/a | Val Meta: n/a
-Epoch 5/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.341109 | Val Loss: 0.435251 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.435251 at epoch 5
-Epoch 6/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.339603 | Val Loss: 0.435797 | Train Meta: n/a | Val Meta: n/a
-Epoch 7/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.337988 | Val Loss: 0.436840 | Train Meta: n/a | Val Meta: n/a
-Epoch 8/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.337175 | Val Loss: 0.434037 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.434037 at epoch 8
-Epoch 9/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.335881 | Val Loss: 0.436691 | Train Meta: n/a | Val Meta: n/a
-Epoch 10/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.335233 | Val Loss: 0.436460 | Train Meta: n/a | Val Meta: n/a
-Epoch 11/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.334422 | Val Loss: 0.432073 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.432073 at epoch 11
-Epoch 12/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.334007 | Val Loss: 0.437192 | Train Meta: n/a | Val Meta: n/a
-Epoch 13/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.332956 | Val Loss: 0.444442 | Train Meta: n/a | Val Meta: n/a
-Epoch 14/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.332750 | Val Loss: 0.433404 | Train Meta: n/a | Val Meta: n/a
-Epoch 15/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.332167 | Val Loss: 0.434315 | Train Meta: n/a | Val Meta: n/a
-Epoch 16/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.331724 | Val Loss: 0.435188 | Train Meta: n/a | Val Meta: n/a
-Epoch 17/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.331389 | Val Loss: 0.434199 | Train Meta: n/a | Val Meta: n/a
-Epoch 18/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.330795 | Val Loss: 0.435696 | Train Meta: n/a | Val Meta: n/a
-Epoch 19/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.330788 | Val Loss: 0.432599 | Train Meta: n/a | Val Meta: n/a
-Epoch 20/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.330440 | Val Loss: 0.431621 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.431621 at epoch 20
-{'test_mse': 0.20189054310321808, 'test_mae': 0.2640428841114044}
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 21, 96]
+Epoch 1/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.378546 | Val Loss: 0.469448 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.469448 at epoch 1
+Epoch 2/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.363475 | Val Loss: 0.464791 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.464791 at epoch 2
+Epoch 3/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.358799 | Val Loss: 0.464138 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.464138 at epoch 3
+Epoch 4/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.356197 | Val Loss: 0.471499 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.354392 | Val Loss: 0.462745 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.462745 at epoch 5
+Epoch 6/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.352604 | Val Loss: 0.463032 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.351507 | Val Loss: 0.461688 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.461688 at epoch 7
+Epoch 8/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.350108 | Val Loss: 0.462263 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.349707 | Val Loss: 0.458257 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.458257 at epoch 9
+Epoch 10/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.348451 | Val Loss: 0.462778 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.347233 | Val Loss: 0.460659 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.347058 | Val Loss: 0.465909 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.346355 | Val Loss: 0.469114 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.345825 | Val Loss: 0.463563 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.345024 | Val Loss: 0.469410 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.344502 | Val Loss: 0.465202 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.344009 | Val Loss: 0.460720 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.343776 | Val Loss: 0.463772 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.343377 | Val Loss: 0.460714 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.342604 | Val Loss: 0.465263 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.20420394837856293, 'test_mae': 0.25726813077926636}
 Saved best forecasting checkpoint under checkpoints/forecasting_weather_96/electricity_laya_ci_none_best.pt
 ==================================================
 🚀 Architecture: LAYA
@@ -401,38 +385,39 @@ Saved best forecasting checkpoint under checkpoints/forecasting_weather_96/elect
    - 40/40 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: none
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
-✅ Probing Head [CI, channel-wise]: [B*C, 4096] -> [B, 21, 192]
-Epoch 1/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.439025 | Val Loss: 0.514364 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.514364 at epoch 1
-Epoch 2/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.404129 | Val Loss: 0.520617 | Train Meta: n/a | Val Meta: n/a
-Epoch 3/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.398861 | Val Loss: 0.519248 | Train Meta: n/a | Val Meta: n/a
-Epoch 4/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.395640 | Val Loss: 0.509576 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.509576 at epoch 4
-Epoch 5/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.393059 | Val Loss: 0.512970 | Train Meta: n/a | Val Meta: n/a
-Epoch 6/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.391608 | Val Loss: 0.506444 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.506444 at epoch 6
-Epoch 7/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.390095 | Val Loss: 0.503440 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.503440 at epoch 7
-Epoch 8/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.388984 | Val Loss: 0.508576 | Train Meta: n/a | Val Meta: n/a
-Epoch 9/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.388095 | Val Loss: 0.514890 | Train Meta: n/a | Val Meta: n/a
-Epoch 10/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.387085 | Val Loss: 0.502706 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.502706 at epoch 10
-Epoch 11/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.386481 | Val Loss: 0.507129 | Train Meta: n/a | Val Meta: n/a
-Epoch 12/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.385919 | Val Loss: 0.502585 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.502585 at epoch 12
-Epoch 13/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.385288 | Val Loss: 0.509007 | Train Meta: n/a | Val Meta: n/a
-Epoch 14/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.384741 | Val Loss: 0.507298 | Train Meta: n/a | Val Meta: n/a
-Epoch 15/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.384279 | Val Loss: 0.512164 | Train Meta: n/a | Val Meta: n/a
-Epoch 16/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.383827 | Val Loss: 0.507839 | Train Meta: n/a | Val Meta: n/a
-Epoch 17/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.383300 | Val Loss: 0.503715 | Train Meta: n/a | Val Meta: n/a
-Epoch 18/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.382920 | Val Loss: 0.514301 | Train Meta: n/a | Val Meta: n/a
-Epoch 19/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.382610 | Val Loss: 0.503046 | Train Meta: n/a | Val Meta: n/a
-Epoch 20/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.382408 | Val Loss: 0.509697 | Train Meta: n/a | Val Meta: n/a
-{'test_mse': 0.2556336522102356, 'test_mae': 0.313567578792572}
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 21, 192]
+Epoch 1/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.434853 | Val Loss: 0.546645 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.546645 at epoch 1
+Epoch 2/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.420091 | Val Loss: 0.545559 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.545559 at epoch 2
+Epoch 3/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.416076 | Val Loss: 0.540992 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.540992 at epoch 3
+Epoch 4/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.413702 | Val Loss: 0.553052 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.411598 | Val Loss: 0.539807 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.539807 at epoch 5
+Epoch 6/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.409895 | Val Loss: 0.545019 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.408473 | Val Loss: 0.549239 | Train Meta: n/a | Val Meta: n/a
+Epoch 8/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.407474 | Val Loss: 0.554017 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.405981 | Val Loss: 0.543435 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.405105 | Val Loss: 0.539787 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.539787 at epoch 10
+Epoch 11/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.404733 | Val Loss: 0.549762 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.404038 | Val Loss: 0.538574 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.538574 at epoch 12
+Epoch 13/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.403125 | Val Loss: 0.544862 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.402610 | Val Loss: 0.545702 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.402202 | Val Loss: 0.545229 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.401775 | Val Loss: 0.542459 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.401200 | Val Loss: 0.546211 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.400595 | Val Loss: 0.547091 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.400413 | Val Loss: 0.543912 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.399437 | Val Loss: 0.541438 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.2619416117668152, 'test_mae': 0.3041403293609619}
 Saved best forecasting checkpoint under checkpoints/forecasting_weather_192/electricity_laya_ci_none_best.pt
 ==================================================
 🚀 Architecture: LAYA
@@ -444,37 +429,38 @@ Saved best forecasting checkpoint under checkpoints/forecasting_weather_192/elec
    - 40/40 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: none
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
-✅ Probing Head [CI, channel-wise]: [B*C, 4096] -> [B, 21, 336]
-Epoch 1/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.480713 | Val Loss: 0.586247 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.586247 at epoch 1
-Epoch 2/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.451499 | Val Loss: 0.589476 | Train Meta: n/a | Val Meta: n/a
-Epoch 3/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.446186 | Val Loss: 0.588207 | Train Meta: n/a | Val Meta: n/a
-Epoch 4/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.443103 | Val Loss: 0.575505 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.575505 at epoch 4
-Epoch 5/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.441107 | Val Loss: 0.578286 | Train Meta: n/a | Val Meta: n/a
-Epoch 6/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.439629 | Val Loss: 0.573362 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.573362 at epoch 6
-Epoch 7/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.438101 | Val Loss: 0.578284 | Train Meta: n/a | Val Meta: n/a
-Epoch 8/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.436968 | Val Loss: 0.592491 | Train Meta: n/a | Val Meta: n/a
-Epoch 9/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.436009 | Val Loss: 0.576175 | Train Meta: n/a | Val Meta: n/a
-Epoch 10/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.434899 | Val Loss: 0.571500 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.571500 at epoch 10
-Epoch 11/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.434565 | Val Loss: 0.577199 | Train Meta: n/a | Val Meta: n/a
-Epoch 12/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.433714 | Val Loss: 0.577626 | Train Meta: n/a | Val Meta: n/a
-Epoch 13/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.433311 | Val Loss: 0.573442 | Train Meta: n/a | Val Meta: n/a
-Epoch 14/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.432445 | Val Loss: 0.580359 | Train Meta: n/a | Val Meta: n/a
-Epoch 15/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.432132 | Val Loss: 0.579943 | Train Meta: n/a | Val Meta: n/a
-Epoch 16/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.431694 | Val Loss: 0.575440 | Train Meta: n/a | Val Meta: n/a
-Epoch 17/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.431281 | Val Loss: 0.578021 | Train Meta: n/a | Val Meta: n/a
-Epoch 18/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.430823 | Val Loss: 0.593300 | Train Meta: n/a | Val Meta: n/a
-Epoch 19/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.430394 | Val Loss: 0.582767 | Train Meta: n/a | Val Meta: n/a
-Epoch 20/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.429893 | Val Loss: 0.570689 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.570689 at epoch 20
-{'test_mse': 0.3121139705181122, 'test_mae': 0.3651779294013977}
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 21, 336]
+Epoch 1/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.488558 | Val Loss: 0.629983 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.629983 at epoch 1
+Epoch 2/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.474827 | Val Loss: 0.631166 | Train Meta: n/a | Val Meta: n/a
+Epoch 3/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.470945 | Val Loss: 0.629265 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.629265 at epoch 3
+Epoch 4/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.468136 | Val Loss: 0.627650 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.627650 at epoch 4
+Epoch 5/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.466503 | Val Loss: 0.627623 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.627623 at epoch 5
+Epoch 6/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.464746 | Val Loss: 0.620272 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.620272 at epoch 6
+Epoch 7/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.463468 | Val Loss: 0.627536 | Train Meta: n/a | Val Meta: n/a
+Epoch 8/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.462421 | Val Loss: 0.629930 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.461320 | Val Loss: 0.626460 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.460584 | Val Loss: 0.622799 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.459786 | Val Loss: 0.633045 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.458908 | Val Loss: 0.621048 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.458691 | Val Loss: 0.624692 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.457856 | Val Loss: 0.620810 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.457436 | Val Loss: 0.627362 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.457102 | Val Loss: 0.625881 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.456514 | Val Loss: 0.631997 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.455832 | Val Loss: 0.625557 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.455426 | Val Loss: 0.640459 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.454907 | Val Loss: 0.631014 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.31966203451156616, 'test_mae': 0.3456259071826935}
 Saved best forecasting checkpoint under checkpoints/forecasting_weather_336/electricity_laya_ci_none_best.pt
 ==================================================
 🚀 Architecture: LAYA
@@ -486,32 +472,34 @@ Saved best forecasting checkpoint under checkpoints/forecasting_weather_336/elec
    - 40/40 keys matched.
 ℹ️ Channel Adapter: disabled
 📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
 ℹ️ Metadata Fusion Mode: none
 ℹ️ Channel Mixer Relation Mode: none
 ℹ️ Encoder Variant: default
 ℹ️ Channel Relation Block: disabled
-✅ Probing Head [CI, channel-wise]: [B*C, 4096] -> [B, 21, 720]
-Epoch 1/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.530388 | Val Loss: 0.680738 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.680738 at epoch 1
-Epoch 2/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.505954 | Val Loss: 0.662554 | Train Meta: n/a | Val Meta: n/a
-   -> Updated best validation state: val_loss=0.662554 at epoch 2
-Epoch 3/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.501263 | Val Loss: 0.673299 | Train Meta: n/a | Val Meta: n/a
-Epoch 4/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.498373 | Val Loss: 0.682204 | Train Meta: n/a | Val Meta: n/a
-Epoch 5/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.496041 | Val Loss: 0.694674 | Train Meta: n/a | Val Meta: n/a
-Epoch 6/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.494354 | Val Loss: 0.687138 | Train Meta: n/a | Val Meta: n/a
-Epoch 7/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.492961 | Val Loss: 0.672714 | Train Meta: n/a | Val Meta: n/a
-Epoch 8/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.491690 | Val Loss: 0.688492 | Train Meta: n/a | Val Meta: n/a
-Epoch 9/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.490704 | Val Loss: 0.672395 | Train Meta: n/a | Val Meta: n/a
-Epoch 10/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.490004 | Val Loss: 0.677459 | Train Meta: n/a | Val Meta: n/a
-Epoch 11/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.488961 | Val Loss: 0.691398 | Train Meta: n/a | Val Meta: n/a
-Epoch 12/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.488446 | Val Loss: 0.672973 | Train Meta: n/a | Val Meta: n/a
-Epoch 13/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.487909 | Val Loss: 0.670040 | Train Meta: n/a | Val Meta: n/a
-Epoch 14/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.487119 | Val Loss: 0.663442 | Train Meta: n/a | Val Meta: n/a
-Epoch 15/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.486897 | Val Loss: 0.680396 | Train Meta: n/a | Val Meta: n/a
-Epoch 16/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.486214 | Val Loss: 0.667626 | Train Meta: n/a | Val Meta: n/a
-Epoch 17/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.485791 | Val Loss: 0.668187 | Train Meta: n/a | Val Meta: n/a
-Epoch 18/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.485560 | Val Loss: 0.671876 | Train Meta: n/a | Val Meta: n/a
-Epoch 19/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.484940 | Val Loss: 0.685439 | Train Meta: n/a | Val Meta: n/a
-Epoch 20/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.484604 | Val Loss: 0.665501 | Train Meta: n/a | Val Meta: n/a
-{'test_mse': 0.3857342600822449, 'test_mae': 0.4118698537349701}
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 21, 720]
+Epoch 1/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.557743 | Val Loss: 0.727881 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.727881 at epoch 1
+Epoch 2/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.544545 | Val Loss: 0.728687 | Train Meta: n/a | Val Meta: n/a
+Epoch 3/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.540315 | Val Loss: 0.721793 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.721793 at epoch 3
+Epoch 4/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.537402 | Val Loss: 0.726888 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.535743 | Val Loss: 0.729632 | Train Meta: n/a | Val Meta: n/a
+Epoch 6/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.534126 | Val Loss: 0.732946 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.532737 | Val Loss: 0.726177 | Train Meta: n/a | Val Meta: n/a
+Epoch 8/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.531897 | Val Loss: 0.725288 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.530736 | Val Loss: 0.729503 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.529570 | Val Loss: 0.726906 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.528881 | Val Loss: 0.725569 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.528218 | Val Loss: 0.731142 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.527709 | Val Loss: 0.725019 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.526738 | Val Loss: 0.721373 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.721373 at epoch 14
+Epoch 15/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.526434 | Val Loss: 0.724016 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.525909 | Val Loss: 0.724012 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.525528 | Val Loss: 0.739654 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.524984 | Val Loss: 0.723878 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.524353 | Val Loss: 0.738836 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.523919 | Val Loss: 0.722412 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.4016515016555786, 'test_mae': 0.400803804397583}
 Saved best forecasting checkpoint under checkpoints/forecasting_weather_720/electricity_laya_ci_none_best.pt
