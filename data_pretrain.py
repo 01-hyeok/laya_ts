@@ -187,7 +187,10 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         self.skip_samples = skip_samples
         self.shuffle_buffer_size = shuffle_buffer_size
         self.random_seed = random_seed
-        self._resolved_local_dataset_path = self._resolve_local_lotsa_repo_path(dataset_name)
+        print(f"[DEBUG-DATASET] raw dataset_name={dataset_name}")
+        resolved_local = self._resolve_local_lotsa_repo_path(dataset_name)
+        print(f"[DEBUG-DATASET] resolved_local_dataset_path={resolved_local}")
+        self._resolved_local_dataset_path = resolved_local
         self._text_metadata_cache: dict[tuple[str, tuple[str, ...]], torch.Tensor | None] = {}
         self._count_cache: tuple[int, int] | None = None
         self._count_cache_token: tuple[object, ...] | None = None
@@ -353,6 +356,10 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
 
         if cls._looks_like_local_dataset_path(raw_value):
             joined = ", ".join(str(candidate) for candidate in unique_candidates)
+            print(
+                f"[DEBUG-DATASET] local path resolution failed: "
+                f"provided={raw_value}, checked={[str(candidate) for candidate in unique_candidates]}"
+            )
             raise FileNotFoundError(
                 f"LOTSA local dataset path was requested but no directory was found. "
                 f"Provided='{raw_value}', checked=[{joined}]"

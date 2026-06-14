@@ -78,6 +78,13 @@ if [ -n "${LOTSA_MAX_CHANNEL}" ]; then
   EXTRA_ARGS+=(--lotsa_max_channel "${LOTSA_MAX_CHANNEL}")
 fi
 
+echo "[DEBUG-SCRIPT] pwd=$(pwd)"
+echo "[DEBUG-SCRIPT] script=$0"
+echo "[DEBUG-SCRIPT] LOTSA_DATASET_PATH=${LOTSA_DATASET_PATH}"
+echo "[DEBUG-SCRIPT] LOTSA_SUBSETS=${LOTSA_SUBSETS:-ALL}"
+echo "[DEBUG-SCRIPT] CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-unset}"
+echo "[DEBUG-SCRIPT] launching train_pretrain.py with --lotsa_dataset_path ${LOTSA_DATASET_PATH}"
+
 python -u "./train_pretrain.py" \
   --dataset_type ${DATA} \
   --data_path "${LOTSA_SUBSETS}" \
@@ -106,6 +113,7 @@ python -u "./train_pretrain.py" \
   --lotsa_subset_sampling ${LOTSA_SUBSET_SAMPLING} \
   --lotsa_min_patches ${LOTSA_MIN_PATCHES} \
   --lotsa_windows_per_series ${LOTSA_WINDOWS_PER_SERIES} \
+  --lotsa_dataset_path "${LOTSA_DATASET_PATH}" \
   --channel_mixer_type ${LAYA_MODE} \
   --text_encoder_name_or_path ${TEXT_ENCODER_NAME} \
   --text_metadata_cache_dir ${TEXT_METADATA_CACHE_DIR} \

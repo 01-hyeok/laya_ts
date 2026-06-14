@@ -705,6 +705,12 @@ def main(argv=None):
     p.add_argument("--save_attention_maps", action="store_true")
     p.add_argument("--attention_map_tag", type=str, default=None)
     args = p.parse_args(argv)
+    print(f"[DEBUG-TRAIN] cwd={os.getcwd()}")
+    print(f"[DEBUG-TRAIN] dataset_type={args.dataset_type}")
+    print(f"[DEBUG-TRAIN] data_path={args.data_path}")
+    print(f"[DEBUG-TRAIN] lotsa_dataset_path={args.lotsa_dataset_path}")
+    print(f"[DEBUG-TRAIN] lotsa_split_mode={args.lotsa_split_mode}")
+    print(f"[DEBUG-TRAIN] lotsa_sampling_mode={args.lotsa_sampling_mode}")
 
     if args.epochs <= 0:
         raise ValueError(f"--epochs must be positive, got {args.epochs}")
