@@ -151,7 +151,7 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2",
         text_metadata_cache_dir: str = "./metadata_cache",
         text_encoder_local_files_only: bool = False,
-        lotsa_split_mode: str = "temporal_70_10_20",
+        lotsa_split_mode: str = "temporal_90_10",
         lotsa_sampling_mode: str = "sliding_window",
         lotsa_preprocessing_mode: str = "standardize",
         lotsa_sample_time_series: str = "proportional",
@@ -201,10 +201,10 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         self._subset_index_cache: dict[str, tuple[np.ndarray, np.ndarray]] = {}
         self._subset_weight_cache: dict[tuple[str, ...], dict[str, float]] = {}
 
-        if self.lotsa_split_mode not in {"official", "temporal_70_10_20"}:
+        if self.lotsa_split_mode not in {"official", "temporal_90_10", "temporal_70_10_20"}:
             raise ValueError(
                 f"Unsupported LOTSA split mode: {lotsa_split_mode}. "
-                "Expected one of: official, temporal_70_10_20."
+                "Expected one of: official, temporal_90_10, temporal_70_10_20."
             )
         if self.patch_size <= 0:
             raise ValueError(f"patch_size must be positive, got {patch_size}")
@@ -848,16 +848,28 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
             f"LOTSA official split mode requested for subset '{subset_name}', "
             f"but no held-out split is available for mode='{self.mode}'. "
             f"Available splits: {list(available) or ['<none>']}. "
-            "Use --lotsa_split_mode temporal_70_10_20 to opt back into the legacy within-series split."
+            "Use --lotsa_split_mode temporal_90_10 or temporal_70_10_20 to opt back into the legacy within-series split."
         )
+
+    def _temporal_split_lengths(self, total_len: int) -> tuple[int, int, int]:
+        if self.lotsa_split_mode == "temporal_90_10":
+            val_len = int(total_len * 0.1)
+            train_len = total_len - val_len
+            test_len = 0
+            return train_len, val_len, test_len
+        if self.lotsa_split_mode == "temporal_70_10_20":
+            train_len = int(total_len * 0.7)
+            val_len = int(total_len * 0.1)
+            test_len = max(0, total_len - train_len - val_len)
+            return train_len, val_len, test_len
+        return total_len, total_len, total_len
 
     def _select_series_split(self, series_ct: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
         total_len = series_ct.shape[1]
         if self.lotsa_split_mode == "official":
             return series_ct, series_ct
 
-        train_len = int(total_len * 0.7)
-        val_len = int(total_len * 0.1)
+        train_len, val_len, _ = self._temporal_split_lengths(total_len)
         if self.mode == "train":
             return series_ct[:, :train_len], series_ct[:, :train_len]
         if self.mode == "val":
@@ -1282,9 +1294,13 @@ class LOTSABatchStreamingPretrainDataset(IterableDataset):
         if self.lotsa_split_mode == "official":
             split_len = total_len
         else:
-            train_len = int(total_len * 0.7)
-            val_len = int(total_len * 0.1)
-            split_len = train_len if self.mode == "train" else val_len
+            train_len, val_len, test_len = self._temporal_split_lengths(total_len)
+            if self.mode == "train":
+                split_len = train_len
+            elif self.mode == "val":
+                split_len = val_len
+            else:
+                split_len = test_len
         if split_len < self.seq_len:
             return 0
         return 1 + (split_len - self.seq_len) // self.stride
@@ -1976,7 +1992,7 @@ def _resolve_lotsa_num_workers(requested_num_workers: int) -> int:
     return 0
 
 
-def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, tsld_mode: str = "univariate", tslib_mode: str = "univariate", channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_dataset_path: str = "Salesforce/lotsa_data", lotsa_split_mode: str = "official", lotsa_sampling_mode: str = "official", lotsa_preprocessing_mode: str = "official", lotsa_sample_time_series: str = "proportional", lotsa_subset_sampling: str = "official", lotsa_min_patches: int = 2, lotsa_max_channel: int | None = None, lotsa_windows_per_series: int = 32):
+def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, tsld_mode: str = "univariate", tslib_mode: str = "univariate", channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_dataset_path: str = "Salesforce/lotsa_data", lotsa_split_mode: str = "temporal_90_10", lotsa_sampling_mode: str = "official", lotsa_preprocessing_mode: str = "official", lotsa_sample_time_series: str = "proportional", lotsa_subset_sampling: str = "official", lotsa_min_patches: int = 2, lotsa_max_channel: int | None = None, lotsa_windows_per_series: int = 32):
     if dataset_type == "lotsa":
         effective_num_workers = _resolve_lotsa_num_workers(num_workers)
         subset_names = _parse_lotsa_subset_names(path)
@@ -2073,7 +2089,7 @@ def get_pretrain_loaders(dataset_type: str, path: str, batch_size: int = 256, se
     return train_loader, val_loader
 
 
-def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_dataset_path: str = "Salesforce/lotsa_data", lotsa_split_mode: str = "official", lotsa_sampling_mode: str = "official", lotsa_preprocessing_mode: str = "official", lotsa_sample_time_series: str = "proportional", lotsa_subset_sampling: str = "official", lotsa_min_patches: int = 2, lotsa_max_channel: int | None = None, lotsa_windows_per_series: int = 32):
+def get_lotsa_pretrain_loader_groups(path: str, batch_size: int = 256, seq_len: int = 512, stride: int = 128, patch_size: int = 16, num_workers: int = 4, max_files: int | None = None, channel_metadata_mode: str = "onehot", text_encoder_name_or_path: str = "sentence-transformers/all-MiniLM-L6-v2", text_metadata_cache_dir: str = "./metadata_cache", text_encoder_local_files_only: bool = False, lotsa_dataset_path: str = "Salesforce/lotsa_data", lotsa_split_mode: str = "temporal_90_10", lotsa_sampling_mode: str = "official", lotsa_preprocessing_mode: str = "official", lotsa_sample_time_series: str = "proportional", lotsa_subset_sampling: str = "official", lotsa_min_patches: int = 2, lotsa_max_channel: int | None = None, lotsa_windows_per_series: int = 32):
     effective_num_workers = _resolve_lotsa_num_workers(num_workers)
     subset_names = _parse_lotsa_subset_names(path)
     if subset_names is None:
