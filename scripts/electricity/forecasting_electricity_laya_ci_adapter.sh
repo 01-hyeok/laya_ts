@@ -3,6 +3,12 @@ set -euo pipefail
 
 source /data/pjh_workspace/ts-env/bin/activate
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-1}"
+export HF_HOME="${HF_HOME:-/NHNHOME/pjh_data/hf_cache}"
+export HUGGINGFACE_HUB_CACHE="${HUGGINGFACE_HUB_CACHE:-${HF_HOME}/hub}"
+export TRANSFORMERS_CACHE="${TRANSFORMERS_CACHE:-${HF_HOME}/transformers}"
+export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
+
+mkdir -p "${HF_HOME}" "${HUGGINGFACE_HUB_CACHE}" "${TRANSFORMERS_CACHE}"
 
 PRETRAIN_DATA="electricity"
 ARCH="laya"
@@ -17,6 +23,7 @@ METADATA_SCALE_INIT="${METADATA_SCALE_INIT:-1e-3}"
 METADATA_DROPOUT="${METADATA_DROPOUT:-0.0}"
 USE_METADATA_BIAS="${USE_METADATA_BIAS:-1}"
 USE_METADATA_GATE="${USE_METADATA_GATE:-1}"
+TEXT_METADATA_CACHE_DIR="${TEXT_METADATA_CACHE_DIR:-/NHNHOME/pjh_data/laya_ts_metadata_cache}"
 
 DEFAULT_CHECKPOINT_DIR="./checkpoints/${PRETRAIN_DATA}_${ARCH}_ci_adapter"
 CHECKPOINT="${CHECKPOINT:-${DEFAULT_CHECKPOINT_DIR}/laya_ts_${PRETRAIN_DATA}_s_best.pt}"
@@ -38,6 +45,8 @@ NUM_EPOCHS="${NUM_EPOCHS:-20}"
 SEQ_LEN="${SEQ_LEN:-512}"
 SAVE_ATTENTION_MAPS="${SAVE_ATTENTION_MAPS:-0}"
 NUM_ATTENTION_MAP_SAMPLES="${NUM_ATTENTION_MAP_SAMPLES:-3}"
+
+mkdir -p "${TEXT_METADATA_CACHE_DIR}"
 
 EXTRA_ARGS=(
   --metadata_fusion_mode "${METADATA_FUSION_MODE}"
@@ -90,6 +99,7 @@ for DATA in "${TARGET_DATASETS[@]}"; do
       --num_workers 0 \
       --channel_mixer_type "$LAYA_MODE" \
       --channel_metadata_mode "$CHANNEL_METADATA_MODE" \
+      --text_metadata_cache_dir "${TEXT_METADATA_CACHE_DIR}" \
       --log_dir "$LOG_DIR/pred_${PRED_LEN}" \
       "${EXTRA_ARGS[@]}"
   done

@@ -3,6 +3,12 @@ set -euo pipefail
 
 source /data/pjh_workspace/ts-env/bin/activate
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-1}"
+export HF_HOME="${HF_HOME:-/NHNHOME/pjh_data/hf_cache}"
+export HUGGINGFACE_HUB_CACHE="${HUGGINGFACE_HUB_CACHE:-${HF_HOME}/hub}"
+export TRANSFORMERS_CACHE="${TRANSFORMERS_CACHE:-${HF_HOME}/transformers}"
+export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
+
+mkdir -p "${HF_HOME}" "${HUGGINGFACE_HUB_CACHE}" "${TRANSFORMERS_CACHE}"
 
 DATA="electricity"
 DATA_PATH="${DATA_PATH:-../Dataset/long_term_forecast/electricity/electricity.csv}"
@@ -20,6 +26,7 @@ METADATA_SCALE_INIT="${METADATA_SCALE_INIT:-1e-3}"
 METADATA_DROPOUT="${METADATA_DROPOUT:-0.0}"
 USE_METADATA_BIAS="${USE_METADATA_BIAS:-1}"
 USE_METADATA_GATE="${USE_METADATA_GATE:-1}"
+TEXT_METADATA_CACHE_DIR="${TEXT_METADATA_CACHE_DIR:-/NHNHOME/pjh_data/laya_ts_metadata_cache}"
 
 SEQ_LEN="${SEQ_LEN:-512}"
 D_MODEL="${D_MODEL:-256}"
@@ -42,10 +49,14 @@ SAVE_ATTENTION_MAPS="${SAVE_ATTENTION_MAPS:-0}"
 SAVE_DIR="${SAVE_DIR:-./checkpoints/${DATA}_${ARCH}_ci_adapter}"
 LOG_DIR="${LOG_DIR:-./runs/pretrain_${DATA}_${ARCH}_ci_adapter}"
 
+mkdir -p "${TEXT_METADATA_CACHE_DIR}"
+
 echo "🚀 Laya-TS Pretraining: ${DATA} (${ARCH} + ci_adapter)"
 echo "📊 data_path: ${DATA_PATH}"
 echo "📝 metadata: mode=${CHANNEL_METADATA_MODE}, fusion=${METADATA_FUSION_MODE}"
 echo "📝 relation_adapter: heads=${RELATION_NUM_HEADS}, dropout=${RELATION_DROPOUT}, metadata_dropout=${METADATA_DROPOUT}"
+echo "📝 metadata_cache: ${TEXT_METADATA_CACHE_DIR}"
+echo "📝 hf_cache: ${HF_HOME}"
 echo "📝 log_dir: ${LOG_DIR}"
 
 EXTRA_ARGS=(
@@ -97,6 +108,7 @@ python -u "./train_pretrain.py" \
   --weight_decay "${WEIGHT_DECAY}" \
   --min_lr "${MIN_LR}" \
   --channel_metadata_mode "${CHANNEL_METADATA_MODE}" \
+  --text_metadata_cache_dir "${TEXT_METADATA_CACHE_DIR}" \
   --channel_mixer_type "${LAYA_MODE}" \
   --save_dir "${SAVE_DIR}" \
   --log_dir "${LOG_DIR}" \
