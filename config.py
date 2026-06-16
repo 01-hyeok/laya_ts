@@ -60,6 +60,15 @@ class LayaModelConfig:
     stats_metadata_dim: int = 384
     channel_mixer_relation_mode: str = "none"
     channel_mixer_relation_scale_init: float = 0.01
+    use_relation_adapter: bool = False
+    relation_num_heads: int = 4
+    relation_dropout: float = 0.1
+    relation_scale_init: float = 1e-3
+    use_metadata_bias: bool = True
+    use_metadata_gate: bool = True
+    metadata_scale_init: float = 1e-3
+    metadata_dropout: float = 0.0
+    relation_adapter_position: str = "post_encoder"
     description_relation_num_latents: int = 1
     description_relation_metric: str = "cosine"
     description_relation_lambda_init: float = 0.0
@@ -101,8 +110,28 @@ class LayaModelConfig:
     attn_dropout: float = 0.0
 
     def __post_init__(self) -> None:
+        normalized_channel_mixer_type = str(self.channel_mixer_type).strip().lower().replace("-", "_")
+        if normalized_channel_mixer_type == "ci_adapter" and not self.use_relation_adapter:
+            object.__setattr__(self, "use_relation_adapter", True)
         if self.patch_size <= 0:
             raise ValueError(f"patch_size must be positive, got {self.patch_size}")
+        if self.relation_num_heads <= 0:
+            raise ValueError(
+                f"relation_num_heads must be positive, got {self.relation_num_heads}"
+            )
+        if not 0.0 <= self.relation_dropout <= 1.0:
+            raise ValueError(
+                f"relation_dropout must be in [0, 1], got {self.relation_dropout}"
+            )
+        if not 0.0 <= self.metadata_dropout <= 1.0:
+            raise ValueError(
+                f"metadata_dropout must be in [0, 1], got {self.metadata_dropout}"
+            )
+        if self.relation_adapter_position != "post_encoder":
+            raise ValueError(
+                "relation_adapter_position must currently be 'post_encoder', "
+                f"got {self.relation_adapter_position!r}"
+            )
         if self.description_relation_num_latents <= 0:
             raise ValueError(
                 "description_relation_num_latents must be positive, "

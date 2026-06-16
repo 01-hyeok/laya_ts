@@ -21,6 +21,7 @@ def normalize_channel_mixer_type(value: str) -> str:
         "query_mixer": "mixer",
         "independent": "independent",
         "ci": "independent",
+        "ci_adapter": "independent",
         "channel_independent": "independent",
         "none": "independent",
     }

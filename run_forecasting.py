@@ -63,6 +63,15 @@ def _add_bool_optional_arg(parser: argparse.ArgumentParser, option: str, *, defa
     parser.set_defaults(**{dest: default})
 
 
+def _relation_adapter_checkpoint_status(load_report: dict[str, object]) -> tuple[bool, bool]:
+    matched_key_names = [str(key) for key in load_report.get("matched_key_names", [])]
+    skipped_keys = [str(key) for key in load_report.get("skipped_keys", [])]
+    missing_keys = [str(key) for key in load_report.get("missing_keys", [])]
+    adapter_pretrained = any(key.startswith("relation_adapter.") for key in matched_key_names)
+    adapter_missing = any(key.startswith("relation_adapter.") for key in skipped_keys + missing_keys)
+    return adapter_pretrained, adapter_missing
+
+
 def _mse(y_true, y_pred):
     return float(np.mean((y_true - y_pred) ** 2))
 
@@ -119,6 +128,20 @@ def _format_metadata_usage(metadata_usage: dict[str, float]) -> str:
     if not metadata_usage:
         return "Meta: n/a"
     parts = []
+    if "adapter_scale_mean" in metadata_usage:
+        parts.append(f"AdapterScaleμ:{metadata_usage['adapter_scale_mean']:.4f}")
+    if "adapter_metadata_scale_mean" in metadata_usage:
+        parts.append(f"AdapterMetaScaleμ:{metadata_usage['adapter_metadata_scale_mean']:.4f}")
+    if "adapter_gate_mean" in metadata_usage:
+        parts.append(f"AdapterGateμ:{metadata_usage['adapter_gate_mean']:.4f}")
+    if "adapter_bias_mean_abs" in metadata_usage:
+        parts.append(f"AdapterBias|B|μ:{metadata_usage['adapter_bias_mean_abs']:.4f}")
+    if "adapter_metadata_present" in metadata_usage:
+        parts.append(f"AdapterMetaOn:{metadata_usage['adapter_metadata_present']:.2f}")
+    if "adapter_metadata_nonzero_fraction" in metadata_usage:
+        parts.append(f"AdapterMetaNZ%:{100.0 * metadata_usage['adapter_metadata_nonzero_fraction']:.1f}")
+    if "adapter_delta_ratio" in metadata_usage:
+        parts.append(f"AdapterΔ/Input:{100.0 * metadata_usage['adapter_delta_ratio']:.2f}%")
     if "relation_scale_mean" in metadata_usage:
         parts.append(f"Scaleμ:{metadata_usage['relation_scale_mean']:.4f}")
     if "signal_score_mean_abs" in metadata_usage:
@@ -320,9 +343,18 @@ def main(argv=None):
     p.add_argument("--channel_metadata_mode", type=str, default=None, choices=["onehot", "text", "stats", "text_stats_joint", "text_stats_avg", "none"])
     p.add_argument("--metadata_fusion_mode", type=str, default=None, choices=["none", "add", "concat_kv", "attention_gate", "attention_suppress_gate"])
     p.add_argument("--onehot_channel_vocab_size", type=int, default=None)
-    p.add_argument("--channel_mixer_type", type=str, default=None, choices=["mixer", "independent"])
+    p.add_argument("--channel_mixer_type", type=str, default=None, choices=["mixer", "independent", "ci_adapter"])
     p.add_argument("--channel_mixer_relation_mode", type=str, default=None, choices=["none", "laya_relation", "metadata_query_gate", "metadata_query_bias", "description_relation"])
     p.add_argument("--channel_mixer_relation_scale_init", type=float, default=None)
+    _add_bool_optional_arg(p, "--use_relation_adapter", default=None)
+    p.add_argument("--relation_num_heads", type=int, default=None)
+    p.add_argument("--relation_dropout", type=float, default=None)
+    p.add_argument("--relation_scale_init", type=float, default=None)
+    _add_bool_optional_arg(p, "--use_metadata_bias", default=None)
+    _add_bool_optional_arg(p, "--use_metadata_gate", default=None)
+    p.add_argument("--metadata_scale_init", type=float, default=None)
+    p.add_argument("--metadata_dropout", type=float, default=None)
+    p.add_argument("--relation_adapter_position", type=str, default=None, choices=["post_encoder"])
     p.add_argument("--description_relation_num_latents", type=int, default=None)
     p.add_argument("--description_relation_metric", type=str, default=None, choices=["projected_dot", "cosine"])
     p.add_argument("--description_relation_lambda_init", type=float, default=None)
@@ -344,6 +376,8 @@ def main(argv=None):
     p.add_argument("--text_metadata_cache_dir", type=str, default="./metadata_cache")
     p.add_argument("--text_encoder_local_files_only", action="store_true")
     p.add_argument("--stats_metadata_dim", type=int, default=None)
+    p.add_argument("--require_relation_adapter_checkpoint", action="store_true")
+    p.add_argument("--allow_random_init_relation_adapter", action="store_true")
     p.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu")
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--log_dir", type=str, default="laya_ts/runs/forecasting")
@@ -367,7 +401,15 @@ def main(argv=None):
     metadata_fusion_mode = args.metadata_fusion_mode or checkpoint_cfg.metadata_fusion_mode
     if channel_metadata_mode == "coordinates":
         raise ValueError("laya_ts no longer supports channel_metadata_mode='coordinates'. Use one of: onehot, text, stats, text_stats_joint, text_stats_avg, none.")
-    channel_mixer_type = args.channel_mixer_type or checkpoint_cfg.channel_mixer_type
+    requested_channel_mixer_type = args.channel_mixer_type or checkpoint_cfg.channel_mixer_type
+    use_relation_adapter = checkpoint_cfg.use_relation_adapter
+    if args.use_relation_adapter is not None:
+        use_relation_adapter = args.use_relation_adapter
+    if str(requested_channel_mixer_type).strip().lower().replace("-", "_") == "ci_adapter":
+        channel_mixer_type = "independent"
+        use_relation_adapter = True
+    else:
+        channel_mixer_type = requested_channel_mixer_type
     train_loader, val_loader, test_loader, scaler = get_forecasting_loaders(args.data_path, args.dataset_type, batch_size=args.batch_size, seq_len=args.seq_len, pred_len=args.pred_len, num_workers=args.num_workers, channel_metadata_mode=channel_metadata_mode, text_encoder_name_or_path=args.text_encoder_name_or_path, text_metadata_cache_dir=args.text_metadata_cache_dir, text_encoder_local_files_only=args.text_encoder_local_files_only)
     first_batch = next(iter(train_loader))
     input_channels = first_batch["series"].shape[1]
@@ -391,6 +433,46 @@ def main(argv=None):
         checkpoint_cfg.channel_mixer_relation_scale_init
         if args.channel_mixer_relation_scale_init is None
         else args.channel_mixer_relation_scale_init
+    )
+    relation_num_heads = (
+        checkpoint_cfg.relation_num_heads
+        if args.relation_num_heads is None
+        else args.relation_num_heads
+    )
+    relation_dropout = (
+        checkpoint_cfg.relation_dropout
+        if args.relation_dropout is None
+        else args.relation_dropout
+    )
+    relation_scale_init = (
+        checkpoint_cfg.relation_scale_init
+        if args.relation_scale_init is None
+        else args.relation_scale_init
+    )
+    use_metadata_bias = (
+        checkpoint_cfg.use_metadata_bias
+        if args.use_metadata_bias is None
+        else args.use_metadata_bias
+    )
+    use_metadata_gate = (
+        checkpoint_cfg.use_metadata_gate
+        if args.use_metadata_gate is None
+        else args.use_metadata_gate
+    )
+    metadata_scale_init = (
+        checkpoint_cfg.metadata_scale_init
+        if args.metadata_scale_init is None
+        else args.metadata_scale_init
+    )
+    metadata_dropout = (
+        checkpoint_cfg.metadata_dropout
+        if args.metadata_dropout is None
+        else args.metadata_dropout
+    )
+    relation_adapter_position = (
+        checkpoint_cfg.relation_adapter_position
+        if args.relation_adapter_position is None
+        else args.relation_adapter_position
     )
     description_relation_num_latents = (
         checkpoint_cfg.description_relation_num_latents
@@ -426,6 +508,15 @@ def main(argv=None):
             "channel_mixer_type": channel_mixer_type,
             "channel_mixer_relation_mode": channel_mixer_relation_mode,
             "channel_mixer_relation_scale_init": channel_mixer_relation_scale_init,
+            "use_relation_adapter": use_relation_adapter,
+            "relation_num_heads": relation_num_heads,
+            "relation_dropout": relation_dropout,
+            "relation_scale_init": relation_scale_init,
+            "use_metadata_bias": use_metadata_bias,
+            "use_metadata_gate": use_metadata_gate,
+            "metadata_scale_init": metadata_scale_init,
+            "metadata_dropout": metadata_dropout,
+            "relation_adapter_position": relation_adapter_position,
             "description_relation_num_latents": description_relation_num_latents,
             "description_relation_metric": description_relation_metric,
             "description_relation_lambda_init": description_relation_lambda_init,
@@ -461,6 +552,8 @@ def main(argv=None):
     load_report = load_encoder_from_checkpoint_report(model, args.checkpoint)
     skipped_encoder_keys = list(load_report["skipped_keys"])
     skipped_onehot_projector = any(key.startswith("channel_id_projector.") for key in skipped_encoder_keys)
+    skipped_relation_adapter = any(key.startswith("relation_adapter.") for key in skipped_encoder_keys)
+    adapter_pretrained, adapter_missing = _relation_adapter_checkpoint_status(load_report)
     print("=" * 50)
     print("🚀 Architecture: LAYA")
     print(f"📊 Target Dataset: {args.dataset_type} (Channels: {input_channels})")
@@ -475,6 +568,16 @@ def main(argv=None):
         print(f"   ℹ️ Unexpected keys ignored: {load_report['unexpected_keys'][:3]}...")
     if skipped_encoder_keys:
         print(f"   ℹ️ Shape-mismatched keys skipped: {skipped_encoder_keys[:3]}...")
+    if model_cfg.use_relation_adapter:
+        if args.require_relation_adapter_checkpoint and not adapter_pretrained:
+            raise ValueError(
+                "Relation adapter is enabled, but the checkpoint does not contain compatible relation_adapter weights."
+            )
+        if adapter_missing and not adapter_pretrained and not args.allow_random_init_relation_adapter:
+            raise ValueError(
+                "Relation adapter is enabled, but the checkpoint does not provide compatible relation_adapter weights. "
+                "Use a pretrained ci_adapter checkpoint, or pass --allow_random_init_relation_adapter explicitly."
+            )
     for p_ in model.encoder.parameters():
         p_.requires_grad = False
     finetune_params = list(model.head.parameters())
@@ -486,7 +589,20 @@ def main(argv=None):
             f"Onehot vocab resized from checkpoint value {checkpoint_cfg.onehot_channel_vocab_size} "
             f"to {model_cfg.onehot_channel_vocab_size}; reinitializing channel_id_projector."
         )
-    print("ℹ️ Channel Adapter: disabled")
+    if skipped_relation_adapter and model.encoder.relation_adapter is not None:
+        for p_ in model.encoder.relation_adapter.parameters():
+            p_.requires_grad = True
+        finetune_params.extend(model.encoder.relation_adapter.parameters())
+        print("Relation adapter parameters were not restored from checkpoint; enabling them for downstream training.")
+    print(
+        f"ℹ️ Channel Adapter: {'enabled' if model_cfg.use_relation_adapter else 'disabled'}"
+    )
+    if model_cfg.use_relation_adapter:
+        print(
+            f"   - position: {model_cfg.relation_adapter_position}, heads: {model_cfg.relation_num_heads}, "
+            f"dropout: {model_cfg.relation_dropout}, metadata_dropout: {model_cfg.metadata_dropout}"
+        )
+        print(f"   - adapter_pretrained: {adapter_pretrained}")
     print(
         f"📝 metadata: mode={channel_metadata_mode}, "
         f"fusion={model_cfg.metadata_fusion_mode}, relation={model_cfg.channel_mixer_relation_mode}"
@@ -636,6 +752,7 @@ def main(argv=None):
                         "revin_affine": args.revin_affine,
                         "revin_subtract_last": args.revin_subtract_last,
                         "revin_eps": args.revin_eps,
+                        "adapter_pretrained": adapter_pretrained,
                         "best_val_mse": val_loss,
                     },
                     best_checkpoint_path,

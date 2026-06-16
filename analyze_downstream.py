@@ -74,6 +74,15 @@ def _add_bool_optional_arg(parser: argparse.ArgumentParser, option: str, *, defa
     parser.set_defaults(**{dest: default})
 
 
+def _relation_adapter_checkpoint_status(load_report: dict[str, object]) -> tuple[bool, bool]:
+    matched_key_names = [str(key) for key in load_report.get("matched_key_names", [])]
+    skipped_keys = [str(key) for key in load_report.get("skipped_keys", [])]
+    missing_keys = [str(key) for key in load_report.get("missing_keys", [])]
+    adapter_pretrained = any(key.startswith("relation_adapter.") for key in matched_key_names)
+    adapter_missing = any(key.startswith("relation_adapter.") for key in skipped_keys + missing_keys)
+    return adapter_pretrained, adapter_missing
+
+
 def _mse(y_true, y_pred):
     return float(np.mean((y_true - y_pred) ** 2))
 
@@ -176,7 +185,7 @@ def _detect_representation_type(
         return requested
 
     mixer_type = str(checkpoint_cfg.channel_mixer_type).strip().lower()
-    if mixer_type == "independent":
+    if mixer_type in {"independent", "ci_adapter"}:
         return "ci"
     if mixer_type == "mixer":
         return "mixer"
@@ -184,11 +193,11 @@ def _detect_representation_type(
     run_name = None if pretrain_run_dir is None else Path(pretrain_run_dir).name.lower()
     checkpoint_name = checkpoint_path.as_posix().lower()
     if run_name is not None:
-        if "_ci_" in run_name or run_name.endswith("_ci_none"):
+        if "_ci_" in run_name or run_name.endswith("_ci_none") or "ci_adapter" in run_name:
             return "ci"
         if "_mixer_" in run_name or "metadata_query_gate" in run_name or "mixer_concat" in run_name:
             return "mixer"
-    if "ci_none" in checkpoint_name:
+    if "ci_none" in checkpoint_name or "ci_adapter" in checkpoint_name:
         return "ci"
     if "_mixer_" in checkpoint_name or "metadata_query_gate" in checkpoint_name or "mixer_concat" in checkpoint_name:
         return "mixer"
@@ -563,6 +572,7 @@ def _write_report(path: Path, *, summary: dict[str, object], unit_type: str) -> 
         f"pred_len: {summary['pred_len']}",
         f"representation_type: {summary['representation_type']}",
         f"unit_type: {unit_type}",
+        f"adapter_pretrained: {summary.get('adapter_pretrained')}",
         f"ablation_target: {summary['ablation_target']}",
         f"best_val_mse: {summary['best_val_mse']}",
         f"test_mse: {summary['test_mse']}",
@@ -590,7 +600,7 @@ def main(argv=None):
     parser.add_argument("--channel_metadata_mode", type=str, default=None, choices=["onehot", "text", "stats", "text_stats_joint", "text_stats_avg", "none"])
     parser.add_argument("--metadata_fusion_mode", type=str, default=None, choices=["none", "add", "concat_kv", "attention_gate", "attention_suppress_gate"])
     parser.add_argument("--onehot_channel_vocab_size", type=int, default=None)
-    parser.add_argument("--channel_mixer_type", type=str, default=None, choices=["mixer", "independent"])
+    parser.add_argument("--channel_mixer_type", type=str, default=None, choices=["mixer", "independent", "ci_adapter"])
     parser.add_argument("--channel_mixer_relation_mode", type=str, default=None, choices=["none", "laya_relation", "metadata_query_gate", "metadata_query_bias", "description_relation"])
     parser.add_argument("--channel_mixer_relation_scale_init", type=float, default=None)
     parser.add_argument("--description_relation_num_latents", type=int, default=None)
@@ -633,6 +643,8 @@ def main(argv=None):
     parser.add_argument("--text_metadata_cache_dir", type=str, default="./metadata_cache")
     parser.add_argument("--text_encoder_local_files_only", action="store_true")
     parser.add_argument("--stats_metadata_dim", type=int, default=None)
+    parser.add_argument("--require_relation_adapter_checkpoint", action="store_true")
+    parser.add_argument("--allow_random_init_relation_adapter", action="store_true")
     _add_bool_optional_arg(parser, "--use_revin", default=True)
     _add_bool_optional_arg(parser, "--revin_affine", default=False)
     _add_bool_optional_arg(parser, "--revin_subtract_last", default=False)
@@ -690,6 +702,12 @@ def main(argv=None):
         channel_metadata_mode = checkpoint_cfg.channel_metadata_mode
         metadata_fusion_mode = checkpoint_cfg.metadata_fusion_mode
         channel_mixer_type = checkpoint_cfg.channel_mixer_type
+        use_relation_adapter = bool(
+            checkpoint_cfg.use_relation_adapter
+            or str(channel_mixer_type).strip().lower().replace("-", "_") == "ci_adapter"
+        )
+        if str(channel_mixer_type).strip().lower().replace("-", "_") == "ci_adapter":
+            channel_mixer_type = "independent"
         representation_type = _detect_representation_type(
             args.representation_type,
             checkpoint_cfg,
@@ -708,6 +726,12 @@ def main(argv=None):
         if channel_metadata_mode == "coordinates":
             raise ValueError("laya_ts no longer supports channel_metadata_mode='coordinates'. Use one of: onehot, text, stats, text_stats_joint, text_stats_avg, none.")
         channel_mixer_type = args.channel_mixer_type or checkpoint_cfg.channel_mixer_type
+        use_relation_adapter = bool(
+            checkpoint_cfg.use_relation_adapter
+            or str(channel_mixer_type).strip().lower().replace("-", "_") == "ci_adapter"
+        )
+        if str(channel_mixer_type).strip().lower().replace("-", "_") == "ci_adapter":
+            channel_mixer_type = "independent"
         representation_type = _detect_representation_type(
             args.representation_type,
             checkpoint_cfg,
@@ -776,6 +800,7 @@ def main(argv=None):
             "channel_metadata_mode": channel_metadata_mode,
             "metadata_fusion_mode": metadata_fusion_mode,
             "channel_mixer_type": channel_mixer_type,
+            "use_relation_adapter": use_relation_adapter,
             "channel_mixer_relation_mode": channel_mixer_relation_mode,
             "channel_mixer_relation_scale_init": channel_mixer_relation_scale_init,
             "description_relation_num_latents": description_relation_num_latents,
@@ -811,6 +836,9 @@ def main(argv=None):
         revin_subtract_last=effective_revin_subtract_last,
         revin_eps=effective_revin_eps,
     ).to(device)
+    adapter_pretrained = bool(
+        checkpoint_cfg.use_relation_adapter and forecasting_payload is not None and forecasting_payload.get("adapter_pretrained", True)
+    )
     if forecasting_payload is not None:
         model.load_state_dict(forecasting_payload["model_state_dict"])
         print("[OK] Loaded forecasting model state directly from forecasting checkpoint")
@@ -818,10 +846,22 @@ def main(argv=None):
         load_report = load_encoder_from_checkpoint_report(model, str(checkpoint_path))
         if load_report["missing_keys"] or load_report["unexpected_keys"]:
             print(f"[INFO] Encoder load report: {load_report}")
+        adapter_pretrained, adapter_missing = _relation_adapter_checkpoint_status(load_report)
+        if model_cfg.use_relation_adapter:
+            if args.require_relation_adapter_checkpoint and not adapter_pretrained:
+                raise ValueError(
+                    "Relation adapter is enabled, but the checkpoint does not contain compatible relation_adapter weights."
+                )
+            if adapter_missing and not adapter_pretrained and not args.allow_random_init_relation_adapter:
+                raise ValueError(
+                    "Relation adapter is enabled, but the checkpoint does not provide compatible relation_adapter weights. "
+                    "Use a pretrained ci_adapter checkpoint, or pass --allow_random_init_relation_adapter explicitly."
+                )
         model.encoder.requires_grad_(False)
         finetune_params = list(model.head.parameters())
         skipped_encoder_keys = list(load_report.get("skipped_keys", []))
         skipped_onehot_projector = any(key.startswith("channel_id_projector.") for key in skipped_encoder_keys)
+        skipped_relation_adapter = any(key.startswith("relation_adapter.") for key in skipped_encoder_keys)
         if skipped_onehot_projector and model.encoder.channel_id_projector is not None:
             for p_ in model.encoder.channel_id_projector.parameters():
                 p_.requires_grad = True
@@ -830,7 +870,14 @@ def main(argv=None):
                 f"[INFO] Onehot vocab resized from checkpoint value {checkpoint_cfg.onehot_channel_vocab_size}; "
                 "reinitializing channel_id_projector."
             )
+        if skipped_relation_adapter and model.encoder.relation_adapter is not None:
+            for p_ in model.encoder.relation_adapter.parameters():
+                p_.requires_grad = True
+            finetune_params.extend(model.encoder.relation_adapter.parameters())
+            print("[INFO] relation_adapter weights missing from checkpoint; enabling random-init adapter training.")
     model.encoder.requires_grad_(False)
+    if model_cfg.use_relation_adapter:
+        print(f"[INFO] relation_adapter enabled | adapter_pretrained={adapter_pretrained}")
 
     with torch.no_grad():
         x, _, pos, mask, text_meta, stats_meta = _batch_to_device(first_batch, device)
@@ -919,6 +966,7 @@ def main(argv=None):
                         "best_val_mse": best_val_mse,
                         "best_val_mae": best_val_mae,
                         "pretrain_checkpoint_path": str(checkpoint_path),
+                        "adapter_pretrained": adapter_pretrained,
                         "use_revin": effective_use_revin,
                         "revin_affine": effective_revin_affine,
                         "revin_subtract_last": effective_revin_subtract_last,
@@ -960,6 +1008,7 @@ def main(argv=None):
         "label_len": args.label_len,
         "representation_type": representation_type,
         "unit_type": unit_type,
+        "adapter_pretrained": adapter_pretrained,
         "best_val_mse": best_val_mse,
         "best_val_mae": best_val_mae,
         "val_mse": val_mse,
@@ -1108,6 +1157,7 @@ def main(argv=None):
         "pred_len": effective_pred_len,
         "representation_type": representation_type,
         "unit_type": unit_type,
+        "adapter_pretrained": adapter_pretrained,
         "ablation_target": str(unit_info["ablation_target"]),
         "best_linear_checkpoint": None if forecasting_payload is not None else str(best_checkpoint_path),
         "best_val_mse": best_val_mse,

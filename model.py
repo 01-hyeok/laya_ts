@@ -128,6 +128,18 @@ def normalize_metadata_fusion_mode(value: str) -> str:
     return aliases[normalized]
 
 
+def normalize_relation_adapter_position(value: str) -> str:
+    normalized = str(value).strip().lower().replace("-", "_")
+    aliases = {
+        "post_encoder": "post_encoder",
+        "after_encoder": "post_encoder",
+        "encoder_output": "post_encoder",
+    }
+    if normalized not in aliases:
+        raise ValueError(f"Unsupported relation_adapter_position: {value}")
+    return aliases[normalized]
+
+
 def summarize_metadata_usage(features: dict[str, torch.Tensor | None]) -> dict[str, float]:
     """Extract compact metadata-conditioning diagnostics from encoder features."""
     key_map = {
@@ -139,6 +151,17 @@ def summarize_metadata_usage(features: dict[str, torch.Tensor | None]) -> dict[s
         "relation_gate_mean": "channel_mixer_relation_gate_mean",
         "relation_gate_sparsity": "channel_mixer_relation_gate_sparsity",
         "metadata_norm_mean": "channel_mixer_metadata_norm_mean",
+        "adapter_scale_mean": "relation_adapter_scale",
+        "adapter_metadata_scale_mean": "relation_adapter_metadata_scale",
+        "adapter_gate_mean": "relation_adapter_gate_mean",
+        "adapter_bias_mean_abs": "relation_adapter_metadata_bias_mean_abs",
+        "adapter_metadata_present": "relation_adapter_metadata_present",
+        "adapter_metadata_nonzero_fraction": "relation_adapter_metadata_nonzero_fraction",
+        "adapter_input_norm_mean": "relation_adapter_input_norm_mean",
+        "adapter_output_norm_mean": "relation_adapter_output_norm_mean",
+        "adapter_update_norm_mean": "relation_adapter_update_norm_mean",
+        "adapter_delta_ratio": "relation_adapter_delta_ratio",
+        "adapter_attention_entropy": "relation_adapter_attention_entropy",
     }
     summary: dict[str, float] = {}
     for out_key, feature_key in key_map.items():
@@ -156,6 +179,28 @@ def summarize_metadata_usage(features: dict[str, torch.Tensor | None]) -> dict[s
     if signal_mag is not None and delta_mag is not None and signal_mag > 0.0:
         summary["score_delta_ratio"] = float(delta_mag / signal_mag)
     return summary
+
+
+def apply_metadata_dropout(
+    metadata: Optional[torch.Tensor],
+    p: float,
+    training: bool,
+) -> Optional[torch.Tensor]:
+    if metadata is None:
+        return None
+    if not training or p <= 0.0:
+        return metadata
+    if metadata.dim() == 2:
+        keep = (torch.rand(metadata.shape[0], device=metadata.device) > p).to(
+            dtype=metadata.dtype
+        )
+        return metadata * keep.unsqueeze(-1)
+    if metadata.dim() == 3:
+        keep = (
+            torch.rand(metadata.shape[0], metadata.shape[1], device=metadata.device) > p
+        ).to(dtype=metadata.dtype)
+        return metadata * keep.unsqueeze(-1)
+    return metadata
 
 
 def normalize_description_gate_mode(value: str) -> str:
@@ -648,6 +693,236 @@ class ConcatProjectedMetadataQueryChannelMixer(QueryChannelMixer):
         }
 
 
+class MetadataGuidedInterChannelAdapter(nn.Module):
+    """Optional post-encoder inter-channel adapter for CI Laya."""
+
+    def __init__(
+        self,
+        token_dim: int,
+        *,
+        num_heads: int = 4,
+        dropout: float = 0.1,
+        relation_scale_init: float = 1e-3,
+        use_metadata_bias: bool = True,
+        use_metadata_gate: bool = True,
+        metadata_scale_init: float = 1e-3,
+    ) -> None:
+        super().__init__()
+        if token_dim <= 0:
+            raise ValueError(f"token_dim must be positive, got {token_dim}")
+        if num_heads <= 0:
+            raise ValueError(f"num_heads must be positive, got {num_heads}")
+        if token_dim % num_heads != 0:
+            raise ValueError(
+                f"token_dim={token_dim} must be divisible by num_heads={num_heads}"
+            )
+        self.token_dim = int(token_dim)
+        self.num_heads = int(num_heads)
+        self.head_dim = self.token_dim // self.num_heads
+        self.use_metadata_bias = bool(use_metadata_bias)
+        self.use_metadata_gate = bool(use_metadata_gate)
+
+        self.q_proj = nn.Linear(self.token_dim, self.token_dim)
+        self.k_proj = nn.Linear(self.token_dim, self.token_dim)
+        self.v_proj = nn.Linear(self.token_dim, self.token_dim)
+        self.out_proj = nn.Linear(self.token_dim, self.token_dim)
+        self.attn_dropout = nn.Dropout(dropout)
+        self.output_dropout = nn.Dropout(dropout)
+
+        self.meta_proj = nn.Linear(self.token_dim, self.token_dim)
+        self.meta_pair_mlp = nn.Sequential(
+            nn.Linear(self.token_dim * 4, self.token_dim),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(self.token_dim, self.num_heads),
+        )
+        self.meta_gate_mlp = nn.Sequential(
+            nn.Linear(self.token_dim, self.token_dim),
+            nn.GELU(),
+            nn.Linear(self.token_dim, 1),
+        )
+
+        self.relation_scale = nn.Parameter(torch.tensor(float(relation_scale_init)))
+        self.metadata_scale = nn.Parameter(torch.tensor(float(metadata_scale_init)))
+
+    def _prepare_metadata(
+        self,
+        metadata: Optional[torch.Tensor],
+        *,
+        batch: int,
+        channels: int,
+        z: torch.Tensor,
+    ) -> Optional[torch.Tensor]:
+        if metadata is None:
+            return None
+        metadata = metadata.to(device=z.device, dtype=z.dtype)
+        if metadata.dim() == 2:
+            if metadata.shape[0] != channels:
+                raise ValueError(
+                    f"Expected metadata [C, M] with C={channels}, got {tuple(metadata.shape)}"
+                )
+            metadata = metadata.unsqueeze(0).expand(batch, -1, -1)
+        elif metadata.dim() == 3:
+            if metadata.shape[:2] != (batch, channels):
+                raise ValueError(
+                    f"Expected metadata [B, C, M] = {(batch, channels, 'M')}, got {tuple(metadata.shape)}"
+                )
+        else:
+            raise ValueError(
+                f"Unsupported metadata shape for relation adapter: {tuple(metadata.shape)}"
+            )
+        if metadata.shape[-1] != self.token_dim:
+            raise ValueError(
+                "Relation adapter expects projected metadata width to match token_dim. "
+                f"Expected {self.token_dim}, got {metadata.shape[-1]}."
+            )
+        return metadata
+
+    def forward(
+        self,
+        z: torch.Tensor,
+        *,
+        metadata: Optional[torch.Tensor] = None,
+        channel_mask: Optional[torch.Tensor] = None,
+    ) -> tuple[torch.Tensor, dict[str, torch.Tensor | None]]:
+        if z.dim() != 4:
+            raise ValueError(f"Expected relation adapter input [B, C, L, D], got {tuple(z.shape)}")
+
+        batch, channels, patches, dim = z.shape
+        if dim != self.token_dim:
+            raise ValueError(
+                f"Expected relation adapter token_dim={self.token_dim}, got {dim}"
+            )
+        if channels <= 1:
+            return z, {
+                "relation_adapter_scale": self.relation_scale.detach(),
+                "relation_adapter_metadata_scale": self.metadata_scale.detach(),
+                "relation_adapter_gate_mean": None,
+                "relation_adapter_metadata_bias_mean_abs": None,
+                "relation_adapter_metadata_present": z.new_tensor(0.0),
+                "relation_adapter_metadata_nonzero_fraction": None,
+                "relation_adapter_input_norm_mean": z.detach().norm(dim=-1).mean(),
+                "relation_adapter_output_norm_mean": z.new_tensor(0.0),
+                "relation_adapter_update_norm_mean": z.new_tensor(0.0),
+                "relation_adapter_delta_ratio": z.new_tensor(0.0),
+                "relation_adapter_attention_entropy": None,
+                "relation_adapter_metadata_shape": None,
+                "relation_adapter_attention": None,
+            }
+
+        if channel_mask is not None:
+            if channel_mask.shape != (batch, channels):
+                raise ValueError(
+                    f"Expected channel_mask [B, C] = {(batch, channels)}, got {tuple(channel_mask.shape)}"
+                )
+            channel_mask = channel_mask.to(device=z.device, dtype=torch.bool)
+            empty_rows = ~channel_mask.any(dim=1)
+            if empty_rows.any():
+                channel_mask = channel_mask.clone()
+                channel_mask[empty_rows] = True
+
+        z_bl = z.permute(0, 2, 1, 3).reshape(batch * patches, channels, dim)
+        q = self.q_proj(z_bl).reshape(batch * patches, channels, self.num_heads, self.head_dim).permute(0, 2, 1, 3)
+        k = self.k_proj(z_bl).reshape(batch * patches, channels, self.num_heads, self.head_dim).permute(0, 2, 1, 3)
+        v = self.v_proj(z_bl).reshape(batch * patches, channels, self.num_heads, self.head_dim).permute(0, 2, 1, 3)
+
+        scores = torch.matmul(q, k.transpose(-1, -2)) / math.sqrt(self.head_dim)
+
+        prepared_metadata = self._prepare_metadata(
+            metadata,
+            batch=batch,
+            channels=channels,
+            z=z,
+        )
+        projected_metadata = None
+        metadata_bias = None
+        metadata_nonzero_fraction = None
+        if prepared_metadata is not None:
+            metadata_nonzero_fraction = (
+                (prepared_metadata.detach().abs() > 0).float().mean()
+            )
+            projected_metadata = self.meta_proj(
+                prepared_metadata.reshape(-1, prepared_metadata.shape[-1])
+            ).reshape(batch, channels, dim)
+            if self.use_metadata_bias:
+                meta_i = projected_metadata.unsqueeze(2).expand(-1, -1, channels, -1)
+                meta_j = projected_metadata.unsqueeze(1).expand(-1, channels, -1, -1)
+                pairwise_features = torch.cat(
+                    [meta_i, meta_j, (meta_i - meta_j).abs(), meta_i * meta_j],
+                    dim=-1,
+                )
+                metadata_bias = self.meta_pair_mlp(pairwise_features).permute(0, 3, 1, 2)
+                metadata_bias = (
+                    metadata_bias.unsqueeze(1)
+                    .expand(batch, patches, self.num_heads, channels, channels)
+                    .reshape(batch * patches, self.num_heads, channels, channels)
+                )
+                scores = scores + self.metadata_scale.to(
+                    device=z.device,
+                    dtype=z.dtype,
+                ) * metadata_bias
+
+        if channel_mask is not None:
+            scores = scores.masked_fill(
+                ~channel_mask[:, None, None, :]
+                .expand(batch, patches, channels, channels)
+                .reshape(batch * patches, 1, channels, channels),
+                torch.finfo(scores.dtype).min,
+            )
+
+        attn = torch.softmax(scores, dim=-1)
+        attn = self.attn_dropout(attn)
+        attn_entropy = -(attn.clamp_min(1e-12) * attn.clamp_min(1e-12).log()).sum(dim=-1).mean()
+        out = torch.matmul(attn, v).permute(0, 2, 1, 3).reshape(batch * patches, channels, dim)
+        out = self.out_proj(out)
+        out = out.reshape(batch, patches, channels, dim).permute(0, 2, 1, 3)
+
+        gate = None
+        if self.use_metadata_gate and projected_metadata is not None:
+            gate = torch.sigmoid(
+                self.meta_gate_mlp(projected_metadata.reshape(-1, dim))
+            ).reshape(batch, channels, 1)
+            out = out * gate.unsqueeze(2)
+
+        update = self.relation_scale.to(device=z.device, dtype=z.dtype) * self.output_dropout(out)
+        z_out = z + update
+        if z_out.shape != z.shape:
+            raise RuntimeError(
+                f"Relation adapter must preserve shape {tuple(z.shape)}, got {tuple(z_out.shape)}"
+            )
+        input_norm_mean = z.detach().norm(dim=-1).mean()
+        output_norm_mean = out.detach().norm(dim=-1).mean()
+        update_norm_mean = update.detach().norm(dim=-1).mean()
+        delta_ratio = update_norm_mean / input_norm_mean.clamp_min(1e-12)
+        return z_out, {
+            "relation_adapter_scale": self.relation_scale.detach(),
+            "relation_adapter_metadata_scale": self.metadata_scale.detach(),
+            "relation_adapter_gate_mean": None if gate is None else gate.detach().mean(),
+            "relation_adapter_metadata_bias_mean_abs": None
+            if metadata_bias is None
+            else metadata_bias.detach().abs().mean(),
+            "relation_adapter_metadata_present": z.new_tensor(
+                0.0 if prepared_metadata is None else 1.0
+            ),
+            "relation_adapter_metadata_nonzero_fraction": metadata_nonzero_fraction,
+            "relation_adapter_input_norm_mean": input_norm_mean,
+            "relation_adapter_output_norm_mean": output_norm_mean,
+            "relation_adapter_update_norm_mean": update_norm_mean,
+            "relation_adapter_delta_ratio": delta_ratio,
+            "relation_adapter_attention_entropy": attn_entropy.detach(),
+            "relation_adapter_metadata_shape": None
+            if prepared_metadata is None
+            else tuple(prepared_metadata.shape),
+            "relation_adapter_attention": attn.reshape(
+                batch,
+                patches,
+                self.num_heads,
+                channels,
+                channels,
+            ),
+        }
+
+
 class DescriptionAwareQueryChannelMixer(MetadataAwareQueryChannelMixer):
     """Backward-compatible alias for the legacy laya_relation path."""
 
@@ -939,10 +1214,17 @@ class LayaTSChannelRelationBlock(nn.Module):
 class LayaTSEncoder(LayaEncoder):
     def __init__(self, config: Optional[LayaModelConfig] = None) -> None:
         super().__init__(config)
+        raw_channel_mixer_type = str(self.config.channel_mixer_type).strip().lower().replace("-", "_")
         self.encoder_variant = normalize_encoder_variant(self.config.encoder_variant)
         self.temporal_patchifier_mode = normalize_temporal_patchifier_mode(self.config.temporal_patchifier_mode)
         self.charm_patchifier_fusion = normalize_charm_patchifier_fusion(self.config.charm_patchifier_fusion)
         self.metadata_fusion_mode = normalize_metadata_fusion_mode(self.config.metadata_fusion_mode)
+        self.use_relation_adapter = bool(
+            self.config.use_relation_adapter or raw_channel_mixer_type == "ci_adapter"
+        )
+        self.relation_adapter_position = normalize_relation_adapter_position(
+            self.config.relation_adapter_position
+        )
         self.channel_mixer_relation_mode = normalize_channel_mixer_relation_mode(
             self.config.channel_mixer_relation_mode
         )
@@ -955,9 +1237,18 @@ class LayaTSEncoder(LayaEncoder):
         self.charm_patchifier_residual_beta: nn.Parameter | None = None
         self.scale_text_projector: nn.Module | None = None
         self.description_relation_refiner: DescriptionRelationChannelRefiner | None = None
+        self.relation_adapter: MetadataGuidedInterChannelAdapter | None = None
         if self.channel_mixer_relation_mode != "none" and self.channel_mixer_type != "mixer":
             raise ValueError(
                 "channel_mixer_relation_mode requires channel_mixer_type='mixer'."
+            )
+        if self.use_relation_adapter and self.channel_mixer_type != "independent":
+            raise ValueError(
+                "use_relation_adapter requires channel_mixer_type='independent' (CI path)."
+            )
+        if self.use_relation_adapter and self.relation_adapter_position != "post_encoder":
+            raise ValueError(
+                "Only relation_adapter_position='post_encoder' is currently supported."
             )
         if self.metadata_fusion_mode in {"attention_gate", "attention_suppress_gate"}:
             if self.channel_metadata_mode not in {"text", "stats", "text_stats_avg", "text_stats_joint"}:
@@ -1111,6 +1402,17 @@ class LayaTSEncoder(LayaEncoder):
         else:
             self.channel_relation_block = None
 
+        if self.use_relation_adapter:
+            self.relation_adapter = MetadataGuidedInterChannelAdapter(
+                self.config.embed_dim,
+                num_heads=self.config.relation_num_heads,
+                dropout=self.config.relation_dropout,
+                relation_scale_init=self.config.relation_scale_init,
+                use_metadata_bias=self.config.use_metadata_bias,
+                use_metadata_gate=self.config.use_metadata_gate,
+                metadata_scale_init=self.config.metadata_scale_init,
+            )
+
     def infer_num_patches(self, time: int) -> int:
         return infer_temporal_patchifier_num_patches(self.config, time)
 
@@ -1256,6 +1558,42 @@ class LayaTSEncoder(LayaEncoder):
             return x.new_zeros(batch, channels, self.channel_token_dim)
 
         raise AssertionError("Unsupported channel metadata mode")
+
+    def _resolve_optional_relation_metadata(
+        self,
+        *,
+        batch: int,
+        channels: int,
+        x: torch.Tensor,
+        channel_positions: Optional[torch.Tensor],
+        channel_text_embeddings: Optional[torch.Tensor],
+        channel_stats_embeddings: Optional[torch.Tensor],
+    ) -> Optional[torch.Tensor]:
+        if self.channel_metadata_mode == "none":
+            return None
+        if self.channel_metadata_mode == "coordinates":
+            if channel_positions is None:
+                return None
+        elif self.channel_metadata_mode == "text":
+            if channel_text_embeddings is None:
+                return None
+        elif self.channel_metadata_mode == "stats":
+            if channel_stats_embeddings is None:
+                return None
+        elif self.channel_metadata_mode == "text_stats_avg":
+            if channel_text_embeddings is None or channel_stats_embeddings is None:
+                return None
+        elif self.channel_metadata_mode == "text_stats_joint":
+            if channel_text_embeddings is None:
+                return None
+        return self._resolve_relation_metadata(
+            batch=batch,
+            channels=channels,
+            x=x,
+            channel_positions=channel_positions,
+            channel_text_embeddings=channel_text_embeddings,
+            channel_stats_embeddings=channel_stats_embeddings,
+        )
 
     def _resolve_mixer_relation_metadata(
         self,
@@ -1447,6 +1785,20 @@ class LayaTSEncoder(LayaEncoder):
                 channel_text_embeddings=channel_text_embeddings,
                 channel_stats_embeddings=channel_stats_embeddings,
             )
+        adapter_metadata: Optional[torch.Tensor] = None
+        if self.use_relation_adapter:
+            adapter_metadata = (
+                relation_metadata
+                if relation_metadata is not None
+                else self._resolve_optional_relation_metadata(
+                    batch=batch,
+                    channels=channels,
+                    x=x,
+                    channel_positions=channel_positions,
+                    channel_text_embeddings=channel_text_embeddings,
+                    channel_stats_embeddings=channel_stats_embeddings,
+                )
+            )
         mixer_relation_metadata = self._resolve_mixer_relation_metadata(
             batch=batch,
             channels=channels,
@@ -1517,6 +1869,19 @@ class LayaTSEncoder(LayaEncoder):
             "channel_mixer_latent_tokens": None,
             "channel_mixer_refined_tokens": None,
             "channel_mixer_refiner_attention": None,
+            "relation_adapter_scale": None,
+            "relation_adapter_metadata_scale": None,
+            "relation_adapter_gate_mean": None,
+            "relation_adapter_metadata_bias_mean_abs": None,
+            "relation_adapter_metadata_present": None,
+            "relation_adapter_metadata_nonzero_fraction": None,
+            "relation_adapter_input_norm_mean": None,
+            "relation_adapter_output_norm_mean": None,
+            "relation_adapter_update_norm_mean": None,
+            "relation_adapter_delta_ratio": None,
+            "relation_adapter_attention_entropy": None,
+            "relation_adapter_metadata_shape": None,
+            "relation_adapter_attention": None,
         }
 
         if self.channel_mixer_type == "mixer":
@@ -1568,6 +1933,36 @@ class LayaTSEncoder(LayaEncoder):
             encoded = block(encoded)
         encoded = self.norm(encoded)
         encoded = encoded.reshape(batch, channels, num_patches, self.config.embed_dim)
+        adapter_outputs: dict[str, torch.Tensor | None] = {
+            "relation_adapter_scale": None,
+            "relation_adapter_metadata_scale": None,
+            "relation_adapter_gate_mean": None,
+            "relation_adapter_metadata_bias_mean_abs": None,
+            "relation_adapter_metadata_present": None,
+            "relation_adapter_metadata_nonzero_fraction": None,
+            "relation_adapter_input_norm_mean": None,
+            "relation_adapter_output_norm_mean": None,
+            "relation_adapter_update_norm_mean": None,
+            "relation_adapter_delta_ratio": None,
+            "relation_adapter_attention_entropy": None,
+            "relation_adapter_metadata_shape": None,
+            "relation_adapter_attention": None,
+        }
+        if (
+            self.use_relation_adapter
+            and self.relation_adapter is not None
+            and channels > 1
+        ):
+            relation_metadata_for_adapter = apply_metadata_dropout(
+                adapter_metadata,
+                self.config.metadata_dropout,
+                self.training,
+            )
+            encoded, adapter_outputs = self.relation_adapter(
+                encoded,
+                metadata=relation_metadata_for_adapter,
+                channel_mask=resolved_channel_mask,
+            )
         channel_repr = encoded.mean(dim=2)
         return {
             **shared_outputs,
@@ -1578,6 +1973,7 @@ class LayaTSEncoder(LayaEncoder):
             "channel_repr": channel_repr,
             "query_loss": encoded.new_zeros(()),
             "channel_affinity": None,
+            **adapter_outputs,
         }
 
     def forward_features(
@@ -1890,6 +2286,7 @@ def load_encoder_from_checkpoint_report(model: nn.Module, checkpoint_path: str) 
     missing_keys: list[str] = []
     unexpected_keys: list[str] = []
     matched_keys = 0
+    matched_key_names: list[str] = []
     if encoder_state:
         current_state = model.encoder.state_dict()
         compatible_state = {}
@@ -1899,11 +2296,13 @@ def load_encoder_from_checkpoint_report(model: nn.Module, checkpoint_path: str) 
                 continue
             compatible_state[key] = value
         matched_keys = len(compatible_state)
+        matched_key_names = list(compatible_state.keys())
         incompatible = model.encoder.load_state_dict(compatible_state, strict=False)
         missing_keys = list(incompatible.missing_keys)
         unexpected_keys = list(incompatible.unexpected_keys)
     return {
         "matched_keys": matched_keys,
+        "matched_key_names": matched_key_names,
         "total_encoder_keys": len(encoder_state),
         "skipped_keys": skipped_keys,
         "missing_keys": missing_keys,

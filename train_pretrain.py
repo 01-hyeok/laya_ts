@@ -102,6 +102,20 @@ def _format_metadata_usage(metadata_usage: dict[str, float]) -> str:
     if not metadata_usage:
         return "Meta: n/a"
     parts = []
+    if "adapter_scale_mean" in metadata_usage:
+        parts.append(f"AdapterScaleμ:{metadata_usage['adapter_scale_mean']:.4f}")
+    if "adapter_metadata_scale_mean" in metadata_usage:
+        parts.append(f"AdapterMetaScaleμ:{metadata_usage['adapter_metadata_scale_mean']:.4f}")
+    if "adapter_gate_mean" in metadata_usage:
+        parts.append(f"AdapterGateμ:{metadata_usage['adapter_gate_mean']:.4f}")
+    if "adapter_bias_mean_abs" in metadata_usage:
+        parts.append(f"AdapterBias|B|μ:{metadata_usage['adapter_bias_mean_abs']:.4f}")
+    if "adapter_metadata_present" in metadata_usage:
+        parts.append(f"AdapterMetaOn:{metadata_usage['adapter_metadata_present']:.2f}")
+    if "adapter_metadata_nonzero_fraction" in metadata_usage:
+        parts.append(f"AdapterMetaNZ%:{100.0 * metadata_usage['adapter_metadata_nonzero_fraction']:.1f}")
+    if "adapter_delta_ratio" in metadata_usage:
+        parts.append(f"AdapterΔ/Input:{100.0 * metadata_usage['adapter_delta_ratio']:.2f}%")
     if "relation_scale_mean" in metadata_usage:
         parts.append(f"Scaleμ:{metadata_usage['relation_scale_mean']:.4f}")
     if "signal_score_mean_abs" in metadata_usage:
@@ -662,9 +676,18 @@ def main(argv=None):
     p.add_argument("--num_workers", type=int, default=4)
     p.add_argument("--channel_metadata_mode", type=str, default="onehot", choices=["onehot", "text", "stats", "text_stats_joint", "text_stats_avg", "none"])
     p.add_argument("--metadata_fusion_mode", type=str, default=LayaModelConfig().metadata_fusion_mode, choices=["none", "add", "concat_kv", "attention_gate", "attention_suppress_gate"])
-    p.add_argument("--channel_mixer_type", type=str, default="mixer", choices=["mixer", "independent"])
+    p.add_argument("--channel_mixer_type", type=str, default="mixer", choices=["mixer", "independent", "ci_adapter"])
     p.add_argument("--channel_mixer_relation_mode", type=str, default=LayaModelConfig().channel_mixer_relation_mode, choices=["none", "laya_relation", "metadata_query_gate", "metadata_query_bias", "description_relation"])
     p.add_argument("--channel_mixer_relation_scale_init", type=float, default=LayaModelConfig().channel_mixer_relation_scale_init)
+    _add_bool_optional_arg(p, "--use_relation_adapter", default=LayaModelConfig().use_relation_adapter)
+    p.add_argument("--relation_num_heads", type=int, default=LayaModelConfig().relation_num_heads)
+    p.add_argument("--relation_dropout", type=float, default=LayaModelConfig().relation_dropout)
+    p.add_argument("--relation_scale_init", type=float, default=LayaModelConfig().relation_scale_init)
+    _add_bool_optional_arg(p, "--use_metadata_bias", default=LayaModelConfig().use_metadata_bias)
+    _add_bool_optional_arg(p, "--use_metadata_gate", default=LayaModelConfig().use_metadata_gate)
+    p.add_argument("--metadata_scale_init", type=float, default=LayaModelConfig().metadata_scale_init)
+    p.add_argument("--metadata_dropout", type=float, default=LayaModelConfig().metadata_dropout)
+    p.add_argument("--relation_adapter_position", type=str, default=LayaModelConfig().relation_adapter_position, choices=["post_encoder"])
     p.add_argument("--description_relation_num_latents", type=int, default=LayaModelConfig().description_relation_num_latents)
     p.add_argument("--description_relation_metric", type=str, default=LayaModelConfig().description_relation_metric, choices=["projected_dot", "cosine"])
     p.add_argument("--description_relation_lambda_init", type=float, default=LayaModelConfig().description_relation_lambda_init)
@@ -848,6 +871,9 @@ def main(argv=None):
             f"Input channels {channel_count} exceed configured onehot vocab size {onehot_vocab_size}. "
             "Increase --onehot_channel_vocab_size."
         )
+    requested_channel_mixer_type = args.channel_mixer_type
+    use_relation_adapter = bool(args.use_relation_adapter or requested_channel_mixer_type == "ci_adapter")
+    channel_mixer_type = "independent" if requested_channel_mixer_type == "ci_adapter" else requested_channel_mixer_type
     model_cfg = LayaModelConfig(
         variant=args.variant,
         patch_size=args.patch_size,
@@ -859,9 +885,18 @@ def main(argv=None):
         predictor_heads=args.predictor_heads,
         channel_metadata_mode=args.channel_metadata_mode,
         metadata_fusion_mode=args.metadata_fusion_mode,
-        channel_mixer_type=args.channel_mixer_type,
+        channel_mixer_type=channel_mixer_type,
         channel_mixer_relation_mode=args.channel_mixer_relation_mode,
         channel_mixer_relation_scale_init=args.channel_mixer_relation_scale_init,
+        use_relation_adapter=use_relation_adapter,
+        relation_num_heads=args.relation_num_heads,
+        relation_dropout=args.relation_dropout,
+        relation_scale_init=args.relation_scale_init,
+        use_metadata_bias=args.use_metadata_bias,
+        use_metadata_gate=args.use_metadata_gate,
+        metadata_scale_init=args.metadata_scale_init,
+        metadata_dropout=args.metadata_dropout,
+        relation_adapter_position=args.relation_adapter_position,
         description_relation_num_latents=args.description_relation_num_latents,
         description_relation_metric=args.description_relation_metric,
         description_relation_lambda_init=args.description_relation_lambda_init,
@@ -954,6 +989,16 @@ def main(argv=None):
     print(f"   - channel_mixer_relation_mode: {model_cfg.channel_mixer_relation_mode}")
     if model_cfg.channel_mixer_relation_mode in {"laya_relation", "metadata_query_gate"}:
         print(f"   - channel_mixer_relation_scale_init: {model_cfg.channel_mixer_relation_scale_init}")
+    print(f"   - use_relation_adapter: {model_cfg.use_relation_adapter}")
+    if model_cfg.use_relation_adapter:
+        print(f"   - relation_adapter_position: {model_cfg.relation_adapter_position}")
+        print(f"   - relation_num_heads: {model_cfg.relation_num_heads}")
+        print(f"   - relation_dropout: {model_cfg.relation_dropout}")
+        print(f"   - relation_scale_init: {model_cfg.relation_scale_init}")
+        print(f"   - use_metadata_bias: {model_cfg.use_metadata_bias}")
+        print(f"   - use_metadata_gate: {model_cfg.use_metadata_gate}")
+        print(f"   - metadata_scale_init: {model_cfg.metadata_scale_init}")
+        print(f"   - metadata_dropout: {model_cfg.metadata_dropout}")
     if model_cfg.metadata_fusion_mode in {"attention_gate", "attention_suppress_gate"}:
         print(f"   - description_relation_metric: {model_cfg.description_relation_metric}")
         print(f"   - description_relation_lambda_init: {model_cfg.description_relation_lambda_init}")
