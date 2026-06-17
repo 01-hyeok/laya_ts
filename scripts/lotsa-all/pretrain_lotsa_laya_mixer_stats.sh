@@ -2,7 +2,7 @@
 set -euo pipefail
 
 
-export CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 
 DATA="lotsa"
 RUN_DATA="lotsa_all"
