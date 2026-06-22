@@ -217,12 +217,13 @@ def _sanitize_metric_name(name: str) -> str:
 def move_batch_to_device(batch: dict[str, torch.Tensor], device: str) -> dict[str, torch.Tensor | None]:
     channel_text_embeddings = batch.get("channel_text_embeddings")
     channel_stats_embeddings = batch.get("channel_stats_embeddings")
+    non_blocking = torch.cuda.is_available() and str(device).startswith("cuda")
     return {
-        "series": batch["series"].to(device),
-        "channel_positions": batch["channel_positions"].to(device),
-        "channel_mask": batch["channel_mask"].to(device),
-        "channel_text_embeddings": None if channel_text_embeddings is None else channel_text_embeddings.to(device),
-        "channel_stats_embeddings": None if channel_stats_embeddings is None else channel_stats_embeddings.to(device),
+        "series": batch["series"].to(device, non_blocking=non_blocking),
+        "channel_positions": batch["channel_positions"].to(device, non_blocking=non_blocking),
+        "channel_mask": batch["channel_mask"].to(device, non_blocking=non_blocking),
+        "channel_text_embeddings": None if channel_text_embeddings is None else channel_text_embeddings.to(device, non_blocking=non_blocking),
+        "channel_stats_embeddings": None if channel_stats_embeddings is None else channel_stats_embeddings.to(device, non_blocking=non_blocking),
     }
 
 

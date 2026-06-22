@@ -10,6 +10,8 @@ from typing import Iterable
 import torch
 import torch.nn.functional as F
 
+_ENCODER_CACHE: dict[tuple[str, bool, str], tuple[object, object]] = {}
+
 
 def build_channel_descriptions(
     channel_names: Iterable[str],
@@ -106,6 +108,33 @@ def _mean_pool(last_hidden_state: torch.Tensor, attention_mask: torch.Tensor) ->
     return summed / denom
 
 
+def _get_encoder_components(
+    encoder_name_or_path: str,
+    *,
+    local_files_only: bool,
+    resolved_device: str,
+):
+    cache_key = (encoder_name_or_path, bool(local_files_only), resolved_device)
+    cached = _ENCODER_CACHE.get(cache_key)
+    if cached is not None:
+        return cached
+
+    try:
+        from transformers import AutoModel, AutoTokenizer
+    except ImportError as exc:
+        raise ImportError(
+            "transformers is required for textual channel metadata. Install it with `pip install transformers`."
+        ) from exc
+
+    tokenizer = AutoTokenizer.from_pretrained(encoder_name_or_path, local_files_only=local_files_only)
+    model = AutoModel.from_pretrained(encoder_name_or_path, local_files_only=local_files_only)
+    model.eval()
+    model.to(resolved_device)
+    cached = (tokenizer, model)
+    _ENCODER_CACHE[cache_key] = cached
+    return cached
+
+
 def encode_channel_descriptions(
     descriptions: Iterable[str],
     dataset_name: str,
@@ -137,18 +166,12 @@ def encode_channel_descriptions(
         ):
             return cached_embeddings.float()
 
-    try:
-        from transformers import AutoModel, AutoTokenizer
-    except ImportError as exc:
-        raise ImportError(
-            "transformers is required for textual channel metadata. Install it with `pip install transformers`."
-        ) from exc
-
     resolved_device = device or ("cuda" if torch.cuda.is_available() else "cpu")
-    tokenizer = AutoTokenizer.from_pretrained(encoder_name_or_path, local_files_only=local_files_only)
-    model = AutoModel.from_pretrained(encoder_name_or_path, local_files_only=local_files_only)
-    model.eval()
-    model.to(resolved_device)
+    tokenizer, model = _get_encoder_components(
+        encoder_name_or_path,
+        local_files_only=local_files_only,
+        resolved_device=resolved_device,
+    )
 
     with torch.no_grad():
         encoded = tokenizer(description_list, padding=True, truncation=True, return_tensors="pt")
