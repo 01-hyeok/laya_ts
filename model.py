@@ -2257,12 +2257,85 @@ class LayaTSPretrainer(LayaPretrainer):
                 patch_mask_seed=patch_mask_seed,
             )
 
-            pred_scales: list[torch.Tensor] = []
-            target_scales: list[torch.Tensor] = []
+            gate_input_scales: list[torch.Tensor] = []
+            target_fused: torch.Tensor | None = None
             base_full: dict[str, torch.Tensor] | None = None
             base_context: dict[str, torch.Tensor] | None = None
 
             for patch_size in self.multiscale_patch_sizes:
+                scale_channel_tokens = self.encoder.embed_with_patch_size(x, patch_size)
+                scale_num_patches = scale_channel_tokens.shape[2]
+                scale_patch_mask = self._base_mask_to_scale_mask(
+                    base_patch_mask,
+                    patch_size=patch_size,
+                    base_patch=self.multiscale_base_patch,
+                    scale_num_patches=scale_num_patches,
+                )
+                patchifier_aux = {
+                    "scale_gate": None,
+                    "scale_logits": None,
+                    "scale_gate_mean": None,
+                    "patchifier_N": scale_num_patches,
+                    "branch_patch_counts": (scale_num_patches,),
+                    "patchifier_mode": f"multiscale_p{patch_size}",
+                }
+                with torch.no_grad():
+                    full_scale = self.encoder.forward_features(
+                        x,
+                        channel_positions=channel_positions,
+                        channel_mask=channel_mask,
+                        channel_text_embeddings=channel_text_embeddings,
+                        channel_stats_embeddings=channel_stats_embeddings,
+                        channel_tokens_override=scale_channel_tokens,
+                        patchifier_aux_override=patchifier_aux,
+                    )
+                with torch.no_grad():
+                    context_scale = self.encoder.forward_features(
+                        x,
+                        channel_positions=channel_positions,
+                        channel_mask=channel_mask,
+                        patch_mask=scale_patch_mask,
+                        channel_text_embeddings=channel_text_embeddings,
+                        channel_stats_embeddings=channel_stats_embeddings,
+                        channel_tokens_override=scale_channel_tokens,
+                        patchifier_aux_override=patchifier_aux,
+                    )
+                if patch_size == self.multiscale_base_patch:
+                    base_full = full_scale
+
+                target_scale = self.projector(
+                    self._reshape_ci_tokens(
+                        full_scale["mixed_tokens"],
+                        batch=batch,
+                        channels=channels,
+                    )
+                ).detach()
+                context_scale_tokens = self.projector(
+                    self._reshape_ci_tokens(
+                        context_scale["mixed_tokens"],
+                        batch=batch,
+                        channels=channels,
+                    )
+                )
+                aligned_context_scale = self._align_latents_to_base_grid(
+                    context_scale_tokens.detach(),
+                    patch_size=patch_size,
+                    base_patch=self.multiscale_base_patch,
+                    base_num_patches=base_num_patches,
+                )
+                gate_input_scales.append(aligned_context_scale)
+                aligned_target_scale = self._align_latents_to_base_grid(
+                    target_scale,
+                    patch_size=patch_size,
+                    base_patch=self.multiscale_base_patch,
+                    base_num_patches=base_num_patches,
+                )
+            gate_inputs = torch.stack(gate_input_scales, dim=3)
+            alpha = self.multiscale_fusion_gate(gate_inputs)
+            target_fused = gate_inputs.new_zeros(batch, channels, base_num_patches, self.config.proj_dim)
+            pred_fused: torch.Tensor | None = None
+
+            for scale_index, patch_size in enumerate(self.multiscale_patch_sizes):
                 scale_channel_tokens = self.encoder.embed_with_patch_size(x, patch_size)
                 scale_num_patches = scale_channel_tokens.shape[2]
                 scale_patch_mask = self._base_mask_to_scale_mask(
@@ -2300,9 +2373,7 @@ class LayaTSPretrainer(LayaPretrainer):
                     patchifier_aux_override=patchifier_aux,
                 )
                 if patch_size == self.multiscale_base_patch:
-                    base_full = full_scale
                     base_context = context_scale
-
                 target_scale = self.projector(
                     self._reshape_ci_tokens(
                         full_scale["mixed_tokens"],
@@ -2310,6 +2381,15 @@ class LayaTSPretrainer(LayaPretrainer):
                         channels=channels,
                     )
                 ).detach()
+                aligned_target_scale = self._align_latents_to_base_grid(
+                    target_scale,
+                    patch_size=patch_size,
+                    base_patch=self.multiscale_base_patch,
+                    base_num_patches=base_num_patches,
+                )
+                target_fused = target_fused + (
+                    alpha[:, :, :, scale_index].unsqueeze(-1) * aligned_target_scale
+                )
                 context_scale_tokens = self.projector(
                     self._reshape_ci_tokens(
                         context_scale["mixed_tokens"],
@@ -2322,29 +2402,20 @@ class LayaTSPretrainer(LayaPretrainer):
                     context_scale_tokens.reshape(batch * channels, scale_num_patches, self.config.proj_dim),
                     patch_mask=ci_scale_mask.reshape(batch * channels, scale_num_patches),
                 ).reshape(batch, channels, scale_num_patches, self.config.proj_dim)
-
-                pred_scales.append(
-                    self._align_latents_to_base_grid(
-                        pred_scale,
-                        patch_size=patch_size,
-                        base_patch=self.multiscale_base_patch,
-                        base_num_patches=base_num_patches,
-                    )
+                aligned_pred_scale = self._align_latents_to_base_grid(
+                    pred_scale,
+                    patch_size=patch_size,
+                    base_patch=self.multiscale_base_patch,
+                    base_num_patches=base_num_patches,
                 )
-                target_scales.append(
-                    self._align_latents_to_base_grid(
-                        target_scale,
-                        patch_size=patch_size,
-                        base_patch=self.multiscale_base_patch,
-                        base_num_patches=base_num_patches,
-                    )
-                )
+                weighted_pred_scale = alpha[:, :, :, scale_index].unsqueeze(-1) * aligned_pred_scale
+                if pred_fused is None:
+                    pred_fused = weighted_pred_scale
+                else:
+                    pred_fused = pred_fused + weighted_pred_scale
 
-            pred_stack = torch.stack(pred_scales, dim=3)
-            target_stack = torch.stack(target_scales, dim=3)
-            alpha = self.multiscale_fusion_gate(pred_stack)
-            pred_fused = (pred_stack * alpha.unsqueeze(-1)).sum(dim=3)
-            target_fused = (target_stack * alpha.unsqueeze(-1)).sum(dim=3)
+            if pred_fused is None:
+                raise RuntimeError("pred_fused was not initialized during multiscale forward.")
             target_mask_base = base_patch_mask.unsqueeze(1).expand(batch, channels, base_num_patches)
             pred_loss = self._masked_mse(pred_fused, target_fused.detach(), target_mask_base)
 
@@ -2384,8 +2455,6 @@ class LayaTSPretrainer(LayaPretrainer):
                         "full_features": base_full,
                         "context_features": base_context,
                         "multiscale_alpha": alpha,
-                        "multiscale_pred_scales": pred_stack,
-                        "multiscale_target_scales": target_stack,
                     }
                 )
             return outputs
