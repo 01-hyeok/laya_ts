@@ -2259,8 +2259,8 @@ class LayaTSPretrainer(LayaPretrainer):
 
             pred_scales: list[torch.Tensor] = []
             target_scales: list[torch.Tensor] = []
-            full_scale_features: dict[int, dict[str, torch.Tensor]] = {}
-            context_scale_features: dict[int, dict[str, torch.Tensor]] = {}
+            base_full: dict[str, torch.Tensor] | None = None
+            base_context: dict[str, torch.Tensor] | None = None
 
             for patch_size in self.multiscale_patch_sizes:
                 scale_channel_tokens = self.encoder.embed_with_patch_size(x, patch_size)
@@ -2279,15 +2279,16 @@ class LayaTSPretrainer(LayaPretrainer):
                     "branch_patch_counts": (scale_num_patches,),
                     "patchifier_mode": f"multiscale_p{patch_size}",
                 }
-                full_scale = self.encoder.forward_features(
-                    x,
-                    channel_positions=channel_positions,
-                    channel_mask=channel_mask,
-                    channel_text_embeddings=channel_text_embeddings,
-                    channel_stats_embeddings=channel_stats_embeddings,
-                    channel_tokens_override=scale_channel_tokens,
-                    patchifier_aux_override=patchifier_aux,
-                )
+                with torch.no_grad():
+                    full_scale = self.encoder.forward_features(
+                        x,
+                        channel_positions=channel_positions,
+                        channel_mask=channel_mask,
+                        channel_text_embeddings=channel_text_embeddings,
+                        channel_stats_embeddings=channel_stats_embeddings,
+                        channel_tokens_override=scale_channel_tokens,
+                        patchifier_aux_override=patchifier_aux,
+                    )
                 context_scale = self.encoder.forward_features(
                     x,
                     channel_positions=channel_positions,
@@ -2298,8 +2299,9 @@ class LayaTSPretrainer(LayaPretrainer):
                     channel_tokens_override=scale_channel_tokens,
                     patchifier_aux_override=patchifier_aux,
                 )
-                full_scale_features[patch_size] = full_scale
-                context_scale_features[patch_size] = context_scale
+                if patch_size == self.multiscale_base_patch:
+                    base_full = full_scale
+                    base_context = context_scale
 
                 target_scale = self.projector(
                     self._reshape_ci_tokens(
@@ -2346,8 +2348,10 @@ class LayaTSPretrainer(LayaPretrainer):
             target_mask_base = base_patch_mask.unsqueeze(1).expand(batch, channels, base_num_patches)
             pred_loss = self._masked_mse(pred_fused, target_fused.detach(), target_mask_base)
 
-            base_full = full_scale_features[self.multiscale_base_patch]
-            base_context = context_scale_features[self.multiscale_base_patch]
+            if base_full is None or base_context is None:
+                raise RuntimeError(
+                    f"Base patch {self.multiscale_base_patch} features were not collected during multiscale forward."
+                )
             context_global = self.projector(base_context["channel_repr"].reshape(-1, self.config.embed_dim))
             sigreg_loss = self.sigreg(context_global.unsqueeze(0))
             query_loss = 0.5 * (base_full["query_loss"] + base_context["query_loss"])

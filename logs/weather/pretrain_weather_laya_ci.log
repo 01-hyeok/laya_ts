@@ -60,3 +60,5 @@ Epoch 15/100 | Steps: 1136 | LR: 0.000099 | Train Loss: 0.435635 (P:0.4334, S:0.
    -> Saved last checkpoint at epoch 15
 Epoch 16/100 | Steps: 1136 | LR: 0.000099 | Train Loss: 0.435339 (P:0.4324, S:0.0592, Q:0.0000) | Val Loss: 1.047101 (P:1.0338, S:0.2664, Q:0.0000) | Repr L2μ: 1.7176 Val L2μ: 0.3497 | Repr Cosμ: 0.9889 Val Cosμ: 0.9996 | Pred→Target Cosμ: 0.8845 Val Cosμ: 0.7101 | Repr NormRatio: 1.0846 Val NormRatio: 1.0211 | Train Meta: n/a | Val Meta: n/a
    -> Saved last checkpoint at epoch 16
+Epoch 17/100 | Steps: 1136 | LR: 0.000099 | Train Loss: 0.475513 (P:0.4723, S:0.0652, Q:0.0000) | Val Loss: 0.620705 (P:0.6107, S:0.1999, Q:0.0000) | Repr L2μ: 1.6061 Val L2μ: 0.1914 | Repr Cosμ: 0.9910 Val Cosμ: 0.9999 | Pred→Target Cosμ: 0.8891 Val Cosμ: 0.7303 | Repr NormRatio: 1.0680 Val NormRatio: 1.0049 | Train Meta: n/a | Val Meta: n/a
+   -> Saved last checkpoint at epoch 17
