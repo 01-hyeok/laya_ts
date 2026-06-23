@@ -98,6 +98,84 @@ def _average_metadata_usage(accumulator: dict[str, float], total_weight: int) ->
     return {key: value / float(total_weight) for key, value in accumulator.items()}
 
 
+def _extract_scale_weights(metadata_usage: dict[str, float] | None) -> dict[str, float]:
+    if not metadata_usage:
+        return {}
+    scale_weights: dict[str, float] = {}
+    for key, value in metadata_usage.items():
+        if key.startswith("scale_weight_p"):
+            scale_weights[key[len("scale_weight_"):]] = float(value)
+    return scale_weights
+
+
+def _accumulate_named_scale_weights(
+    accumulator: dict[str, float],
+    scale_weights: dict[str, float] | None,
+    *,
+    weight: int,
+) -> None:
+    if not scale_weights:
+        return
+    for scale_name, value in scale_weights.items():
+        accumulator[scale_name] = accumulator.get(scale_name, 0.0) + (float(value) * weight)
+
+
+def _average_named_scale_weights(
+    accumulator: dict[str, float],
+    total_weight: int,
+) -> dict[str, float]:
+    if total_weight <= 0:
+        return {}
+    return {scale_name: value / float(total_weight) for scale_name, value in accumulator.items()}
+
+
+def _accumulate_dataset_scale_weights(
+    accumulator: dict[str, dict[str, float] | int],
+    dataset_name: str | None,
+    scale_weights: dict[str, float] | None,
+    *,
+    weight: int,
+) -> None:
+    if not dataset_name or not scale_weights:
+        return
+    bucket = accumulator.setdefault(dataset_name, {"total_weight": 0})
+    bucket["total_weight"] = int(bucket.get("total_weight", 0)) + weight
+    for scale_name, value in scale_weights.items():
+        bucket[scale_name] = float(bucket.get(scale_name, 0.0)) + (float(value) * weight)
+
+
+def _average_dataset_scale_weights(
+    accumulator: dict[str, dict[str, float] | int],
+) -> dict[str, dict[str, float]]:
+    averaged: dict[str, dict[str, float]] = {}
+    for dataset_name, bucket in accumulator.items():
+        total_weight = int(bucket.get("total_weight", 0))
+        if total_weight <= 0:
+            continue
+        averaged[dataset_name] = {
+            scale_name: float(value) / float(total_weight)
+            for scale_name, value in bucket.items()
+            if scale_name != "total_weight"
+        }
+    return averaged
+
+
+def _resolve_dataset_log_name(batch: dict[str, object] | None, fallback_name: str | None = None) -> str | None:
+    if batch is not None:
+        for field_name in ("subset_name", "dataset_name"):
+            raw_value = batch.get(field_name)
+            if isinstance(raw_value, str) and raw_value.strip():
+                return raw_value.strip()
+            if isinstance(raw_value, (list, tuple)) and raw_value:
+                first_value = raw_value[0]
+                if isinstance(first_value, str) and first_value.strip():
+                    return first_value.strip()
+    if fallback_name is None:
+        return None
+    fallback = str(fallback_name).strip()
+    return fallback or None
+
+
 def _format_metadata_usage(metadata_usage: dict[str, float]) -> str:
     if not metadata_usage:
         return "Meta: n/a"
@@ -134,6 +212,10 @@ def _format_metadata_usage(metadata_usage: dict[str, float]) -> str:
         parts.append(f"MetaNormσ:{metadata_usage['metadata_norm_std']:.4f}")
     if "metadata_norm_ratio" in metadata_usage:
         parts.append(f"MetaNormMax/Min:{metadata_usage['metadata_norm_ratio']:.2f}")
+    for scale_name in ("p4", "p8", "p16", "p32"):
+        key = f"scale_weight_{scale_name}"
+        if key in metadata_usage:
+            parts.append(f"{scale_name}μ:{metadata_usage[key]:.4f}")
     return "Meta: " + ", ".join(parts)
 
 
@@ -535,6 +617,8 @@ def _evaluate_validation(
     val_repr_stats = _empty_representation_stats()
     val_align_stats = _empty_prediction_alignment_stats()
     val_metadata_usage: dict[str, float] = {}
+    val_scale_weight_totals: dict[str, float] = {}
+    val_scale_weight_by_dataset: dict[str, dict[str, float] | int] = {}
     per_dataset_metrics = []
 
     iter_val_loaders = (
@@ -552,6 +636,7 @@ def _evaluate_validation(
             dataset_pred_loss = 0.0
             dataset_sigreg_loss = 0.0
             dataset_query_loss = 0.0
+            dataset_scale_weight_totals: dict[str, float] = {}
 
             for batch in group["val_loader"]:
                 batch_on_device = move_batch_to_device(batch, train_cfg.device)
@@ -594,6 +679,24 @@ def _evaluate_validation(
                     outputs.get("metadata_usage"),
                     weight=batch_size,
                 )
+                scale_weights = _extract_scale_weights(outputs.get("metadata_usage"))
+                _accumulate_named_scale_weights(
+                    val_scale_weight_totals,
+                    scale_weights,
+                    weight=batch_size,
+                )
+                dataset_log_name = _resolve_dataset_log_name(batch, group["group_name"])
+                _accumulate_named_scale_weights(
+                    dataset_scale_weight_totals,
+                    scale_weights,
+                    weight=batch_size,
+                )
+                _accumulate_dataset_scale_weights(
+                    val_scale_weight_by_dataset,
+                    dataset_log_name,
+                    scale_weights,
+                    weight=batch_size,
+                )
                 if need_attention:
                     raw_names = batch.get("channel_names", [])
                     channel_names = list(raw_names[0]) if raw_names else []
@@ -608,6 +711,10 @@ def _evaluate_validation(
                         "pred_loss": dataset_pred_loss / dataset_samples,
                         "sigreg_loss": dataset_sigreg_loss / dataset_samples,
                         "query_loss": dataset_query_loss / dataset_samples,
+                        "scale_weights": _average_named_scale_weights(
+                            dataset_scale_weight_totals,
+                            dataset_samples,
+                        ),
                     }
                 )
 
@@ -618,6 +725,8 @@ def _evaluate_validation(
     avg_val_repr_stats = {key: value / max(1, total_val_samples) for key, value in val_repr_stats.items()}
     avg_val_align_stats = {key: value / max(1, total_val_samples) for key, value in val_align_stats.items()}
     avg_val_metadata_usage = _average_metadata_usage(val_metadata_usage, total_val_samples)
+    avg_val_scale_weights = _average_named_scale_weights(val_scale_weight_totals, total_val_samples)
+    avg_val_scale_weights_by_dataset = _average_dataset_scale_weights(val_scale_weight_by_dataset)
 
     if per_dataset_metrics:
         macro_val_loss = float(sum(metric["loss"] for metric in per_dataset_metrics) / len(per_dataset_metrics))
@@ -643,6 +752,8 @@ def _evaluate_validation(
         "repr_stats": avg_val_repr_stats,
         "align_stats": avg_val_align_stats,
         "metadata_usage": avg_val_metadata_usage,
+        "scale_weights": avg_val_scale_weights,
+        "scale_weights_by_dataset": avg_val_scale_weights_by_dataset,
         "per_dataset_metrics": per_dataset_metrics,
         "attention_batch": attention_batch,
     }
@@ -650,10 +761,20 @@ def _evaluate_validation(
 
 def main(argv=None):
     p = argparse.ArgumentParser(description="Pretrain standalone Laya on time-series data")
-    p.add_argument("--dataset_type", type=str, default="tslib", choices=["tsld", "tslib", "electricity", "lotsa"])
+    p.add_argument(
+        "--dataset_type",
+        type=str,
+        default="tslib",
+        choices=["tsld", "tslib", "electricity", "lotsa", "ETTm1", "ETTm2", "weather"],
+    )
     p.add_argument("--data_path", type=str, required=True)
     p.add_argument("--seq_len", type=int, default=512)
     p.add_argument("--patch_size", type=int, default=PretrainConfig().patch_size)
+    p.add_argument("--model_id", type=str, default=LayaModelConfig().model_id)
+    p.add_argument("--patchifier_mode", type=str, default=LayaModelConfig().patchifier_mode, choices=["single", "multiscale"])
+    p.add_argument("--multiscale_patch_sizes", type=str, default=",".join(str(value) for value in LayaModelConfig().multiscale_patch_sizes))
+    p.add_argument("--multiscale_base_patch", type=int, default=LayaModelConfig().multiscale_base_patch)
+    p.add_argument("--multiscale_gate_temperature", type=float, default=LayaModelConfig().multiscale_gate_temperature)
     p.add_argument("--d_model", type=int, default=LayaModelConfig().embed_dim)
     p.add_argument("--stride", type=int, default=512)
     p.add_argument("--tsld_mode", type=str, default=getattr(PretrainConfig(), "tsld_mode", "univariate"), choices=["univariate", "multivariate"])
@@ -736,6 +857,15 @@ def main(argv=None):
         raise ValueError(f"--patch_size must be positive, got {args.patch_size}")
     if args.patch_size > args.seq_len:
         raise ValueError(f"--patch_size must be <= --seq_len, got patch_size={args.patch_size}, seq_len={args.seq_len}")
+    if args.multiscale_base_patch <= 0:
+        raise ValueError(
+            f"--multiscale_base_patch must be positive, got {args.multiscale_base_patch}"
+        )
+    if args.multiscale_gate_temperature <= 0:
+        raise ValueError(
+            "--multiscale_gate_temperature must be positive, "
+            f"got {args.multiscale_gate_temperature}"
+        )
     if args.d_model <= 0:
         raise ValueError(f"--d_model must be positive, got {args.d_model}")
     if args.n_heads <= 0:
@@ -794,6 +924,7 @@ def main(argv=None):
         raise ValueError(f"--lotsa_windows_per_series must be positive, got {args.lotsa_windows_per_series}")
 
     charm_kernel_sizes = _parse_int_list(args.charm_kernel_sizes)
+    multiscale_patch_sizes = _parse_int_list(args.multiscale_patch_sizes)
     charm_stride = args.charm_stride or args.patch_size
     encoder_variant = args.encoder_variant
 
@@ -877,7 +1008,12 @@ def main(argv=None):
     channel_mixer_type = "independent" if requested_channel_mixer_type == "ci_adapter" else requested_channel_mixer_type
     model_cfg = LayaModelConfig(
         variant=args.variant,
+        model_id=args.model_id,
         patch_size=args.patch_size,
+        patchifier_mode=args.patchifier_mode,
+        multiscale_patch_sizes=multiscale_patch_sizes,
+        multiscale_base_patch=args.multiscale_base_patch,
+        multiscale_gate_temperature=args.multiscale_gate_temperature,
         embed_dim=args.d_model,
         depth=args.n_layers,
         num_heads=args.n_heads,
@@ -986,6 +1122,12 @@ def main(argv=None):
     print(f"   - predictor_depth: {model_cfg.predictor_depth}")
     print(f"   - predictor_heads: {model_cfg.predictor_heads}")
     print(f"   - patch_size: {model_cfg.patch_size}")
+    print(f"   - model_id: {model_cfg.model_id or 'none'}")
+    print(f"   - patchifier_mode: {model_cfg.patchifier_mode}")
+    if model_cfg.patchifier_mode == "multiscale" or model_cfg.model_id == "laya_ci_multiscale":
+        print(f"   - multiscale_patch_sizes: {model_cfg.multiscale_patch_sizes}")
+        print(f"   - multiscale_base_patch: {model_cfg.multiscale_base_patch}")
+        print(f"   - multiscale_gate_temperature: {model_cfg.multiscale_gate_temperature}")
     print(f"   - metadata_fusion_mode: {model_cfg.metadata_fusion_mode}")
     print(f"   - channel_mixer_relation_mode: {model_cfg.channel_mixer_relation_mode}")
     if model_cfg.channel_mixer_relation_mode in {"laya_relation", "metadata_query_gate"}:
@@ -1043,6 +1185,8 @@ def main(argv=None):
             epoch_repr_stats = _empty_representation_stats()
             epoch_align_stats = _empty_prediction_alignment_stats()
             epoch_metadata_usage: dict[str, float] = {}
+            epoch_scale_weight_totals: dict[str, float] = {}
+            epoch_scale_weight_by_dataset: dict[str, dict[str, float] | int] = {}
 
             epoch_steps = 0
             total_train_samples = 0
@@ -1064,7 +1208,7 @@ def main(argv=None):
                     for batch in active_train_loader
                 )
 
-            for _, batch in batch_stream:
+            for group_name, batch in batch_stream:
                 if global_step >= total_steps:
                     break
                 batch_on_device = move_batch_to_device(batch, train_cfg.device)
@@ -1103,6 +1247,19 @@ def main(argv=None):
                     outputs.get("metadata_usage"),
                     weight=batch_size,
                 )
+                scale_weights = _extract_scale_weights(outputs.get("metadata_usage"))
+                _accumulate_named_scale_weights(
+                    epoch_scale_weight_totals,
+                    scale_weights,
+                    weight=batch_size,
+                )
+                dataset_log_name = _resolve_dataset_log_name(batch, group_name)
+                _accumulate_dataset_scale_weights(
+                    epoch_scale_weight_by_dataset,
+                    dataset_log_name,
+                    scale_weights,
+                    weight=batch_size,
+                )
 
                 if global_step % args.log_every == 0 or global_step == 1:
                     writer.add_scalar("train/loss", loss_value, global_step)
@@ -1116,6 +1273,8 @@ def main(argv=None):
                         writer.add_scalar(f"train_align/{key}", value, global_step)
                     for key, value in (outputs.get("metadata_usage") or {}).items():
                         writer.add_scalar(f"train_meta/{key}", value, global_step)
+                    for scale_name, value in scale_weights.items():
+                        writer.add_scalar(f"scale_weight/{scale_name}", value, global_step)
 
                 should_validate_now = (
                     args.dataset_type == "lotsa"
@@ -1148,12 +1307,20 @@ def main(argv=None):
                         writer.add_scalar(f"val_step/align_{key}", value, global_step)
                     for key, value in val_metrics["metadata_usage"].items():
                         writer.add_scalar(f"val_step/meta_{key}", value, global_step)
+                    for scale_name, value in val_metrics["scale_weights"].items():
+                        writer.add_scalar(f"scale_weight/{scale_name}", value, global_step)
                     for dataset_metric in val_metrics["per_dataset_metrics"]:
                         metric_name = _sanitize_metric_name(dataset_metric["group_name"])
                         writer.add_scalar(f"val_dataset/{metric_name}/loss", dataset_metric["loss"], global_step)
                         writer.add_scalar(f"val_dataset/{metric_name}/pred_loss", dataset_metric["pred_loss"], global_step)
                         writer.add_scalar(f"val_dataset/{metric_name}/sigreg_loss", dataset_metric["sigreg_loss"], global_step)
                         writer.add_scalar(f"val_dataset/{metric_name}/query_loss", dataset_metric["query_loss"], global_step)
+                        for scale_name, value in dataset_metric.get("scale_weights", {}).items():
+                            writer.add_scalar(
+                                f"scale_weight_by_dataset/{metric_name}/{scale_name}",
+                                value,
+                                global_step,
+                            )
 
                     current_lr = optimizer.param_groups[0]["lr"]
                     is_best = val_metrics["macro_loss"] < best_val_loss
@@ -1243,6 +1410,8 @@ def main(argv=None):
             avg_repr_stats = {key: value / max(1, total_train_samples) for key, value in epoch_repr_stats.items()}
             avg_align_stats = {key: value / max(1, total_train_samples) for key, value in epoch_align_stats.items()}
             avg_metadata_usage = _average_metadata_usage(epoch_metadata_usage, total_train_samples)
+            avg_epoch_scale_weights = _average_named_scale_weights(epoch_scale_weight_totals, total_train_samples)
+            avg_epoch_scale_weights_by_dataset = _average_dataset_scale_weights(epoch_scale_weight_by_dataset)
             writer.add_scalar("epoch/train_loss", avg_loss, epoch)
             writer.add_scalar("epoch/train_pred_loss", avg_pred_loss, epoch)
             writer.add_scalar("epoch/train_sigreg_loss", avg_sigreg_loss, epoch)
@@ -1253,6 +1422,16 @@ def main(argv=None):
                 writer.add_scalar(f"epoch/train_align_{key}", value, epoch)
             for key, value in avg_metadata_usage.items():
                 writer.add_scalar(f"epoch/train_meta_{key}", value, epoch)
+            for scale_name, value in avg_epoch_scale_weights.items():
+                writer.add_scalar(f"scale_weight_epoch/{scale_name}", value, epoch)
+            for dataset_name, dataset_scale_weights in avg_epoch_scale_weights_by_dataset.items():
+                dataset_metric_name = _sanitize_metric_name(dataset_name)
+                for scale_name, value in dataset_scale_weights.items():
+                    writer.add_scalar(
+                        f"scale_weight_epoch/{dataset_metric_name}/{scale_name}",
+                        value,
+                        epoch,
+                    )
             if args.dataset_type == "lotsa":
                 print(
                     f"Epoch {epoch}/{total_epochs} | "
@@ -1309,6 +1488,8 @@ def main(argv=None):
             avg_val_repr_stats = val_metrics["repr_stats"]
             avg_val_align_stats = val_metrics["align_stats"]
             avg_val_metadata_usage = val_metrics["metadata_usage"]
+            avg_val_scale_weights = val_metrics["scale_weights"]
+            avg_val_scale_weights_by_dataset = val_metrics["scale_weights_by_dataset"]
             attention_batch = val_metrics["attention_batch"]
 
             writer.add_scalar("epoch/loss", avg_loss, epoch)
@@ -1325,6 +1506,16 @@ def main(argv=None):
                 writer.add_scalar(f"epoch/val_align_{key}", value, epoch)
             for key, value in avg_val_metadata_usage.items():
                 writer.add_scalar(f"epoch/val_meta_{key}", value, epoch)
+            for scale_name, value in avg_val_scale_weights.items():
+                writer.add_scalar(f"scale_weight_epoch/val_{scale_name}", value, epoch)
+            for dataset_name, dataset_scale_weights in avg_val_scale_weights_by_dataset.items():
+                dataset_metric_name = _sanitize_metric_name(dataset_name)
+                for scale_name, value in dataset_scale_weights.items():
+                    writer.add_scalar(
+                        f"scale_weight_epoch/val_{dataset_metric_name}/{scale_name}",
+                        value,
+                        epoch,
+                    )
             writer.add_scalars("compare/loss", {"train": avg_loss, "val": avg_val_loss}, epoch)
             current_lr = optimizer.param_groups[0]["lr"]
             is_best = avg_val_loss < best_val_loss

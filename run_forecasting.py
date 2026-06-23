@@ -86,6 +86,12 @@ def _infer_pretrain_dataset(checkpoint_path: str) -> str:
         return "tslib"
     if "_tsld_" in name:
         return "tsld"
+    if "_ettm1_" in name:
+        return "ETTm1"
+    if "_ettm2_" in name:
+        return "ETTm2"
+    if "_weather_" in name:
+        return "weather"
     if "_electricity_" in name:
         return "electricity"
     return "unknown"

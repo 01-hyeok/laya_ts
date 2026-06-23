@@ -1,0 +1,64 @@
+nohup: ignoring input
+🚀 Laya-TS Pretraining: electricity (laya + laya_ci_multiscale)
+📊 data_path: ../Dataset/long_term_forecast/electricity/electricity.csv
+📝 metadata: mode=none, fusion=none
+📝 multiscale: mode=multiscale, sizes=4,8,16,32, base=16, temp=1.0
+📝 log_dir: ./runs/pretrain_electricity_laya_ci_multiscale
+📊 Dataset Statistics:
+   - Sequence Length (T): 512
+   - Train Samples: 17903, Steps: 559
+   - Val Samples: 2119, Steps: 67
+🔧 Encoder Hyperparameters:
+   - d_model: 256
+   - n_heads: 8
+   - n_layers: 3
+   - proj_dim: 128
+   - predictor_depth: 2
+   - predictor_heads: 4
+   - patch_size: 16
+   - model_id: laya_ci_multiscale
+   - patchifier_mode: multiscale
+   - multiscale_patch_sizes: (4, 8, 16, 32)
+   - multiscale_base_patch: 16
+   - multiscale_gate_temperature: 1.0
+   - metadata_fusion_mode: none
+   - channel_mixer_relation_mode: none
+   - use_relation_adapter: False
+   - encoder_variant: default
+   - temporal_patchifier_mode: fixed
+   - use_channel_relation_block: False
+🧮 Parameter Counts:
+   - Total Parameters: 4,298,372
+   - Trainable Parameters: 4,298,372
+⏱️ Schedule:
+   - total_steps: 55900
+   - warmup_steps: 5590
+   - derived_epochs: 100
+Traceback (most recent call last):
+  File "./train_pretrain.py", line 1591, in <module>
+    main()
+  File "./train_pretrain.py", line 1218, in main
+    outputs = model(
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/pjh_workspace/laya_ts/model.py", line 2282, in forward
+    full_scale = self.encoder.forward_features(
+  File "/data/pjh_workspace/laya_ts/model.py", line 2080, in forward_features
+    return self._forward_features_default(
+  File "/data/pjh_workspace/laya_ts/model.py", line 2021, in _forward_features_default
+    encoded = block(encoded)
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/pjh_workspace/laya_ts/base_model.py", line 602, in forward
+    x = x + self.attn(self.norm1(x))
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/pjh_workspace/laya_ts/base_model.py", line 559, in forward
+    attn = (q @ k.transpose(-2, -1)) / math.sqrt(self.head_dim)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.02 GiB. GPU 0 has a total capacity of 79.15 GiB of which 1.29 GiB is free. Process 1080189 has 15.20 GiB memory in use. Process 1886769 has 62.63 GiB memory in use. Of the allocated memory 61.54 GiB is allocated by PyTorch, and 624.06 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

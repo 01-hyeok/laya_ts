@@ -8,8 +8,22 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from .base_model import FourierChannelEncoding, LayaEncoder, LayaPretrainer, QueryChannelMixer
+from .base_model import FourierChannelEncoding, LayaEncoder, LayaPretrainer, QueryChannelMixer, TemporalPatchEmbedding
 from .config import LayaModelConfig
+
+
+def normalize_patchifier_mode(value: str) -> str:
+    normalized = str(value).strip().lower().replace("-", "_")
+    aliases = {
+        "single": "single",
+        "baseline": "single",
+        "fixed": "single",
+        "multiscale": "multiscale",
+        "multi_scale": "multiscale",
+    }
+    if normalized not in aliases:
+        raise ValueError(f"Unsupported patchifier_mode: {value}")
+    return aliases[normalized]
 
 
 def normalize_temporal_patchifier_mode(value: str) -> str:
@@ -179,6 +193,44 @@ def summarize_metadata_usage(features: dict[str, torch.Tensor | None]) -> dict[s
     if signal_mag is not None and delta_mag is not None and signal_mag > 0.0:
         summary["score_delta_ratio"] = float(delta_mag / signal_mag)
     return summary
+
+
+class MultiScaleFusionGate(nn.Module):
+    def __init__(
+        self,
+        latent_dim: int,
+        num_scales: int,
+        *,
+        temperature: float = 1.0,
+    ) -> None:
+        super().__init__()
+        if latent_dim <= 0:
+            raise ValueError(f"latent_dim must be positive, got {latent_dim}")
+        if num_scales <= 0:
+            raise ValueError(f"num_scales must be positive, got {num_scales}")
+        if temperature <= 0:
+            raise ValueError(f"temperature must be positive, got {temperature}")
+        input_dim = latent_dim * num_scales
+        hidden_dim = max(latent_dim, num_scales * 4)
+        self.temperature = float(temperature)
+        self.norm = nn.LayerNorm(input_dim)
+        self.mlp = nn.Sequential(
+            nn.Linear(input_dim, hidden_dim),
+            nn.GELU(),
+            nn.Linear(hidden_dim, num_scales),
+        )
+        nn.init.zeros_(self.mlp[-1].weight)
+        nn.init.zeros_(self.mlp[-1].bias)
+
+    def forward(self, scale_latents: torch.Tensor) -> torch.Tensor:
+        if scale_latents.dim() != 5:
+            raise ValueError(
+                f"Expected scale_latents [B, C, N, S, D], got {tuple(scale_latents.shape)}"
+            )
+        batch, channels, patches, scales, dim = scale_latents.shape
+        fused_input = scale_latents.reshape(batch, channels, patches, scales * dim)
+        logits = self.mlp(self.norm(fused_input))
+        return torch.softmax(logits / self.temperature, dim=-1)
 
 
 def apply_metadata_dropout(
@@ -1215,6 +1267,9 @@ class LayaTSEncoder(LayaEncoder):
     def __init__(self, config: Optional[LayaModelConfig] = None) -> None:
         super().__init__(config)
         raw_channel_mixer_type = str(self.config.channel_mixer_type).strip().lower().replace("-", "_")
+        self.patchifier_mode = normalize_patchifier_mode(self.config.patchifier_mode)
+        if str(self.config.model_id).strip().lower() == "laya_ci_multiscale":
+            self.patchifier_mode = "multiscale"
         self.encoder_variant = normalize_encoder_variant(self.config.encoder_variant)
         self.temporal_patchifier_mode = normalize_temporal_patchifier_mode(self.config.temporal_patchifier_mode)
         self.charm_patchifier_fusion = normalize_charm_patchifier_fusion(self.config.charm_patchifier_fusion)
@@ -1236,6 +1291,7 @@ class LayaTSEncoder(LayaEncoder):
         self.temporal_patchifier: CHARMLikeMultiScaleTemporalPatchifier | None = None
         self.charm_patchifier_residual_beta: nn.Parameter | None = None
         self.scale_text_projector: nn.Module | None = None
+        self.multiscale_patch_embedders: nn.ModuleDict = nn.ModuleDict()
         self.description_relation_refiner: DescriptionRelationChannelRefiner | None = None
         self.relation_adapter: MetadataGuidedInterChannelAdapter | None = None
         if self.channel_mixer_relation_mode != "none" and self.channel_mixer_type != "mixer":
@@ -1299,6 +1355,14 @@ class LayaTSEncoder(LayaEncoder):
             if self.charm_patchifier_fusion == "residual":
                 self.charm_patchifier_residual_beta = nn.Parameter(
                     torch.tensor(float(self.config.charm_patchifier_residual_init))
+                )
+        if self.patchifier_mode == "multiscale":
+            for patch_size in self.config.multiscale_patch_sizes:
+                if patch_size == self.config.patch_size:
+                    continue
+                self.multiscale_patch_embedders[str(patch_size)] = TemporalPatchEmbedding(
+                    patch_size,
+                    self.channel_token_dim,
                 )
 
         self.relation_channel_encoding: Optional[FourierChannelEncoding] = None
@@ -1686,6 +1750,19 @@ class LayaTSEncoder(LayaEncoder):
         ) * charm_tokens
         return channel_tokens, aux
 
+    def embed_with_patch_size(self, x: torch.Tensor, patch_size: int) -> torch.Tensor:
+        if patch_size == self.config.patch_size:
+            return self.patch_embed(x)
+        branch_key = str(int(patch_size))
+        branch = self.multiscale_patch_embedders[branch_key] if branch_key in self.multiscale_patch_embedders else None
+        if branch is None:
+            branch = TemporalPatchEmbedding(int(patch_size), self.channel_token_dim).to(
+                device=x.device,
+                dtype=x.dtype,
+            )
+            self.multiscale_patch_embedders[branch_key] = branch
+        return branch(x)
+
     def _resolve_channel_mask(
         self,
         *,
@@ -1763,6 +1840,8 @@ class LayaTSEncoder(LayaEncoder):
         patch_mask: Optional[torch.Tensor],
         channel_text_embeddings: Optional[torch.Tensor],
         channel_stats_embeddings: Optional[torch.Tensor],
+        channel_tokens_override: Optional[torch.Tensor] = None,
+        patchifier_aux_override: Optional[dict[str, object]] = None,
     ) -> dict[str, torch.Tensor]:
         batch, channels, _ = x.shape
         metadata_encoding: Optional[torch.Tensor] = None
@@ -1813,10 +1892,19 @@ class LayaTSEncoder(LayaEncoder):
             channel_positions=channel_positions,
             channel_mask=channel_mask,
         )
-        channel_tokens, patchifier_aux = self._resolve_channel_tokens(
-            x,
-            channel_text_embeddings=channel_text_embeddings,
-        )
+        if channel_tokens_override is None:
+            channel_tokens, patchifier_aux = self._resolve_channel_tokens(
+                x,
+                channel_text_embeddings=channel_text_embeddings,
+            )
+        else:
+            channel_tokens = channel_tokens_override.to(device=x.device, dtype=x.dtype)
+            patchifier_aux = dict(patchifier_aux_override or {})
+            patchifier_aux.setdefault("scale_gate", None)
+            patchifier_aux.setdefault("scale_logits", None)
+            patchifier_aux.setdefault("scale_gate_mean", None)
+            patchifier_aux.setdefault("patchifier_N", channel_tokens.shape[2])
+            patchifier_aux.setdefault("branch_patch_counts", (channel_tokens.shape[2],))
         num_patches = channel_tokens.shape[2]
 
         if patch_mask is not None:
@@ -1984,6 +2072,8 @@ class LayaTSEncoder(LayaEncoder):
         patch_mask: Optional[torch.Tensor] = None,
         channel_text_embeddings: Optional[torch.Tensor] = None,
         channel_stats_embeddings: Optional[torch.Tensor] = None,
+        channel_tokens_override: Optional[torch.Tensor] = None,
+        patchifier_aux_override: Optional[dict[str, object]] = None,
     ):
         if x.dim() != 3:
             raise ValueError(f"Expected [B, C, T], got {tuple(x.shape)}")
@@ -1994,6 +2084,8 @@ class LayaTSEncoder(LayaEncoder):
             patch_mask=patch_mask,
             channel_text_embeddings=channel_text_embeddings,
             channel_stats_embeddings=channel_stats_embeddings,
+            channel_tokens_override=channel_tokens_override,
+            patchifier_aux_override=patchifier_aux_override,
         )
 
 
@@ -2003,6 +2095,119 @@ class LayaTSPretrainer(LayaPretrainer):
     def __init__(self, config: Optional[LayaModelConfig] = None) -> None:
         super().__init__(config)
         self.encoder = LayaTSEncoder(self.config)
+        self.patchifier_mode = normalize_patchifier_mode(self.config.patchifier_mode)
+        if str(self.config.model_id).strip().lower() == "laya_ci_multiscale":
+            self.patchifier_mode = "multiscale"
+        self.multiscale_patch_sizes = tuple(int(value) for value in self.config.multiscale_patch_sizes)
+        self.multiscale_base_patch = int(self.config.multiscale_base_patch)
+        self.multiscale_fusion_gate: MultiScaleFusionGate | None = None
+        if self.patchifier_mode == "multiscale":
+            self.multiscale_fusion_gate = MultiScaleFusionGate(
+                self.config.proj_dim,
+                len(self.multiscale_patch_sizes),
+                temperature=self.config.multiscale_gate_temperature,
+            )
+
+    def _use_multiscale_jepa(self) -> bool:
+        return self.patchifier_mode == "multiscale"
+
+    def _reshape_ci_tokens(
+        self,
+        tokens: torch.Tensor,
+        *,
+        batch: int,
+        channels: int,
+    ) -> torch.Tensor:
+        if tokens.dim() != 3:
+            raise ValueError(f"Expected CI tokens [B*C, N, D], got {tuple(tokens.shape)}")
+        if tokens.shape[0] != batch * channels:
+            raise ValueError(
+                f"Expected leading dim {batch * channels} for CI tokens, got {tokens.shape[0]}"
+            )
+        return tokens.reshape(batch, channels, tokens.shape[1], tokens.shape[2])
+
+    def _align_latents_to_base_grid(
+        self,
+        latents: torch.Tensor,
+        *,
+        patch_size: int,
+        base_patch: int,
+        base_num_patches: int,
+    ) -> torch.Tensor:
+        if latents.dim() != 4:
+            raise ValueError(f"Expected latents [B, C, N, D], got {tuple(latents.shape)}")
+        if patch_size == base_patch:
+            return latents[:, :, :base_num_patches, :]
+        if patch_size < base_patch:
+            ratio = base_patch // patch_size
+            if base_patch % patch_size != 0:
+                raise ValueError(
+                    f"Base patch {base_patch} must be divisible by patch size {patch_size}"
+                )
+            target_tokens = base_num_patches * ratio
+            if latents.shape[2] < target_tokens:
+                pad = target_tokens - latents.shape[2]
+                latents = F.pad(latents, (0, 0, 0, pad))
+            latents = latents[:, :, :target_tokens, :]
+            batch, channels, _, dim = latents.shape
+            return latents.reshape(batch, channels, base_num_patches, ratio, dim).mean(dim=3)
+        ratio = patch_size // base_patch
+        if patch_size % base_patch != 0:
+            raise ValueError(
+                f"Patch size {patch_size} must be divisible by base patch {base_patch}"
+            )
+        expanded = latents.repeat_interleave(ratio, dim=2)
+        if expanded.shape[2] < base_num_patches:
+            pad = base_num_patches - expanded.shape[2]
+            expanded = F.pad(expanded, (0, 0, 0, pad))
+        return expanded[:, :, :base_num_patches, :]
+
+    def _base_mask_to_scale_mask(
+        self,
+        base_mask: torch.Tensor,
+        *,
+        patch_size: int,
+        base_patch: int,
+        scale_num_patches: int,
+    ) -> torch.Tensor:
+        if base_mask.dim() != 2:
+            raise ValueError(f"Expected base_mask [B, N], got {tuple(base_mask.shape)}")
+        if patch_size == base_patch:
+            return base_mask[:, :scale_num_patches]
+        if patch_size < base_patch:
+            ratio = base_patch // patch_size
+            repeated = base_mask.repeat_interleave(ratio, dim=1)
+            if repeated.shape[1] < scale_num_patches:
+                pad = scale_num_patches - repeated.shape[1]
+                repeated = F.pad(repeated, (0, pad), value=False)
+            return repeated[:, :scale_num_patches]
+        ratio = patch_size // base_patch
+        target_base_tokens = scale_num_patches * ratio
+        if base_mask.shape[1] < target_base_tokens:
+            pad = target_base_tokens - base_mask.shape[1]
+            base_mask = F.pad(base_mask, (0, pad), value=False)
+        reduced = base_mask[:, :target_base_tokens].reshape(base_mask.shape[0], scale_num_patches, ratio)
+        return reduced.any(dim=-1)
+
+    def _masked_mse(
+        self,
+        pred: torch.Tensor,
+        target: torch.Tensor,
+        mask: torch.Tensor,
+    ) -> torch.Tensor:
+        if pred.shape != target.shape:
+            raise ValueError(
+                f"pred and target must share shape, got {tuple(pred.shape)} vs {tuple(target.shape)}"
+            )
+        if mask.shape != pred.shape[:-1]:
+            raise ValueError(
+                f"mask must match pred/target without latent dim, got {tuple(mask.shape)} vs {tuple(pred.shape[:-1])}"
+            )
+        masked_pred = pred[mask]
+        masked_target = target[mask]
+        if masked_pred.numel() == 0 or masked_target.numel() == 0:
+            return pred.new_zeros(())
+        return F.mse_loss(masked_pred, masked_target)
 
     def forward(
         self,
@@ -2033,6 +2238,153 @@ class LayaTSPretrainer(LayaPretrainer):
             raise ValueError(
                 f"channel_positions shape {tuple(channel_positions.shape)} does not match input shape {tuple(x.shape)}"
             )
+
+        if self._use_multiscale_jepa():
+            if self.encoder.channel_mixer_type != "independent":
+                raise ValueError(
+                    "laya_ci_multiscale currently supports channel_mixer_type='independent' only."
+                )
+            if self.multiscale_fusion_gate is None:
+                raise RuntimeError("multiscale_fusion_gate is not initialized.")
+
+            batch, channels, time = x.shape
+            base_num_patches = math.ceil(time / self.multiscale_base_patch)
+            base_patch_mask = self._resolve_patch_mask(
+                batch_size=batch,
+                num_patches=base_num_patches,
+                device=x.device,
+                patch_mask=patch_mask,
+                patch_mask_seed=patch_mask_seed,
+            )
+
+            pred_scales: list[torch.Tensor] = []
+            target_scales: list[torch.Tensor] = []
+            full_scale_features: dict[int, dict[str, torch.Tensor]] = {}
+            context_scale_features: dict[int, dict[str, torch.Tensor]] = {}
+
+            for patch_size in self.multiscale_patch_sizes:
+                scale_channel_tokens = self.encoder.embed_with_patch_size(x, patch_size)
+                scale_num_patches = scale_channel_tokens.shape[2]
+                scale_patch_mask = self._base_mask_to_scale_mask(
+                    base_patch_mask,
+                    patch_size=patch_size,
+                    base_patch=self.multiscale_base_patch,
+                    scale_num_patches=scale_num_patches,
+                )
+                patchifier_aux = {
+                    "scale_gate": None,
+                    "scale_logits": None,
+                    "scale_gate_mean": None,
+                    "patchifier_N": scale_num_patches,
+                    "branch_patch_counts": (scale_num_patches,),
+                    "patchifier_mode": f"multiscale_p{patch_size}",
+                }
+                full_scale = self.encoder.forward_features(
+                    x,
+                    channel_positions=channel_positions,
+                    channel_mask=channel_mask,
+                    channel_text_embeddings=channel_text_embeddings,
+                    channel_stats_embeddings=channel_stats_embeddings,
+                    channel_tokens_override=scale_channel_tokens,
+                    patchifier_aux_override=patchifier_aux,
+                )
+                context_scale = self.encoder.forward_features(
+                    x,
+                    channel_positions=channel_positions,
+                    channel_mask=channel_mask,
+                    patch_mask=scale_patch_mask,
+                    channel_text_embeddings=channel_text_embeddings,
+                    channel_stats_embeddings=channel_stats_embeddings,
+                    channel_tokens_override=scale_channel_tokens,
+                    patchifier_aux_override=patchifier_aux,
+                )
+                full_scale_features[patch_size] = full_scale
+                context_scale_features[patch_size] = context_scale
+
+                target_scale = self.projector(
+                    self._reshape_ci_tokens(
+                        full_scale["mixed_tokens"],
+                        batch=batch,
+                        channels=channels,
+                    )
+                ).detach()
+                context_scale_tokens = self.projector(
+                    self._reshape_ci_tokens(
+                        context_scale["mixed_tokens"],
+                        batch=batch,
+                        channels=channels,
+                    )
+                )
+                ci_scale_mask = scale_patch_mask.unsqueeze(1).expand(batch, channels, scale_num_patches)
+                pred_scale = self.predictor(
+                    context_scale_tokens.reshape(batch * channels, scale_num_patches, self.config.proj_dim),
+                    patch_mask=ci_scale_mask.reshape(batch * channels, scale_num_patches),
+                ).reshape(batch, channels, scale_num_patches, self.config.proj_dim)
+
+                pred_scales.append(
+                    self._align_latents_to_base_grid(
+                        pred_scale,
+                        patch_size=patch_size,
+                        base_patch=self.multiscale_base_patch,
+                        base_num_patches=base_num_patches,
+                    )
+                )
+                target_scales.append(
+                    self._align_latents_to_base_grid(
+                        target_scale,
+                        patch_size=patch_size,
+                        base_patch=self.multiscale_base_patch,
+                        base_num_patches=base_num_patches,
+                    )
+                )
+
+            pred_stack = torch.stack(pred_scales, dim=3)
+            target_stack = torch.stack(target_scales, dim=3)
+            alpha = self.multiscale_fusion_gate(pred_stack)
+            pred_fused = (pred_stack * alpha.unsqueeze(-1)).sum(dim=3)
+            target_fused = (target_stack * alpha.unsqueeze(-1)).sum(dim=3)
+            target_mask_base = base_patch_mask.unsqueeze(1).expand(batch, channels, base_num_patches)
+            pred_loss = self._masked_mse(pred_fused, target_fused.detach(), target_mask_base)
+
+            base_full = full_scale_features[self.multiscale_base_patch]
+            base_context = context_scale_features[self.multiscale_base_patch]
+            context_global = self.projector(base_context["channel_repr"].reshape(-1, self.config.embed_dim))
+            sigreg_loss = self.sigreg(context_global.unsqueeze(0))
+            query_loss = 0.5 * (base_full["query_loss"] + base_context["query_loss"])
+            loss = pred_loss + (self.config.sigreg_weight * sigreg_loss) + (self.config.query_loss_weight * query_loss)
+
+            metadata_usage = summarize_metadata_usage(base_full)
+            scale_means = alpha.detach().float().mean(dim=(0, 1, 2))
+            for idx, patch_size in enumerate(self.multiscale_patch_sizes):
+                metadata_usage[f"scale_weight_p{patch_size}"] = float(scale_means[idx].item())
+
+            pred_tokens = pred_fused.reshape(batch * channels, base_num_patches, self.config.proj_dim)
+            target_tokens = target_fused.detach().reshape(batch * channels, base_num_patches, self.config.proj_dim)
+            flat_patch_mask = target_mask_base.reshape(batch * channels, base_num_patches)
+            outputs = {
+                "loss": loss,
+                "pred_loss": pred_loss,
+                "sigreg_loss": sigreg_loss,
+                "query_loss": query_loss,
+                "patch_mask": flat_patch_mask,
+                "target_tokens": target_tokens,
+                "pred_tokens": pred_tokens,
+                "mixed_tokens": base_full["mixed_tokens"],
+                "mixed_repr": base_full["mixed_repr"],
+                "metadata_usage": metadata_usage,
+            }
+
+            if return_aux:
+                outputs.update(
+                    {
+                        "full_features": base_full,
+                        "context_features": base_context,
+                        "multiscale_alpha": alpha,
+                        "multiscale_pred_scales": pred_stack,
+                        "multiscale_target_scales": target_stack,
+                    }
+                )
+            return outputs
 
         num_patches = self.encoder.infer_num_patches(x.shape[-1])
         patch_mask = self._resolve_patch_mask(

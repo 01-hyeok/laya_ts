@@ -46,10 +46,15 @@ class EEGPretrainDatasetConfig:
 
 @dataclass(frozen=True)
 class LayaModelConfig:
+    model_id: str = ""
     variant: str = "s"
     sample_rate: int = 250
     input_seconds: float = 16.0
     patch_size: int = 25
+    patchifier_mode: str = "single"
+    multiscale_patch_sizes: Tuple[int, ...] = (4, 8, 16, 32)
+    multiscale_base_patch: int = 16
+    multiscale_gate_temperature: float = 1.0
     num_queries: int = 16
     channel_mixer_dim: int = 32
     channel_mixer_type: str = "mixer"
@@ -113,8 +118,55 @@ class LayaModelConfig:
         normalized_channel_mixer_type = str(self.channel_mixer_type).strip().lower().replace("-", "_")
         if normalized_channel_mixer_type == "ci_adapter" and not self.use_relation_adapter:
             object.__setattr__(self, "use_relation_adapter", True)
+        normalized_patchifier_mode = str(self.patchifier_mode).strip().lower().replace("-", "_")
+        if normalized_patchifier_mode not in {"single", "multiscale"}:
+            raise ValueError(
+                "patchifier_mode must be one of: single, multiscale. "
+                f"Got {self.patchifier_mode!r}."
+            )
+        object.__setattr__(self, "patchifier_mode", normalized_patchifier_mode)
         if self.patch_size <= 0:
             raise ValueError(f"patch_size must be positive, got {self.patch_size}")
+        if isinstance(self.multiscale_patch_sizes, str):
+            parsed_multiscale_patch_sizes = tuple(
+                int(piece.strip())
+                for piece in self.multiscale_patch_sizes.split(",")
+                if piece.strip()
+            )
+        else:
+            parsed_multiscale_patch_sizes = tuple(
+                int(patch_size) for patch_size in self.multiscale_patch_sizes
+            )
+        if not parsed_multiscale_patch_sizes:
+            raise ValueError("multiscale_patch_sizes must contain at least one patch size")
+        if any(patch_size <= 0 for patch_size in parsed_multiscale_patch_sizes):
+            raise ValueError(
+                "All multiscale_patch_sizes must be positive, "
+                f"got {parsed_multiscale_patch_sizes}"
+            )
+        object.__setattr__(self, "multiscale_patch_sizes", parsed_multiscale_patch_sizes)
+        if self.multiscale_base_patch <= 0:
+            raise ValueError(
+                f"multiscale_base_patch must be positive, got {self.multiscale_base_patch}"
+            )
+        if self.multiscale_base_patch not in parsed_multiscale_patch_sizes:
+            raise ValueError(
+                "multiscale_base_patch must be included in multiscale_patch_sizes, "
+                f"got base={self.multiscale_base_patch}, sizes={parsed_multiscale_patch_sizes}"
+            )
+        if self.multiscale_gate_temperature <= 0:
+            raise ValueError(
+                "multiscale_gate_temperature must be positive, "
+                f"got {self.multiscale_gate_temperature}"
+            )
+        for patch_size in parsed_multiscale_patch_sizes:
+            larger = max(patch_size, self.multiscale_base_patch)
+            smaller = min(patch_size, self.multiscale_base_patch)
+            if larger % smaller != 0:
+                raise ValueError(
+                    "Each multiscale patch size must divide or be divisible by the base patch. "
+                    f"Got base={self.multiscale_base_patch}, size={patch_size}."
+                )
         if self.relation_num_heads <= 0:
             raise ValueError(
                 f"relation_num_heads must be positive, got {self.relation_num_heads}"

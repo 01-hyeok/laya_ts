@@ -1,0 +1,65 @@
+nohup: ignoring input
+🚀 Laya-TS Pretraining: weather (laya + ci_adapter)
+📊 data_path: ../Dataset/Time-Series-Library_dataset/weather/weather.csv
+📝 metadata: mode=text, fusion=none
+📝 relation_adapter: heads=4, dropout=0.1, metadata_dropout=0.0
+📝 metadata_cache: /NHNHOME/pjh_data/laya_ts_metadata_cache
+📝 hf_cache: /NHNHOME/pjh_data/hf_cache
+📝 log_dir: ./runs/pretrain_weather_laya_ci_adapter
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+📊 Dataset Statistics:
+   - Sequence Length (T): 512
+   - Train Samples: 36377, Steps: 1136
+   - Val Samples: 4758, Steps: 149
+🔧 Encoder Hyperparameters:
+   - d_model: 256
+   - n_heads: 8
+   - n_layers: 3
+   - proj_dim: 128
+   - predictor_depth: 2
+   - predictor_heads: 4
+   - patch_size: 16
+   - metadata_fusion_mode: none
+   - channel_mixer_relation_mode: none
+   - use_relation_adapter: True
+   - relation_adapter_position: post_encoder
+   - relation_num_heads: 4
+   - relation_dropout: 0.1
+   - relation_scale_init: 0.001
+   - use_metadata_bias: True
+   - use_metadata_gate: True
+   - metadata_scale_init: 0.001
+   - metadata_dropout: 0.0
+   - encoder_variant: default
+   - temporal_patchifier_mode: fixed
+   - use_channel_relation_block: False
+🧮 Parameter Counts:
+   - Total Parameters: 5,174,791
+   - Trainable Parameters: 5,174,791
+⏱️ Schedule:
+   - total_steps: 113600
+   - warmup_steps: 11360
+   - derived_epochs: 100
+Epoch 1/100 | Steps: 1136 | LR: 0.000010 | Train Loss: 0.714857 (P:0.7043, S:0.2102, Q:0.0000) | Val Loss: 0.612569 (P:0.5991, S:0.2689, Q:0.0000) | Repr L2μ: 5.4328 Val L2μ: 0.3435 | Repr Cosμ: 0.7764 Val Cosμ: 0.9993 | Pred→Target Cosμ: 0.5858 Val Cosμ: 0.6310 | Repr NormRatio: 1.6469 Val NormRatio: 1.0186 | Train Meta: AdapterScaleμ:0.0032, AdapterMetaScaleμ:0.0002, AdapterGateμ:0.7275, AdapterBias|B|μ:0.0661, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:0.08% | Val Meta: AdapterScaleμ:0.0089, AdapterMetaScaleμ:-0.0057, AdapterGateμ:0.9980, AdapterBias|B|μ:0.0987, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:0.28%
+   -> Saved improved checkpoint: val_loss=0.612569 at epoch 1
+Epoch 2/100 | Steps: 1136 | LR: 0.000020 | Train Loss: 0.514428 (P:0.5101, S:0.0860, Q:0.0000) | Val Loss: 0.592349 (P:0.5786, S:0.2745, Q:0.0000) | Repr L2μ: 5.4384 Val L2μ: 0.3564 | Repr Cosμ: 0.7944 Val Cosμ: 0.9993 | Pred→Target Cosμ: 0.7535 Val Cosμ: 0.6346 | Repr NormRatio: 1.5621 Val NormRatio: 1.0172 | Train Meta: AdapterScaleμ:0.0159, AdapterMetaScaleμ:-0.0252, AdapterGateμ:0.6862, AdapterBias|B|μ:21.3754, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:1.31% | Val Meta: AdapterScaleμ:0.0222, AdapterMetaScaleμ:-0.0354, AdapterGateμ:0.4800, AdapterBias|B|μ:40.1721, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:1.99%
+   -> Saved improved checkpoint: val_loss=0.592349 at epoch 2
+Epoch 3/100 | Steps: 1136 | LR: 0.000030 | Train Loss: 0.422654 (P:0.4198, S:0.0575, Q:0.0000) | Val Loss: 0.589051 (P:0.5749, S:0.2824, Q:0.0000) | Repr L2μ: 5.3258 Val L2μ: 0.3843 | Repr Cosμ: 0.8211 Val Cosμ: 0.9993 | Pred→Target Cosμ: 0.8046 Val Cosμ: 0.6381 | Repr NormRatio: 1.4779 Val NormRatio: 1.0163 | Train Meta: AdapterScaleμ:0.0273, AdapterMetaScaleμ:-0.0376, AdapterGateμ:0.4819, AdapterBias|B|μ:38.0528, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:3.79% | Val Meta: AdapterScaleμ:0.0330, AdapterMetaScaleμ:-0.0396, AdapterGateμ:0.5459, AdapterBias|B|μ:33.8530, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:5.69%
+   -> Saved improved checkpoint: val_loss=0.589051 at epoch 3
+Epoch 4/100 | Steps: 1136 | LR: 0.000040 | Train Loss: 0.347016 (P:0.3449, S:0.0422, Q:0.0000) | Val Loss: 0.638435 (P:0.6229, S:0.3110, Q:0.0000) | Repr L2μ: 5.2271 Val L2μ: 0.4413 | Repr Cosμ: 0.8508 Val Cosμ: 0.9992 | Pred→Target Cosμ: 0.8331 Val Cosμ: 0.6112 | Repr NormRatio: 1.4054 Val NormRatio: 1.0154 | Train Meta: AdapterScaleμ:0.0390, AdapterMetaScaleμ:-0.0442, AdapterGateμ:0.5620, AdapterBias|B|μ:33.3702, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:8.17% | Val Meta: AdapterScaleμ:0.0450, AdapterMetaScaleμ:-0.0488, AdapterGateμ:0.5561, AdapterBias|B|μ:33.0139, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:8.52%
+   -> Saved last checkpoint at epoch 4
+Epoch 5/100 | Steps: 1136 | LR: 0.000050 | Train Loss: 0.272577 (P:0.2709, S:0.0328, Q:0.0000) | Val Loss: 0.746366 (P:0.7309, S:0.3097, Q:0.0000) | Repr L2μ: 5.0152 Val L2μ: 0.4352 | Repr Cosμ: 0.8813 Val Cosμ: 0.9993 | Pred→Target Cosμ: 0.8456 Val Cosμ: 0.5879 | Repr NormRatio: 1.3600 Val NormRatio: 1.0126 | Train Meta: AdapterScaleμ:0.0523, AdapterMetaScaleμ:-0.0535, AdapterGateμ:0.5790, AdapterBias|B|μ:34.2358, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:12.94% | Val Meta: AdapterScaleμ:0.0610, AdapterMetaScaleμ:-0.0593, AdapterGateμ:0.5892, AdapterBias|B|μ:35.6311, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:13.79%
+   -> Saved last checkpoint at epoch 5
+Epoch 6/100 | Steps: 1136 | LR: 0.000060 | Train Loss: 0.208918 (P:0.2074, S:0.0294, Q:0.0000) | Val Loss: 0.745713 (P:0.7316, S:0.2831, Q:0.0000) | Repr L2μ: 4.7122 Val L2μ: 0.3965 | Repr Cosμ: 0.9064 Val Cosμ: 0.9995 | Pred→Target Cosμ: 0.8516 Val Cosμ: 0.6288 | Repr NormRatio: 1.3228 Val NormRatio: 1.0110 | Train Meta: AdapterScaleμ:0.0717, AdapterMetaScaleμ:-0.0645, AdapterGateμ:0.5913, AdapterBias|B|μ:34.3548, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:19.52% | Val Meta: AdapterScaleμ:0.0831, AdapterMetaScaleμ:-0.0687, AdapterGateμ:0.5871, AdapterBias|B|μ:34.0391, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:21.31%
+   -> Saved last checkpoint at epoch 6
+Epoch 7/100 | Steps: 1136 | LR: 0.000070 | Train Loss: 0.183512 (P:0.1820, S:0.0296, Q:0.0000) | Val Loss: 0.836435 (P:0.8232, S:0.2642, Q:0.0000) | Repr L2μ: 4.3939 Val L2μ: 0.4041 | Repr Cosμ: 0.9204 Val Cosμ: 0.9994 | Pred→Target Cosμ: 0.8668 Val Cosμ: 0.6170 | Repr NormRatio: 1.2681 Val NormRatio: 1.0133 | Train Meta: AdapterScaleμ:0.0960, AdapterMetaScaleμ:-0.0716, AdapterGateμ:0.5714, AdapterBias|B|μ:33.3309, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:25.60% | Val Meta: AdapterScaleμ:0.1080, AdapterMetaScaleμ:-0.0745, AdapterGateμ:0.5515, AdapterBias|B|μ:31.0925, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:23.58%
+   -> Saved last checkpoint at epoch 7
+Epoch 8/100 | Steps: 1136 | LR: 0.000080 | Train Loss: 0.192008 (P:0.1905, S:0.0297, Q:0.0000) | Val Loss: 0.977070 (P:0.9623, S:0.2955, Q:0.0000) | Repr L2μ: 4.0721 Val L2μ: 0.3801 | Repr Cosμ: 0.9365 Val Cosμ: 0.9996 | Pred→Target Cosμ: 0.8869 Val Cosμ: 0.5844 | Repr NormRatio: 1.2440 Val NormRatio: 1.0162 | Train Meta: AdapterScaleμ:0.1199, AdapterMetaScaleμ:-0.0783, AdapterGateμ:0.5664, AdapterBias|B|μ:30.2425, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:32.97% | Val Meta: AdapterScaleμ:0.1306, AdapterMetaScaleμ:-0.0822, AdapterGateμ:0.6806, AdapterBias|B|μ:21.5561, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:35.99%
+   -> Saved last checkpoint at epoch 8
+Epoch 9/100 | Steps: 1136 | LR: 0.000090 | Train Loss: 0.187779 (P:0.1867, S:0.0222, Q:0.0000) | Val Loss: 0.953843 (P:0.9387, S:0.3028, Q:0.0000) | Repr L2μ: 3.9776 Val L2μ: 0.3934 | Repr Cosμ: 0.9478 Val Cosμ: 0.9995 | Pred→Target Cosμ: 0.9013 Val Cosμ: 0.5864 | Repr NormRatio: 1.2774 Val NormRatio: 1.0218 | Train Meta: AdapterScaleμ:0.1427, AdapterMetaScaleμ:-0.0881, AdapterGateμ:0.6468, AdapterBias|B|μ:24.6867, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:46.31% | Val Meta: AdapterScaleμ:0.1528, AdapterMetaScaleμ:-0.0917, AdapterGateμ:0.6060, AdapterBias|B|μ:25.7445, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:42.40%
+   -> Saved last checkpoint at epoch 9
+Epoch 10/100 | Steps: 1136 | LR: 0.000100 | Train Loss: 0.240634 (P:0.2392, S:0.0292, Q:0.0000) | Val Loss: 1.172252 (P:1.1537, S:0.3703, Q:0.0000) | Repr L2μ: 4.2176 Val L2μ: 0.3840 | Repr Cosμ: 0.9390 Val Cosμ: 0.9995 | Pred→Target Cosμ: 0.8970 Val Cosμ: 0.6212 | Repr NormRatio: 1.3298 Val NormRatio: 1.0221 | Train Meta: AdapterScaleμ:0.1633, AdapterMetaScaleμ:-0.0943, AdapterGateμ:0.6101, AdapterBias|B|μ:25.3036, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:58.42% | Val Meta: AdapterScaleμ:0.1718, AdapterMetaScaleμ:-0.0963, AdapterGateμ:0.6129, AdapterBias|B|μ:19.3175, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:53.85%
+   -> Saved last checkpoint at epoch 10
+Epoch 11/100 | Steps: 1136 | LR: 0.000100 | Train Loss: 0.196952 (P:0.1958, S:0.0223, Q:0.0000) | Val Loss: 1.268033 (P:1.2449, S:0.4636, Q:0.0000) | Repr L2μ: 3.7963 Val L2μ: 0.3456 | Repr Cosμ: 0.9519 Val Cosμ: 0.9996 | Pred→Target Cosμ: 0.9115 Val Cosμ: 0.5840 | Repr NormRatio: 1.3196 Val NormRatio: 1.0146 | Train Meta: AdapterScaleμ:0.1801, AdapterMetaScaleμ:-0.1009, AdapterGateμ:0.5684, AdapterBias|B|μ:26.2501, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:59.91% | Val Meta: AdapterScaleμ:0.1898, AdapterMetaScaleμ:-0.1063, AdapterGateμ:0.5473, AdapterBias|B|μ:32.2904, AdapterMetaOn:1.00, AdapterMetaNZ%:100.0, AdapterΔ/Input:62.07%
+   -> Saved last checkpoint at epoch 11
