@@ -9,6 +9,7 @@ from typing import Iterable
 
 import torch
 import torch.nn.functional as F
+from torch.utils.data import get_worker_info
 
 _ENCODER_CACHE: dict[tuple[str, bool, str], tuple[object, object]] = {}
 
@@ -166,7 +167,11 @@ def encode_channel_descriptions(
         ):
             return cached_embeddings.float()
 
+    worker_info = get_worker_info()
+    running_in_dataloader_worker = worker_info is not None
     resolved_device = device or ("cuda" if torch.cuda.is_available() else "cpu")
+    if running_in_dataloader_worker and resolved_device.startswith("cuda"):
+        resolved_device = "cpu"
     tokenizer, model = _get_encoder_components(
         encoder_name_or_path,
         local_files_only=local_files_only,
