@@ -127,3 +127,5 @@ Epoch   8/20 | Train MSE: 0.3506 | Val MSE: 0.3487 | Train Meta: metadata_norm_m
 Epoch   9/20 | Train MSE: 0.3505 | Val MSE: 0.3472 | Train Meta: metadata_norm_mean=3.8988 | Val Meta: metadata_norm_mean=3.8988
 Epoch  10/20 | Train MSE: 0.3504 | Val MSE: 0.3476 | Train Meta: metadata_norm_mean=3.8988 | Val Meta: metadata_norm_mean=3.8988
 Epoch  11/20 | Train MSE: 0.3503 | Val MSE: 0.3472 | Train Meta: metadata_norm_mean=3.8988 | Val Meta: metadata_norm_mean=3.8988
+Epoch  12/20 | Train MSE: 0.3502 | Val MSE: 0.3473 | Train Meta: metadata_norm_mean=3.8988 | Val Meta: metadata_norm_mean=3.8988
+Epoch  13/20 | Train MSE: 0.3501 | Val MSE: 0.3467 | Train Meta: metadata_norm_mean=3.8988 | Val Meta: metadata_norm_mean=3.8988

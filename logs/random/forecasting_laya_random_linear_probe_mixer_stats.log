@@ -111,3 +111,5 @@ Epoch   8/20 | Train MSE: 0.3520 | Val MSE: 0.3476 | Train Meta: n/a | Val Meta:
 Epoch   9/20 | Train MSE: 0.3519 | Val MSE: 0.3515 | Train Meta: n/a | Val Meta: n/a
 Epoch  10/20 | Train MSE: 0.3517 | Val MSE: 0.3475 | Train Meta: n/a | Val Meta: n/a
 Epoch  11/20 | Train MSE: 0.3516 | Val MSE: 0.3509 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/20 | Train MSE: 0.3516 | Val MSE: 0.3470 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/20 | Train MSE: 0.3514 | Val MSE: 0.3477 | Train Meta: n/a | Val Meta: n/a

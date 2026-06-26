@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-source /data/pjh_workspace/ts-env/bin/activate
 cd /data/pjh_workspace/laya_ts
 
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
