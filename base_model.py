@@ -72,11 +72,19 @@ def build_rope_cache(
     head_dim: int,
     device: torch.device,
     dtype: torch.dtype,
+    position_ids: Optional[torch.Tensor] = None,
 ) -> Tuple[torch.Tensor, torch.Tensor]:
     if head_dim % 2 != 0:
         raise ValueError(f"RoPE head_dim must be even, got {head_dim}")
 
-    position = torch.arange(seq_len, device=device, dtype=torch.float32)
+    if position_ids is None:
+        position = torch.arange(seq_len, device=device, dtype=torch.float32)
+    else:
+        if position_ids.dim() not in {1, 2} or position_ids.shape[-1] != seq_len:
+            raise ValueError(
+                f"Expected position_ids [N] or [B, N] with N={seq_len}, got {tuple(position_ids.shape)}"
+            )
+        position = position_ids.to(device=device, dtype=torch.float32)
 
     inv_freq = 1.0 / (
         10000
@@ -92,7 +100,7 @@ def build_rope_cache(
         )
     )
 
-    freqs = torch.outer(position, inv_freq)
+    freqs = position.unsqueeze(-1) * inv_freq
     emb = torch.repeat_interleave(freqs, 2, dim=-1)
 
     return emb.cos().to(dtype=dtype), emb.sin().to(dtype=dtype)
@@ -103,8 +111,14 @@ def apply_rope(
     cos: torch.Tensor,
     sin: torch.Tensor,
 ) -> torch.Tensor:
-    cos = cos.unsqueeze(0).unsqueeze(0)
-    sin = sin.unsqueeze(0).unsqueeze(0)
+    if cos.dim() == 2:
+        cos = cos.unsqueeze(0).unsqueeze(0)
+        sin = sin.unsqueeze(0).unsqueeze(0)
+    elif cos.dim() == 3:
+        cos = cos.unsqueeze(1)
+        sin = sin.unsqueeze(1)
+    else:
+        raise ValueError(f"Expected RoPE cache [N, D] or [B, N, D], got {tuple(cos.shape)}")
     return (x * cos) + (rotate_half(x) * sin)
 
 
@@ -529,7 +543,7 @@ class RopeSelfAttention(nn.Module):
         self.out_proj = nn.Linear(embed_dim, embed_dim)
         self.dropout = nn.Dropout(attn_dropout)
 
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
+    def forward(self, x: torch.Tensor, position_ids: Optional[torch.Tensor] = None) -> torch.Tensor:
         batch, seq_len, _ = x.shape
 
         qkv = (
@@ -551,6 +565,7 @@ class RopeSelfAttention(nn.Module):
             self.head_dim,
             x.device,
             x.dtype,
+            position_ids=position_ids,
         )
 
         q = apply_rope(q, cos, sin)
@@ -598,8 +613,8 @@ class TransformerBlock(nn.Module):
             nn.Linear(hidden_dim, embed_dim),
         )
 
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        x = x + self.attn(self.norm1(x))
+    def forward(self, x: torch.Tensor, position_ids: Optional[torch.Tensor] = None) -> torch.Tensor:
+        x = x + self.attn(self.norm1(x), position_ids=position_ids)
         x = x + self.mlp(self.norm2(x))
         return x
 
@@ -679,6 +694,7 @@ class Predictor(nn.Module):
         self,
         x: torch.Tensor,
         patch_mask: Optional[torch.Tensor] = None,
+        position_ids: Optional[torch.Tensor] = None,
     ) -> torch.Tensor:
         if patch_mask is not None:
             if patch_mask.shape != x.shape[:2]:
@@ -699,7 +715,7 @@ class Predictor(nn.Module):
             )
 
         for block in self.blocks:
-            x = block(x)
+            x = block(x, position_ids=position_ids)
 
         return self.norm(x)
 

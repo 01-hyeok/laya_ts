@@ -38,3 +38,74 @@ Epoch   3/20 | Train MSE: 0.2533 | Val MSE: 0.2697 | Train Meta: n/a | Val Meta:
 Epoch   4/20 | Train MSE: 0.2514 | Val MSE: 0.2683 | Train Meta: n/a | Val Meta: n/a
 Epoch   5/20 | Train MSE: 0.2504 | Val MSE: 0.2669 | Train Meta: n/a | Val Meta: n/a
 Epoch   6/20 | Train MSE: 0.2497 | Val MSE: 0.2689 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/20 | Train MSE: 0.2493 | Val MSE: 0.2671 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/20 | Train MSE: 0.2488 | Val MSE: 0.2696 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/20 | Train MSE: 0.2487 | Val MSE: 0.2662 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/20 | Train MSE: 0.2484 | Val MSE: 0.2668 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/20 | Train MSE: 0.2481 | Val MSE: 0.2675 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/20 | Train MSE: 0.2480 | Val MSE: 0.2662 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/20 | Train MSE: 0.2478 | Val MSE: 0.2665 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/20 | Train MSE: 0.2477 | Val MSE: 0.2666 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/20 | Train MSE: 0.2477 | Val MSE: 0.2661 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/20 | Train MSE: 0.2474 | Val MSE: 0.2653 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/20 | Train MSE: 0.2474 | Val MSE: 0.2650 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/20 | Train MSE: 0.2473 | Val MSE: 0.2648 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/20 | Train MSE: 0.2473 | Val MSE: 0.2654 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/20 | Train MSE: 0.2472 | Val MSE: 0.2659 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Forecasting Result (ETTm1, pred_len=96)
+MSE : 0.331262
+MAE : 0.375026
+Joint metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
+   - HUFL: In the ETTm1 domain, this channel belongs to the ETTm1 dataset and represents the feature HUFL. Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -4.418, maximum value is 2.652, median value is 0.128, and mean absolute value is 0.698.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Prediction Length: 192
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/20 | Train MSE: 0.3378 | Val MSE: 0.3164 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/20 | Train MSE: 0.3048 | Val MSE: 0.3094 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/20 | Train MSE: 0.3011 | Val MSE: 0.3098 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/20 | Train MSE: 0.2997 | Val MSE: 0.3069 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/20 | Train MSE: 0.2989 | Val MSE: 0.3062 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/20 | Train MSE: 0.2983 | Val MSE: 0.3061 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/20 | Train MSE: 0.2978 | Val MSE: 0.3053 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/20 | Train MSE: 0.2977 | Val MSE: 0.3102 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/20 | Train MSE: 0.2974 | Val MSE: 0.3068 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/20 | Train MSE: 0.2972 | Val MSE: 0.3046 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/20 | Train MSE: 0.2969 | Val MSE: 0.3061 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/20 | Train MSE: 0.2968 | Val MSE: 0.3040 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/20 | Train MSE: 0.2967 | Val MSE: 0.3038 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/20 | Train MSE: 0.2965 | Val MSE: 0.3044 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/20 | Train MSE: 0.2964 | Val MSE: 0.3037 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/20 | Train MSE: 0.2963 | Val MSE: 0.3045 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/20 | Train MSE: 0.2963 | Val MSE: 0.3049 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/20 | Train MSE: 0.2962 | Val MSE: 0.3097 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/20 | Train MSE: 0.2961 | Val MSE: 0.3042 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/20 | Train MSE: 0.2960 | Val MSE: 0.3035 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Forecasting Result (ETTm1, pred_len=192)
+MSE : 0.382292
+MAE : 0.405565
+Joint metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
+   - HUFL: In the ETTm1 domain, this channel belongs to the ETTm1 dataset and represents the feature HUFL. Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -4.418, maximum value is 2.652, median value is 0.128, and mean absolute value is 0.698.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Prediction Length: 336
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/20 | Train MSE: 0.3873 | Val MSE: 0.3573 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/20 | Train MSE: 0.3585 | Val MSE: 0.3518 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/20 | Train MSE: 0.3554 | Val MSE: 0.3522 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/20 | Train MSE: 0.3541 | Val MSE: 0.3508 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/20 | Train MSE: 0.3533 | Val MSE: 0.3509 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/20 | Train MSE: 0.3528 | Val MSE: 0.3523 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/20 | Train MSE: 0.3526 | Val MSE: 0.3515 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/20 | Train MSE: 0.3521 | Val MSE: 0.3479 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/20 | Train MSE: 0.3520 | Val MSE: 0.3515 | Train Meta: n/a | Val Meta: n/a

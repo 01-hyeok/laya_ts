@@ -148,3 +148,13 @@ Stats metadata preview | dataset=FaceDetection | domain=UEA | channels=144
 ==================================================
 ✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
 Epoch   1/50 | Train Loss: 0.7065 Acc: 0.5140 F1: 0.5140 | Val Loss: 0.6934 Acc: 0.5042 F1: 0.3888 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 0.7082 Acc: 0.5006 F1: 0.5006 | Val Loss: 0.6992 Acc: 0.4924 F1: 0.3314 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 0.7085 Acc: 0.5155 F1: 0.5148 | Val Loss: 0.6916 Acc: 0.5153 F1: 0.4451 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 0.6980 Acc: 0.5089 F1: 0.5089 | Val Loss: 0.7225 Acc: 0.4915 F1: 0.3295 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 0.6998 Acc: 0.5151 F1: 0.5150 | Val Loss: 0.7019 Acc: 0.4924 F1: 0.3314 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 0.7015 Acc: 0.5066 F1: 0.5056 | Val Loss: 0.7600 Acc: 0.5093 F1: 0.3390 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 0.7038 Acc: 0.5057 F1: 0.5057 | Val Loss: 0.6900 Acc: 0.5323 F1: 0.5236 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 0.7026 Acc: 0.5074 F1: 0.5074 | Val Loss: 0.7530 Acc: 0.5093 F1: 0.3390 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 0.7031 Acc: 0.5015 F1: 0.5014 | Val Loss: 0.7089 Acc: 0.4924 F1: 0.3314 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 0.7015 Acc: 0.5072 F1: 0.5069 | Val Loss: 0.7585 Acc: 0.4915 F1: 0.3295 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 0.7011 Acc: 0.5130 F1: 0.5129 | Val Loss: 0.6900 Acc: 0.5323 F1: 0.5249 | Train Meta: n/a | Val Meta: n/a

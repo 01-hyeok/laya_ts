@@ -162,3 +162,8 @@ Stats metadata preview | dataset=FaceDetection | domain=UEA | channels=144
 📊 Classes: 2 | Sequence Length: 62
 ==================================================
 ✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 0.7119 Acc: 0.5106 F1: 0.5106 | Val Loss: 0.7042 Acc: 0.4941 F1: 0.3380 | Train Meta: metadata_norm_mean=4.1402 | Val Meta: metadata_norm_mean=4.1402
+Epoch   2/50 | Train Loss: 0.7019 Acc: 0.5281 F1: 0.5279 | Val Loss: 0.7311 Acc: 0.5076 F1: 0.3398 | Train Meta: metadata_norm_mean=4.1402 | Val Meta: metadata_norm_mean=4.1402
+Epoch   3/50 | Train Loss: 0.7023 Acc: 0.5236 F1: 0.5234 | Val Loss: 0.7047 Acc: 0.4941 F1: 0.3408 | Train Meta: metadata_norm_mean=4.1402 | Val Meta: metadata_norm_mean=4.1402
+Epoch   4/50 | Train Loss: 0.7028 Acc: 0.5276 F1: 0.5273 | Val Loss: 0.7230 Acc: 0.4915 F1: 0.3295 | Train Meta: metadata_norm_mean=4.1402 | Val Meta: metadata_norm_mean=4.1402
+Epoch   5/50 | Train Loss: 0.6991 Acc: 0.5198 F1: 0.5198 | Val Loss: 0.6989 Acc: 0.5076 F1: 0.3665 | Train Meta: metadata_norm_mean=4.1402 | Val Meta: metadata_norm_mean=4.1402

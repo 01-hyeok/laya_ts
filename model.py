@@ -1993,6 +1993,7 @@ class LayaTSEncoder(LayaEncoder):
         channel_positions: Optional[torch.Tensor],
         channel_mask: Optional[torch.Tensor],
         patch_mask: Optional[torch.Tensor],
+        remove_masked_tokens: bool,
         channel_text_embeddings: Optional[torch.Tensor],
         channel_stats_embeddings: Optional[torch.Tensor],
         channel_tokens_override: Optional[torch.Tensor] = None,
@@ -2068,6 +2069,20 @@ class LayaTSEncoder(LayaEncoder):
             if patch_mask.shape != (batch, num_patches):
                 raise ValueError(f"Expected patch_mask [B, N] = {(batch, num_patches)}, got {tuple(patch_mask.shape)}")
             patch_mask = patch_mask.to(device=x.device, dtype=torch.bool)
+        if remove_masked_tokens and patch_mask is None:
+            raise ValueError("remove_masked_tokens requires patch_mask.")
+
+        visible_position_ids = None
+        if remove_masked_tokens:
+            visible_per_sample = (~patch_mask).sum(dim=1)
+            if not torch.equal(visible_per_sample, visible_per_sample[:1].expand_as(visible_per_sample)):
+                raise ValueError("remove_masked_tokens requires the same visible patch count in every sample.")
+            visible_position_ids = (
+                torch.arange(num_patches, device=x.device)
+                .unsqueeze(0)
+                .expand(batch, -1)[~patch_mask]
+                .reshape(batch, -1)
+            )
 
         # This path preserves the original patch-first LayaTS flow. The
         # CHARM-like patchifier, when enabled, still returns [B, C, N, D] so
@@ -2138,18 +2153,36 @@ class LayaTSEncoder(LayaEncoder):
                 mixer_relation_metadata=mixer_relation_metadata,
                 refiner_metadata=relation_metadata,
             )
-            if patch_mask is not None:
+            temporal_tokens = mixed_tokens
+            if remove_masked_tokens:
+                temporal_tokens = mixed_tokens.gather(
+                    1,
+                    visible_position_ids.unsqueeze(-1).expand(-1, -1, mixed_tokens.shape[-1]),
+                )
+            elif patch_mask is not None:
                 mixed_tokens = mixed_tokens.masked_fill(patch_mask.unsqueeze(-1), 0.0)
-            encoded = mixed_tokens
+                temporal_tokens = mixed_tokens
+            encoded = temporal_tokens
             for block in self.blocks:
-                encoded = block(encoded)
+                encoded = block(encoded, position_ids=visible_position_ids)
             encoded = self.norm(encoded)
+            visible_channel_tokens = channel_tokens
+            if remove_masked_tokens:
+                visible_channel_tokens = channel_tokens.gather(
+                    2,
+                    visible_position_ids[:, None, :, None].expand(
+                        -1,
+                        channels,
+                        -1,
+                        channel_tokens.shape[-1],
+                    ),
+                )
             return {
                 **shared_outputs,
-                "mixed_tokens_pre_encoder": mixed_tokens,
+                "mixed_tokens_pre_encoder": temporal_tokens,
                 "mixed_tokens": encoded,
                 "mixed_repr": encoded.mean(dim=1),
-                "channel_repr": channel_tokens.mean(dim=2),
+                "channel_repr": visible_channel_tokens.mean(dim=2),
                 "query_loss": query_loss,
                 "channel_affinity": affinity,
                 "channel_mixer_relation_scores": mixer_aux.get("relation_scores"),
@@ -2172,14 +2205,29 @@ class LayaTSEncoder(LayaEncoder):
             }
 
         independent_tokens = channel_tokens
-        if patch_mask is not None:
+        independent_position_ids = None
+        if remove_masked_tokens:
+            independent_tokens = channel_tokens.gather(
+                2,
+                visible_position_ids[:, None, :, None].expand(
+                    -1,
+                    channels,
+                    -1,
+                    channel_tokens.shape[-1],
+                ),
+            )
+            independent_position_ids = visible_position_ids[:, None, :].expand(-1, channels, -1).reshape(
+                batch * channels,
+                -1,
+            )
+        elif patch_mask is not None:
             independent_tokens = independent_tokens.masked_fill(patch_mask[:, None, :, None], 0.0)
-        flat_tokens = independent_tokens.reshape(batch * channels, num_patches, self.config.embed_dim)
+        flat_tokens = independent_tokens.reshape(batch * channels, independent_tokens.shape[2], self.config.embed_dim)
         encoded = flat_tokens
         for block in self.blocks:
-            encoded = block(encoded)
+            encoded = block(encoded, position_ids=independent_position_ids)
         encoded = self.norm(encoded)
-        encoded = encoded.reshape(batch, channels, num_patches, self.config.embed_dim)
+        encoded = encoded.reshape(batch, channels, independent_tokens.shape[2], self.config.embed_dim)
         adapter_outputs: dict[str, torch.Tensor | None] = {
             "relation_adapter_scale": None,
             "relation_adapter_metadata_scale": None,
@@ -2215,7 +2263,7 @@ class LayaTSEncoder(LayaEncoder):
             **shared_outputs,
             "independent_tokens": encoded,
             "mixed_tokens_pre_encoder": flat_tokens,
-            "mixed_tokens": encoded.reshape(batch * channels, num_patches, self.config.embed_dim),
+            "mixed_tokens": encoded.reshape(batch * channels, independent_tokens.shape[2], self.config.embed_dim),
             "mixed_repr": channel_repr.mean(dim=1),
             "channel_repr": channel_repr,
             "query_loss": encoded.new_zeros(()),
@@ -2229,6 +2277,7 @@ class LayaTSEncoder(LayaEncoder):
         channel_positions: Optional[torch.Tensor] = None,
         channel_mask: Optional[torch.Tensor] = None,
         patch_mask: Optional[torch.Tensor] = None,
+        remove_masked_tokens: bool = False,
         channel_text_embeddings: Optional[torch.Tensor] = None,
         channel_stats_embeddings: Optional[torch.Tensor] = None,
         channel_tokens_override: Optional[torch.Tensor] = None,
@@ -2241,6 +2290,7 @@ class LayaTSEncoder(LayaEncoder):
             channel_positions=channel_positions,
             channel_mask=channel_mask,
             patch_mask=patch_mask,
+            remove_masked_tokens=remove_masked_tokens,
             channel_text_embeddings=channel_text_embeddings,
             channel_stats_embeddings=channel_stats_embeddings,
             channel_tokens_override=channel_tokens_override,
@@ -2254,6 +2304,31 @@ class LayaTSPretrainer(LayaPretrainer):
     def __init__(self, config: Optional[LayaModelConfig] = None) -> None:
         super().__init__(config)
         self.encoder = LayaTSEncoder(self.config)
+
+    @staticmethod
+    def _restore_context_grid(context_tokens: torch.Tensor, patch_mask: torch.Tensor) -> torch.Tensor:
+        """Scatter visible context tokens back onto the predictor's full temporal grid."""
+        batch, num_patches = patch_mask.shape
+        visible_per_sample = (~patch_mask).sum(dim=1)
+        if not torch.equal(visible_per_sample, visible_per_sample[:1].expand_as(visible_per_sample)):
+            raise ValueError("All samples must have the same visible patch count.")
+        if context_tokens.shape[:2] != (batch, int(visible_per_sample[0])):
+            raise ValueError(
+                "Context tokens must contain exactly the visible patches: "
+                f"expected {(batch, int(visible_per_sample[0]))}, got {tuple(context_tokens.shape[:2])}"
+            )
+        visible_indices = (
+            torch.arange(num_patches, device=context_tokens.device)
+            .unsqueeze(0)
+            .expand(batch, -1)[~patch_mask]
+            .reshape(batch, -1)
+        )
+        full_grid = context_tokens.new_zeros(batch, num_patches, context_tokens.shape[-1])
+        return full_grid.scatter(
+            1,
+            visible_indices.unsqueeze(-1).expand_as(context_tokens),
+            context_tokens,
+        )
 
     def forward(
         self,
@@ -2306,6 +2381,7 @@ class LayaTSPretrainer(LayaPretrainer):
             channel_positions=channel_positions,
             channel_mask=channel_mask,
             patch_mask=patch_mask,
+            remove_masked_tokens=True,
             channel_text_embeddings=channel_text_embeddings,
             channel_stats_embeddings=channel_stats_embeddings,
         )
@@ -2316,14 +2392,23 @@ class LayaTSPretrainer(LayaPretrainer):
         if self.encoder.channel_mixer_type == "independent":
             patch_mask = patch_mask.unsqueeze(1).expand(x.shape[0], x.shape[1], num_patches).reshape(x.shape[0] * x.shape[1], num_patches)
 
-        pred_tokens = self.predictor(context_tokens, patch_mask=patch_mask)
+        predictor_tokens = self._restore_context_grid(context_tokens, patch_mask)
+        predictor_position_ids = torch.arange(num_patches, device=x.device).unsqueeze(0).expand(
+            predictor_tokens.shape[0],
+            -1,
+        )
+        pred_tokens = self.predictor(
+            predictor_tokens,
+            patch_mask=patch_mask,
+            position_ids=predictor_position_ids,
+        )
         pred_loss = F.mse_loss(pred_tokens[patch_mask], target_tokens[patch_mask])
 
         if self.encoder.channel_mixer_type == "mixer":
-            context_global = self.projector(context["mixed_repr"])
+            full_global = self.projector(full["mixed_repr"])
         else:
-            context_global = self.projector(context["channel_repr"].reshape(-1, self.config.embed_dim))
-        sigreg_loss = self.sigreg(context_global.unsqueeze(0))
+            full_global = self.projector(full["channel_repr"].reshape(-1, self.config.embed_dim))
+        sigreg_loss = self.sigreg(full_global.unsqueeze(0))
 
         query_loss = 0.5 * (full["query_loss"] + context["query_loss"])
         loss = pred_loss + (self.config.sigreg_weight * sigreg_loss) + (self.config.query_loss_weight * query_loss)

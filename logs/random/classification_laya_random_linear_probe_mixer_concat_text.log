@@ -156,3 +156,13 @@ Text metadata preview | dataset=FaceDetection | domain=UEA | channels=144
 ==================================================
 ✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
 Epoch   1/50 | Train Loss: 0.7111 Acc: 0.5083 F1: 0.5080 | Val Loss: 0.6973 Acc: 0.5085 F1: 0.3432 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
+Epoch   2/50 | Train Loss: 0.6976 Acc: 0.5151 F1: 0.5142 | Val Loss: 0.7126 Acc: 0.5085 F1: 0.3417 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
+Epoch   3/50 | Train Loss: 0.7032 Acc: 0.5140 F1: 0.5140 | Val Loss: 0.7034 Acc: 0.5017 F1: 0.3710 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
+Epoch   4/50 | Train Loss: 0.6995 Acc: 0.5174 F1: 0.5172 | Val Loss: 0.6934 Acc: 0.5008 F1: 0.4082 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
+Epoch   5/50 | Train Loss: 0.6975 Acc: 0.5227 F1: 0.5227 | Val Loss: 0.6983 Acc: 0.5170 F1: 0.4232 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
+Epoch   6/50 | Train Loss: 0.6942 Acc: 0.5338 F1: 0.5338 | Val Loss: 0.6912 Acc: 0.5085 F1: 0.4396 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
+Epoch   7/50 | Train Loss: 0.7040 Acc: 0.5185 F1: 0.5184 | Val Loss: 0.6987 Acc: 0.5008 F1: 0.3668 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
+Epoch   8/50 | Train Loss: 0.6913 Acc: 0.5323 F1: 0.5321 | Val Loss: 0.7299 Acc: 0.5093 F1: 0.3420 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
+Epoch   9/50 | Train Loss: 0.6954 Acc: 0.5298 F1: 0.5298 | Val Loss: 0.6920 Acc: 0.5407 F1: 0.4982 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
+Epoch  10/50 | Train Loss: 0.6944 Acc: 0.5276 F1: 0.5276 | Val Loss: 0.6907 Acc: 0.5153 F1: 0.4396 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
+Epoch  11/50 | Train Loss: 0.6917 Acc: 0.5321 F1: 0.5316 | Val Loss: 0.6953 Acc: 0.5255 F1: 0.4473 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
