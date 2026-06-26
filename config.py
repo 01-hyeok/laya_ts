@@ -55,6 +55,8 @@ class LayaModelConfig:
     multiscale_patch_sizes: Tuple[int, ...] = (4, 8, 16, 32)
     multiscale_base_patch: int = 16
     multiscale_gate_temperature: float = 1.0
+    trend_seasonal_kernel: int = 25
+    trend_seasonal_gate_temperature: float = 1.0
     num_queries: int = 16
     channel_mixer_dim: int = 32
     channel_mixer_type: str = "mixer"
@@ -119,9 +121,9 @@ class LayaModelConfig:
         if normalized_channel_mixer_type == "ci_adapter" and not self.use_relation_adapter:
             object.__setattr__(self, "use_relation_adapter", True)
         normalized_patchifier_mode = str(self.patchifier_mode).strip().lower().replace("-", "_")
-        if normalized_patchifier_mode not in {"single", "multiscale"}:
+        if normalized_patchifier_mode not in {"single", "multiscale", "trend_seasonal"}:
             raise ValueError(
-                "patchifier_mode must be one of: single, multiscale. "
+                "patchifier_mode must be one of: single, multiscale, trend_seasonal. "
                 f"Got {self.patchifier_mode!r}."
             )
         object.__setattr__(self, "patchifier_mode", normalized_patchifier_mode)
@@ -158,6 +160,15 @@ class LayaModelConfig:
             raise ValueError(
                 "multiscale_gate_temperature must be positive, "
                 f"got {self.multiscale_gate_temperature}"
+            )
+        if self.trend_seasonal_kernel <= 0:
+            raise ValueError(
+                f"trend_seasonal_kernel must be positive, got {self.trend_seasonal_kernel}"
+            )
+        if self.trend_seasonal_gate_temperature <= 0:
+            raise ValueError(
+                "trend_seasonal_gate_temperature must be positive, "
+                f"got {self.trend_seasonal_gate_temperature}"
             )
         for patch_size in parsed_multiscale_patch_sizes:
             larger = max(patch_size, self.multiscale_base_patch)

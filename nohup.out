@@ -1,0 +1,18 @@
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: weather (Detected Channels: 21)
+📊 Prediction Length: 96
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/weather_laya_ci_adapter/laya_ts_weather_s_best.pt
+   - 72/72 keys matched.
+ℹ️ Channel Adapter: enabled
+   - position: post_encoder, heads: 4, dropout: 0.1, metadata_dropout: 0.0
+   - adapter_pretrained: True
+📝 metadata: mode=text, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
+ℹ️ Metadata Fusion Mode: none
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 21, 96]

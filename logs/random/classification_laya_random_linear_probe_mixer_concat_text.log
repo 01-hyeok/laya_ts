@@ -1,0 +1,158 @@
+Text metadata preview | dataset=EthanolConcentration | domain=UEA | channels=3
+   - channel_1: In the UEA domain, this channel belongs to the EthanolConcentration dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the EthanolConcentration dataset and represents the feature channel 2.
+   - ... (1 more channel descriptions)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: EthanolConcentration (Channels: 3)
+📊 Classes: 4 | Sequence Length: 1751
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 1.4672 Acc: 0.2260 F1: 0.2163 | Val Loss: 1.7566 Acc: 0.1154 F1: 0.0517 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   2/50 | Train Loss: 1.3874 Acc: 0.2788 F1: 0.2307 | Val Loss: 1.3571 Acc: 0.3462 F1: 0.2039 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   3/50 | Train Loss: 1.3662 Acc: 0.2740 F1: 0.2597 | Val Loss: 1.5771 Acc: 0.1346 F1: 0.0754 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   4/50 | Train Loss: 1.3761 Acc: 0.2212 F1: 0.1887 | Val Loss: 1.4499 Acc: 0.2308 F1: 0.2002 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   5/50 | Train Loss: 1.3861 Acc: 0.2885 F1: 0.2154 | Val Loss: 1.4648 Acc: 0.2115 F1: 0.1757 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   6/50 | Train Loss: 1.3566 Acc: 0.3077 F1: 0.2810 | Val Loss: 1.5078 Acc: 0.2500 F1: 0.1764 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   7/50 | Train Loss: 1.3658 Acc: 0.2692 F1: 0.2554 | Val Loss: 1.4868 Acc: 0.2308 F1: 0.1903 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   8/50 | Train Loss: 1.3703 Acc: 0.2740 F1: 0.2057 | Val Loss: 1.4622 Acc: 0.2692 F1: 0.2038 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   9/50 | Train Loss: 1.3751 Acc: 0.2692 F1: 0.2493 | Val Loss: 1.5612 Acc: 0.2308 F1: 0.2324 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  10/50 | Train Loss: 1.3487 Acc: 0.2692 F1: 0.2692 | Val Loss: 1.4515 Acc: 0.2692 F1: 0.2016 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  11/50 | Train Loss: 1.3560 Acc: 0.2356 F1: 0.2182 | Val Loss: 1.4970 Acc: 0.2692 F1: 0.2186 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  12/50 | Train Loss: 1.3772 Acc: 0.2740 F1: 0.2322 | Val Loss: 1.5843 Acc: 0.1538 F1: 0.1237 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  13/50 | Train Loss: 1.3620 Acc: 0.2452 F1: 0.2479 | Val Loss: 1.4784 Acc: 0.2115 F1: 0.1746 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  14/50 | Train Loss: 1.3713 Acc: 0.2500 F1: 0.2375 | Val Loss: 1.4657 Acc: 0.2885 F1: 0.2329 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  15/50 | Train Loss: 1.3820 Acc: 0.2644 F1: 0.2353 | Val Loss: 1.4546 Acc: 0.3077 F1: 0.2433 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  16/50 | Train Loss: 1.3650 Acc: 0.2788 F1: 0.2696 | Val Loss: 1.4742 Acc: 0.1923 F1: 0.1601 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  17/50 | Train Loss: 1.3527 Acc: 0.3029 F1: 0.2583 | Val Loss: 1.4877 Acc: 0.2500 F1: 0.1874 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  18/50 | Train Loss: 1.3628 Acc: 0.2692 F1: 0.2275 | Val Loss: 1.4471 Acc: 0.2500 F1: 0.1982 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  19/50 | Train Loss: 1.3589 Acc: 0.3077 F1: 0.1994 | Val Loss: 1.5068 Acc: 0.2500 F1: 0.2115 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  20/50 | Train Loss: 1.3506 Acc: 0.3077 F1: 0.2802 | Val Loss: 1.4742 Acc: 0.2115 F1: 0.1908 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  21/50 | Train Loss: 1.3573 Acc: 0.2452 F1: 0.2515 | Val Loss: 1.4901 Acc: 0.2308 F1: 0.1903 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  22/50 | Train Loss: 1.3538 Acc: 0.2885 F1: 0.2323 | Val Loss: 1.4553 Acc: 0.2308 F1: 0.2052 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  23/50 | Train Loss: 1.3619 Acc: 0.2596 F1: 0.2113 | Val Loss: 1.5428 Acc: 0.2115 F1: 0.1768 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  24/50 | Train Loss: 1.3619 Acc: 0.2596 F1: 0.2244 | Val Loss: 1.4928 Acc: 0.2500 F1: 0.1898 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  25/50 | Train Loss: 1.3709 Acc: 0.2308 F1: 0.2095 | Val Loss: 1.4983 Acc: 0.2500 F1: 0.2123 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  26/50 | Train Loss: 1.3526 Acc: 0.2740 F1: 0.2596 | Val Loss: 1.4949 Acc: 0.2308 F1: 0.1672 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  27/50 | Train Loss: 1.3492 Acc: 0.2837 F1: 0.2787 | Val Loss: 1.4667 Acc: 0.2308 F1: 0.1880 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  28/50 | Train Loss: 1.3417 Acc: 0.2788 F1: 0.2666 | Val Loss: 1.5229 Acc: 0.1923 F1: 0.1938 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  29/50 | Train Loss: 1.3493 Acc: 0.2933 F1: 0.2183 | Val Loss: 1.4918 Acc: 0.2308 F1: 0.1982 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  30/50 | Train Loss: 1.3658 Acc: 0.2885 F1: 0.2532 | Val Loss: 1.5336 Acc: 0.1923 F1: 0.1335 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  31/50 | Train Loss: 1.3645 Acc: 0.2163 F1: 0.1824 | Val Loss: 1.4755 Acc: 0.2115 F1: 0.1970 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  32/50 | Train Loss: 1.3562 Acc: 0.3029 F1: 0.2694 | Val Loss: 1.5233 Acc: 0.1923 F1: 0.1919 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  33/50 | Train Loss: 1.3502 Acc: 0.2404 F1: 0.2204 | Val Loss: 1.5290 Acc: 0.2308 F1: 0.1966 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  34/50 | Train Loss: 1.3684 Acc: 0.2596 F1: 0.2583 | Val Loss: 1.5169 Acc: 0.2308 F1: 0.1962 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  35/50 | Train Loss: 1.3609 Acc: 0.3173 F1: 0.2550 | Val Loss: 1.4971 Acc: 0.2115 F1: 0.2100 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  36/50 | Train Loss: 1.3585 Acc: 0.2788 F1: 0.2691 | Val Loss: 1.5088 Acc: 0.2115 F1: 0.1760 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  37/50 | Train Loss: 1.3543 Acc: 0.2740 F1: 0.2373 | Val Loss: 1.4984 Acc: 0.2308 F1: 0.1649 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  38/50 | Train Loss: 1.3463 Acc: 0.2885 F1: 0.2448 | Val Loss: 1.5087 Acc: 0.2308 F1: 0.1909 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  39/50 | Train Loss: 1.3487 Acc: 0.2933 F1: 0.2106 | Val Loss: 1.4916 Acc: 0.2308 F1: 0.1948 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  40/50 | Train Loss: 1.3527 Acc: 0.3317 F1: 0.3066 | Val Loss: 1.5478 Acc: 0.2115 F1: 0.2144 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  41/50 | Train Loss: 1.3544 Acc: 0.2933 F1: 0.2382 | Val Loss: 1.4563 Acc: 0.2692 F1: 0.2154 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  42/50 | Train Loss: 1.3456 Acc: 0.2837 F1: 0.2399 | Val Loss: 1.5470 Acc: 0.2308 F1: 0.2234 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  43/50 | Train Loss: 1.3513 Acc: 0.3029 F1: 0.2727 | Val Loss: 1.4636 Acc: 0.2308 F1: 0.1629 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  44/50 | Train Loss: 1.3655 Acc: 0.2644 F1: 0.2049 | Val Loss: 1.4995 Acc: 0.2692 F1: 0.2254 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  45/50 | Train Loss: 1.3570 Acc: 0.2788 F1: 0.2512 | Val Loss: 1.4711 Acc: 0.2115 F1: 0.1707 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  46/50 | Train Loss: 1.3466 Acc: 0.3173 F1: 0.2527 | Val Loss: 1.4636 Acc: 0.3077 F1: 0.2551 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  47/50 | Train Loss: 1.3652 Acc: 0.2596 F1: 0.2455 | Val Loss: 1.5393 Acc: 0.2308 F1: 0.1377 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  48/50 | Train Loss: 1.3584 Acc: 0.2115 F1: 0.1860 | Val Loss: 1.4924 Acc: 0.3077 F1: 0.2784 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  49/50 | Train Loss: 1.3581 Acc: 0.2260 F1: 0.2239 | Val Loss: 1.5035 Acc: 0.2500 F1: 0.2109 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  50/50 | Train Loss: 1.3620 Acc: 0.3077 F1: 0.2554 | Val Loss: 1.5371 Acc: 0.2308 F1: 0.1575 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+
+Random Encoder Classification Result (EthanolConcentration)
+Accuracy : 0.262357
+F1 (macro): 0.174555
+Text metadata preview | dataset=FaceDetection | domain=UEA | channels=144
+   - channel_1: In the UEA domain, this channel belongs to the FaceDetection dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the FaceDetection dataset and represents the feature channel 2.
+   - ... (142 more channel descriptions)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: FaceDetection (Channels: 144)
+📊 Classes: 2 | Sequence Length: 62
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 0.7111 Acc: 0.5083 F1: 0.5080 | Val Loss: 0.6973 Acc: 0.5085 F1: 0.3432 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
+Text metadata preview | dataset=EthanolConcentration | domain=UEA | channels=3
+   - channel_1: In the UEA domain, this channel belongs to the EthanolConcentration dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the EthanolConcentration dataset and represents the feature channel 2.
+   - ... (1 more channel descriptions)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: EthanolConcentration (Channels: 3)
+📊 Classes: 4 | Sequence Length: 1751
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 1.4672 Acc: 0.2260 F1: 0.2163 | Val Loss: 1.7566 Acc: 0.1154 F1: 0.0517 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   2/50 | Train Loss: 1.3874 Acc: 0.2788 F1: 0.2307 | Val Loss: 1.3571 Acc: 0.3462 F1: 0.2039 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   3/50 | Train Loss: 1.3662 Acc: 0.2740 F1: 0.2597 | Val Loss: 1.5771 Acc: 0.1346 F1: 0.0754 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   4/50 | Train Loss: 1.3761 Acc: 0.2212 F1: 0.1887 | Val Loss: 1.4499 Acc: 0.2308 F1: 0.2002 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   5/50 | Train Loss: 1.3861 Acc: 0.2885 F1: 0.2154 | Val Loss: 1.4648 Acc: 0.2115 F1: 0.1757 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   6/50 | Train Loss: 1.3566 Acc: 0.3077 F1: 0.2810 | Val Loss: 1.5078 Acc: 0.2500 F1: 0.1764 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   7/50 | Train Loss: 1.3658 Acc: 0.2692 F1: 0.2554 | Val Loss: 1.4868 Acc: 0.2308 F1: 0.1903 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   8/50 | Train Loss: 1.3703 Acc: 0.2740 F1: 0.2057 | Val Loss: 1.4622 Acc: 0.2692 F1: 0.2038 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch   9/50 | Train Loss: 1.3751 Acc: 0.2692 F1: 0.2493 | Val Loss: 1.5612 Acc: 0.2308 F1: 0.2324 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  10/50 | Train Loss: 1.3487 Acc: 0.2692 F1: 0.2692 | Val Loss: 1.4515 Acc: 0.2692 F1: 0.2016 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  11/50 | Train Loss: 1.3560 Acc: 0.2356 F1: 0.2182 | Val Loss: 1.4970 Acc: 0.2692 F1: 0.2186 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  12/50 | Train Loss: 1.3772 Acc: 0.2740 F1: 0.2322 | Val Loss: 1.5843 Acc: 0.1538 F1: 0.1237 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  13/50 | Train Loss: 1.3620 Acc: 0.2452 F1: 0.2479 | Val Loss: 1.4784 Acc: 0.2115 F1: 0.1746 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  14/50 | Train Loss: 1.3713 Acc: 0.2500 F1: 0.2375 | Val Loss: 1.4657 Acc: 0.2885 F1: 0.2329 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  15/50 | Train Loss: 1.3820 Acc: 0.2644 F1: 0.2353 | Val Loss: 1.4546 Acc: 0.3077 F1: 0.2433 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  16/50 | Train Loss: 1.3650 Acc: 0.2788 F1: 0.2696 | Val Loss: 1.4742 Acc: 0.1923 F1: 0.1601 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  17/50 | Train Loss: 1.3527 Acc: 0.3029 F1: 0.2583 | Val Loss: 1.4877 Acc: 0.2500 F1: 0.1874 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  18/50 | Train Loss: 1.3628 Acc: 0.2692 F1: 0.2275 | Val Loss: 1.4471 Acc: 0.2500 F1: 0.1982 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  19/50 | Train Loss: 1.3589 Acc: 0.3077 F1: 0.1994 | Val Loss: 1.5068 Acc: 0.2500 F1: 0.2115 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  20/50 | Train Loss: 1.3506 Acc: 0.3077 F1: 0.2802 | Val Loss: 1.4742 Acc: 0.2115 F1: 0.1908 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  21/50 | Train Loss: 1.3573 Acc: 0.2452 F1: 0.2515 | Val Loss: 1.4901 Acc: 0.2308 F1: 0.1903 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  22/50 | Train Loss: 1.3538 Acc: 0.2885 F1: 0.2323 | Val Loss: 1.4553 Acc: 0.2308 F1: 0.2052 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  23/50 | Train Loss: 1.3619 Acc: 0.2596 F1: 0.2113 | Val Loss: 1.5428 Acc: 0.2115 F1: 0.1768 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  24/50 | Train Loss: 1.3619 Acc: 0.2596 F1: 0.2244 | Val Loss: 1.4928 Acc: 0.2500 F1: 0.1898 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  25/50 | Train Loss: 1.3709 Acc: 0.2308 F1: 0.2095 | Val Loss: 1.4983 Acc: 0.2500 F1: 0.2123 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  26/50 | Train Loss: 1.3526 Acc: 0.2740 F1: 0.2596 | Val Loss: 1.4949 Acc: 0.2308 F1: 0.1672 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  27/50 | Train Loss: 1.3492 Acc: 0.2837 F1: 0.2787 | Val Loss: 1.4667 Acc: 0.2308 F1: 0.1880 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  28/50 | Train Loss: 1.3417 Acc: 0.2788 F1: 0.2666 | Val Loss: 1.5229 Acc: 0.1923 F1: 0.1938 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  29/50 | Train Loss: 1.3493 Acc: 0.2933 F1: 0.2183 | Val Loss: 1.4918 Acc: 0.2308 F1: 0.1982 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  30/50 | Train Loss: 1.3658 Acc: 0.2885 F1: 0.2532 | Val Loss: 1.5336 Acc: 0.1923 F1: 0.1335 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  31/50 | Train Loss: 1.3645 Acc: 0.2163 F1: 0.1824 | Val Loss: 1.4755 Acc: 0.2115 F1: 0.1970 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  32/50 | Train Loss: 1.3562 Acc: 0.3029 F1: 0.2694 | Val Loss: 1.5233 Acc: 0.1923 F1: 0.1919 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  33/50 | Train Loss: 1.3502 Acc: 0.2404 F1: 0.2204 | Val Loss: 1.5290 Acc: 0.2308 F1: 0.1966 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  34/50 | Train Loss: 1.3684 Acc: 0.2596 F1: 0.2583 | Val Loss: 1.5169 Acc: 0.2308 F1: 0.1962 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  35/50 | Train Loss: 1.3609 Acc: 0.3173 F1: 0.2550 | Val Loss: 1.4971 Acc: 0.2115 F1: 0.2100 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  36/50 | Train Loss: 1.3585 Acc: 0.2788 F1: 0.2691 | Val Loss: 1.5088 Acc: 0.2115 F1: 0.1760 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  37/50 | Train Loss: 1.3543 Acc: 0.2740 F1: 0.2373 | Val Loss: 1.4984 Acc: 0.2308 F1: 0.1649 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  38/50 | Train Loss: 1.3463 Acc: 0.2885 F1: 0.2448 | Val Loss: 1.5087 Acc: 0.2308 F1: 0.1909 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  39/50 | Train Loss: 1.3487 Acc: 0.2933 F1: 0.2106 | Val Loss: 1.4916 Acc: 0.2308 F1: 0.1948 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  40/50 | Train Loss: 1.3527 Acc: 0.3317 F1: 0.3066 | Val Loss: 1.5478 Acc: 0.2115 F1: 0.2144 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  41/50 | Train Loss: 1.3544 Acc: 0.2933 F1: 0.2382 | Val Loss: 1.4563 Acc: 0.2692 F1: 0.2154 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  42/50 | Train Loss: 1.3456 Acc: 0.2837 F1: 0.2399 | Val Loss: 1.5470 Acc: 0.2308 F1: 0.2234 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  43/50 | Train Loss: 1.3513 Acc: 0.3029 F1: 0.2727 | Val Loss: 1.4636 Acc: 0.2308 F1: 0.1629 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  44/50 | Train Loss: 1.3655 Acc: 0.2644 F1: 0.2049 | Val Loss: 1.4995 Acc: 0.2692 F1: 0.2254 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  45/50 | Train Loss: 1.3570 Acc: 0.2788 F1: 0.2512 | Val Loss: 1.4711 Acc: 0.2115 F1: 0.1707 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  46/50 | Train Loss: 1.3466 Acc: 0.3173 F1: 0.2527 | Val Loss: 1.4636 Acc: 0.3077 F1: 0.2551 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  47/50 | Train Loss: 1.3652 Acc: 0.2596 F1: 0.2455 | Val Loss: 1.5393 Acc: 0.2308 F1: 0.1377 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  48/50 | Train Loss: 1.3584 Acc: 0.2115 F1: 0.1860 | Val Loss: 1.4924 Acc: 0.3077 F1: 0.2784 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  49/50 | Train Loss: 1.3581 Acc: 0.2260 F1: 0.2239 | Val Loss: 1.5035 Acc: 0.2500 F1: 0.2109 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+Epoch  50/50 | Train Loss: 1.3620 Acc: 0.3077 F1: 0.2554 | Val Loss: 1.5371 Acc: 0.2308 F1: 0.1575 | Train Meta: metadata_norm_mean=5.6305 | Val Meta: metadata_norm_mean=5.6305
+
+Random Encoder Classification Result (EthanolConcentration)
+Accuracy : 0.262357
+F1 (macro): 0.174555
+Text metadata preview | dataset=FaceDetection | domain=UEA | channels=144
+   - channel_1: In the UEA domain, this channel belongs to the FaceDetection dataset and represents the feature channel 1.
+   - channel_2: In the UEA domain, this channel belongs to the FaceDetection dataset and represents the feature channel 2.
+   - ... (142 more channel descriptions)
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: FaceDetection (Channels: 144)
+📊 Classes: 2 | Sequence Length: 62
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 0.7111 Acc: 0.5083 F1: 0.5080 | Val Loss: 0.6973 Acc: 0.5085 F1: 0.3432 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335

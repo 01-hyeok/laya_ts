@@ -1,0 +1,169 @@
+nohup: ignoring input
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: weather (Detected Channels: 21)
+📊 Prediction Length: 96
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/weather_laya_ci_none/laya_ts_weather_s_best.pt
+   - 40/40 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
+ℹ️ Metadata Fusion Mode: none
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 21, 96]
+Epoch 1/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.364804 | Val Loss: 0.452315 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.452315 at epoch 1
+Epoch 2/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.339261 | Val Loss: 0.446552 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.446552 at epoch 2
+Epoch 3/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.332493 | Val Loss: 0.448211 | Train Meta: n/a | Val Meta: n/a
+Epoch 4/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.328334 | Val Loss: 0.453220 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.325533 | Val Loss: 0.447388 | Train Meta: n/a | Val Meta: n/a
+Epoch 6/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.323241 | Val Loss: 0.445797 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.445797 at epoch 6
+Epoch 7/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.321666 | Val Loss: 0.441884 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.441884 at epoch 7
+Epoch 8/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.320077 | Val Loss: 0.442279 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.318945 | Val Loss: 0.440643 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.440643 at epoch 9
+Epoch 10/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.317752 | Val Loss: 0.443871 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.316287 | Val Loss: 0.446511 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.315869 | Val Loss: 0.446501 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.314929 | Val Loss: 0.449080 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.314159 | Val Loss: 0.442151 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.313323 | Val Loss: 0.450124 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.312876 | Val Loss: 0.448528 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.312117 | Val Loss: 0.446929 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.311761 | Val Loss: 0.446173 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.311078 | Val Loss: 0.447536 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.310587 | Val Loss: 0.450511 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.19685888290405273, 'test_mae': 0.24868306517601013}
+Saved best forecasting checkpoint under checkpoints/forecasting_weather_96/weather_laya_ci_none_best.pt
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: weather (Detected Channels: 21)
+📊 Prediction Length: 192
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/weather_laya_ci_none/laya_ts_weather_s_best.pt
+   - 40/40 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
+ℹ️ Metadata Fusion Mode: none
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 21, 192]
+Epoch 1/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.418284 | Val Loss: 0.532100 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.532100 at epoch 1
+Epoch 2/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.395910 | Val Loss: 0.524525 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.524525 at epoch 2
+Epoch 3/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.389376 | Val Loss: 0.522428 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.522428 at epoch 3
+Epoch 4/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.385691 | Val Loss: 0.527432 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.382744 | Val Loss: 0.521878 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.521878 at epoch 5
+Epoch 6/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.380483 | Val Loss: 0.523402 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.378474 | Val Loss: 0.521829 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.521829 at epoch 7
+Epoch 8/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.376872 | Val Loss: 0.528610 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.375458 | Val Loss: 0.526852 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.374204 | Val Loss: 0.524135 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.373136 | Val Loss: 0.527027 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.372281 | Val Loss: 0.526901 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.371147 | Val Loss: 0.530377 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.370475 | Val Loss: 0.526700 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.369773 | Val Loss: 0.527813 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.369022 | Val Loss: 0.534245 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.368322 | Val Loss: 0.532556 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.367698 | Val Loss: 0.531306 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.367375 | Val Loss: 0.534962 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.366305 | Val Loss: 0.529660 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.2534227967262268, 'test_mae': 0.2964266240596771}
+Saved best forecasting checkpoint under checkpoints/forecasting_weather_192/weather_laya_ci_none_best.pt
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: weather (Detected Channels: 21)
+📊 Prediction Length: 336
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/weather_laya_ci_none/laya_ts_weather_s_best.pt
+   - 40/40 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
+ℹ️ Metadata Fusion Mode: none
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 21, 336]
+Epoch 1/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.469982 | Val Loss: 0.608052 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.608052 at epoch 1
+Epoch 2/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.449870 | Val Loss: 0.607320 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.607320 at epoch 2
+Epoch 3/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.443606 | Val Loss: 0.605676 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.605676 at epoch 3
+Epoch 4/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.439648 | Val Loss: 0.610162 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.436429 | Val Loss: 0.608907 | Train Meta: n/a | Val Meta: n/a
+Epoch 6/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.434083 | Val Loss: 0.607593 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.432072 | Val Loss: 0.611095 | Train Meta: n/a | Val Meta: n/a
+Epoch 8/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.430535 | Val Loss: 0.609767 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.428930 | Val Loss: 0.612427 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.427573 | Val Loss: 0.613055 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.426623 | Val Loss: 0.619830 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.425339 | Val Loss: 0.611721 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.424757 | Val Loss: 0.616028 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.423542 | Val Loss: 0.611277 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.422961 | Val Loss: 0.615456 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.422354 | Val Loss: 0.617160 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.421376 | Val Loss: 0.621916 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.420647 | Val Loss: 0.615775 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.420174 | Val Loss: 0.624706 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.419556 | Val Loss: 0.620525 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.31250056624412537, 'test_mae': 0.34248337149620056}
+Saved best forecasting checkpoint under checkpoints/forecasting_weather_336/weather_laya_ci_none_best.pt
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: weather (Channels: 21)
+📊 Pretrain Info: weather (Detected Channels: 21)
+📊 Prediction Length: 720
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/weather_laya_ci_none/laya_ts_weather_s_best.pt
+   - 40/40 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
+ℹ️ Metadata Fusion Mode: none
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 21, 720]
+Epoch 1/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.537392 | Val Loss: 0.708151 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.708151 at epoch 1
+Epoch 2/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.517981 | Val Loss: 0.702926 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.702926 at epoch 2
+Epoch 3/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.511440 | Val Loss: 0.698718 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.698718 at epoch 3
+Epoch 4/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.506689 | Val Loss: 0.705157 | Train Meta: n/a | Val Meta: n/a
+Epoch 5/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.503864 | Val Loss: 0.710029 | Train Meta: n/a | Val Meta: n/a
+Epoch 6/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.501051 | Val Loss: 0.710458 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.498800 | Val Loss: 0.704474 | Train Meta: n/a | Val Meta: n/a
+Epoch 8/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.497433 | Val Loss: 0.705054 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.495605 | Val Loss: 0.703956 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.493949 | Val Loss: 0.710033 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.492767 | Val Loss: 0.707513 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.491622 | Val Loss: 0.711205 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.490749 | Val Loss: 0.709132 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.489486 | Val Loss: 0.704944 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.488911 | Val Loss: 0.705619 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.487969 | Val Loss: 0.705298 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.487243 | Val Loss: 0.709261 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.486379 | Val Loss: 0.703886 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.485661 | Val Loss: 0.714875 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.485049 | Val Loss: 0.705698 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.3984411954879761, 'test_mae': 0.3986874520778656}
+Saved best forecasting checkpoint under checkpoints/forecasting_weather_720/weather_laya_ci_none_best.pt

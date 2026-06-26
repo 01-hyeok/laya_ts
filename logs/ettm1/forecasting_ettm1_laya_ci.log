@@ -1,0 +1,188 @@
+nohup: ignoring input
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Pretrain Info: ETTm1 (Detected Channels: 7)
+📊 Prediction Length: 96
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/ettm1_laya_ci_none/laya_ts_ETTm1_s_best.pt
+   - 40/40 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
+ℹ️ Metadata Fusion Mode: none
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 7, 96]
+Epoch 1/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.346857 | Val Loss: 0.324386 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.324386 at epoch 1
+Epoch 2/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.305672 | Val Loss: 0.298699 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.298699 at epoch 2
+Epoch 3/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.288689 | Val Loss: 0.290338 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.290338 at epoch 3
+Epoch 4/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.279345 | Val Loss: 0.286199 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.286199 at epoch 4
+Epoch 5/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.273309 | Val Loss: 0.288272 | Train Meta: n/a | Val Meta: n/a
+Epoch 6/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.268032 | Val Loss: 0.279451 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.279451 at epoch 6
+Epoch 7/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.264382 | Val Loss: 0.278596 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.278596 at epoch 7
+Epoch 8/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.261530 | Val Loss: 0.286035 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.258431 | Val Loss: 0.276080 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.276080 at epoch 9
+Epoch 10/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.257118 | Val Loss: 0.272241 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.272241 at epoch 10
+Epoch 11/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.254631 | Val Loss: 0.272361 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.253492 | Val Loss: 0.269509 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.269509 at epoch 12
+Epoch 13/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.251399 | Val Loss: 0.280870 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.250176 | Val Loss: 0.288568 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.249048 | Val Loss: 0.270680 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.247458 | Val Loss: 0.270849 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.246281 | Val Loss: 0.271460 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.246446 | Val Loss: 0.300973 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.244683 | Val Loss: 0.285462 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1287 | LR: 0.000100 | Train Loss: 0.243634 | Val Loss: 0.267393 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.267393 at epoch 20
+{'test_mse': 0.3276956379413605, 'test_mae': 0.39007148146629333}
+Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_96/ettm1_laya_ci_none_best.pt
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Pretrain Info: ETTm1 (Detected Channels: 7)
+📊 Prediction Length: 192
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/ettm1_laya_ci_none/laya_ts_ETTm1_s_best.pt
+   - 40/40 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
+ℹ️ Metadata Fusion Mode: none
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 7, 192]
+Epoch 1/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.381863 | Val Loss: 0.352564 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.352564 at epoch 1
+Epoch 2/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.345768 | Val Loss: 0.337786 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.337786 at epoch 2
+Epoch 3/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.331525 | Val Loss: 0.325464 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.325464 at epoch 3
+Epoch 4/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.322200 | Val Loss: 0.320497 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.320497 at epoch 4
+Epoch 5/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.316913 | Val Loss: 0.316592 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.316592 at epoch 5
+Epoch 6/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.312650 | Val Loss: 0.316543 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.316543 at epoch 6
+Epoch 7/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.309566 | Val Loss: 0.322173 | Train Meta: n/a | Val Meta: n/a
+Epoch 8/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.306892 | Val Loss: 0.314576 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.314576 at epoch 8
+Epoch 9/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.305266 | Val Loss: 0.309210 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.309210 at epoch 9
+Epoch 10/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.302915 | Val Loss: 0.331964 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.301275 | Val Loss: 0.308771 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.308771 at epoch 11
+Epoch 12/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.299764 | Val Loss: 0.306672 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.306672 at epoch 12
+Epoch 13/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.297883 | Val Loss: 0.314453 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.297162 | Val Loss: 0.321408 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.295860 | Val Loss: 0.304925 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.304925 at epoch 15
+Epoch 16/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.294556 | Val Loss: 0.306090 | Train Meta: n/a | Val Meta: n/a
+Epoch 17/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.293662 | Val Loss: 0.306076 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.292658 | Val Loss: 0.319071 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.291576 | Val Loss: 0.339525 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1284 | LR: 0.000100 | Train Loss: 0.291375 | Val Loss: 0.317358 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.3728690445423126, 'test_mae': 0.41961508989334106}
+Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_192/ettm1_laya_ci_none_best.pt
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Pretrain Info: ETTm1 (Detected Channels: 7)
+📊 Prediction Length: 336
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/ettm1_laya_ci_none/laya_ts_ETTm1_s_best.pt
+   - 40/40 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
+ℹ️ Metadata Fusion Mode: none
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 7, 336]
+Epoch 1/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.424250 | Val Loss: 0.386724 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.386724 at epoch 1
+Epoch 2/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.392157 | Val Loss: 0.367681 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.367681 at epoch 2
+Epoch 3/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.379479 | Val Loss: 0.384368 | Train Meta: n/a | Val Meta: n/a
+Epoch 4/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.372215 | Val Loss: 0.354625 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.354625 at epoch 4
+Epoch 5/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.367144 | Val Loss: 0.373449 | Train Meta: n/a | Val Meta: n/a
+Epoch 6/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.363435 | Val Loss: 0.356134 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.360695 | Val Loss: 0.355498 | Train Meta: n/a | Val Meta: n/a
+Epoch 8/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.358028 | Val Loss: 0.351861 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.351861 at epoch 8
+Epoch 9/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.356043 | Val Loss: 0.350415 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.350415 at epoch 9
+Epoch 10/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.354104 | Val Loss: 0.350717 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.352990 | Val Loss: 0.350507 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.351006 | Val Loss: 0.352515 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.349458 | Val Loss: 0.349756 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.349756 at epoch 13
+Epoch 14/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.349353 | Val Loss: 0.351042 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.347086 | Val Loss: 0.350450 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.346309 | Val Loss: 0.345129 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.345129 at epoch 16
+Epoch 17/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.345801 | Val Loss: 0.347567 | Train Meta: n/a | Val Meta: n/a
+Epoch 18/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.344897 | Val Loss: 0.354862 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.343616 | Val Loss: 0.348093 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1280 | LR: 0.000100 | Train Loss: 0.342929 | Val Loss: 0.361567 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.4144265353679657, 'test_mae': 0.44593921303749084}
+Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_336/ettm1_laya_ci_none_best.pt
+==================================================
+🚀 Architecture: LAYA
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Pretrain Info: ETTm1 (Detected Channels: 7)
+📊 Prediction Length: 720
+==================================================
+✅ Loaded pretrained encoder from ./checkpoints/ettm1_laya_ci_none/laya_ts_ETTm1_s_best.pt
+   - 40/40 keys matched.
+ℹ️ Channel Adapter: disabled
+📝 metadata: mode=none, fusion=none, relation=none
+ℹ️ RevIN: enabled | affine=False | subtract_last=False | eps=1e-05
+ℹ️ Metadata Fusion Mode: none
+ℹ️ Channel Mixer Relation Mode: none
+ℹ️ Encoder Variant: default
+ℹ️ Channel Relation Block: disabled
+✅ Probing Head [CI, channel-wise]: [B*C, 8192] -> [B, 7, 720]
+Epoch 1/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.507502 | Val Loss: 0.452811 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.452811 at epoch 1
+Epoch 2/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.479127 | Val Loss: 0.433815 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.433815 at epoch 2
+Epoch 3/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.467886 | Val Loss: 0.422619 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.422619 at epoch 3
+Epoch 4/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.460154 | Val Loss: 0.421442 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.421442 at epoch 4
+Epoch 5/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.455230 | Val Loss: 0.468436 | Train Meta: n/a | Val Meta: n/a
+Epoch 6/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.452508 | Val Loss: 0.422173 | Train Meta: n/a | Val Meta: n/a
+Epoch 7/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.448402 | Val Loss: 0.412572 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.412572 at epoch 7
+Epoch 8/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.445447 | Val Loss: 0.415629 | Train Meta: n/a | Val Meta: n/a
+Epoch 9/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.444133 | Val Loss: 0.419991 | Train Meta: n/a | Val Meta: n/a
+Epoch 10/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.442193 | Val Loss: 0.419088 | Train Meta: n/a | Val Meta: n/a
+Epoch 11/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.440118 | Val Loss: 0.433927 | Train Meta: n/a | Val Meta: n/a
+Epoch 12/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.438122 | Val Loss: 0.413177 | Train Meta: n/a | Val Meta: n/a
+Epoch 13/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.437546 | Val Loss: 0.431601 | Train Meta: n/a | Val Meta: n/a
+Epoch 14/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.435745 | Val Loss: 0.416198 | Train Meta: n/a | Val Meta: n/a
+Epoch 15/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.434266 | Val Loss: 0.432714 | Train Meta: n/a | Val Meta: n/a
+Epoch 16/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.433840 | Val Loss: 0.411920 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.411920 at epoch 16
+Epoch 17/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.432564 | Val Loss: 0.406405 | Train Meta: n/a | Val Meta: n/a
+   -> Updated best validation state: val_loss=0.406405 at epoch 17
+Epoch 18/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.431985 | Val Loss: 0.422850 | Train Meta: n/a | Val Meta: n/a
+Epoch 19/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.430700 | Val Loss: 0.411055 | Train Meta: n/a | Val Meta: n/a
+Epoch 20/20 | Steps: 1268 | LR: 0.000100 | Train Loss: 0.430206 | Val Loss: 0.410213 | Train Meta: n/a | Val Meta: n/a
+{'test_mse': 0.4811703860759735, 'test_mae': 0.4922753572463989}
+Saved best forecasting checkpoint under checkpoints/forecasting_ettm1_720/ettm1_laya_ci_none_best.pt

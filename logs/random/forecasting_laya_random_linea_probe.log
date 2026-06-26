@@ -1,0 +1,82 @@
+nohup: ignoring input
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Prediction Length: 96
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/20 | Train MSE: 0.2578 | Val MSE: 0.2711 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/20 | Train MSE: 0.2416 | Val MSE: 0.2729 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/20 | Train MSE: 0.2366 | Val MSE: 0.2748 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/20 | Train MSE: 0.2344 | Val MSE: 0.2670 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/20 | Train MSE: 0.2324 | Val MSE: 0.2683 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/20 | Train MSE: 0.2301 | Val MSE: 0.2633 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/20 | Train MSE: 0.2294 | Val MSE: 0.2696 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/20 | Train MSE: 0.2274 | Val MSE: 0.2721 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/20 | Train MSE: 0.2267 | Val MSE: 0.2727 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/20 | Train MSE: 0.2255 | Val MSE: 0.2652 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/20 | Train MSE: 0.2255 | Val MSE: 0.2624 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/20 | Train MSE: 0.2242 | Val MSE: 0.2761 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/20 | Train MSE: 0.2235 | Val MSE: 0.2800 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/20 | Train MSE: 0.2229 | Val MSE: 0.2779 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/20 | Train MSE: 0.2225 | Val MSE: 0.2732 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/20 | Train MSE: 0.2221 | Val MSE: 0.2650 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/20 | Train MSE: 0.2217 | Val MSE: 0.2659 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/20 | Train MSE: 0.2210 | Val MSE: 0.2635 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/20 | Train MSE: 0.2203 | Val MSE: 0.2720 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/20 | Train MSE: 0.2199 | Val MSE: 0.2653 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Forecasting Result (ETTm1, pred_len=96)
+MSE : 0.326725
+MAE : 0.382330
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Prediction Length: 192
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/20 | Train MSE: 0.3068 | Val MSE: 0.3187 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/20 | Train MSE: 0.2914 | Val MSE: 0.3219 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/20 | Train MSE: 0.2865 | Val MSE: 0.3339 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/20 | Train MSE: 0.2838 | Val MSE: 0.3166 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/20 | Train MSE: 0.2817 | Val MSE: 0.3159 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/20 | Train MSE: 0.2796 | Val MSE: 0.3165 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/20 | Train MSE: 0.2783 | Val MSE: 0.3250 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/20 | Train MSE: 0.2770 | Val MSE: 0.3149 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/20 | Train MSE: 0.2759 | Val MSE: 0.3115 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/20 | Train MSE: 0.2752 | Val MSE: 0.3169 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/20 | Train MSE: 0.2740 | Val MSE: 0.3154 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/20 | Train MSE: 0.2734 | Val MSE: 0.3173 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/20 | Train MSE: 0.2726 | Val MSE: 0.3102 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/20 | Train MSE: 0.2714 | Val MSE: 0.3092 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/20 | Train MSE: 0.2712 | Val MSE: 0.3126 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/20 | Train MSE: 0.2701 | Val MSE: 0.3101 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/20 | Train MSE: 0.2703 | Val MSE: 0.3107 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/20 | Train MSE: 0.2695 | Val MSE: 0.3154 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/20 | Train MSE: 0.2687 | Val MSE: 0.3209 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/20 | Train MSE: 0.2685 | Val MSE: 0.3166 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Forecasting Result (ETTm1, pred_len=192)
+MSE : 0.385859
+MAE : 0.420817
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Prediction Length: 336
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/20 | Train MSE: 0.3614 | Val MSE: 0.3588 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/20 | Train MSE: 0.3459 | Val MSE: 0.3687 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/20 | Train MSE: 0.3405 | Val MSE: 0.3878 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/20 | Train MSE: 0.3375 | Val MSE: 0.3694 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/20 | Train MSE: 0.3353 | Val MSE: 0.3651 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/20 | Train MSE: 0.3331 | Val MSE: 0.3601 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/20 | Train MSE: 0.3316 | Val MSE: 0.3593 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/20 | Train MSE: 0.3307 | Val MSE: 0.3574 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/20 | Train MSE: 0.3293 | Val MSE: 0.3570 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/20 | Train MSE: 0.3279 | Val MSE: 0.3556 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/20 | Train MSE: 0.3272 | Val MSE: 0.3587 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/20 | Train MSE: 0.3265 | Val MSE: 0.3528 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/20 | Train MSE: 0.3251 | Val MSE: 0.3570 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/20 | Train MSE: 0.3246 | Val MSE: 0.3632 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/20 | Train MSE: 0.3244 | Val MSE: 0.3710 | Train Meta: n/a | Val Meta: n/a

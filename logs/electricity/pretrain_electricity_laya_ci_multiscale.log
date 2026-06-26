@@ -28,37 +28,19 @@ nohup: ignoring input
    - temporal_patchifier_mode: fixed
    - use_channel_relation_block: False
 🧮 Parameter Counts:
-   - Total Parameters: 4,298,372
-   - Trainable Parameters: 4,298,372
+   - Total Parameters: 4,496,644
+   - Trainable Parameters: 4,496,644
 ⏱️ Schedule:
    - total_steps: 55900
    - warmup_steps: 5590
    - derived_epochs: 100
-Traceback (most recent call last):
-  File "./train_pretrain.py", line 1591, in <module>
-    main()
-  File "./train_pretrain.py", line 1218, in main
-    outputs = model(
-  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/data/pjh_workspace/laya_ts/model.py", line 2282, in forward
-    full_scale = self.encoder.forward_features(
-  File "/data/pjh_workspace/laya_ts/model.py", line 2080, in forward_features
-    return self._forward_features_default(
-  File "/data/pjh_workspace/laya_ts/model.py", line 2021, in _forward_features_default
-    encoded = block(encoded)
-  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/data/pjh_workspace/laya_ts/base_model.py", line 602, in forward
-    x = x + self.attn(self.norm1(x))
-  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/data/pjh_workspace/laya_ts/base_model.py", line 559, in forward
-    attn = (q @ k.transpose(-2, -1)) / math.sqrt(self.head_dim)
-torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.02 GiB. GPU 0 has a total capacity of 79.15 GiB of which 1.29 GiB is free. Process 1080189 has 15.20 GiB memory in use. Process 1886769 has 62.63 GiB memory in use. Of the allocated memory 61.54 GiB is allocated by PyTorch, and 624.06 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Epoch 1/100 | Steps: 559 | LR: 0.000010 | Train Loss: 0.739728 (P:0.7279, S:0.2370, Q:0.0000) | Val Loss: 0.525873 (P:0.5115, S:0.2873, Q:0.0000) | Repr L2μ: 5.2926 Val L2μ: 2.1486 | Repr Cosμ: 0.8778 Val Cosμ: 0.9825 | Pred→Target Cosμ: 0.5203 Val Cosμ: 0.7060 | Repr NormRatio: 1.2618 Val NormRatio: 1.0231 | Train Meta: p4μ:0.2790, p8μ:0.2545, p16μ:0.2386, p32μ:0.2279 | Val Meta: p4μ:0.3581, p8μ:0.2576, p16μ:0.1983, p32μ:0.1860
+   -> Saved improved checkpoint: val_loss=0.525873 at epoch 1
+Epoch 2/100 | Steps: 559 | LR: 0.000020 | Train Loss: 0.424678 (P:0.4191, S:0.1118, Q:0.0000) | Val Loss: 0.493839 (P:0.4839, S:0.1995, Q:0.0000) | Repr L2μ: 5.6377 Val L2μ: 2.1029 | Repr Cosμ: 0.8656 Val Cosμ: 0.9835 | Pred→Target Cosμ: 0.8141 Val Cosμ: 0.7061 | Repr NormRatio: 1.3062 Val NormRatio: 1.0213 | Train Meta: p4μ:0.3649, p8μ:0.2579, p16μ:0.1899, p32μ:0.1874 | Val Meta: p4μ:0.3982, p8μ:0.2408, p16μ:0.1698, p32μ:0.1912
+   -> Saved improved checkpoint: val_loss=0.493839 at epoch 2
+Epoch 3/100 | Steps: 559 | LR: 0.000030 | Train Loss: 0.340169 (P:0.3369, S:0.0644, Q:0.0000) | Val Loss: 0.524204 (P:0.5151, S:0.1819, Q:0.0000) | Repr L2μ: 5.4250 Val L2μ: 2.8411 | Repr Cosμ: 0.8799 Val Cosμ: 0.9686 | Pred→Target Cosμ: 0.8587 Val Cosμ: 0.6808 | Repr NormRatio: 1.2868 Val NormRatio: 1.0299 | Train Meta: p4μ:0.3825, p8μ:0.2302, p16μ:0.1780, p32μ:0.2093 | Val Meta: p4μ:0.3764, p8μ:0.2146, p16μ:0.1867, p32μ:0.2222
+   -> Saved last checkpoint at epoch 3
+Epoch 4/100 | Steps: 559 | LR: 0.000040 | Train Loss: 0.255645 (P:0.2533, S:0.0460, Q:0.0000) | Val Loss: 0.620077 (P:0.6106, S:0.1900, Q:0.0000) | Repr L2μ: 5.5679 Val L2μ: 4.1493 | Repr Cosμ: 0.8776 Val Cosμ: 0.9295 | Pred→Target Cosμ: 0.9033 Val Cosμ: 0.6468 | Repr NormRatio: 1.2076 Val NormRatio: 1.0516 | Train Meta: p4μ:0.3532, p8μ:0.2189, p16μ:0.1932, p32μ:0.2347 | Val Meta: p4μ:0.3472, p8μ:0.2128, p16μ:0.1984, p32μ:0.2416
+   -> Saved last checkpoint at epoch 4
+Epoch 5/100 | Steps: 559 | LR: 0.000050 | Train Loss: 0.212116 (P:0.2103, S:0.0366, Q:0.0000) | Val Loss: 0.716245 (P:0.7057, S:0.2100, Q:0.0000) | Repr L2μ: 6.1971 Val L2μ: 5.2232 | Repr Cosμ: 0.8473 Val Cosμ: 0.8821 | Pred→Target Cosμ: 0.9199 Val Cosμ: 0.6101 | Repr NormRatio: 1.1727 Val NormRatio: 1.0600 | Train Meta: p4μ:0.3312, p8μ:0.2155, p16μ:0.2014, p32μ:0.2519 | Val Meta: p4μ:0.3261, p8μ:0.2082, p16μ:0.2070, p32μ:0.2587
+   -> Saved last checkpoint at epoch 5

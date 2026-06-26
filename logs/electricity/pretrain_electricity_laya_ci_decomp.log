@@ -1,0 +1,71 @@
+nohup: ignoring input
+Laya-TS Pretraining: electricity (laya + laya_ci_decomp)
+data_path: ../Dataset/long_term_forecast/electricity/electricity.csv
+metadata: mode=none, fusion=none
+decomp: mode=trend_seasonal, kernel=25, temp=1.0
+log_dir: ./runs/pretrain_electricity_laya_ci_decomp
+📊 Dataset Statistics:
+   - Sequence Length (T): 512
+   - Train Samples: 17903, Steps: 559
+   - Val Samples: 2119, Steps: 67
+🔧 Encoder Hyperparameters:
+   - d_model: 256
+   - n_heads: 8
+   - n_layers: 3
+   - proj_dim: 128
+   - predictor_depth: 2
+   - predictor_heads: 4
+   - patch_size: 16
+   - model_id: laya_ci_decomp
+   - patchifier_mode: trend_seasonal
+   - trend_seasonal_kernel: 25
+   - trend_seasonal_gate_temperature: 1.0
+   - metadata_fusion_mode: none
+   - channel_mixer_relation_mode: none
+   - use_relation_adapter: False
+   - encoder_variant: default
+   - temporal_patchifier_mode: fixed
+   - use_channel_relation_block: False
+🧮 Parameter Counts:
+   - Total Parameters: 4,360,706
+   - Trainable Parameters: 4,360,706
+⏱️ Schedule:
+   - total_steps: 55900
+   - warmup_steps: 5590
+   - derived_epochs: 100
+Traceback (most recent call last):
+  File "./train_pretrain.py", line 1607, in <module>
+    main()
+  File "./train_pretrain.py", line 1234, in main
+    outputs = model(
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/pjh_workspace/laya_ts/model.py", line 2319, in forward
+    pred_tokens = self.predictor(context_tokens, patch_mask=patch_mask)
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/pjh_workspace/laya_ts/base_model.py", line 702, in forward
+    x = block(x)
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/pjh_workspace/laya_ts/base_model.py", line 603, in forward
+    x = x + self.mlp(self.norm2(x))
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/container.py", line 219, in forward
+    input = module(input)
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/activation.py", line 705, in forward
+    return F.gelu(input, approximate=self.approximate)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 642.00 MiB. GPU 0 has a total capacity of 79.15 GiB of which 636.50 MiB is free. Process 1080189 has 15.20 GiB memory in use. Process 1743298 has 656.00 MiB memory in use. Process 1743305 has 658.00 MiB memory in use. Process 1743299 has 658.00 MiB memory in use. Process 1743302 has 658.00 MiB memory in use. Process 1743269 has 662.00 MiB memory in use. Process 1743291 has 656.00 MiB memory in use. Process 1743288 has 656.00 MiB memory in use. Process 1743303 has 658.00 MiB memory in use. Process 1743295 has 658.00 MiB memory in use. Process 1743281 has 662.00 MiB memory in use. Process 1743265 has 662.00 MiB memory in use. Process 1743274 has 662.00 MiB memory in use. Process 1755766 has 630.00 MiB memory in use. Process 1755836 has 630.00 MiB memory in use. Process 1756034 has 650.00 MiB memory in use. Process 1755968 has 630.00 MiB memory in use. Process 1756103 has 650.00 MiB memory in use. Process 1756429 has 650.00 MiB memory in use. Process 1756497 has 650.00 MiB memory in use. Process 1756729 has 650.00 MiB memory in use. Process 1757000 has 638.00 MiB memory in use. Process 1756934 has 638.00 MiB memory in use. Process 1757300 has 638.00 MiB memory in use. Process 1757404 has 656.00 MiB memory in use. Process 1794576 has 47.91 GiB memory in use. Of the allocated memory 47.37 GiB is allocated by PyTorch, and 47.61 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

@@ -20,6 +20,10 @@ def normalize_patchifier_mode(value: str) -> str:
         "fixed": "single",
         "multiscale": "multiscale",
         "multi_scale": "multiscale",
+        "trend_seasonal": "trend_seasonal",
+        "trend-seasonal": "trend_seasonal",
+        "decomp": "trend_seasonal",
+        "decomposition": "trend_seasonal",
     }
     if normalized not in aliases:
         raise ValueError(f"Unsupported patchifier_mode: {value}")
@@ -231,6 +235,13 @@ class MultiScaleFusionGate(nn.Module):
         fused_input = scale_latents.reshape(batch, channels, patches, scales * dim)
         logits = self.mlp(self.norm(fused_input))
         return torch.softmax(logits / self.temperature, dim=-1)
+
+
+class TrendSeasonalFusionGate(MultiScaleFusionGate):
+    """Gate over trend/seasonal patch latents with uniform initial weights."""
+
+    def __init__(self, latent_dim: int, *, temperature: float = 1.0) -> None:
+        super().__init__(latent_dim, 2, temperature=temperature)
 
 
 def apply_metadata_dropout(
@@ -1270,6 +1281,8 @@ class LayaTSEncoder(LayaEncoder):
         self.patchifier_mode = normalize_patchifier_mode(self.config.patchifier_mode)
         if str(self.config.model_id).strip().lower() == "laya_ci_multiscale":
             self.patchifier_mode = "multiscale"
+        if str(self.config.model_id).strip().lower() == "laya_ci_decomp":
+            self.patchifier_mode = "trend_seasonal"
         self.encoder_variant = normalize_encoder_variant(self.config.encoder_variant)
         self.temporal_patchifier_mode = normalize_temporal_patchifier_mode(self.config.temporal_patchifier_mode)
         self.charm_patchifier_fusion = normalize_charm_patchifier_fusion(self.config.charm_patchifier_fusion)
@@ -1292,6 +1305,10 @@ class LayaTSEncoder(LayaEncoder):
         self.charm_patchifier_residual_beta: nn.Parameter | None = None
         self.scale_text_projector: nn.Module | None = None
         self.multiscale_patch_embedders: nn.ModuleDict = nn.ModuleDict()
+        self.multiscale_fusion_gate: MultiScaleFusionGate | None = None
+        self.trend_patch_embed: TemporalPatchEmbedding | None = None
+        self.seasonal_patch_embed: TemporalPatchEmbedding | None = None
+        self.trend_seasonal_fusion_gate: TrendSeasonalFusionGate | None = None
         self.description_relation_refiner: DescriptionRelationChannelRefiner | None = None
         self.relation_adapter: MetadataGuidedInterChannelAdapter | None = None
         if self.channel_mixer_relation_mode != "none" and self.channel_mixer_type != "mixer":
@@ -1364,6 +1381,24 @@ class LayaTSEncoder(LayaEncoder):
                     patch_size,
                     self.channel_token_dim,
                 )
+            self.multiscale_fusion_gate = MultiScaleFusionGate(
+                self.channel_token_dim,
+                len(self.config.multiscale_patch_sizes),
+                temperature=self.config.multiscale_gate_temperature,
+            )
+        elif self.patchifier_mode == "trend_seasonal":
+            self.trend_patch_embed = TemporalPatchEmbedding(
+                self.config.patch_size,
+                self.channel_token_dim,
+            )
+            self.seasonal_patch_embed = TemporalPatchEmbedding(
+                self.config.patch_size,
+                self.channel_token_dim,
+            )
+            self.trend_seasonal_fusion_gate = TrendSeasonalFusionGate(
+                self.channel_token_dim,
+                temperature=self.config.trend_seasonal_gate_temperature,
+            )
 
         self.relation_channel_encoding: Optional[FourierChannelEncoding] = None
         if self.channel_metadata_mode == "coordinates":
@@ -1478,6 +1513,8 @@ class LayaTSEncoder(LayaEncoder):
             )
 
     def infer_num_patches(self, time: int) -> int:
+        if self.patchifier_mode == "multiscale":
+            return math.ceil(time / self.config.multiscale_base_patch)
         return infer_temporal_patchifier_num_patches(self.config, time)
 
     def _should_add_channel_metadata_to_tokens(self) -> bool:
@@ -1719,12 +1756,18 @@ class LayaTSEncoder(LayaEncoder):
         x: torch.Tensor,
         channel_text_embeddings: Optional[torch.Tensor],
     ) -> tuple[torch.Tensor, dict[str, object]]:
+        if self.patchifier_mode == "multiscale":
+            return self._resolve_multiscale_channel_tokens(x)
+        if self.patchifier_mode == "trend_seasonal":
+            return self._resolve_trend_seasonal_channel_tokens(x)
         fixed_tokens = self.patch_embed(x)
         if self.temporal_patchifier_mode == "fixed" or self.temporal_patchifier is None:
             return fixed_tokens, {
                 "scale_gate": None,
                 "scale_logits": None,
                 "scale_gate_mean": None,
+                "component_gate": None,
+                "component_gate_mean": None,
                 "patchifier_N": fixed_tokens.shape[2],
                 "branch_patch_counts": (fixed_tokens.shape[2],),
             }
@@ -1762,6 +1805,118 @@ class LayaTSEncoder(LayaEncoder):
             )
             self.multiscale_patch_embedders[branch_key] = branch
         return branch(x)
+
+    def _moving_average_trend(self, x: torch.Tensor) -> torch.Tensor:
+        kernel_size = int(self.config.trend_seasonal_kernel)
+        if kernel_size <= 1:
+            return x
+        left_pad = (kernel_size - 1) // 2
+        right_pad = kernel_size - 1 - left_pad
+        padded = F.pad(x, (left_pad, right_pad), mode="replicate")
+        batch, channels, _ = padded.shape
+        trend = F.avg_pool1d(
+            padded.reshape(batch * channels, 1, padded.shape[-1]),
+            kernel_size=kernel_size,
+            stride=1,
+        )
+        return trend.reshape(batch, channels, x.shape[-1])
+
+    def _resolve_trend_seasonal_channel_tokens(
+        self,
+        x: torch.Tensor,
+    ) -> tuple[torch.Tensor, dict[str, object]]:
+        if self.trend_patch_embed is None or self.seasonal_patch_embed is None:
+            raise RuntimeError("trend/seasonal patch embedders are not initialized.")
+        if self.trend_seasonal_fusion_gate is None:
+            raise RuntimeError("trend_seasonal_fusion_gate is not initialized.")
+        trend = self._moving_average_trend(x)
+        seasonal = x - trend
+        trend_tokens = self.trend_patch_embed(trend)
+        seasonal_tokens = self.seasonal_patch_embed(seasonal)
+        num_patches = min(trend_tokens.shape[2], seasonal_tokens.shape[2])
+        trend_tokens = trend_tokens[:, :, :num_patches, :]
+        seasonal_tokens = seasonal_tokens[:, :, :num_patches, :]
+        component_stack = torch.stack((trend_tokens, seasonal_tokens), dim=3)
+        component_gate = self.trend_seasonal_fusion_gate(component_stack)
+        channel_tokens = (component_stack * component_gate.unsqueeze(-1)).sum(dim=3)
+        return channel_tokens, {
+            "scale_gate": None,
+            "scale_logits": None,
+            "scale_gate_mean": None,
+            "component_gate": component_gate,
+            "component_gate_mean": component_gate.mean(dim=(0, 1, 2)),
+            "patchifier_N": num_patches,
+            "branch_patch_counts": (trend_tokens.shape[2], seasonal_tokens.shape[2]),
+        }
+
+    def _align_tokens_to_base_grid(
+        self,
+        tokens: torch.Tensor,
+        *,
+        patch_size: int,
+        base_patch: int,
+        base_num_patches: int,
+    ) -> torch.Tensor:
+        if tokens.dim() != 4:
+            raise ValueError(f"Expected tokens [B, C, N, D], got {tuple(tokens.shape)}")
+        if patch_size == base_patch:
+            return tokens[:, :, :base_num_patches, :]
+        if patch_size < base_patch:
+            ratio = base_patch // patch_size
+            if base_patch % patch_size != 0:
+                raise ValueError(
+                    f"Base patch {base_patch} must be divisible by patch size {patch_size}"
+                )
+            target_tokens = base_num_patches * ratio
+            if tokens.shape[2] < target_tokens:
+                pad = target_tokens - tokens.shape[2]
+                tokens = F.pad(tokens, (0, 0, 0, pad))
+            tokens = tokens[:, :, :target_tokens, :]
+            batch, channels, _, dim = tokens.shape
+            return tokens.reshape(batch, channels, base_num_patches, ratio, dim).mean(dim=3)
+        ratio = patch_size // base_patch
+        if patch_size % base_patch != 0:
+            raise ValueError(
+                f"Patch size {patch_size} must be divisible by base patch {base_patch}"
+            )
+        expanded = tokens.repeat_interleave(ratio, dim=2)
+        if expanded.shape[2] < base_num_patches:
+            pad = base_num_patches - expanded.shape[2]
+            expanded = F.pad(expanded, (0, 0, 0, pad))
+        return expanded[:, :, :base_num_patches, :]
+
+    def _resolve_multiscale_channel_tokens(
+        self,
+        x: torch.Tensor,
+    ) -> tuple[torch.Tensor, dict[str, object]]:
+        batch, channels, time = x.shape
+        base_patch = int(self.config.multiscale_base_patch)
+        base_num_patches = math.ceil(time / base_patch)
+        aligned_scale_tokens: list[torch.Tensor] = []
+        branch_patch_counts: list[int] = []
+        for patch_size in self.config.multiscale_patch_sizes:
+            scale_tokens = self.embed_with_patch_size(x, int(patch_size))
+            branch_patch_counts.append(int(scale_tokens.shape[2]))
+            aligned_scale_tokens.append(
+                self._align_tokens_to_base_grid(
+                    scale_tokens,
+                    patch_size=int(patch_size),
+                    base_patch=base_patch,
+                    base_num_patches=base_num_patches,
+                )
+            )
+        z_stack = torch.stack(aligned_scale_tokens, dim=3)  # [B, C, N_base, S, D]
+        if not hasattr(self, "multiscale_fusion_gate") or self.multiscale_fusion_gate is None:
+            raise RuntimeError("multiscale_fusion_gate is not initialized.")
+        scale_gate = self.multiscale_fusion_gate(z_stack)
+        channel_tokens = (z_stack * scale_gate.unsqueeze(-1)).sum(dim=3)
+        return channel_tokens, {
+            "scale_gate": scale_gate,
+            "scale_logits": None,
+            "scale_gate_mean": scale_gate.mean(dim=(0, 1, 2)),
+            "patchifier_N": base_num_patches,
+            "branch_patch_counts": tuple(branch_patch_counts),
+        }
 
     def _resolve_channel_mask(
         self,
@@ -1903,6 +2058,8 @@ class LayaTSEncoder(LayaEncoder):
             patchifier_aux.setdefault("scale_gate", None)
             patchifier_aux.setdefault("scale_logits", None)
             patchifier_aux.setdefault("scale_gate_mean", None)
+            patchifier_aux.setdefault("component_gate", None)
+            patchifier_aux.setdefault("component_gate_mean", None)
             patchifier_aux.setdefault("patchifier_N", channel_tokens.shape[2])
             patchifier_aux.setdefault("branch_patch_counts", (channel_tokens.shape[2],))
         num_patches = channel_tokens.shape[2]
@@ -1937,9 +2094,11 @@ class LayaTSEncoder(LayaEncoder):
             "scale_gate": patchifier_aux["scale_gate"],
             "scale_logits": patchifier_aux["scale_logits"],
             "scale_gate_mean": patchifier_aux["scale_gate_mean"],
+            "component_gate": patchifier_aux.get("component_gate"),
+            "component_gate_mean": patchifier_aux.get("component_gate_mean"),
             "patchifier_N": patchifier_aux["patchifier_N"],
             "branch_patch_counts": patchifier_aux.get("branch_patch_counts"),
-            "patchifier_mode": self.temporal_patchifier_mode,
+            "patchifier_mode": self.patchifier_mode if self.patchifier_mode in {"multiscale", "trend_seasonal"} else self.temporal_patchifier_mode,
             "channel_mixer_relation_scores": None,
             "channel_mixer_relation_scale": None,
             "channel_mixer_relation_threshold": None,
@@ -2095,119 +2254,6 @@ class LayaTSPretrainer(LayaPretrainer):
     def __init__(self, config: Optional[LayaModelConfig] = None) -> None:
         super().__init__(config)
         self.encoder = LayaTSEncoder(self.config)
-        self.patchifier_mode = normalize_patchifier_mode(self.config.patchifier_mode)
-        if str(self.config.model_id).strip().lower() == "laya_ci_multiscale":
-            self.patchifier_mode = "multiscale"
-        self.multiscale_patch_sizes = tuple(int(value) for value in self.config.multiscale_patch_sizes)
-        self.multiscale_base_patch = int(self.config.multiscale_base_patch)
-        self.multiscale_fusion_gate: MultiScaleFusionGate | None = None
-        if self.patchifier_mode == "multiscale":
-            self.multiscale_fusion_gate = MultiScaleFusionGate(
-                self.config.proj_dim,
-                len(self.multiscale_patch_sizes),
-                temperature=self.config.multiscale_gate_temperature,
-            )
-
-    def _use_multiscale_jepa(self) -> bool:
-        return self.patchifier_mode == "multiscale"
-
-    def _reshape_ci_tokens(
-        self,
-        tokens: torch.Tensor,
-        *,
-        batch: int,
-        channels: int,
-    ) -> torch.Tensor:
-        if tokens.dim() != 3:
-            raise ValueError(f"Expected CI tokens [B*C, N, D], got {tuple(tokens.shape)}")
-        if tokens.shape[0] != batch * channels:
-            raise ValueError(
-                f"Expected leading dim {batch * channels} for CI tokens, got {tokens.shape[0]}"
-            )
-        return tokens.reshape(batch, channels, tokens.shape[1], tokens.shape[2])
-
-    def _align_latents_to_base_grid(
-        self,
-        latents: torch.Tensor,
-        *,
-        patch_size: int,
-        base_patch: int,
-        base_num_patches: int,
-    ) -> torch.Tensor:
-        if latents.dim() != 4:
-            raise ValueError(f"Expected latents [B, C, N, D], got {tuple(latents.shape)}")
-        if patch_size == base_patch:
-            return latents[:, :, :base_num_patches, :]
-        if patch_size < base_patch:
-            ratio = base_patch // patch_size
-            if base_patch % patch_size != 0:
-                raise ValueError(
-                    f"Base patch {base_patch} must be divisible by patch size {patch_size}"
-                )
-            target_tokens = base_num_patches * ratio
-            if latents.shape[2] < target_tokens:
-                pad = target_tokens - latents.shape[2]
-                latents = F.pad(latents, (0, 0, 0, pad))
-            latents = latents[:, :, :target_tokens, :]
-            batch, channels, _, dim = latents.shape
-            return latents.reshape(batch, channels, base_num_patches, ratio, dim).mean(dim=3)
-        ratio = patch_size // base_patch
-        if patch_size % base_patch != 0:
-            raise ValueError(
-                f"Patch size {patch_size} must be divisible by base patch {base_patch}"
-            )
-        expanded = latents.repeat_interleave(ratio, dim=2)
-        if expanded.shape[2] < base_num_patches:
-            pad = base_num_patches - expanded.shape[2]
-            expanded = F.pad(expanded, (0, 0, 0, pad))
-        return expanded[:, :, :base_num_patches, :]
-
-    def _base_mask_to_scale_mask(
-        self,
-        base_mask: torch.Tensor,
-        *,
-        patch_size: int,
-        base_patch: int,
-        scale_num_patches: int,
-    ) -> torch.Tensor:
-        if base_mask.dim() != 2:
-            raise ValueError(f"Expected base_mask [B, N], got {tuple(base_mask.shape)}")
-        if patch_size == base_patch:
-            return base_mask[:, :scale_num_patches]
-        if patch_size < base_patch:
-            ratio = base_patch // patch_size
-            repeated = base_mask.repeat_interleave(ratio, dim=1)
-            if repeated.shape[1] < scale_num_patches:
-                pad = scale_num_patches - repeated.shape[1]
-                repeated = F.pad(repeated, (0, pad), value=False)
-            return repeated[:, :scale_num_patches]
-        ratio = patch_size // base_patch
-        target_base_tokens = scale_num_patches * ratio
-        if base_mask.shape[1] < target_base_tokens:
-            pad = target_base_tokens - base_mask.shape[1]
-            base_mask = F.pad(base_mask, (0, pad), value=False)
-        reduced = base_mask[:, :target_base_tokens].reshape(base_mask.shape[0], scale_num_patches, ratio)
-        return reduced.any(dim=-1)
-
-    def _masked_mse(
-        self,
-        pred: torch.Tensor,
-        target: torch.Tensor,
-        mask: torch.Tensor,
-    ) -> torch.Tensor:
-        if pred.shape != target.shape:
-            raise ValueError(
-                f"pred and target must share shape, got {tuple(pred.shape)} vs {tuple(target.shape)}"
-            )
-        if mask.shape != pred.shape[:-1]:
-            raise ValueError(
-                f"mask must match pred/target without latent dim, got {tuple(mask.shape)} vs {tuple(pred.shape[:-1])}"
-            )
-        masked_pred = pred[mask]
-        masked_target = target[mask]
-        if masked_pred.numel() == 0 or masked_target.numel() == 0:
-            return pred.new_zeros(())
-        return F.mse_loss(masked_pred, masked_target)
 
     def forward(
         self,
@@ -2238,226 +2284,6 @@ class LayaTSPretrainer(LayaPretrainer):
             raise ValueError(
                 f"channel_positions shape {tuple(channel_positions.shape)} does not match input shape {tuple(x.shape)}"
             )
-
-        if self._use_multiscale_jepa():
-            if self.encoder.channel_mixer_type != "independent":
-                raise ValueError(
-                    "laya_ci_multiscale currently supports channel_mixer_type='independent' only."
-                )
-            if self.multiscale_fusion_gate is None:
-                raise RuntimeError("multiscale_fusion_gate is not initialized.")
-
-            batch, channels, time = x.shape
-            base_num_patches = math.ceil(time / self.multiscale_base_patch)
-            base_patch_mask = self._resolve_patch_mask(
-                batch_size=batch,
-                num_patches=base_num_patches,
-                device=x.device,
-                patch_mask=patch_mask,
-                patch_mask_seed=patch_mask_seed,
-            )
-
-            gate_input_scales: list[torch.Tensor] = []
-            target_fused: torch.Tensor | None = None
-            base_full: dict[str, torch.Tensor] | None = None
-            base_context: dict[str, torch.Tensor] | None = None
-
-            for patch_size in self.multiscale_patch_sizes:
-                scale_channel_tokens = self.encoder.embed_with_patch_size(x, patch_size)
-                scale_num_patches = scale_channel_tokens.shape[2]
-                scale_patch_mask = self._base_mask_to_scale_mask(
-                    base_patch_mask,
-                    patch_size=patch_size,
-                    base_patch=self.multiscale_base_patch,
-                    scale_num_patches=scale_num_patches,
-                )
-                patchifier_aux = {
-                    "scale_gate": None,
-                    "scale_logits": None,
-                    "scale_gate_mean": None,
-                    "patchifier_N": scale_num_patches,
-                    "branch_patch_counts": (scale_num_patches,),
-                    "patchifier_mode": f"multiscale_p{patch_size}",
-                }
-                with torch.no_grad():
-                    full_scale = self.encoder.forward_features(
-                        x,
-                        channel_positions=channel_positions,
-                        channel_mask=channel_mask,
-                        channel_text_embeddings=channel_text_embeddings,
-                        channel_stats_embeddings=channel_stats_embeddings,
-                        channel_tokens_override=scale_channel_tokens,
-                        patchifier_aux_override=patchifier_aux,
-                    )
-                with torch.no_grad():
-                    context_scale = self.encoder.forward_features(
-                        x,
-                        channel_positions=channel_positions,
-                        channel_mask=channel_mask,
-                        patch_mask=scale_patch_mask,
-                        channel_text_embeddings=channel_text_embeddings,
-                        channel_stats_embeddings=channel_stats_embeddings,
-                        channel_tokens_override=scale_channel_tokens,
-                        patchifier_aux_override=patchifier_aux,
-                    )
-                if patch_size == self.multiscale_base_patch:
-                    base_full = full_scale
-
-                target_scale = self.projector(
-                    self._reshape_ci_tokens(
-                        full_scale["mixed_tokens"],
-                        batch=batch,
-                        channels=channels,
-                    )
-                ).detach()
-                context_scale_tokens = self.projector(
-                    self._reshape_ci_tokens(
-                        context_scale["mixed_tokens"],
-                        batch=batch,
-                        channels=channels,
-                    )
-                )
-                aligned_context_scale = self._align_latents_to_base_grid(
-                    context_scale_tokens.detach(),
-                    patch_size=patch_size,
-                    base_patch=self.multiscale_base_patch,
-                    base_num_patches=base_num_patches,
-                )
-                gate_input_scales.append(aligned_context_scale)
-                aligned_target_scale = self._align_latents_to_base_grid(
-                    target_scale,
-                    patch_size=patch_size,
-                    base_patch=self.multiscale_base_patch,
-                    base_num_patches=base_num_patches,
-                )
-            gate_inputs = torch.stack(gate_input_scales, dim=3)
-            alpha = self.multiscale_fusion_gate(gate_inputs)
-            target_fused = gate_inputs.new_zeros(batch, channels, base_num_patches, self.config.proj_dim)
-            pred_fused: torch.Tensor | None = None
-
-            for scale_index, patch_size in enumerate(self.multiscale_patch_sizes):
-                scale_channel_tokens = self.encoder.embed_with_patch_size(x, patch_size)
-                scale_num_patches = scale_channel_tokens.shape[2]
-                scale_patch_mask = self._base_mask_to_scale_mask(
-                    base_patch_mask,
-                    patch_size=patch_size,
-                    base_patch=self.multiscale_base_patch,
-                    scale_num_patches=scale_num_patches,
-                )
-                patchifier_aux = {
-                    "scale_gate": None,
-                    "scale_logits": None,
-                    "scale_gate_mean": None,
-                    "patchifier_N": scale_num_patches,
-                    "branch_patch_counts": (scale_num_patches,),
-                    "patchifier_mode": f"multiscale_p{patch_size}",
-                }
-                with torch.no_grad():
-                    full_scale = self.encoder.forward_features(
-                        x,
-                        channel_positions=channel_positions,
-                        channel_mask=channel_mask,
-                        channel_text_embeddings=channel_text_embeddings,
-                        channel_stats_embeddings=channel_stats_embeddings,
-                        channel_tokens_override=scale_channel_tokens,
-                        patchifier_aux_override=patchifier_aux,
-                    )
-                context_scale = self.encoder.forward_features(
-                    x,
-                    channel_positions=channel_positions,
-                    channel_mask=channel_mask,
-                    patch_mask=scale_patch_mask,
-                    channel_text_embeddings=channel_text_embeddings,
-                    channel_stats_embeddings=channel_stats_embeddings,
-                    channel_tokens_override=scale_channel_tokens,
-                    patchifier_aux_override=patchifier_aux,
-                )
-                if patch_size == self.multiscale_base_patch:
-                    base_context = context_scale
-                target_scale = self.projector(
-                    self._reshape_ci_tokens(
-                        full_scale["mixed_tokens"],
-                        batch=batch,
-                        channels=channels,
-                    )
-                ).detach()
-                aligned_target_scale = self._align_latents_to_base_grid(
-                    target_scale,
-                    patch_size=patch_size,
-                    base_patch=self.multiscale_base_patch,
-                    base_num_patches=base_num_patches,
-                )
-                target_fused = target_fused + (
-                    alpha[:, :, :, scale_index].unsqueeze(-1) * aligned_target_scale
-                )
-                context_scale_tokens = self.projector(
-                    self._reshape_ci_tokens(
-                        context_scale["mixed_tokens"],
-                        batch=batch,
-                        channels=channels,
-                    )
-                )
-                ci_scale_mask = scale_patch_mask.unsqueeze(1).expand(batch, channels, scale_num_patches)
-                pred_scale = self.predictor(
-                    context_scale_tokens.reshape(batch * channels, scale_num_patches, self.config.proj_dim),
-                    patch_mask=ci_scale_mask.reshape(batch * channels, scale_num_patches),
-                ).reshape(batch, channels, scale_num_patches, self.config.proj_dim)
-                aligned_pred_scale = self._align_latents_to_base_grid(
-                    pred_scale,
-                    patch_size=patch_size,
-                    base_patch=self.multiscale_base_patch,
-                    base_num_patches=base_num_patches,
-                )
-                weighted_pred_scale = alpha[:, :, :, scale_index].unsqueeze(-1) * aligned_pred_scale
-                if pred_fused is None:
-                    pred_fused = weighted_pred_scale
-                else:
-                    pred_fused = pred_fused + weighted_pred_scale
-
-            if pred_fused is None:
-                raise RuntimeError("pred_fused was not initialized during multiscale forward.")
-            target_mask_base = base_patch_mask.unsqueeze(1).expand(batch, channels, base_num_patches)
-            pred_loss = self._masked_mse(pred_fused, target_fused.detach(), target_mask_base)
-
-            if base_full is None or base_context is None:
-                raise RuntimeError(
-                    f"Base patch {self.multiscale_base_patch} features were not collected during multiscale forward."
-                )
-            context_global = self.projector(base_context["channel_repr"].reshape(-1, self.config.embed_dim))
-            sigreg_loss = self.sigreg(context_global.unsqueeze(0))
-            query_loss = 0.5 * (base_full["query_loss"] + base_context["query_loss"])
-            loss = pred_loss + (self.config.sigreg_weight * sigreg_loss) + (self.config.query_loss_weight * query_loss)
-
-            metadata_usage = summarize_metadata_usage(base_full)
-            scale_means = alpha.detach().float().mean(dim=(0, 1, 2))
-            for idx, patch_size in enumerate(self.multiscale_patch_sizes):
-                metadata_usage[f"scale_weight_p{patch_size}"] = float(scale_means[idx].item())
-
-            pred_tokens = pred_fused.reshape(batch * channels, base_num_patches, self.config.proj_dim)
-            target_tokens = target_fused.detach().reshape(batch * channels, base_num_patches, self.config.proj_dim)
-            flat_patch_mask = target_mask_base.reshape(batch * channels, base_num_patches)
-            outputs = {
-                "loss": loss,
-                "pred_loss": pred_loss,
-                "sigreg_loss": sigreg_loss,
-                "query_loss": query_loss,
-                "patch_mask": flat_patch_mask,
-                "target_tokens": target_tokens,
-                "pred_tokens": pred_tokens,
-                "mixed_tokens": base_full["mixed_tokens"],
-                "mixed_repr": base_full["mixed_repr"],
-                "metadata_usage": metadata_usage,
-            }
-
-            if return_aux:
-                outputs.update(
-                    {
-                        "full_features": base_full,
-                        "context_features": base_context,
-                        "multiscale_alpha": alpha,
-                    }
-                )
-            return outputs
 
         num_patches = self.encoder.infer_num_patches(x.shape[-1])
         patch_mask = self._resolve_patch_mask(
@@ -2514,6 +2340,28 @@ class LayaTSPretrainer(LayaPretrainer):
             "mixed_repr": full["mixed_repr"],
             "metadata_usage": summarize_metadata_usage(full),
         }
+
+        scale_gate_mean = full.get("scale_gate_mean")
+        if scale_gate_mean is not None and torch.is_tensor(scale_gate_mean):
+            metadata_usage = dict(outputs["metadata_usage"])
+            if int(scale_gate_mean.numel()) == len(self.config.multiscale_patch_sizes):
+                for idx, patch_size in enumerate(self.config.multiscale_patch_sizes):
+                    metadata_usage[f"scale_weight_p{int(patch_size)}"] = float(
+                        scale_gate_mean[idx].detach().float().item()
+                    )
+            outputs["metadata_usage"] = metadata_usage
+
+        component_gate_mean = full.get("component_gate_mean")
+        if component_gate_mean is not None and torch.is_tensor(component_gate_mean):
+            metadata_usage = dict(outputs["metadata_usage"])
+            if int(component_gate_mean.numel()) == 2:
+                metadata_usage["scale_weight_trend"] = float(
+                    component_gate_mean[0].detach().float().item()
+                )
+                metadata_usage["scale_weight_seasonal"] = float(
+                    component_gate_mean[1].detach().float().item()
+                )
+            outputs["metadata_usage"] = metadata_usage
 
         if return_aux:
             outputs.update(

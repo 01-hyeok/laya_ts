@@ -771,10 +771,12 @@ def main(argv=None):
     p.add_argument("--seq_len", type=int, default=512)
     p.add_argument("--patch_size", type=int, default=PretrainConfig().patch_size)
     p.add_argument("--model_id", type=str, default=LayaModelConfig().model_id)
-    p.add_argument("--patchifier_mode", type=str, default=LayaModelConfig().patchifier_mode, choices=["single", "multiscale"])
+    p.add_argument("--patchifier_mode", type=str, default=LayaModelConfig().patchifier_mode, choices=["single", "multiscale", "trend_seasonal"])
     p.add_argument("--multiscale_patch_sizes", type=str, default=",".join(str(value) for value in LayaModelConfig().multiscale_patch_sizes))
     p.add_argument("--multiscale_base_patch", type=int, default=LayaModelConfig().multiscale_base_patch)
     p.add_argument("--multiscale_gate_temperature", type=float, default=LayaModelConfig().multiscale_gate_temperature)
+    p.add_argument("--trend_seasonal_kernel", type=int, default=LayaModelConfig().trend_seasonal_kernel)
+    p.add_argument("--trend_seasonal_gate_temperature", type=float, default=LayaModelConfig().trend_seasonal_gate_temperature)
     p.add_argument("--d_model", type=int, default=LayaModelConfig().embed_dim)
     p.add_argument("--stride", type=int, default=512)
     p.add_argument("--tsld_mode", type=str, default=getattr(PretrainConfig(), "tsld_mode", "univariate"), choices=["univariate", "multivariate"])
@@ -865,6 +867,15 @@ def main(argv=None):
         raise ValueError(
             "--multiscale_gate_temperature must be positive, "
             f"got {args.multiscale_gate_temperature}"
+        )
+    if args.trend_seasonal_kernel <= 0:
+        raise ValueError(
+            f"--trend_seasonal_kernel must be positive, got {args.trend_seasonal_kernel}"
+        )
+    if args.trend_seasonal_gate_temperature <= 0:
+        raise ValueError(
+            "--trend_seasonal_gate_temperature must be positive, "
+            f"got {args.trend_seasonal_gate_temperature}"
         )
     if args.d_model <= 0:
         raise ValueError(f"--d_model must be positive, got {args.d_model}")
@@ -1014,6 +1025,8 @@ def main(argv=None):
         multiscale_patch_sizes=multiscale_patch_sizes,
         multiscale_base_patch=args.multiscale_base_patch,
         multiscale_gate_temperature=args.multiscale_gate_temperature,
+        trend_seasonal_kernel=args.trend_seasonal_kernel,
+        trend_seasonal_gate_temperature=args.trend_seasonal_gate_temperature,
         embed_dim=args.d_model,
         depth=args.n_layers,
         num_heads=args.n_heads,
@@ -1128,6 +1141,9 @@ def main(argv=None):
         print(f"   - multiscale_patch_sizes: {model_cfg.multiscale_patch_sizes}")
         print(f"   - multiscale_base_patch: {model_cfg.multiscale_base_patch}")
         print(f"   - multiscale_gate_temperature: {model_cfg.multiscale_gate_temperature}")
+    if model_cfg.patchifier_mode == "trend_seasonal" or model_cfg.model_id == "laya_ci_decomp":
+        print(f"   - trend_seasonal_kernel: {model_cfg.trend_seasonal_kernel}")
+        print(f"   - trend_seasonal_gate_temperature: {model_cfg.trend_seasonal_gate_temperature}")
     print(f"   - metadata_fusion_mode: {model_cfg.metadata_fusion_mode}")
     print(f"   - channel_mixer_relation_mode: {model_cfg.channel_mixer_relation_mode}")
     if model_cfg.channel_mixer_relation_mode in {"laya_relation", "metadata_query_gate"}:

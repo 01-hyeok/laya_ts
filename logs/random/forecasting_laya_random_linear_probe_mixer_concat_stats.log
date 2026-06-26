@@ -1,0 +1,40 @@
+Stats metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
+   - HUFL: Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -4.418, maximum value is 2.652, median value is 0.128, and mean absolute value is 0.698.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Prediction Length: 96
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/20 | Train MSE: 0.2804 | Val MSE: 0.2762 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch   2/20 | Train MSE: 0.2528 | Val MSE: 0.2704 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch   3/20 | Train MSE: 0.2497 | Val MSE: 0.2679 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch   4/20 | Train MSE: 0.2486 | Val MSE: 0.2674 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch   5/20 | Train MSE: 0.2479 | Val MSE: 0.2656 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch   6/20 | Train MSE: 0.2475 | Val MSE: 0.2653 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch   7/20 | Train MSE: 0.2472 | Val MSE: 0.2671 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch   8/20 | Train MSE: 0.2469 | Val MSE: 0.2644 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch   9/20 | Train MSE: 0.2467 | Val MSE: 0.2649 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch  10/20 | Train MSE: 0.2465 | Val MSE: 0.2651 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch  11/20 | Train MSE: 0.2464 | Val MSE: 0.2653 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch  12/20 | Train MSE: 0.2463 | Val MSE: 0.2646 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch  13/20 | Train MSE: 0.2461 | Val MSE: 0.2647 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch  14/20 | Train MSE: 0.2462 | Val MSE: 0.2650 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Stats metadata preview | dataset=ETTm1 | domain=ETTm1 | channels=7
+   - HUFL: Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -4.418, maximum value is 2.652, median value is 0.128, and mean absolute value is 0.698.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: ETTm1 (Channels: 7)
+📊 Prediction Length: 96
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/20 | Train MSE: 0.2804 | Val MSE: 0.2762 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch   2/20 | Train MSE: 0.2528 | Val MSE: 0.2704 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch   3/20 | Train MSE: 0.2497 | Val MSE: 0.2679 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch   4/20 | Train MSE: 0.2486 | Val MSE: 0.2674 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch   5/20 | Train MSE: 0.2479 | Val MSE: 0.2656 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
+Epoch   6/20 | Train MSE: 0.2475 | Val MSE: 0.2653 | Train Meta: metadata_norm_mean=5.6358 | Val Meta: metadata_norm_mean=5.6358
