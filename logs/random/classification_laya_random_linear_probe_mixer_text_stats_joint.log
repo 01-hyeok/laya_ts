@@ -158,3 +158,4 @@ Epoch   8/50 | Train Loss: 0.7025 Acc: 0.5043 F1: 0.5043 | Val Loss: 0.7537 Acc:
 Epoch   9/50 | Train Loss: 0.7031 Acc: 0.5047 F1: 0.5046 | Val Loss: 0.7098 Acc: 0.4924 F1: 0.3314 | Train Meta: n/a | Val Meta: n/a
 Epoch  10/50 | Train Loss: 0.7015 Acc: 0.5089 F1: 0.5086 | Val Loss: 0.7601 Acc: 0.4915 F1: 0.3295 | Train Meta: n/a | Val Meta: n/a
 Epoch  11/50 | Train Loss: 0.7011 Acc: 0.5121 F1: 0.5120 | Val Loss: 0.6907 Acc: 0.5246 F1: 0.5196 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 0.7048 Acc: 0.5142 F1: 0.5137 | Val Loss: 0.6932 Acc: 0.5204 F1: 0.4546 | Train Meta: n/a | Val Meta: n/a

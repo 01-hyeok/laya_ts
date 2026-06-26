@@ -847,11 +847,13 @@ def main(argv=None):
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--save_dir", type=str, default="./checkpoints")
     p.add_argument("--log_dir", type=str, default="./runs")
+    p.add_argument("--checkpoint_data_name", type=str, default=None)
     p.add_argument("--log_every", type=int, default=10)
     p.add_argument("--save_every", type=int, default=1)
     p.add_argument("--save_attention_maps", action="store_true")
     p.add_argument("--attention_map_tag", type=str, default=None)
     args = p.parse_args(argv)
+    checkpoint_data_name = args.checkpoint_data_name or args.dataset_type
 
     if args.epochs <= 0:
         raise ValueError(f"--epochs must be positive, got {args.epochs}")
@@ -1392,9 +1394,9 @@ def main(argv=None):
                             for metric in val_metrics["per_dataset_metrics"]
                         },
                     }
-                    ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_epoch_{epoch}_step_{global_step}.pt")
-                    best_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_best.pt")
-                    last_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_last.pt")
+                    ckpt_path = os.path.join(args.save_dir, f"laya_ts_{checkpoint_data_name}_{args.variant}_epoch_{epoch}_step_{global_step}.pt")
+                    best_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{checkpoint_data_name}_{args.variant}_best.pt")
+                    last_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{checkpoint_data_name}_{args.variant}_last.pt")
                     torch.save(checkpoint, ckpt_path)
                     torch.save(checkpoint, last_ckpt_path)
                     if is_best:
@@ -1479,7 +1481,7 @@ def main(argv=None):
                         "best_val_loss": None,
                         "val_available": False,
                     }
-                    last_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_last.pt")
+                    last_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{checkpoint_data_name}_{args.variant}_last.pt")
                     torch.save(checkpoint, last_ckpt_path)
                     print(f"   -> Saved last checkpoint without validation at step {global_step}")
                 if global_step >= total_steps:
@@ -1574,9 +1576,9 @@ def main(argv=None):
                 "val_sigreg_loss": avg_val_sigreg_loss,
                 "val_query_loss": avg_val_query_loss,
             }
-            ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_epoch_{epoch}.pt")
-            best_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_best.pt")
-            last_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{args.dataset_type}_{args.variant}_last.pt")
+            ckpt_path = os.path.join(args.save_dir, f"laya_ts_{checkpoint_data_name}_{args.variant}_epoch_{epoch}.pt")
+            best_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{checkpoint_data_name}_{args.variant}_best.pt")
+            last_ckpt_path = os.path.join(args.save_dir, f"laya_ts_{checkpoint_data_name}_{args.variant}_last.pt")
             torch.save(checkpoint, ckpt_path)
             torch.save(checkpoint, last_ckpt_path)
             if is_best:

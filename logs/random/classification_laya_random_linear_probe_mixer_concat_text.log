@@ -166,3 +166,4 @@ Epoch   8/50 | Train Loss: 0.6913 Acc: 0.5323 F1: 0.5321 | Val Loss: 0.7299 Acc:
 Epoch   9/50 | Train Loss: 0.6954 Acc: 0.5298 F1: 0.5298 | Val Loss: 0.6920 Acc: 0.5407 F1: 0.4982 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
 Epoch  10/50 | Train Loss: 0.6944 Acc: 0.5276 F1: 0.5276 | Val Loss: 0.6907 Acc: 0.5153 F1: 0.4396 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
 Epoch  11/50 | Train Loss: 0.6917 Acc: 0.5321 F1: 0.5316 | Val Loss: 0.6953 Acc: 0.5255 F1: 0.4473 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335
+Epoch  12/50 | Train Loss: 0.6966 Acc: 0.5240 F1: 0.5237 | Val Loss: 0.6912 Acc: 0.5390 F1: 0.5078 | Train Meta: metadata_norm_mean=5.6335 | Val Meta: metadata_norm_mean=5.6335

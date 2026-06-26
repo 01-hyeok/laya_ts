@@ -109,6 +109,7 @@ python -u "./train_pretrain.py" \
   --channel_mixer_type ${LAYA_MODE} \
   --text_encoder_name_or_path ${TEXT_ENCODER_NAME} \
   --text_metadata_cache_dir ${TEXT_METADATA_CACHE_DIR} \
+  --checkpoint_data_name "${RUN_DATA}" \
   --save_dir ${SAVE_DIR} \
   --log_dir ${LOG_DIR} \
   "${EXTRA_ARGS[@]}"

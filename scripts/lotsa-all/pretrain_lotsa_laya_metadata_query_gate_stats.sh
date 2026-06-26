@@ -108,6 +108,7 @@ python -u "./train_pretrain.py" \
   --lotsa_windows_per_series "${LOTSA_WINDOWS_PER_SERIES}" \
   --lotsa_dataset_path "${LOTSA_DATASET_PATH}" \
   --channel_mixer_type "${LAYA_MODE}" \
+  --checkpoint_data_name "${RUN_DATA}" \
   --save_dir "${SAVE_DIR}" \
   --log_dir "${LOG_DIR}" \
   "${EXTRA_ARGS[@]}"
