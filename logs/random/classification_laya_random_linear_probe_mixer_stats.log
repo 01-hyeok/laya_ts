@@ -159,3 +159,901 @@ Epoch   9/50 | Train Loss: 0.7031 Acc: 0.5015 F1: 0.5014 | Val Loss: 0.7089 Acc:
 Epoch  10/50 | Train Loss: 0.7015 Acc: 0.5072 F1: 0.5069 | Val Loss: 0.7585 Acc: 0.4915 F1: 0.3295 | Train Meta: n/a | Val Meta: n/a
 Epoch  11/50 | Train Loss: 0.7011 Acc: 0.5130 F1: 0.5129 | Val Loss: 0.6900 Acc: 0.5323 F1: 0.5249 | Train Meta: n/a | Val Meta: n/a
 Epoch  12/50 | Train Loss: 0.7049 Acc: 0.5149 F1: 0.5143 | Val Loss: 0.6922 Acc: 0.5272 F1: 0.4679 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 0.6980 Acc: 0.5077 F1: 0.5073 | Val Loss: 0.6997 Acc: 0.4966 F1: 0.3503 | Train Meta: n/a | Val Meta: n/a
+Terminated
+Stats metadata preview | dataset=EthanolConcentration | domain=UEA | channels=3
+   - channel_1: Channel statistics over the training split: mean value is 0.000, standard deviation is 1.000, minimum value is -0.932, maximum value is 5.112, median value is -0.483, and mean absolute value is 0.815.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: EthanolConcentration (Channels: 3)
+📊 Classes: 4 | Sequence Length: 1751
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 1.4117 Acc: 0.2260 F1: 0.1718 | Val Loss: 1.4736 Acc: 0.2115 F1: 0.1132 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 1.3907 Acc: 0.2644 F1: 0.1687 | Val Loss: 1.4434 Acc: 0.4038 F1: 0.2785 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 1.3720 Acc: 0.2404 F1: 0.1788 | Val Loss: 1.4378 Acc: 0.2115 F1: 0.1762 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 1.3634 Acc: 0.2644 F1: 0.2038 | Val Loss: 1.4571 Acc: 0.2885 F1: 0.2279 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 1.3548 Acc: 0.3029 F1: 0.2975 | Val Loss: 1.4642 Acc: 0.2308 F1: 0.1952 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 1.3632 Acc: 0.2212 F1: 0.2223 | Val Loss: 1.4852 Acc: 0.2308 F1: 0.1927 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 1.3681 Acc: 0.2981 F1: 0.1908 | Val Loss: 1.5025 Acc: 0.2885 F1: 0.2544 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 1.3854 Acc: 0.2548 F1: 0.2230 | Val Loss: 1.4703 Acc: 0.2115 F1: 0.1762 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 1.3563 Acc: 0.2981 F1: 0.2452 | Val Loss: 1.5295 Acc: 0.2308 F1: 0.1648 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 1.3666 Acc: 0.2500 F1: 0.1813 | Val Loss: 1.4474 Acc: 0.4038 F1: 0.2910 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 1.3734 Acc: 0.2740 F1: 0.2231 | Val Loss: 1.4604 Acc: 0.2885 F1: 0.2432 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 1.3562 Acc: 0.2740 F1: 0.2262 | Val Loss: 1.4643 Acc: 0.2308 F1: 0.1867 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 1.3433 Acc: 0.3029 F1: 0.2502 | Val Loss: 1.5164 Acc: 0.2500 F1: 0.2309 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/50 | Train Loss: 1.3572 Acc: 0.2740 F1: 0.2443 | Val Loss: 1.4767 Acc: 0.3077 F1: 0.2463 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/50 | Train Loss: 1.3537 Acc: 0.3317 F1: 0.2487 | Val Loss: 1.4897 Acc: 0.1923 F1: 0.1813 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/50 | Train Loss: 1.3468 Acc: 0.2404 F1: 0.2139 | Val Loss: 1.4940 Acc: 0.2692 F1: 0.2228 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/50 | Train Loss: 1.3482 Acc: 0.2788 F1: 0.2416 | Val Loss: 1.4926 Acc: 0.2115 F1: 0.1793 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/50 | Train Loss: 1.3682 Acc: 0.2500 F1: 0.2405 | Val Loss: 1.5027 Acc: 0.3269 F1: 0.2633 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/50 | Train Loss: 1.4191 Acc: 0.2740 F1: 0.1947 | Val Loss: 1.4151 Acc: 0.3077 F1: 0.2436 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/50 | Train Loss: 1.3961 Acc: 0.2452 F1: 0.2118 | Val Loss: 1.5087 Acc: 0.2308 F1: 0.1905 | Train Meta: n/a | Val Meta: n/a
+Epoch  21/50 | Train Loss: 1.3912 Acc: 0.2837 F1: 0.1775 | Val Loss: 1.4505 Acc: 0.2500 F1: 0.2010 | Train Meta: n/a | Val Meta: n/a
+Epoch  22/50 | Train Loss: 1.3753 Acc: 0.2933 F1: 0.2427 | Val Loss: 1.5273 Acc: 0.2115 F1: 0.1641 | Train Meta: n/a | Val Meta: n/a
+Epoch  23/50 | Train Loss: 1.3541 Acc: 0.2981 F1: 0.2249 | Val Loss: 1.4851 Acc: 0.2308 F1: 0.2197 | Train Meta: n/a | Val Meta: n/a
+Epoch  24/50 | Train Loss: 1.3612 Acc: 0.2548 F1: 0.2465 | Val Loss: 1.4576 Acc: 0.2115 F1: 0.1721 | Train Meta: n/a | Val Meta: n/a
+Epoch  25/50 | Train Loss: 1.3755 Acc: 0.2404 F1: 0.2047 | Val Loss: 1.4711 Acc: 0.2885 F1: 0.2309 | Train Meta: n/a | Val Meta: n/a
+Epoch  26/50 | Train Loss: 1.3505 Acc: 0.3317 F1: 0.3033 | Val Loss: 1.5233 Acc: 0.2308 F1: 0.2227 | Train Meta: n/a | Val Meta: n/a
+Epoch  27/50 | Train Loss: 1.3460 Acc: 0.2933 F1: 0.2170 | Val Loss: 1.4877 Acc: 0.2115 F1: 0.2025 | Train Meta: n/a | Val Meta: n/a
+Epoch  28/50 | Train Loss: 1.3596 Acc: 0.2981 F1: 0.2552 | Val Loss: 1.4954 Acc: 0.2115 F1: 0.1697 | Train Meta: n/a | Val Meta: n/a
+Epoch  29/50 | Train Loss: 1.3689 Acc: 0.3029 F1: 0.2382 | Val Loss: 1.4257 Acc: 0.3269 F1: 0.2501 | Train Meta: n/a | Val Meta: n/a
+Epoch  30/50 | Train Loss: 1.3722 Acc: 0.3029 F1: 0.2699 | Val Loss: 1.5112 Acc: 0.1923 F1: 0.1543 | Train Meta: n/a | Val Meta: n/a
+Epoch  31/50 | Train Loss: 1.3713 Acc: 0.2692 F1: 0.2485 | Val Loss: 1.5440 Acc: 0.2308 F1: 0.2236 | Train Meta: n/a | Val Meta: n/a
+Epoch  32/50 | Train Loss: 1.3549 Acc: 0.2885 F1: 0.2350 | Val Loss: 1.5338 Acc: 0.2115 F1: 0.1797 | Train Meta: n/a | Val Meta: n/a
+Epoch  33/50 | Train Loss: 1.3581 Acc: 0.2740 F1: 0.2491 | Val Loss: 1.4224 Acc: 0.3269 F1: 0.2476 | Train Meta: n/a | Val Meta: n/a
+Epoch  34/50 | Train Loss: 1.3485 Acc: 0.3173 F1: 0.2928 | Val Loss: 1.5311 Acc: 0.2692 F1: 0.2718 | Train Meta: n/a | Val Meta: n/a
+Epoch  35/50 | Train Loss: 1.3526 Acc: 0.2692 F1: 0.2647 | Val Loss: 1.4638 Acc: 0.2115 F1: 0.1746 | Train Meta: n/a | Val Meta: n/a
+Epoch  36/50 | Train Loss: 1.3503 Acc: 0.2837 F1: 0.2392 | Val Loss: 1.5127 Acc: 0.2115 F1: 0.1265 | Train Meta: n/a | Val Meta: n/a
+Epoch  37/50 | Train Loss: 1.3539 Acc: 0.2596 F1: 0.2381 | Val Loss: 1.4443 Acc: 0.3077 F1: 0.2248 | Train Meta: n/a | Val Meta: n/a
+Epoch  38/50 | Train Loss: 1.3535 Acc: 0.2837 F1: 0.2708 | Val Loss: 1.5211 Acc: 0.1923 F1: 0.1554 | Train Meta: n/a | Val Meta: n/a
+Epoch  39/50 | Train Loss: 1.3548 Acc: 0.2644 F1: 0.2450 | Val Loss: 1.4928 Acc: 0.2115 F1: 0.1746 | Train Meta: n/a | Val Meta: n/a
+Epoch  40/50 | Train Loss: 1.3456 Acc: 0.2885 F1: 0.2449 | Val Loss: 1.4585 Acc: 0.3077 F1: 0.2493 | Train Meta: n/a | Val Meta: n/a
+Epoch  41/50 | Train Loss: 1.3512 Acc: 0.2404 F1: 0.2281 | Val Loss: 1.4705 Acc: 0.2308 F1: 0.1805 | Train Meta: n/a | Val Meta: n/a
+Epoch  42/50 | Train Loss: 1.3511 Acc: 0.2933 F1: 0.2529 | Val Loss: 1.5126 Acc: 0.2500 F1: 0.2418 | Train Meta: n/a | Val Meta: n/a
+Epoch  43/50 | Train Loss: 1.3498 Acc: 0.3077 F1: 0.2948 | Val Loss: 1.4872 Acc: 0.2115 F1: 0.1750 | Train Meta: n/a | Val Meta: n/a
+Epoch  44/50 | Train Loss: 1.3492 Acc: 0.3125 F1: 0.2494 | Val Loss: 1.4778 Acc: 0.2692 F1: 0.2216 | Train Meta: n/a | Val Meta: n/a
+Epoch  45/50 | Train Loss: 1.3644 Acc: 0.2981 F1: 0.2444 | Val Loss: 1.5048 Acc: 0.2308 F1: 0.1957 | Train Meta: n/a | Val Meta: n/a
+Epoch  46/50 | Train Loss: 1.3586 Acc: 0.2788 F1: 0.2084 | Val Loss: 1.4988 Acc: 0.2500 F1: 0.2463 | Train Meta: n/a | Val Meta: n/a
+Epoch  47/50 | Train Loss: 1.3492 Acc: 0.2885 F1: 0.2323 | Val Loss: 1.4518 Acc: 0.3654 F1: 0.2218 | Train Meta: n/a | Val Meta: n/a
+Epoch  48/50 | Train Loss: 1.3539 Acc: 0.3125 F1: 0.2759 | Val Loss: 1.5401 Acc: 0.2692 F1: 0.2758 | Train Meta: n/a | Val Meta: n/a
+Epoch  49/50 | Train Loss: 1.3520 Acc: 0.2933 F1: 0.2618 | Val Loss: 1.4311 Acc: 0.4038 F1: 0.2375 | Train Meta: n/a | Val Meta: n/a
+Epoch  50/50 | Train Loss: 1.3656 Acc: 0.2212 F1: 0.2205 | Val Loss: 1.5459 Acc: 0.2115 F1: 0.1797 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Classification Result (EthanolConcentration)
+Accuracy : 0.315589
+F1 (macro): 0.270174
+Stats metadata preview | dataset=FaceDetection | domain=UEA | channels=144
+   - channel_1: Channel statistics over the training split: mean value is 0.000, standard deviation is 1.000, minimum value is -12.948, maximum value is 17.769, median value is -0.001, and mean absolute value is 0.759.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: FaceDetection (Channels: 144)
+📊 Classes: 2 | Sequence Length: 62
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 0.7065 Acc: 0.5140 F1: 0.5140 | Val Loss: 0.6934 Acc: 0.5042 F1: 0.3888 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 0.7082 Acc: 0.5006 F1: 0.5006 | Val Loss: 0.6992 Acc: 0.4924 F1: 0.3314 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 0.7085 Acc: 0.5155 F1: 0.5148 | Val Loss: 0.6916 Acc: 0.5153 F1: 0.4451 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 0.6980 Acc: 0.5089 F1: 0.5089 | Val Loss: 0.7225 Acc: 0.4915 F1: 0.3295 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 0.6998 Acc: 0.5151 F1: 0.5150 | Val Loss: 0.7019 Acc: 0.4924 F1: 0.3314 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 0.7015 Acc: 0.5066 F1: 0.5056 | Val Loss: 0.7600 Acc: 0.5093 F1: 0.3390 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 0.7038 Acc: 0.5057 F1: 0.5057 | Val Loss: 0.6900 Acc: 0.5323 F1: 0.5236 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 0.7026 Acc: 0.5074 F1: 0.5074 | Val Loss: 0.7530 Acc: 0.5093 F1: 0.3390 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 0.7031 Acc: 0.5015 F1: 0.5014 | Val Loss: 0.7089 Acc: 0.4924 F1: 0.3314 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 0.7015 Acc: 0.5072 F1: 0.5069 | Val Loss: 0.7585 Acc: 0.4915 F1: 0.3295 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 0.7011 Acc: 0.5130 F1: 0.5129 | Val Loss: 0.6900 Acc: 0.5323 F1: 0.5249 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 0.7049 Acc: 0.5149 F1: 0.5143 | Val Loss: 0.6922 Acc: 0.5272 F1: 0.4679 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 0.6980 Acc: 0.5077 F1: 0.5073 | Val Loss: 0.6997 Acc: 0.4966 F1: 0.3503 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/50 | Train Loss: 0.6940 Acc: 0.5261 F1: 0.5261 | Val Loss: 0.6928 Acc: 0.5280 F1: 0.4570 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/50 | Train Loss: 0.6997 Acc: 0.5045 F1: 0.5042 | Val Loss: 0.6916 Acc: 0.5348 F1: 0.4886 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/50 | Train Loss: 0.6943 Acc: 0.5266 F1: 0.5257 | Val Loss: 0.6999 Acc: 0.5102 F1: 0.3469 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/50 | Train Loss: 0.6916 Acc: 0.5261 F1: 0.5261 | Val Loss: 0.6885 Acc: 0.5331 F1: 0.5122 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/50 | Train Loss: 0.6971 Acc: 0.5102 F1: 0.5102 | Val Loss: 0.7013 Acc: 0.5102 F1: 0.3469 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/50 | Train Loss: 0.6960 Acc: 0.5181 F1: 0.5175 | Val Loss: 0.6964 Acc: 0.5085 F1: 0.3603 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/50 | Train Loss: 0.6953 Acc: 0.5181 F1: 0.5181 | Val Loss: 0.6899 Acc: 0.5204 F1: 0.4501 | Train Meta: n/a | Val Meta: n/a
+Epoch  21/50 | Train Loss: 0.6987 Acc: 0.5183 F1: 0.5182 | Val Loss: 0.7577 Acc: 0.4915 F1: 0.3295 | Train Meta: n/a | Val Meta: n/a
+Epoch  22/50 | Train Loss: 0.6930 Acc: 0.5219 F1: 0.5213 | Val Loss: 0.6880 Acc: 0.5297 F1: 0.5182 | Train Meta: n/a | Val Meta: n/a
+Epoch  23/50 | Train Loss: 0.6920 Acc: 0.5253 F1: 0.5252 | Val Loss: 0.6937 Acc: 0.5119 F1: 0.3886 | Train Meta: n/a | Val Meta: n/a
+Epoch  24/50 | Train Loss: 0.6946 Acc: 0.5219 F1: 0.5206 | Val Loss: 0.6907 Acc: 0.5178 F1: 0.4328 | Train Meta: n/a | Val Meta: n/a
+Epoch  25/50 | Train Loss: 0.6928 Acc: 0.5323 F1: 0.5320 | Val Loss: 0.7141 Acc: 0.4941 F1: 0.3351 | Train Meta: n/a | Val Meta: n/a
+Epoch  26/50 | Train Loss: 0.6947 Acc: 0.5251 F1: 0.5250 | Val Loss: 0.7032 Acc: 0.5008 F1: 0.3604 | Train Meta: n/a | Val Meta: n/a
+Epoch  27/50 | Train Loss: 0.6909 Acc: 0.5308 F1: 0.5308 | Val Loss: 0.7028 Acc: 0.5017 F1: 0.3621 | Train Meta: n/a | Val Meta: n/a
+Epoch  28/50 | Train Loss: 0.6894 Acc: 0.5321 F1: 0.5317 | Val Loss: 0.6957 Acc: 0.5280 F1: 0.4377 | Train Meta: n/a | Val Meta: n/a
+Epoch  29/50 | Train Loss: 0.6895 Acc: 0.5308 F1: 0.5308 | Val Loss: 0.6877 Acc: 0.5280 F1: 0.5090 | Train Meta: n/a | Val Meta: n/a
+Epoch  30/50 | Train Loss: 0.6899 Acc: 0.5276 F1: 0.5276 | Val Loss: 0.6907 Acc: 0.5119 F1: 0.4199 | Train Meta: n/a | Val Meta: n/a
+Epoch  31/50 | Train Loss: 0.6899 Acc: 0.5251 F1: 0.5250 | Val Loss: 0.6882 Acc: 0.5297 F1: 0.4962 | Train Meta: n/a | Val Meta: n/a
+Epoch  32/50 | Train Loss: 0.6947 Acc: 0.5162 F1: 0.5160 | Val Loss: 0.6945 Acc: 0.5127 F1: 0.3843 | Train Meta: n/a | Val Meta: n/a
+Epoch  33/50 | Train Loss: 0.6922 Acc: 0.5242 F1: 0.5241 | Val Loss: 0.6966 Acc: 0.5272 F1: 0.4307 | Train Meta: n/a | Val Meta: n/a
+Epoch  34/50 | Train Loss: 0.6881 Acc: 0.5425 F1: 0.5420 | Val Loss: 0.6877 Acc: 0.5306 F1: 0.5125 | Train Meta: n/a | Val Meta: n/a
+Epoch  35/50 | Train Loss: 0.6892 Acc: 0.5359 F1: 0.5358 | Val Loss: 0.6944 Acc: 0.5297 F1: 0.4477 | Train Meta: n/a | Val Meta: n/a
+Epoch  36/50 | Train Loss: 0.6873 Acc: 0.5370 F1: 0.5367 | Val Loss: 0.6883 Acc: 0.5407 F1: 0.5337 | Train Meta: n/a | Val Meta: n/a
+Epoch  37/50 | Train Loss: 0.6918 Acc: 0.5251 F1: 0.5249 | Val Loss: 0.6999 Acc: 0.5110 F1: 0.3602 | Train Meta: n/a | Val Meta: n/a
+Epoch  38/50 | Train Loss: 0.6905 Acc: 0.5293 F1: 0.5293 | Val Loss: 0.6886 Acc: 0.5424 F1: 0.5311 | Train Meta: n/a | Val Meta: n/a
+Epoch  39/50 | Train Loss: 0.6896 Acc: 0.5376 F1: 0.5376 | Val Loss: 0.6877 Acc: 0.5458 F1: 0.5442 | Train Meta: n/a | Val Meta: n/a
+Epoch  40/50 | Train Loss: 0.6882 Acc: 0.5372 F1: 0.5372 | Val Loss: 0.6871 Acc: 0.5382 F1: 0.5320 | Train Meta: n/a | Val Meta: n/a
+Epoch  41/50 | Train Loss: 0.6919 Acc: 0.5153 F1: 0.5149 | Val Loss: 0.6905 Acc: 0.5407 F1: 0.5068 | Train Meta: n/a | Val Meta: n/a
+Epoch  42/50 | Train Loss: 0.6886 Acc: 0.5400 F1: 0.5395 | Val Loss: 0.6874 Acc: 0.5289 F1: 0.4996 | Train Meta: n/a | Val Meta: n/a
+Epoch  43/50 | Train Loss: 0.6881 Acc: 0.5410 F1: 0.5409 | Val Loss: 0.6879 Acc: 0.5424 F1: 0.5382 | Train Meta: n/a | Val Meta: n/a
+Epoch  44/50 | Train Loss: 0.6890 Acc: 0.5304 F1: 0.5304 | Val Loss: 0.6875 Acc: 0.5467 F1: 0.5440 | Train Meta: n/a | Val Meta: n/a
+Epoch  45/50 | Train Loss: 0.6901 Acc: 0.5310 F1: 0.5310 | Val Loss: 0.6875 Acc: 0.5314 F1: 0.5274 | Train Meta: n/a | Val Meta: n/a
+Epoch  46/50 | Train Loss: 0.6891 Acc: 0.5393 F1: 0.5391 | Val Loss: 0.6882 Acc: 0.5492 F1: 0.5378 | Train Meta: n/a | Val Meta: n/a
+Epoch  47/50 | Train Loss: 0.6876 Acc: 0.5364 F1: 0.5362 | Val Loss: 0.6868 Acc: 0.5374 F1: 0.5329 | Train Meta: n/a | Val Meta: n/a
+Epoch  48/50 | Train Loss: 0.6886 Acc: 0.5366 F1: 0.5362 | Val Loss: 0.6880 Acc: 0.5357 F1: 0.4910 | Train Meta: n/a | Val Meta: n/a
+Epoch  49/50 | Train Loss: 0.6889 Acc: 0.5330 F1: 0.5329 | Val Loss: 0.6948 Acc: 0.5365 F1: 0.4606 | Train Meta: n/a | Val Meta: n/a
+Epoch  50/50 | Train Loss: 0.6885 Acc: 0.5366 F1: 0.5360 | Val Loss: 0.6869 Acc: 0.5467 F1: 0.5465 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Classification Result (FaceDetection)
+Accuracy : 0.555619
+F1 (macro): 0.552589
+Stats metadata preview | dataset=Handwriting | domain=UEA | channels=3
+   - channel_1: Channel statistics over the training split: mean value is 0.000, standard deviation is 1.000, minimum value is -5.822, maximum value is 9.137, median value is 0.003, and mean absolute value is 0.538.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: Handwriting (Channels: 3)
+📊 Classes: 26 | Sequence Length: 152
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 3.2466 Acc: 0.0179 F1: 0.0052 | Val Loss: 3.3627 Acc: 0.0000 F1: 0.0000 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 3.0106 Acc: 0.0446 F1: 0.0047 | Val Loss: 3.5326 Acc: 0.0333 F1: 0.0036 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 3.0023 Acc: 0.0714 F1: 0.0053 | Val Loss: 3.5476 Acc: 0.0667 F1: 0.0137 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 2.9731 Acc: 0.0446 F1: 0.0135 | Val Loss: 3.4812 Acc: 0.0333 F1: 0.0038 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 2.9735 Acc: 0.0714 F1: 0.0163 | Val Loss: 3.3760 Acc: 0.1000 F1: 0.0101 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 2.9667 Acc: 0.0804 F1: 0.0100 | Val Loss: 3.3320 Acc: 0.1333 F1: 0.0407 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 2.9533 Acc: 0.0982 F1: 0.0197 | Val Loss: 3.4045 Acc: 0.0333 F1: 0.0036 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 2.9410 Acc: 0.0714 F1: 0.0169 | Val Loss: 3.3937 Acc: 0.0333 F1: 0.0053 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 2.9508 Acc: 0.1071 F1: 0.0318 | Val Loss: 3.3392 Acc: 0.0333 F1: 0.0050 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 2.9456 Acc: 0.0893 F1: 0.0364 | Val Loss: 3.3421 Acc: 0.1333 F1: 0.0291 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 2.9162 Acc: 0.0893 F1: 0.0159 | Val Loss: 3.3641 Acc: 0.1000 F1: 0.0105 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 2.9063 Acc: 0.0714 F1: 0.0159 | Val Loss: 3.4607 Acc: 0.0333 F1: 0.0036 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 2.9111 Acc: 0.0893 F1: 0.0154 | Val Loss: 3.4429 Acc: 0.0333 F1: 0.0036 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/50 | Train Loss: 2.9145 Acc: 0.0714 F1: 0.0171 | Val Loss: 3.4156 Acc: 0.1000 F1: 0.0099 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/50 | Train Loss: 2.9091 Acc: 0.0714 F1: 0.0097 | Val Loss: 3.4312 Acc: 0.0333 F1: 0.0044 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/50 | Train Loss: 2.8875 Acc: 0.0982 F1: 0.0149 | Val Loss: 3.4114 Acc: 0.0667 F1: 0.0170 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/50 | Train Loss: 2.8826 Acc: 0.1071 F1: 0.0357 | Val Loss: 3.3942 Acc: 0.0333 F1: 0.0042 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/50 | Train Loss: 2.8661 Acc: 0.1339 F1: 0.0390 | Val Loss: 3.3968 Acc: 0.1333 F1: 0.0330 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/50 | Train Loss: 2.8728 Acc: 0.1161 F1: 0.0253 | Val Loss: 3.3596 Acc: 0.0667 F1: 0.0105 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/50 | Train Loss: 2.8614 Acc: 0.0982 F1: 0.0356 | Val Loss: 3.3382 Acc: 0.0667 F1: 0.0307 | Train Meta: n/a | Val Meta: n/a
+Epoch  21/50 | Train Loss: 2.8656 Acc: 0.1250 F1: 0.0297 | Val Loss: 3.3258 Acc: 0.0333 F1: 0.0046 | Train Meta: n/a | Val Meta: n/a
+Epoch  22/50 | Train Loss: 2.8534 Acc: 0.0893 F1: 0.0155 | Val Loss: 3.3789 Acc: 0.1333 F1: 0.0241 | Train Meta: n/a | Val Meta: n/a
+Epoch  23/50 | Train Loss: 2.8314 Acc: 0.1429 F1: 0.0592 | Val Loss: 3.4590 Acc: 0.0667 F1: 0.0164 | Train Meta: n/a | Val Meta: n/a
+Epoch  24/50 | Train Loss: 2.8662 Acc: 0.0982 F1: 0.0383 | Val Loss: 3.3675 Acc: 0.1333 F1: 0.0527 | Train Meta: n/a | Val Meta: n/a
+Epoch  25/50 | Train Loss: 2.8333 Acc: 0.1071 F1: 0.0205 | Val Loss: 3.3349 Acc: 0.1000 F1: 0.0121 | Train Meta: n/a | Val Meta: n/a
+Epoch  26/50 | Train Loss: 2.8305 Acc: 0.1339 F1: 0.0359 | Val Loss: 3.3513 Acc: 0.1000 F1: 0.0216 | Train Meta: n/a | Val Meta: n/a
+Epoch  27/50 | Train Loss: 2.8431 Acc: 0.1607 F1: 0.0587 | Val Loss: 3.3855 Acc: 0.0667 F1: 0.0207 | Train Meta: n/a | Val Meta: n/a
+Epoch  28/50 | Train Loss: 2.8078 Acc: 0.1161 F1: 0.0315 | Val Loss: 3.4145 Acc: 0.0333 F1: 0.0045 | Train Meta: n/a | Val Meta: n/a
+Epoch  29/50 | Train Loss: 2.8083 Acc: 0.1518 F1: 0.0698 | Val Loss: 3.3779 Acc: 0.1000 F1: 0.0158 | Train Meta: n/a | Val Meta: n/a
+Epoch  30/50 | Train Loss: 2.8307 Acc: 0.1429 F1: 0.0760 | Val Loss: 3.3508 Acc: 0.0667 F1: 0.0325 | Train Meta: n/a | Val Meta: n/a
+Epoch  31/50 | Train Loss: 2.7982 Acc: 0.1071 F1: 0.0507 | Val Loss: 3.3917 Acc: 0.0667 F1: 0.0183 | Train Meta: n/a | Val Meta: n/a
+Epoch  32/50 | Train Loss: 2.7987 Acc: 0.1518 F1: 0.0647 | Val Loss: 3.3753 Acc: 0.1000 F1: 0.0143 | Train Meta: n/a | Val Meta: n/a
+Epoch  33/50 | Train Loss: 2.7845 Acc: 0.1339 F1: 0.0567 | Val Loss: 3.3593 Acc: 0.1000 F1: 0.0225 | Train Meta: n/a | Val Meta: n/a
+Epoch  34/50 | Train Loss: 2.7884 Acc: 0.1429 F1: 0.0617 | Val Loss: 3.4349 Acc: 0.0667 F1: 0.0250 | Train Meta: n/a | Val Meta: n/a
+Epoch  35/50 | Train Loss: 2.7879 Acc: 0.1339 F1: 0.0558 | Val Loss: 3.4264 Acc: 0.0333 F1: 0.0040 | Train Meta: n/a | Val Meta: n/a
+Epoch  36/50 | Train Loss: 2.7977 Acc: 0.1161 F1: 0.0586 | Val Loss: 3.3479 Acc: 0.1000 F1: 0.0130 | Train Meta: n/a | Val Meta: n/a
+Epoch  37/50 | Train Loss: 2.7769 Acc: 0.1250 F1: 0.0546 | Val Loss: 3.3610 Acc: 0.0667 F1: 0.0127 | Train Meta: n/a | Val Meta: n/a
+Epoch  38/50 | Train Loss: 2.7576 Acc: 0.1607 F1: 0.0829 | Val Loss: 3.4268 Acc: 0.0333 F1: 0.0062 | Train Meta: n/a | Val Meta: n/a
+Epoch  39/50 | Train Loss: 2.7707 Acc: 0.1339 F1: 0.0587 | Val Loss: 3.4347 Acc: 0.1333 F1: 0.0714 | Train Meta: n/a | Val Meta: n/a
+Epoch  40/50 | Train Loss: 2.7630 Acc: 0.1607 F1: 0.0519 | Val Loss: 3.4062 Acc: 0.1000 F1: 0.0143 | Train Meta: n/a | Val Meta: n/a
+Epoch  41/50 | Train Loss: 2.7873 Acc: 0.1339 F1: 0.0502 | Val Loss: 3.3020 Acc: 0.1000 F1: 0.0263 | Train Meta: n/a | Val Meta: n/a
+Epoch  42/50 | Train Loss: 2.7252 Acc: 0.1518 F1: 0.0573 | Val Loss: 3.4013 Acc: 0.0667 F1: 0.0200 | Train Meta: n/a | Val Meta: n/a
+Epoch  43/50 | Train Loss: 2.7336 Acc: 0.1429 F1: 0.0567 | Val Loss: 3.4097 Acc: 0.0667 F1: 0.0112 | Train Meta: n/a | Val Meta: n/a
+Epoch  44/50 | Train Loss: 2.7316 Acc: 0.1518 F1: 0.0495 | Val Loss: 3.4148 Acc: 0.1000 F1: 0.0705 | Train Meta: n/a | Val Meta: n/a
+Epoch  45/50 | Train Loss: 2.7395 Acc: 0.1607 F1: 0.0480 | Val Loss: 3.3564 Acc: 0.1333 F1: 0.0635 | Train Meta: n/a | Val Meta: n/a
+Epoch  46/50 | Train Loss: 2.7223 Acc: 0.1696 F1: 0.0682 | Val Loss: 3.3622 Acc: 0.1000 F1: 0.0295 | Train Meta: n/a | Val Meta: n/a
+Epoch  47/50 | Train Loss: 2.7302 Acc: 0.1518 F1: 0.0632 | Val Loss: 3.3959 Acc: 0.1000 F1: 0.0386 | Train Meta: n/a | Val Meta: n/a
+Epoch  48/50 | Train Loss: 2.7000 Acc: 0.1696 F1: 0.0659 | Val Loss: 3.3541 Acc: 0.1000 F1: 0.0272 | Train Meta: n/a | Val Meta: n/a
+Epoch  49/50 | Train Loss: 2.7026 Acc: 0.1429 F1: 0.0431 | Val Loss: 3.3725 Acc: 0.1000 F1: 0.0268 | Train Meta: n/a | Val Meta: n/a
+Epoch  50/50 | Train Loss: 2.6913 Acc: 0.1429 F1: 0.0675 | Val Loss: 3.4109 Acc: 0.1333 F1: 0.0349 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Classification Result (Handwriting)
+Accuracy : 0.045882
+F1 (macro): 0.021805
+Stats metadata preview | dataset=Heartbeat | domain=UEA | channels=61
+   - channel_1: Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -0.301, maximum value is 45.156, median value is -0.151, and mean absolute value is 0.270.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: Heartbeat (Channels: 61)
+📊 Classes: 2 | Sequence Length: 405
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 0.5764 Acc: 0.7125 F1: 0.5022 | Val Loss: 0.7095 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 0.5479 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.7726 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 0.5664 Acc: 0.7438 F1: 0.4265 | Val Loss: 0.6907 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 0.5568 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.7620 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 0.5383 Acc: 0.7625 F1: 0.4326 | Val Loss: 0.7032 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 0.5583 Acc: 0.7438 F1: 0.4265 | Val Loss: 0.6821 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 0.5626 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.7082 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 0.5453 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.6841 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 0.5502 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.7810 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 0.5528 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.7242 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 0.5541 Acc: 0.7562 F1: 0.4306 | Val Loss: 0.7433 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 0.5514 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.7062 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 0.5482 Acc: 0.7438 F1: 0.4265 | Val Loss: 0.6831 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/50 | Train Loss: 0.5414 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.7081 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/50 | Train Loss: 0.5396 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.7039 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/50 | Train Loss: 0.5485 Acc: 0.7438 F1: 0.4265 | Val Loss: 0.7041 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/50 | Train Loss: 0.5520 Acc: 0.7438 F1: 0.4265 | Val Loss: 0.6758 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/50 | Train Loss: 0.5318 Acc: 0.7562 F1: 0.4306 | Val Loss: 0.7428 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/50 | Train Loss: 0.5414 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.6635 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/50 | Train Loss: 0.5516 Acc: 0.7438 F1: 0.4265 | Val Loss: 0.6844 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  21/50 | Train Loss: 0.5501 Acc: 0.7438 F1: 0.4265 | Val Loss: 0.6737 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  22/50 | Train Loss: 0.5413 Acc: 0.7438 F1: 0.4265 | Val Loss: 0.7264 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  23/50 | Train Loss: 0.5349 Acc: 0.7562 F1: 0.4306 | Val Loss: 0.7000 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  24/50 | Train Loss: 0.5414 Acc: 0.7438 F1: 0.4265 | Val Loss: 0.7012 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  25/50 | Train Loss: 0.5512 Acc: 0.7438 F1: 0.4265 | Val Loss: 0.7240 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  26/50 | Train Loss: 0.5328 Acc: 0.7562 F1: 0.4306 | Val Loss: 0.6657 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  27/50 | Train Loss: 0.5419 Acc: 0.7438 F1: 0.4265 | Val Loss: 0.6967 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  28/50 | Train Loss: 0.5352 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.7172 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  29/50 | Train Loss: 0.5299 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.6937 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  30/50 | Train Loss: 0.5382 Acc: 0.7500 F1: 0.4519 | Val Loss: 0.7266 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  31/50 | Train Loss: 0.5674 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.6841 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  32/50 | Train Loss: 0.5640 Acc: 0.7500 F1: 0.5098 | Val Loss: 0.7470 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  33/50 | Train Loss: 0.5666 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.6770 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  34/50 | Train Loss: 0.5551 Acc: 0.7312 F1: 0.4440 | Val Loss: 0.7333 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  35/50 | Train Loss: 0.5495 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.6655 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  36/50 | Train Loss: 0.5224 Acc: 0.7562 F1: 0.4306 | Val Loss: 0.6991 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  37/50 | Train Loss: 0.5379 Acc: 0.7500 F1: 0.4519 | Val Loss: 0.6955 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  38/50 | Train Loss: 0.5296 Acc: 0.7562 F1: 0.4306 | Val Loss: 0.6875 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  39/50 | Train Loss: 0.5253 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.7061 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  40/50 | Train Loss: 0.5329 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.6729 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  41/50 | Train Loss: 0.5563 Acc: 0.7438 F1: 0.5218 | Val Loss: 0.7387 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  42/50 | Train Loss: 0.5378 Acc: 0.7562 F1: 0.4306 | Val Loss: 0.7277 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  43/50 | Train Loss: 0.5157 Acc: 0.7562 F1: 0.4545 | Val Loss: 0.6498 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  44/50 | Train Loss: 0.5383 Acc: 0.7375 F1: 0.4245 | Val Loss: 0.6884 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  45/50 | Train Loss: 0.5420 Acc: 0.7750 F1: 0.5430 | Val Loss: 0.7276 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  46/50 | Train Loss: 0.5682 Acc: 0.7500 F1: 0.4286 | Val Loss: 0.7281 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  47/50 | Train Loss: 0.5376 Acc: 0.7562 F1: 0.5301 | Val Loss: 0.6417 Acc: 0.6250 F1: 0.4398 | Train Meta: n/a | Val Meta: n/a
+Epoch  48/50 | Train Loss: 0.5841 Acc: 0.7500 F1: 0.4519 | Val Loss: 0.7083 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  49/50 | Train Loss: 0.5537 Acc: 0.7500 F1: 0.5098 | Val Loss: 0.6822 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  50/50 | Train Loss: 0.5457 Acc: 0.7438 F1: 0.4265 | Val Loss: 0.6773 Acc: 0.6000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Classification Result (Heartbeat)
+Accuracy : 0.731707
+F1 (macro): 0.484241
+Stats metadata preview | dataset=JapaneseVowels | domain=UEA | channels=12
+   - channel_1: Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -2.290, maximum value is 2.841, median value is -0.298, and mean absolute value is 0.896.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: JapaneseVowels (Channels: 12)
+📊 Classes: 9 | Sequence Length: 26
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 2.1919 Acc: 0.0433 F1: 0.0317 | Val Loss: 2.3009 Acc: 0.0926 F1: 0.0188 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 2.1503 Acc: 0.0913 F1: 0.0296 | Val Loss: 2.2481 Acc: 0.0185 F1: 0.0067 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 2.1157 Acc: 0.1442 F1: 0.0817 | Val Loss: 2.2128 Acc: 0.1111 F1: 0.0562 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 2.0941 Acc: 0.1442 F1: 0.0816 | Val Loss: 2.2025 Acc: 0.0556 F1: 0.0117 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 2.1096 Acc: 0.1298 F1: 0.0597 | Val Loss: 2.1568 Acc: 0.1481 F1: 0.1032 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 2.0608 Acc: 0.2308 F1: 0.1714 | Val Loss: 2.1483 Acc: 0.1852 F1: 0.0808 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 2.0687 Acc: 0.1635 F1: 0.0952 | Val Loss: 2.1526 Acc: 0.1481 F1: 0.0839 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 2.0563 Acc: 0.2212 F1: 0.1504 | Val Loss: 2.1677 Acc: 0.2222 F1: 0.0913 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 2.0247 Acc: 0.2115 F1: 0.1424 | Val Loss: 2.1301 Acc: 0.1667 F1: 0.1349 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 2.0162 Acc: 0.2115 F1: 0.1281 | Val Loss: 2.0977 Acc: 0.2037 F1: 0.1492 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 2.0074 Acc: 0.2500 F1: 0.1805 | Val Loss: 2.1146 Acc: 0.2037 F1: 0.1086 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 1.9888 Acc: 0.2548 F1: 0.1639 | Val Loss: 2.0411 Acc: 0.2037 F1: 0.1396 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 1.9764 Acc: 0.2260 F1: 0.1409 | Val Loss: 2.1010 Acc: 0.2037 F1: 0.1924 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/50 | Train Loss: 1.9488 Acc: 0.2885 F1: 0.2310 | Val Loss: 2.0240 Acc: 0.2778 F1: 0.1667 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/50 | Train Loss: 1.9442 Acc: 0.2548 F1: 0.1773 | Val Loss: 2.0180 Acc: 0.2222 F1: 0.2145 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/50 | Train Loss: 1.9309 Acc: 0.2596 F1: 0.1517 | Val Loss: 2.0136 Acc: 0.2037 F1: 0.1342 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/50 | Train Loss: 1.9175 Acc: 0.3029 F1: 0.2485 | Val Loss: 2.0088 Acc: 0.2778 F1: 0.1478 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/50 | Train Loss: 1.9089 Acc: 0.2788 F1: 0.1961 | Val Loss: 2.0120 Acc: 0.2037 F1: 0.1211 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/50 | Train Loss: 1.9138 Acc: 0.3173 F1: 0.2733 | Val Loss: 2.0023 Acc: 0.2407 F1: 0.2053 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/50 | Train Loss: 1.8951 Acc: 0.3365 F1: 0.2617 | Val Loss: 1.9494 Acc: 0.2222 F1: 0.1187 | Train Meta: n/a | Val Meta: n/a
+Epoch  21/50 | Train Loss: 1.8642 Acc: 0.3077 F1: 0.2087 | Val Loss: 1.9823 Acc: 0.2593 F1: 0.2122 | Train Meta: n/a | Val Meta: n/a
+Epoch  22/50 | Train Loss: 1.8647 Acc: 0.3365 F1: 0.2536 | Val Loss: 1.9714 Acc: 0.2593 F1: 0.1664 | Train Meta: n/a | Val Meta: n/a
+Epoch  23/50 | Train Loss: 1.8618 Acc: 0.2452 F1: 0.1571 | Val Loss: 1.8912 Acc: 0.2593 F1: 0.1321 | Train Meta: n/a | Val Meta: n/a
+Epoch  24/50 | Train Loss: 1.8470 Acc: 0.2548 F1: 0.2063 | Val Loss: 1.9744 Acc: 0.2963 F1: 0.2253 | Train Meta: n/a | Val Meta: n/a
+Epoch  25/50 | Train Loss: 1.8487 Acc: 0.3462 F1: 0.2500 | Val Loss: 1.9238 Acc: 0.2593 F1: 0.1739 | Train Meta: n/a | Val Meta: n/a
+Epoch  26/50 | Train Loss: 1.8209 Acc: 0.2933 F1: 0.2481 | Val Loss: 1.9135 Acc: 0.2778 F1: 0.2026 | Train Meta: n/a | Val Meta: n/a
+Epoch  27/50 | Train Loss: 1.8167 Acc: 0.3125 F1: 0.2111 | Val Loss: 1.9115 Acc: 0.2963 F1: 0.2356 | Train Meta: n/a | Val Meta: n/a
+Epoch  28/50 | Train Loss: 1.7997 Acc: 0.3125 F1: 0.2897 | Val Loss: 1.8527 Acc: 0.3704 F1: 0.2584 | Train Meta: n/a | Val Meta: n/a
+Epoch  29/50 | Train Loss: 1.8045 Acc: 0.3173 F1: 0.2449 | Val Loss: 1.9123 Acc: 0.2963 F1: 0.2395 | Train Meta: n/a | Val Meta: n/a
+Epoch  30/50 | Train Loss: 1.7908 Acc: 0.3413 F1: 0.2579 | Val Loss: 1.8532 Acc: 0.3519 F1: 0.3011 | Train Meta: n/a | Val Meta: n/a
+Epoch  31/50 | Train Loss: 1.7920 Acc: 0.3125 F1: 0.2761 | Val Loss: 1.8452 Acc: 0.2963 F1: 0.2197 | Train Meta: n/a | Val Meta: n/a
+Epoch  32/50 | Train Loss: 1.8106 Acc: 0.3221 F1: 0.2397 | Val Loss: 1.9322 Acc: 0.3148 F1: 0.2561 | Train Meta: n/a | Val Meta: n/a
+Epoch  33/50 | Train Loss: 1.7618 Acc: 0.3510 F1: 0.2839 | Val Loss: 1.8224 Acc: 0.4259 F1: 0.3427 | Train Meta: n/a | Val Meta: n/a
+Epoch  34/50 | Train Loss: 1.7464 Acc: 0.3029 F1: 0.2146 | Val Loss: 1.8196 Acc: 0.3889 F1: 0.3249 | Train Meta: n/a | Val Meta: n/a
+Epoch  35/50 | Train Loss: 1.7572 Acc: 0.2788 F1: 0.2079 | Val Loss: 1.8204 Acc: 0.2222 F1: 0.1572 | Train Meta: n/a | Val Meta: n/a
+Epoch  36/50 | Train Loss: 1.7296 Acc: 0.3462 F1: 0.2677 | Val Loss: 1.8374 Acc: 0.3333 F1: 0.2795 | Train Meta: n/a | Val Meta: n/a
+Epoch  37/50 | Train Loss: 1.7120 Acc: 0.4087 F1: 0.3430 | Val Loss: 1.7797 Acc: 0.3333 F1: 0.2730 | Train Meta: n/a | Val Meta: n/a
+Epoch  38/50 | Train Loss: 1.7354 Acc: 0.3269 F1: 0.2911 | Val Loss: 1.8259 Acc: 0.2593 F1: 0.2113 | Train Meta: n/a | Val Meta: n/a
+Epoch  39/50 | Train Loss: 1.7479 Acc: 0.3269 F1: 0.2356 | Val Loss: 1.7705 Acc: 0.3704 F1: 0.2879 | Train Meta: n/a | Val Meta: n/a
+Epoch  40/50 | Train Loss: 1.7036 Acc: 0.3462 F1: 0.2728 | Val Loss: 1.8151 Acc: 0.2778 F1: 0.2396 | Train Meta: n/a | Val Meta: n/a
+Epoch  41/50 | Train Loss: 1.7043 Acc: 0.3654 F1: 0.3094 | Val Loss: 1.7574 Acc: 0.3704 F1: 0.3022 | Train Meta: n/a | Val Meta: n/a
+Epoch  42/50 | Train Loss: 1.6817 Acc: 0.3606 F1: 0.2832 | Val Loss: 1.7937 Acc: 0.2593 F1: 0.2050 | Train Meta: n/a | Val Meta: n/a
+Epoch  43/50 | Train Loss: 1.6939 Acc: 0.3510 F1: 0.2900 | Val Loss: 1.7362 Acc: 0.4444 F1: 0.4059 | Train Meta: n/a | Val Meta: n/a
+Epoch  44/50 | Train Loss: 1.6926 Acc: 0.4038 F1: 0.3434 | Val Loss: 1.7750 Acc: 0.2963 F1: 0.2467 | Train Meta: n/a | Val Meta: n/a
+Epoch  45/50 | Train Loss: 1.6659 Acc: 0.3750 F1: 0.3409 | Val Loss: 1.7308 Acc: 0.3519 F1: 0.3114 | Train Meta: n/a | Val Meta: n/a
+Epoch  46/50 | Train Loss: 1.6721 Acc: 0.3846 F1: 0.3076 | Val Loss: 1.7791 Acc: 0.2778 F1: 0.2338 | Train Meta: n/a | Val Meta: n/a
+Epoch  47/50 | Train Loss: 1.6500 Acc: 0.3750 F1: 0.3111 | Val Loss: 1.7548 Acc: 0.3148 F1: 0.2728 | Train Meta: n/a | Val Meta: n/a
+Epoch  48/50 | Train Loss: 1.6691 Acc: 0.3462 F1: 0.2984 | Val Loss: 1.7258 Acc: 0.3889 F1: 0.3244 | Train Meta: n/a | Val Meta: n/a
+Epoch  49/50 | Train Loss: 1.6510 Acc: 0.4087 F1: 0.3776 | Val Loss: 1.7567 Acc: 0.2778 F1: 0.2084 | Train Meta: n/a | Val Meta: n/a
+Epoch  50/50 | Train Loss: 1.6458 Acc: 0.3654 F1: 0.2948 | Val Loss: 1.7601 Acc: 0.3889 F1: 0.3261 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Classification Result (JapaneseVowels)
+Accuracy : 0.248649
+F1 (macro): 0.228699
+Stats metadata preview | dataset=PEMS-SF | domain=UEA | channels=963
+   - channel_1: Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -1.443, maximum value is 12.401, median value is 0.131, and mean absolute value is 0.665.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: PEMS-SF (Channels: 963)
+📊 Classes: 7 | Sequence Length: 144
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 1.9462 Acc: 0.1250 F1: 0.0853 | Val Loss: 1.8909 Acc: 0.0943 F1: 0.0246 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 1.8102 Acc: 0.2356 F1: 0.1929 | Val Loss: 1.8647 Acc: 0.2075 F1: 0.0969 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 1.7694 Acc: 0.3269 F1: 0.1528 | Val Loss: 1.8088 Acc: 0.2075 F1: 0.1134 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 1.6931 Acc: 0.3173 F1: 0.1884 | Val Loss: 1.6977 Acc: 0.2264 F1: 0.1097 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 1.6479 Acc: 0.2981 F1: 0.1795 | Val Loss: 1.6747 Acc: 0.2075 F1: 0.1140 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 1.6111 Acc: 0.3173 F1: 0.1821 | Val Loss: 1.6095 Acc: 0.2075 F1: 0.1134 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 1.5677 Acc: 0.3365 F1: 0.1616 | Val Loss: 1.5914 Acc: 0.2264 F1: 0.1271 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 1.5543 Acc: 0.3269 F1: 0.1885 | Val Loss: 1.5124 Acc: 0.3774 F1: 0.1629 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 1.5258 Acc: 0.3510 F1: 0.2712 | Val Loss: 1.5449 Acc: 0.2264 F1: 0.1250 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 1.5348 Acc: 0.3173 F1: 0.1714 | Val Loss: 1.4605 Acc: 0.3774 F1: 0.2244 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 1.4983 Acc: 0.3365 F1: 0.2443 | Val Loss: 1.4875 Acc: 0.2453 F1: 0.1525 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 1.4792 Acc: 0.4183 F1: 0.3185 | Val Loss: 1.4783 Acc: 0.2264 F1: 0.1524 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 1.4511 Acc: 0.3317 F1: 0.1763 | Val Loss: 1.4269 Acc: 0.2642 F1: 0.1815 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/50 | Train Loss: 1.4498 Acc: 0.3942 F1: 0.2954 | Val Loss: 1.3994 Acc: 0.4151 F1: 0.3577 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/50 | Train Loss: 1.4455 Acc: 0.3702 F1: 0.2371 | Val Loss: 1.4492 Acc: 0.2075 F1: 0.1319 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/50 | Train Loss: 1.4154 Acc: 0.4038 F1: 0.3312 | Val Loss: 1.3636 Acc: 0.4151 F1: 0.3206 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/50 | Train Loss: 1.3868 Acc: 0.3894 F1: 0.2831 | Val Loss: 1.4057 Acc: 0.2264 F1: 0.1165 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/50 | Train Loss: 1.3994 Acc: 0.3510 F1: 0.2939 | Val Loss: 1.3796 Acc: 0.3962 F1: 0.3038 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/50 | Train Loss: 1.3850 Acc: 0.3558 F1: 0.2066 | Val Loss: 1.3819 Acc: 0.3208 F1: 0.2621 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/50 | Train Loss: 1.3857 Acc: 0.3606 F1: 0.2964 | Val Loss: 1.3232 Acc: 0.5472 F1: 0.3693 | Train Meta: n/a | Val Meta: n/a
+Epoch  21/50 | Train Loss: 1.3649 Acc: 0.3942 F1: 0.3774 | Val Loss: 1.3364 Acc: 0.2830 F1: 0.2122 | Train Meta: n/a | Val Meta: n/a
+Epoch  22/50 | Train Loss: 1.3465 Acc: 0.4183 F1: 0.3095 | Val Loss: 1.3262 Acc: 0.3962 F1: 0.2319 | Train Meta: n/a | Val Meta: n/a
+Epoch  23/50 | Train Loss: 1.3571 Acc: 0.3365 F1: 0.2303 | Val Loss: 1.2969 Acc: 0.4528 F1: 0.4155 | Train Meta: n/a | Val Meta: n/a
+Epoch  24/50 | Train Loss: 1.3500 Acc: 0.4615 F1: 0.4321 | Val Loss: 1.3097 Acc: 0.3208 F1: 0.2316 | Train Meta: n/a | Val Meta: n/a
+Epoch  25/50 | Train Loss: 1.3403 Acc: 0.4375 F1: 0.3526 | Val Loss: 1.2916 Acc: 0.4906 F1: 0.3820 | Train Meta: n/a | Val Meta: n/a
+Epoch  26/50 | Train Loss: 1.3152 Acc: 0.4663 F1: 0.4450 | Val Loss: 1.2975 Acc: 0.5849 F1: 0.4769 | Train Meta: n/a | Val Meta: n/a
+Epoch  27/50 | Train Loss: 1.3151 Acc: 0.3990 F1: 0.3192 | Val Loss: 1.3001 Acc: 0.4151 F1: 0.3206 | Train Meta: n/a | Val Meta: n/a
+Epoch  28/50 | Train Loss: 1.3108 Acc: 0.3606 F1: 0.2913 | Val Loss: 1.2593 Acc: 0.5094 F1: 0.4132 | Train Meta: n/a | Val Meta: n/a
+Epoch  29/50 | Train Loss: 1.3189 Acc: 0.4952 F1: 0.4303 | Val Loss: 1.3040 Acc: 0.4151 F1: 0.3520 | Train Meta: n/a | Val Meta: n/a
+Epoch  30/50 | Train Loss: 1.2972 Acc: 0.4423 F1: 0.4037 | Val Loss: 1.2365 Acc: 0.5094 F1: 0.3640 | Train Meta: n/a | Val Meta: n/a
+Epoch  31/50 | Train Loss: 1.2943 Acc: 0.4615 F1: 0.4062 | Val Loss: 1.2563 Acc: 0.4717 F1: 0.4423 | Train Meta: n/a | Val Meta: n/a
+Epoch  32/50 | Train Loss: 1.2736 Acc: 0.4471 F1: 0.3960 | Val Loss: 1.2261 Acc: 0.5094 F1: 0.4453 | Train Meta: n/a | Val Meta: n/a
+Epoch  33/50 | Train Loss: 1.2764 Acc: 0.4327 F1: 0.3815 | Val Loss: 1.2297 Acc: 0.5283 F1: 0.3872 | Train Meta: n/a | Val Meta: n/a
+Epoch  34/50 | Train Loss: 1.2565 Acc: 0.4567 F1: 0.4297 | Val Loss: 1.2148 Acc: 0.4717 F1: 0.4136 | Train Meta: n/a | Val Meta: n/a
+Epoch  35/50 | Train Loss: 1.2784 Acc: 0.4183 F1: 0.3792 | Val Loss: 1.2302 Acc: 0.4528 F1: 0.4120 | Train Meta: n/a | Val Meta: n/a
+Epoch  36/50 | Train Loss: 1.2647 Acc: 0.4712 F1: 0.3932 | Val Loss: 1.2061 Acc: 0.5660 F1: 0.4827 | Train Meta: n/a | Val Meta: n/a
+Epoch  37/50 | Train Loss: 1.2761 Acc: 0.3894 F1: 0.3190 | Val Loss: 1.2024 Acc: 0.5660 F1: 0.5022 | Train Meta: n/a | Val Meta: n/a
+Epoch  38/50 | Train Loss: 1.2386 Acc: 0.5192 F1: 0.4851 | Val Loss: 1.1926 Acc: 0.4717 F1: 0.4183 | Train Meta: n/a | Val Meta: n/a
+Epoch  39/50 | Train Loss: 1.2518 Acc: 0.3558 F1: 0.3052 | Val Loss: 1.1863 Acc: 0.5660 F1: 0.5334 | Train Meta: n/a | Val Meta: n/a
+Epoch  40/50 | Train Loss: 1.2546 Acc: 0.4856 F1: 0.4260 | Val Loss: 1.2476 Acc: 0.3585 F1: 0.2972 | Train Meta: n/a | Val Meta: n/a
+Epoch  41/50 | Train Loss: 1.2205 Acc: 0.4375 F1: 0.3868 | Val Loss: 1.1634 Acc: 0.5094 F1: 0.3443 | Train Meta: n/a | Val Meta: n/a
+Epoch  42/50 | Train Loss: 1.2301 Acc: 0.4519 F1: 0.3970 | Val Loss: 1.2239 Acc: 0.3962 F1: 0.3357 | Train Meta: n/a | Val Meta: n/a
+Epoch  43/50 | Train Loss: 1.2497 Acc: 0.4135 F1: 0.3509 | Val Loss: 1.1450 Acc: 0.5094 F1: 0.3443 | Train Meta: n/a | Val Meta: n/a
+Epoch  44/50 | Train Loss: 1.2391 Acc: 0.4615 F1: 0.4427 | Val Loss: 1.1855 Acc: 0.5660 F1: 0.5010 | Train Meta: n/a | Val Meta: n/a
+Epoch  45/50 | Train Loss: 1.2404 Acc: 0.4471 F1: 0.3981 | Val Loss: 1.1405 Acc: 0.5660 F1: 0.4377 | Train Meta: n/a | Val Meta: n/a
+Epoch  46/50 | Train Loss: 1.2276 Acc: 0.4808 F1: 0.4345 | Val Loss: 1.1615 Acc: 0.5094 F1: 0.4450 | Train Meta: n/a | Val Meta: n/a
+Epoch  47/50 | Train Loss: 1.1980 Acc: 0.4519 F1: 0.4239 | Val Loss: 1.1585 Acc: 0.5849 F1: 0.5337 | Train Meta: n/a | Val Meta: n/a
+Epoch  48/50 | Train Loss: 1.1990 Acc: 0.4615 F1: 0.4048 | Val Loss: 1.1746 Acc: 0.4340 F1: 0.3855 | Train Meta: n/a | Val Meta: n/a
+Epoch  49/50 | Train Loss: 1.2040 Acc: 0.4663 F1: 0.4437 | Val Loss: 1.1320 Acc: 0.5660 F1: 0.5048 | Train Meta: n/a | Val Meta: n/a
+Epoch  50/50 | Train Loss: 1.1813 Acc: 0.4904 F1: 0.4570 | Val Loss: 1.1804 Acc: 0.5283 F1: 0.4535 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Classification Result (PEMS-SF)
+Accuracy : 0.514451
+F1 (macro): 0.460977
+Stats metadata preview | dataset=SelfRegulationSCP1 | domain=UEA | channels=6
+   - channel_1: Channel statistics over the training split: mean value is -0.000, standard deviation is 1.000, minimum value is -3.627, maximum value is 4.365, median value is -0.073, and mean absolute value is 0.766.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: SelfRegulationSCP1 (Channels: 6)
+📊 Classes: 2 | Sequence Length: 896
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 0.6797 Acc: 0.5913 F1: 0.5906 | Val Loss: 0.5790 Acc: 0.6981 F1: 0.6980 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 0.5959 Acc: 0.6346 F1: 0.6319 | Val Loss: 0.5725 Acc: 0.7358 F1: 0.7358 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 0.5778 Acc: 0.6538 F1: 0.6538 | Val Loss: 0.5686 Acc: 0.7736 F1: 0.7729 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 0.5632 Acc: 0.7115 F1: 0.7070 | Val Loss: 0.5559 Acc: 0.6981 F1: 0.6980 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 0.5585 Acc: 0.7212 F1: 0.7190 | Val Loss: 0.5507 Acc: 0.7358 F1: 0.7358 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 0.5644 Acc: 0.7019 F1: 0.6991 | Val Loss: 0.5582 Acc: 0.7925 F1: 0.7898 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 0.5537 Acc: 0.7067 F1: 0.7037 | Val Loss: 0.5517 Acc: 0.6792 F1: 0.6788 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 0.5659 Acc: 0.7115 F1: 0.7076 | Val Loss: 0.5424 Acc: 0.7736 F1: 0.7716 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 0.5569 Acc: 0.7115 F1: 0.7088 | Val Loss: 0.5326 Acc: 0.7358 F1: 0.7358 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 0.5684 Acc: 0.7067 F1: 0.6936 | Val Loss: 0.5342 Acc: 0.6981 F1: 0.6980 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 0.5524 Acc: 0.7019 F1: 0.7018 | Val Loss: 0.5317 Acc: 0.7547 F1: 0.7533 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 0.5548 Acc: 0.7212 F1: 0.7093 | Val Loss: 0.5306 Acc: 0.6981 F1: 0.6980 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 0.5589 Acc: 0.6923 F1: 0.6848 | Val Loss: 0.5249 Acc: 0.7358 F1: 0.7358 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/50 | Train Loss: 0.5474 Acc: 0.6971 F1: 0.6883 | Val Loss: 0.5188 Acc: 0.7547 F1: 0.7544 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/50 | Train Loss: 0.5471 Acc: 0.7163 F1: 0.7122 | Val Loss: 0.5223 Acc: 0.7170 F1: 0.7170 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/50 | Train Loss: 0.5393 Acc: 0.7212 F1: 0.7152 | Val Loss: 0.5144 Acc: 0.7547 F1: 0.7544 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/50 | Train Loss: 0.5428 Acc: 0.7067 F1: 0.6992 | Val Loss: 0.5157 Acc: 0.7547 F1: 0.7544 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/50 | Train Loss: 0.5482 Acc: 0.7019 F1: 0.6964 | Val Loss: 0.5269 Acc: 0.6981 F1: 0.6980 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/50 | Train Loss: 0.5436 Acc: 0.7115 F1: 0.7109 | Val Loss: 0.5301 Acc: 0.7736 F1: 0.7696 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/50 | Train Loss: 0.5575 Acc: 0.6875 F1: 0.6773 | Val Loss: 0.5132 Acc: 0.7547 F1: 0.7544 | Train Meta: n/a | Val Meta: n/a
+Epoch  21/50 | Train Loss: 0.5490 Acc: 0.7067 F1: 0.7024 | Val Loss: 0.5105 Acc: 0.7547 F1: 0.7544 | Train Meta: n/a | Val Meta: n/a
+Epoch  22/50 | Train Loss: 0.5898 Acc: 0.7115 F1: 0.7054 | Val Loss: 0.5346 Acc: 0.6792 F1: 0.6788 | Train Meta: n/a | Val Meta: n/a
+Epoch  23/50 | Train Loss: 0.5446 Acc: 0.7067 F1: 0.7009 | Val Loss: 0.5089 Acc: 0.7547 F1: 0.7533 | Train Meta: n/a | Val Meta: n/a
+Epoch  24/50 | Train Loss: 0.5597 Acc: 0.6875 F1: 0.6849 | Val Loss: 0.5140 Acc: 0.7736 F1: 0.7716 | Train Meta: n/a | Val Meta: n/a
+Epoch  25/50 | Train Loss: 0.5647 Acc: 0.6923 F1: 0.6839 | Val Loss: 0.5100 Acc: 0.7547 F1: 0.7533 | Train Meta: n/a | Val Meta: n/a
+Epoch  26/50 | Train Loss: 0.5433 Acc: 0.6971 F1: 0.6893 | Val Loss: 0.5080 Acc: 0.7547 F1: 0.7533 | Train Meta: n/a | Val Meta: n/a
+Epoch  27/50 | Train Loss: 0.5425 Acc: 0.7163 F1: 0.7134 | Val Loss: 0.5116 Acc: 0.7358 F1: 0.7358 | Train Meta: n/a | Val Meta: n/a
+Epoch  28/50 | Train Loss: 0.5354 Acc: 0.7163 F1: 0.7081 | Val Loss: 0.5092 Acc: 0.7547 F1: 0.7533 | Train Meta: n/a | Val Meta: n/a
+Epoch  29/50 | Train Loss: 0.5528 Acc: 0.6827 F1: 0.6791 | Val Loss: 0.5070 Acc: 0.7547 F1: 0.7533 | Train Meta: n/a | Val Meta: n/a
+Epoch  30/50 | Train Loss: 0.5443 Acc: 0.7019 F1: 0.6956 | Val Loss: 0.5065 Acc: 0.7547 F1: 0.7544 | Train Meta: n/a | Val Meta: n/a
+Epoch  31/50 | Train Loss: 0.5372 Acc: 0.7115 F1: 0.7005 | Val Loss: 0.5078 Acc: 0.7547 F1: 0.7544 | Train Meta: n/a | Val Meta: n/a
+Epoch  32/50 | Train Loss: 0.5613 Acc: 0.6971 F1: 0.6883 | Val Loss: 0.5203 Acc: 0.6981 F1: 0.6980 | Train Meta: n/a | Val Meta: n/a
+Epoch  33/50 | Train Loss: 0.5542 Acc: 0.6923 F1: 0.6900 | Val Loss: 0.5116 Acc: 0.7925 F1: 0.7898 | Train Meta: n/a | Val Meta: n/a
+Epoch  34/50 | Train Loss: 0.5412 Acc: 0.6923 F1: 0.6839 | Val Loss: 0.5041 Acc: 0.7547 F1: 0.7544 | Train Meta: n/a | Val Meta: n/a
+Epoch  35/50 | Train Loss: 0.5353 Acc: 0.7067 F1: 0.6971 | Val Loss: 0.5105 Acc: 0.7547 F1: 0.7544 | Train Meta: n/a | Val Meta: n/a
+Epoch  36/50 | Train Loss: 0.5462 Acc: 0.6875 F1: 0.6849 | Val Loss: 0.5047 Acc: 0.7547 F1: 0.7533 | Train Meta: n/a | Val Meta: n/a
+Epoch  37/50 | Train Loss: 0.5359 Acc: 0.7067 F1: 0.7024 | Val Loss: 0.5031 Acc: 0.7547 F1: 0.7544 | Train Meta: n/a | Val Meta: n/a
+Epoch  38/50 | Train Loss: 0.5536 Acc: 0.7163 F1: 0.7024 | Val Loss: 0.5100 Acc: 0.7547 F1: 0.7544 | Train Meta: n/a | Val Meta: n/a
+Epoch  39/50 | Train Loss: 0.5529 Acc: 0.7019 F1: 0.7015 | Val Loss: 0.5192 Acc: 0.7925 F1: 0.7876 | Train Meta: n/a | Val Meta: n/a
+Epoch  40/50 | Train Loss: 0.5600 Acc: 0.7067 F1: 0.7024 | Val Loss: 0.5270 Acc: 0.6792 F1: 0.6788 | Train Meta: n/a | Val Meta: n/a
+Epoch  41/50 | Train Loss: 0.5473 Acc: 0.7212 F1: 0.7135 | Val Loss: 0.5026 Acc: 0.7547 F1: 0.7533 | Train Meta: n/a | Val Meta: n/a
+Epoch  42/50 | Train Loss: 0.5422 Acc: 0.6875 F1: 0.6843 | Val Loss: 0.5098 Acc: 0.7358 F1: 0.7358 | Train Meta: n/a | Val Meta: n/a
+Epoch  43/50 | Train Loss: 0.5206 Acc: 0.7115 F1: 0.7016 | Val Loss: 0.5002 Acc: 0.7547 F1: 0.7544 | Train Meta: n/a | Val Meta: n/a
+Epoch  44/50 | Train Loss: 0.5493 Acc: 0.6923 F1: 0.6792 | Val Loss: 0.5015 Acc: 0.7547 F1: 0.7544 | Train Meta: n/a | Val Meta: n/a
+Epoch  45/50 | Train Loss: 0.5586 Acc: 0.7019 F1: 0.6972 | Val Loss: 0.5025 Acc: 0.7925 F1: 0.7898 | Train Meta: n/a | Val Meta: n/a
+Epoch  46/50 | Train Loss: 0.5469 Acc: 0.7115 F1: 0.7026 | Val Loss: 0.5009 Acc: 0.7547 F1: 0.7533 | Train Meta: n/a | Val Meta: n/a
+Epoch  47/50 | Train Loss: 0.5356 Acc: 0.7115 F1: 0.7036 | Val Loss: 0.4993 Acc: 0.7547 F1: 0.7533 | Train Meta: n/a | Val Meta: n/a
+Epoch  48/50 | Train Loss: 0.5416 Acc: 0.7019 F1: 0.6937 | Val Loss: 0.4991 Acc: 0.7547 F1: 0.7533 | Train Meta: n/a | Val Meta: n/a
+Epoch  49/50 | Train Loss: 0.5400 Acc: 0.6971 F1: 0.6872 | Val Loss: 0.5098 Acc: 0.7358 F1: 0.7358 | Train Meta: n/a | Val Meta: n/a
+Epoch  50/50 | Train Loss: 0.5428 Acc: 0.7260 F1: 0.7252 | Val Loss: 0.5103 Acc: 0.7736 F1: 0.7696 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Classification Result (SelfRegulationSCP1)
+Accuracy : 0.781570
+F1 (macro): 0.774745
+Stats metadata preview | dataset=SelfRegulationSCP2 | domain=UEA | channels=7
+   - channel_1: Channel statistics over the training split: mean value is 0.000, standard deviation is 1.000, minimum value is -4.572, maximum value is 5.520, median value is 0.004, and mean absolute value is 0.774.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: SelfRegulationSCP2 (Channels: 7)
+📊 Classes: 2 | Sequence Length: 1152
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 0.7276 Acc: 0.4813 F1: 0.4803 | Val Loss: 0.6930 Acc: 0.5250 F1: 0.5223 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 0.7045 Acc: 0.4688 F1: 0.3851 | Val Loss: 0.6942 Acc: 0.5500 F1: 0.5455 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 0.7048 Acc: 0.4562 F1: 0.4561 | Val Loss: 0.6885 Acc: 0.5500 F1: 0.3548 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 0.6974 Acc: 0.4813 F1: 0.4636 | Val Loss: 0.7153 Acc: 0.4750 F1: 0.3593 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 0.7112 Acc: 0.4437 F1: 0.4190 | Val Loss: 0.6954 Acc: 0.4750 F1: 0.4584 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 0.7014 Acc: 0.5125 F1: 0.4498 | Val Loss: 0.7177 Acc: 0.4750 F1: 0.3593 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 0.7017 Acc: 0.4625 F1: 0.4556 | Val Loss: 0.6917 Acc: 0.6250 F1: 0.6229 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 0.6918 Acc: 0.5312 F1: 0.5016 | Val Loss: 0.7025 Acc: 0.4000 F1: 0.3600 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 0.6941 Acc: 0.5188 F1: 0.4774 | Val Loss: 0.7061 Acc: 0.4750 F1: 0.4130 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 0.7092 Acc: 0.4688 F1: 0.4677 | Val Loss: 0.6882 Acc: 0.5500 F1: 0.3548 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 0.7075 Acc: 0.5437 F1: 0.5149 | Val Loss: 0.7182 Acc: 0.4250 F1: 0.3571 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 0.7154 Acc: 0.5250 F1: 0.5025 | Val Loss: 0.6897 Acc: 0.5500 F1: 0.3548 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 0.6945 Acc: 0.5625 F1: 0.5392 | Val Loss: 0.7696 Acc: 0.4500 F1: 0.3103 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/50 | Train Loss: 0.7449 Acc: 0.4000 F1: 0.3905 | Val Loss: 0.6941 Acc: 0.6250 F1: 0.6248 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/50 | Train Loss: 0.6943 Acc: 0.5000 F1: 0.4357 | Val Loss: 0.7100 Acc: 0.4500 F1: 0.3732 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/50 | Train Loss: 0.6909 Acc: 0.5375 F1: 0.4675 | Val Loss: 0.6946 Acc: 0.5000 F1: 0.4987 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/50 | Train Loss: 0.6979 Acc: 0.5125 F1: 0.4922 | Val Loss: 0.6886 Acc: 0.5500 F1: 0.3548 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/50 | Train Loss: 0.6976 Acc: 0.5188 F1: 0.4164 | Val Loss: 0.7048 Acc: 0.4250 F1: 0.3943 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/50 | Train Loss: 0.7310 Acc: 0.4938 F1: 0.3696 | Val Loss: 0.6924 Acc: 0.5500 F1: 0.5455 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/50 | Train Loss: 0.7060 Acc: 0.4813 F1: 0.3996 | Val Loss: 0.7010 Acc: 0.4000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  21/50 | Train Loss: 0.7050 Acc: 0.5000 F1: 0.4117 | Val Loss: 0.7078 Acc: 0.4500 F1: 0.4133 | Train Meta: n/a | Val Meta: n/a
+Epoch  22/50 | Train Loss: 0.7050 Acc: 0.4688 F1: 0.4087 | Val Loss: 0.6929 Acc: 0.5250 F1: 0.5223 | Train Meta: n/a | Val Meta: n/a
+Epoch  23/50 | Train Loss: 0.7138 Acc: 0.5188 F1: 0.4236 | Val Loss: 0.6974 Acc: 0.4500 F1: 0.4373 | Train Meta: n/a | Val Meta: n/a
+Epoch  24/50 | Train Loss: 0.6920 Acc: 0.5312 F1: 0.5104 | Val Loss: 0.6925 Acc: 0.5250 F1: 0.5223 | Train Meta: n/a | Val Meta: n/a
+Epoch  25/50 | Train Loss: 0.7122 Acc: 0.4437 F1: 0.4249 | Val Loss: 0.7152 Acc: 0.4500 F1: 0.3956 | Train Meta: n/a | Val Meta: n/a
+Epoch  26/50 | Train Loss: 0.6934 Acc: 0.5563 F1: 0.4864 | Val Loss: 0.6913 Acc: 0.6250 F1: 0.6132 | Train Meta: n/a | Val Meta: n/a
+Epoch  27/50 | Train Loss: 0.7012 Acc: 0.4813 F1: 0.3787 | Val Loss: 0.6979 Acc: 0.4500 F1: 0.4444 | Train Meta: n/a | Val Meta: n/a
+Epoch  28/50 | Train Loss: 0.7073 Acc: 0.5062 F1: 0.4013 | Val Loss: 0.7001 Acc: 0.5000 F1: 0.4885 | Train Meta: n/a | Val Meta: n/a
+Epoch  29/50 | Train Loss: 0.7061 Acc: 0.4375 F1: 0.4374 | Val Loss: 0.6954 Acc: 0.4250 F1: 0.4246 | Train Meta: n/a | Val Meta: n/a
+Epoch  30/50 | Train Loss: 0.6946 Acc: 0.4875 F1: 0.4855 | Val Loss: 0.6999 Acc: 0.4500 F1: 0.4271 | Train Meta: n/a | Val Meta: n/a
+Epoch  31/50 | Train Loss: 0.7050 Acc: 0.5125 F1: 0.4894 | Val Loss: 0.7051 Acc: 0.4500 F1: 0.4271 | Train Meta: n/a | Val Meta: n/a
+Epoch  32/50 | Train Loss: 0.6958 Acc: 0.5062 F1: 0.4223 | Val Loss: 0.7066 Acc: 0.4000 F1: 0.3600 | Train Meta: n/a | Val Meta: n/a
+Epoch  33/50 | Train Loss: 0.6884 Acc: 0.5312 F1: 0.4948 | Val Loss: 0.6945 Acc: 0.5250 F1: 0.5247 | Train Meta: n/a | Val Meta: n/a
+Epoch  34/50 | Train Loss: 0.6979 Acc: 0.5188 F1: 0.5172 | Val Loss: 0.7160 Acc: 0.4250 F1: 0.3571 | Train Meta: n/a | Val Meta: n/a
+Epoch  35/50 | Train Loss: 0.6966 Acc: 0.5375 F1: 0.5182 | Val Loss: 0.6920 Acc: 0.5250 F1: 0.5223 | Train Meta: n/a | Val Meta: n/a
+Epoch  36/50 | Train Loss: 0.7007 Acc: 0.4813 F1: 0.4778 | Val Loss: 0.7385 Acc: 0.4750 F1: 0.3593 | Train Meta: n/a | Val Meta: n/a
+Epoch  37/50 | Train Loss: 0.7136 Acc: 0.5687 F1: 0.5317 | Val Loss: 0.6913 Acc: 0.6250 F1: 0.6229 | Train Meta: n/a | Val Meta: n/a
+Epoch  38/50 | Train Loss: 0.6910 Acc: 0.5188 F1: 0.5000 | Val Loss: 0.7037 Acc: 0.4250 F1: 0.3943 | Train Meta: n/a | Val Meta: n/a
+Epoch  39/50 | Train Loss: 0.7014 Acc: 0.5062 F1: 0.5061 | Val Loss: 0.6894 Acc: 0.5750 F1: 0.4512 | Train Meta: n/a | Val Meta: n/a
+Epoch  40/50 | Train Loss: 0.7089 Acc: 0.5000 F1: 0.4459 | Val Loss: 0.7014 Acc: 0.4000 F1: 0.3750 | Train Meta: n/a | Val Meta: n/a
+Epoch  41/50 | Train Loss: 0.6918 Acc: 0.5312 F1: 0.4983 | Val Loss: 0.6943 Acc: 0.5000 F1: 0.4987 | Train Meta: n/a | Val Meta: n/a
+Epoch  42/50 | Train Loss: 0.6966 Acc: 0.5250 F1: 0.4997 | Val Loss: 0.6961 Acc: 0.5500 F1: 0.5489 | Train Meta: n/a | Val Meta: n/a
+Epoch  43/50 | Train Loss: 0.7005 Acc: 0.4875 F1: 0.3899 | Val Loss: 0.7000 Acc: 0.4500 F1: 0.4271 | Train Meta: n/a | Val Meta: n/a
+Epoch  44/50 | Train Loss: 0.7166 Acc: 0.5250 F1: 0.4531 | Val Loss: 0.7025 Acc: 0.4250 F1: 0.3943 | Train Meta: n/a | Val Meta: n/a
+Epoch  45/50 | Train Loss: 0.7193 Acc: 0.5250 F1: 0.4044 | Val Loss: 0.7031 Acc: 0.4500 F1: 0.4271 | Train Meta: n/a | Val Meta: n/a
+Epoch  46/50 | Train Loss: 0.7380 Acc: 0.4688 F1: 0.4033 | Val Loss: 0.7078 Acc: 0.4000 F1: 0.3600 | Train Meta: n/a | Val Meta: n/a
+Epoch  47/50 | Train Loss: 0.7068 Acc: 0.5250 F1: 0.4276 | Val Loss: 0.7044 Acc: 0.4000 F1: 0.3600 | Train Meta: n/a | Val Meta: n/a
+Epoch  48/50 | Train Loss: 0.6940 Acc: 0.5375 F1: 0.4997 | Val Loss: 0.6889 Acc: 0.5500 F1: 0.3548 | Train Meta: n/a | Val Meta: n/a
+Epoch  49/50 | Train Loss: 0.7019 Acc: 0.4625 F1: 0.4429 | Val Loss: 0.7128 Acc: 0.4250 F1: 0.3780 | Train Meta: n/a | Val Meta: n/a
+Epoch  50/50 | Train Loss: 0.7017 Acc: 0.4500 F1: 0.4492 | Val Loss: 0.6882 Acc: 0.5500 F1: 0.3548 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Classification Result (SelfRegulationSCP2)
+Accuracy : 0.500000
+F1 (macro): 0.333333
+Stats metadata preview | dataset=SpokenArabicDigits | domain=UEA | channels=13
+   - channel_1: Channel statistics over the training split: mean value is -0.000, standard deviation is 0.998, minimum value is -5.499, maximum value is 4.005, median value is -0.412, and mean absolute value is 0.748.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: SpokenArabicDigits (Channels: 13)
+📊 Classes: 10 | Sequence Length: 93
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 2.1338 Acc: 0.2142 F1: 0.2065 | Val Loss: 2.0000 Acc: 0.2388 F1: 0.1713 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 1.9445 Acc: 0.3002 F1: 0.2919 | Val Loss: 1.9093 Acc: 0.3503 F1: 0.3061 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 1.8698 Acc: 0.3383 F1: 0.3282 | Val Loss: 1.8768 Acc: 0.3048 F1: 0.2548 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 1.8274 Acc: 0.3515 F1: 0.3441 | Val Loss: 1.8212 Acc: 0.3730 F1: 0.3852 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 1.8073 Acc: 0.3640 F1: 0.3568 | Val Loss: 1.7440 Acc: 0.4132 F1: 0.4124 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 1.7694 Acc: 0.3937 F1: 0.3887 | Val Loss: 1.7370 Acc: 0.3980 F1: 0.3713 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 1.7521 Acc: 0.3989 F1: 0.3920 | Val Loss: 1.7238 Acc: 0.4124 F1: 0.3794 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 1.7369 Acc: 0.3977 F1: 0.3924 | Val Loss: 1.6979 Acc: 0.4367 F1: 0.4250 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 1.7263 Acc: 0.4064 F1: 0.4008 | Val Loss: 1.6890 Acc: 0.4306 F1: 0.4215 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 1.7145 Acc: 0.4100 F1: 0.4045 | Val Loss: 1.6967 Acc: 0.4155 F1: 0.3910 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 1.7029 Acc: 0.4220 F1: 0.4156 | Val Loss: 1.6795 Acc: 0.4458 F1: 0.4419 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 1.7038 Acc: 0.4250 F1: 0.4205 | Val Loss: 1.7323 Acc: 0.3760 F1: 0.3433 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 1.6893 Acc: 0.4299 F1: 0.4237 | Val Loss: 1.6571 Acc: 0.4640 F1: 0.4610 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/50 | Train Loss: 1.6855 Acc: 0.4354 F1: 0.4310 | Val Loss: 1.6599 Acc: 0.4670 F1: 0.4592 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/50 | Train Loss: 1.6780 Acc: 0.4345 F1: 0.4299 | Val Loss: 1.6695 Acc: 0.4450 F1: 0.4296 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/50 | Train Loss: 1.6686 Acc: 0.4403 F1: 0.4358 | Val Loss: 1.6487 Acc: 0.4564 F1: 0.4416 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/50 | Train Loss: 1.6663 Acc: 0.4411 F1: 0.4358 | Val Loss: 1.6588 Acc: 0.4481 F1: 0.4282 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/50 | Train Loss: 1.6583 Acc: 0.4498 F1: 0.4444 | Val Loss: 1.6578 Acc: 0.4450 F1: 0.4372 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/50 | Train Loss: 1.6557 Acc: 0.4489 F1: 0.4437 | Val Loss: 1.6383 Acc: 0.4534 F1: 0.4449 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/50 | Train Loss: 1.6495 Acc: 0.4506 F1: 0.4458 | Val Loss: 1.6356 Acc: 0.4390 F1: 0.4255 | Train Meta: n/a | Val Meta: n/a
+Epoch  21/50 | Train Loss: 1.6439 Acc: 0.4492 F1: 0.4431 | Val Loss: 1.6640 Acc: 0.4337 F1: 0.4285 | Train Meta: n/a | Val Meta: n/a
+Epoch  22/50 | Train Loss: 1.6393 Acc: 0.4578 F1: 0.4524 | Val Loss: 1.6284 Acc: 0.4610 F1: 0.4451 | Train Meta: n/a | Val Meta: n/a
+Epoch  23/50 | Train Loss: 1.6352 Acc: 0.4566 F1: 0.4514 | Val Loss: 1.6160 Acc: 0.4632 F1: 0.4585 | Train Meta: n/a | Val Meta: n/a
+Epoch  24/50 | Train Loss: 1.6285 Acc: 0.4669 F1: 0.4609 | Val Loss: 1.6167 Acc: 0.4625 F1: 0.4469 | Train Meta: n/a | Val Meta: n/a
+Epoch  25/50 | Train Loss: 1.6261 Acc: 0.4676 F1: 0.4631 | Val Loss: 1.6316 Acc: 0.4572 F1: 0.4412 | Train Meta: n/a | Val Meta: n/a
+Epoch  26/50 | Train Loss: 1.6208 Acc: 0.4708 F1: 0.4653 | Val Loss: 1.6186 Acc: 0.4579 F1: 0.4373 | Train Meta: n/a | Val Meta: n/a
+Epoch  27/50 | Train Loss: 1.6212 Acc: 0.4617 F1: 0.4556 | Val Loss: 1.6219 Acc: 0.4541 F1: 0.4425 | Train Meta: n/a | Val Meta: n/a
+Epoch  28/50 | Train Loss: 1.6103 Acc: 0.4718 F1: 0.4671 | Val Loss: 1.6178 Acc: 0.4701 F1: 0.4614 | Train Meta: n/a | Val Meta: n/a
+Epoch  29/50 | Train Loss: 1.6085 Acc: 0.4775 F1: 0.4734 | Val Loss: 1.6140 Acc: 0.4579 F1: 0.4348 | Train Meta: n/a | Val Meta: n/a
+Epoch  30/50 | Train Loss: 1.6028 Acc: 0.4765 F1: 0.4709 | Val Loss: 1.6063 Acc: 0.4776 F1: 0.4765 | Train Meta: n/a | Val Meta: n/a
+Epoch  31/50 | Train Loss: 1.6069 Acc: 0.4737 F1: 0.4681 | Val Loss: 1.6019 Acc: 0.4632 F1: 0.4628 | Train Meta: n/a | Val Meta: n/a
+Epoch  32/50 | Train Loss: 1.5973 Acc: 0.4735 F1: 0.4688 | Val Loss: 1.6074 Acc: 0.4769 F1: 0.4723 | Train Meta: n/a | Val Meta: n/a
+Epoch  33/50 | Train Loss: 1.5936 Acc: 0.4830 F1: 0.4786 | Val Loss: 1.5873 Acc: 0.4814 F1: 0.4790 | Train Meta: n/a | Val Meta: n/a
+Epoch  34/50 | Train Loss: 1.5927 Acc: 0.4794 F1: 0.4745 | Val Loss: 1.5876 Acc: 0.4898 F1: 0.4813 | Train Meta: n/a | Val Meta: n/a
+Epoch  35/50 | Train Loss: 1.5856 Acc: 0.4848 F1: 0.4800 | Val Loss: 1.5987 Acc: 0.4693 F1: 0.4570 | Train Meta: n/a | Val Meta: n/a
+Epoch  36/50 | Train Loss: 1.5832 Acc: 0.4877 F1: 0.4824 | Val Loss: 1.5978 Acc: 0.4716 F1: 0.4658 | Train Meta: n/a | Val Meta: n/a
+Epoch  37/50 | Train Loss: 1.5810 Acc: 0.4797 F1: 0.4742 | Val Loss: 1.5846 Acc: 0.4632 F1: 0.4455 | Train Meta: n/a | Val Meta: n/a
+Epoch  38/50 | Train Loss: 1.5789 Acc: 0.4830 F1: 0.4781 | Val Loss: 1.5881 Acc: 0.4852 F1: 0.4802 | Train Meta: n/a | Val Meta: n/a
+Epoch  39/50 | Train Loss: 1.5747 Acc: 0.4894 F1: 0.4853 | Val Loss: 1.5852 Acc: 0.4799 F1: 0.4822 | Train Meta: n/a | Val Meta: n/a
+Epoch  40/50 | Train Loss: 1.5711 Acc: 0.4930 F1: 0.4894 | Val Loss: 1.5834 Acc: 0.4882 F1: 0.4805 | Train Meta: n/a | Val Meta: n/a
+Epoch  41/50 | Train Loss: 1.5688 Acc: 0.4919 F1: 0.4866 | Val Loss: 1.5712 Acc: 0.4882 F1: 0.4779 | Train Meta: n/a | Val Meta: n/a
+Epoch  42/50 | Train Loss: 1.5652 Acc: 0.4896 F1: 0.4851 | Val Loss: 1.5663 Acc: 0.4905 F1: 0.4875 | Train Meta: n/a | Val Meta: n/a
+Epoch  43/50 | Train Loss: 1.5624 Acc: 0.4938 F1: 0.4891 | Val Loss: 1.5814 Acc: 0.4746 F1: 0.4685 | Train Meta: n/a | Val Meta: n/a
+Epoch  44/50 | Train Loss: 1.5611 Acc: 0.4932 F1: 0.4891 | Val Loss: 1.5681 Acc: 0.4928 F1: 0.4793 | Train Meta: n/a | Val Meta: n/a
+Epoch  45/50 | Train Loss: 1.5567 Acc: 0.4956 F1: 0.4910 | Val Loss: 1.5596 Acc: 0.4905 F1: 0.4797 | Train Meta: n/a | Val Meta: n/a
+Epoch  46/50 | Train Loss: 1.5533 Acc: 0.4985 F1: 0.4933 | Val Loss: 1.5671 Acc: 0.5004 F1: 0.4874 | Train Meta: n/a | Val Meta: n/a
+Epoch  47/50 | Train Loss: 1.5493 Acc: 0.4998 F1: 0.4943 | Val Loss: 1.5580 Acc: 0.4860 F1: 0.4790 | Train Meta: n/a | Val Meta: n/a
+Epoch  48/50 | Train Loss: 1.5492 Acc: 0.5032 F1: 0.4974 | Val Loss: 1.5668 Acc: 0.4928 F1: 0.4844 | Train Meta: n/a | Val Meta: n/a
+Epoch  49/50 | Train Loss: 1.5471 Acc: 0.4987 F1: 0.4930 | Val Loss: 1.5566 Acc: 0.4928 F1: 0.4820 | Train Meta: n/a | Val Meta: n/a
+Epoch  50/50 | Train Loss: 1.5434 Acc: 0.5047 F1: 0.4995 | Val Loss: 1.5541 Acc: 0.4716 F1: 0.4640 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Classification Result (SpokenArabicDigits)
+Accuracy : 0.152797
+F1 (macro): 0.135228
+Stats metadata preview | dataset=UWaveGestureLibrary | domain=UEA | channels=3
+   - channel_1: Channel statistics over the training split: mean value is 0.000, standard deviation is 1.000, minimum value is -3.292, maximum value is 3.158, median value is -0.003, and mean absolute value is 0.833.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: UWaveGestureLibrary (Channels: 3)
+📊 Classes: 8 | Sequence Length: 315
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 2.2130 Acc: 0.0625 F1: 0.0359 | Val Loss: 2.2220 Acc: 0.0417 F1: 0.0208 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 2.1022 Acc: 0.0625 F1: 0.0349 | Val Loss: 2.2034 Acc: 0.0833 F1: 0.0192 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 2.1130 Acc: 0.1354 F1: 0.0298 | Val Loss: 2.1090 Acc: 0.0833 F1: 0.0192 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 2.0875 Acc: 0.1146 F1: 0.0489 | Val Loss: 2.1595 Acc: 0.0417 F1: 0.0100 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 2.0836 Acc: 0.1458 F1: 0.0318 | Val Loss: 2.1272 Acc: 0.0417 F1: 0.0100 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 2.0833 Acc: 0.1042 F1: 0.0393 | Val Loss: 2.1684 Acc: 0.1250 F1: 0.0278 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 2.1065 Acc: 0.1042 F1: 0.0402 | Val Loss: 2.1048 Acc: 0.1250 F1: 0.0278 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 2.0871 Acc: 0.0938 F1: 0.0501 | Val Loss: 2.1788 Acc: 0.0417 F1: 0.0100 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 2.0719 Acc: 0.1458 F1: 0.0321 | Val Loss: 2.1642 Acc: 0.0833 F1: 0.0238 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 2.0759 Acc: 0.1354 F1: 0.0487 | Val Loss: 2.0784 Acc: 0.0833 F1: 0.0192 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 2.0782 Acc: 0.0938 F1: 0.0242 | Val Loss: 2.0859 Acc: 0.1250 F1: 0.0278 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 2.0893 Acc: 0.1146 F1: 0.0340 | Val Loss: 2.1826 Acc: 0.1250 F1: 0.0288 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 2.0729 Acc: 0.1562 F1: 0.0576 | Val Loss: 2.1508 Acc: 0.0417 F1: 0.0100 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/50 | Train Loss: 2.0828 Acc: 0.1667 F1: 0.0793 | Val Loss: 2.0944 Acc: 0.0833 F1: 0.0192 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/50 | Train Loss: 2.0653 Acc: 0.1250 F1: 0.0730 | Val Loss: 2.0811 Acc: 0.0833 F1: 0.0192 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/50 | Train Loss: 2.0701 Acc: 0.1042 F1: 0.0372 | Val Loss: 2.1853 Acc: 0.1250 F1: 0.0278 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/50 | Train Loss: 2.0656 Acc: 0.1250 F1: 0.0505 | Val Loss: 2.1578 Acc: 0.0417 F1: 0.0100 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/50 | Train Loss: 2.0573 Acc: 0.1250 F1: 0.0283 | Val Loss: 2.1314 Acc: 0.0833 F1: 0.0609 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/50 | Train Loss: 2.0599 Acc: 0.1875 F1: 0.1083 | Val Loss: 2.0883 Acc: 0.1250 F1: 0.0729 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/50 | Train Loss: 2.0603 Acc: 0.1771 F1: 0.1164 | Val Loss: 2.0861 Acc: 0.1250 F1: 0.0278 | Train Meta: n/a | Val Meta: n/a
+Epoch  21/50 | Train Loss: 2.0552 Acc: 0.1354 F1: 0.1051 | Val Loss: 2.1193 Acc: 0.0417 F1: 0.0100 | Train Meta: n/a | Val Meta: n/a
+Epoch  22/50 | Train Loss: 2.0414 Acc: 0.1562 F1: 0.0513 | Val Loss: 2.1251 Acc: 0.0417 F1: 0.0100 | Train Meta: n/a | Val Meta: n/a
+Epoch  23/50 | Train Loss: 2.0565 Acc: 0.1354 F1: 0.0921 | Val Loss: 2.1127 Acc: 0.2083 F1: 0.1048 | Train Meta: n/a | Val Meta: n/a
+Epoch  24/50 | Train Loss: 2.0534 Acc: 0.1354 F1: 0.0793 | Val Loss: 2.0866 Acc: 0.0833 F1: 0.0192 | Train Meta: n/a | Val Meta: n/a
+Epoch  25/50 | Train Loss: 2.0444 Acc: 0.1250 F1: 0.0736 | Val Loss: 2.1069 Acc: 0.0417 F1: 0.0100 | Train Meta: n/a | Val Meta: n/a
+Epoch  26/50 | Train Loss: 2.0616 Acc: 0.1146 F1: 0.0818 | Val Loss: 2.1006 Acc: 0.1667 F1: 0.0653 | Train Meta: n/a | Val Meta: n/a
+Epoch  27/50 | Train Loss: 2.0377 Acc: 0.1042 F1: 0.0686 | Val Loss: 2.1082 Acc: 0.0417 F1: 0.0100 | Train Meta: n/a | Val Meta: n/a
+Epoch  28/50 | Train Loss: 2.0312 Acc: 0.1562 F1: 0.1090 | Val Loss: 2.0880 Acc: 0.0833 F1: 0.0192 | Train Meta: n/a | Val Meta: n/a
+Epoch  29/50 | Train Loss: 2.0421 Acc: 0.1458 F1: 0.1172 | Val Loss: 2.0934 Acc: 0.2500 F1: 0.1528 | Train Meta: n/a | Val Meta: n/a
+Epoch  30/50 | Train Loss: 2.0304 Acc: 0.1771 F1: 0.1218 | Val Loss: 2.0917 Acc: 0.0417 F1: 0.0100 | Train Meta: n/a | Val Meta: n/a
+Epoch  31/50 | Train Loss: 2.0236 Acc: 0.1354 F1: 0.0310 | Val Loss: 2.1015 Acc: 0.0833 F1: 0.0938 | Train Meta: n/a | Val Meta: n/a
+Epoch  32/50 | Train Loss: 2.0303 Acc: 0.1562 F1: 0.1149 | Val Loss: 2.0931 Acc: 0.1250 F1: 0.0551 | Train Meta: n/a | Val Meta: n/a
+Epoch  33/50 | Train Loss: 2.0305 Acc: 0.1771 F1: 0.1077 | Val Loss: 2.0679 Acc: 0.2083 F1: 0.1071 | Train Meta: n/a | Val Meta: n/a
+Epoch  34/50 | Train Loss: 2.0374 Acc: 0.1875 F1: 0.1250 | Val Loss: 2.0882 Acc: 0.0417 F1: 0.0100 | Train Meta: n/a | Val Meta: n/a
+Epoch  35/50 | Train Loss: 2.0314 Acc: 0.1458 F1: 0.0998 | Val Loss: 2.0502 Acc: 0.1667 F1: 0.0942 | Train Meta: n/a | Val Meta: n/a
+Epoch  36/50 | Train Loss: 2.0171 Acc: 0.1771 F1: 0.1162 | Val Loss: 2.0715 Acc: 0.2500 F1: 0.1857 | Train Meta: n/a | Val Meta: n/a
+Epoch  37/50 | Train Loss: 2.0320 Acc: 0.1562 F1: 0.1534 | Val Loss: 2.1202 Acc: 0.0833 F1: 0.0192 | Train Meta: n/a | Val Meta: n/a
+Epoch  38/50 | Train Loss: 2.0206 Acc: 0.1250 F1: 0.0722 | Val Loss: 2.1014 Acc: 0.1250 F1: 0.0573 | Train Meta: n/a | Val Meta: n/a
+Epoch  39/50 | Train Loss: 2.0082 Acc: 0.1979 F1: 0.1020 | Val Loss: 2.0764 Acc: 0.0417 F1: 0.0100 | Train Meta: n/a | Val Meta: n/a
+Epoch  40/50 | Train Loss: 2.0024 Acc: 0.2188 F1: 0.2037 | Val Loss: 2.0479 Acc: 0.2500 F1: 0.1538 | Train Meta: n/a | Val Meta: n/a
+Epoch  41/50 | Train Loss: 2.0034 Acc: 0.2917 F1: 0.2053 | Val Loss: 2.0713 Acc: 0.2917 F1: 0.2149 | Train Meta: n/a | Val Meta: n/a
+Epoch  42/50 | Train Loss: 1.9961 Acc: 0.2083 F1: 0.1325 | Val Loss: 2.0673 Acc: 0.2500 F1: 0.2448 | Train Meta: n/a | Val Meta: n/a
+Epoch  43/50 | Train Loss: 1.9991 Acc: 0.2292 F1: 0.1870 | Val Loss: 2.0690 Acc: 0.0417 F1: 0.0100 | Train Meta: n/a | Val Meta: n/a
+Epoch  44/50 | Train Loss: 1.9895 Acc: 0.1979 F1: 0.1201 | Val Loss: 2.0664 Acc: 0.2083 F1: 0.1917 | Train Meta: n/a | Val Meta: n/a
+Epoch  45/50 | Train Loss: 1.9972 Acc: 0.2083 F1: 0.1691 | Val Loss: 2.0677 Acc: 0.1667 F1: 0.1042 | Train Meta: n/a | Val Meta: n/a
+Epoch  46/50 | Train Loss: 1.9889 Acc: 0.2708 F1: 0.2004 | Val Loss: 2.0654 Acc: 0.2083 F1: 0.1722 | Train Meta: n/a | Val Meta: n/a
+Epoch  47/50 | Train Loss: 2.0046 Acc: 0.1875 F1: 0.1364 | Val Loss: 2.1032 Acc: 0.0417 F1: 0.0104 | Train Meta: n/a | Val Meta: n/a
+Epoch  48/50 | Train Loss: 2.0110 Acc: 0.1562 F1: 0.1097 | Val Loss: 2.0227 Acc: 0.1667 F1: 0.1264 | Train Meta: n/a | Val Meta: n/a
+Epoch  49/50 | Train Loss: 1.9732 Acc: 0.2812 F1: 0.2398 | Val Loss: 2.0360 Acc: 0.4167 F1: 0.3433 | Train Meta: n/a | Val Meta: n/a
+Epoch  50/50 | Train Loss: 1.9895 Acc: 0.2188 F1: 0.1496 | Val Loss: 2.0828 Acc: 0.3333 F1: 0.2848 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Classification Result (UWaveGestureLibrary)
+Accuracy : 0.178125
+F1 (macro): 0.120188
+Stats metadata preview | dataset=ECG200 | domain=UCR | channels=1
+   - channel_1: Channel statistics over the training split: mean value is 0.000, standard deviation is 1.000, minimum value is -2.631, maximum value is 4.221, median value is 0.224, and mean absolute value is 0.782.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: ECG200 (Channels: 1)
+📊 Classes: 2 | Sequence Length: 96
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 0.6354 Acc: 0.7375 F1: 0.4245 | Val Loss: 1.0030 Acc: 0.5000 F1: 0.3333 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 0.5970 Acc: 0.7375 F1: 0.4245 | Val Loss: 0.7344 Acc: 0.5000 F1: 0.3333 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 0.5694 Acc: 0.7375 F1: 0.4245 | Val Loss: 0.7112 Acc: 0.5000 F1: 0.3333 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 0.5417 Acc: 0.7375 F1: 0.4245 | Val Loss: 0.8141 Acc: 0.5000 F1: 0.3333 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 0.5511 Acc: 0.7375 F1: 0.4245 | Val Loss: 0.7934 Acc: 0.5000 F1: 0.3333 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 0.5227 Acc: 0.7375 F1: 0.4245 | Val Loss: 0.7182 Acc: 0.5000 F1: 0.3333 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 0.5085 Acc: 0.7375 F1: 0.4245 | Val Loss: 0.6771 Acc: 0.5000 F1: 0.3333 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 0.5030 Acc: 0.7375 F1: 0.4245 | Val Loss: 0.6702 Acc: 0.5000 F1: 0.3333 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 0.4914 Acc: 0.7375 F1: 0.4245 | Val Loss: 0.6825 Acc: 0.5000 F1: 0.3333 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 0.4834 Acc: 0.7375 F1: 0.4245 | Val Loss: 0.6974 Acc: 0.5000 F1: 0.3333 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 0.4771 Acc: 0.7375 F1: 0.4245 | Val Loss: 0.6398 Acc: 0.5000 F1: 0.3333 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 0.4659 Acc: 0.7500 F1: 0.4730 | Val Loss: 0.6478 Acc: 0.5000 F1: 0.3333 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 0.4630 Acc: 0.7375 F1: 0.4245 | Val Loss: 0.6577 Acc: 0.5000 F1: 0.3333 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/50 | Train Loss: 0.4512 Acc: 0.7375 F1: 0.4668 | Val Loss: 0.6215 Acc: 0.4500 F1: 0.3103 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/50 | Train Loss: 0.4467 Acc: 0.7625 F1: 0.5767 | Val Loss: 0.5962 Acc: 0.5000 F1: 0.4048 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/50 | Train Loss: 0.4442 Acc: 0.7625 F1: 0.5767 | Val Loss: 0.6170 Acc: 0.4500 F1: 0.3103 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/50 | Train Loss: 0.4322 Acc: 0.7750 F1: 0.6104 | Val Loss: 0.6024 Acc: 0.4500 F1: 0.3103 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/50 | Train Loss: 0.4354 Acc: 0.8000 F1: 0.6875 | Val Loss: 0.5759 Acc: 0.6500 F1: 0.6267 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/50 | Train Loss: 0.4258 Acc: 0.7875 F1: 0.6420 | Val Loss: 0.6046 Acc: 0.4500 F1: 0.3103 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/50 | Train Loss: 0.4192 Acc: 0.7750 F1: 0.6104 | Val Loss: 0.5951 Acc: 0.5000 F1: 0.4048 | Train Meta: n/a | Val Meta: n/a
+Epoch  21/50 | Train Loss: 0.4204 Acc: 0.8125 F1: 0.7137 | Val Loss: 0.5476 Acc: 0.7500 F1: 0.7442 | Train Meta: n/a | Val Meta: n/a
+Epoch  22/50 | Train Loss: 0.4108 Acc: 0.8250 F1: 0.7491 | Val Loss: 0.5688 Acc: 0.6500 F1: 0.6267 | Train Meta: n/a | Val Meta: n/a
+Epoch  23/50 | Train Loss: 0.4109 Acc: 0.7875 F1: 0.6599 | Val Loss: 0.5878 Acc: 0.5500 F1: 0.4872 | Train Meta: n/a | Val Meta: n/a
+Epoch  24/50 | Train Loss: 0.4058 Acc: 0.8125 F1: 0.7257 | Val Loss: 0.5478 Acc: 0.7500 F1: 0.7442 | Train Meta: n/a | Val Meta: n/a
+Epoch  25/50 | Train Loss: 0.4015 Acc: 0.8250 F1: 0.7491 | Val Loss: 0.5533 Acc: 0.7500 F1: 0.7442 | Train Meta: n/a | Val Meta: n/a
+Epoch  26/50 | Train Loss: 0.3992 Acc: 0.8250 F1: 0.7491 | Val Loss: 0.5494 Acc: 0.7500 F1: 0.7442 | Train Meta: n/a | Val Meta: n/a
+Epoch  27/50 | Train Loss: 0.3999 Acc: 0.8000 F1: 0.7012 | Val Loss: 0.5590 Acc: 0.7000 F1: 0.6875 | Train Meta: n/a | Val Meta: n/a
+Epoch  28/50 | Train Loss: 0.4047 Acc: 0.8125 F1: 0.7363 | Val Loss: 0.5121 Acc: 0.8500 F1: 0.8496 | Train Meta: n/a | Val Meta: n/a
+Epoch  29/50 | Train Loss: 0.3929 Acc: 0.8250 F1: 0.7584 | Val Loss: 0.5446 Acc: 0.7500 F1: 0.7442 | Train Meta: n/a | Val Meta: n/a
+Epoch  30/50 | Train Loss: 0.3915 Acc: 0.7875 F1: 0.6755 | Val Loss: 0.5667 Acc: 0.6500 F1: 0.6267 | Train Meta: n/a | Val Meta: n/a
+Epoch  31/50 | Train Loss: 0.3885 Acc: 0.8250 F1: 0.7491 | Val Loss: 0.5160 Acc: 0.8000 F1: 0.7980 | Train Meta: n/a | Val Meta: n/a
+Epoch  32/50 | Train Loss: 0.3992 Acc: 0.8125 F1: 0.7540 | Val Loss: 0.5052 Acc: 0.8500 F1: 0.8496 | Train Meta: n/a | Val Meta: n/a
+Epoch  33/50 | Train Loss: 0.3869 Acc: 0.8125 F1: 0.7257 | Val Loss: 0.5650 Acc: 0.6500 F1: 0.6267 | Train Meta: n/a | Val Meta: n/a
+Epoch  34/50 | Train Loss: 0.3843 Acc: 0.8375 F1: 0.7623 | Val Loss: 0.5425 Acc: 0.7500 F1: 0.7442 | Train Meta: n/a | Val Meta: n/a
+Epoch  35/50 | Train Loss: 0.3837 Acc: 0.8250 F1: 0.7491 | Val Loss: 0.4991 Acc: 0.8500 F1: 0.8496 | Train Meta: n/a | Val Meta: n/a
+Epoch  36/50 | Train Loss: 0.3790 Acc: 0.8250 F1: 0.7584 | Val Loss: 0.5130 Acc: 0.8000 F1: 0.7980 | Train Meta: n/a | Val Meta: n/a
+Epoch  37/50 | Train Loss: 0.3806 Acc: 0.8250 F1: 0.7491 | Val Loss: 0.5350 Acc: 0.7500 F1: 0.7442 | Train Meta: n/a | Val Meta: n/a
+Epoch  38/50 | Train Loss: 0.3748 Acc: 0.8375 F1: 0.7715 | Val Loss: 0.5013 Acc: 0.8500 F1: 0.8496 | Train Meta: n/a | Val Meta: n/a
+Epoch  39/50 | Train Loss: 0.3788 Acc: 0.8250 F1: 0.7584 | Val Loss: 0.4919 Acc: 0.8500 F1: 0.8496 | Train Meta: n/a | Val Meta: n/a
+Epoch  40/50 | Train Loss: 0.3819 Acc: 0.8250 F1: 0.7491 | Val Loss: 0.5360 Acc: 0.7500 F1: 0.7442 | Train Meta: n/a | Val Meta: n/a
+Epoch  41/50 | Train Loss: 0.3746 Acc: 0.8250 F1: 0.7491 | Val Loss: 0.5106 Acc: 0.8000 F1: 0.7980 | Train Meta: n/a | Val Meta: n/a
+Epoch  42/50 | Train Loss: 0.3681 Acc: 0.8375 F1: 0.7715 | Val Loss: 0.4884 Acc: 0.8500 F1: 0.8496 | Train Meta: n/a | Val Meta: n/a
+Epoch  43/50 | Train Loss: 0.3723 Acc: 0.8250 F1: 0.7584 | Val Loss: 0.4995 Acc: 0.8000 F1: 0.7980 | Train Meta: n/a | Val Meta: n/a
+Epoch  44/50 | Train Loss: 0.3704 Acc: 0.8375 F1: 0.7715 | Val Loss: 0.4980 Acc: 0.8000 F1: 0.7980 | Train Meta: n/a | Val Meta: n/a
+Epoch  45/50 | Train Loss: 0.3689 Acc: 0.8250 F1: 0.7584 | Val Loss: 0.4965 Acc: 0.8000 F1: 0.7980 | Train Meta: n/a | Val Meta: n/a
+Epoch  46/50 | Train Loss: 0.3755 Acc: 0.8375 F1: 0.7715 | Val Loss: 0.5143 Acc: 0.7500 F1: 0.7442 | Train Meta: n/a | Val Meta: n/a
+Epoch  47/50 | Train Loss: 0.3860 Acc: 0.8250 F1: 0.7667 | Val Loss: 0.4764 Acc: 0.7000 F1: 0.6970 | Train Meta: n/a | Val Meta: n/a
+Epoch  48/50 | Train Loss: 0.3810 Acc: 0.8625 F1: 0.8135 | Val Loss: 0.5190 Acc: 0.7500 F1: 0.7442 | Train Meta: n/a | Val Meta: n/a
+Epoch  49/50 | Train Loss: 0.3715 Acc: 0.8250 F1: 0.7584 | Val Loss: 0.4888 Acc: 0.8500 F1: 0.8496 | Train Meta: n/a | Val Meta: n/a
+Epoch  50/50 | Train Loss: 0.3650 Acc: 0.8250 F1: 0.7584 | Val Loss: 0.4994 Acc: 0.8000 F1: 0.7980 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Classification Result (ECG200)
+Accuracy : 0.800000
+F1 (macro): 0.780220
+Stats metadata preview | dataset=ECG5000 | domain=UCR | channels=1
+   - channel_1: Channel statistics over the training split: mean value is 0.000, standard deviation is 1.000, minimum value is -5.818, maximum value is 4.073, median value is 0.186, and mean absolute value is 0.668.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: ECG5000 (Channels: 1)
+📊 Classes: 5 | Sequence Length: 140
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 1.0483 Acc: 0.5225 F1: 0.2199 | Val Loss: 0.8994 Acc: 0.3000 F1: 0.1154 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 0.8340 Acc: 0.6825 F1: 0.2637 | Val Loss: 0.6967 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 0.7068 Acc: 0.8575 F1: 0.3507 | Val Loss: 0.5948 Acc: 0.9200 F1: 0.4664 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 0.6288 Acc: 0.8825 F1: 0.3617 | Val Loss: 0.5345 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 0.5755 Acc: 0.8975 F1: 0.3684 | Val Loss: 0.4797 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 0.5228 Acc: 0.9125 F1: 0.3753 | Val Loss: 0.4297 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 0.4870 Acc: 0.9075 F1: 0.3732 | Val Loss: 0.4020 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 0.4572 Acc: 0.9050 F1: 0.3718 | Val Loss: 0.3830 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 0.4309 Acc: 0.9150 F1: 0.3760 | Val Loss: 0.3579 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 0.4128 Acc: 0.9075 F1: 0.3732 | Val Loss: 0.3487 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 0.3884 Acc: 0.9100 F1: 0.3743 | Val Loss: 0.3279 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 0.3706 Acc: 0.9125 F1: 0.3754 | Val Loss: 0.3230 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 0.3647 Acc: 0.9150 F1: 0.3763 | Val Loss: 0.3112 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/50 | Train Loss: 0.3530 Acc: 0.9150 F1: 0.4155 | Val Loss: 0.2969 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/50 | Train Loss: 0.3421 Acc: 0.9175 F1: 0.4167 | Val Loss: 0.2893 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/50 | Train Loss: 0.3267 Acc: 0.9175 F1: 0.4166 | Val Loss: 0.2907 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/50 | Train Loss: 0.3273 Acc: 0.9150 F1: 0.4158 | Val Loss: 0.2833 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/50 | Train Loss: 0.3242 Acc: 0.9200 F1: 0.4177 | Val Loss: 0.2804 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/50 | Train Loss: 0.3185 Acc: 0.9175 F1: 0.4166 | Val Loss: 0.2847 Acc: 0.9400 F1: 0.4769 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/50 | Train Loss: 0.3033 Acc: 0.9175 F1: 0.4167 | Val Loss: 0.2724 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  21/50 | Train Loss: 0.2985 Acc: 0.9200 F1: 0.4177 | Val Loss: 0.2657 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  22/50 | Train Loss: 0.3091 Acc: 0.9200 F1: 0.4179 | Val Loss: 0.2562 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  23/50 | Train Loss: 0.3031 Acc: 0.9200 F1: 0.4179 | Val Loss: 0.2620 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  24/50 | Train Loss: 0.2944 Acc: 0.9200 F1: 0.4177 | Val Loss: 0.2524 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  25/50 | Train Loss: 0.2923 Acc: 0.9175 F1: 0.4173 | Val Loss: 0.2532 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  26/50 | Train Loss: 0.2889 Acc: 0.9200 F1: 0.4177 | Val Loss: 0.2653 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  27/50 | Train Loss: 0.2798 Acc: 0.9200 F1: 0.4178 | Val Loss: 0.2677 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  28/50 | Train Loss: 0.2880 Acc: 0.9175 F1: 0.4164 | Val Loss: 0.2506 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  29/50 | Train Loss: 0.2777 Acc: 0.9200 F1: 0.4177 | Val Loss: 0.2460 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  30/50 | Train Loss: 0.2740 Acc: 0.9200 F1: 0.4179 | Val Loss: 0.2539 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  31/50 | Train Loss: 0.2736 Acc: 0.9200 F1: 0.4177 | Val Loss: 0.2497 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  32/50 | Train Loss: 0.2722 Acc: 0.9200 F1: 0.4177 | Val Loss: 0.2446 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  33/50 | Train Loss: 0.2657 Acc: 0.9200 F1: 0.4177 | Val Loss: 0.2398 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  34/50 | Train Loss: 0.2703 Acc: 0.9200 F1: 0.4177 | Val Loss: 0.2522 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  35/50 | Train Loss: 0.2626 Acc: 0.9175 F1: 0.4431 | Val Loss: 0.2391 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  36/50 | Train Loss: 0.2613 Acc: 0.9225 F1: 0.4188 | Val Loss: 0.2528 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  37/50 | Train Loss: 0.2696 Acc: 0.9225 F1: 0.4705 | Val Loss: 0.2376 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  38/50 | Train Loss: 0.2644 Acc: 0.9200 F1: 0.4177 | Val Loss: 0.2552 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  39/50 | Train Loss: 0.2659 Acc: 0.9175 F1: 0.4134 | Val Loss: 0.2360 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  40/50 | Train Loss: 0.2662 Acc: 0.9175 F1: 0.4167 | Val Loss: 0.2489 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  41/50 | Train Loss: 0.2546 Acc: 0.9250 F1: 0.4434 | Val Loss: 0.2650 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  42/50 | Train Loss: 0.2542 Acc: 0.9225 F1: 0.4510 | Val Loss: 0.2422 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  43/50 | Train Loss: 0.2524 Acc: 0.9225 F1: 0.4188 | Val Loss: 0.2391 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  44/50 | Train Loss: 0.2496 Acc: 0.9175 F1: 0.4167 | Val Loss: 0.2488 Acc: 0.9400 F1: 0.4769 | Train Meta: n/a | Val Meta: n/a
+Epoch  45/50 | Train Loss: 0.2471 Acc: 0.9225 F1: 0.4188 | Val Loss: 0.2359 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  46/50 | Train Loss: 0.2478 Acc: 0.9225 F1: 0.4510 | Val Loss: 0.2395 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  47/50 | Train Loss: 0.2594 Acc: 0.9175 F1: 0.4172 | Val Loss: 0.2416 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  48/50 | Train Loss: 0.2485 Acc: 0.9225 F1: 0.4705 | Val Loss: 0.2349 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  49/50 | Train Loss: 0.2445 Acc: 0.9250 F1: 0.4533 | Val Loss: 0.2406 Acc: 0.9400 F1: 0.4786 | Train Meta: n/a | Val Meta: n/a
+Epoch  50/50 | Train Loss: 0.2573 Acc: 0.9200 F1: 0.4509 | Val Loss: 0.2712 Acc: 0.9400 F1: 0.4769 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Classification Result (ECG5000)
+Accuracy : 0.912444
+F1 (macro): 0.425051
+Stats metadata preview | dataset=FordA | domain=UCR | channels=1
+   - channel_1: Channel statistics over the training split: mean value is 0.000, standard deviation is 1.000, minimum value is -4.622, maximum value is 5.064, median value is -0.001, and mean absolute value is 0.801.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: FordA (Channels: 1)
+📊 Classes: 2 | Sequence Length: 500
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 0.7128 Acc: 0.4944 F1: 0.4941 | Val Loss: 0.6795 Acc: 0.5778 F1: 0.5684 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 0.6925 Acc: 0.5351 F1: 0.5336 | Val Loss: 0.6811 Acc: 0.5500 F1: 0.4614 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 0.6899 Acc: 0.5458 F1: 0.5427 | Val Loss: 0.6879 Acc: 0.5153 F1: 0.3931 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 0.6913 Acc: 0.5403 F1: 0.5393 | Val Loss: 0.6746 Acc: 0.5542 F1: 0.4699 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 0.6684 Acc: 0.5927 F1: 0.5913 | Val Loss: 0.6716 Acc: 0.5514 F1: 0.4384 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 0.6712 Acc: 0.5917 F1: 0.5897 | Val Loss: 0.6545 Acc: 0.5972 F1: 0.5710 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 0.6639 Acc: 0.5910 F1: 0.5893 | Val Loss: 0.6768 Acc: 0.5472 F1: 0.4581 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 0.6672 Acc: 0.5962 F1: 0.5952 | Val Loss: 0.6418 Acc: 0.6708 F1: 0.6692 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 0.6519 Acc: 0.6198 F1: 0.6190 | Val Loss: 0.6730 Acc: 0.5597 F1: 0.4539 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 0.6557 Acc: 0.6059 F1: 0.6043 | Val Loss: 0.6342 Acc: 0.6514 F1: 0.6321 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 0.6523 Acc: 0.6097 F1: 0.6084 | Val Loss: 0.6418 Acc: 0.6042 F1: 0.5432 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 0.6413 Acc: 0.6292 F1: 0.6268 | Val Loss: 0.6587 Acc: 0.5681 F1: 0.5039 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 0.6463 Acc: 0.6191 F1: 0.6181 | Val Loss: 0.6839 Acc: 0.5472 F1: 0.4153 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/50 | Train Loss: 0.6430 Acc: 0.6288 F1: 0.6278 | Val Loss: 0.6193 Acc: 0.6722 F1: 0.6615 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/50 | Train Loss: 0.6359 Acc: 0.6368 F1: 0.6357 | Val Loss: 0.6302 Acc: 0.6250 F1: 0.5799 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/50 | Train Loss: 0.6373 Acc: 0.6323 F1: 0.6305 | Val Loss: 0.6174 Acc: 0.6625 F1: 0.6386 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/50 | Train Loss: 0.6349 Acc: 0.6344 F1: 0.6337 | Val Loss: 0.6367 Acc: 0.6083 F1: 0.5496 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/50 | Train Loss: 0.6230 Acc: 0.6649 F1: 0.6635 | Val Loss: 0.6071 Acc: 0.6861 F1: 0.6792 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/50 | Train Loss: 0.6253 Acc: 0.6604 F1: 0.6591 | Val Loss: 0.6001 Acc: 0.7083 F1: 0.7079 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/50 | Train Loss: 0.6188 Acc: 0.6594 F1: 0.6586 | Val Loss: 0.6055 Acc: 0.6903 F1: 0.6888 | Train Meta: n/a | Val Meta: n/a
+Epoch  21/50 | Train Loss: 0.6215 Acc: 0.6545 F1: 0.6530 | Val Loss: 0.6007 Acc: 0.7069 F1: 0.7062 | Train Meta: n/a | Val Meta: n/a
+Epoch  22/50 | Train Loss: 0.6182 Acc: 0.6642 F1: 0.6631 | Val Loss: 0.6041 Acc: 0.7056 F1: 0.7031 | Train Meta: n/a | Val Meta: n/a
+Epoch  23/50 | Train Loss: 0.6174 Acc: 0.6622 F1: 0.6611 | Val Loss: 0.5943 Acc: 0.6889 F1: 0.6763 | Train Meta: n/a | Val Meta: n/a
+Epoch  24/50 | Train Loss: 0.6187 Acc: 0.6569 F1: 0.6563 | Val Loss: 0.6125 Acc: 0.6389 F1: 0.6024 | Train Meta: n/a | Val Meta: n/a
+Epoch  25/50 | Train Loss: 0.6080 Acc: 0.6792 F1: 0.6779 | Val Loss: 0.5924 Acc: 0.6792 F1: 0.6600 | Train Meta: n/a | Val Meta: n/a
+Epoch  26/50 | Train Loss: 0.6040 Acc: 0.6785 F1: 0.6773 | Val Loss: 0.5849 Acc: 0.7222 F1: 0.7217 | Train Meta: n/a | Val Meta: n/a
+Epoch  27/50 | Train Loss: 0.6062 Acc: 0.6764 F1: 0.6750 | Val Loss: 0.5899 Acc: 0.7319 F1: 0.7311 | Train Meta: n/a | Val Meta: n/a
+Epoch  28/50 | Train Loss: 0.6089 Acc: 0.6681 F1: 0.6674 | Val Loss: 0.5814 Acc: 0.7306 F1: 0.7304 | Train Meta: n/a | Val Meta: n/a
+Epoch  29/50 | Train Loss: 0.5999 Acc: 0.6882 F1: 0.6869 | Val Loss: 0.6115 Acc: 0.6542 F1: 0.6335 | Train Meta: n/a | Val Meta: n/a
+Epoch  30/50 | Train Loss: 0.5961 Acc: 0.6976 F1: 0.6963 | Val Loss: 0.5785 Acc: 0.7236 F1: 0.7176 | Train Meta: n/a | Val Meta: n/a
+Epoch  31/50 | Train Loss: 0.5924 Acc: 0.6937 F1: 0.6927 | Val Loss: 0.5754 Acc: 0.7417 F1: 0.7411 | Train Meta: n/a | Val Meta: n/a
+Epoch  32/50 | Train Loss: 0.5876 Acc: 0.7139 F1: 0.7126 | Val Loss: 0.5810 Acc: 0.6903 F1: 0.6694 | Train Meta: n/a | Val Meta: n/a
+Epoch  33/50 | Train Loss: 0.5881 Acc: 0.6983 F1: 0.6972 | Val Loss: 0.5652 Acc: 0.7458 F1: 0.7403 | Train Meta: n/a | Val Meta: n/a
+Epoch  34/50 | Train Loss: 0.5888 Acc: 0.6976 F1: 0.6963 | Val Loss: 0.5680 Acc: 0.7236 F1: 0.7135 | Train Meta: n/a | Val Meta: n/a
+Epoch  35/50 | Train Loss: 0.5827 Acc: 0.7128 F1: 0.7114 | Val Loss: 0.5629 Acc: 0.7472 F1: 0.7456 | Train Meta: n/a | Val Meta: n/a
+Epoch  36/50 | Train Loss: 0.5836 Acc: 0.7010 F1: 0.6998 | Val Loss: 0.5625 Acc: 0.7417 F1: 0.7415 | Train Meta: n/a | Val Meta: n/a
+Epoch  37/50 | Train Loss: 0.5930 Acc: 0.6924 F1: 0.6917 | Val Loss: 0.5690 Acc: 0.7375 F1: 0.7360 | Train Meta: n/a | Val Meta: n/a
+Epoch  38/50 | Train Loss: 0.5791 Acc: 0.7198 F1: 0.7187 | Val Loss: 0.5640 Acc: 0.7208 F1: 0.7103 | Train Meta: n/a | Val Meta: n/a
+Epoch  39/50 | Train Loss: 0.5819 Acc: 0.7094 F1: 0.7081 | Val Loss: 0.5537 Acc: 0.7653 F1: 0.7652 | Train Meta: n/a | Val Meta: n/a
+Epoch  40/50 | Train Loss: 0.5703 Acc: 0.7170 F1: 0.7161 | Val Loss: 0.5722 Acc: 0.7278 F1: 0.7208 | Train Meta: n/a | Val Meta: n/a
+Epoch  41/50 | Train Loss: 0.5775 Acc: 0.7104 F1: 0.7094 | Val Loss: 0.5580 Acc: 0.7556 F1: 0.7542 | Train Meta: n/a | Val Meta: n/a
+Epoch  42/50 | Train Loss: 0.5730 Acc: 0.7167 F1: 0.7157 | Val Loss: 0.5493 Acc: 0.7667 F1: 0.7663 | Train Meta: n/a | Val Meta: n/a
+Epoch  43/50 | Train Loss: 0.5705 Acc: 0.7253 F1: 0.7246 | Val Loss: 0.5468 Acc: 0.7681 F1: 0.7671 | Train Meta: n/a | Val Meta: n/a
+Epoch  44/50 | Train Loss: 0.5728 Acc: 0.7201 F1: 0.7188 | Val Loss: 0.5479 Acc: 0.7569 F1: 0.7528 | Train Meta: n/a | Val Meta: n/a
+Epoch  45/50 | Train Loss: 0.5696 Acc: 0.7212 F1: 0.7204 | Val Loss: 0.5503 Acc: 0.7333 F1: 0.7229 | Train Meta: n/a | Val Meta: n/a
+Epoch  46/50 | Train Loss: 0.5653 Acc: 0.7295 F1: 0.7286 | Val Loss: 0.5799 Acc: 0.6625 F1: 0.6245 | Train Meta: n/a | Val Meta: n/a
+Epoch  47/50 | Train Loss: 0.5636 Acc: 0.7174 F1: 0.7166 | Val Loss: 0.5445 Acc: 0.7597 F1: 0.7588 | Train Meta: n/a | Val Meta: n/a
+Epoch  48/50 | Train Loss: 0.5605 Acc: 0.7288 F1: 0.7280 | Val Loss: 0.5742 Acc: 0.6722 F1: 0.6411 | Train Meta: n/a | Val Meta: n/a
+Epoch  49/50 | Train Loss: 0.5615 Acc: 0.7375 F1: 0.7364 | Val Loss: 0.5414 Acc: 0.7556 F1: 0.7499 | Train Meta: n/a | Val Meta: n/a
+Epoch  50/50 | Train Loss: 0.5592 Acc: 0.7312 F1: 0.7304 | Val Loss: 0.5491 Acc: 0.7556 F1: 0.7523 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Classification Result (FordA)
+Accuracy : 0.737879
+F1 (macro): 0.733970
+Stats metadata preview | dataset=FordB | domain=UCR | channels=1
+   - channel_1: Channel statistics over the training split: mean value is 0.000, standard deviation is 1.000, minimum value is -5.545, maximum value is 5.095, median value is 0.002, and mean absolute value is 0.792.
+/data/pjh_workspace/ts-env/lib/python3.8/site-packages/torch/nn/modules/transformer.py:307: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(f"enable_nested_tensor is True, but self.use_nested_tensor is False because {why_not_sparsity_fast_path}")
+==================================================
+🚀 Architecture: LAYA Random Encoder
+📊 Target Dataset: FordB (Channels: 1)
+📊 Classes: 2 | Sequence Length: 500
+==================================================
+✅ Encoder is RANDOMLY initialized and FROZEN (Linear Probing mode).
+Epoch   1/50 | Train Loss: 0.6935 Acc: 0.5238 F1: 0.5212 | Val Loss: 0.6740 Acc: 0.5488 F1: 0.4446 | Train Meta: n/a | Val Meta: n/a
+Epoch   2/50 | Train Loss: 0.6702 Acc: 0.5843 F1: 0.5824 | Val Loss: 0.6547 Acc: 0.6424 F1: 0.6389 | Train Meta: n/a | Val Meta: n/a
+Epoch   3/50 | Train Loss: 0.6686 Acc: 0.5815 F1: 0.5814 | Val Loss: 0.6521 Acc: 0.6011 F1: 0.5356 | Train Meta: n/a | Val Meta: n/a
+Epoch   4/50 | Train Loss: 0.6606 Acc: 0.6026 F1: 0.6010 | Val Loss: 0.6373 Acc: 0.6355 F1: 0.6238 | Train Meta: n/a | Val Meta: n/a
+Epoch   5/50 | Train Loss: 0.6438 Acc: 0.6357 F1: 0.6353 | Val Loss: 0.6227 Acc: 0.6850 F1: 0.6787 | Train Meta: n/a | Val Meta: n/a
+Epoch   6/50 | Train Loss: 0.6380 Acc: 0.6357 F1: 0.6344 | Val Loss: 0.6331 Acc: 0.5983 F1: 0.5699 | Train Meta: n/a | Val Meta: n/a
+Epoch   7/50 | Train Loss: 0.6295 Acc: 0.6519 F1: 0.6509 | Val Loss: 0.6447 Acc: 0.5860 F1: 0.5372 | Train Meta: n/a | Val Meta: n/a
+Epoch   8/50 | Train Loss: 0.6163 Acc: 0.6678 F1: 0.6669 | Val Loss: 0.6021 Acc: 0.6933 F1: 0.6866 | Train Meta: n/a | Val Meta: n/a
+Epoch   9/50 | Train Loss: 0.6182 Acc: 0.6571 F1: 0.6565 | Val Loss: 0.6161 Acc: 0.6341 F1: 0.6185 | Train Meta: n/a | Val Meta: n/a
+Epoch  10/50 | Train Loss: 0.6110 Acc: 0.6664 F1: 0.6650 | Val Loss: 0.5916 Acc: 0.6878 F1: 0.6870 | Train Meta: n/a | Val Meta: n/a
+Epoch  11/50 | Train Loss: 0.6142 Acc: 0.6613 F1: 0.6606 | Val Loss: 0.6090 Acc: 0.6754 F1: 0.6449 | Train Meta: n/a | Val Meta: n/a
+Epoch  12/50 | Train Loss: 0.6014 Acc: 0.6854 F1: 0.6845 | Val Loss: 0.5916 Acc: 0.6768 F1: 0.6748 | Train Meta: n/a | Val Meta: n/a
+Epoch  13/50 | Train Loss: 0.6028 Acc: 0.6699 F1: 0.6691 | Val Loss: 0.5920 Acc: 0.6795 F1: 0.6610 | Train Meta: n/a | Val Meta: n/a
+Epoch  14/50 | Train Loss: 0.5966 Acc: 0.6799 F1: 0.6789 | Val Loss: 0.5772 Acc: 0.7001 F1: 0.6999 | Train Meta: n/a | Val Meta: n/a
+Epoch  15/50 | Train Loss: 0.5924 Acc: 0.6889 F1: 0.6881 | Val Loss: 0.5741 Acc: 0.7029 F1: 0.7029 | Train Meta: n/a | Val Meta: n/a
+Epoch  16/50 | Train Loss: 0.5987 Acc: 0.6847 F1: 0.6840 | Val Loss: 0.6075 Acc: 0.6726 F1: 0.6400 | Train Meta: n/a | Val Meta: n/a
+Epoch  17/50 | Train Loss: 0.5887 Acc: 0.6892 F1: 0.6884 | Val Loss: 0.5758 Acc: 0.7056 F1: 0.6948 | Train Meta: n/a | Val Meta: n/a
+Epoch  18/50 | Train Loss: 0.5919 Acc: 0.6847 F1: 0.6840 | Val Loss: 0.5839 Acc: 0.6754 F1: 0.6682 | Train Meta: n/a | Val Meta: n/a
+Epoch  19/50 | Train Loss: 0.5825 Acc: 0.7020 F1: 0.7013 | Val Loss: 0.5634 Acc: 0.7208 F1: 0.7186 | Train Meta: n/a | Val Meta: n/a
+Epoch  20/50 | Train Loss: 0.5798 Acc: 0.6941 F1: 0.6935 | Val Loss: 0.5733 Acc: 0.6946 F1: 0.6923 | Train Meta: n/a | Val Meta: n/a
+Epoch  21/50 | Train Loss: 0.5775 Acc: 0.7017 F1: 0.7012 | Val Loss: 0.5589 Acc: 0.7194 F1: 0.7187 | Train Meta: n/a | Val Meta: n/a
+Epoch  22/50 | Train Loss: 0.5717 Acc: 0.7068 F1: 0.7062 | Val Loss: 0.5703 Acc: 0.6988 F1: 0.6954 | Train Meta: n/a | Val Meta: n/a
+Epoch  23/50 | Train Loss: 0.5774 Acc: 0.7010 F1: 0.7005 | Val Loss: 0.5582 Acc: 0.7139 F1: 0.7137 | Train Meta: n/a | Val Meta: n/a
+Epoch  24/50 | Train Loss: 0.5733 Acc: 0.7017 F1: 0.7011 | Val Loss: 0.5687 Acc: 0.7001 F1: 0.6966 | Train Meta: n/a | Val Meta: n/a
+Epoch  25/50 | Train Loss: 0.5771 Acc: 0.6954 F1: 0.6950 | Val Loss: 0.5573 Acc: 0.7139 F1: 0.7136 | Train Meta: n/a | Val Meta: n/a
+Epoch  26/50 | Train Loss: 0.5717 Acc: 0.7082 F1: 0.7074 | Val Loss: 0.5529 Acc: 0.7139 F1: 0.7138 | Train Meta: n/a | Val Meta: n/a
+Epoch  27/50 | Train Loss: 0.5764 Acc: 0.7086 F1: 0.7083 | Val Loss: 0.5492 Acc: 0.7263 F1: 0.7227 | Train Meta: n/a | Val Meta: n/a
+Epoch  28/50 | Train Loss: 0.5683 Acc: 0.7113 F1: 0.7105 | Val Loss: 0.5459 Acc: 0.7345 F1: 0.7331 | Train Meta: n/a | Val Meta: n/a
+Epoch  29/50 | Train Loss: 0.5623 Acc: 0.7051 F1: 0.7044 | Val Loss: 0.5482 Acc: 0.7263 F1: 0.7260 | Train Meta: n/a | Val Meta: n/a
+Epoch  30/50 | Train Loss: 0.5631 Acc: 0.7137 F1: 0.7131 | Val Loss: 0.5823 Acc: 0.6713 F1: 0.6590 | Train Meta: n/a | Val Meta: n/a
+Epoch  31/50 | Train Loss: 0.5606 Acc: 0.7061 F1: 0.7055 | Val Loss: 0.5871 Acc: 0.6891 F1: 0.6628 | Train Meta: n/a | Val Meta: n/a
+Epoch  32/50 | Train Loss: 0.5614 Acc: 0.7241 F1: 0.7235 | Val Loss: 0.5545 Acc: 0.7166 F1: 0.7059 | Train Meta: n/a | Val Meta: n/a
+Epoch  33/50 | Train Loss: 0.5576 Acc: 0.7203 F1: 0.7194 | Val Loss: 0.5467 Acc: 0.7235 F1: 0.7225 | Train Meta: n/a | Val Meta: n/a
+Epoch  34/50 | Train Loss: 0.5611 Acc: 0.7169 F1: 0.7164 | Val Loss: 0.5402 Acc: 0.7276 F1: 0.7229 | Train Meta: n/a | Val Meta: n/a
+Epoch  35/50 | Train Loss: 0.5574 Acc: 0.7065 F1: 0.7059 | Val Loss: 0.5431 Acc: 0.7249 F1: 0.7235 | Train Meta: n/a | Val Meta: n/a
+Epoch  36/50 | Train Loss: 0.5557 Acc: 0.7227 F1: 0.7222 | Val Loss: 0.5404 Acc: 0.7221 F1: 0.7212 | Train Meta: n/a | Val Meta: n/a
+Epoch  37/50 | Train Loss: 0.5607 Acc: 0.7234 F1: 0.7228 | Val Loss: 0.5392 Acc: 0.7290 F1: 0.7236 | Train Meta: n/a | Val Meta: n/a
+Epoch  38/50 | Train Loss: 0.5586 Acc: 0.7241 F1: 0.7235 | Val Loss: 0.5317 Acc: 0.7276 F1: 0.7263 | Train Meta: n/a | Val Meta: n/a
+Epoch  39/50 | Train Loss: 0.5553 Acc: 0.7224 F1: 0.7217 | Val Loss: 0.5359 Acc: 0.7249 F1: 0.7193 | Train Meta: n/a | Val Meta: n/a
+Epoch  40/50 | Train Loss: 0.5481 Acc: 0.7255 F1: 0.7251 | Val Loss: 0.5580 Acc: 0.7015 F1: 0.6934 | Train Meta: n/a | Val Meta: n/a
+Epoch  41/50 | Train Loss: 0.5483 Acc: 0.7238 F1: 0.7232 | Val Loss: 0.5272 Acc: 0.7497 F1: 0.7484 | Train Meta: n/a | Val Meta: n/a
+Epoch  42/50 | Train Loss: 0.5512 Acc: 0.7241 F1: 0.7233 | Val Loss: 0.5589 Acc: 0.6960 F1: 0.6757 | Train Meta: n/a | Val Meta: n/a
+Epoch  43/50 | Train Loss: 0.5444 Acc: 0.7286 F1: 0.7282 | Val Loss: 0.5434 Acc: 0.7139 F1: 0.7020 | Train Meta: n/a | Val Meta: n/a
+Epoch  44/50 | Train Loss: 0.5470 Acc: 0.7338 F1: 0.7333 | Val Loss: 0.5233 Acc: 0.7497 F1: 0.7495 | Train Meta: n/a | Val Meta: n/a
+Epoch  45/50 | Train Loss: 0.5397 Acc: 0.7314 F1: 0.7310 | Val Loss: 0.5209 Acc: 0.7538 F1: 0.7536 | Train Meta: n/a | Val Meta: n/a
+Epoch  46/50 | Train Loss: 0.5376 Acc: 0.7334 F1: 0.7331 | Val Loss: 0.6436 Acc: 0.6396 F1: 0.5794 | Train Meta: n/a | Val Meta: n/a
+Epoch  47/50 | Train Loss: 0.5454 Acc: 0.7255 F1: 0.7249 | Val Loss: 0.5217 Acc: 0.7318 F1: 0.7302 | Train Meta: n/a | Val Meta: n/a
+Epoch  48/50 | Train Loss: 0.5408 Acc: 0.7372 F1: 0.7368 | Val Loss: 0.5180 Acc: 0.7524 F1: 0.7515 | Train Meta: n/a | Val Meta: n/a
+Epoch  49/50 | Train Loss: 0.5457 Acc: 0.7282 F1: 0.7277 | Val Loss: 0.5182 Acc: 0.7565 F1: 0.7551 | Train Meta: n/a | Val Meta: n/a
+Epoch  50/50 | Train Loss: 0.5373 Acc: 0.7355 F1: 0.7352 | Val Loss: 0.5785 Acc: 0.6988 F1: 0.6690 | Train Meta: n/a | Val Meta: n/a
+
+Random Encoder Classification Result (FordB)
+Accuracy : 0.598765
+F1 (macro): 0.598760

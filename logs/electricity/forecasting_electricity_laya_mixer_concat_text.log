@@ -473,9 +473,9 @@ Epoch 18/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.532765 | Val Loss: 0.61
    -> Updated best validation state: val_loss=0.618890 at epoch 18
 Epoch 19/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.532878 | Val Loss: 0.622208 | Train Meta: MetaNormμ:4.0649 | Val Meta: MetaNormμ:4.0649
 Epoch 20/20 | Steps: 1133 | LR: 0.000100 | Train Loss: 0.532406 | Val Loss: 0.621145 | Train Meta: MetaNormμ:4.0649 | Val Meta: MetaNormμ:4.0649
-./run_forecasting.py:284: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+./run_forecasting.py:313: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
   plt.tight_layout()
-./run_forecasting.py:296: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+./run_forecasting.py:325: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
   plt.tight_layout()
 {'test_mse': 0.2745108902454376, 'test_mae': 0.32782381772994995}
 Saved best forecasting checkpoint under checkpoints/forecasting_weather_96/electricity_laya_mixer_concat_text_best.pt
@@ -528,9 +528,9 @@ Epoch 17/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.572380 | Val Loss: 0.68
 Epoch 18/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.572417 | Val Loss: 0.679426 | Train Meta: MetaNormμ:4.0649 | Val Meta: MetaNormμ:4.0649
 Epoch 19/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.572242 | Val Loss: 0.681738 | Train Meta: MetaNormμ:4.0649 | Val Meta: MetaNormμ:4.0649
 Epoch 20/20 | Steps: 1130 | LR: 0.000100 | Train Loss: 0.572158 | Val Loss: 0.681532 | Train Meta: MetaNormμ:4.0649 | Val Meta: MetaNormμ:4.0649
-./run_forecasting.py:284: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+./run_forecasting.py:313: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
   plt.tight_layout()
-./run_forecasting.py:296: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+./run_forecasting.py:325: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
   plt.tight_layout()
 {'test_mse': 0.3172660171985626, 'test_mae': 0.35687723755836487}
 Saved best forecasting checkpoint under checkpoints/forecasting_weather_192/electricity_laya_mixer_concat_text_best.pt
@@ -582,9 +582,9 @@ Epoch 17/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.613333 | Val Loss: 0.74
 Epoch 18/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.613096 | Val Loss: 0.738098 | Train Meta: MetaNormμ:4.0649 | Val Meta: MetaNormμ:4.0649
 Epoch 19/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.613012 | Val Loss: 0.736883 | Train Meta: MetaNormμ:4.0649 | Val Meta: MetaNormμ:4.0649
 Epoch 20/20 | Steps: 1126 | LR: 0.000100 | Train Loss: 0.612896 | Val Loss: 0.739641 | Train Meta: MetaNormμ:4.0649 | Val Meta: MetaNormμ:4.0649
-./run_forecasting.py:284: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+./run_forecasting.py:313: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
   plt.tight_layout()
-./run_forecasting.py:296: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+./run_forecasting.py:325: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
   plt.tight_layout()
 {'test_mse': 0.36006563901901245, 'test_mae': 0.38416388630867004}
 Saved best forecasting checkpoint under checkpoints/forecasting_weather_336/electricity_laya_mixer_concat_text_best.pt
@@ -641,9 +641,9 @@ Epoch 18/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.667684 | Val Loss: 0.81
    -> Updated best validation state: val_loss=0.813327 at epoch 18
 Epoch 19/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.667560 | Val Loss: 0.817638 | Train Meta: MetaNormμ:4.0649 | Val Meta: MetaNormμ:4.0649
 Epoch 20/20 | Steps: 1114 | LR: 0.000100 | Train Loss: 0.667582 | Val Loss: 0.814487 | Train Meta: MetaNormμ:4.0649 | Val Meta: MetaNormμ:4.0649
-./run_forecasting.py:284: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+./run_forecasting.py:313: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
   plt.tight_layout()
-./run_forecasting.py:296: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
+./run_forecasting.py:325: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all axes decorations.
   plt.tight_layout()
 {'test_mse': 0.431790828704834, 'test_mae': 0.42904940247535706}
 Saved best forecasting checkpoint under checkpoints/forecasting_weather_720/electricity_laya_mixer_concat_text_best.pt
